@@ -17,9 +17,9 @@ export type LauncherRelease = {
 
 // import.meta.env uses `vite.config.ts`
 // Environments can be configured in `packages/app-lib/` directory.
-export const LAUNCHER_REPOSITORY_URL = `${import.meta.env.GIT_ASTRALIUM_URL}didirus/AstralRinth/`
+export const LAUNCHER_REPOSITORY_URL = `${import.meta.env.REPO_XORISON_URL}didirus/AstralRinth/`
 export const LAUNCHER_RELEASES_URL = `${LAUNCHER_REPOSITORY_URL}releases`
-const LAUNCHER_LATEST_RELEASE_API = `${import.meta.env.GIT_ASTRALIUM_API_URL}repos/didirus/AstralRinth/releases/latest`
+const LAUNCHER_LATEST_RELEASE_API = `${import.meta.env.REPO_XORISON_API_URL}repos/didirus/AstralRinth/releases/latest`
 
 export const isUpdateInstalling = ref(false)
 export const isUpdateAvailable = ref(false)

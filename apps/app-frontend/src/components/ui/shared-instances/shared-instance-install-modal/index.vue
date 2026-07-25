@@ -245,7 +245,6 @@ import {
 } from '@modrinth/ui'
 import { computed, nextTick, ref } from 'vue'
 
-import { hide_ads_window, show_ads_window } from '@/helpers/ads'
 import { toError } from '@/helpers/errors'
 import type { SharedInstanceInstallPreview } from '@/helpers/install'
 import { create_report } from '@/helpers/reports'
@@ -381,7 +380,6 @@ function handleCancel() {
 }
 function handleHide() {
 	resetReportState()
-	show_ads_window()
 }
 function resetReportState() {
 	reportMode.value = false
@@ -410,7 +408,6 @@ function showReport(previewValue: SharedInstanceInstallPreview, event?: MouseEve
 }
 function showPreview(previewValue: SharedInstanceInstallPreview, event?: MouseEvent) {
 	preview.value = previewValue
-	hide_ads_window()
 	modal.value?.show(event)
 	void nextTick(() => forceCheckTableScroll())
 }
