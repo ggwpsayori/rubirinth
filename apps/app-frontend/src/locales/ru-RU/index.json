@@ -233,6 +233,9 @@
   "astralrinth.app.settings.update-installing": {
     "message": "Установка обновления..."
   },
+  "astralrinth.app.settings.updates-installed": {
+    "message": "Обновления уже установлены"
+  },
   "astralrinth.app.settings.view-update-info": {
     "message": "Посмотреть информацию об обновлении"
   },

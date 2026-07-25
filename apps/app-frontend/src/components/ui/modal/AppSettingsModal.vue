@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
 	AstralRinthLogo,
+	BadgeCheckIcon,
 	CoffeeIcon,
 	DownloadIcon,
 	GameIcon,
@@ -34,7 +35,11 @@ import LanguageSettings from '@/components/ui/settings/LanguageSettings.vue'
 import PrivacySettings from '@/components/ui/settings/PrivacySettings.vue'
 import ResourceManagementSettings from '@/components/ui/settings/ResourceManagementSettings.vue'
 import { get, set } from '@/helpers/settings.ts'
-import { isUpdateInstalling, isUpdateAvailable } from '@/helpers/astralrinth/update'
+import {
+	isUpdateAvailable,
+	isUpdateInstalling,
+	latestLauncherReleases,
+} from '@/helpers/astralrinth/update'
 import { injectAppUpdateDownloadProgress } from '@/providers/download-progress.ts'
 import { useTheming } from '@/store/state'
 
@@ -156,6 +161,10 @@ const messages = defineMessages({
 		id: 'astralrinth.app.settings.update-installing',
 		defaultMessage: 'Installing update...',
 	},
+	updatesInstalled: {
+		id: 'astralrinth.app.settings.updates-installed',
+		defaultMessage: 'Updates are already installed',
+	},
 	viewUpdateInfo: {
 		id: 'astralrinth.app.settings.view-update-info',
 		defaultMessage: 'View update info',
@@ -220,6 +229,11 @@ const messages = defineMessages({
 							/>
 						</template>
 					</div>
+					<BadgeCheckIcon
+						v-else-if="latestLauncherReleases"
+						class="size-7 shrink-0 text-green"
+						v-tooltip.bottom="formatMessage(messages.updatesInstalled)"
+					/>
 				</div>
 			</div>
 		</template>
