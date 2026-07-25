@@ -114,11 +114,13 @@
 		"instance:default",
 		"install:default",
 		"process:default",
+		"reports:default",
 		"cache:default",
 		"files:default",
 		"settings:default",
 		"shortcuts:default",
 		"tags:default",
+		"users:default",
 		"utils:default",
 		"friends:default",
 		"worlds:default"

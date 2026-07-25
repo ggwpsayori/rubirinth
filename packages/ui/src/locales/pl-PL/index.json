@@ -533,15 +533,6 @@
   "content.inline-backup.world-label": {
     "defaultMessage": "Twój świat"
   },
-  "content.modpack-card.content-hint-description": {
-    "defaultMessage": "Informacje o zawartości Twojej paczki modów możesz teraz znaleźć tutaj!"
-  },
-  "content.modpack-card.content-hint-title": {
-    "defaultMessage": "Zawartość paczek modów została przeniesiona"
-  },
-  "content.modpack-card.dismiss-hint": {
-    "defaultMessage": "Nie pokazuj ponownie"
-  },
   "content.page-layout.additional-content": {
     "defaultMessage": "Dodatkowa zawartość"
   },
@@ -1168,12 +1159,6 @@
   },
   "external-files.permissions-card.reason.special-permission.description": {
     "defaultMessage": "Masz specjalne zezwolenie na użycie tego dzieła w Twojej paczce modów."
-  },
-  "external-files.permissions-card.remove-group": {
-    "defaultMessage": "Usuń grupę"
-  },
-  "external-files.permissions-card.remove-group-error.title": {
-    "defaultMessage": "Nie udało się usunąć grupy"
   },
   "external-files.permissions-card.split-file": {
     "defaultMessage": "Usuń z grupy"
@@ -3496,6 +3481,12 @@
   },
   "project.settings.view.title": {
     "defaultMessage": "Widok"
+  },
+  "project.stats.downloads-label": {
+    "defaultMessage": "{count, plural, one {pobranie} few {pobrania} other {pobrań}}"
+  },
+  "project.stats.followers-label": {
+    "defaultMessage": "{count, plural, one {obserwujący} other {obserwujących}}"
   },
   "project.versions.channel.alpha.symbol": {
     "defaultMessage": "A"
