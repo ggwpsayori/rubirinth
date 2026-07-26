@@ -236,6 +236,36 @@
   "astralrinth.app.settings.update-installing": {
     "message": "Installing update..."
   },
+  "astralrinth.app.settings.tabs.updates": {
+    "message": "AstralRinth updates"
+  },
+  "astralrinth.app.settings.updates.analytics.description": {
+    "message": "Release and distribution statistics from the update provider."
+  },
+  "astralrinth.app.settings.updates.analytics.title": {
+    "message": "Analytics"
+  },
+  "astralrinth.app.settings.updates.api-url": {
+    "message": "Update provider API URL"
+  },
+  "astralrinth.app.settings.updates.downloadable-files": {
+    "message": "Downloadable files"
+  },
+  "astralrinth.app.settings.updates.http-status": {
+    "message": "HTTP status"
+  },
+  "astralrinth.app.settings.updates.latest-release-tag": {
+    "message": "Latest release tag"
+  },
+  "astralrinth.app.settings.updates.latest-update-title": {
+    "message": "Latest update title"
+  },
+  "astralrinth.app.settings.updates.no-update-information": {
+    "message": "No update information is available."
+  },
+  "astralrinth.app.settings.updates.total-downloads": {
+    "message": "Total product downloads"
+  },
   "astralrinth.app.settings.updates-installed": {
     "message": "Updates are already installed"
   },

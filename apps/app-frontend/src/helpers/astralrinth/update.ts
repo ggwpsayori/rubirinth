@@ -7,6 +7,7 @@ import { getOS, initUpdateLauncher, isDev } from '@/helpers/utils.js'
 export type LauncherReleaseAsset = {
 	name: string
 	browser_download_url: string
+	download_count: number
 }
 
 export type LauncherRelease = {
@@ -19,11 +20,12 @@ export type LauncherRelease = {
 // Environments can be configured in `packages/app-lib/` directory.
 export const LAUNCHER_REPOSITORY_URL = `${import.meta.env.REPO_XORISON_URL}didirus/AstralRinth/`
 export const LAUNCHER_RELEASES_URL = `${LAUNCHER_REPOSITORY_URL}releases`
-const LAUNCHER_LATEST_RELEASE_API = `${import.meta.env.REPO_XORISON_API_URL}repos/didirus/AstralRinth/releases/latest`
+export const LAUNCHER_LATEST_RELEASE_API = `${import.meta.env.REPO_XORISON_API_URL}repos/didirus/AstralRinth/releases/latest`
 
 export const isUpdateInstalling = ref(false)
 export const isUpdateAvailable = ref(false)
 export const latestLauncherReleases = ref<LauncherRelease | null>(null)
+export const latestLauncherReleaseHttpStatus = ref<number | null>(null)
 
 const currentOS = ref('')
 
@@ -48,11 +50,13 @@ const blacklistBeginPrefixes = [
 
 export async function fetchRemote(): Promise<void> {
 	currentOS.value = (await getOS()).toLowerCase()
+	latestLauncherReleaseHttpStatus.value = null
 	try {
 		if (!currentOS.value) {
 			throw new Error(String('Current OS is undefined'))
 		}
 		const response = await fetch(LAUNCHER_LATEST_RELEASE_API)
+		latestLauncherReleaseHttpStatus.value = response.status
 		if (!response.ok) {
 			throw new Error(String(response.status))
 		}

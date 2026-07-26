@@ -8,6 +8,7 @@ import {
 	GaugeIcon,
 	LanguagesIcon,
 	PaintbrushIcon,
+	RefreshCwIcon,
 	SettingsIcon,
 	ShieldIcon,
 	SpinnerIcon,
@@ -27,6 +28,7 @@ import { platform as getOsPlatform, version as getOsVersion } from '@tauri-apps/
 import { ref, watch } from 'vue'
 
 import LauncherUpdateModal from '@/components/ui/astralrinth/LauncherUpdateModal.vue'
+import UpdateSettings from '@/components/ui/settings/astralrinth/UpdateSettings.vue'
 import AppearanceSettings from '@/components/ui/settings/AppearanceSettings.vue'
 import DefaultInstanceSettings from '@/components/ui/settings/DefaultInstanceSettings.vue'
 import FeatureFlagSettings from '@/components/ui/settings/FeatureFlagSettings.vue'
@@ -104,6 +106,15 @@ const tabs = [
 		}),
 		icon: GaugeIcon,
 		content: ResourceManagementSettings,
+	},
+	{
+		name: defineMessage({
+			id: 'astralrinth.app.settings.tabs.updates',
+			defaultMessage: 'AstralRinth updates',
+		}),
+		icon: RefreshCwIcon,
+		content: UpdateSettings,
+		developerOnly: true,
 	},
 	{
 		name: commonSettingsMessages.featureFlags,

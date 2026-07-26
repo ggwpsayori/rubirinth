@@ -233,6 +233,36 @@
   "astralrinth.app.settings.update-installing": {
     "message": "Установка обновления..."
   },
+  "astralrinth.app.settings.tabs.updates": {
+    "message": "Обновления AstralRinth"
+  },
+  "astralrinth.app.settings.updates.analytics.description": {
+    "message": "Статистика релиза и распространения от поставщика обновлений."
+  },
+  "astralrinth.app.settings.updates.analytics.title": {
+    "message": "Аналитика"
+  },
+  "astralrinth.app.settings.updates.api-url": {
+    "message": "URL API поставщика обновлений"
+  },
+  "astralrinth.app.settings.updates.downloadable-files": {
+    "message": "Файлы для загрузки"
+  },
+  "astralrinth.app.settings.updates.http-status": {
+    "message": "Статус HTTP"
+  },
+  "astralrinth.app.settings.updates.latest-release-tag": {
+    "message": "Последний тэг релиза"
+  },
+  "astralrinth.app.settings.updates.latest-update-title": {
+    "message": "Последний заголовок обновления"
+  },
+  "astralrinth.app.settings.updates.no-update-information": {
+    "message": "Информация об обновлении недоступна."
+  },
+  "astralrinth.app.settings.updates.total-downloads": {
+    "message": "Всего скачиваний продукта"
+  },
   "astralrinth.app.settings.updates-installed": {
     "message": "Обновления уже установлены"
   },
