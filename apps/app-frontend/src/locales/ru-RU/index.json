@@ -239,6 +239,24 @@
   "astralrinth.app.settings.view-update-info": {
     "message": "Посмотреть информацию об обновлении"
   },
+  "astralrinth.app.skins.unsupported-account.description": {
+    "message": "Управление скинами доступно только для учётных записей Microsoft. Вернитесь на главную страницу и выберите или добавьте учётную запись Microsoft, чтобы продолжить."
+  },
+  "astralrinth.app.skins.unsupported-account.elyby.action": {
+    "message": "Управлять скином на Ely.by"
+  },
+  "astralrinth.app.skins.unsupported-account.elyby.description": {
+    "message": "Вы вошли через учётную запись Ely.by. Загрузить, выбрать или изменить скин можно прямо на сайте Ely.by."
+  },
+  "astralrinth.app.skins.unsupported-account.elyby.title": {
+    "message": "Управление скином Ely.by"
+  },
+  "astralrinth.app.skins.unsupported-account.return-home": {
+    "message": "Вернуться на главную"
+  },
+  "astralrinth.app.skins.unsupported-account.title": {
+    "message": "Требуется учётная запись Microsoft"
+  },
   "astralrinth.app.launcher-update-modal.error.close-action": {
     "message": "Закрыть"
   },

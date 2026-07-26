@@ -242,6 +242,24 @@
   "astralrinth.app.settings.view-update-info": {
     "message": "View update info"
   },
+  "astralrinth.app.skins.unsupported-account.description": {
+    "message": "Skins can only be managed with a Microsoft account. Return home and select or add a Microsoft account to continue."
+  },
+  "astralrinth.app.skins.unsupported-account.elyby.action": {
+    "message": "Manage skin on Ely.by"
+  },
+  "astralrinth.app.skins.unsupported-account.elyby.description": {
+    "message": "You're signed in with an Ely.by account. You can upload, select, and manage your skin directly on the Ely.by website."
+  },
+  "astralrinth.app.skins.unsupported-account.elyby.title": {
+    "message": "Manage your Ely.by skin"
+  },
+  "astralrinth.app.skins.unsupported-account.return-home": {
+    "message": "Return home"
+  },
+  "astralrinth.app.skins.unsupported-account.title": {
+    "message": "Microsoft account required"
+  },
   "astralrinth.app.launcher-update-modal.error.close-action": {
     "message": "Close"
   },

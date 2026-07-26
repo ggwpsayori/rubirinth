@@ -30,6 +30,7 @@ import { computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch } 
 import EarsModIcon from '@/assets/skins/ears-mod.png'
 import type AccountsCard from '@/components/ui/AccountsCard.vue'
 import EditSkinModal from '@/components/ui/skin/EditSkinModal.vue'
+import UnsupportedSkinAccount from '@/components/ui/skin/UnsupportedSkinAccount.vue'
 import VirtualSkinSectionList from '@/components/ui/skin/VirtualSkinSectionList.vue'
 import { trackEvent } from '@/helpers/analytics'
 import { check_reachable, get_default_user, login as login_flow, users } from '@/helpers/auth'
@@ -221,6 +222,7 @@ const currentUser = ref(undefined)
 const currentUserId = ref<string | undefined>(undefined)
 
 const username = computed(() => currentUser.value?.profile?.name ?? undefined)
+const isMicrosoftAccount = computed(() => currentUser.value?.account_type === 'microsoft')
 const selectedSkin = ref<Skin | null>(null)
 const isApplyingSkin = ref(false)
 const earsFeaturesEnabled = ref(true)
@@ -335,7 +337,10 @@ const capeTexture = computed(() => currentCape.value?.texture)
 const skinVariant = computed(() => selectedSkin.value?.variant)
 const skinNametag = computed(() => (themeStore.hideNametagSkinsPage ? undefined : username.value))
 const isSkinManagementReadOnly = computed(
-	() => offline.value || (authServerQuery.isError.value && !authServerQuery.isLoading.value),
+	() =>
+		!isMicrosoftAccount.value ||
+		offline.value ||
+		(authServerQuery.isError.value && !authServerQuery.isLoading.value),
 )
 const hasPendingSkinChange = computed(
 	() => !skinsMatch(selectedSkin.value, originalSelectedSkin.value),
@@ -1032,8 +1037,10 @@ async function checkUserChanges() {
 		const defaultId = await get_default_user()
 		if (defaultId !== currentUserId.value) {
 			await loadCurrentUser()
-			await loadCapes()
-			await loadSkins()
+			if (isMicrosoftAccount.value) {
+				await loadCapes()
+				await loadSkins()
+			}
 		}
 	} catch (error) {
 		if (currentUser.value && error instanceof Error) {
@@ -1042,18 +1049,23 @@ async function checkUserChanges() {
 	}
 }
 
-await Promise.all([loadCapes(), loadCurrentUser()])
-await loadSkins()
+await loadCurrentUser()
+if (isMicrosoftAccount.value) {
+	await loadCapes()
+	await loadSkins()
+}
 </script>
 
 <template>
 	<EditSkinModal
+		v-if="isMicrosoftAccount"
 		ref="editSkinModal"
 		:capes="capes"
 		@saved="onSkinSaved"
 		@deleted="() => loadSkins()"
 	/>
 	<input
+		v-if="isMicrosoftAccount"
 		ref="addSkinFileInput"
 		type="file"
 		accept="image/png"
@@ -1061,6 +1073,7 @@ await loadSkins()
 		@change="onAddSkinFileInputChange"
 	/>
 	<ConfirmModal
+		v-if="isMicrosoftAccount"
 		ref="deleteSkinModal"
 		:title="formatMessage(messages.deleteSkinTitle)"
 		:description="formatMessage(messages.deleteSkinDescription)"
@@ -1068,7 +1081,12 @@ await loadSkins()
 		@proceed="deleteSkin"
 	/>
 
-	<div v-if="currentUser" class="skin-layout box-border min-h-full p-4">
+	<UnsupportedSkinAccount
+		v-if="currentUser && !isMicrosoftAccount"
+		:account-type="currentUser.account_type"
+	/>
+
+	<div v-else-if="currentUser" class="skin-layout box-border min-h-full p-4">
 		<div class="sticky top-6 self-start p-2 pt-0">
 			<h1 class="m-0 text-2xl font-bold flex items-center gap-2">
 				{{ formatMessage(messages.skinSelectorTitle) }}
