@@ -13,8 +13,8 @@ fn main() {
                 InlinedPlugin::new()
                     .commands(&[
                         "offline_login",
-                        "elyby_login",
-                        "elyby_auth_authenticate",
+                        "get_external_auth_providers",
+                        "authenticate_external_provider",
                         "check_reachable",
                         "login",
                         "remove_user",

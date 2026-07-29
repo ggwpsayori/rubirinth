@@ -3,6 +3,7 @@
 ///
 use crate::api::astralrinth::update;
 use crate::event::emit::emit_info;
+use crate::models::astralrinth::authentication::ExternalAuthLibrary;
 use crate::{Result, State};
 
 use serde::{Deserialize, Serialize};
@@ -26,14 +27,19 @@ pub struct Launcher {
     pub version: String,
 }
 
-/// Fetches or updates the Ely.by AuthLib Injector library.
-pub async fn get_elyby_injector_library() -> Result<PathBuf> {
-    tracing::info!("[AR] • Initializing Ely.by AuthLib Injector...");
+/// Fetches the provider's current AuthLib Injector library or reuses its local copy.
+pub async fn get_authlib_injector_library(
+    library: ExternalAuthLibrary,
+) -> Result<PathBuf> {
+    tracing::info!("[AR] • Initializing AuthLib Injector...");
     let state = State::get().await?;
     let libraries_dir = state.directories.libraries_dir();
 
-    validate_library_dir(&libraries_dir, "authlib_injector/").await?;
-    let injector_dir = libraries_dir.join("astralrinth/authlib_injector/");
+    validate_library_dir(&libraries_dir, library.cache_directory).await?;
+    let injector_dir = libraries_dir.join(format!(
+        "astralrinth/{}/",
+        library.cache_directory
+    ));
     fs::create_dir_all(&injector_dir).await?;
 
     let mut local_injectors = Vec::new();
@@ -44,7 +50,7 @@ pub async fn get_elyby_injector_library() -> Result<PathBuf> {
                 path.file_name().and_then(|s| s.to_str()),
                 entry.metadata().await,
             ) {
-                if name.starts_with("authlib-injector") {
+                if name.starts_with(library.asset_name_prefix) {
                     local_injectors.push((
                         path,
                         meta.modified().unwrap_or(SystemTime::UNIX_EPOCH),
@@ -53,7 +59,7 @@ pub async fn get_elyby_injector_library() -> Result<PathBuf> {
             }
         }
     }
-    local_injectors.sort_by(|a, b| b.1.cmp(&a.1)); // newest first
+    local_injectors.sort_by(|a, b| b.1.cmp(&a.1));
 
     if !local_injectors.is_empty() {
         tracing::info!("[AR] • Local versions:");
@@ -63,17 +69,14 @@ pub async fn get_elyby_injector_library() -> Result<PathBuf> {
     }
 
     let latest_local = local_injectors.first().cloned();
-    // let latest_local_name = latest_local.as_ref().map(|p| p.0.file_name().unwrap().to_string_lossy().to_string());
-
-    // Remote (fallback to empty strings)
     let (remote_name, remote_url) =
-        match extract_metadata_from_elyby_file("authlib-injector").await {
+        match extract_library_metadata(library).await {
             Ok(data) => {
                 tracing::info!("[AR] • Remote: {} ({})", data.0, data.1);
                 data
             }
-            Err(e) => {
-                tracing::warn!("[AR] • Remote failed: {}, using local", e);
+            Err(error) => {
+                tracing::warn!("[AR] • Remote failed: {}, using local", error);
                 ("".to_string(), "".to_string())
             }
         };
@@ -86,8 +89,9 @@ pub async fn get_elyby_injector_library() -> Result<PathBuf> {
 
     if let Some(local_path) = &latest_local {
         let local_name = local_path.0.file_name().unwrap().to_string_lossy();
-        if let Some(rp) = &remote_path {
-            let remote_name = rp.file_name().unwrap().to_string_lossy();
+        if let Some(remote_path) = &remote_path {
+            let remote_name =
+                remote_path.file_name().unwrap().to_string_lossy();
             if local_name == remote_name {
                 tracing::info!("[AR] • Versions match: {}", local_name);
                 return Ok(local_path.0.clone());
@@ -106,43 +110,41 @@ pub async fn get_elyby_injector_library() -> Result<PathBuf> {
         }
     }
 
-    let Some(rp) = remote_path else {
+    let Some(remote_path) = remote_path else {
         return Err(crate::ErrorKind::NetworkErrorOccurred {
-            error: "No local injector & remote unavailable".to_string(),
+            error: "No local injector and remote unavailable".to_string(),
         }
         .as_error());
     };
 
-    let fname = rp.file_name().unwrap().to_string_lossy();
-    tracing::info!("[AR] • Downloading: {}", fname);
-    let _ = emit_info(&format!("[AR] Downloading: {}", fname)).await;
+    let file_name = remote_path.file_name().unwrap().to_string_lossy();
+    tracing::info!("[AR] • Downloading: {}", file_name);
+    let _ = emit_info(&format!("[AR] Downloading: {}", file_name)).await;
 
     let bytes = fetch_bytes_from_url(&remote_url).await?;
-    let rel_path = rp
+    let relative_path = remote_path
         .strip_prefix(&libraries_dir)?
         .to_string_lossy()
         .into_owned();
-    write_file_to_libraries(&rel_path, &bytes).await?;
+    write_file_to_libraries(&relative_path, &bytes).await?;
 
-    tracing::info!("[AR] • Saved: {}", rp.display());
-    let _ = emit_info(&format!("[AR] Saved: {}", rp.display())).await;
-    Ok(rp.to_path_buf())
+    tracing::info!("[AR] • Saved: {}", remote_path.display());
+    let _ = emit_info(&format!("[AR] Saved: {}", remote_path.display())).await;
+    Ok(remote_path)
 }
 
-/// Parses the ElyIntegration release JSON and returns the download URL for the given AuthLib version.
-async fn extract_metadata_from_elyby_file(
-    file_name: &str,
+/// Reads the provider release metadata and selects its matching injector asset.
+async fn extract_library_metadata(
+    library: ExternalAuthLibrary,
 ) -> Result<(String, String)> {
-    const URL: &str = "https://git.xorison.dev/api/v1/repos/didirus/ElyIntegration/releases/latest";
-
-    let response = reqwest::get(URL).await.map_err(|e| {
+    let response = reqwest::get(library.release_url).await.map_err(|e| {
         tracing::error!(
-            "[AR] • Failed to fetch ElyIntegration release JSON: {:?}",
+            "[AR] • Failed to fetch provider library release JSON: {:?}",
             e
         );
         crate::ErrorKind::NetworkErrorOccurred {
             error: format!(
-                "Failed to fetch ElyIntegration release JSON: {}",
+                "Failed to fetch provider library release JSON: {}",
                 e
             ),
         }
@@ -150,9 +152,15 @@ async fn extract_metadata_from_elyby_file(
     })?;
 
     let json: serde_json::Value = response.json().await.map_err(|e| {
-        tracing::error!("[AR] • Failed to parse ElyIntegration JSON: {:?}", e);
+        tracing::error!(
+            "[AR] • Failed to parse provider library release JSON: {:?}",
+            e
+        );
         crate::ErrorKind::ParseError {
-            reason: format!("Failed to parse ElyIntegration JSON: {}", e),
+            reason: format!(
+                "Failed to parse provider library release JSON: {}",
+                e
+            ),
         }
         .as_error()
     })?;
@@ -172,14 +180,14 @@ async fn extract_metadata_from_elyby_file(
         .find(|a| {
             a.get("name")
                 .and_then(|n| n.as_str())
-                .map(|n| n.contains(file_name))
+                .map(|n| n.starts_with(library.asset_name_prefix))
                 .unwrap_or(false)
         })
         .ok_or_else(|| {
             crate::ErrorKind::ParseError {
                 reason: format!(
-                    "No matching asset for {} in ElyIntegration JSON response.",
-                    file_name
+					"No matching asset starting with {} in provider release response.",
+					library.asset_name_prefix
                 ),
             }
             .as_error()

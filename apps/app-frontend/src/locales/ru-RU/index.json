@@ -272,14 +272,14 @@
   "astralrinth.app.skins.unsupported-account.description": {
     "message": "Управление скинами доступно только для учётных записей Microsoft. Вернитесь на главную страницу и выберите или добавьте учётную запись Microsoft, чтобы продолжить."
   },
-  "astralrinth.app.skins.unsupported-account.elyby.action": {
-    "message": "Управлять скином на Ely.by"
+  "astralrinth.app.skins.unsupported-account.external.action": {
+    "message": "Управлять скином на {providerName}"
   },
-  "astralrinth.app.skins.unsupported-account.elyby.description": {
-    "message": "Вы вошли через учётную запись Ely.by. Загрузить, выбрать или изменить скин можно прямо на сайте Ely.by."
+  "astralrinth.app.skins.unsupported-account.external.description": {
+    "message": "Вы вошли через учётную запись {providerName}. Загрузить, выбрать или изменить скин можно прямо на сайте провайдера."
   },
-  "astralrinth.app.skins.unsupported-account.elyby.title": {
-    "message": "Управление скином Ely.by"
+  "astralrinth.app.skins.unsupported-account.external.title": {
+    "message": "Управление скином {providerName}"
   },
   "astralrinth.app.skins.unsupported-account.return-home": {
     "message": "Вернуться на главную"
@@ -362,29 +362,11 @@
   "astralrinth.app.launcher-update-modal.update.title": {
     "message": "Доступна новая версия лаунчера AstralRinth."
   },
-  "astralrinth.app.minecraft-account.add-elyby-account": {
-    "message": "Добавить Ely.by аккаунт"
+  "astralrinth.app.minecraft-account.add-external-account": {
+    "message": "Добавить аккаунт {providerName}"
   },
   "astralrinth.app.minecraft-account.add-offline-account": {
     "message": "Добавить офлайн-аккаунт"
-  },
-  "astralrinth.app.minecraft-account.error.authentication-elyby.description": {
-    "message": "Произошла ошибка при входе в аккаунт."
-  },
-  "astralrinth.app.minecraft-account.error.authentication-elyby.header": {
-    "message": "Ошибка во время авторизации через Ely.by"
-  },
-  "astralrinth.app.minecraft-account.error.input-elyby.description": {
-    "message": "Произошла ошибка при добавлении аккаунта Ely.by. Пожалуйста, выполните рекомендации ниже."
-  },
-  "astralrinth.app.minecraft-account.error.input-elyby.header": {
-    "message": "Ошибка во время ввода данных для Ely.by"
-  },
-  "astralrinth.app.minecraft-account.error.input-elyby.name-or-email-hint": {
-    "message": "Проверьте, что имя игрока или email введены корректно."
-  },
-  "astralrinth.app.minecraft-account.error.input-elyby.password-hint": {
-    "message": "Проверьте, что пароль введён корректно."
   },
   "astralrinth.app.minecraft-account.error.input-offline.description": {
     "message": "Произошла ошибка при добавлении офлайн-аккаунта. Пожалуйста, выполните рекомендации ниже."
@@ -409,33 +391,6 @@
   },
   "astralrinth.app.minecraft-account.error.unexpected.header": {
     "message": "Произошла непредвиденная ошибка"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.header": {
-    "message": "Авторизация через Ely.by"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.login.label": {
-    "message": "Введите имя игрока или email (предпочтительно)"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.login.placeholder": {
-    "message": "Введите имя игрока или email..."
-  },
-  "astralrinth.app.minecraft-account.input.elyby.password.label": {
-    "message": "Введите пароль"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.password.placeholder": {
-    "message": "Введите пароль..."
-  },
-  "astralrinth.app.minecraft-account.input.elyby.two-factor.continue-action": {
-    "message": "Продолжить"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.two-factor.header": {
-    "message": "Ely.by запросил код 2FA для авторизации"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.two-factor.label": {
-    "message": "Введите код 2FA"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.two-factor.placeholder": {
-    "message": "Введите код 2FA..."
   },
   "astralrinth.app.minecraft-account.input.login-action": {
     "message": "Войти"

@@ -1,16 +1,18 @@
 use crate::api::Result;
+use crate::api::astralrinth::{
+    authenticate_external_provider, get_external_auth_providers,
+};
 use chrono::{Duration, Utc};
 use tauri::plugin::TauriPlugin;
 use tauri::{Manager, Runtime, UserAttentionType};
-use tauri_plugin_http::reqwest::Client;
 use theseus::prelude::*;
 
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
     tauri::plugin::Builder::<R>::new("auth")
         .invoke_handler(tauri::generate_handler![
             offline_login,
-            elyby_login,
-            elyby_auth_authenticate,
+            get_external_auth_providers,
+            authenticate_external_provider,
             check_reachable,
             login,
             remove_user,
@@ -29,57 +31,6 @@ pub async fn offline_login(name: &str) -> Result<Credentials> {
     Ok(credentials)
 }
 
-/// This code is modified by AstralRinth
-/// Create new Ely.by user
-#[tauri::command]
-pub async fn elyby_login(
-    uuid: uuid::Uuid,
-    login: &str,
-    access_token: &str
-) -> Result<Credentials> {
-    let credentials = minecraft_auth::elyby_auth(uuid, login, access_token).await?;
-    Ok(credentials)
-}
-
-/// This code is modified by AstralRinth
-/// Authenticate Ely.by user
-#[tauri::command]
-pub async fn elyby_auth_authenticate(
-    login: &str,
-    password: &str,
-    client_token: &str,
-) -> Result<String> {
-    let client = Client::new();
-    let auth_body = serde_json::json!({
-        "username": login,
-        "password": password,
-        "clientToken": client_token,
-    });
-
-    let response = match client
-        .post("https://authserver.ely.by/auth/authenticate")
-        .header("Content-Type", "application/json")
-        .json(&auth_body)
-        .send()
-        .await
-    {
-        Ok(resp) => resp,
-        Err(e) => {
-            tracing::error!("[AR] • Failed to send request: {}", e);
-            return Ok("".to_string());
-        }
-    };
-
-    let text = match response.text().await {
-        Ok(body) => body,
-        Err(e) => {
-            tracing::error!("[AR] • Failed to read response text: {}", e);
-            return Ok("".to_string());
-        }
-    };
-    Ok(text)
-}
-
 /// Checks if the authentication servers are reachable.
 #[tauri::command]
 pub async fn check_reachable() -> Result<()> {
@@ -94,7 +45,6 @@ pub async fn login<R: Runtime>(
     app: tauri::AppHandle<R>,
 ) -> Result<Option<Credentials>> {
     let flow = minecraft_auth::begin_login().await?;
-
     let start = Utc::now();
 
     if let Some(window) = app.get_webview_window("signin") {
@@ -135,7 +85,6 @@ pub async fn login<R: Runtime>(
         {
             window.close()?;
             let val = minecraft_auth::finish_login(&code.clone(), flow).await?;
-
             return Ok(Some(val));
         }
 

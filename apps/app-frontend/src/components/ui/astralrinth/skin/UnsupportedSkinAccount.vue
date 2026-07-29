@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ElyByIcon, ExternalIcon } from '@modrinth/assets'
+import { ExternalIcon } from '@modrinth/assets'
 import { ButtonStyled, defineMessages, useVIntl } from '@modrinth/ui'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+
+import { getExternalAuthProvider } from '@/models/astralrinth/authentication'
 
 const props = defineProps<{
 	accountType?: string
@@ -23,31 +25,35 @@ const messages = defineMessages({
 		id: 'astralrinth.app.skins.unsupported-account.return-home',
 		defaultMessage: 'Return home',
 	},
-	elyByTitle: {
-		id: 'astralrinth.app.skins.unsupported-account.elyby.title',
-		defaultMessage: 'Manage your Ely.by skin',
+	externalTitle: {
+		id: 'astralrinth.app.skins.unsupported-account.external.title',
+		defaultMessage: 'Manage your {providerName} skin',
 	},
-	elyByDescription: {
-		id: 'astralrinth.app.skins.unsupported-account.elyby.description',
+	externalDescription: {
+		id: 'astralrinth.app.skins.unsupported-account.external.description',
 		defaultMessage:
-			"You're signed in with an Ely.by account. You can upload, select, and manage your skin directly on the Ely.by website.",
+			"You're signed in with a {providerName} account. You can upload, select, and manage your skin directly on the provider's website.",
 	},
-	elyByAction: {
-		id: 'astralrinth.app.skins.unsupported-account.elyby.action',
-		defaultMessage: 'Manage skin on Ely.by',
+	externalAction: {
+		id: 'astralrinth.app.skins.unsupported-account.external.action',
+		defaultMessage: 'Manage skin on {providerName}',
 	},
 })
 
 const router = useRouter()
 const { formatMessage } = useVIntl()
-const isElyByAccount = computed(() => props.accountType === 'elyby')
+const externalAuthProvider = computed(() => getExternalAuthProvider(props.accountType))
 
+/** Returns from the unavailable skin flow to account selection. */
 function returnHome() {
 	void router.push({ path: '/' })
 }
 
-function openElyBySkins() {
-	void openUrl('https://account.ely.by/login')
+/** Opens the selected provider's own skin-management page. */
+function openExternalProviderSkins() {
+	if (externalAuthProvider.value) {
+		void openUrl(externalAuthProvider.value.skinManagementUrl)
+	}
 }
 </script>
 
@@ -55,45 +61,50 @@ function openElyBySkins() {
 	<div
 		class="box-border flex min-h-full cursor-pointer items-center justify-center p-4 sm:p-8"
 		role="alert"
-		tabindex="0"
 		@click="returnHome"
-		@keydown="returnHome"
 	>
 		<div
 			class="grid w-full max-w-3xl overflow-hidden rounded-2xl border border-solid border-surface-5 bg-bg-raised shadow-xl"
-			:class="{ 'md:grid-cols-[minmax(220px,0.8fr)_minmax(0,1.5fr)]': isElyByAccount }"
+			:class="{ 'md:grid-cols-[minmax(220px,0.8fr)_minmax(0,1.5fr)]': externalAuthProvider }"
 		>
 			<div
-				v-if="isElyByAccount"
+				v-if="externalAuthProvider"
 				class="relative flex min-h-48 items-center justify-center overflow-hidden bg-surface-2 p-8 md:min-h-full"
 			>
 				<div class="absolute inset-0 bg-gradient-to-br from-bg-blue via-surface-2 to-bg-raised" />
 				<div
 					class="relative flex size-28 items-center justify-center rounded-3xl border border-solid border-surface-5 bg-bg-raised shadow-lg"
 				>
-					<ElyByIcon class="size-20" aria-hidden="true" />
+					<component :is="externalAuthProvider.icon" class="size-20" aria-hidden="true" />
 				</div>
 			</div>
 
 			<div class="flex min-w-0 flex-col gap-5 p-7 sm:p-9">
 				<h1 class="m-0 text-3xl font-extrabold leading-tight">
 					{{
-						formatMessage(isElyByAccount ? messages.elyByTitle : messages.title)
+						formatMessage(externalAuthProvider ? messages.externalTitle : messages.title, {
+							providerName: externalAuthProvider?.name,
+						})
 					}}
 				</h1>
 				<p class="m-0 text-lg leading-relaxed text-secondary">
 					{{
-						formatMessage(isElyByAccount ? messages.elyByDescription : messages.description)
+						formatMessage(
+							externalAuthProvider ? messages.externalDescription : messages.description,
+							{ providerName: externalAuthProvider?.name },
+						)
 					}}
 				</p>
 				<div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-					<ButtonStyled v-if="isElyByAccount" color="brand">
-						<button @click.stop="openElyBySkins" @keydown.stop>
-							{{ formatMessage(messages.elyByAction) }}
+					<ButtonStyled v-if="externalAuthProvider" color="brand">
+						<button @click.stop="openExternalProviderSkins" @keydown.stop>
+							{{
+								formatMessage(messages.externalAction, { providerName: externalAuthProvider.name })
+							}}
 							<ExternalIcon aria-hidden="true" />
 						</button>
 					</ButtonStyled>
-					<ButtonStyled :type="isElyByAccount ? 'outlined' : 'standard'" color="brand">
+					<ButtonStyled :type="externalAuthProvider ? 'outlined' : 'standard'" color="brand">
 						<button @click.stop="returnHome">
 							{{ formatMessage(messages.returnHome) }}
 						</button>

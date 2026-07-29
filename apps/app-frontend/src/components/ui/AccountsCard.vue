@@ -23,10 +23,10 @@
 					<OfflineIcon />
 					{{ formatMessage(messages.addOfflineAccount) }}
 				</template>
-				<template #add_elyby_account>
-					<ElyByIcon v-if="!elyByLoginDisabled" />
+				<template v-for="provider in externalAuthProviders" #[provider.accountOptionId]>
+					<component :is="provider.icon" v-if="!externalAuthDisabled" />
 					<SpinnerIcon v-else class="animate-spin" />
-					{{ formatMessage(messages.addElyByAccount) }}
+					{{ formatMessage(messages.addExternalAccount, { providerName: provider.name }) }}
 				</template>
 			</OverflowMenu>
 		</ButtonStyled>
@@ -118,7 +118,10 @@
 					</button>
 				</ButtonStyled>
 				<ButtonStyled class="w-full">
-					<OverflowMenu class="w-full justify-between text-left" :options="additionalAccountOptions">
+					<OverflowMenu
+						class="w-full justify-between text-left"
+						:options="additionalAccountOptions"
+					>
 						<span class="inline-flex items-center gap-2">
 							<PlusIcon />
 							{{ formatMessage(messages.addAccount) }}
@@ -128,10 +131,10 @@
 							<OfflineIcon />
 							{{ formatMessage(messages.addOfflineAccount) }}
 						</template>
-						<template #add_elyby_account>
-							<ElyByIcon v-if="!elyByLoginDisabled" />
+						<template v-for="provider in externalAuthProviders" #[provider.accountOptionId]>
+							<component :is="provider.icon" v-if="!externalAuthDisabled" />
 							<SpinnerIcon v-else class="animate-spin" />
-							{{ formatMessage(messages.addElyByAccount) }}
+							{{ formatMessage(messages.addExternalAccount, { providerName: provider.name }) }}
 						</template>
 					</OverflowMenu>
 				</ButtonStyled>
@@ -140,17 +143,9 @@
 	</Accordion>
 	<AccountsInputModals
 		ref="accountsInputModals"
-		:ely-by-login-disabled="elyByLoginDisabled"
-		:ely-by-login-value="elyByLoginValue"
-		:ely-by-password="elyByPassword"
-		:ely-by-two-factor-code="elyByTwoFactorCode"
 		:offline-login-disabled="offlineLoginDisabled"
 		:offline-player-name="offlinePlayerName"
-		@submit-elyby="addElyByProfile"
 		@submit-offline="addOfflineProfile"
-		@update:ely-by-login-value="elyByLoginValue = $event"
-		@update:ely-by-password="elyByPassword = $event"
-		@update:ely-by-two-factor-code="elyByTwoFactorCode = $event"
 		@update:offline-player-name="offlinePlayerName = $event"
 	/>
 	<AccountsErrorModals
@@ -158,7 +153,6 @@
 		:max-offline-player-name-length="maxOfflinePlayerNameLength"
 		:min-offline-player-name-length="minOfflinePlayerNameLength"
 		:name-exp="nameExp"
-		@retry-elyby="retryAddElyByProfile"
 		@retry-offline="retryAddOfflineProfile"
 	/>
 </template>
@@ -168,8 +162,6 @@ import AccountsErrorModals from '@/components/ui/astralrinth/accounts/error/Acco
 import AccountsInputModals from '@/components/ui/astralrinth/accounts/input/AccountsInputModals.vue'
 import { trackEvent } from '@/helpers/analytics'
 import {
-	elyby_auth_authenticate,
-	elyby_login,
 	get_default_user,
 	login as login_flow,
 	offline_login,
@@ -177,6 +169,13 @@ import {
 	set_default_user,
 	users,
 } from '@/helpers/auth'
+import {
+	externalAuthProviders,
+	getExternalAuthProvider,
+	loadExternalAuthProviders,
+	type MinecraftCredential,
+	useExternalAuthentication,
+} from '@/models/astralrinth/authentication'
 import { process_listener } from '@/helpers/events'
 import { getPlayerHeadUrl } from '@/helpers/rendering/batch-skin-renderer.ts'
 import type { Skin } from '@/helpers/skins'
@@ -184,7 +183,6 @@ import { get_available_skins } from '@/helpers/skins'
 import { handleSevereError } from '@/store/error.js'
 import {
 	DropdownIcon,
-	ElyByIcon,
 	MicrosoftIcon,
 	OfflineIcon,
 	RadioButtonCheckedIcon,
@@ -202,7 +200,7 @@ import {
 	useVIntl,
 } from '@modrinth/ui'
 import type { Ref } from 'vue'
-import { computed, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 const { formatMessage } = useVIntl()
 const { handleError } = injectNotificationManager()
@@ -211,34 +209,17 @@ const emit = defineEmits<{
 	change: []
 }>()
 
-type MinecraftCredential = {
-	account_type?: 'microsoft' | 'offline' | 'elyby' | string
-	profile: {
-		id: string
-		name: string
-	}
-}
-
 type AccountsInputModalsHandle = {
-	hideElyBy: () => void
-	hideElyByTwoFactor: () => void
 	hideOffline: () => void
-	showElyBy: () => void
-	showElyByTwoFactor: () => void
 	showOffline: () => void
 }
 
 type AccountsErrorModalsHandle = {
-	hideAuthenticationElyByError: () => void
-	hideInputElyByError: () => void
 	hideInputOfflineError: () => void
-	showAuthenticationElyByError: () => void
-	showInputElyByError: () => void
 	showInputOfflineError: () => void
 	showUnexpectedError: () => void
 }
 
-const clientToken = 'astralrinth'
 const offlineLoginCooldownMs = 1000
 const minOfflinePlayerNameLength = 3
 const maxOfflinePlayerNameLength = 20
@@ -247,7 +228,6 @@ const nameRegex = new RegExp(`^[${nameExp}]+$`)
 
 const accounts: Ref<MinecraftCredential[]> = ref([])
 const loginDisabled = ref(false)
-const elyByLoginDisabled = ref(false)
 const offlineLoginDisabled = ref(false)
 const defaultUser = ref<string | undefined>()
 const equippedSkin = ref<Skin | null>(null)
@@ -257,9 +237,16 @@ const accountsInputModals = ref<AccountsInputModalsHandle | null>(null)
 const accountsErrorModals = ref<AccountsErrorModalsHandle | null>(null)
 
 const offlinePlayerName = ref('')
-const elyByLoginValue = ref('')
-const elyByPassword = ref('')
-const elyByTwoFactorCode = ref('')
+const { authenticate: addExternalProfile, disabled: externalAuthDisabled } =
+	useExternalAuthentication({
+		onAuthenticated: async (credentials) => {
+			await setAccount(credentials)
+		},
+		onError: (error) => {
+			handleError(error)
+			accountsErrorModals.value?.showUnexpectedError()
+		},
+	})
 
 function getAccountType(account?: MinecraftCredential) {
 	switch (account?.account_type) {
@@ -267,10 +254,8 @@ function getAccountType(account?: MinecraftCredential) {
 			return MicrosoftIcon
 		case 'offline':
 			return OfflineIcon
-		case 'elyby':
-			return ElyByIcon
 		default:
-			return null
+			return getExternalAuthProvider(account?.account_type)?.icon ?? null
 	}
 }
 
@@ -278,20 +263,16 @@ function showOfflineLoginModal() {
 	accountsInputModals.value?.showOffline()
 }
 
-function showElyByLoginModal() {
-	accountsInputModals.value?.showElyBy()
-}
-
 const additionalAccountOptions = computed(() => [
 	{
 		id: 'add_offline_account',
 		action: showOfflineLoginModal,
 	},
-	{
-		id: 'add_elyby_account',
-		action: showElyByLoginModal,
-		disabled: elyByLoginDisabled.value,
-	},
+	...externalAuthProviders.value.map((provider) => ({
+		id: provider.accountOptionId,
+		action: () => addExternalProfile(provider),
+		disabled: externalAuthDisabled.value,
+	})),
 ])
 
 function retryAddOfflineProfile() {
@@ -299,20 +280,6 @@ function retryAddOfflineProfile() {
 	offlineLoginDisabled.value = false
 	clearOfflineFields()
 	showOfflineLoginModal()
-}
-
-function retryAddElyByProfile() {
-	accountsErrorModals.value?.hideAuthenticationElyByError()
-	accountsErrorModals.value?.hideInputElyByError()
-	elyByLoginDisabled.value = false
-	clearElyByFields()
-	showElyByLoginModal()
-}
-
-function clearElyByFields() {
-	elyByLoginValue.value = ''
-	elyByPassword.value = ''
-	elyByTwoFactorCode.value = ''
 }
 
 function clearOfflineFields() {
@@ -359,72 +326,6 @@ async function addOfflineProfile() {
 			offlineLoginDisabled.value = false
 		}, offlineLoginCooldownMs)
 	}
-}
-
-async function addElyByProfile() {
-	elyByLoginDisabled.value = true
-
-	if (!elyByLoginValue.value || !elyByPassword.value) {
-		accountsInputModals.value?.hideElyBy()
-		accountsErrorModals.value?.showInputElyByError()
-		clearElyByFields()
-		elyByLoginDisabled.value = false
-		return
-	}
-
-	const login = elyByLoginValue.value.trim()
-	let password = elyByPassword.value.trim()
-	const twoFactorCode = elyByTwoFactorCode.value.trim()
-
-	if (password && twoFactorCode) {
-		password = `${password}:${twoFactorCode}`
-	}
-
-	try {
-		const rawResult = await elyby_auth_authenticate(login, password, clientToken)
-		const jsonData = JSON.parse(rawResult)
-
-		if (!jsonData.accessToken) {
-			if (
-				jsonData.error === 'ForbiddenOperationException' &&
-				jsonData.errorMessage?.includes('two factor')
-			) {
-				accountsInputModals.value?.showElyByTwoFactor()
-				return
-			}
-
-			accountsInputModals.value?.hideElyBy()
-			accountsInputModals.value?.hideElyByTwoFactor()
-			accountsErrorModals.value?.showAuthenticationElyByError()
-			return
-		}
-
-		const accessToken = jsonData.accessToken
-		const selectedProfileId = convertRawStringToUUIDv4(jsonData.selectedProfile.id)
-		const selectedProfileName = jsonData.selectedProfile.name
-		const result = await elyby_login(selectedProfileId, selectedProfileName, accessToken)
-
-		accountsInputModals.value?.hideElyBy()
-		accountsInputModals.value?.hideElyByTwoFactor()
-		clearElyByFields()
-
-		await setAccount(result)
-		await refreshValues()
-	} catch (error) {
-		handleError(error)
-		accountsErrorModals.value?.showUnexpectedError()
-	} finally {
-		elyByLoginDisabled.value = false
-	}
-}
-
-function convertRawStringToUUIDv4(rawId: string) {
-	if (rawId.length !== 32) {
-		console.warn('Invalid UUID string:', rawId)
-		return rawId
-	}
-
-	return `${rawId.slice(0, 8)}-${rawId.slice(8, 12)}-${rawId.slice(12, 16)}-${rawId.slice(16, 20)}-${rawId.slice(20)}`
 }
 
 async function refreshValues() {
@@ -550,6 +451,10 @@ const unlisten = await process_listener(async (e) => {
 	}
 })
 
+onMounted(() => {
+	void loadExternalAuthProviders().catch(handleError)
+})
+
 onUnmounted(() => {
 	unlisten()
 })
@@ -571,9 +476,9 @@ const messages = defineMessages({
 		id: 'astralrinth.app.minecraft-account.add-offline-account',
 		defaultMessage: 'Add offline account',
 	},
-	addElyByAccount: {
-		id: 'astralrinth.app.minecraft-account.add-elyby-account',
-		defaultMessage: 'Add Ely.by account',
+	addExternalAccount: {
+		id: 'astralrinth.app.minecraft-account.add-external-account',
+		defaultMessage: 'Add {providerName} account',
 	},
 	removeAccount: {
 		id: 'minecraft-account.remove-account',

@@ -1,4 +1,7 @@
 use crate::ErrorKind;
+use crate::models::astralrinth::authentication::{
+    external_auth_provider, refresh_external_credentials,
+};
 use crate::util::fetch::INSECURE_REQWEST_CLIENT;
 use base64::Engine;
 use base64::prelude::{BASE64_STANDARD, BASE64_URL_SAFE_NO_PAD};
@@ -209,40 +212,11 @@ pub async fn offline_auth(
 }
 
 // This code is modified by AstralRinth
-#[tracing::instrument]
-pub async fn elyby_auth(
-    uuid: Uuid,
-    username: &str,
-    access_token: &str,
-    exec: impl sqlx::Executor<'_, Database = sqlx::Sqlite> + Copy,
-) -> crate::Result<Credentials> {
-    let mut credentials = Credentials {
-        offline_profile: MinecraftProfile::default(),
-        access_token: access_token.to_string(),
-        refresh_token: "null".to_string(),
-        expires: Utc::now() + Duration::days(365 * 99),
-        active: true,
-        account_type: AccountType::ElyBy.as_lowercase_str(),
-    };
-
-    credentials.offline_profile = MinecraftProfile {
-        id: uuid,
-        name: username.to_string(),
-        ..credentials.offline_profile
-    };
-
-    credentials.upsert(exec).await?;
-
-    Ok(credentials)
-}
-
-// This code is modified by AstralRinth
 #[derive(Deserialize, Debug)]
 pub enum AccountType {
     Unknown,
     Microsoft,
     Offline,
-    ElyBy,
 }
 
 impl AccountType {
@@ -251,7 +225,6 @@ impl AccountType {
             AccountType::Unknown => "Unknown",
             AccountType::Microsoft => "Microsoft",
             AccountType::Offline => "Offline",
-            AccountType::ElyBy => "ElyBy",
         }
     }
 
@@ -329,8 +302,7 @@ impl OnlineProfileCacheIntent {
 }
 
 impl Credentials {
-    /// Refreshes the authentication tokens for this user if they are expired, or
-    /// very close to expiration.
+    /// Refreshes expired Microsoft or registered external-provider credentials.
     async fn refresh(
         &mut self,
         exec: impl sqlx::Executor<'_, Database = sqlx::Sqlite> + Copy,
@@ -339,6 +311,16 @@ impl Credentials {
         // other operations that depend on a fresh token 5 minutes to complete
         // from now, and deal with some classes of clock skew
         if self.expires > Utc::now() + Duration::minutes(5) {
+            return Ok(());
+        }
+		// This code is modified by AstralRinth
+        if external_auth_provider(&self.account_type).is_some() {
+            if refresh_external_credentials(self).await? {
+                self.upsert(exec).await?;
+            }
+            return Ok(());
+        }
+        if self.account_type != AccountType::Microsoft.as_lowercase_str() {
             return Ok(());
         }
 
@@ -379,7 +361,7 @@ impl Credentials {
         Ok(())
     }
 
-    /// Returns online profile data when the cached copy is still recent enough.
+    /// Returns Mojang profile data when the account type supports that endpoint.
     #[tracing::instrument(skip(self))]
     pub async fn online_profile(&self) -> Option<Arc<MinecraftProfile>> {
         self.online_profile_with_cache_intent(
@@ -388,7 +370,7 @@ impl Credentials {
         .await
     }
 
-    /// Returns profile data recent enough for skin and cape state.
+    /// Returns fresh Mojang profile data for accounts that support skin and cape state.
     ///
     /// Reuses a profile read from the last few seconds so opening the skins page
     /// does not send several identical Mojang requests.
@@ -400,7 +382,7 @@ impl Credentials {
         .await
     }
 
-    /// Fetches the online profile from Mojang after a skin or cape change.
+    /// Fetches Mojang profile data after a skin or cape change when supported.
     #[tracing::instrument(skip(self))]
     pub async fn refresh_online_profile(
         &self,
@@ -415,6 +397,10 @@ impl Credentials {
         &self,
         cache_intent: OnlineProfileCacheIntent,
     ) -> Option<Arc<MinecraftProfile>> {
+        if external_auth_provider(&self.account_type).is_some() {
+            return None;
+        }
+
         let max_age = cache_intent.max_age();
         let stale_profile = {
             let mut profile_cache = PROFILE_CACHE.lock().await;

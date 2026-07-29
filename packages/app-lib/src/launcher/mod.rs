@@ -1,6 +1,6 @@
 //! Logic for launching Minecraft
 use crate::data::ModLoader;
-use crate::event::emit::{emit_info, emit_instance, emit_loading, init_loading};
+use crate::event::emit::{emit_instance, emit_loading, init_loading};
 use crate::event::{InstancePayloadType, LoadingBarType};
 use crate::install::{
     InstallJavaStep, InstallPhaseDetails, InstallPhaseId, InstallProgress,
@@ -16,11 +16,10 @@ use crate::server_address::{ServerAddress, parse_server_address};
 use crate::state::server_join_log::JoinLogEntry;
 use crate::state::{
     Credentials, InstanceInstallStage, InstanceLaunchContext, InstanceLink,
-    JavaVersion, MemorySettings, ProcessMetadata, WindowSize, AccountType,
+    JavaVersion, MemorySettings, ProcessMetadata, WindowSize,
 };
 use crate::util::rpc::RpcServerBuilder;
 use crate::util::io;
-use crate::util::astralrinth::utils;
 use crate::{State, get_resource_file, process};
 use chrono::Utc;
 use daedalus as d;
@@ -968,41 +967,12 @@ pub async fn launch_minecraft(
         command.arg("--add-opens=jdk.internal/jdk.internal.misc=ALL-UNNAMED");
     }
 
-    // This code is modified by AstralRinth
-    if credentials.account_type == AccountType::Offline.as_lowercase_str() {
-		// Will be applied only on Vanilla versions
-        if version_jar == "1.16.4" || version_jar == "1.16.5" {
-            let invalid_url = "https://invalid.invalid";
-            let _ = emit_info(&format!(
-                "[AR] Detected launch of {} on the offline account. Applying vanilla 1.16.4/5multiplayer fixes.",
-                version_jar
-            	)
-        	).await;
-            command.arg("-Dminecraft.api.env=custom");
-            command.arg(format!("-Dminecraft.api.auth.host={}", invalid_url));
-            command
-                .arg(format!("-Dminecraft.api.account.host={}", invalid_url));
-            command
-                .arg(format!("-Dminecraft.api.session.host={}", invalid_url));
-            command
-                .arg(format!("-Dminecraft.api.services.host={}", invalid_url));
-        }
-    } else if credentials.account_type == AccountType::ElyBy.as_lowercase_str()
-    {
-        let _ = emit_info(&format!(
-            "[AR] Detected launch of {} on the Ely.by account. Loading Ely.by AuthLib Injector...",
-            version_jar
-			)
-        ).await;
-        let path_buf = utils::get_elyby_injector_library().await?;
-        let path = path_buf.to_str().unwrap();
-        let _ = emit_info(&format!(
-            "[AR] Launching minecraft instance with {}",
-            path
-        ))
-        .await;
-        command.arg(format!("-javaagent:{}=ely.by", path));
-    }
+    crate::models::astralrinth::authentication::configure_minecraft_launch(
+        &mut command,
+        credentials,
+        &version_jar,
+    )
+    .await?;
 
     command
         .arg("com.modrinth.theseus.MinecraftLaunch")

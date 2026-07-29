@@ -9,50 +9,21 @@ type ModalHandle = {
 	show: () => void
 }
 
-defineProps<{
+const props = defineProps<{
 	maxOfflinePlayerNameLength: number
 	minOfflinePlayerNameLength: number
 	nameExp: string
 }>()
 
 const emit = defineEmits<{
-	(event: 'retry-elyby'): void
 	(event: 'retry-offline'): void
 }>()
 
 const { formatMessage } = useVIntl()
-
-const authenticationElyByErrorModal = ref<ModalHandle | null>(null)
-const inputElyByErrorModal = ref<ModalHandle | null>(null)
 const inputOfflineErrorModal = ref<ModalHandle | null>(null)
 const unexpectedErrorModal = ref<ModalHandle | null>(null)
 
 const messages = defineMessages({
-	authenticationElyByHeader: {
-		id: 'astralrinth.app.minecraft-account.error.authentication-elyby.header',
-		defaultMessage: 'Error while proceeding authentication event with Ely.by',
-	},
-	authenticationElyByDescription: {
-		id: 'astralrinth.app.minecraft-account.error.authentication-elyby.description',
-		defaultMessage: 'An error occurred while logging in.',
-	},
-	inputElyByHeader: {
-		id: 'astralrinth.app.minecraft-account.error.input-elyby.header',
-		defaultMessage: 'Error while proceeding input event with Ely.by',
-	},
-	inputElyByDescription: {
-		id: 'astralrinth.app.minecraft-account.error.input-elyby.description',
-		defaultMessage:
-			'An error occurred while adding the Ely.by account. Please follow the instructions below.',
-	},
-	inputElyByNameOrEmailHint: {
-		id: 'astralrinth.app.minecraft-account.error.input-elyby.name-or-email-hint',
-		defaultMessage: 'Check that you have entered the correct player name or email.',
-	},
-	inputElyByPasswordHint: {
-		id: 'astralrinth.app.minecraft-account.error.input-elyby.password-hint',
-		defaultMessage: 'Check that you have entered the correct password.',
-	},
 	inputOfflineHeader: {
 		id: 'astralrinth.app.minecraft-account.error.input-offline.header',
 		defaultMessage: 'Error while proceeding input event with offline account',
@@ -90,53 +61,13 @@ const messages = defineMessages({
 })
 
 defineExpose({
-	hideAuthenticationElyByError: () => authenticationElyByErrorModal.value?.hide(),
-	hideInputElyByError: () => inputElyByErrorModal.value?.hide(),
 	hideInputOfflineError: () => inputOfflineErrorModal.value?.hide(),
-	showAuthenticationElyByError: () => authenticationElyByErrorModal.value?.show(),
-	showInputElyByError: () => inputElyByErrorModal.value?.show(),
 	showInputOfflineError: () => inputOfflineErrorModal.value?.show(),
 	showUnexpectedError: () => unexpectedErrorModal.value?.show(),
 })
 </script>
 
 <template>
-	<ModalWrapper
-		ref="authenticationElyByErrorModal"
-		class="modal"
-		:header="formatMessage(messages.authenticationElyByHeader)"
-	>
-		<div class="flex flex-col gap-4 px-6 py-5">
-			<label class="text-base font-medium text-red-700">
-				{{ formatMessage(messages.authenticationElyByDescription) }}
-			</label>
-			<div class="mt-6 ml-auto">
-				<Button color="primary" @click="emit('retry-elyby')">
-					{{ formatMessage(messages.retryAction) }}
-				</Button>
-			</div>
-		</div>
-	</ModalWrapper>
-	<ModalWrapper
-		ref="inputElyByErrorModal"
-		class="modal"
-		:header="formatMessage(messages.inputElyByHeader)"
-	>
-		<div class="flex flex-col gap-4 px-6 py-5">
-			<label class="text-base font-medium text-red-700">
-				{{ formatMessage(messages.inputElyByDescription) }}
-			</label>
-			<ul class="list-disc list-inside text-sm space-y-1">
-				<li>{{ formatMessage(messages.inputElyByNameOrEmailHint) }}</li>
-				<li>{{ formatMessage(messages.inputElyByPasswordHint) }}</li>
-			</ul>
-			<div class="mt-6 ml-auto">
-				<Button color="primary" @click="emit('retry-elyby')">
-					{{ formatMessage(messages.retryAction) }}
-				</Button>
-			</div>
-		</div>
-	</ModalWrapper>
 	<ModalWrapper
 		ref="inputOfflineErrorModal"
 		class="modal"
@@ -151,14 +82,12 @@ defineExpose({
 				<li>
 					{{
 						formatMessage(messages.inputOfflineLengthHint, {
-							min: minOfflinePlayerNameLength,
-							max: maxOfflinePlayerNameLength,
+							min: props.minOfflinePlayerNameLength,
+							max: props.maxOfflinePlayerNameLength,
 						})
 					}}
 				</li>
-				<li>
-					{{ formatMessage(messages.inputOfflineFormatHint, { nameExp }) }}
-				</li>
+				<li>{{ formatMessage(messages.inputOfflineFormatHint, { nameExp: props.nameExp }) }}</li>
 			</ul>
 			<div class="mt-6 ml-auto">
 				<Button color="primary" @click="emit('retry-offline')">

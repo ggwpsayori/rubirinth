@@ -2,6 +2,8 @@ use serde::ser::SerializeStruct;
 use serde::{Serialize, Serializer};
 use thiserror::Error;
 
+#[macro_use]
+pub mod astralrinth;
 pub mod auth;
 pub mod import;
 pub mod install;

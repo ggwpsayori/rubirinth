@@ -30,10 +30,11 @@ import { computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch } 
 import EarsModIcon from '@/assets/skins/ears-mod.png'
 import type AccountsCard from '@/components/ui/AccountsCard.vue'
 import EditSkinModal from '@/components/ui/skin/EditSkinModal.vue'
-import UnsupportedSkinAccount from '@/components/ui/skin/UnsupportedSkinAccount.vue'
+import UnsupportedSkinAccount from '@/components/ui/astralrinth/skin/UnsupportedSkinAccount.vue'
 import VirtualSkinSectionList from '@/components/ui/skin/VirtualSkinSectionList.vue'
 import { trackEvent } from '@/helpers/analytics'
 import { check_reachable, get_default_user, login as login_flow, users } from '@/helpers/auth'
+import { loadExternalAuthProviders } from '@/models/astralrinth/authentication'
 import type { RenderResult } from '@/helpers/rendering/batch-skin-renderer.ts'
 import {
 	generateSkinPreviews,
@@ -997,6 +998,7 @@ watch(isSkinManagementReadOnly, (readOnly) => {
 })
 
 onMounted(() => {
+	void loadExternalAuthProviders().catch(handleError)
 	window.addEventListener('offline', onOffline)
 	window.addEventListener('online', onOnline)
 	userCheckInterval = window.setInterval(checkUserChanges, 250)

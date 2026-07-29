@@ -275,14 +275,14 @@
   "astralrinth.app.skins.unsupported-account.description": {
     "message": "Skins can only be managed with a Microsoft account. Return home and select or add a Microsoft account to continue."
   },
-  "astralrinth.app.skins.unsupported-account.elyby.action": {
-    "message": "Manage skin on Ely.by"
+  "astralrinth.app.skins.unsupported-account.external.action": {
+    "message": "Manage skin on {providerName}"
   },
-  "astralrinth.app.skins.unsupported-account.elyby.description": {
-    "message": "You're signed in with an Ely.by account. You can upload, select, and manage your skin directly on the Ely.by website."
+  "astralrinth.app.skins.unsupported-account.external.description": {
+    "message": "You're signed in with a {providerName} account. You can upload, select, and manage your skin directly on the provider's website."
   },
-  "astralrinth.app.skins.unsupported-account.elyby.title": {
-    "message": "Manage your Ely.by skin"
+  "astralrinth.app.skins.unsupported-account.external.title": {
+    "message": "Manage your {providerName} skin"
   },
   "astralrinth.app.skins.unsupported-account.return-home": {
     "message": "Return home"
@@ -365,29 +365,11 @@
   "astralrinth.app.launcher-update-modal.update.title": {
     "message": "A new version of the AstralRinth launcher is available."
   },
-  "astralrinth.app.minecraft-account.add-elyby-account": {
-    "message": "Add Ely.by account"
+  "astralrinth.app.minecraft-account.add-external-account": {
+    "message": "Add {providerName} account"
   },
   "astralrinth.app.minecraft-account.add-offline-account": {
     "message": "Add offline account"
-  },
-  "astralrinth.app.minecraft-account.error.authentication-elyby.description": {
-    "message": "An error occurred while logging in."
-  },
-  "astralrinth.app.minecraft-account.error.authentication-elyby.header": {
-    "message": "Error while proceeding authentication event with Ely.by"
-  },
-  "astralrinth.app.minecraft-account.error.input-elyby.description": {
-    "message": "An error occurred while adding the Ely.by account. Please follow the instructions below."
-  },
-  "astralrinth.app.minecraft-account.error.input-elyby.header": {
-    "message": "Error while proceeding input event with Ely.by"
-  },
-  "astralrinth.app.minecraft-account.error.input-elyby.name-or-email-hint": {
-    "message": "Check that you have entered the correct player name or email."
-  },
-  "astralrinth.app.minecraft-account.error.input-elyby.password-hint": {
-    "message": "Check that you have entered the correct password."
   },
   "astralrinth.app.minecraft-account.error.input-offline.description": {
     "message": "An error occurred while adding the offline account. Please follow the instructions below."
@@ -412,33 +394,6 @@
   },
   "astralrinth.app.minecraft-account.error.unexpected.header": {
     "message": "Unexpected error occurred"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.header": {
-    "message": "Authenticate with Ely.by"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.login.label": {
-    "message": "Enter your player name or email (preferred)"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.login.placeholder": {
-    "message": "Your player name or email here..."
-  },
-  "astralrinth.app.minecraft-account.input.elyby.password.label": {
-    "message": "Enter your password"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.password.placeholder": {
-    "message": "Your password here..."
-  },
-  "astralrinth.app.minecraft-account.input.elyby.two-factor.continue-action": {
-    "message": "Continue"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.two-factor.header": {
-    "message": "Ely.by requested 2FA code for authentication"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.two-factor.label": {
-    "message": "Enter your 2FA code"
-  },
-  "astralrinth.app.minecraft-account.input.elyby.two-factor.placeholder": {
-    "message": "Your 2FA code here..."
   },
   "astralrinth.app.minecraft-account.input.login-action": {
     "message": "Login"

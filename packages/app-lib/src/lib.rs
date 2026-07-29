@@ -16,6 +16,7 @@ mod event;
 pub mod install;
 mod launcher;
 mod logger;
+pub mod models;
 mod state;
 
 pub use api::*;
