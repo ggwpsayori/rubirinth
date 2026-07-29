@@ -26,7 +26,7 @@ const EXTERNAL_AUTH_PROVIDERS: &[ExternalAuthProvider] = &[
         },
         launch: ExternalLaunchMethod::AuthlibInjector(ExternalAuthLibrary {
             cache_directory: "elyby",
-            release_url: "https://git.xorison.dev/api/v1/repos/didirus/ElyIntegration/releases/latest",
+            release_url: "https://xorison.dev/libs/minecraft/elyby",
             asset_name_prefix: "authlib-injector",
             server: "ely.by",
         }),

@@ -37,6 +37,15 @@
 					"url": "https://*.astralium.su/*"
 				},
 				{
+					"url": "https://authserver.ely.by/*"
+				},
+				{
+					"url": "https://account.ely.by/*"
+				},
+				{
+					"url": "https://ely.by/*"
+				},
+				{
 					"url": "https://modrinth.com/*"
 				},
 				{
