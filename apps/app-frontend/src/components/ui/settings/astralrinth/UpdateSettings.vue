@@ -94,7 +94,7 @@ const httpStatus = computed(() => {
 		:description="formatMessage(messages.pageDescription)"
 	>
 		<section
-			class="rounded-xl border border-solid border-[rgba(62,140,222,0.3)] bg-[rgba(62,140,222,0.055)] p-4"
+			class="rounded-xl border border-solid border-[rgba(62,140,222,0.3)] bg-[rgba(62,140,222,0.055)] p-1"
 		>
 			<div class="flex items-start gap-3">
 				<div

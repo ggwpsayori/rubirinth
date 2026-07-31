@@ -35,9 +35,7 @@ defineProps<{
 			</div>
 		</header>
 
-		<main
-			class="rounded-2xl border border-solid border-surface-5 bg-bg-raised p-5 shadow-[0_14px_40px_rgba(0,0,0,0.12)]"
-		>
+		<main>
 			<slot />
 		</main>
 
