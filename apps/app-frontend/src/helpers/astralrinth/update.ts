@@ -1,4 +1,5 @@
 import { getVersion } from '@tauri-apps/api/app'
+import { isTauri } from '@tauri-apps/api/core'
 import { ref } from 'vue'
 import { fetch } from '@tauri-apps/plugin-http'
 
@@ -36,7 +37,7 @@ const osExtensions = {
 	windows: ['.exe', '.msi'],
 }
 
-const isDeveloper = await isDev()
+const isDeveloper = isTauri() && (await isDev())
 
 const blacklistBeginPrefixes = [
 	'dev',

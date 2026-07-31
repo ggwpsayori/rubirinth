@@ -9,23 +9,21 @@ import {
 	VerboseLoggingFeature,
 } from '@modrinth/api-client'
 import {
-	ChangeSkinIcon,
+	ArrowBigUpDashIcon,
+	ChevronLeftIcon,
+	ChevronRightIcon,
 	CompassIcon,
-	ExternalIcon,
 	HomeIcon,
-	LeftArrowIcon,
 	LibraryIcon,
 	LogInIcon,
 	LogOutIcon,
 	NewspaperIcon,
-	NotepadTextIcon,
 	PlusIcon,
 	RightArrowIcon,
 	ServerStackIcon,
 	SettingsIcon,
+	ShirtIcon,
 	UserIcon,
-	WorldIcon,
-	XIcon,
 } from '@modrinth/assets'
 import {
 	Admonition,
@@ -37,6 +35,7 @@ import {
 	CreationFlowModal,
 	defineMessages,
 	I18nDebugPanel,
+	IntlFormatted,
 	LoadingBar,
 	NewsArticleCard,
 	NotificationPanel,
@@ -47,6 +46,7 @@ import {
 	provideNotificationManager,
 	providePageContext,
 	providePopupNotificationManager,
+	TextLogo,
 	useDebugLogger,
 	useHostingIntercom,
 	useVIntl,
@@ -60,7 +60,6 @@ import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import { type } from '@tauri-apps/plugin-os'
 import { saveWindowState, StateFlags } from '@tauri-apps/plugin-window-state'
-import { $fetch } from 'ofetch'
 import { computed, onMounted, onUnmounted, provide, ref, watch } from 'vue'
 import { RouterView, useRoute, useRouter } from 'vue-router'
 
@@ -82,6 +81,7 @@ import NavButton from '@/components/ui/NavButton.vue'
 import QuickInstanceSwitcher from '@/components/ui/QuickInstanceSwitcher.vue'
 import SharedInstanceInviteHandler from '@/components/ui/shared-instances/shared-instance-invite-handler/index.vue'
 import SplashScreen from '@/components/ui/SplashScreen.vue'
+import SurveyPopup from '@/components/ui/SurveyPopup.vue'
 import WindowControls from '@/components/ui/WindowControls.vue'
 import { useCheckDisableMouseover } from '@/composables/macCssFix.js'
 import { config } from '@/config'
@@ -90,22 +90,19 @@ import { check_reachable } from '@/helpers/auth.js'
 import { get_user, get_version } from '@/helpers/cache.js'
 import { command_listener, notification_listener, warning_listener, info_listener } from '@/helpers/events.js'
 import { install_create_modpack_instance, install_get_modpack_preview } from '@/helpers/install'
-import {
-	can_current_user_use_shared_instances,
-	get as getInstance,
-	list,
-	run,
-} from '@/helpers/instance'
+import { can_current_user_use_shared_instances, get as getInstance, run } from '@/helpers/instance'
 import { get as getCreds, login, logout } from '@/helpers/mr_auth.ts'
 import { mergeUrlQuery, parseModrinthLink } from '@/helpers/project-links.ts'
 import { get as getSettings, set as setSettings } from '@/helpers/settings.ts'
 import { get_opening_command, initialize_state } from '@/helpers/state'
+import { parse_modrinth_user_link } from '@/helpers/users'
 import {
 	getOS,
 	isDev,
 } from '@/helpers/utils.js'
 import { start_join_server, start_join_singleplayer_world } from '@/helpers/worlds.ts'
 import i18n from '@/i18n.config'
+import { createBreadcrumbManager, provideBreadcrumbManager } from '@/providers/breadcrumbs'
 import { createContentInstall, provideContentInstall } from '@/providers/content-install'
 import { provideAppUpdateDownloadProgress } from '@/providers/download-progress.ts'
 import { createServerInstall, provideServerInstall } from '@/providers/server-install'
@@ -114,11 +111,13 @@ import { setupAuthProvider } from '@/providers/setup/auth'
 import { setupLoadingStateProvider } from '@/providers/setup/loading-state'
 import { useError } from '@/store/error.js'
 import { useTheming } from '@/store/state'
+import { appMessages } from '@/utils/app-messages'
 
 import { generateSkinPreviews } from './helpers/rendering/batch-skin-renderer'
 import { get_available_capes, get_available_skins } from './helpers/skins'
 import { AppNotificationManager } from './providers/app-notifications'
 import { AppPopupNotificationManager } from './providers/app-popup-notifications'
+import { appSettingsModalOpenProfileKey } from './providers/app-settings-modal'
 
 // This code line modified by AstralRinth
 import { fetchRemote, isUpdateAvailable } from '@/helpers/astralrinth/update'
@@ -126,6 +125,19 @@ import { fetchRemote, isUpdateAvailable } from '@/helpers/astralrinth/update'
 const themeStore = useTheming()
 const router = useRouter()
 const route = useRoute()
+const breadcrumbManager = createBreadcrumbManager()
+provideBreadcrumbManager(breadcrumbManager)
+const canNavigateBack = ref(false)
+const canNavigateForward = ref(false)
+
+function updateHistoryNavigationState() {
+	const historyState = window.history.state
+	canNavigateBack.value = historyState?.back != null
+	canNavigateForward.value = historyState?.forward != null
+}
+
+updateHistoryNavigationState()
+
 const APP_LEFT_NAV_WIDTH = '4rem'
 const APP_SIDEBAR_WIDTH = 300
 const INTERCOM_BUBBLE_DEFAULT_PADDING = 20
@@ -248,7 +260,7 @@ providePageContext({
 			themeStore.getFeatureFlag('server_ram_as_bytes_always_on'),
 		),
 	},
-	openExternalUrl: (url) => openUrl(url),
+	openExternalUrl: (url) => void openUrl(url),
 })
 provideModalBehavior({
 	noblur: computed(() => !themeStore.advancedRendering),
@@ -269,7 +281,6 @@ const {
 } = setupProviders(notificationManager, popupNotificationManager)
 
 const news = ref([])
-const availableSurvey = ref(false)
 const displayedServerInviteNotifications = new Set()
 const serverInvitePopupNotificationIds = new Set()
 let liveNotificationGeneration = 0
@@ -392,6 +403,54 @@ const messages = defineMessages({
 		id: 'app.ads-consent.accept',
 		defaultMessage: 'Accept all',
 	},
+	home: {
+		id: 'app.nav.home',
+		defaultMessage: 'Home',
+	},
+	library: {
+		id: 'app.nav.library',
+		defaultMessage: 'Library',
+	},
+	modrinthHosting: {
+		id: 'app.nav.modrinth-hosting',
+		defaultMessage: 'Modrinth Hosting',
+	},
+	createNewInstance: {
+		id: 'app.nav.create-new-instance',
+		defaultMessage: 'Create new instance',
+	},
+	modrinthAccount: {
+		id: 'app.nav.modrinth-account',
+		defaultMessage: 'Modrinth account',
+	},
+	signedInAs: {
+		id: 'app.nav.signed-in-as',
+		defaultMessage: 'Signed in as <user>{username}</user>',
+	},
+	signInToModrinthAccount: {
+		id: 'app.nav.sign-in-to-modrinth-account',
+		defaultMessage: 'Sign in to a Modrinth account',
+	},
+	restarting: {
+		id: 'app.restarting',
+		defaultMessage: 'Restarting...',
+	},
+	upgradeToModrinthPlus: {
+		id: 'app.nav.upgrade-to-modrinth-plus',
+		defaultMessage: 'Upgrade to Modrinth+',
+	},
+	news: {
+		id: 'app.news.title',
+		defaultMessage: 'News',
+	},
+	viewAllNews: {
+		id: 'app.news.view-all',
+		defaultMessage: 'View all news',
+	},
+	playingAs: {
+		id: 'app.sidebar.playing-as',
+		defaultMessage: 'Playing as',
+	},
 })
 
 // This code line modified by AstralRinth
@@ -419,7 +478,7 @@ async function setupApp() {
 	// This code line modified by AstralRinth
 	await setSettings(settings)
 	// This code line modified by AstralRinth
-	console.info('[AstralRinth] Privacy hard-patch applied', {
+	console.info('[AR] Privacy hard-patch applied', {
 		telemetry: settings.telemetry,
 		personalized_ads: settings.personalized_ads,
 	})
@@ -545,12 +604,6 @@ async function setupApp() {
 		settings.pending_update_toast_for_version = null
 		await setSettings(settings)
 	}
-
-	if (osType === 'windows') {
-		await processPendingSurveys()
-	} else {
-		console.info('Skipping user surveys on non-Windows platforms')
-	}
 }
 
 const stateFailed = ref(false)
@@ -594,6 +647,12 @@ router.beforeEach(() => {
 	routerToken = loading.begin()
 })
 router.afterEach((to, from, failure) => {
+	updateHistoryNavigationState()
+	trackEvent('PageView', {
+		path: to.path,
+		fromPath: from.path,
+		failed: failure,
+	})
 	setTimeout(() => {
 		if (!suspensePending && stateInitialized.value) {
 			if (initialLoadToken) {
@@ -730,6 +789,8 @@ const sharedInstanceInviteHandler = ref()
 const updateToPlayModal = ref()
 
 const modrinthLoginModal = ref()
+const appSettingsModal = ref()
+provide(appSettingsModalOpenProfileKey, () => appSettingsModal.value?.showProfile())
 
 watch(incompatibilityWarningModal, (modal) => {
 	if (modal) {
@@ -920,7 +981,7 @@ async function declineServerInviteNotification(notification) {
 
 function openServerInviteInviterProfile(inviterName) {
 	if (!inviterName) return
-	openUrl(`${config.siteUrl}/user/${encodeURIComponent(inviterName)}`)
+	void router.push(`/user/${encodeURIComponent(inviterName)}`)
 }
 
 async function handleLiveNotification(notification) {
@@ -1062,8 +1123,11 @@ function handleClick(e) {
 				!target.href.startsWith('https://tauri.localhost') &&
 				!target.href.startsWith('http://tauri.localhost')
 			) {
+				const userPath = parse_modrinth_user_link(target.href)
 				const parsed = parseModrinthLink(target.href)
-				if (target.target !== '_blank' && parsed) {
+				if (userPath) {
+					void router.push(userPath)
+				} else if (target.target !== '_blank' && parsed) {
 					void openModrinthProjectLinkInApp(parsed)
 				} else {
 					openUrl(target.href)
@@ -1090,113 +1154,7 @@ function handleAuxClick(e) {
 	}
 }
 
-function cleanupOldSurveyDisplayData() {
-	const threeWeeksAgo = new Date()
-	threeWeeksAgo.setDate(threeWeeksAgo.getDate() - 21)
-
-	for (let i = 0; i < localStorage.length; i++) {
-		const key = localStorage.key(i)
-
-		if (key.startsWith('survey-') && key.endsWith('-display')) {
-			const dateValue = new Date(localStorage.getItem(key))
-			if (dateValue < threeWeeksAgo) {
-				localStorage.removeItem(key)
-			}
-		}
-	}
-}
-
-async function openSurvey() {
-	if (!availableSurvey.value) {
-		console.error('No survey to open')
-		return
-	}
-
-	const creds = await getCreds().catch(handleError)
-	const userId = creds?.user_id
-
-	const formId = availableSurvey.value.tally_id
-
-	const popupOptions = {
-		layout: 'modal',
-		width: 700,
-		autoClose: 2000,
-		hideTitle: true,
-		hiddenFields: {
-			user_id: userId,
-		},
-		onOpen: () => console.info('Opened user survey'),
-		onClose: () => {
-			console.info('Closed user survey')
-		},
-		onSubmit: () => console.info('Active user survey submitted'),
-	}
-
-	try {
-		if (window.Tally?.openPopup) {
-			console.info(`Opening Tally popup for user survey (form ID: ${formId})`)
-			dismissSurvey()
-			window.Tally.openPopup(formId, popupOptions)
-		} else {
-			console.warn('Tally script not yet loaded')
-		}
-	} catch (e) {
-		console.error('Error opening Tally popup:', e)
-	}
-
-	console.info(`Found user survey to show with tally_id: ${formId}`)
-	window.Tally.openPopup(formId, popupOptions)
-}
-
-function dismissSurvey() {
-	localStorage.setItem(`survey-${availableSurvey.value.id}-display`, new Date())
-	availableSurvey.value = undefined
-}
-
-async function processPendingSurveys() {
-	function isWithinLastTwoWeeks(date) {
-		const twoWeeksAgo = new Date()
-		twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14)
-		return date >= twoWeeksAgo
-	}
-
-	cleanupOldSurveyDisplayData()
-
-	const creds = await getCreds().catch(handleError)
-	const userId = creds?.user_id
-
-	const instances = (await list().catch(handleError)) ?? []
-	const isActivePlayer = instances.some(
-		(instance) =>
-			isWithinLastTwoWeeks(instance.last_played) && !isWithinLastTwoWeeks(instance.created),
-	)
-
-	let surveys = []
-	try {
-		surveys = await $fetch('https://api.modrinth.com/v2/surveys')
-	} catch (e) {
-		console.error('Error fetching surveys:', e)
-	}
-
-	const surveyToShow = surveys.find(
-		(survey) =>
-			!!(
-				localStorage.getItem(`survey-${survey.id}-display`) === null &&
-				survey.type === 'tally_app' &&
-				((survey.condition === 'active_player' && isActivePlayer) ||
-					(survey.assigned_users?.includes(userId) && !survey.dismissed_users?.includes(userId)))
-			),
-	)
-
-	if (surveyToShow) {
-		availableSurvey.value = surveyToShow
-	} else {
-		console.info('No user survey to show')
-	}
-}
-
-// This code line modified by AstralRinth
-provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this shit line -> SettingsModal will not work.
+provideAppUpdateDownloadProgress(appUpdateDownload)
 </script>
 
 <template>
@@ -1208,7 +1166,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 		:class="{ 'disable-advanced-rendering': !themeStore.advancedRendering }"
 	>
 		<Suspense>
-			<AppSettingsModal ref="settingsModal" />
+			<AppSettingsModal ref="appSettingsModal" />
 		</Suspense>
 		<Suspense>
 			<ModrinthAccountRequiredModal ref="modrinthLoginModal" :request-auth="requestModrinthAuth" />
@@ -1226,27 +1184,24 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 		/>
 		<UnknownPackWarningModal ref="unknownPackWarningModal" />
 		<div
-			class="app-grid-navbar bg-bg-raised flex flex-col p-[0.5rem] pt-0 gap-[0.5rem] w-[--left-bar-width]"
+			class="app-grid-navbar bg-bg-raised flex flex-col p-[0.5rem] pt-0 gap-[0.25rem] w-[--left-bar-width]"
 		>
-			<NavButton v-tooltip.right="'Home'" to="/">
+			<NavButton v-tooltip.right="formatMessage(messages.home)" to="/">
 				<HomeIcon />
 			</NavButton>
-			<NavButton v-if="themeStore.featureFlags.worlds_tab" v-tooltip.right="'Worlds'" to="/worlds">
-				<WorldIcon />
-			</NavButton>
 			<NavButton
-				v-tooltip.right="'Discover content'"
+				v-tooltip.right="formatMessage(commonMessages.discoverContentLabel)"
 				to="/browse/modpack"
 				:is-primary="() => route.path.startsWith('/browse') && !route.query.i"
 				:is-subpage="(route) => route.path.startsWith('/project') && !route.query.i"
 			>
 				<CompassIcon />
 			</NavButton>
-			<NavButton v-tooltip.right="'Skin selector'" to="/skins">
-				<ChangeSkinIcon />
+			<NavButton v-tooltip.right="formatMessage(appMessages.skinSelectorLabel)" to="/skins">
+				<ShirtIcon />
 			</NavButton>
 			<NavButton
-				v-tooltip.right="'Library'"
+				v-tooltip.right="formatMessage(messages.library)"
 				to="/library"
 				:is-primary="(r) => r.path === '/library' || r.path === '/library'"
 				:is-subpage="
@@ -1259,19 +1214,18 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 				<LibraryIcon />
 			</NavButton>
 			<NavButton
-				v-tooltip.right="'Modrinth Hosting'"
+				v-tooltip.right="formatMessage(messages.modrinthHosting)"
 				to="/hosting/manage"
 				:is-primary="(r) => r.path === '/hosting/manage' || r.path === '/hosting/manage/'"
 				:is-subpage="(r) => r.path.startsWith('/hosting/manage/') && r.path !== '/hosting/manage/'"
 			>
 				<ServerStackIcon />
 			</NavButton>
-			<div class="h-px w-6 mx-auto my-2 bg-surface-5"></div>
 			<suspense>
 				<QuickInstanceSwitcher />
 			</suspense>
 			<NavButton
-				v-tooltip.right="'Create new instance'"
+				v-tooltip.right="formatMessage(messages.createNewInstance)"
 				:to="() => installationModal?.show()"
 				:disabled="offline"
 			>
@@ -1283,7 +1237,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 				<NavButton
 					class="neon-icon pulse"
 					v-tooltip.right="formatMessage(commonMessages.settingsLabel)"
-					:to="() => $refs.settingsModal.show()"
+					:to="() => appSettingsModal?.show()"
 				>
 					<SettingsIcon />
 				</NavButton>
@@ -1291,19 +1245,19 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 			<template v-else>
 				<NavButton
 					v-tooltip.right="formatMessage(commonMessages.settingsLabel)"
-					:to="() => $refs.settingsModal.show()"
+					:to="() => appSettingsModal?.show()"
 				>
 					<SettingsIcon />
 				</NavButton>
 			</template>
 			<OverflowMenu
 				v-if="credentials?.user"
-				v-tooltip.right="`Modrinth account`"
+				v-tooltip.right="formatMessage(messages.modrinthAccount)"
 				class="w-12 h-12 text-primary rounded-full flex items-center justify-center text-2xl transition-all bg-transparent hover:bg-button-bg hover:text-contrast border-0 cursor-pointer"
 				:options="[
 					{
 						id: 'view-profile',
-						action: () => openUrl('https://modrinth.com/user/' + credentials.user.username),
+						action: () => router.push(`/user/${encodeURIComponent(credentials.user.username)}`),
 					},
 					{
 						id: 'sign-out',
@@ -1317,43 +1271,64 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 				<template #view-profile>
 					<UserIcon />
 					<span class="inline-flex items-center gap-1">
-						Signed in as
-						<span class="inline-flex items-center gap-1 text-contrast font-semibold">
-							<Avatar :src="credentials?.user?.avatar_url" alt="" size="20px" circle />
-							{{ credentials?.user?.username }}
-						</span>
+						<IntlFormatted
+							:message-id="messages.signedInAs"
+							:values="{ username: credentials?.user?.username }"
+						>
+							<template #user="{ children }">
+								<span class="inline-flex items-center gap-1 text-contrast font-semibold">
+									<Avatar :src="credentials?.user?.avatar_url" alt="" size="20px" circle />
+									<component :is="() => children" />
+								</span>
+							</template>
+						</IntlFormatted>
 					</span>
-					<ExternalIcon />
 				</template>
-				<template #sign-out> <LogOutIcon /> Sign out </template>
+				<template #sign-out>
+					<LogOutIcon />
+					{{ formatMessage(commonMessages.signOutButton) }}
+				</template>
 			</OverflowMenu>
 			<NavButton
 				v-else
-				v-tooltip.right="'Sign in to a Modrinth account'"
+				v-tooltip.right="formatMessage(messages.signInToModrinthAccount)"
 				:to="() => requestSignIn()"
 			>
 				<LogInIcon class="text-brand" />
 			</NavButton>
 		</div>
 		<div data-tauri-drag-region class="app-grid-statusbar bg-bg-raised h-[--top-bar-height] flex">
-			<div data-tauri-drag-region class="flex min-w-0 flex-1 overflow-hidden p-3">
-				<!-- This code line modified by AstralRinth -->
-				<!-- <ModrinthAppLogo class="h-full w-auto shrink-0 text-contrast pointer-events-none" /> -->
-				<div data-tauri-drag-region class="flex shrink-0 items-center gap-1 ml-3">
-					<button
-						class="cursor-pointer p-0 m-0 text-contrast border-none outline-none bg-button-bg rounded-full flex items-center justify-center w-6 h-6 hover:brightness-75 transition-all"
-						@click="router.back()"
-					>
-						<LeftArrowIcon />
-					</button>
-					<button
-						class="cursor-pointer p-0 m-0 text-contrast border-none outline-none bg-button-bg rounded-full flex items-center justify-center w-6 h-6 hover:brightness-75 transition-all"
-						@click="router.forward()"
-					>
-						<RightArrowIcon />
-					</button>
+			<div data-tauri-drag-region class="flex min-w-0 flex-1 items-center overflow-hidden p-2">
+				<TextLogo class="h-7 w-auto shrink-0 text-contrast pointer-events-none" />
+				<div data-tauri-drag-region class="ml-2 flex shrink-0 items-center gap-2">
+					<ButtonStyled type="outlined" circular>
+						<button
+							class="!h-7 !min-w-7 !w-7 !border !border-surface-4 !p-0 !opacity-100"
+							:disabled="!canNavigateBack"
+							aria-label="Go back"
+							@click="router.back()"
+						>
+							<ChevronLeftIcon
+								class="!size-4 !text-primary"
+								:class="{ 'opacity-20': !canNavigateBack }"
+							/>
+						</button>
+					</ButtonStyled>
+					<ButtonStyled type="outlined" circular>
+						<button
+							class="!h-7 !min-w-7 !w-7 !border !border-surface-4 !p-0 !opacity-100"
+							:disabled="!canNavigateForward"
+							aria-label="Go forward"
+							@click="router.forward()"
+						>
+							<ChevronRightIcon
+								class="!size-4 !text-primary"
+								:class="{ 'opacity-20': !canNavigateForward }"
+							/>
+						</button>
+					</ButtonStyled>
 				</div>
-				<Breadcrumbs class="pt-[2px]" />
+				<Breadcrumbs />
 			</div>
 			<section data-tauri-drag-region class="flex shrink-0 ml-auto items-center">
 				<ButtonStyled
@@ -1387,28 +1362,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 		}"
 	>
 		<div class="app-viewport flex-grow router-view">
-			<transition name="popup-survey">
-				<div
-					v-if="availableSurvey"
-					class="w-[400px] z-20 fixed -bottom-12 pb-16 right-[--right-bar-width] mr-4 rounded-t-2xl card-shadow bg-bg-raised border-surface-5 border-[1px] border-solid border-b-0 p-4"
-				>
-					<h2 class="text-lg font-extrabold mt-0 mb-2">Hey there Modrinth user!</h2>
-					<p class="m-0 leading-tight">
-						Would you mind answering a few questions about your experience with Modrinth App?
-					</p>
-					<p class="mt-3 mb-4 leading-tight">
-						This feedback will go directly to the Modrinth team and help guide future updates!
-					</p>
-					<div class="flex gap-2">
-						<ButtonStyled color="brand">
-							<button @click="openSurvey"><NotepadTextIcon /> Take survey</button>
-						</ButtonStyled>
-						<ButtonStyled>
-							<button @click="dismissSurvey"><XIcon /> No thanks</button>
-						</ButtonStyled>
-					</div>
-				</div>
-			</transition>
+			<SurveyPopup />
 			<div
 				class="loading-indicator-container h-8 fixed z-50 pointer-events-none"
 				:style="{
@@ -1472,7 +1426,9 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 				<div id="sidebar-teleport-target" class="sidebar-teleport-content"></div>
 				<div class="sidebar-default-content" :class="{ 'sidebar-enabled': sidebarVisible }">
 					<div class="p-4 border-0 border-b-[1px] border-[--brand-gradient-border] border-solid">
-						<h3 class="text-base text-primary font-medium m-0">Playing as</h3>
+						<h3 class="text-base text-primary font-medium m-0">
+							{{ formatMessage(messages.playingAs) }}
+						</h3>
 						<suspense>
 							<AccountsCard ref="accounts" />
 						</suspense>
@@ -1483,7 +1439,9 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 						</suspense>
 					</div>
 					<div v-if="news && news.length > 0" class="p-4 flex flex-col items-center">
-						<h3 class="text-base mb-4 text-primary font-medium m-0 text-left w-full">News</h3>
+						<h3 class="text-base mb-4 text-primary font-medium m-0 text-left w-full">
+							{{ formatMessage(messages.news) }}
+						</h3>
 						<div class="space-y-4 flex flex-col items-center w-full">
 							<NewsArticleCard
 								v-for="(item, index) in news"
@@ -1492,7 +1450,8 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 							/>
 							<ButtonStyled color="brand" size="large">
 								<a href="https://modrinth.com/news" target="_blank" class="my-4">
-									<NewspaperIcon /> View all news
+									<NewspaperIcon />
+									{{ formatMessage(messages.viewAllNews) }}
 								</a>
 							</ButtonStyled>
 						</div>
@@ -1709,26 +1668,6 @@ provideAppUpdateDownloadProgress(appUpdateDownload) // [AR Note] If delete this 
 
 .sidebar-teleport-content:empty + .sidebar-default-content.sidebar-enabled {
 	display: contents;
-}
-
-.popup-survey-enter-active {
-	transition:
-		opacity 0.25s ease,
-		transform 0.25s cubic-bezier(0.51, 1.08, 0.35, 1.15);
-	transform-origin: top center;
-}
-
-.popup-survey-leave-active {
-	transition:
-		opacity 0.25s ease,
-		transform 0.25s cubic-bezier(0.68, -0.17, 0.23, 0.11);
-	transform-origin: top center;
-}
-
-.popup-survey-enter-from,
-.popup-survey-leave-to {
-	opacity: 0;
-	transform: translateY(10rem) scale(0.8) scaleY(1.6);
 }
 
 @media (prefers-reduced-motion: no-preference) {
