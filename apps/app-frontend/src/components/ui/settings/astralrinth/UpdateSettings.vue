@@ -3,6 +3,7 @@ import { ChartIcon } from '@modrinth/assets'
 import { defineMessages, useVIntl } from '@modrinth/ui'
 import { computed } from 'vue'
 
+import AstralRinthSettingsPage from '@/components/ui/settings/astralrinth/AstralRinthSettingsPage.vue'
 import {
 	LAUNCHER_LATEST_RELEASE_API,
 	latestLauncherReleaseHttpStatus,
@@ -12,9 +13,18 @@ import {
 const { formatMessage } = useVIntl()
 
 const messages = defineMessages({
+	pageTitle: {
+		id: 'astralrinth.app.settings.updates.title',
+		defaultMessage: 'Updates',
+	},
+	pageDescription: {
+		id: 'astralrinth.app.settings.updates.description',
+		defaultMessage:
+			'Inspect the AstralRinth release channel, distribution status, and update-provider diagnostics.',
+	},
 	analyticsTitle: {
 		id: 'astralrinth.app.settings.updates.analytics.title',
-		defaultMessage: 'Analytics (debug)',
+		defaultMessage: 'Analytics',
 	},
 	analyticsDescription: {
 		id: 'astralrinth.app.settings.updates.analytics.description',
@@ -79,9 +89,12 @@ const httpStatus = computed(() => {
 </script>
 
 <template>
-	<div class="flex flex-col gap-5">
+	<AstralRinthSettingsPage
+		:title="formatMessage(messages.pageTitle)"
+		:description="formatMessage(messages.pageDescription)"
+	>
 		<section
-			class="rounded-2xl border border-solid border-[rgba(62,140,222,0.35)] bg-[rgba(62,140,222,0.06)] p-4"
+			class="rounded-xl border border-solid border-[rgba(62,140,222,0.3)] bg-[rgba(62,140,222,0.055)] p-4"
 		>
 			<div class="flex items-start gap-3">
 				<div
@@ -166,7 +179,7 @@ const httpStatus = computed(() => {
 				</div>
 			</dl>
 		</section>
-	</div>
+	</AstralRinthSettingsPage>
 </template>
 
 <style lang="scss" scoped>

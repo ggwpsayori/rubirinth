@@ -237,13 +237,16 @@
     "message": "Installing update..."
   },
   "astralrinth.app.settings.tabs.updates": {
-    "message": "AstralRinth updates"
+    "message": "Updates"
   },
   "astralrinth.app.settings.updates.analytics.description": {
     "message": "Release and distribution statistics from the update provider."
   },
   "astralrinth.app.settings.updates.analytics.title": {
     "message": "Analytics"
+  },
+  "astralrinth.app.settings.updates.description": {
+    "message": "Inspect the AstralRinth release channel, distribution status, and update-provider diagnostics."
   },
   "astralrinth.app.settings.updates.api-url": {
     "message": "Update provider API URL"
@@ -265,6 +268,9 @@
   },
   "astralrinth.app.settings.updates.total-downloads": {
     "message": "Total product downloads"
+  },
+  "astralrinth.app.settings.updates.title": {
+    "message": "Updates"
   },
   "astralrinth.app.settings.updates-installed": {
     "message": "Updates are already installed"
