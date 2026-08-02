@@ -371,12 +371,6 @@
   "astralrinth.app.launcher-update-modal.update.title": {
     "message": "A new version of the AstralRinth launcher is available."
   },
-  "astralrinth.app.minecraft-account.add-external-account": {
-    "message": "Add {providerName} account"
-  },
-  "astralrinth.app.minecraft-account.add-offline-account": {
-    "message": "Add offline account"
-  },
   "astralrinth.app.minecraft-account.error.input-offline.description": {
     "message": "An error occurred while adding the offline account. Please follow the instructions below."
   },
@@ -400,6 +394,24 @@
   },
   "astralrinth.app.minecraft-account.error.unexpected.header": {
     "message": "Unexpected error occurred"
+  },
+  "astralrinth.app.minecraft-account.input.auth.description": {
+    "message": "Choose how you want to sign in or play."
+  },
+  "astralrinth.app.minecraft-account.input.auth.external-description": {
+    "message": "Account for servers that support {providerName}."
+  },
+  "astralrinth.app.minecraft-account.input.auth.header": {
+    "message": "Add a Minecraft account"
+  },
+  "astralrinth.app.minecraft-account.input.auth.microsoft-description": {
+    "message": "Official account with Minecraft: Java Edition."
+  },
+  "astralrinth.app.minecraft-account.input.auth.offline-description": {
+    "message": "Local profile without authentication tokens."
+  },
+  "astralrinth.app.minecraft-account.input.auth.offline-label": {
+    "message": "Offline"
   },
   "astralrinth.app.minecraft-account.input.login-action": {
     "message": "Login"
@@ -2017,9 +2029,6 @@
   },
   "minecraft-account.select-account": {
     "message": "Select account"
-  },
-  "minecraft-account.sign-in": {
-    "message": "Sign in to Minecraft"
   },
   "minecraft-required.description": {
     "message": "You need a Microsoft account that owns Minecraft before you can launch and play."

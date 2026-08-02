@@ -368,12 +368,6 @@
   "astralrinth.app.launcher-update-modal.update.title": {
     "message": "Доступна новая версия лаунчера AstralRinth."
   },
-  "astralrinth.app.minecraft-account.add-external-account": {
-    "message": "Добавить аккаунт {providerName}"
-  },
-  "astralrinth.app.minecraft-account.add-offline-account": {
-    "message": "Добавить офлайн-аккаунт"
-  },
   "astralrinth.app.minecraft-account.error.input-offline.description": {
     "message": "Произошла ошибка при добавлении офлайн-аккаунта. Пожалуйста, выполните рекомендации ниже."
   },
@@ -397,6 +391,24 @@
   },
   "astralrinth.app.minecraft-account.error.unexpected.header": {
     "message": "Произошла непредвиденная ошибка"
+  },
+  "astralrinth.app.minecraft-account.input.auth.description": {
+    "message": "Выберите способ входа или игры."
+  },
+  "astralrinth.app.minecraft-account.input.auth.external-description": {
+    "message": "Аккаунт для серверов с поддержкой {providerName}."
+  },
+  "astralrinth.app.minecraft-account.input.auth.header": {
+    "message": "Добавить аккаунт Minecraft"
+  },
+  "astralrinth.app.minecraft-account.input.auth.microsoft-description": {
+    "message": "Официальный аккаунт с Minecraft: Java Edition."
+  },
+  "astralrinth.app.minecraft-account.input.auth.offline-description": {
+    "message": "Локальный профиль без токенов авторизации."
+  },
+  "astralrinth.app.minecraft-account.input.auth.offline-label": {
+    "message": "Офлайн"
   },
   "astralrinth.app.minecraft-account.input.login-action": {
     "message": "Войти"
@@ -1516,9 +1528,6 @@
   },
   "minecraft-account.select-account": {
     "message": "Выберите аккаунт"
-  },
-  "minecraft-account.sign-in": {
-    "message": "Войти в Minecraft"
   },
   "minecraft-required.description": {
     "message": "Для запуска и игры требуется аккаунт Microsoft с приобретённым Minecraft."

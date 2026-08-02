@@ -4,31 +4,14 @@
 		class="flex flex-col gap-3 bg-button-bg border border-solid border-surface-5 rounded-xl p-3 mt-2"
 	>
 		<span>{{ formatMessage(messages.notSignedIn) }}</span>
-		<ButtonStyled color="brand">
-			<button color="primary" :disabled="loginDisabled" @click="login()">
-				<MicrosoftIcon v-if="!loginDisabled" />
-				<SpinnerIcon v-else class="animate-spin" />
-				{{ formatMessage(messages.signInToMinecraft) }}
-			</button>
-		</ButtonStyled>
 		<!-- BEGIN: This code block modified by AstralRinth -->
 		<ButtonStyled class="w-full">
-			<OverflowMenu class="w-full justify-between text-left" :options="additionalAccountOptions">
+			<button type="button" class="w-full justify-between text-left" @click="showAccountLoginModal">
 				<span class="inline-flex items-center gap-2">
 					<PlusIcon />
 					{{ formatMessage(messages.addAccount) }}
 				</span>
-				<DropdownIcon class="shrink-0" />
-				<template #add_offline_account>
-					<OfflineIcon />
-					{{ formatMessage(messages.addOfflineAccount) }}
-				</template>
-				<template v-for="provider in externalAuthProviders" #[provider.accountOptionId]>
-					<component :is="provider.icon" v-if="!externalAuthDisabled" />
-					<SpinnerIcon v-else class="animate-spin" />
-					{{ formatMessage(messages.addExternalAccount, { providerName: provider.name }) }}
-				</template>
-			</OverflowMenu>
+			</button>
 		</ButtonStyled>
 		<!-- END: This code block modified by AstralRinth -->
 	</div>
@@ -110,33 +93,17 @@
 				</div>
 			</template>
 			<div class="flex flex-col gap-2 px-2 pt-2">
-				<ButtonStyled class="w-full" color="brand">
-					<button :disabled="loginDisabled" @click="login()">
-						<MicrosoftIcon v-if="!loginDisabled" />
-						<SpinnerIcon v-else class="animate-spin" />
-						{{ formatMessage(messages.addMicrosoftAccount) }}
-					</button>
-				</ButtonStyled>
 				<ButtonStyled class="w-full">
-					<OverflowMenu
+					<button
+						type="button"
 						class="w-full justify-between text-left"
-						:options="additionalAccountOptions"
+						@click="showAccountLoginModal"
 					>
 						<span class="inline-flex items-center gap-2">
 							<PlusIcon />
 							{{ formatMessage(messages.addAccount) }}
 						</span>
-						<DropdownIcon class="shrink-0" />
-						<template #add_offline_account>
-							<OfflineIcon />
-							{{ formatMessage(messages.addOfflineAccount) }}
-						</template>
-						<template v-for="provider in externalAuthProviders" #[provider.accountOptionId]>
-							<component :is="provider.icon" v-if="!externalAuthDisabled" />
-							<SpinnerIcon v-else class="animate-spin" />
-							{{ formatMessage(messages.addExternalAccount, { providerName: provider.name }) }}
-						</template>
-					</OverflowMenu>
+					</button>
 				</ButtonStyled>
 			</div>
 		</div>
@@ -145,6 +112,11 @@
 		ref="accountsInputModals"
 		:offline-login-disabled="offlineLoginDisabled"
 		:offline-player-name="offlinePlayerName"
+		:login-disabled="loginDisabled"
+		:external-auth-disabled="externalAuthDisabled"
+		:external-auth-providers="externalAuthProviders"
+		@login-microsoft="login"
+		@login-external="addExternalProfile"
 		@submit-offline="addOfflineProfile"
 		@update:offline-player-name="offlinePlayerName = $event"
 	/>
@@ -182,12 +154,11 @@ import type { Skin } from '@/helpers/skins'
 import { get_available_skins } from '@/helpers/skins'
 import { handleSevereError } from '@/store/error.js'
 import {
-	DropdownIcon,
 	MicrosoftIcon,
 	OfflineIcon,
+	PlusIcon,
 	RadioButtonCheckedIcon,
 	RadioButtonIcon,
-	SpinnerIcon,
 	TrashIcon,
 } from '@modrinth/assets'
 import {
@@ -196,7 +167,6 @@ import {
 	ButtonStyled,
 	defineMessages,
 	injectNotificationManager,
-	OverflowMenu,
 	useVIntl,
 } from '@modrinth/ui'
 import type { Ref } from 'vue'
@@ -210,7 +180,9 @@ const emit = defineEmits<{
 }>()
 
 type AccountsInputModalsHandle = {
+	hideAuth: () => void
 	hideOffline: () => void
+	showAuth: () => void
 	showOffline: () => void
 }
 
@@ -241,6 +213,7 @@ const { authenticate: addExternalProfile, disabled: externalAuthDisabled } =
 	useExternalAuthentication({
 		onAuthenticated: async (credentials) => {
 			await setAccount(credentials)
+			accountsInputModals.value?.hideAuth()
 		},
 		onError: (error) => {
 			handleError(error)
@@ -263,17 +236,9 @@ function showOfflineLoginModal() {
 	accountsInputModals.value?.showOffline()
 }
 
-const additionalAccountOptions = computed(() => [
-	{
-		id: 'add_offline_account',
-		action: showOfflineLoginModal,
-	},
-	...externalAuthProviders.value.map((provider) => ({
-		id: provider.accountOptionId,
-		action: () => addExternalProfile(provider),
-		disabled: externalAuthDisabled.value,
-	})),
-])
+function showAccountLoginModal() {
+	accountsInputModals.value?.showAuth()
+}
 
 function retryAddOfflineProfile() {
 	accountsErrorModals.value?.hideInputOfflineError()
@@ -426,6 +391,7 @@ async function login() {
 
 	if (loggedIn) {
 		await setAccount(loggedIn)
+		accountsInputModals.value?.hideAuth()
 	}
 
 	trackEvent('AccountLogIn')
@@ -468,18 +434,6 @@ const messages = defineMessages({
 		id: 'minecraft-account.add-account',
 		defaultMessage: 'Add account',
 	},
-	addMicrosoftAccount: {
-		id: 'minecraft-account.add-microsoft-account',
-		defaultMessage: 'Add Microsoft account',
-	},
-	addOfflineAccount: {
-		id: 'astralrinth.app.minecraft-account.add-offline-account',
-		defaultMessage: 'Add offline account',
-	},
-	addExternalAccount: {
-		id: 'astralrinth.app.minecraft-account.add-external-account',
-		defaultMessage: 'Add {providerName} account',
-	},
 	removeAccount: {
 		id: 'minecraft-account.remove-account',
 		defaultMessage: 'Remove account',
@@ -491,10 +445,6 @@ const messages = defineMessages({
 	minecraftAccount: {
 		id: 'minecraft-account.label',
 		defaultMessage: 'Minecraft account',
-	},
-	signInToMinecraft: {
-		id: 'minecraft-account.sign-in',
-		defaultMessage: 'Sign in to Minecraft',
 	},
 })
 </script>
