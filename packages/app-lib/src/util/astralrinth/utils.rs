@@ -13,8 +13,7 @@ use std::time::SystemTime;
 use tokio::{fs, io};
 
 const PACKAGE_JSON_CONTENT: &str =
-    // include_str!("../../../../../apps/app-frontend/package.json");
-    include_str!("../../../../../apps/app/tauri.conf.json");
+    include_str!("../../../../../apps/app-frontend/package.json");
 
 /// Deserialize the content of package.json into a Launcher struct
 pub fn read_package_json() -> io::Result<Launcher> {

@@ -5,7 +5,7 @@ use std::{
 };
 
 use discord_rich_presence::{
-    activity::{Activity, Assets, Timestamps}, // This code is modified by AstralRinth
+    activity::{Activity, Assets, Button, Timestamps}, // This code is modified by AstralRinth
     DiscordIpc, DiscordIpcClient,
 };
 use rand::seq::SliceRandom; // This code is modified by AstralRinth
@@ -115,7 +115,6 @@ impl DiscordGuard {
             utils::read_package_json().expect("Failed to read package.json");
 
         let build_info = format!("AR • v{}", launcher.version);
-        let build_download = "https://xorison.dev/product/astralrinth";
 
         let time = SystemTime::now()
             .duration_since(UNIX_EPOCH)
@@ -126,10 +125,15 @@ impl DiscordGuard {
             .assets(
                 Assets::new()
                     .large_image("astralrinth_logo")
-                    .large_text(&build_info)
-                    .small_image("astralrinth_logo")
-                    .small_text(build_download),
+                    .large_text(&build_info),
             )
+            .buttons(vec![Button::new(
+                "Get launcher",
+                "https://xorison.dev/product/astralrinth",
+            ), Button::new(
+				"Support",
+				"https://xorison.dev/product/astralrinth/support"
+			)])
             .timestamps(Timestamps::new().start(time));
 
         // Attempt to set the activity
