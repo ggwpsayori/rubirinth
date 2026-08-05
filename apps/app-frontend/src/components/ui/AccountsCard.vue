@@ -338,6 +338,7 @@ defineExpose({
 	refreshValues,
 	setEquippedSkin,
 	setLoginDisabled,
+	showAccountLoginModal,
 	loginDisabled,
 })
 

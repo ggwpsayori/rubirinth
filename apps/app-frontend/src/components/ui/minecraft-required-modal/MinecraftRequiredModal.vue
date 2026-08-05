@@ -27,30 +27,10 @@
 						{{ formatMessage(messages.getSupport) }}
 					</a>
 				</ButtonStyled>
-				<ButtonStyled color="brand">
-					<button class="w-full !shadow-none" :disabled="loadingSignIn" @click="signIn">
-						<SpinnerIcon v-if="loadingSignIn" class="animate-spin" />
-						<svg
-							v-else
-							width="20"
-							height="20"
-							viewBox="0 0 20 20"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<rect width="9.25" height="9.25" fill="black" fill-opacity="0.9" />
-							<rect x="10.75" width="9.25" height="9.25" fill="black" fill-opacity="0.9" />
-							<rect y="10.75" width="9.25" height="9.25" fill="black" fill-opacity="0.9" />
-							<rect
-								x="10.75"
-								y="10.75"
-								width="9.25"
-								height="9.25"
-								fill="black"
-								fill-opacity="0.9"
-							/>
-						</svg>
-						{{ formatMessage(messages.signIn) }}
+				<ButtonStyled>
+					<button class="w-full !shadow-none" @click="showAccountLoginModal">
+						<LogInIcon aria-hidden="true" />
+						{{ formatMessage(messages.otherSignInMethods) }}
 					</button>
 				</ButtonStyled>
 			</div>
@@ -68,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { MessagesSquareIcon, SpinnerIcon } from '@modrinth/assets'
+import { LogInIcon, MessagesSquareIcon, SpinnerIcon } from '@modrinth/assets'
 import { ButtonStyled, defineMessages, NewModal, useVIntl } from '@modrinth/ui'
 import { inject, type Ref, ref } from 'vue'
 
@@ -103,6 +83,10 @@ const messages = defineMessages({
 		id: 'minecraft-required.sign-in',
 		defaultMessage: 'Sign in to Microsoft',
 	},
+	otherSignInMethods: {
+		id: 'minecraft-required.other-sign-in-methods',
+		defaultMessage: 'Sign-in methods',
+	},
 	dontHaveAccount: {
 		id: 'minecraft-required.dont-have-account',
 		defaultMessage: 'Don’t have an account?',
@@ -118,6 +102,11 @@ const loadingSignIn = ref(false)
 
 function show() {
 	modal.value?.show()
+}
+
+function showAccountLoginModal() {
+	accountsCard.value?.showAccountLoginModal()
+	modal.value?.hide()
 }
 
 async function signIn() {
