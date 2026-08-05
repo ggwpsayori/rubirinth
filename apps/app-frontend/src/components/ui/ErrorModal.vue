@@ -69,6 +69,11 @@ defineExpose({
 			errorType.value = 'no_loader_version'
 			supportLink.value = 'https://support.modrinth.com'
 			metadata.value.instanceId = context.instanceId
+		} else if (errorVal.code === 'external_auth_library_not_installed') {
+			title.value = 'Authentication library required'
+			errorType.value = 'external_auth_library_not_installed'
+			supportLink.value = 'https://xorison.dev/product/astralrinth/support'
+			metadata.value = {}
 		} else if (source === 'state_init') {
 			title.value = 'Error initializing AstralRinth App'
 			errorType.value = 'state_init'
@@ -134,7 +139,8 @@ const hasDebugInfo = computed(
 		errorType.value === 'directory_move' ||
 		errorType.value === 'minecraft_auth' ||
 		errorType.value === 'state_init' ||
-		errorType.value === 'no_loader_version',
+		errorType.value === 'no_loader_version' ||
+		errorType.value === 'external_auth_library_not_installed',
 )
 
 const debugInfo = computed(() => error.value.message ?? error.value ?? 'No error message.')
@@ -258,6 +264,13 @@ async function copyToClipboard(text) {
 							<HammerIcon /> Repair instance
 						</button>
 					</div>
+				</template>
+				<template v-else-if="errorType === 'external_auth_library_not_installed'">
+					<p>{{ debugInfo }}</p>
+					<p>
+						Choose and install a version under Settings → AstralRinth → Authentication libraries,
+						then launch the instance again.
+					</p>
 				</template>
 				<template v-else>
 					{{ debugInfo }}

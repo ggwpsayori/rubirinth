@@ -7,9 +7,8 @@ use crate::models::astralrinth::authentication::ExternalAuthLibrary;
 use crate::{Result, State};
 
 use serde::{Deserialize, Serialize};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process;
-use std::time::SystemTime;
 use tokio::{fs, io};
 
 const PACKAGE_JSON_CONTENT: &str =
@@ -26,195 +25,281 @@ pub struct Launcher {
     pub version: String,
 }
 
-/// Fetches the provider's current AuthLib Injector library or reuses its local copy.
+#[derive(Deserialize)]
+struct ExternalAuthLibraryRelease {
+    assets: Vec<ExternalAuthLibraryAsset>,
+}
+
+#[derive(Deserialize)]
+struct ExternalAuthLibraryAsset {
+    name: String,
+    browser_download_url: String,
+}
+
+/// Resolves the library selected in SQLite and verifies its local file.
 pub async fn get_authlib_injector_library(
+    provider_id: &str,
+    provider_name: &str,
     library: ExternalAuthLibrary,
 ) -> Result<PathBuf> {
-    tracing::info!("[AR] • Initializing AuthLib Injector...");
     let state = State::get().await?;
     let libraries_dir = state.directories.libraries_dir();
+    let asset_name = sqlx::query_scalar::<_, String>(
+        "SELECT asset_name FROM external_auth_libraries WHERE provider_id = ?",
+    )
+    .bind(provider_id)
+    .fetch_optional(&state.pool)
+    .await?;
+    let Some(asset_name) = asset_name else {
+        return Err(missing_external_auth_library(provider_name));
+    };
 
-    validate_library_dir(&libraries_dir, library.cache_directory).await?;
-    let injector_dir = libraries_dir.join(format!(
-        "astralrinth/{}/",
-        library.cache_directory
-    ));
-    fs::create_dir_all(&injector_dir).await?;
-
-    let mut local_injectors = Vec::new();
-    if let Ok(mut entries) = fs::read_dir(&injector_dir).await {
-        while let Ok(Some(entry)) = entries.next_entry().await {
-            let path = entry.path();
-            if let (Some(name), Ok(meta)) = (
-                path.file_name().and_then(|s| s.to_str()),
-                entry.metadata().await,
-            ) {
-                if name.starts_with(library.asset_name_prefix) {
-                    local_injectors.push((
-                        path,
-                        meta.modified().unwrap_or(SystemTime::UNIX_EPOCH),
-                    ));
-                }
-            }
-        }
+    if validate_library_asset_name(&asset_name).is_err() {
+        return Err(missing_external_auth_library(provider_name));
     }
-    local_injectors.sort_by(|a, b| b.1.cmp(&a.1));
-
-    if !local_injectors.is_empty() {
-        tracing::info!("[AR] • Local versions:");
-        for (path, mtime) in &local_injectors {
-            tracing::info!("  • {:?} ({:?})", path.file_name().unwrap(), mtime);
-        }
+    let path = authlib_injector_path(&libraries_dir, library, &asset_name);
+    if !path.is_file() {
+        return Err(missing_external_auth_library(provider_name));
     }
 
-    let latest_local = local_injectors.first().cloned();
-    let (remote_name, remote_url) =
-        match extract_library_metadata(library).await {
-            Ok(data) => {
-                tracing::info!("[AR] • Remote: {} ({})", data.0, data.1);
-                data
-            }
-            Err(error) => {
-                tracing::warn!("[AR] • Remote failed: {}, using local", error);
-                ("".to_string(), "".to_string())
-            }
+    tracing::debug!(
+        provider = provider_id,
+        asset = %asset_name,
+        "[AR] Auth library selected"
+    );
+    Ok(path)
+}
+
+/// Lists valid library files installed for a provider.
+pub async fn local_authlib_injector_libraries(
+    library: ExternalAuthLibrary,
+) -> Result<Vec<String>> {
+    let state = State::get().await?;
+    let mut entries = match fs::read_dir(authlib_injector_dir(
+        &state.directories.libraries_dir(),
+        library,
+    ))
+    .await
+    {
+        Ok(entries) => entries,
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
+            return Ok(Vec::new());
+        }
+        Err(error) => return Err(error.into()),
+    };
+    let mut asset_names = Vec::new();
+
+    while let Some(entry) = entries.next_entry().await? {
+        let file_name = entry.file_name();
+        let Some(asset_name) = file_name.to_str() else {
+            continue;
         };
-
-    let remote_path = if !remote_name.is_empty() {
-        Some(injector_dir.join(&remote_name))
-    } else {
-        None
-    };
-
-    if let Some(local_path) = &latest_local {
-        let local_name = local_path.0.file_name().unwrap().to_string_lossy();
-        if let Some(remote_path) = &remote_path {
-            let remote_name =
-                remote_path.file_name().unwrap().to_string_lossy();
-            if local_name == remote_name {
-                tracing::info!("[AR] • Versions match: {}", local_name);
-                return Ok(local_path.0.clone());
-            }
-        } else {
-            tracing::info!(
-                "[AR] • No remote info, using local: {}",
-                local_name
-            );
-            let _ = emit_info(&format!(
-                "[AR] No remote info, using local: {}",
-                local_name
-            ))
-            .await;
-            return Ok(local_path.0.clone());
+        if entry.file_type().await?.is_file()
+            && validate_library_asset_name(asset_name).is_ok()
+        {
+            asset_names.push(asset_name.to_string());
         }
     }
 
-    let Some(remote_path) = remote_path else {
-        return Err(crate::ErrorKind::NetworkErrorOccurred {
-            error: "No local injector and remote unavailable".to_string(),
-        }
-        .as_error());
-    };
+    Ok(asset_names)
+}
 
-    let file_name = remote_path.file_name().unwrap().to_string_lossy();
-    tracing::info!("[AR] • Downloading: {}", file_name);
-    let _ = emit_info(&format!("[AR] Downloading: {}", file_name)).await;
+/// Downloads an exact remote asset and stores it as the provider selection.
+pub async fn install_authlib_injector_library(
+    provider_id: &str,
+    library: ExternalAuthLibrary,
+    asset_name: &str,
+) -> Result<()> {
+    validate_library_asset_name(asset_name)?;
+    let asset = fetch_external_auth_library_release(library)
+        .await?
+        .assets
+        .into_iter()
+        .find(|asset| asset.name == asset_name)
+        .ok_or_else(|| {
+            crate::ErrorKind::ParseError {
+                reason: format!("Library asset not found: {asset_name}"),
+            }
+            .as_error()
+        })?;
+    install_authlib_injector_asset(provider_id, library, asset).await?;
 
-    let bytes = fetch_bytes_from_url(&remote_url).await?;
-    let relative_path = remote_path
+    Ok(())
+}
+
+/// Downloads and selects the newest provider library available remotely.
+pub async fn install_latest_authlib_injector_library(
+    provider_id: &str,
+    library: ExternalAuthLibrary,
+) -> Result<PathBuf> {
+    let asset = fetch_external_auth_library_release(library)
+        .await?
+        .assets
+        .into_iter()
+        .filter_map(|asset| {
+            library_version(&asset.name).map(|version| (asset, version))
+        })
+        .max_by(|(left_asset, left_version), (right_asset, right_version)| {
+            left_version
+                .cmp(right_version)
+                .then_with(|| left_asset.name.cmp(&right_asset.name))
+        })
+        .map(|(asset, _)| asset)
+        .ok_or_else(|| crate::ErrorKind::ParseError {
+            reason: "No compatible external authentication library was found"
+                .to_string(),
+        })?;
+
+    install_authlib_injector_asset(provider_id, library, asset).await
+}
+
+async fn install_authlib_injector_asset(
+    provider_id: &str,
+    library: ExternalAuthLibrary,
+    asset: ExternalAuthLibraryAsset,
+) -> Result<PathBuf> {
+    validate_library_asset_name(&asset.name)?;
+    let state = State::get().await?;
+    let libraries_dir = state.directories.libraries_dir();
+    let directory = authlib_injector_dir(&libraries_dir, library);
+    fs::create_dir_all(&directory).await?;
+    let path = directory.join(&asset.name);
+
+    tracing::debug!(
+        provider = provider_id,
+        asset = %asset.name,
+        "[AR] Auth library download started"
+    );
+    let _ = emit_info("[AR] Installing auth library...").await;
+    let bytes = fetch_bytes_from_url(&asset.browser_download_url).await?;
+    let relative_path = path
         .strip_prefix(&libraries_dir)?
         .to_string_lossy()
         .into_owned();
     write_file_to_libraries(&relative_path, &bytes).await?;
+    save_authlib_injector_library_selection(provider_id, &asset.name).await?;
 
-    tracing::info!("[AR] • Saved: {}", remote_path.display());
-    let _ = emit_info(&format!("[AR] Saved: {}", remote_path.display())).await;
-    Ok(remote_path)
+    Ok(path)
 }
 
-/// Reads the provider release metadata and selects its matching injector asset.
-async fn extract_library_metadata(
+/// Stores a selection only when the exact local file exists.
+pub async fn select_local_authlib_injector_library(
+    provider_id: &str,
     library: ExternalAuthLibrary,
-) -> Result<(String, String)> {
-    let response = reqwest::get(library.release_url).await.map_err(|e| {
-        tracing::error!(
-            "[AR] • Failed to fetch provider library release JSON: {:?}",
-            e
-        );
-        crate::ErrorKind::NetworkErrorOccurred {
-            error: format!(
-                "Failed to fetch provider library release JSON: {}",
-                e
-            ),
-        }
-        .as_error()
-    })?;
+    asset_name: &str,
+) -> Result<bool> {
+    validate_library_asset_name(asset_name)?;
+    let state = State::get().await?;
+    let path = authlib_injector_path(
+        &state.directories.libraries_dir(),
+        library,
+        asset_name,
+    );
+    if !path.is_file() {
+        return Ok(false);
+    }
 
-    let json: serde_json::Value = response.json().await.map_err(|e| {
-        tracing::error!(
-            "[AR] • Failed to parse provider library release JSON: {:?}",
-            e
-        );
-        crate::ErrorKind::ParseError {
-            reason: format!(
-                "Failed to parse provider library release JSON: {}",
-                e
-            ),
-        }
-        .as_error()
-    })?;
+    save_authlib_injector_library_selection(provider_id, asset_name).await?;
 
-    let assets =
-        json.get("assets")
-            .and_then(|v| v.as_array())
-            .ok_or_else(|| {
-                crate::ErrorKind::ParseError {
-                    reason: "Missing 'assets' array".into(),
-                }
-                .as_error()
-            })?;
+    Ok(true)
+}
 
-    let asset = assets
-        .iter()
-        .find(|a| {
-            a.get("name")
-                .and_then(|n| n.as_str())
-                .map(|n| n.starts_with(library.asset_name_prefix))
-                .unwrap_or(false)
+async fn save_authlib_injector_library_selection(
+    provider_id: &str,
+    asset_name: &str,
+) -> Result<()> {
+    let state = State::get().await?;
+    sqlx::query(
+        r#"
+		INSERT INTO external_auth_libraries (provider_id, asset_name)
+		VALUES (?, ?)
+		ON CONFLICT(provider_id) DO UPDATE SET asset_name = excluded.asset_name
+		"#,
+    )
+    .bind(provider_id)
+    .bind(asset_name)
+    .execute(&state.pool)
+    .await?;
+
+    Ok(())
+}
+
+fn missing_external_auth_library(provider_name: &str) -> crate::Error {
+    crate::ErrorKind::ExternalAuthLibraryNotInstalled {
+        provider_name: provider_name.to_string(),
+    }
+    .as_error()
+}
+
+fn validate_library_asset_name(asset_name: &str) -> Result<()> {
+    let path = Path::new(asset_name);
+    let is_file_name = path
+        .file_name()
+        .and_then(|name| name.to_str())
+        .is_some_and(|name| name == asset_name);
+    if !is_file_name || !asset_name.ends_with(".jar") {
+        return Err(crate::ErrorKind::InputError(format!(
+            "Invalid external authentication library asset: {asset_name}",
+        ))
+        .as_error());
+    }
+
+    Ok(())
+}
+
+fn authlib_injector_dir(
+    libraries_dir: &Path,
+    library: ExternalAuthLibrary,
+) -> PathBuf {
+    libraries_dir
+        .join("astralrinth")
+        .join(library.cache_directory)
+}
+
+fn authlib_injector_path(
+    libraries_dir: &Path,
+    library: ExternalAuthLibrary,
+    asset_name: &str,
+) -> PathBuf {
+    authlib_injector_dir(libraries_dir, library).join(asset_name)
+}
+
+async fn fetch_external_auth_library_release(
+    library: ExternalAuthLibrary,
+) -> Result<ExternalAuthLibraryRelease> {
+    Ok(reqwest::Client::new()
+        .get(library.release_url)
+        .timeout(std::time::Duration::from_secs(15))
+        .send()
+        .await?
+        .error_for_status()?
+        .json::<ExternalAuthLibraryRelease>()
+        .await?)
+}
+
+fn library_version(asset_name: &str) -> Option<Vec<u64>> {
+    if validate_library_asset_name(asset_name).is_err()
+        || !asset_name.contains("authlib-injector")
+    {
+        return None;
+    }
+
+    asset_name
+        .split(|character: char| {
+            !character.is_ascii_digit() && character != '.'
         })
-        .ok_or_else(|| {
-            crate::ErrorKind::ParseError {
-                reason: format!(
-					"No matching asset starting with {} in provider release response.",
-					library.asset_name_prefix
-                ),
+        .find_map(|candidate| {
+            let version = candidate.trim_matches('.');
+            if !version.contains('.') {
+                return None;
             }
-            .as_error()
-        })?;
 
-    let download_url = asset
-        .get("browser_download_url")
-        .and_then(|u| u.as_str())
-        .ok_or_else(|| {
-            crate::ErrorKind::ParseError {
-                reason: "Missing 'browser_download_url'".into(),
-            }
-            .as_error()
-        })?
-        .to_string();
-
-    let asset_name = asset
-        .get("name")
-        .and_then(|n| n.as_str())
-        .ok_or_else(|| {
-            crate::ErrorKind::ParseError {
-                reason: "Missing 'name'".into(),
-            }
-            .as_error()
-        })?
-        .to_string();
-
-    Ok((asset_name, download_url))
+            version
+                .split('.')
+                .map(str::parse)
+                .collect::<std::result::Result<Vec<u64>, _>>()
+                .ok()
+        })
 }
 
 /// Initialize the update launcher.
@@ -223,57 +308,19 @@ pub async fn init_update_launcher(
     local_filename: &str,
     os_type: &str,
 ) -> Result<()> {
-    tracing::info!("[AR] • Initialize downloading from • {:?}", download_url);
-    tracing::info!("[AR] • Save local file name • {:?}", local_filename);
-    tracing::info!("[AR] • OS type • {}", os_type);
+    tracing::info!(
+        file = local_filename,
+        os = os_type,
+        "[AR] Downloading launcher update"
+    );
 
-    if let Err(e) = update::get_resource(
-        download_url,
-        local_filename,
-        os_type,
-    )
-    .await
+    if let Err(error) =
+        update::get_resource(download_url, local_filename, os_type).await
     {
-        eprintln!(
-            "[AR] • An error occurred! Failed to download the file: {}",
-            e
-        );
+        tracing::error!(error = %error, "[AR] Launcher update failed");
     } else {
-        println!("[AR] • Code finishes without errors.");
+        tracing::info!("[AR] Launcher update ready");
         process::exit(0)
-    }
-    Ok(())
-}
-
-/// Validating the `astralrinth/{target_directory}/` directory exists inside the libraries/astralrinth directory.
-async fn validate_library_dir(
-    libraries_dir: &PathBuf,
-    validation_directory: &str,
-) -> Result<()> {
-    let astralrinth_path =
-        libraries_dir.join(format!("astralrinth/{}", validation_directory));
-    if !astralrinth_path.exists() {
-        tokio::fs::create_dir_all(&astralrinth_path)
-            .await
-            .map_err(|e| {
-                tracing::error!(
-                    "[AR] • Failed to create {} directory: {:?}",
-                    astralrinth_path.display(),
-                    e
-                );
-                crate::ErrorKind::IOErrorOccurred {
-                    error: format!(
-                        "Failed to create {} directory: {}",
-                        astralrinth_path.display(),
-                        e
-                    ),
-                }
-                .as_error()
-            })?;
-        tracing::info!(
-            "[AR] • Created missing {} directory",
-            astralrinth_path.display()
-        );
     }
     Ok(())
 }
@@ -286,10 +333,10 @@ async fn write_file_to_libraries(
     let state = State::get().await?;
     let output_path = state.directories.libraries_dir().join(relative_path);
 
-    fs::write(&output_path, bytes).await.map_err(|e| {
-        tracing::error!("[AR] • Failed to save file: {:?}", e);
+    fs::write(&output_path, bytes).await.map_err(|error| {
+        tracing::error!(error = %error, "[AR] Library save failed");
         crate::ErrorKind::IOErrorOccurred {
-            error: format!("Failed to save file: {e}"),
+            error: format!("Failed to save file: {error}"),
         }
         .as_error()
     })
@@ -308,8 +355,8 @@ async fn fetch_bytes_from_url(url: &str) -> Result<bytes::Bytes> {
     .await
     .map_err(|_| {
         tracing::error!(
-            "[AR] • Download timed out after {} seconds",
-            TIMEOUT_SECONDS
+            timeout_seconds = TIMEOUT_SECONDS,
+            "[AR] Download timed out"
         );
         crate::ErrorKind::NetworkErrorOccurred {
             error: format!(
@@ -319,27 +366,27 @@ async fn fetch_bytes_from_url(url: &str) -> Result<bytes::Bytes> {
         }
         .as_error()
     })?
-    .map_err(|e| {
-        tracing::error!("[AR] • Request error: {:?}", e);
+    .map_err(|error| {
+        tracing::error!(error = %error, "[AR] Download request failed");
         crate::ErrorKind::NetworkErrorOccurred {
-            error: format!("Request error: {e}"),
+            error: format!("Request error: {error}"),
         }
         .as_error()
     })?;
 
     if !response.status().is_success() {
         let status = response.status().to_string();
-        tracing::error!("[AR] • Failed to download file: HTTP {}", status);
+        tracing::error!(%status, "[AR] Download failed");
         return Err(crate::ErrorKind::NetworkErrorOccurred {
             error: format!("Failed to download file: HTTP {status}"),
         }
         .as_error());
     }
 
-    response.bytes().await.map_err(|e| {
-        tracing::error!("[AR] • Failed to read response bytes: {:?}", e);
+    response.bytes().await.map_err(|error| {
+        tracing::error!(error = %error, "[AR] Download read failed");
         crate::ErrorKind::NetworkErrorOccurred {
-            error: format!("Failed to read response bytes: {e}"),
+            error: format!("Failed to read response bytes: {error}"),
         }
         .as_error()
     })

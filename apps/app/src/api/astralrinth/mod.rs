@@ -2,9 +2,11 @@ use crate::api::Result;
 use chrono::{Duration, Utc};
 use tauri::{Manager, Runtime, UserAttentionType};
 use theseus::models::astralrinth::authentication::{
-    ExternalAuthProviderMetadata, ExternalOAuthPoll,
-    begin_external_authentication, external_auth_providers,
-    poll_external_authentication,
+    ExternalAuthLibraryState, ExternalAuthProviderMetadata,
+    ExternalOAuthPoll, begin_external_authentication,
+    external_auth_library_states, external_auth_providers,
+    install_external_auth_library_version, poll_external_authentication,
+    select_external_auth_library_version,
 };
 use theseus::prelude::Credentials;
 use url::Url;
@@ -20,6 +22,31 @@ pub fn get_external_auth_providers() -> Vec<ExternalAuthProviderMetadata> {
         .copied()
         .map(|provider| provider.metadata())
         .collect()
+}
+
+/// Returns persisted selections and locally available provider libraries.
+#[tauri::command]
+pub async fn get_external_auth_library_states(
+) -> Result<Vec<ExternalAuthLibraryState>> {
+    Ok(external_auth_library_states().await?)
+}
+
+/// Installs and selects an exact provider-library asset.
+#[tauri::command]
+pub async fn install_external_auth_library(
+    provider: &str,
+    asset_name: &str,
+) -> Result<()> {
+    Ok(install_external_auth_library_version(provider, asset_name).await?)
+}
+
+/// Selects an already-downloaded provider-library asset.
+#[tauri::command]
+pub async fn select_external_auth_library(
+    provider: &str,
+    asset_name: &str,
+) -> Result<bool> {
+    Ok(select_external_auth_library_version(provider, asset_name).await?)
 }
 
 /// Runs an external OAuth device flow and returns credentials after approval.

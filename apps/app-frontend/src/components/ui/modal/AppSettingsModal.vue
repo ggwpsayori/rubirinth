@@ -31,6 +31,7 @@ import { platform as getOsPlatform, version as getOsVersion } from '@tauri-apps/
 import { computed, provide, ref, watch } from 'vue'
 
 import LauncherUpdateModal from '@/components/ui/astralrinth/LauncherUpdateModal.vue'
+import ExternalAuthLibrarySettings from '@/components/ui/settings/astralrinth/ExternalAuthLibrarySettings.vue'
 import UpdateSettings from '@/components/ui/settings/astralrinth/UpdateSettings.vue'
 import {
 	isUpdateAvailable,
@@ -169,6 +170,15 @@ const tabs = [
 		category: tabCategories.instances,
 		icon: GaugeIcon,
 		content: ResourceManagementSettings,
+	},
+	{
+		name: defineMessage({
+			id: 'astralrinth.app.settings.tabs.external-auth-libraries',
+			defaultMessage: 'Authentication libraries',
+		}),
+		category: tabCategories.astralrinth,
+		icon: DownloadIcon,
+		content: ExternalAuthLibrarySettings,
 	},
 	{
 		name: defineMessage({

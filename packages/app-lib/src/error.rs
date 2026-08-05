@@ -127,6 +127,13 @@ pub enum ErrorKind {
     #[error("Shared instances API request failed: {0}")]
     SharedInstancesApiError(String),
 
+    #[error(
+        "The {provider_name} authentication library is not installed or corrupted. Install it from AstralRinth settings before launching Minecraft."
+    )]
+    ExternalAuthLibraryNotInstalled {
+        provider_name: String,
+    },
+
     #[error("Join handle error: {0}")]
     JoinError(#[from] tokio::task::JoinError),
 

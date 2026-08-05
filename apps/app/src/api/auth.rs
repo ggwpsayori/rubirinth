@@ -1,6 +1,8 @@
 use crate::api::Result;
 use crate::api::astralrinth::{
-    authenticate_external_provider, get_external_auth_providers,
+    authenticate_external_provider, get_external_auth_library_states,
+    get_external_auth_providers, install_external_auth_library,
+    select_external_auth_library,
 };
 use chrono::{Duration, Utc};
 use tauri::plugin::TauriPlugin;
@@ -12,6 +14,9 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
         .invoke_handler(tauri::generate_handler![
             offline_login,
             get_external_auth_providers,
+            get_external_auth_library_states,
+            install_external_auth_library,
+            select_external_auth_library,
             authenticate_external_provider,
             check_reachable,
             login,

@@ -24,7 +24,6 @@ fn provider_registry_centralizes_backend_and_frontend_metadata() {
         Some("https://ely.by/skins"),
     );
     assert_eq!(library.cache_directory, "elyby");
-    assert_eq!(library.asset_name_prefix, "authlib-injector");
     assert_eq!(library.server, "ely.by");
     assert_eq!(external_auth_provider(provider.id), Some(provider));
     assert_eq!(
@@ -34,6 +33,7 @@ fn provider_registry_centralizes_backend_and_frontend_metadata() {
             "displayName": "Ely.by",
             "icon": "elyby",
             "skinManagementUrl": "https://ely.by/skins",
+            "libraryReleaseUrl": "https://xorison.dev/libs/minecraft/elyby",
         }),
     );
 }

@@ -230,6 +230,57 @@
   "astralrinth.app.launcher-update.available.title": {
     "message": "Доступно обновление лаунчера"
   },
+  "astralrinth.app.settings.external-auth-libraries.description": {
+    "message": "Выберите и установите библиотеку аутентификации, которая используется при запуске Minecraft с внешним профилем игрока."
+  },
+  "astralrinth.app.settings.external-auth-libraries.install-selected": {
+    "message": "Установить"
+  },
+  "astralrinth.app.settings.external-auth-libraries.installed": {
+    "message": "{providerName}: библиотека {version} установлена"
+  },
+  "astralrinth.app.settings.external-auth-libraries.installing": {
+    "message": "Установка..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.load-failed": {
+    "message": "Не удалось загрузить библиотеки аутентификации: {error}"
+  },
+  "astralrinth.app.settings.external-auth-libraries.loading": {
+    "message": "Загрузка доступных версий библиотек..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.local-only": {
+    "message": "Сервер недоступен, поэтому отображаются только локально установленные версии."
+  },
+  "astralrinth.app.settings.external-auth-libraries.no-versions": {
+    "message": "Совместимые версии библиотеки не найдены."
+  },
+  "astralrinth.app.settings.external-auth-libraries.not-selected": {
+    "message": "Не выбрана"
+  },
+  "astralrinth.app.settings.external-auth-libraries.reinstall": {
+    "message": "Переустановить"
+  },
+  "astralrinth.app.settings.external-auth-libraries.request-server": {
+    "message": "Запросить с сервера"
+  },
+  "astralrinth.app.settings.external-auth-libraries.requesting-server": {
+    "message": "Запрос данных..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.retry": {
+    "message": "Повторить"
+  },
+  "astralrinth.app.settings.external-auth-libraries.selected-version": {
+    "message": "Выбранная версия"
+  },
+  "astralrinth.app.settings.external-auth-libraries.title": {
+    "message": "Библиотеки аутентификации"
+  },
+  "astralrinth.app.settings.external-auth-libraries.version": {
+    "message": "Версия"
+  },
+  "astralrinth.app.settings.tabs.external-auth-libraries": {
+    "message": "Библиотеки аутентификации"
+  },
   "astralrinth.app.settings.update-installing": {
     "message": "Установка обновления..."
   },

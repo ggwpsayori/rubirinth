@@ -1,6 +1,10 @@
 use crate::event::emit::emit_info;
 use crate::state::{Credentials, MinecraftProfile};
-use crate::util::astralrinth::utils::get_authlib_injector_library;
+use crate::util::astralrinth::utils::{
+    get_authlib_injector_library, install_authlib_injector_library,
+    install_latest_authlib_injector_library,
+    local_authlib_injector_libraries, select_local_authlib_injector_library,
+};
 use crate::{Result, State};
 use chrono::{DateTime, Duration as ChronoDuration, Utc};
 use serde::{Deserialize, Serialize};
@@ -27,7 +31,6 @@ const EXTERNAL_AUTH_PROVIDERS: &[ExternalAuthProvider] = &[
         launch: ExternalLaunchMethod::AuthlibInjector(ExternalAuthLibrary {
             cache_directory: "elyby",
             release_url: "https://xorison.dev/libs/minecraft/elyby",
-            asset_name_prefix: "authlib-injector",
             server: "ely.by",
         }),
     },
@@ -49,7 +52,6 @@ pub struct ExternalAuthProvider {
 pub struct ExternalAuthLibrary {
     pub cache_directory: &'static str,
     pub release_url: &'static str,
-    pub asset_name_prefix: &'static str,
     pub server: &'static str,
 }
 
@@ -76,6 +78,15 @@ pub struct ExternalAuthProviderMetadata {
     pub icon: &'static str,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub skin_management_url: Option<&'static str>,
+    pub library_release_url: &'static str,
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ExternalAuthLibraryState {
+    pub provider_id: String,
+    pub selected_asset_name: Option<String>,
+    pub local_asset_names: Vec<String>,
 }
 
 pub struct ExternalOAuthFlow {
@@ -102,6 +113,7 @@ impl ExternalAuthProvider {
             display_name: self.display_name,
             icon: self.icon,
             skin_management_url: self.skin_management_url,
+            library_release_url: self.library().release_url,
         }
     }
 
@@ -309,6 +321,60 @@ pub fn external_auth_provider(id: &str) -> Option<ExternalAuthProvider> {
         .find(|provider| provider.id == id)
 }
 
+/// Returns persisted selections and locally available libraries for every provider.
+pub async fn external_auth_library_states() -> Result<Vec<ExternalAuthLibraryState>> {
+    let state = State::get().await?;
+    let mut selections = sqlx::query_as::<_, (String, String)>(
+        "SELECT provider_id, asset_name FROM external_auth_libraries ORDER BY provider_id",
+    )
+    .fetch_all(&state.pool)
+    .await?
+    .into_iter()
+    .collect::<HashMap<_, _>>();
+    let mut libraries = Vec::new();
+
+    for provider in external_auth_providers().iter().copied() {
+        libraries.push(ExternalAuthLibraryState {
+            provider_id: provider.id.to_string(),
+            selected_asset_name: selections.remove(provider.id),
+            local_asset_names: local_authlib_injector_libraries(
+                provider.library(),
+            )
+            .await?,
+        });
+    }
+
+    Ok(libraries)
+}
+
+/// Installs and selects one provider library asset after validating it remotely.
+pub async fn install_external_auth_library_version(
+    provider_id: &str,
+    asset_name: &str,
+) -> Result<()> {
+    let provider = require_external_auth_provider(provider_id)?;
+    install_authlib_injector_library(
+        provider.id,
+        provider.library(),
+        asset_name,
+    )
+    .await
+}
+
+/// Selects an already-downloaded provider library version.
+pub async fn select_external_auth_library_version(
+    provider_id: &str,
+    asset_name: &str,
+) -> Result<bool> {
+    let provider = require_external_auth_provider(provider_id)?;
+    select_local_authlib_injector_library(
+        provider.id,
+        provider.library(),
+        asset_name,
+    )
+    .await
+}
+
 /// Resolves a provider or returns an error suitable for API callers.
 fn require_external_auth_provider(
     provider_id: &str,
@@ -469,6 +535,35 @@ async fn configure_external_launch(
     credentials: &Credentials,
     version_jar: &str,
 ) -> Result<()> {
+    let library = provider.library();
+    let path = match get_authlib_injector_library(
+        provider.id,
+        provider.display_name,
+        library,
+    )
+    .await
+    {
+        Ok(path) => path,
+        Err(error) => {
+            if !matches!(
+                error.raw.as_ref(),
+                crate::ErrorKind::ExternalAuthLibraryNotInstalled { .. }
+            ) {
+                return Err(error);
+            }
+
+            if !local_authlib_injector_libraries(library)
+                .await?
+                .is_empty()
+            {
+                return Err(error);
+            }
+
+            install_latest_authlib_injector_library(provider.id, library)
+                .await?
+        }
+    };
+
     if !provider
         .validate_access_token(&credentials.access_token)
         .await?
@@ -484,8 +579,6 @@ async fn configure_external_launch(
 		provider.display_name,
 	))
 	.await;
-    let library = provider.library();
-    let path = get_authlib_injector_library(library).await?;
     let _ = emit_info(&format!(
         "[AR] Launching Minecraft instance with {}",
         path.display(),

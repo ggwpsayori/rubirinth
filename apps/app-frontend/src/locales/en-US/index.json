@@ -230,8 +230,59 @@
   "astralrinth.app.launcher-update.available.title": {
     "message": "Launcher update available"
   },
+  "astralrinth.app.settings.external-auth-libraries.description": {
+    "message": "Choose and install the authentication library used when Minecraft starts with an external player profile."
+  },
+  "astralrinth.app.settings.external-auth-libraries.install-selected": {
+    "message": "Install"
+  },
+  "astralrinth.app.settings.external-auth-libraries.installed": {
+    "message": "{providerName} library {version} installed"
+  },
+  "astralrinth.app.settings.external-auth-libraries.installing": {
+    "message": "Installing..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.load-failed": {
+    "message": "Could not load authentication libraries: {error}"
+  },
+  "astralrinth.app.settings.external-auth-libraries.loading": {
+    "message": "Loading available library versions..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.local-only": {
+    "message": "Only locally installed versions are shown because the server is unavailable."
+  },
+  "astralrinth.app.settings.external-auth-libraries.no-versions": {
+    "message": "No compatible library versions were found."
+  },
+  "astralrinth.app.settings.external-auth-libraries.not-selected": {
+    "message": "Not selected"
+  },
+  "astralrinth.app.settings.external-auth-libraries.reinstall": {
+    "message": "Reinstall"
+  },
+  "astralrinth.app.settings.external-auth-libraries.request-server": {
+    "message": "Request from server"
+  },
+  "astralrinth.app.settings.external-auth-libraries.requesting-server": {
+    "message": "Requesting..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.retry": {
+    "message": "Retry"
+  },
+  "astralrinth.app.settings.external-auth-libraries.selected-version": {
+    "message": "Selected version"
+  },
+  "astralrinth.app.settings.external-auth-libraries.title": {
+    "message": "Authentication libraries"
+  },
+  "astralrinth.app.settings.external-auth-libraries.version": {
+    "message": "Version"
+  },
   "astralrinth.app.settings.sidebar.label.astralrinth": {
 	"message": "AstralRinth"
+  },
+  "astralrinth.app.settings.tabs.external-auth-libraries": {
+    "message": "Authentication libraries"
   },
   "astralrinth.app.settings.update-installing": {
     "message": "Installing update..."
