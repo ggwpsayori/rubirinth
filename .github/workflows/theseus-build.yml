@@ -43,6 +43,8 @@ concurrency:
 jobs:
   build:
     name: Build Windows
+    permissions:
+      contents: write
     env:
       VITE_STRIPE_PUBLISHABLE_KEY: pk_live_51JbFxJJygY5LJFfKLVVldb10HlLt24p421OWRsTOWc5sXYFOnFUXWieSc6HD3PHo25ktx8db1WcHr36XGFvZFVUz00V9ixrCs5
       RUSTC_WRAPPER: 'sccache'
@@ -143,3 +145,22 @@ jobs:
           path: |
             target/release/bundle/nsis/*-setup.exe
             target/release/bundle/nsis/*-setup.nsis.zip*
+
+      - name: Create GitHub release
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION_TAG="${{ github.ref_name }}"
+          VERSION="${VERSION_TAG#v}"
+          RELEASE_TITLE="Rubirinth App ${VERSION}"
+
+          # Clean up any accidental 'main' release
+          gh release delete main --yes 2>/dev/null || true
+
+          echo "Creating GitHub Release for ${VERSION_TAG}..."
+          gh release create "${VERSION_TAG}" \
+            --title "${RELEASE_TITLE}" \
+            --generate-notes \
+            target/release/bundle/nsis/*-setup.exe
