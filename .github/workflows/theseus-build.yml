@@ -154,7 +154,15 @@ jobs:
         run: |
           VERSION_TAG="${{ github.ref_name }}"
           VERSION="${VERSION_TAG#v}"
-          RELEASE_TITLE="Rubirinth App ${VERSION}"
+
+          # Fetch latest upstream Modrinth App version
+          UPSTREAM_VERSION=$(gh api "repos/modrinth/theseus/releases/latest" --jq '.tag_name' 2>/dev/null | sed 's/^v//' || echo "")
+
+          if [ -n "$UPSTREAM_VERSION" ]; then
+            RELEASE_TITLE="Rubirinth App ${VERSION} (based on Modrinth App ${UPSTREAM_VERSION})"
+          else
+            RELEASE_TITLE="Rubirinth App ${VERSION}"
+          fi
 
           # Clean up any accidental 'main' release
           gh release delete main --yes 2>/dev/null || true
