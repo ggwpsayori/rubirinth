@@ -213,11 +213,11 @@ const messages = defineMessages({
 	},
 	targetLabel: {
 		id: 'servers.grant-access-modal.target.label',
-		defaultMessage: 'Modrinth username',
+		defaultMessage: 'Rubirinth username',
 	},
 	targetPlaceholder: {
 		id: 'servers.grant-access-modal.target.placeholder',
-		defaultMessage: 'Enter Modrinth username',
+		defaultMessage: 'Enter Rubirinth username',
 	},
 	noSuggestions: {
 		id: 'servers.grant-access-modal.target.no-suggestions',

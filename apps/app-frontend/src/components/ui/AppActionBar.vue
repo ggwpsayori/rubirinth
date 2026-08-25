@@ -16,6 +16,7 @@
 			<span class="text-sm text-contrast"> {{ formatMessage(messages.offline) }} </span>
 		</div>
 		<AppUpdateButton />
+		<AccountActionBarButton />
 		<div
 			class="flex border-solid border-surface-5 text-sm items-center gap-2 py-1.5 px-3 rounded-xl border"
 		>
@@ -147,6 +148,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import AppUpdateButton from '@/components/ui/app-update-button/index.vue'
+import AccountActionBarButton from '@/components/ui/AccountActionBarButton.vue'
 import { useInstallJobNotifications } from '@/composables/browse/install-job-notifications'
 import { useAppEvent } from '@/composables/use-app-event'
 import { trackEvent } from '@/helpers/analytics'

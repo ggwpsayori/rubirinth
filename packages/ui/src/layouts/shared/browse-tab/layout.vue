@@ -61,7 +61,7 @@ const messages = defineMessages({
 	},
 	offline: {
 		id: 'browse.offline',
-		defaultMessage: 'You are currently offline. Connect to the internet to browse Modrinth!',
+		defaultMessage: 'You are currently offline. Connect to the internet to browse Rubirinth!',
 	},
 	noResults: {
 		id: 'browse.no-results',

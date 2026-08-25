@@ -297,12 +297,12 @@ const messages = defineMessages({
 	errorSupportNotice: {
 		id: 'servers.manage.error.support-notice',
 		defaultMessage:
-			'If you require personalized support regarding the status of your server, please contact Modrinth Support.',
+			'If you require personalized support regarding the status of your server, please contact Rubirinth Support.',
 	},
 	errorDetails: { id: 'servers.manage.error.details', defaultMessage: 'Error details:' },
 	contactSupportButton: {
 		id: 'servers.manage.contact-support-button',
-		defaultMessage: 'Contact Modrinth Support',
+		defaultMessage: 'Contact Rubirinth Support',
 	},
 	reloadButton: { id: 'servers.manage.reload-button', defaultMessage: 'Reload' },
 	serversTitle: { id: 'servers.manage.servers-title', defaultMessage: 'Modrinth Hosting' },
@@ -372,7 +372,7 @@ const messages = defineMessages({
 	},
 	resubscribeErrorText: {
 		id: 'servers.manage.resubscribe-error.text',
-		defaultMessage: 'An error occurred while resubscribing to your Modrinth server.',
+		defaultMessage: 'An error occurred while resubscribing to your Rubirinth server.',
 	},
 })
 

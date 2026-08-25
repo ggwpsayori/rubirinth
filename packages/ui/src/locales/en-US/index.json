@@ -114,7 +114,7 @@
     "defaultMessage": "No results found for your query!"
   },
   "browse.offline": {
-    "defaultMessage": "You are currently offline. Connect to the internet to browse Modrinth!"
+    "defaultMessage": "You are currently offline. Connect to the internet to browse Rubirinth!"
   },
   "browse.search.placeholder": {
     "defaultMessage": "Search {projectType}..."
@@ -249,7 +249,7 @@
     "defaultMessage": "Open in folder"
   },
   "button.open-in-modrinth": {
-    "defaultMessage": "Open in Modrinth"
+    "defaultMessage": "Open in Rubirinth"
   },
   "button.play": {
     "defaultMessage": "Play"
@@ -534,13 +534,13 @@
     "defaultMessage": "{count} removed (disabled)"
   },
   "content.diff-modal.reviewed-files": {
-    "defaultMessage": "Files that aren't published to Modrinth aren't reviewed."
+    "defaultMessage": "Files that aren't published to Rubirinth aren't reviewed."
   },
   "content.diff-modal.unknown-content-body": {
     "defaultMessage": "Some content on your server could not be analyzed and may be affected by this change."
   },
   "content.diff-modal.unknown-files-description": {
-    "defaultMessage": "This update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "defaultMessage": "This update contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust."
   },
   "content.diff-modal.unknown-files-warning": {
     "defaultMessage": "Unknown files warning"
@@ -1188,7 +1188,7 @@
     "defaultMessage": "link-to-work"
   },
   "external-files.permissions-card.editor.modrinth-link-to-work": {
-    "defaultMessage": "This appears to be a Modrinth link. If this content is available on Modrinth, your pack was likely exported incorrectly. If you downloaded it from another site, try downloading the Modrinth version instead; sometimes they are not identical files."
+    "defaultMessage": "This appears to be a Rubirinth link. If this content is available on Rubirinth, your pack was likely exported incorrectly. If you downloaded it from another site, try downloading the Rubirinth version instead; sometimes they are not identical files."
   },
   "external-files.permissions-card.editor.notes-label": {
     "defaultMessage": "Notes"
@@ -1212,7 +1212,7 @@
     "defaultMessage": "If you are found to have lied or manipulated the images uploaded, your project and account may be terminated."
   },
   "external-files.permissions-card.editor.proof-warning.title": {
-    "defaultMessage": "Modrinth staff may verify submitted proof"
+    "defaultMessage": "Rubirinth staff may verify submitted proof"
   },
   "external-files.permissions-card.editor.save": {
     "defaultMessage": "Save attribution"
@@ -1299,7 +1299,7 @@
     "defaultMessage": "Automatically attributed"
   },
   "external-files.permissions-card.reason.globally-allowed.description": {
-    "defaultMessage": "We've seen this file before and have prepared an attribution for you. If something seems wrong, please contact Modrinth Support via the Help Center"
+    "defaultMessage": "We've seen this file before and have prepared an attribution for you. If something seems wrong, please contact Rubirinth Support via the Help Center"
   },
   "external-files.permissions-card.reason.license": {
     "defaultMessage": "License"
@@ -2259,7 +2259,7 @@
     "defaultMessage": "External"
   },
   "instances.managed-content-modal.external-content-description": {
-    "defaultMessage": "This file is not published on Modrinth."
+    "defaultMessage": "This file is not published on Rubirinth."
   },
   "instances.managed-content-modal.header": {
     "defaultMessage": "Managed content"
@@ -2865,16 +2865,16 @@
     "defaultMessage": "Keep files updated when the server changes"
   },
   "modal.open-in-app.get-app": {
-    "defaultMessage": "Get Modrinth App"
+    "defaultMessage": "Get Rubirinth App"
   },
   "modal.open-in-app.opening-automatically": {
-    "defaultMessage": "The Modrinth App will open automatically..."
+    "defaultMessage": "The Rubirinth App will open automatically..."
   },
   "modal.open-in-app.title": {
-    "defaultMessage": "Opening Modrinth App"
+    "defaultMessage": "Opening Rubirinth App"
   },
   "modal.open-in-app.why-use": {
-    "defaultMessage": "Why use the Modrinth App"
+    "defaultMessage": "Why use the Rubirinth App"
   },
   "notification.error.title": {
     "defaultMessage": "An error occurred"
@@ -2940,7 +2940,7 @@
     "defaultMessage": "Moderator"
   },
   "omorphia.component.badge.label.modrinth-team": {
-    "defaultMessage": "Modrinth Team"
+    "defaultMessage": "Rubirinth Team"
   },
   "omorphia.component.badge.label.pending": {
     "defaultMessage": "Pending"
@@ -3060,10 +3060,10 @@
     "defaultMessage": "Visa"
   },
   "profile.bio.fallback.creator": {
-    "defaultMessage": "A Modrinth creator."
+    "defaultMessage": "A Rubirinth creator."
   },
   "profile.bio.fallback.user": {
-    "defaultMessage": "A Modrinth user."
+    "defaultMessage": "A Rubirinth user."
   },
   "profile.block-user.admonition-body": {
     "defaultMessage": "{username} will not be able to send you friend requests, invite you to shared instances or invite you to Modrinth Hosting servers."
@@ -3120,7 +3120,7 @@
     "defaultMessage": "{count, plural, one {# project} other {# projects}}"
   },
   "profile.details.error.github-popup-blocked": {
-    "defaultMessage": "Allow pop-ups for Modrinth, then try again."
+    "defaultMessage": "Allow pop-ups for Rubirinth, then try again."
   },
   "profile.details.error.github-profile-message": {
     "defaultMessage": "The GitHub profile could not be retrieved. Please try again."
@@ -3198,10 +3198,10 @@
     "defaultMessage": "{count, plural, one {project} other {projects}}"
   },
   "profile.official-account": {
-    "defaultMessage": "Official Modrinth account"
+    "defaultMessage": "Official Rubirinth account"
   },
   "profile.official-account.bio": {
-    "defaultMessage": "The official user account of Modrinth. Get support at <support-link></support-link> or via email at <email></email>"
+    "defaultMessage": "The official user account of Rubirinth. Get support at <support-link></support-link> or via email at <email></email>"
   },
   "profile.unblock-user.error-description": {
     "defaultMessage": "An error occurred while unblocking this user. Please try again."
@@ -3576,7 +3576,7 @@
     "defaultMessage": "{count} {countPlural, plural, one {recent play} other {recent plays}}"
   },
   "project.recent-plays.tooltip": {
-    "defaultMessage": "{count} {countPlural, plural, one {recent play} other {recent plays}} from Modrinth in the past 2 weeks"
+    "defaultMessage": "{count} {countPlural, plural, one {recent play} other {recent plays}} from Rubirinth in the past 2 weeks"
   },
   "project.server.customModpackTooltip": {
     "defaultMessage": "This project uses a custom modpack"
@@ -3912,7 +3912,7 @@
     "defaultMessage": "Your project has multiple environments"
   },
   "project.settings.environment.notice.review-options.description": {
-    "defaultMessage": "We've just overhauled the Environments system on Modrinth and new options are now available. Please ensure the correct option is selected below and then click 'Verify' when you're done!"
+    "defaultMessage": "We've just overhauled the Environments system on Rubirinth and new options are now available. Please ensure the correct option is selected below and then click 'Verify' when you're done!"
   },
   "project.settings.environment.notice.review-options.title": {
     "defaultMessage": "Please review the options below"
@@ -4275,13 +4275,13 @@
     "defaultMessage": "Loader"
   },
   "search.photosensitivity-warning-modal.body.1": {
-    "defaultMessage": "We cannot guarantee that all content on Modrinth has been labeled appropriately."
+    "defaultMessage": "We cannot guarantee that all content on Rubirinth has been labeled appropriately."
   },
   "search.photosensitivity-warning-modal.body.2": {
-    "defaultMessage": "Content labels for photosensitivity triggers are self-assigned by the creators who upload their content to Modrinth. These projects have not gone through any safety testing."
+    "defaultMessage": "Content labels for photosensitivity triggers are self-assigned by the creators who upload their content to Rubirinth. These projects have not gone through any safety testing."
   },
   "search.photosensitivity-warning-modal.body.3": {
-    "defaultMessage": "Using any content on Modrinth is at your own risk. Please stay safe! 💚"
+    "defaultMessage": "Using any content on Rubirinth is at your own risk. Please stay safe! 💚"
   },
   "search.photosensitivity-warning-modal.dont-show-again": {
     "defaultMessage": "Don't show this again"
@@ -5046,13 +5046,13 @@
     "defaultMessage": "Do not use their Minecraft username."
   },
   "servers.grant-access-modal.target.label": {
-    "defaultMessage": "Modrinth username"
+    "defaultMessage": "Rubirinth username"
   },
   "servers.grant-access-modal.target.no-suggestions": {
     "defaultMessage": "No matching users found."
   },
   "servers.grant-access-modal.target.placeholder": {
-    "defaultMessage": "Enter Modrinth username"
+    "defaultMessage": "Enter Rubirinth username"
   },
   "servers.grant-access-modal.target.searching": {
     "defaultMessage": "Searching..."
@@ -5121,7 +5121,7 @@
     "defaultMessage": "New server"
   },
   "servers.list-empty.no-servers-description": {
-    "defaultMessage": "Install mods, invite friends, and play together all from the Modrinth App."
+    "defaultMessage": "Install mods, invite friends, and play together all from the Rubirinth App."
   },
   "servers.list-empty.one-click-mod-installs-description": {
     "defaultMessage": "Pick your favorite mods and we handle the rest."
@@ -5130,13 +5130,13 @@
     "defaultMessage": "One-click mod installs"
   },
   "servers.list-empty.play-with-friends-description": {
-    "defaultMessage": "Invite friends to play your server with one-click play from the Modrinth App."
+    "defaultMessage": "Invite friends to play your server with one-click play from the Rubirinth App."
   },
   "servers.list-empty.play-with-friends-title": {
     "defaultMessage": "Play with friends"
   },
   "servers.list-empty.sign-in-button": {
-    "defaultMessage": "Sign in to Modrinth"
+    "defaultMessage": "Sign in to Rubirinth"
   },
   "servers.list-empty.simple-setup-description": {
     "defaultMessage": "Set up your server just like a single player world."
@@ -5196,7 +5196,7 @@
     "defaultMessage": "Your subscription is set to cancel on <date>{formattedDate}</date>. "
   },
   "servers.listing.notice.suspended": {
-    "defaultMessage": "Your server has been suspended. Please contact Modrinth Support for more information."
+    "defaultMessage": "Your server has been suspended. Please contact Rubirinth Support for more information."
   },
   "servers.listing.notice.upgrading": {
     "defaultMessage": "Your server's hardware is currently being upgraded and will be back online shortly."
@@ -5229,7 +5229,7 @@
     "defaultMessage": "Upload in progress"
   },
   "servers.manage.contact-support-button": {
-    "defaultMessage": "Contact Modrinth Support"
+    "defaultMessage": "Contact Rubirinth Support"
   },
   "servers.manage.error.alert-notice": {
     "defaultMessage": "Our systems automatically alert our team when there's an issue. We are already working on getting them back online."
@@ -5244,7 +5244,7 @@
     "defaultMessage": "If you recently purchased your Modrinth Hosting server, it is currently in a queue and will appear here as soon as it's ready. <warning>Do not attempt to purchase a new server.</warning>"
   },
   "servers.manage.error.support-notice": {
-    "defaultMessage": "If you require personalized support regarding the status of your server, please contact Modrinth Support."
+    "defaultMessage": "If you require personalized support regarding the status of your server, please contact Rubirinth Support."
   },
   "servers.manage.error.title": {
     "defaultMessage": "Servers could not be loaded"
@@ -5277,7 +5277,7 @@
     "defaultMessage": "Reload"
   },
   "servers.manage.resubscribe-error.text": {
-    "defaultMessage": "An error occurred while resubscribing to your Modrinth server."
+    "defaultMessage": "An error occurred while resubscribing to your Rubirinth server."
   },
   "servers.manage.resubscribe-error.title": {
     "defaultMessage": "Error resubscribing"
@@ -5325,10 +5325,10 @@
     "defaultMessage": "Your Medal server trial has ended and your server has been suspended. Please upgrade to continue using your server."
   },
   "servers.medal-listing.notice.suspended": {
-    "defaultMessage": "Your server has been suspended. Please update your billing information or contact Modrinth Support for more information."
+    "defaultMessage": "Your server has been suspended. Please update your billing information or contact Rubirinth Support for more information."
   },
   "servers.medal-listing.notice.suspended-with-reason": {
-    "defaultMessage": "Your server has been suspended: {reason}. Please update your billing information or contact Modrinth Support for more information."
+    "defaultMessage": "Your server has been suspended: {reason}. Please update your billing information or contact Rubirinth Support for more information."
   },
   "servers.medal-listing.notice.upgrading": {
     "defaultMessage": "Your server's hardware is currently being upgraded and will be back online shortly."
@@ -5538,7 +5538,7 @@
     "defaultMessage": "Setup server"
   },
   "servers.setup.onboarding.step.choose.description": {
-    "defaultMessage": "Pick your favorite modpack from Modrinth, or choose a loader and add the mods you want."
+    "defaultMessage": "Pick your favorite modpack from Rubirinth, or choose a loader and add the mods you want."
   },
   "servers.setup.onboarding.step.choose.title": {
     "defaultMessage": "Choose what to play"
@@ -5565,7 +5565,7 @@
     "defaultMessage": "Your server is ready. Here's what you need to do to start playing!"
   },
   "servers.setup.onboarding.welcome.title": {
-    "defaultMessage": "Welcome to Modrinth Hosting"
+    "defaultMessage": "Welcome to Rubirinth Hosting"
   },
   "servers.setup.rate-limit.text": {
     "defaultMessage": "You are being rate limited. Please try again later."
@@ -5643,7 +5643,7 @@
     "defaultMessage": "Advanced rendering"
   },
   "settings.display.sidebar.external-links-new-tab.description": {
-    "defaultMessage": "Make links which go outside of Modrinth open in a new tab. No matter this setting, links on the same domain and in Markdown descriptions will open in the same tab, and links on ads and edit pages will open in a new tab."
+    "defaultMessage": "Make links which go outside of Rubirinth open in a new tab. No matter this setting, links on the same domain and in Markdown descriptions will open in the same tab, and links on ads and edit pages will open in a new tab."
   },
   "settings.display.sidebar.external-links-new-tab.title": {
     "defaultMessage": "Open external links in new tab"
@@ -5664,7 +5664,7 @@
     "defaultMessage": "Dark"
   },
   "settings.display.theme.description": {
-    "defaultMessage": "Select your preferred color theme across Modrinth."
+    "defaultMessage": "Select your preferred color theme across Rubirinth."
   },
   "settings.display.theme.light": {
     "defaultMessage": "Light"
@@ -5688,7 +5688,7 @@
     "defaultMessage": "Use this theme everywhere you're signed in. Turn this off to keep a separate theme on this device."
   },
   "settings.display.theme.sync-across-devices.sign-in-tooltip": {
-    "defaultMessage": "Sign into Modrinth to sync theme"
+    "defaultMessage": "Sign into Rubirinth to sync theme"
   },
   "settings.display.theme.system": {
     "defaultMessage": "Sync with system"
@@ -5709,7 +5709,7 @@
     "defaultMessage": "Search results"
   },
   "settings.language.coverage.app-tooltip": {
-    "defaultMessage": "About {percentage}% of the Modrinth App is available in this language."
+    "defaultMessage": "About {percentage}% of the Rubirinth App is available in this language."
   },
   "settings.language.coverage.label": {
     "defaultMessage": "{percentage}% supported"
@@ -5745,7 +5745,7 @@
     "defaultMessage": "Personal access tokens"
   },
   "settings.preferences.update-failed.description": {
-    "defaultMessage": "Your settings could not be saved to your Modrinth account. Please try again."
+    "defaultMessage": "Your settings could not be saved to your Rubirinth account. Please try again."
   },
   "settings.preferences.update-failed.title": {
     "defaultMessage": "Failed to sync settings"
@@ -5763,7 +5763,7 @@
     "defaultMessage": "Profile picture"
   },
   "settings.profile.public-information.description": {
-    "defaultMessage": "Your profile information is publicly <profile-link>viewable on Modrinth</profile-link> and through the <docs-link>Modrinth API</docs-link>."
+    "defaultMessage": "Your profile information is publicly <profile-link>viewable on Rubirinth</profile-link> and through the <docs-link>Modrinth API</docs-link>."
   },
   "settings.profile.save-error": {
     "defaultMessage": "Failed to update profile"
@@ -5772,10 +5772,10 @@
     "defaultMessage": "An error occurred while updating your profile. Please try again."
   },
   "settings.profile.sign-in-required.description": {
-    "defaultMessage": "Sign in with a Modrinth account to customize your public profile."
+    "defaultMessage": "Sign in with a Rubirinth account to customize your public profile."
   },
   "settings.profile.sign-in-required.title": {
-    "defaultMessage": "Modrinth account required"
+    "defaultMessage": "Rubirinth account required"
   },
   "settings.profile.username.description": {
     "defaultMessage": "A unique case-insensitive name to identify your profile."
@@ -5790,7 +5790,7 @@
     "defaultMessage": "User"
   },
   "settings.social.blocked-users.description": {
-    "defaultMessage": "These are the users you have blocked on Modrinth. They cannot:"
+    "defaultMessage": "These are the users you have blocked on Rubirinth. They cannot:"
   },
   "settings.social.blocked-users.empty": {
     "defaultMessage": "You haven't blocked anyone."
@@ -5829,7 +5829,7 @@
     "defaultMessage": "{username}'s avatar"
   },
   "settings.social.friend-requests.description": {
-    "defaultMessage": "Control who can send you friend requests on Modrinth."
+    "defaultMessage": "Control who can send you friend requests on Rubirinth."
   },
   "settings.social.friend-requests.title": {
     "defaultMessage": "Friend requests"
@@ -5868,10 +5868,10 @@
     "defaultMessage": "Shared instance invites"
   },
   "settings.social.sign-in-required.description": {
-    "defaultMessage": "You can control who can interact with you, and manage blocked users with a Modrinth Account"
+    "defaultMessage": "You can control who can interact with you, and manage blocked users with a Rubirinth Account"
   },
   "settings.social.sign-in-required.title": {
-    "defaultMessage": "Modrinth account required"
+    "defaultMessage": "Rubirinth account required"
   },
   "settings.social.title": {
     "defaultMessage": "Social"
@@ -5970,7 +5970,7 @@
     "defaultMessage": "Save"
   },
   "sharing.invite-players-modal.search-placeholder": {
-    "defaultMessage": "Enter Modrinth username"
+    "defaultMessage": "Enter Rubirinth username"
   },
   "sharing.invite-players-modal.searching": {
     "defaultMessage": "Searching..."
@@ -6555,34 +6555,34 @@
     "defaultMessage": "Malware is often distributed through mod files by sharing them on platforms like Discord."
   },
   "unknown-file-warning-modal.mod-warning-body": {
-    "defaultMessage": " isn’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "defaultMessage": " isn’t published on Rubirinth. We strongly recommend only installing files from sources you trust."
   },
   "unknown-file-warning-modal.mod-warning-title": {
     "defaultMessage": "Unknown file warning"
   },
   "unknown-file-warning-modal.modpack-warning-body": {
-    "defaultMessage": " contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "defaultMessage": " contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust."
   },
   "unknown-file-warning-modal.modpack-warning-title": {
     "defaultMessage": "Unknown files warning"
   },
   "unknown-file-warning-modal.reviewed-files": {
-    "defaultMessage": "Files that aren't published to Modrinth aren't reviewed."
+    "defaultMessage": "Files that aren't published to Rubirinth aren't reviewed."
   },
   "unknown-file-warning-modal.unrecognized-files": {
     "defaultMessage": "Unrecognized files"
   },
   "user.profile.badge.alpha.about.1": {
-    "defaultMessage": "This user has been around since Modrinth Alpha, which ended in November 2020."
+    "defaultMessage": "This user has been around since Rubirinth Alpha, which ended in November 2020."
   },
   "user.profile.badge.alpha.name": {
     "defaultMessage": "Alpha Tester"
   },
   "user.profile.badge.beta.about.1": {
-    "defaultMessage": "This user has been around since Modrinth Beta, which ended in February 2022."
+    "defaultMessage": "This user has been around since Rubirinth Beta, which ended in February 2022."
   },
   "user.profile.badge.beta.link": {
-    "defaultMessage": "Click to read about the launch of Modrinth Beta."
+    "defaultMessage": "Click to read about the launch of Rubirinth Beta."
   },
   "user.profile.badge.beta.name": {
     "defaultMessage": "Beta Tester"
@@ -6594,37 +6594,37 @@
     "defaultMessage": "{download_sum} Downloads"
   },
   "user.profile.badge.early-datapack-adopter.about.1": {
-    "defaultMessage": "This user helped us test Data Pack projects on Modrinth before we launched them in January 2023."
+    "defaultMessage": "This user helped us test Data Pack projects on Rubirinth before we launched them in January 2023."
   },
   "user.profile.badge.early-datapack-adopter.name": {
     "defaultMessage": "Early Data Pack Adopter"
   },
   "user.profile.badge.early-modpack-adopter.about.1": {
-    "defaultMessage": "This user helped us test Modpack projects on Modrinth before we launched them in May 2022."
+    "defaultMessage": "This user helped us test Modpack projects on Rubirinth before we launched them in May 2022."
   },
   "user.profile.badge.early-modpack-adopter.name": {
     "defaultMessage": "Early Modpack Adopter"
   },
   "user.profile.badge.early-plugin-adopter.about.1": {
-    "defaultMessage": "This user helped us test Plugin projects on Modrinth before we launched them in August 2022."
+    "defaultMessage": "This user helped us test Plugin projects on Rubirinth before we launched them in August 2022."
   },
   "user.profile.badge.early-plugin-adopter.name": {
     "defaultMessage": "Early Plugin Adopter"
   },
   "user.profile.badge.early-resourcepack-adopter.about.1": {
-    "defaultMessage": "This user helped us test Resource Pack projects on Modrinth before we launched them in August 2022."
+    "defaultMessage": "This user helped us test Resource Pack projects on Rubirinth before we launched them in August 2022."
   },
   "user.profile.badge.early-resourcepack-adopter.name": {
     "defaultMessage": "Early Resource Pack Adopter"
   },
   "user.profile.badge.early-server-adopter.about.1": {
-    "defaultMessage": "This user helped us test Server projects on Modrinth before we launched them in March 2026."
+    "defaultMessage": "This user helped us test Server projects on Rubirinth before we launched them in March 2026."
   },
   "user.profile.badge.early-server-adopter.name": {
     "defaultMessage": "Early Server Adopter"
   },
   "user.profile.badge.early-shader-adopter.about.1": {
-    "defaultMessage": "This user helped us test Shader projects on Modrinth before we launched them in January 2023."
+    "defaultMessage": "This user helped us test Shader projects on Rubirinth before we launched them in January 2023."
   },
   "user.profile.badge.early-shader-adopter.name": {
     "defaultMessage": "Early Shader Adopter"
@@ -6636,25 +6636,25 @@
     "defaultMessage": "Modrinth Hosting Alpha Tester"
   },
   "user.profile.badge.moderator.about.1": {
-    "defaultMessage": "This user works for Modrinth as a Content Moderator."
+    "defaultMessage": "This user works for Rubirinth as a Content Moderator."
   },
   "user.profile.badge.moderator.about.2": {
-    "defaultMessage": "Content Moderators on Modrinth review projects, handle reports, and help keep Modrinth safe."
+    "defaultMessage": "Content Moderators on Rubirinth review projects, handle reports, and help keep Rubirinth safe."
   },
   "user.profile.badge.moderator.name": {
     "defaultMessage": "Content Moderator"
   },
   "user.profile.badge.plus.about.1": {
-    "defaultMessage": "This user is going the extra mile to support Modrinth and the creators on the platform."
+    "defaultMessage": "This user is going the extra mile to support Rubirinth and the creators on the platform."
   },
   "user.profile.badge.plus.link": {
     "defaultMessage": "Click to learn more about how you can become a member."
   },
   "user.profile.badge.plus.name": {
-    "defaultMessage": "Modrinth+ Member"
+    "defaultMessage": "Rubirinth+ Member"
   },
   "user.profile.badge.pride.about.1": {
-    "defaultMessage": "This user participated in at least one of Modrinth's Pride fundraisers for the LGBTQ+ community."
+    "defaultMessage": "This user participated in at least one of Rubirinth's Pride fundraisers for the LGBTQ+ community."
   },
   "user.profile.badge.pride.link": {
     "defaultMessage": "Click to visit our latest Pride fundraiser."
@@ -6663,10 +6663,10 @@
     "defaultMessage": "Pride Fundraiser Supporter"
   },
   "user.profile.badge.staff.about.1": {
-    "defaultMessage": "This user works for Modrinth."
+    "defaultMessage": "This user works for Rubirinth."
   },
   "user.profile.badge.staff.name": {
-    "defaultMessage": "Modrinth Team"
+    "defaultMessage": "Rubirinth Team"
   },
   "version.content.name": {
     "defaultMessage": "Name"

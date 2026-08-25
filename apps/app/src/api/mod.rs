@@ -99,6 +99,9 @@ macro_rules! impl_serialize {
                             theseus::ErrorKind::SharedInstancesApiError(_) => {
                                 Some("shared_instances_api_error")
                             }
+                            theseus::ErrorKind::ExternalAuthLibraryNotInstalled { .. } => {
+                                Some("external_auth_library_not_installed")
+                            }
                             _ => None,
                         };
                         let mut state = serializer.serialize_struct(

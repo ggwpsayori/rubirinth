@@ -142,7 +142,7 @@ const messages = defineMessages({
 	},
 	officialAccount: {
 		id: 'profile.official-account',
-		defaultMessage: 'Official Modrinth account',
+		defaultMessage: 'Official Rubirinth account',
 	},
 	profileJoinedLabel: {
 		id: 'profile.label.joined',

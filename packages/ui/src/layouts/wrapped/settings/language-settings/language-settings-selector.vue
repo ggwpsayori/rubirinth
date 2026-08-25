@@ -55,7 +55,7 @@ const messages = defineMessages({
 	},
 	appCoverageTooltip: {
 		id: 'settings.language.coverage.app-tooltip',
-		defaultMessage: 'About {percentage}% of the Modrinth App is available in this language.',
+		defaultMessage: 'About {percentage}% of the Rubirinth App is available in this language.',
 	},
 	websiteCoverageTooltip: {
 		id: 'settings.language.coverage.website-tooltip',
@@ -289,7 +289,7 @@ function getCategoryName(category: Category): string {
 				<template v-for="loc in categoryLocales" :key="loc.tag">
 					<Button
 						:type="$activeLocale === loc.tag ? 'colored' : 'base'"
-						:color="$activeLocale === loc.tag ? 'green' : undefined"
+						:color="$activeLocale === loc.tag ? 'brand' : undefined"
 						:aria-pressed="$activeLocale === loc.tag"
 						:disabled="isChangingLocale() && $changingTo !== loc.tag"
 						:aria-label="getItemLabel(loc)"

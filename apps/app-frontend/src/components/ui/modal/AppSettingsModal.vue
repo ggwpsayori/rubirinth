@@ -262,7 +262,7 @@ const messages = defineMessages({
 	},
 	appVersion: {
 		id: 'app.settings.app-version',
-		defaultMessage: 'Modrinth App {version}',
+		defaultMessage: 'Rubirinth App {version}',
 	},
 	macos: {
 		id: 'app.settings.operating-system.macos',
@@ -315,14 +315,23 @@ const messages = defineMessages({
 				<div class="flex items-center gap-3">
 					<button
 						:aria-label="formatMessage(messages.developerModeButtonLabel)"
-						class="p-0 m-0 bg-transparent border-none cursor-pointer button-animation"
+						class="p-0 m-0 bg-transparent border-none cursor-pointer button-animation flex items-center justify-center"
 						:class="{
 							'text-brand': appSettings.devMode,
 							'text-secondary': !appSettings.devMode,
 						}"
 						@click="devModeCount"
 					>
-						<ModrinthIcon aria-hidden="true" class="w-6 h-6" />
+						<svg
+							viewBox="0 0 424 419"
+							fill="currentColor"
+							xmlns="http://www.w3.org/2000/svg"
+							class="w-6 h-6"
+							aria-hidden="true"
+						>
+							<path d="M0 0L423.407 75.8519L307.852 170.074H258.519L423.407 418.963L99.4074 123.407L220.296 132.741L222.074 111.407L84.7407 54.5185L56.2963 71.8519L0 15.4074V0Z" />
+							<path d="M91.5658 265.778L187.852 337.481H31.3467L91.5658 265.778Z" />
+						</svg>
 					</button>
 					<div class="max-w-[200px]">
 						<p class="m-0">

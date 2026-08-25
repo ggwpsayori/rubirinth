@@ -451,7 +451,7 @@ const messages = defineMessages({
 	},
 	friendRequestsDescription: {
 		id: 'settings.social.friend-requests.description',
-		defaultMessage: 'Control who can send you friend requests on Modrinth.',
+		defaultMessage: 'Control who can send you friend requests on Rubirinth.',
 	},
 	sharedInstanceInvitesTitle: {
 		id: 'settings.social.shared-instance-invites.title',
@@ -503,7 +503,7 @@ const messages = defineMessages({
 	},
 	blockedUsersDescription: {
 		id: 'settings.social.blocked-users.description',
-		defaultMessage: 'These are the users you have blocked on Modrinth. They cannot:',
+		defaultMessage: 'These are the users you have blocked on Rubirinth. They cannot:',
 	},
 	friendRequestsRestriction: {
 		id: 'settings.social.blocked-users.restriction.friend-requests',
@@ -543,12 +543,12 @@ const messages = defineMessages({
 	},
 	signInRequiredTitle: {
 		id: 'settings.social.sign-in-required.title',
-		defaultMessage: 'Modrinth account required',
+		defaultMessage: 'Rubirinth account required',
 	},
 	signInRequiredDescription: {
 		id: 'settings.social.sign-in-required.description',
 		defaultMessage:
-			'You can control who can interact with you, and manage blocked users with a Modrinth Account',
+			'You can control who can interact with you, and manage blocked users with a Rubirinth Account',
 	},
 	loadError: {
 		id: 'settings.social.blocked-users.load-error',

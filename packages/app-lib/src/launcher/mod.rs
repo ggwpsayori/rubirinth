@@ -1023,6 +1023,13 @@ pub async fn launch_minecraft(
         command.arg("--add-opens=jdk.internal/jdk.internal.misc=ALL-UNNAMED");
     }
 
+    crate::models::astralrinth::authentication::configure_minecraft_launch(
+        &mut command,
+        credentials,
+        &version_jar,
+    )
+    .await?;
+
     command
         .arg("com.modrinth.theseus.MinecraftLaunch")
         .arg(version_info.main_class.clone())

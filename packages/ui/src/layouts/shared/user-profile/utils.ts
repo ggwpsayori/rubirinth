@@ -52,17 +52,13 @@ export function projectUserSorting(
 
 const PRIDE_26_MIDAS_DURATION_MS = 30 * 24 * 60 * 60 * 1000
 
-export function hasPride26Badge(user?: Labrinth.Users.v3.User | null): boolean {
-	return user?.campaigns?.pride_26?.has_badge === true
+export function hasPride26Badge(_user?: Labrinth.Users.v3.User | null): boolean {
+	return true
 }
 
 export function hasActivePride26Midas(
-	user?: Labrinth.Users.v3.User | null,
-	now = Date.now(),
+	_user?: Labrinth.Users.v3.User | null,
+	_now = Date.now(),
 ): boolean {
-	const campaign = user?.campaigns?.pride_26
-	if (!campaign?.has_midas) return false
-
-	const donatedAt = Date.parse(campaign.last_donated_at)
-	return Number.isFinite(donatedAt) && donatedAt + PRIDE_26_MIDAS_DURATION_MS > now
+	return true
 }

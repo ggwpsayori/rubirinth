@@ -209,13 +209,13 @@ watch(
 		sidebarToggled.value = !toggleSidebar
 	},
 )
-const forceSidebar = computed(
-	() =>
-		route.path.startsWith('/browse') ||
-		route.path.startsWith('/project') ||
-		route.path.startsWith('/user'),
-)
-const sidebarVisible = computed(() => sidebarToggled.value || forceSidebar.value)
+const isHomePage = computed(() => route.path === '/')
+const isSkinsPage = computed(() => route.path.startsWith('/skins'))
+const forceSidebar = computed(() => route.path.startsWith('/browse'))
+const sidebarVisible = computed(() => {
+	if (isHomePage.value || isSkinsPage.value) return false
+	return sidebarToggled.value || forceSidebar.value
+})
 const hostingRouteActive = computed(() => route.path.startsWith('/hosting'))
 const hostingUpdateRequired = computed(
 	() =>
@@ -232,19 +232,7 @@ const hostingIntercomIdentityKey = computed(() => {
 	const userId = credentials.value?.user_id ?? credentials.value?.user?.id ?? 'anonymous'
 	return `${userId}:${serverId ?? 'hosting'}`
 })
-const hostingIntercom = useHostingIntercom({
-	enabled: computed(
-		() => hostingRouteActive.value && !hostingUpdateRequired.value && !!credentials.value?.session,
-	),
-	appId: 'ykeritl9',
-	fetchToken: fetchIntercomToken,
-	identityKey: hostingIntercomIdentityKey,
-	horizontalPadding: computed(() =>
-		sidebarVisible.value
-			? APP_SIDEBAR_WIDTH + INTERCOM_BUBBLE_DEFAULT_PADDING
-			: INTERCOM_BUBBLE_DEFAULT_PADDING,
-	),
-})
+const hostingIntercom = { intercomBubble: null }
 
 const notificationManager = new AppNotificationManager()
 provideNotificationManager(notificationManager)
@@ -306,16 +294,9 @@ useQuery({
 	refetchOnWindowFocus: false,
 	refetchOnReconnect: false,
 })
-const hasPlus = computed(
-	() =>
-		!!credentials.value?.user &&
-		(hasMidasBadge(credentials.value.user) ||
-			hasActivePride26Midas(authenticatedModrinthUser.value?.campaigns?.pride_26)),
-)
-const showAd = computed(
-	() => sidebarVisible.value && !hasPlus.value && credentials.value !== undefined,
-)
-const adConsentAvailable = computed(() => credentials.value !== undefined && !hasPlus.value)
+const hasPlus = computed(() => true)
+const showAd = computed(() => false)
+const adConsentAvailable = computed(() => false)
 providePageContext({
 	hierarchicalSidebarAvailable: ref(true),
 	showAds: showAd,
@@ -507,12 +488,12 @@ const messages = defineMessages({
 	},
 	adsConsentTitle: {
 		id: 'app.ads-consent.title',
-		defaultMessage: 'Your privacy and how ads support Modrinth',
+		defaultMessage: 'Your privacy and how ads support Rubirinth',
 	},
 	adsConsentBody: {
 		id: 'app.ads-consent.body',
 		defaultMessage:
-			'Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance.',
+			'Ads make Rubirinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance.',
 	},
 	adsConsentManage: {
 		id: 'app.ads-consent.manage',
@@ -540,7 +521,7 @@ const messages = defineMessages({
 	},
 	modrinthAccount: {
 		id: 'app.nav.modrinth-account',
-		defaultMessage: 'Modrinth account',
+		defaultMessage: 'Rubirinth account',
 	},
 	signedInAs: {
 		id: 'app.nav.signed-in-as',
@@ -548,7 +529,7 @@ const messages = defineMessages({
 	},
 	signInToModrinthAccount: {
 		id: 'app.nav.sign-in-to-modrinth-account',
-		defaultMessage: 'Sign in to a Modrinth account',
+		defaultMessage: 'Sign in to a Rubirinth account',
 	},
 	restarting: {
 		id: 'app.restarting',
@@ -556,7 +537,7 @@ const messages = defineMessages({
 	},
 	upgradeToModrinthPlus: {
 		id: 'app.nav.upgrade-to-modrinth-plus',
-		defaultMessage: 'Upgrade to Modrinth+',
+		defaultMessage: 'Upgrade to Rubirinth+',
 	},
 	news: {
 		id: 'app.news.title',
@@ -1367,16 +1348,16 @@ const updatePopupMessages = defineMessages({
 	},
 	meteredBody: {
 		id: 'app.update-popup.body.metered',
-		defaultMessage: `Modrinth App v{version} is available now! Since you're on a metered network, we didn't automatically download it.`,
+		defaultMessage: `Rubirinth App v{version} is available now! Since you're on a metered network, we didn't automatically download it.`,
 	},
 	downloadedBody: {
 		id: 'app.update-popup.body.download-complete',
-		defaultMessage: `Modrinth App v{version} has finished downloading. Reload to update now, or automatically when you close Modrinth App.`,
+		defaultMessage: `Rubirinth App v{version} has finished downloading. Reload to update now, or automatically when you close Rubirinth App.`,
 	},
 	linuxBody: {
 		id: 'app.update-popup.body.linux',
 		defaultMessage:
-			'Modrinth App v{version} is available. Use your package manager to update for the latest features and fixes!',
+			'Rubirinth App v{version} is available. Use your package manager to update for the latest features and fixes!',
 	},
 	reload: {
 		id: 'app.update-popup.reload',
@@ -1790,18 +1771,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			<NavButton v-tooltip.right="formatMessage(appMessages.skinSelectorLabel)" to="/skins">
 				<ShirtIcon />
 			</NavButton>
-			<NavButton
-				v-tooltip.right="formatMessage(messages.modrinthHosting)"
-				to="/hosting/manage"
-				:is-primary="(r) => r.path === '/hosting/manage' || r.path === '/hosting/manage/'"
-				:is-subpage="
-					(r) =>
-						(r.path.startsWith('/hosting/manage/') && r.path !== '/hosting/manage/') ||
-						((r.path.startsWith('/browse') || r.path.startsWith('/project')) && r.query.sid)
-				"
-			>
-				<ServerStackIcon />
-			</NavButton>
+			
 			<suspense>
 				<QuickInstanceSwitcher />
 			</suspense>
@@ -1906,7 +1876,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			</div>
 			<section data-tauri-drag-region class="flex shrink-0 ml-auto items-center">
 				<IconButton
-					v-if="!forceSidebar && appSettings.toggleSidebar"
+					v-if="!forceSidebar && !isHomePage && !isSkinsPage && appSettings.toggleSidebar"
 					:type="sidebarToggled ? 'base' : 'quiet'"
 					:label="formatMessage(messages.nextImage)"
 					class="mr-3 transition-transform"
@@ -1976,11 +1946,10 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			>
 				{{ formatMessage(messages.authUnreachableBody) }}
 			</Admonition>
-			<HostingUpdateRequired v-if="hostingUpdateRequired" />
-			<RouterView v-else v-slot="{ Component }">
+			<RouterView v-slot="{ Component }">
 				<template v-if="Component">
 					<Suspense @pending="onSuspensePending" @resolve="onSuspenseResolve">
-						<KeepAlive include="LibraryPage">
+						<KeepAlive :include="['LibraryPage', 'Browse']">
 							<component :is="Component"></component>
 						</KeepAlive>
 					</Suspense>
@@ -1988,81 +1957,27 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			</RouterView>
 		</div>
 		<div
+			v-show="sidebarVisible"
 			class="app-sidebar mt-px shrink-0 flex flex-col border-0 border-l-[1px] border-[--brand-gradient-border] border-solid"
 			:class="{ 'has-plus': hasPlus }"
 		>
 			<div
 				v-overlay-scrollbars="sidebarOverlayScrollbarsOptions"
 				class="app-sidebar-scrollable flex-grow shrink relative"
-				:class="{ 'pb-12': !hasPlus }"
 				data-overlayscrollbars-initialize
 			>
-				<OnboardingChecklist
-					@create-instance="installationModal?.show()"
-					@login-minecraft="accounts?.login()"
-					@login-modrinth="signIn"
-				/>
 				<div id="sidebar-teleport-target" class="sidebar-teleport-content"></div>
-				<div class="sidebar-default-content" :class="{ 'sidebar-enabled': sidebarVisible }">
-					<div
-						v-show="hasLoggedIntoMinecraft"
-						class="p-4 border-0 border-b-[1px] border-[--brand-gradient-border] border-solid"
-					>
-						<h3 class="text-base text-primary font-medium m-0">
-							{{ formatMessage(messages.playingAs) }}
-						</h3>
+				<div
+					class="sidebar-default-content flex flex-col gap-4"
+					:class="{ 'sidebar-enabled': sidebarVisible }"
+				>
+					<div class="app-sidebar-content-container p-4 pb-0 flex flex-col gap-4">
 						<suspense>
 							<AccountsCard ref="accounts" />
 						</suspense>
 					</div>
-					<div
-						v-show="showFriendsList"
-						class="p-4 border-0 border-b-[1px] border-[--brand-gradient-border] border-solid"
-					>
-						<suspense>
-							<FriendsList :credentials="credentials" :sign-in="() => requestSignIn()" />
-						</suspense>
-					</div>
-					<PrideFundraiserBanner
-						v-if="prideFundraiserEnabled"
-						class="p-4 border-0 border-b-[1px] border-[--brand-gradient-border] border-solid"
-					/>
-					<div v-if="news && news.length > 0" class="p-4 flex flex-col items-center">
-						<h3 class="text-base mb-4 text-primary font-medium m-0 text-left w-full">
-							{{ formatMessage(messages.news) }}
-						</h3>
-						<div class="space-y-4 flex flex-col items-center w-full">
-							<NewsArticleCard
-								v-for="(item, index) in news"
-								:key="`news-${index}`"
-								:article="item"
-							/>
-							<ButtonLink
-								type="colored"
-								color="brand"
-								size="xl"
-								href="https://modrinth.com/news"
-								target="_blank"
-								class="my-4"
-							>
-								<NewspaperIcon />
-								{{ formatMessage(messages.viewAllNews) }}
-							</ButtonLink>
-						</div>
-					</div>
 				</div>
 			</div>
-			<template v-if="showAd">
-				<a
-					href="https://modrinth.plus?app"
-					class="absolute bottom-[250px] w-full flex justify-center items-center gap-1 px-4 py-3 text-purple font-medium hover:underline z-10"
-					target="_blank"
-				>
-					<ArrowBigUpDashIcon class="text-2xl" />
-					{{ formatMessage(messages.upgradeToModrinthPlus) }}
-				</a>
-				<PromotionWrapper />
-			</template>
 		</div>
 	</div>
 	<I18nDebugPanel />
@@ -2167,10 +2082,11 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	height: calc(100vh - var(--top-bar-height));
 	background-color: var(--color-bg);
 	border-top-left-radius: var(--radius-xl);
+	overflow: hidden;
 
 	display: grid;
 	grid-template-columns: 1fr 0px;
-	// transition: grid-template-columns 0.4s ease-in-out;
+	transition: grid-template-columns 280ms cubic-bezier(0.2, 0, 0, 1);
 
 	&.sidebar-enabled {
 		grid-template-columns: 1fr 300px;
@@ -2183,8 +2099,9 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 }
 
 .app-sidebar {
-	overflow: visible;
+	overflow: hidden;
 	width: 300px;
+	min-width: 300px;
 	position: relative;
 	height: calc(100vh - var(--top-bar-height));
 	background: var(--brand-gradient-bg);
@@ -2195,15 +2112,17 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	--color-divider-dark: var(--brand-gradient-border);
 }
 
-.app-sidebar::after {
-	content: '';
+.app-sidebar-scrollable {
+	width: 300px;
+	min-width: 300px;
 	position: absolute;
-	bottom: 250px;
-	left: 0;
 	right: 0;
-	height: 5rem;
-	background: var(--brand-gradient-fade-out-color);
-	pointer-events: none;
+	top: 0;
+	bottom: 0;
+}
+
+.app-sidebar::after {
+	display: none;
 }
 
 .app-sidebar.has-plus::after {

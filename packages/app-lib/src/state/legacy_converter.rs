@@ -132,6 +132,7 @@ where
                     expires: legacy_credentials.expires,
                     active: minecraft_auth.default_user == Some(uuid)
                         || minecraft_users_len == 1,
+                    account_type: "microsoft".to_string(),
                 }
                 .upsert(exec)
                 .await?;

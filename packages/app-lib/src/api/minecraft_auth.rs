@@ -1,4 +1,4 @@
-//! Authentication flow interface
+﻿//! Authentication flow interface
 
 use reqwest::StatusCode;
 
@@ -33,24 +33,21 @@ pub async fn finish_login(
 ) -> crate::Result<Credentials> {
     let state = State::get().await?;
 
-    let credentials =
-        crate::state::login_finish(code, flow, &state.pool).await?;
+    crate::state::login_finish(code, flow, &state.pool).await
+}
 
-    if let Err(error) =
-        crate::onboarding_checklist::mark_logged_into_minecraft().await
-    {
-        tracing::warn!(
-            "Failed to mark Minecraft login in onboarding checklist: {error}"
-        );
-    }
-
-    Ok(credentials)
+#[tracing::instrument]
+pub async fn offline_auth(
+    name: &str
+) -> crate::Result<Credentials> {
+    let state = State::get().await?;
+    crate::state::offline_auth(name, &state.pool).await
 }
 
 #[tracing::instrument]
 pub async fn get_default_user() -> crate::Result<Option<uuid::Uuid>> {
     let state = State::get().await?;
-    let user = Credentials::get_default_credential(&state.pool).await?;
+    let user = Credentials::get_active(&state.pool).await?;
     Ok(user.map(|user| user.offline_profile.id))
 }
 

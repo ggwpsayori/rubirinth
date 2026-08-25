@@ -1,4 +1,7 @@
-use crate::ErrorKind;
+﻿use crate::ErrorKind;
+use crate::models::astralrinth::authentication::{
+    external_auth_provider, refresh_external_credentials,
+};
 use crate::util::fetch::INSECURE_REQWEST_CLIENT;
 use base64::Engine;
 use base64::prelude::{BASE64_STANDARD, BASE64_URL_SAFE_NO_PAD};
@@ -79,26 +82,6 @@ pub enum MinecraftAuthenticationError {
     NoUserHash,
 }
 
-#[derive(Deserialize)]
-struct OAuthErrorResponse {
-    error: String,
-}
-
-impl MinecraftAuthenticationError {
-    fn is_invalid_grant(&self) -> bool {
-        matches!(
-            self,
-            Self::DeserializeResponse {
-                step: MinecraftAuthStep::RefreshOAuthToken,
-                raw,
-                status_code: StatusCode::BAD_REQUEST,
-                ..
-            } if serde_json::from_str::<OAuthErrorResponse>(raw)
-                .is_ok_and(|response| response.error == "invalid_grant")
-        )
-    }
-}
-
 #[derive(Serialize, Deserialize, Debug)]
 pub struct MinecraftLoginFlow {
     pub verifier: String,
@@ -175,6 +158,7 @@ pub async fn login_finish(
         expires: oauth_token.date
             + Duration::seconds(oauth_token.value.expires_in as i64),
         active: true,
+        account_type: AccountType::Microsoft.as_lowercase_str(),
     };
 
     // During login, we need to fetch the online profile at least once to get the
@@ -197,6 +181,58 @@ pub async fn login_finish(
     Ok(credentials)
 }
 
+// This code is modified by AstralRinth
+#[tracing::instrument]
+pub async fn offline_auth(
+    name: &str,
+    exec: impl sqlx::Executor<'_, Database = sqlx::Sqlite> + Copy,
+) -> crate::Result<Credentials> {
+    let random_uuid = Uuid::new_v4();
+    let access_token = "null".to_string();
+    let refresh_token = "null".to_string();
+
+    let mut credentials = Credentials {
+        offline_profile: MinecraftProfile::default(),
+        access_token: access_token,
+        refresh_token: refresh_token,
+        expires: Utc::now() + Duration::days(365 * 99),
+        active: true,
+        account_type: AccountType::Offline.as_lowercase_str(),
+    };
+
+    credentials.offline_profile = MinecraftProfile {
+        id: random_uuid,
+        name: name.to_string(),
+        ..credentials.offline_profile
+    };
+
+    credentials.upsert(exec).await?;
+
+    Ok(credentials)
+}
+
+// This code is modified by AstralRinth
+#[derive(Deserialize, Debug)]
+pub enum AccountType {
+    Unknown,
+    Microsoft,
+    Offline,
+}
+
+impl AccountType {
+    fn as_str(&self) -> &'static str {
+        match self {
+            AccountType::Unknown => "Unknown",
+            AccountType::Microsoft => "Microsoft",
+            AccountType::Offline => "Offline",
+        }
+    }
+
+    pub(crate) fn as_lowercase_str(&self) -> String {
+        self.as_str().to_lowercase()
+    }
+}
+
 #[derive(Deserialize, Debug)]
 pub struct Credentials {
     /// The offline profile of the user these credentials are for.
@@ -210,6 +246,7 @@ pub struct Credentials {
     pub refresh_token: String,
     pub expires: DateTime<Utc>,
     pub active: bool,
+    pub account_type: String,
 }
 
 /// An entry in the player profile cache, keyed by player UUID.
@@ -265,8 +302,7 @@ impl OnlineProfileCacheIntent {
 }
 
 impl Credentials {
-    /// Refreshes the authentication tokens for this user if they are expired, or
-    /// very close to expiration.
+    /// Refreshes expired Microsoft or registered external-provider credentials.
     async fn refresh(
         &mut self,
         exec: impl sqlx::Executor<'_, Database = sqlx::Sqlite> + Copy,
@@ -275,6 +311,16 @@ impl Credentials {
         // other operations that depend on a fresh token 5 minutes to complete
         // from now, and deal with some classes of clock skew
         if self.expires > Utc::now() + Duration::minutes(5) {
+            return Ok(());
+        }
+		// This code is modified by AstralRinth
+        if external_auth_provider(&self.account_type).is_some() {
+            if refresh_external_credentials(self).await? {
+                self.upsert(exec).await?;
+            }
+            return Ok(());
+        }
+        if self.account_type != AccountType::Microsoft.as_lowercase_str() {
             return Ok(());
         }
 
@@ -315,7 +361,7 @@ impl Credentials {
         Ok(())
     }
 
-    /// Returns online profile data when the cached copy is still recent enough.
+    /// Returns Mojang profile data when the account type supports that endpoint.
     #[tracing::instrument(skip(self))]
     pub async fn online_profile(&self) -> Option<Arc<MinecraftProfile>> {
         self.online_profile_with_cache_intent(
@@ -324,7 +370,7 @@ impl Credentials {
         .await
     }
 
-    /// Returns profile data recent enough for skin and cape state.
+    /// Returns fresh Mojang profile data for accounts that support skin and cape state.
     ///
     /// Reuses a profile read from the last few seconds so opening the skins page
     /// does not send several identical Mojang requests.
@@ -336,7 +382,7 @@ impl Credentials {
         .await
     }
 
-    /// Fetches the online profile from Mojang after a skin or cape change.
+    /// Fetches Mojang profile data after a skin or cape change when supported.
     #[tracing::instrument(skip(self))]
     pub async fn refresh_online_profile(
         &self,
@@ -351,6 +397,10 @@ impl Credentials {
         &self,
         cache_intent: OnlineProfileCacheIntent,
     ) -> Option<Arc<MinecraftProfile>> {
+        if external_auth_provider(&self.account_type).is_some() {
+            return None;
+        }
+
         let max_age = cache_intent.max_age();
         let stale_profile = {
             let mut profile_cache = PROFILE_CACHE.lock().await;
@@ -486,23 +536,6 @@ impl Credentials {
                         return Ok(Some(creds));
                     }
 
-                    if matches!(
-                        &*err.raw,
-                        ErrorKind::MinecraftAuthenticationError(source)
-                            if source.is_invalid_grant()
-                    ) {
-                        Self::remove(creds.offline_profile.id, exec).await?;
-
-                        if let Some((_, mut user)) =
-                            Self::get_all(exec).await?.into_iter().next()
-                        {
-                            user.active = true;
-                            user.upsert(exec).await?;
-                        }
-
-                        return Ok(None);
-                    }
-
                     Err(err)
                 }
             }
@@ -519,7 +552,7 @@ impl Credentials {
         let res = sqlx::query!(
             "
             SELECT
-                uuid, active, username, access_token, refresh_token, expires
+                uuid, active, username, access_token, refresh_token, expires, account_type
             FROM minecraft_users
             WHERE active = TRUE
             "
@@ -542,6 +575,7 @@ impl Credentials {
                         .single()
                         .unwrap_or_else(Utc::now),
                     active: x.active == 1,
+                    account_type: x.account_type,
                 };
                 credentials.refresh(exec).await.ok();
                 Some(credentials)
@@ -556,7 +590,7 @@ impl Credentials {
         let res = sqlx::query!(
             "
             SELECT
-                uuid, active, username, access_token, refresh_token, expires
+                uuid, active, username, access_token, refresh_token, expires, account_type
             FROM minecraft_users
             "
         )
@@ -576,6 +610,7 @@ impl Credentials {
                     .single()
                     .unwrap_or_else(Utc::now),
                 active: x.active == 1,
+                account_type: x.account_type,
             };
 
             async move {
@@ -611,14 +646,15 @@ impl Credentials {
 
         sqlx::query!(
             "
-            INSERT INTO minecraft_users (uuid, active, username, access_token, refresh_token, expires)
-            VALUES ($1, $2, $3, $4, $5, $6)
+            INSERT INTO minecraft_users (uuid, active, username, access_token, refresh_token, expires, account_type)
+            VALUES ($1, $2, $3, $4, $5, $6, $7)
             ON CONFLICT (uuid) DO UPDATE SET
                 active = $2,
                 username = $3,
                 access_token = $4,
                 refresh_token = $5,
-                expires = $6
+                expires = $6,
+                account_type = $7
             ",
             uuid,
             self.active,
@@ -626,6 +662,7 @@ impl Credentials {
             self.access_token,
             self.refresh_token,
             expires,
+            self.account_type,
         )
             .execute(exec)
             .await?;
@@ -688,6 +725,7 @@ impl Serialize for Credentials {
         ser.serialize_field("refresh_token", &self.refresh_token)?;
         ser.serialize_field("expires", &self.expires)?;
         ser.serialize_field("active", &self.active)?;
+        ser.serialize_field("account_type", &self.account_type)?;
         ser.end()
     }
 }

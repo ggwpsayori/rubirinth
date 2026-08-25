@@ -3,11 +3,16 @@
 		v-if="accounts.length === 0"
 		class="flex flex-col gap-3 bg-button-bg border border-solid border-surface-5 rounded-xl p-3 mt-2"
 	>
-		<span>{{ formatMessage(messages.notSignedIn) }}</span>
-		<Button type="colored" color="brand" :disabled="loginDisabled" @click="login()">
-			<LogInIcon v-if="!loginDisabled" />
-			<SpinnerIcon v-else class="animate-spin" />
-			{{ formatMessage(messages.signInToMinecraft) }}
+		<span class="text-sm font-medium">{{ formatMessage(messages.notSignedIn) }}</span>
+		<Button
+			type="colored"
+			color="brand"
+			class="w-full !justify-start"
+			:disabled="loginDisabled || offlineLoginDisabled || externalAuthDisabled"
+			@click="showAccountLoginModal"
+		>
+			<PlusIcon />
+			{{ formatMessage(messages.addAccount) }}
 		</Button>
 	</div>
 	<Accordion
@@ -17,7 +22,7 @@
 		:open-by-default="false"
 	>
 		<template #title>
-			<div class="flex gap-2 w-full min-w-0">
+			<div class="flex gap-2 w-full min-w-0 items-center">
 				<Avatar
 					size="36px"
 					disable-conditional-icon-padding
@@ -28,9 +33,16 @@
 					"
 				/>
 				<div class="flex flex-col items-start w-full min-w-0">
-					<span class="truncate w-full text-left">{{
-						selectedAccount ? selectedAccount.profile.name : formatMessage(messages.selectAccount)
-					}}</span>
+					<span class="truncate w-full text-left inline-flex items-center gap-1.5 min-w-0 font-medium">
+						<component
+							:is="getAccountType(selectedAccount)"
+							v-if="selectedAccount && getAccountType(selectedAccount)"
+							class="w-3.5 h-3.5 shrink-0 opacity-80"
+						/>
+						<span class="truncate">{{
+							selectedAccount ? selectedAccount.profile.name : formatMessage(messages.selectAccount)
+						}}</span>
+					</span>
 					<span class="text-secondary text-xs">{{ formatMessage(messages.minecraftAccount) }}</span>
 				</div>
 			</div>
@@ -53,14 +65,19 @@
 							disable-conditional-icon-padding
 						/>
 						<p
-							class="m-0 truncate min-w-0"
+							class="m-0 truncate min-w-0 inline-flex items-center gap-1.5"
 							:class="
 								selectedAccount && selectedAccount.profile.id === account.profile.id
 									? 'text-contrast font-semibold'
 									: 'text-primary'
 							"
 						>
-							{{ account.profile.name }}
+							<component
+								:is="getAccountType(account)"
+								v-if="getAccountType(account)"
+								class="w-3.5 h-3.5 shrink-0 opacity-80"
+							/>
+							<span class="truncate">{{ account.profile.name }}</span>
 						</p>
 					</button>
 					<IconButton
@@ -77,10 +94,8 @@
 			</template>
 			<div class="flex flex-col gap-2 px-2 pt-2">
 				<Button
-					v-if="accounts.length > 0"
-					class="w-full !bg-button-bg !text-primary ![box-shadow:var(--shadow-button)]"
-					:disabled="loginDisabled"
-					@click="login()"
+					class="w-full !bg-button-bg !text-primary ![box-shadow:var(--shadow-button)] !justify-start"
+					@click="showAccountLoginModal"
 				>
 					<PlusIcon />
 					{{ formatMessage(messages.addAccount) }}
@@ -88,42 +103,70 @@
 			</div>
 		</div>
 	</Accordion>
+	<AccountsInputModals
+		ref="accountsInputModals"
+		:offline-login-disabled="offlineLoginDisabled"
+		:offline-player-name="offlinePlayerName"
+		:login-disabled="loginDisabled"
+		:external-auth-disabled="externalAuthDisabled"
+		:external-auth-providers="externalAuthProviders"
+		@login-microsoft="login"
+		@login-external="addExternalProfile"
+		@submit-offline="addOfflineProfile"
+		@update:offline-player-name="offlinePlayerName = $event"
+	/>
+	<AccountsErrorModals
+		ref="accountsErrorModals"
+		:max-offline-player-name-length="maxOfflinePlayerNameLength"
+		:min-offline-player-name-length="minOfflinePlayerNameLength"
+		:name-exp="nameExp"
+		@retry-offline="retryAddOfflineProfile"
+	/>
 </template>
 
 <script setup lang="ts">
+import AccountsErrorModals from '@/components/ui/astralrinth/accounts/error/AccountsErrorModals.vue'
+import AccountsInputModals from '@/components/ui/astralrinth/accounts/input/AccountsInputModals.vue'
+import { trackEvent } from '@/helpers/analytics'
 import {
-	LogInIcon,
+	get_default_user,
+	login as login_flow,
+	offline_login,
+	remove_user,
+	set_default_user,
+	users,
+} from '@/helpers/auth'
+import {
+	externalAuthProviders,
+	getExternalAuthProvider,
+	loadExternalAuthProviders,
+	type MinecraftCredential,
+	useExternalAuthentication,
+} from '@/models/astralrinth/authentication'
+import { useAppEvent } from '@/composables/use-app-event'
+import { getPlayerHeadUrl } from '@/helpers/rendering/batch-skin-renderer.ts'
+import type { Skin } from '@/helpers/skins'
+import { get_available_skins } from '@/helpers/skins'
+import { handleSevereError } from '@/composables/use-error.js'
+import {
+	MicrosoftIcon,
+	OfflineIcon,
 	PlusIcon,
 	RadioButtonCheckedIcon,
 	RadioButtonIcon,
-	SpinnerIcon,
 	TrashIcon,
 } from '@modrinth/assets'
 import {
 	Accordion,
 	Avatar,
 	Button,
-	defineMessages,
 	IconButton,
+	defineMessages,
 	injectNotificationManager,
 	useVIntl,
 } from '@modrinth/ui'
 import type { Ref } from 'vue'
-import { computed, ref } from 'vue'
-
-import { useAppEvent } from '@/composables/use-app-event'
-import { handleSevereError } from '@/composables/use-error.js'
-import { trackEvent } from '@/helpers/analytics'
-import {
-	get_default_user,
-	login as login_flow,
-	remove_user,
-	set_default_user,
-	users,
-} from '@/helpers/auth'
-import { getPlayerHeadUrl } from '@/helpers/rendering/batch-skin-renderer.ts'
-import type { Skin } from '@/helpers/skins'
-import { get_available_skins } from '@/helpers/skins'
+import { computed, onMounted, ref } from 'vue'
 
 const { formatMessage } = useVIntl()
 const { handleError } = injectNotificationManager()
@@ -132,18 +175,119 @@ const emit = defineEmits<{
 	change: []
 }>()
 
-type MinecraftCredential = {
-	profile: {
-		id: string
-		name: string
-	}
+type AccountsInputModalsHandle = {
+	hideAuth: () => void
+	hideOffline: () => void
+	showAuth: () => void
+	showOffline: () => void
 }
+
+type AccountsErrorModalsHandle = {
+	hideInputOfflineError: () => void
+	showInputOfflineError: () => void
+	showUnexpectedError: () => void
+}
+
+const offlineLoginCooldownMs = 1000
+const minOfflinePlayerNameLength = 3
+const maxOfflinePlayerNameLength = 20
+const nameExp = 'a-zA-Z0-9_'
+const nameRegex = new RegExp('^[' + nameExp + ']+$')
 
 const accounts: Ref<MinecraftCredential[]> = ref([])
 const loginDisabled = ref(false)
+const offlineLoginDisabled = ref(false)
 const defaultUser = ref<string | undefined>()
 const equippedSkin = ref<Skin | null>(null)
 const headUrlCache = ref(new Map<string, string>())
+
+const accountsInputModals = ref<AccountsInputModalsHandle | null>(null)
+const accountsErrorModals = ref<AccountsErrorModalsHandle | null>(null)
+
+const offlinePlayerName = ref('')
+const { authenticate: addExternalProfile, disabled: externalAuthDisabled } =
+	useExternalAuthentication({
+		onAuthenticated: async (credentials) => {
+			await setAccount(credentials)
+			accountsInputModals.value?.hideAuth()
+		},
+		onError: (error) => {
+			handleError(error)
+			accountsErrorModals.value?.showUnexpectedError()
+		},
+	})
+
+function getAccountType(account?: MinecraftCredential) {
+	switch (account?.account_type) {
+		case 'microsoft':
+			return MicrosoftIcon
+		case 'offline':
+			return OfflineIcon
+		default:
+			return getExternalAuthProvider(account?.account_type)?.icon ?? null
+	}
+}
+
+function showOfflineLoginModal() {
+	accountsInputModals.value?.showOffline()
+}
+
+function showAccountLoginModal() {
+	accountsInputModals.value?.showAuth()
+}
+
+function retryAddOfflineProfile() {
+	accountsErrorModals.value?.hideInputOfflineError()
+	offlineLoginDisabled.value = false
+	clearOfflineFields()
+	showOfflineLoginModal()
+}
+
+function clearOfflineFields() {
+	offlinePlayerName.value = ''
+}
+
+async function addOfflineProfile() {
+	if (offlineLoginDisabled.value) {
+		return
+	}
+
+	offlineLoginDisabled.value = true
+
+	const name = offlinePlayerName.value.trim()
+	const isValidName =
+		nameRegex.test(name) &&
+		name.length >= minOfflinePlayerNameLength &&
+		name.length <= maxOfflinePlayerNameLength
+
+	if (!isValidName) {
+		accountsInputModals.value?.hideOffline()
+		accountsErrorModals.value?.showInputOfflineError()
+		offlineLoginDisabled.value = false
+		clearOfflineFields()
+		return
+	}
+
+	try {
+		const result = await offline_login(name)
+		accountsInputModals.value?.hideOffline()
+
+		if (result) {
+			await setAccount(result)
+			await refreshValues()
+		} else {
+			accountsErrorModals.value?.showUnexpectedError()
+		}
+	} catch (error) {
+		handleError(error)
+		accountsErrorModals.value?.showUnexpectedError()
+	} finally {
+		clearOfflineFields()
+		window.setTimeout(() => {
+			offlineLoginDisabled.value = false
+		}, offlineLoginCooldownMs)
+	}
+}
 
 async function refreshValues() {
 	defaultUser.value = await get_default_user().catch(handleError)
@@ -190,7 +334,7 @@ defineExpose({
 	refreshValues,
 	setEquippedSkin,
 	setLoginDisabled,
-	login,
+	showAccountLoginModal,
 	loginDisabled,
 })
 
@@ -206,11 +350,14 @@ const avatarUrl = computed(() => {
 		if (cachedUrl) {
 			return cachedUrl
 		}
-		return `https://mc-heads.net/avatar/${equippedSkin.value.texture_key}/128`
+
+		return 'https://mc-heads.net/avatar/' + equippedSkin.value.texture_key + '/128'
 	}
+
 	if (selectedAccount.value?.profile?.id) {
-		return `https://mc-heads.net/avatar/${selectedAccount.value.profile.id}/128`
+		return 'https://mc-heads.net/avatar/' + selectedAccount.value.profile.id + '/128'
 	}
+
 	return 'https://launcher-files.modrinth.com/assets/steve_head.png'
 })
 
@@ -224,7 +371,8 @@ function getAccountAvatarUrl(account: MinecraftCredential) {
 			return cachedUrl
 		}
 	}
-	return `https://mc-heads.net/avatar/${account.profile.id}/128`
+
+	return 'https://mc-heads.net/avatar/' + account.profile.id + '/128'
 }
 
 async function setAccount(account: MinecraftCredential) {
@@ -240,6 +388,7 @@ async function login() {
 
 	if (loggedIn) {
 		await setAccount(loggedIn)
+		accountsInputModals.value?.hideAuth()
 	}
 
 	trackEvent('AccountLogIn')
@@ -249,11 +398,13 @@ async function login() {
 async function logout(id: string) {
 	await remove_user(id).catch(handleError)
 	await refreshValues()
+
 	if (!selectedAccount.value && accounts.value.length > 0) {
 		await setAccount(accounts.value[0])
 	} else {
 		emit('change')
 	}
+
 	trackEvent('AccountLogOut')
 }
 
@@ -261,6 +412,10 @@ useAppEvent('process', async (e) => {
 	if (e.event === 'launched') {
 		await refreshValues()
 	}
+})
+
+onMounted(() => {
+	void loadExternalAuthProviders().catch(handleError)
 })
 
 const messages = defineMessages({
@@ -284,9 +439,12 @@ const messages = defineMessages({
 		id: 'minecraft-account.label',
 		defaultMessage: 'Minecraft account',
 	},
-	signInToMinecraft: {
-		id: 'minecraft-account.sign-in',
-		defaultMessage: 'Sign in to Minecraft',
-	},
 })
 </script>
+
+<style scoped lang="scss">
+.vector-icon {
+	width: 0.875rem;
+	height: 0.875rem;
+}
+</style>

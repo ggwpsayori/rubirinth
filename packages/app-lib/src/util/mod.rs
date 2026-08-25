@@ -7,3 +7,5 @@ pub mod platform;
 pub mod protocol_version;
 pub mod rpc;
 pub mod server_ping;
+
+pub mod astralrinth;

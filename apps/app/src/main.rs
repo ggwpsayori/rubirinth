@@ -50,19 +50,13 @@ async fn initialize_state(
 #[tracing::instrument(skip_all)]
 #[tauri::command]
 fn show_window(app: tauri::AppHandle) {
-    let win = app.get_window("main").unwrap();
-    if let Err(e) = win.show() {
-        DialogBuilder::message()
-            .set_level(MessageLevel::Error)
-            .set_title("Initialization error")
-            .set_text(format!(
-                "Cannot display application window due to an error:\n{e}"
-            ))
-            .alert()
-            .show()
-            .unwrap();
-        panic!("cannot display application window")
-    } else {
+    if let Some(win) = app.get_webview_window("main") {
+        let _ = win.show();
+        let _ = win.unminimize();
+        let _ = win.set_focus();
+    } else if let Some(win) = app.get_window("main") {
+        let _ = win.show();
+        let _ = win.unminimize();
         let _ = win.set_focus();
     }
 }
@@ -140,7 +134,7 @@ fn main() {
 
     let _log_guard = theseus::start_logger(&tauri_context.config().identifier);
 
-    tracing::info!("Initialized tracing subscriber. Loading Modrinth App!");
+    tracing::info!("Initialized tracing subscriber. Loading Rubirinth App!");
 
     let mut builder = tauri::Builder::default();
 
@@ -231,10 +225,13 @@ fn main() {
             });
 
             #[cfg(not(target_os = "linux"))]
-            if let Some(window) = app.get_window("main")
-                && let Err(e) = window.set_shadow(true)
-            {
-                tracing::warn!("Failed to set window shadow: {e}");
+            if let Some(window) = app.get_webview_window("main") {
+                if let Err(e) = window.set_shadow(true) {
+                    tracing::warn!("Failed to set window shadow: {e}");
+                }
+                let _ = window.show();
+                let _ = window.unminimize();
+                let _ = window.set_focus();
             }
 
             Ok(())
@@ -397,7 +394,7 @@ fn main() {
                     DialogBuilder::message()
                         .set_level(MessageLevel::Error)
                         .set_title("Initialization error")
-                        .set_text("Your Microsoft Edge WebView2 installation is corrupt.\n\nMicrosoft Edge WebView2 is required to run Modrinth App.\n\nLearn how to repair it at https://support.modrinth.com/en/articles/8797765-corrupted-microsoft-edge-webview2-installation")
+                        .set_text("Your Microsoft Edge WebView2 installation is corrupt.\n\nMicrosoft Edge WebView2 is required to run Rubirinth App.\n\nLearn how to repair it at https://support.modrinth.com/en/articles/8797765-corrupted-microsoft-edge-webview2-installation")
                         .alert()
                         .show()
                         .unwrap();

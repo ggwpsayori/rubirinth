@@ -99,7 +99,7 @@ const messages = defineMessages({
 	},
 	externalContentDescription: {
 		id: 'instances.managed-content-modal.external-content-description',
-		defaultMessage: 'This file is not published on Modrinth.',
+		defaultMessage: 'This file is not published on Rubirinth.',
 	},
 	openInSlicer: {
 		id: 'instances.managed-content-modal.open-in-slicer',

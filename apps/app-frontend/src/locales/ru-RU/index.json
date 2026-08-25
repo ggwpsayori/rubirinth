@@ -78,7 +78,7 @@
     "message": "Не удалось установить Minecraft"
   },
   "app.action-bar.install.summary.modrinth-unreachable": {
-    "message": "Не удалось подключиться к Modrinth"
+    "message": "Не удалось подключиться к Rubirinth"
   },
   "app.action-bar.install.summary.no-write-permission": {
     "message": "Нет разрешения на запись"
@@ -138,7 +138,7 @@
     "message": "Принять всё"
   },
   "app.ads-consent.body": {
-    "message": "Реклама обеспечивает работу Modrinth и выплаты авторам. Для персонализации и анализа рекламы наши партнёры могут использовать куки."
+    "message": "Реклама обеспечивает работу Rubirinth и выплаты авторам. Для персонализации и анализа рекламы наши партнёры могут использовать куки."
   },
   "app.ads-consent.manage": {
     "message": "Настроить"
@@ -147,7 +147,7 @@
     "message": "Отклонить всё"
   },
   "app.ads-consent.title": {
-    "message": "Конфиденциальность и реклама на Modrinth"
+    "message": "Конфиденциальность и реклама на Rubirinth"
   },
   "app.appearance-settings.compact-mode.description": {
     "message": "Отображать библиотеку сборок компактным списком."
@@ -174,7 +174,7 @@
     "message": "Недавние миры или сборки"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "Сворачивать Modrinth App при запуске Minecraft."
+    "message": "Сворачивать Rubirinth App при запуске Minecraft."
   },
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Свернуть приложение"
@@ -198,7 +198,7 @@
     "message": "Скрытие панели справа"
   },
   "app.appearance-settings.unknown-pack-warning.description": {
-    "message": "Предупреждать о рисках перед установкой файлов (.mrpack), не размещённых на Modrinth."
+    "message": "Предупреждать о рисках перед установкой файлов (.mrpack), не размещённых на Rubirinth."
   },
   "app.appearance-settings.unknown-pack-warning.title": {
     "message": "Предупреждение о сторонних сборках"
@@ -222,7 +222,7 @@
     "message": "Применять текущие настройки везде, где вы вошли. Отключите, чтобы настроить это устройство отдельно."
   },
   "app.behavior-settings.sync-across-devices.signed-out-tooltip": {
-    "message": "Войдите в аккаунт Modrinth для синхронизации настроек."
+    "message": "Войдите в аккаунт Rubirinth для синхронизации настроек."
   },
   "app.behavior-settings.sync-across-devices.title": {
     "message": "Синхронизация поведения между устройствами"
@@ -339,16 +339,16 @@
     "message": "Посмотреть сборку"
   },
   "app.hosting.update-required.description": {
-    "message": "Обновитесь, чтобы использовать Modrinth Hosting через Modrinth App"
+    "message": "Обновитесь, чтобы использовать Modrinth Hosting через Rubirinth App"
   },
   "app.hosting.update-required.download": {
     "message": "Скачать и обновить"
   },
   "app.hosting.update-required.rinthbot-alt": {
-    "message": "Восторженный Modrinth Bot"
+    "message": "Восторженный Rubirinth Bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Обновите Modrinth App"
+    "message": "Обновите Rubirinth App"
   },
   "app.icon-editor.apply-icons-modal.apply-error": {
     "message": "Не удалось применить случайные иконки к сборкам."
@@ -363,7 +363,7 @@
     "message": "Закрыть"
   },
   "app.icon-editor.apply-icons-modal.description": {
-    "message": "Создавайте собственные иконки прямо в Modrinth App. Сочетайте фоны с символами из Minecraft и популярных модов!"
+    "message": "Создавайте собственные иконки прямо в Rubirinth App. Сочетайте фоны с символами из Minecraft и популярных модов!"
   },
   "app.icon-editor.apply-icons-modal.instances-without-icons": {
     "message": "У {count, plural, one {# сборки} other {# сборок}} нет {count, plural, one {иконки} other {иконок}}. Хотите создать {count, plural, one {случайную} other {случайные}}?"
@@ -708,13 +708,13 @@
     "message": "Войти как"
   },
   "app.instance.shared-instance-wrong-account.signed-out-header": {
-    "message": "Необходимо войти в Modrinth"
+    "message": "Необходимо войти в Rubirinth"
   },
   "app.instance.shared-instance-wrong-account.user-admonition-body-v2": {
     "message": "для получения обновлений сборки."
   },
   "app.instance.shared-instance-wrong-account.warning-header": {
-    "message": "Вы используете неправильную учетную запись Modrinth"
+    "message": "Вы используете неправильную учетную запись Rubirinth"
   },
   "app.instance.shortcut.created": {
     "message": "Ярлык создан"
@@ -1110,10 +1110,10 @@
     "message": "Установить"
   },
   "app.modal.install-to-play.invite-warning": {
-    "message": "Приглашение создано другим пользователем, а не Modrinth. Принимайте приглашения только от тех, кому доверяете."
+    "message": "Приглашение создано другим пользователем, а не Rubirinth. Принимайте приглашения только от тех, кому доверяете."
   },
   "app.modal.install-to-play.invite-warning-with-creator": {
-    "message": "Приглашение создано <creator>{username}</creator>, а не Modrinth. Принимайте приглашения только от тех, кому доверяете."
+    "message": "Приглашение создано <creator>{username}</creator>, а не Rubirinth. Принимайте приглашения только от тех, кому доверяете."
   },
   "app.modal.install-to-play.managed-content.modpack-header": {
     "message": "Контент сборки"
@@ -1146,7 +1146,7 @@
     "message": "Для запросов в поддержку обращайтесь в нашу <support-link>службу поддержки</support-link>. Для сообщений об ошибках открывайте запросы в <github-link>GitHub </github-link>."
   },
   "app.modal.install-to-play.reviewed-files": {
-    "message": "Файлы не c Modrinth не проверяются."
+    "message": "Файлы не c Rubirinth не проверяются."
   },
   "app.modal.install-to-play.shared-instance": {
     "message": "Сборка"
@@ -1155,10 +1155,10 @@
     "message": "Контент совместной сборки"
   },
   "app.modal.install-to-play.shared-instance-unknown-files-description": {
-    "message": "Совместная сборка содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
+    "message": "Совместная сборка содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
   },
   "app.modal.install-to-play.unknown-files-description": {
-    "message": "Серверная сборка содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
+    "message": "Серверная сборка содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
   },
   "app.modal.install-to-play.unknown-files-warning": {
     "message": "Предупреждение о неизвестных файлах"
@@ -1179,7 +1179,7 @@
     "message": "Удалён"
   },
   "app.modal.update-to-play.server-modpack-unknown-files-description": {
-    "message": "Обновление серверной сборки содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
+    "message": "Обновление серверной сборки содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
   },
   "app.modal.update-to-play.shared-instance-added-label": {
     "message": "Добавлен"
@@ -1188,7 +1188,7 @@
     "message": "Удалён"
   },
   "app.modal.update-to-play.shared-instance-unknown-files-description": {
-    "message": "Обновление совместной сборки содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
+    "message": "Обновление совместной сборки содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
   },
   "app.modal.update-to-play.update-required": {
     "message": "Требуется обновление"
@@ -1203,19 +1203,19 @@
     "message": "Главная"
   },
   "app.nav.modrinth-account": {
-    "message": "Аккаунт Modrinth"
+    "message": "Аккаунт Rubirinth"
   },
   "app.nav.modrinth-hosting": {
     "message": "Modrinth Hosting"
   },
   "app.nav.sign-in-to-modrinth-account": {
-    "message": "Войти в аккаунт Modrinth"
+    "message": "Войти в аккаунт Rubirinth"
   },
   "app.nav.signed-in-as": {
     "message": "Текущий аккаунт: <user>{username}</user>"
   },
   "app.nav.upgrade-to-modrinth-plus": {
-    "message": "Перейти на Modrinth+"
+    "message": "Перейти на Rubirinth+"
   },
   "app.navigation.go-back": {
     "message": "Назад"
@@ -1293,7 +1293,7 @@
     "message": "Перезапуск..."
   },
   "app.settings.app-version": {
-    "message": "Modrinth App {version}"
+    "message": "Rubirinth App {version}"
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Переменные среды при запуске игры."
@@ -1386,16 +1386,16 @@
     "message": "macOS"
   },
   "app.settings.privacy.ads-consent.intro": {
-    "message": "Реклама обеспечивает работу Modrinth и выплаты авторам. Для персонализации и анализа рекламы наши партнёры могут использовать куки. Отказаться и настроить куки можно ниже."
+    "message": "Реклама обеспечивает работу Rubirinth и выплаты авторам. Для персонализации и анализа рекламы наши партнёры могут использовать куки. Отказаться и настроить куки можно ниже."
   },
   "app.settings.privacy.discord-rich-presence.description": {
-    "message": "Показывать Modrinth App в текущей активности Discord. Не влияет на Rich Presence модов. Требуется перезапуск."
+    "message": "Показывать Rubirinth App в текущей активности Discord. Не влияет на Rich Presence модов. Требуется перезапуск."
   },
   "app.settings.privacy.discord-rich-presence.title": {
     "message": "Discord Rich Presence"
   },
   "app.settings.privacy.telemetry.description": {
-    "message": "Modrinth собирает анонимные данные об использовании для персонализации и улучшения сервиса. Отключите этот параметр, чтобы отказаться от сбора данных."
+    "message": "Rubirinth собирает анонимные данные об использовании для персонализации и улучшения сервиса. Отключите этот параметр, чтобы отказаться от сбора данных."
   },
   "app.settings.privacy.telemetry.title": {
     "message": "Телеметрия"
@@ -1413,7 +1413,7 @@
     "message": "Очистить кеш приложения?"
   },
   "app.settings.resource-management.app-cache.description": {
-    "message": "Удаляет кешированные данные и повторно скачивает их с Modrinth. Приложение может замедлиться, пока кеш не восстановится."
+    "message": "Удаляет кешированные данные и повторно скачивает их с Rubirinth. Приложение может замедлиться, пока кеш не восстановится."
   },
   "app.settings.resource-management.app-cache.purge": {
     "message": "Очистить кеш"
@@ -1434,7 +1434,7 @@
     "message": "Выбрать каталог приложения"
   },
   "app.settings.resource-management.app-directory.description": {
-    "message": "Здесь Modrinth App хранит сборки и другие файлы. Изменения вступят в силу после перезапуска."
+    "message": "Здесь Rubirinth App хранит сборки и другие файлы. Изменения вступят в силу после перезапуска."
   },
   "app.settings.resource-management.app-directory.select": {
     "message": "Выбор нового каталога приложения"
@@ -1605,13 +1605,13 @@
     "message": "MINECON Earth 2017"
   },
   "app.skins.section.modrinth": {
-    "message": "Modrinth"
+    "message": "Rubirinth"
   },
   "app.skins.section.modrinth-pride": {
-    "message": "Modrinth Pride"
+    "message": "Rubirinth Pride"
   },
   "app.skins.section.modrinth-pride.tooltip": {
-    "message": "Эти скины получены за участие в сборе средств Modrinth Pride в месяц гордости."
+    "message": "Эти скины получены за участие в сборе средств Rubirinth Pride в месяц гордости."
   },
   "app.skins.section.mounts-of-mayhem": {
     "message": "Mounts of Mayhem"
@@ -1644,10 +1644,10 @@
     "message": "Показать"
   },
   "app.survey.body": {
-    "message": "Не хотите ответить на несколько вопросов о вашем опыте с Modrinth App?"
+    "message": "Не хотите ответить на несколько вопросов о вашем опыте с Rubirinth App?"
   },
   "app.survey.footer": {
-    "message": "Этот отзыв будет доставлен напрямую команде Modrinth и поможет разрабатывать будущие обновления!"
+    "message": "Этот отзыв будет доставлен напрямую команде Rubirinth и поможет разрабатывать будущие обновления!"
   },
   "app.survey.no-thanks": {
     "message": "Нет, спасибо"
@@ -1656,16 +1656,16 @@
     "message": "Пройти опрос"
   },
   "app.survey.title": {
-    "message": "Привет, пользователь Modrinth!"
+    "message": "Привет, пользователь Rubirinth!"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Скачивание версии Modrinth App {version} завершено. Перезапустите приложение, чтобы обновить его, или оно обновится автоматически после закрытия."
+    "message": "Скачивание версии Rubirinth App {version} завершено. Перезапустите приложение, чтобы обновить его, или оно обновится автоматически после закрытия."
   },
   "app.update-popup.body.linux": {
-    "message": "Доступна версия Modrinth App {version}. Обновите приложение через менеджер пакетов, чтобы получить последние улучшения и исправления!"
+    "message": "Доступна версия Rubirinth App {version}. Обновите приложение через менеджер пакетов, чтобы получить последние улучшения и исправления!"
   },
   "app.update-popup.body.metered": {
-    "message": "Версия Modrinth App {version} доступна для скачивания! Используется сеть с лимитным тарифным планом, поэтому скачивание не началось автоматически."
+    "message": "Версия Rubirinth App {version} доступна для скачивания! Используется сеть с лимитным тарифным планом, поэтому скачивание не началось автоматически."
   },
   "app.update-popup.changelog": {
     "message": "Список изменений"
@@ -1710,7 +1710,7 @@
     "message": "Нажмите <shortcut>Т</shortcut> быстрого создания сборки"
   },
   "app.welcome-screen.title": {
-    "message": "Добро пожаловать в Modrinth"
+    "message": "Добро пожаловать в Rubirinth"
   },
   "app.world.server-modal.placeholder-address": {
     "message": "example.modrinth.gg"
@@ -1779,10 +1779,10 @@
     "message": "Оно может быть не таким, как в Minecraft!"
   },
   "friends.add-friend.username.placeholder": {
-    "message": "Введите имя с Modrinth..."
+    "message": "Введите имя с Rubirinth..."
   },
   "friends.add-friend.username.title": {
-    "message": "Какое имя у друга на Modrinth?"
+    "message": "Какое имя у друга на Rubirinth?"
   },
   "friends.add-friends-to-share": {
     "message": "<link>Добавьте друзей</link> и следите за ними!"
@@ -1824,7 +1824,7 @@
     "message": "{title} — {count}"
   },
   "friends.sign-in-to-add-friends": {
-    "message": "<link>Войдите в аккаунт Modrinth</link>, чтобы добавлять друзей и следить за ними!"
+    "message": "<link>Войдите в аккаунт Rubirinth</link>, чтобы добавлять друзей и следить за ними!"
   },
   "installation-settings.shared-instance.linked-title": {
     "message": "Отвязка совместной сборки"
@@ -2139,7 +2139,7 @@
     "message": "Динамит"
   },
   "instance.icon-editor.symbol.wrenth-rinth": {
-    "message": "Гаечный ключ Modrinth"
+    "message": "Гаечный ключ Rubirinth"
   },
   "instance.icon-editor.symbol.zombie": {
     "message": "Зомби"
@@ -2589,7 +2589,7 @@
     "message": "Создать аккаунт"
   },
   "modal.modrinth-account-required.description": {
-    "message": "Войдите в аккаунт Modrinth, чтобы использовать эту функцию."
+    "message": "Войдите в аккаунт Rubirinth, чтобы использовать эту функцию."
   },
   "modal.modrinth-account-required.header": {
     "message": "Требуется аккаунт"
@@ -2598,10 +2598,10 @@
     "message": "Открыть браузер снова"
   },
   "modal.modrinth-account-required.sign-in-button": {
-    "message": "Войти в Modrinth"
+    "message": "Войти в Rubirinth"
   },
   "modal.modrinth-account-required.sign-in-heading": {
-    "message": "Войдите в аккаунт Modrinth"
+    "message": "Войдите в аккаунт Rubirinth"
   },
   "modal.modrinth-account-required.signing-in-header": {
     "message": "Вход"
@@ -2619,7 +2619,7 @@
     "message": "Войдите в Minecraft"
   },
   "onboarding-checklist.login-modrinth": {
-    "message": "Войдите в Modrinth"
+    "message": "Войдите в Rubirinth"
   },
   "onboarding-checklist.title": {
     "message": "Начало работы"
@@ -2644,5 +2644,257 @@
   },
   "settings.sidebar.label.display": {
     "message": "Отображение"
+  },
+  "astralrinth.app.launcher-update.available.action": {
+    "message": "Посмотреть обновление"
+  },
+  "astralrinth.app.launcher-update.available.text": {
+    "message": "Новая версия AstralRinth уже доступна для загрузки."
+  },
+  "astralrinth.app.launcher-update.available.title": {
+    "message": "Доступно обновление лаунчера"
+  },
+  "astralrinth.app.settings.external-auth-libraries.description": {
+    "message": "Выберите и установите библиотеку аутентификации, которая используется при запуске Minecraft с внешним профилем игрока."
+  },
+  "astralrinth.app.settings.external-auth-libraries.install-selected": {
+    "message": "Установить"
+  },
+  "astralrinth.app.settings.external-auth-libraries.installed": {
+    "message": "{providerName}: библиотека {version} установлена"
+  },
+  "astralrinth.app.settings.external-auth-libraries.installing": {
+    "message": "Установка..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.load-failed": {
+    "message": "Не удалось загрузить библиотеки аутентификации: {error}"
+  },
+  "astralrinth.app.settings.external-auth-libraries.loading": {
+    "message": "Загрузка доступных версий библиотек..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.local-only": {
+    "message": "Сервер недоступен, поэтому отображаются только локально установленные версии."
+  },
+  "astralrinth.app.settings.external-auth-libraries.no-versions": {
+    "message": "Совместимые версии библиотеки не найдены."
+  },
+  "astralrinth.app.settings.external-auth-libraries.not-selected": {
+    "message": "Не выбрана"
+  },
+  "astralrinth.app.settings.external-auth-libraries.reinstall": {
+    "message": "Переустановить"
+  },
+  "astralrinth.app.settings.external-auth-libraries.request-server": {
+    "message": "Запросить с сервера"
+  },
+  "astralrinth.app.settings.external-auth-libraries.requesting-server": {
+    "message": "Запрос данных..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.retry": {
+    "message": "Повторить"
+  },
+  "astralrinth.app.settings.external-auth-libraries.selected-version": {
+    "message": "Выбранная версия"
+  },
+  "astralrinth.app.settings.external-auth-libraries.title": {
+    "message": "Библиотеки аутентификации"
+  },
+  "astralrinth.app.settings.external-auth-libraries.version": {
+    "message": "Версия"
+  },
+  "astralrinth.app.settings.tabs.external-auth-libraries": {
+    "message": "Библиотеки аутентификации"
+  },
+  "astralrinth.app.settings.update-installing": {
+    "message": "Установка обновления..."
+  },
+  "astralrinth.app.settings.tabs.updates": {
+    "message": "Обновления"
+  },
+  "astralrinth.app.settings.updates.analytics.description": {
+    "message": "Статистика релиза и распространения от поставщика обновлений."
+  },
+  "astralrinth.app.settings.updates.analytics.title": {
+    "message": "Аналитика"
+  },
+  "astralrinth.app.settings.updates.description": {
+    "message": "Просматривайте канал релизов AstralRinth, состояние распространения и диагностику провайдера обновлений."
+  },
+  "astralrinth.app.settings.updates.api-url": {
+    "message": "URL API поставщика обновлений"
+  },
+  "astralrinth.app.settings.updates.downloadable-files": {
+    "message": "Файлы для загрузки"
+  },
+  "astralrinth.app.settings.updates.http-status": {
+    "message": "Статус HTTP"
+  },
+  "astralrinth.app.settings.updates.latest-release-tag": {
+    "message": "Последний тэг релиза"
+  },
+  "astralrinth.app.settings.updates.latest-update-title": {
+    "message": "Последний заголовок обновления"
+  },
+  "astralrinth.app.settings.updates.no-update-information": {
+    "message": "Информация об обновлении недоступна."
+  },
+  "astralrinth.app.settings.updates.total-downloads": {
+    "message": "Всего скачиваний продукта"
+  },
+  "astralrinth.app.settings.updates.title": {
+    "message": "Обновления"
+  },
+  "astralrinth.app.settings.updates-installed": {
+    "message": "Обновления уже установлены"
+  },
+  "astralrinth.app.settings.view-update-info": {
+    "message": "Посмотреть информацию об обновлении"
+  },
+  "astralrinth.app.skins.unsupported-account.description": {
+    "message": "Управление скинами доступно только для учётных записей Microsoft. Вернитесь на главную страницу и выберите или добавьте учётную запись Microsoft, чтобы продолжить."
+  },
+  "astralrinth.app.skins.unsupported-account.external.action": {
+    "message": "Управлять скином на {providerName}"
+  },
+  "astralrinth.app.skins.unsupported-account.external.description": {
+    "message": "Вы вошли через учётную запись {providerName}. Загрузить, выбрать или изменить скин можно прямо на сайте провайдера."
+  },
+  "astralrinth.app.skins.unsupported-account.external.title": {
+    "message": "Управление скином {providerName}"
+  },
+  "astralrinth.app.skins.unsupported-account.return-home": {
+    "message": "Вернуться на главную"
+  },
+  "astralrinth.app.skins.unsupported-account.title": {
+    "message": "Требуется учётная запись Microsoft"
+  },
+  "astralrinth.app.launcher-update-modal.error.close-action": {
+    "message": "Закрыть"
+  },
+  "astralrinth.app.launcher-update-modal.error.description": {
+    "message": "AstralRinth не удалось скачать файл обновления с сервера."
+  },
+  "astralrinth.app.launcher-update-modal.error.header": {
+    "message": "Не удалось скачать обновление"
+  },
+  "astralrinth.app.launcher-update-modal.error.help-link": {
+    "message": "релизы репозитория AstralRinth"
+  },
+  "astralrinth.app.launcher-update-modal.error.help-suffix": {
+    "message": "если там доступен более новый релиз."
+  },
+  "astralrinth.app.launcher-update-modal.error.help-text": {
+    "message": "Вы можете скачать его вручную из"
+  },
+  "astralrinth.app.launcher-update-modal.error.local-version": {
+    "message": "Локальная версия AstralRinth:"
+  },
+  "astralrinth.app.launcher-update-modal.error.title": {
+    "message": "Не удалось скачать файл"
+  },
+  "astralrinth.app.launcher-update-modal.update.cancel-action": {
+    "message": "Отмена"
+  },
+  "astralrinth.app.launcher-update-modal.update.description": {
+    "message": "Вы используете более старую версию. Рекомендуем обновиться сейчас, чтобы получить последние исправления и улучшения."
+  },
+  "astralrinth.app.launcher-update-modal.update.download-action": {
+    "message": "Скачать обновление"
+  },
+  "astralrinth.app.launcher-update-modal.update.header": {
+    "message": "Обновление лаунчера AstralRinth"
+  },
+  "astralrinth.app.launcher-update-modal.update.installer-description": {
+    "message": "Выберите пакет установщика, с которым хотите продолжить."
+  },
+  "astralrinth.app.launcher-update-modal.update.installer-title": {
+    "message": "Тип установщика"
+  },
+  "astralrinth.app.launcher-update-modal.update.installed-version": {
+    "message": "💾 Установленная и запущенная версия:"
+  },
+  "astralrinth.app.launcher-update-modal.update.latest-release-tag": {
+    "message": "☁️ Тег последнего релиза:"
+  },
+  "astralrinth.app.launcher-update-modal.update.latest-release-title": {
+    "message": "☁️ Название последнего релиза:"
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-lead": {
+    "message": "Перед установкой обновления сохраните работу, закройте все запущенные экземпляры лаунчера и сделайте резервную копию его данных."
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-macos": {
+    "message": "На macOS важные данные могут находиться в"
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-outro": {
+    "message": "Чтобы избежать потери данных, сохраните резервную копию в безопасном месте перед продолжением."
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-windows": {
+    "message": "На Windows важные данные могут находиться в"
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-title": {
+    "message": "⚠️ Перед продолжением"
+  },
+  "astralrinth.app.launcher-update-modal.update.repository-link": {
+    "message": "Открыть репозиторий проекта"
+  },
+  "astralrinth.app.launcher-update-modal.update.select-installer": {
+    "message": "Выберите установщик"
+  },
+  "astralrinth.app.launcher-update-modal.update.title": {
+    "message": "Доступна новая версия лаунчера AstralRinth."
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.description": {
+    "message": "Произошла ошибка при добавлении офлайн-аккаунта. Пожалуйста, выполните рекомендации ниже."
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.format-hint": {
+    "message": "Убедитесь, что имя соответствует требуемому формату `{nameExp}`"
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.header": {
+    "message": "Ошибка во время ввода данных для офлайн-аккаунта"
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.length-hint": {
+    "message": "Имя игрока должно содержать не менее {min} и не более {max} символов."
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.name-hint": {
+    "message": "Проверьте, что имя игрока введено корректно."
+  },
+  "astralrinth.app.minecraft-account.error.retry-action": {
+    "message": "Повторить"
+  },
+  "astralrinth.app.minecraft-account.error.unexpected.description": {
+    "message": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже."
+  },
+  "astralrinth.app.minecraft-account.error.unexpected.header": {
+    "message": "Произошла непредвиденная ошибка"
+  },
+  "astralrinth.app.minecraft-account.input.auth.description": {
+    "message": "Выберите способ входа или игры."
+  },
+  "astralrinth.app.minecraft-account.input.auth.external-description": {
+    "message": "Аккаунт для серверов с поддержкой {providerName}."
+  },
+  "astralrinth.app.minecraft-account.input.auth.header": {
+    "message": "Добавить аккаунт Minecraft"
+  },
+  "astralrinth.app.minecraft-account.input.auth.microsoft-description": {
+    "message": "Официальный аккаунт с Minecraft: Java Edition."
+  },
+  "astralrinth.app.minecraft-account.input.auth.offline-description": {
+    "message": "Локальный профиль без токенов авторизации."
+  },
+  "astralrinth.app.minecraft-account.input.auth.offline-label": {
+    "message": "Офлайн"
+  },
+  "astralrinth.app.minecraft-account.input.login-action": {
+    "message": "Войти"
+  },
+  "astralrinth.app.minecraft-account.input.offline.header": {
+    "message": "Добавить новый офлайн-аккаунт"
+  },
+  "astralrinth.app.minecraft-account.input.offline.name.label": {
+    "message": "Введите имя игрока"
+  },
+  "astralrinth.app.minecraft-account.input.offline.name.placeholder": {
+    "message": "Введите имя игрока..."
   }
 }

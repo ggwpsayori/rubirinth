@@ -20,11 +20,12 @@
 					:key="link.href"
 					ref="tabLinkElements"
 					:replace="replace"
-					:to="query ? (link.href ? `?${query}=${link.href}` : '?') : link.href"
+					:to="getTargetUrl(link)"
 					class="button-animation z-[1] flex flex-row items-center gap-2 px-4 py-2 focus:rounded-full"
 					:class="getSSRFallbackClasses(index)"
 					@mouseenter="link.onHover?.()"
 					@focus="link.onHover?.()"
+					@click="handleNavClick($event, index, link)"
 				>
 					<component
 						:is="link.icon"
@@ -46,7 +47,7 @@
 					ref="tabLinkElements"
 					class="button-animation z-[1] flex flex-row items-center gap-2 px-4 py-2 hover:cursor-pointer focus:rounded-full"
 					:class="getSSRFallbackClasses(index)"
-					@click="emit('tabClick', index, link)"
+					@click="handleLocalClick(index, link)"
 				>
 					<component
 						:is="link.icon"
@@ -62,7 +63,7 @@
 
 			<div
 				v-if="sliderReady && currentActiveIndex !== -1"
-				class="pointer-events-none absolute rounded-full"
+				class="pointer-events-none absolute rounded-full navtabs-slider"
 				:class="[
 					subpageSelected ? 'bg-button-bg' : 'bg-button-bgSelected',
 					{ 'navtabs-transition': transitionsEnabled },
@@ -77,9 +78,10 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
+const router = useRouter()
 
 defineOptions({ inheritAttrs: false })
 
@@ -117,10 +119,10 @@ const emit = defineEmits<{
 const scrollContainer = ref<HTMLElement | null>(null)
 const tabLinkElements = ref<HTMLElement[]>()
 
-const sliderLeft = ref(0)
-const sliderTop = ref(0)
-const sliderRight = ref(0)
-const sliderBottom = ref(0)
+const sliderX = ref(0)
+const sliderY = ref(0)
+const sliderWidth = ref(0)
+const sliderHeight = ref(0)
 
 const currentActiveIndex = ref(-1)
 const subpageSelected = ref(false)
@@ -129,21 +131,20 @@ const sliderReady = ref(false)
 const transitionsEnabled = ref(false)
 const colorChangeDelayed = ref(false)
 
-const sliderDelays = ref({ left: '0ms', top: '0ms', right: '0ms', bottom: '0ms' })
-
 const filteredLinks = computed(() => props.links.filter((link) => link.shown ?? true))
 
-const sliderStyle = computed(() => ({
-	left: `${sliderLeft.value}px`,
-	top: `${sliderTop.value}px`,
-	right: `${sliderRight.value}px`,
-	bottom: `${sliderBottom.value}px`,
-}))
+function getTargetUrl(link: Tab) {
+	if (props.query) {
+		return link.href ? `?${props.query}=${link.href}` : '?'
+	}
+	return link.href
+}
 
-const leftDelay = computed(() => sliderDelays.value.left)
-const rightDelay = computed(() => sliderDelays.value.right)
-const topDelay = computed(() => sliderDelays.value.top)
-const bottomDelay = computed(() => sliderDelays.value.bottom)
+const sliderStyle = computed(() => ({
+	transform: `translate3d(${sliderX.value}px, ${sliderY.value}px, 0)`,
+	width: `${sliderWidth.value}px`,
+	height: `${sliderHeight.value}px`,
+}))
 
 const isActiveAndNotSubpage = computed(
 	() => (index: number) => currentActiveIndex.value === index && !subpageSelected.value,
@@ -226,51 +227,32 @@ function getTabElement(index: number): HTMLElement | null {
 	return element
 }
 
-function getSliderPosition() {
-	const el = getTabElement(currentActiveIndex.value)
-	const parent = scrollContainer.value
-	if (!el || !parent) return null
+function getSliderPosition(targetIndex = currentActiveIndex.value) {
+	const el = getTabElement(targetIndex)
+	if (!el) return null
 
 	return {
-		left: el.offsetLeft,
-		top: el.offsetTop,
-		right: parent.clientWidth - el.offsetLeft - el.offsetWidth,
-		bottom: parent.clientHeight - el.offsetTop - el.offsetHeight,
+		x: el.offsetLeft,
+		y: el.offsetTop,
+		width: el.offsetWidth,
+		height: el.offsetHeight,
 	}
 }
 
 function applySliderPosition(newPosition: {
-	left: number
-	top: number
-	right: number
-	bottom: number
+	x: number
+	y: number
+	width: number
+	height: number
 }) {
-	sliderLeft.value = newPosition.left
-	sliderTop.value = newPosition.top
-	sliderRight.value = newPosition.right
-	sliderBottom.value = newPosition.bottom
+	sliderX.value = newPosition.x
+	sliderY.value = newPosition.y
+	sliderWidth.value = newPosition.width
+	sliderHeight.value = newPosition.height
 }
 
-function animateSliderTo(newPosition: {
-	left: number
-	top: number
-	right: number
-	bottom: number
-}) {
-	const STAGGER_DELAY = '175ms'
-
-	sliderDelays.value = {
-		left: newPosition.left < sliderLeft.value ? '0ms' : STAGGER_DELAY,
-		right: newPosition.left < sliderLeft.value ? STAGGER_DELAY : '0ms',
-		top: newPosition.top < sliderTop.value ? '0ms' : STAGGER_DELAY,
-		bottom: newPosition.top < sliderTop.value ? STAGGER_DELAY : '0ms',
-	}
-
-	applySliderPosition(newPosition)
-}
-
-function positionSlider(animate = true) {
-	const newPosition = getSliderPosition()
+function positionSlider(animate = true, targetIndex = currentActiveIndex.value) {
+	const newPosition = getSliderPosition(targetIndex)
 	if (!newPosition) {
 		return
 	}
@@ -278,10 +260,8 @@ function positionSlider(animate = true) {
 	if (!sliderReady.value) {
 		applySliderPosition(newPosition)
 		sliderReady.value = true
-		nextTick(() => {
-			requestAnimationFrame(() => {
-				transitionsEnabled.value = true
-			})
+		requestAnimationFrame(() => {
+			transitionsEnabled.value = true
 		})
 		return
 	}
@@ -295,7 +275,45 @@ function positionSlider(animate = true) {
 		return
 	}
 
-	animateSliderTo(newPosition)
+	applySliderPosition(newPosition)
+}
+
+let navTimer: ReturnType<typeof setTimeout> | null = null
+
+function handleNavClick(e: MouseEvent, index: number, link: Tab) {
+	if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) {
+		return
+	}
+	e.preventDefault()
+
+	if (index === currentActiveIndex.value) return
+
+	currentActiveIndex.value = index
+	subpageSelected.value = false
+	positionSlider(true, index)
+
+	if (navTimer) clearTimeout(navTimer)
+	const targetUrl = getTargetUrl(link)
+	navTimer = setTimeout(() => {
+		if (props.replace) {
+			void router.replace(targetUrl)
+		} else {
+			void router.push(targetUrl)
+		}
+	}, 190)
+}
+
+function handleLocalClick(index: number, link: Tab) {
+	if (index === currentActiveIndex.value) return
+
+	currentActiveIndex.value = index
+	subpageSelected.value = false
+	positionSlider(true, index)
+
+	if (navTimer) clearTimeout(navTimer)
+	navTimer = setTimeout(() => {
+		emit('tabClick', index, link)
+	}, 190)
 }
 
 function resetSliderPosition() {
@@ -332,6 +350,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+	if (navTimer) clearTimeout(navTimer)
 	resizeObserver?.disconnect()
 })
 
@@ -364,19 +383,25 @@ watch(
 </script>
 
 <style scoped>
+.navtabs-slider {
+	top: 0;
+	left: 0;
+	will-change: transform, width, height;
+	transform-origin: 0 0;
+}
+
 .navtabs-transition {
 	transition:
-		left 80ms cubic-bezier(0.4, 0, 0.2, 1) v-bind(leftDelay),
-		right 80ms cubic-bezier(0.4, 0, 0.2, 1) v-bind(rightDelay),
-		top 80ms cubic-bezier(0.4, 0, 0.2, 1) v-bind(topDelay),
-		bottom 80ms cubic-bezier(0.4, 0, 0.2, 1) v-bind(bottomDelay);
+		transform 180ms cubic-bezier(0.2, 0, 0, 1),
+		width 180ms cubic-bezier(0.2, 0, 0, 1),
+		height 180ms cubic-bezier(0.2, 0, 0, 1);
 }
 
 .tab-color {
-	transition: color 100ms cubic-bezier(0.4, 0, 0.2, 1);
+	transition: color 120ms ease;
 }
 
 .tab-color-delayed .tab-color {
-	transition-delay: 100ms;
+	transition-delay: 0ms;
 }
 </style>

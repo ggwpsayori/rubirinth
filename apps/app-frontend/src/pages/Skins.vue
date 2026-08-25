@@ -31,6 +31,7 @@ import { computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch } 
 import EarsModIcon from '@/assets/skins/ears-mod.png'
 import type AccountsCard from '@/components/ui/AccountsCard.vue'
 import EditSkinModal from '@/components/ui/skin/EditSkinModal.vue'
+import UnsupportedSkinAccount from '@/components/ui/astralrinth/skin/UnsupportedSkinAccount.vue'
 import VirtualSkinSectionList from '@/components/ui/skin/VirtualSkinSectionList.vue'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { handleSevereError } from '@/composables/use-error.js'
@@ -81,16 +82,16 @@ const EARS_NOTICE_PLACEHOLDER = '__EARS_MOD_NAME__'
 const messages = defineMessages({
 	modrinthPrideSection: {
 		id: 'app.skins.section.modrinth-pride',
-		defaultMessage: 'Modrinth Pride',
+		defaultMessage: 'Rubirinth Pride',
 	},
 	modrinthPrideTooltip: {
 		id: 'app.skins.section.modrinth-pride.tooltip',
 		defaultMessage:
-			'You received these skins for donating to a Modrinth Pride fundraiser during Pride Month.',
+			'You received these skins for donating to a Rubirinth Pride fundraiser during Pride Month.',
 	},
 	modrinthSection: {
 		id: 'app.skins.section.modrinth',
-		defaultMessage: 'Modrinth',
+		defaultMessage: 'Rubirinth',
 	},
 	defaultSkinsSection: {
 		id: 'app.skins.section.default-skins',
@@ -227,6 +228,7 @@ const currentUser = ref(undefined)
 const currentUserId = ref<string | undefined>(undefined)
 
 const username = computed(() => currentUser.value?.profile?.name ?? undefined)
+const isMicrosoftAccount = computed(() => !currentUser.value || currentUser.value?.account_type === 'microsoft')
 const selectedSkin = ref<Skin | null>(null)
 const isApplyingSkin = ref(false)
 const earsFeaturesEnabled = ref(true)
@@ -384,6 +386,10 @@ async function deleteSkin() {
 }
 
 async function loadCapes() {
+	if (currentUser.value && !isMicrosoftAccount.value) {
+		capes.value = []
+		return
+	}
 	try {
 		capes.value = (await get_available_capes()) ?? []
 	} catch (error) {
@@ -394,6 +400,10 @@ async function loadCapes() {
 }
 
 async function loadSkins() {
+	if (currentUser.value && !isMicrosoftAccount.value) {
+		skins.value = []
+		return
+	}
 	try {
 		const loadedSkins = (await get_available_skins()) ?? []
 		const loadedEquippedSkin = loadedSkins.find((s) => s.is_equipped)
@@ -1079,7 +1089,12 @@ await loadSkins()
 		@proceed="deleteSkin"
 	/>
 
-	<div class="skin-layout box-border grow p-4" :class="{ 'pb-40': !currentUser }">
+	<UnsupportedSkinAccount
+		v-if="currentUser && !isMicrosoftAccount"
+		:account-type="currentUser.account_type"
+	/>
+
+	<div v-else class="skin-layout box-border grow p-4" :class="{ 'pb-40': !currentUser }">
 		<div class="sticky top-6 self-start p-2 pt-0">
 			<h1 class="m-0 text-2xl font-bold flex items-center gap-2">
 				{{ formatMessage(appMessages.skinSelectorLabel) }}

@@ -228,3 +228,10 @@ export const SERVER_CATEGORY_ICON_MAP: Record<string, string> = {
 	whitelisted: 'badge-check',
 	'world-resets': 'refresh-ccw',
 }
+
+import _ElyByIcon from './icons/astralrinth/elyby-icon.svg?component'
+import _MicrosoftIcon from './icons/astralrinth/microsoft.svg?component'
+import _OfflineIcon from './icons/astralrinth/offline.svg?component'
+export const OfflineIcon = _OfflineIcon
+export const MicrosoftIcon = _MicrosoftIcon
+export const ElyByIcon = _ElyByIcon

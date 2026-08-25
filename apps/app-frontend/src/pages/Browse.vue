@@ -1,4 +1,6 @@
 <script setup lang="ts">
+defineOptions({ name: 'Browse' })
+
 import type { Labrinth } from '@modrinth/api-client'
 import {
 	CheckIcon,
