@@ -9,16 +9,7 @@
 		</Admonition>
 
 		<p class="m-0 mb-4 text-secondary">
-			<IntlFormatted
-				:message-id="languageSelectorMessages.languagesDescription"
-				:values="{ platform }"
-			>
-				<template #~crowdin-link="{ children }">
-					<AutoLink to="https://translate.modrinth.com" class="text-link">
-						<component :is="() => children" />
-					</AutoLink>
-				</template>
-			</IntlFormatted>
+			{{ formatMessage(languageSelectorMessages.languagesDescription, { platform }) }}
 		</p>
 
 		<LanguageSettingsSelector
@@ -35,7 +26,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 
-import { Admonition, AutoLink, IntlFormatted } from '#ui/components/base'
+import { Admonition } from '#ui/components/base'
 import { LOCALES, useVIntl } from '#ui/composables'
 import { injectI18n, injectUserPreferences } from '#ui/providers'
 import { commonSettingsMessages, languageSelectorMessages, useSavable } from '#ui/utils'

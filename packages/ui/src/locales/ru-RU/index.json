@@ -5628,7 +5628,8 @@
     "defaultMessage": "Около {percentage}% сайта переведено на этот язык."
   },
   "settings.language.description": {
-    "defaultMessage": "Выберите язык {platform}. Переводы выполнены сообществом <crowdin-link>на Crowdin</crowdin-link>."
+    "message": "Выберите язык {platform}.",
+    "defaultMessage": "Выберите язык {platform}."
   },
   "settings.language.languages.search-field.placeholder": {
     "defaultMessage": "Поиск языка..."
