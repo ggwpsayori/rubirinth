@@ -15,6 +15,7 @@ import {
 	UserIcon,
 } from '@modrinth/assets'
 import {
+	Button,
 	commonMessages,
 	commonSettingsMessages,
 	defineMessage,

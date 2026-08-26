@@ -53,6 +53,18 @@
 				},
 				{
 					"url": "https://*.taila228c5.ts.net/*"
+				},
+				{
+					"url": "https://api.github.com/*"
+				},
+				{
+					"url": "https://github.com/*"
+				},
+				{
+					"url": "https://*.github.com/*"
+				},
+				{
+					"url": "https://*.githubusercontent.com/*"
 				}
 			]
 		},
