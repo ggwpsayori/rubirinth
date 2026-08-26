@@ -1,6 +1,5 @@
-﻿import { ElyByIcon, ExternalIcon } from '@modrinth/assets'
+import { ElyByIcon, ExternalIcon } from '@modrinth/assets'
 import { invoke } from '@tauri-apps/api/core'
-import { fetch } from '@tauri-apps/plugin-http'
 import type { Component } from 'vue'
 import { ref } from 'vue'
 
@@ -19,9 +18,9 @@ type ExternalAuthLibraryState = {
 	localAssetNames: string[]
 }
 
-type ExternalAuthLibraryCatalogEntry = {
+export type ExternalAuthLibraryCatalogEntry = {
 	provider: ExternalAuthProvider
-	assetNames: string[] | null
+	assetNames: string[]
 }
 
 export type MinecraftCredential = {
@@ -56,7 +55,17 @@ let externalAuthLibraryCatalog: ExternalAuthLibraryCatalogEntry[] | undefined
 let externalAuthLibraryCatalogNextRefreshAt = 0
 
 const externalAuthLibraryCatalogRefreshCooldownMs = 30_000
-const externalAuthLibraryRequestTimeoutMs = 15_000
+
+export const DEFAULT_AUTHLIB_INJECTOR_VERSIONS = [
+	'authlib-injector-1.2.8.jar',
+	'authlib-injector-1.2.7.jar',
+	'authlib-injector-1.2.6.jar',
+	'authlib-injector-1.2.5.jar',
+	'authlib-injector-1.2.4.jar',
+	'authlib-injector-1.2.3.jar',
+	'authlib-injector-1.2.2.jar',
+	'authlib-injector-1.1.30.jar',
+]
 
 /** Loads provider metadata once and adapts it for account-selection controls. */
 export async function loadExternalAuthProviders() {
@@ -91,54 +100,6 @@ export async function loadExternalAuthProviders() {
 	}
 }
 
-function parseExternalAuthLibraryAssets(value: unknown): string[] {
-	if (!value || typeof value !== 'object' || !('assets' in value) || !Array.isArray(value.assets)) {
-		throw new Error('The release response does not contain an assets array')
-	}
-
-	return value.assets
-		.flatMap((asset) =>
-			typeof asset === 'object' &&
-			asset !== null &&
-			'name' in asset &&
-			typeof asset.name === 'string'
-				? [asset.name]
-				: [],
-		)
-		.filter(
-			(assetName) =>
-				assetName.includes('authlib-injector') &&
-				assetName.endsWith('.jar') &&
-				!assetName.includes('/') &&
-				!assetName.includes('\\'),
-		)
-}
-
-async function fetchExternalAuthLibraryCatalogEntry(
-	provider: ExternalAuthProvider,
-): Promise<ExternalAuthLibraryCatalogEntry> {
-	const controller = new AbortController()
-	const timeout = window.setTimeout(() => controller.abort(), externalAuthLibraryRequestTimeoutMs)
-	try {
-		const response = await fetch(provider.libraryReleaseUrl, { signal: controller.signal })
-		if (!response.ok) {
-			throw new Error(`HTTP ${response.status}`)
-		}
-
-		return {
-			provider,
-			assetNames: parseExternalAuthLibraryAssets(await response.json()),
-		}
-	} catch {
-		return {
-			provider,
-			assetNames: null,
-		}
-	} finally {
-		window.clearTimeout(timeout)
-	}
-}
-
 /** Loads the remote provider-library catalog once per app runtime unless refresh is requested. */
 export async function loadExternalAuthLibraryCatalog(
 	forceRefresh = false,
@@ -154,11 +115,41 @@ export async function loadExternalAuthLibraryCatalog(
 		return externalAuthLibraryCatalog
 	}
 
+	try {
+		const rawCatalog = await invoke<
+			{ provider: ExternalAuthProviderMetadata; assetNames: string[] }[]
+		>('plugin:auth|get_external_auth_library_catalog')
+
+		if (rawCatalog && rawCatalog.length > 0) {
+			externalAuthLibraryCatalog = rawCatalog.map((entry) => ({
+				provider: {
+					id: entry.provider.id,
+					accountOptionId: `add_external_${entry.provider.id}_account`,
+					icon: externalAuthProviderIcons[entry.provider.icon] ?? ExternalIcon,
+					libraryReleaseUrl: entry.provider.libraryReleaseUrl,
+					name: entry.provider.displayName,
+					skinManagementUrl: entry.provider.skinManagementUrl,
+				},
+				assetNames:
+					entry.assetNames && entry.assetNames.length > 0
+						? entry.assetNames
+						: [...DEFAULT_AUTHLIB_INJECTOR_VERSIONS],
+			}))
+			externalAuthLibraryCatalogNextRefreshAt =
+				Date.now() + externalAuthLibraryCatalogRefreshCooldownMs
+			return externalAuthLibraryCatalog
+		}
+	} catch (e) {
+		console.warn('invoke get_external_auth_library_catalog failed, falling back:', e)
+	}
+
 	const providers = await loadExternalAuthProviders()
-	externalAuthLibraryCatalog = await Promise.all(
-		providers.map(fetchExternalAuthLibraryCatalogEntry),
-	)
-	externalAuthLibraryCatalogNextRefreshAt = Date.now() + externalAuthLibraryCatalogRefreshCooldownMs
+	externalAuthLibraryCatalog = providers.map((provider) => ({
+		provider,
+		assetNames: [...DEFAULT_AUTHLIB_INJECTOR_VERSIONS],
+	}))
+	externalAuthLibraryCatalogNextRefreshAt =
+		Date.now() + externalAuthLibraryCatalogRefreshCooldownMs
 
 	return externalAuthLibraryCatalog
 }

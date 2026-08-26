@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CheckIcon, DownloadIcon, KeyIcon, RefreshCwIcon, SpinnerIcon } from '@modrinth/assets'
+import { CheckIcon, DownloadIcon, RefreshCwIcon, SpinnerIcon } from '@modrinth/assets'
 import {
 	Button,
 	defineMessages,
@@ -11,6 +11,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 import RubirinthSettingsPage from '@/components/ui/settings/rubirinth/RubirinthSettingsPage.vue'
 import {
+	DEFAULT_AUTHLIB_INJECTOR_VERSIONS,
 	type ExternalAuthProvider,
 	getExternalAuthLibraryCatalogRefreshCooldown,
 	getExternalAuthLibraryStates,
@@ -26,7 +27,7 @@ type Library = {
 	selectedAssetName: string | null
 	savedAssetName: string | null
 	localOnly: boolean
-	busy: 'selecting' | 'installing' | null
+	busy: 'installing' | 'selecting' | null
 }
 
 const messages = defineMessages({
@@ -39,25 +40,25 @@ const messages = defineMessages({
 		defaultMessage:
 			'Choose and install the authentication library used when Minecraft starts with an external player profile (Ely.by, etc.).',
 	},
+	requestServer: {
+		id: 'app.settings.external-auth-libraries.request-server',
+		defaultMessage: 'Request from server',
+	},
+	requestingServer: {
+		id: 'app.settings.external-auth-libraries.requesting-server',
+		defaultMessage: 'Requesting...',
+	},
 	loading: {
 		id: 'app.settings.external-auth-libraries.loading',
-		defaultMessage: 'Loading available library versions...',
+		defaultMessage: 'Loading library catalog...',
 	},
 	loadFailed: {
 		id: 'app.settings.external-auth-libraries.load-failed',
-		defaultMessage: 'Could not load authentication libraries: {error}',
+		defaultMessage: 'Failed to load authentication libraries: {error}',
 	},
 	retry: {
 		id: 'app.settings.external-auth-libraries.retry',
 		defaultMessage: 'Retry',
-	},
-	requestServer: {
-		id: 'app.settings.external-auth-libraries.request-server',
-		defaultMessage: 'Check updates',
-	},
-	requestingServer: {
-		id: 'app.settings.external-auth-libraries.requesting-server',
-		defaultMessage: 'Checking...',
 	},
 	selectedVersion: {
 		id: 'app.settings.external-auth-libraries.selected-version',
@@ -66,6 +67,10 @@ const messages = defineMessages({
 	notSelected: {
 		id: 'app.settings.external-auth-libraries.not-selected',
 		defaultMessage: 'Not selected',
+	},
+	selectOption: {
+		id: 'app.settings.external-auth-libraries.select-option',
+		defaultMessage: 'Select an option',
 	},
 	version: {
 		id: 'app.settings.external-auth-libraries.version',
@@ -93,7 +98,8 @@ const messages = defineMessages({
 	},
 	localOnly: {
 		id: 'app.settings.external-auth-libraries.local-only',
-		defaultMessage: 'Only locally installed versions are shown because the remote server is unavailable.',
+		defaultMessage:
+			'Only locally installed versions are shown because the remote server is unavailable.',
 	},
 })
 
@@ -157,7 +163,8 @@ async function loadLibraries(forceRefresh = false): Promise<void> {
 		libraries.value = catalog.map(({ provider, assetNames }) => {
 			const state = statesByProvider.get(provider.id)
 			const localAssetNames = sortLibraryVersions(state?.localAssetNames ?? [])
-			const availableAssetNames = assetNames ? sortLibraryVersions(assetNames) : localAssetNames
+			const rawVersions = assetNames && assetNames.length > 0 ? assetNames : DEFAULT_AUTHLIB_INJECTOR_VERSIONS
+			const availableAssetNames = sortLibraryVersions(rawVersions)
 			const savedAssetName = state?.selectedAssetName ?? null
 
 			return {
@@ -320,14 +327,15 @@ onUnmounted(() => {
 							v-model="library.selectedAssetName"
 							:name="`external-auth-library-${library.provider.id}`"
 							:options="library.assetNames"
+							:placeholder="formatMessage(messages.selectOption)"
 							:disabled="library.busy || refreshing"
-							@change="selectLibrary(library, $event.option)"
+							@change="selectLibrary(library, $event)"
 						/>
 					</div>
 					<Button
 						type="colored"
 						color="brand"
-						:disabled="library.localOnly || !library.selectedAssetName || library.busy || refreshing"
+						:disabled="!library.selectedAssetName || library.busy || refreshing"
 						@click="installLibrary(library)"
 					>
 						<SpinnerIcon v-if="library.busy === 'installing'" class="animate-spin" />
