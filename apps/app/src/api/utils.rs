@@ -232,25 +232,21 @@ pub async fn download_and_install_update<R: Runtime>(
     let response = client
         .get(&download_url)
         .send()
-        .await
-        .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::NetworkError(e.to_string()).into()))?;
+        .await?;
 
     let total_size = response.content_length().unwrap_or(0);
 
     let mut dest_file = tokio::fs::File::create(&installer_path)
-        .await
-        .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::IOError(e.to_string()).into()))?;
+        .await?;
 
     use futures_util::StreamExt;
     let mut stream = response.bytes_stream();
     let mut downloaded: u64 = 0;
 
     while let Some(chunk_result) = stream.next().await {
-        let chunk = chunk_result
-            .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::NetworkError(e.to_string()).into()))?;
+        let chunk = chunk_result?;
         tokio::io::AsyncWriteExt::write_all(&mut dest_file, &chunk)
-            .await
-            .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::IOError(e.to_string()).into()))?;
+            .await?;
         downloaded += chunk.len() as u64;
         if total_size > 0 {
             let _ = theseus::emit_loading(&progress, downloaded as f64 / total_size as f64, None);
@@ -265,8 +261,7 @@ pub async fn download_and_install_update<R: Runtime>(
         let installer_str = installer_path.to_string_lossy().to_string();
         std::process::Command::new("cmd")
             .args(&["/C", "start", "", &installer_str])
-            .spawn()
-            .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::IOError(e.to_string()).into()))?;
+            .spawn()?;
     }
 
     Ok(())

@@ -58,7 +58,6 @@ pub enum TheseusSerializableError {
     #[error("Updater error: {0}")]
     Updater(#[from] tauri_plugin_updater::Error),
 
-    #[cfg(feature = "updater")]
     #[error("HTTP error: {0}")]
     Http(#[from] tauri_plugin_http::reqwest::Error),
 }
