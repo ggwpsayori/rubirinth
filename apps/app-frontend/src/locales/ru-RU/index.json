@@ -4038,5 +4038,61 @@
   "installation-settings.link-modpack.no-versions": {
     "message": "Версии для этой сборки не найдены.",
     "defaultMessage": "Версии для этой сборки не найдены."
+  },
+  "app.settings.tabs.advanced": {
+    "message": "Продвинутые",
+    "defaultMessage": "Продвинутые"
+  },
+  "app.settings.advanced.title": {
+    "message": "Продвинутые настройки",
+    "defaultMessage": "Продвинутые настройки"
+  },
+  "app.settings.advanced.import-section.title": {
+    "message": "Импорт данных из других лаунчеров",
+    "defaultMessage": "Импорт данных из других лаунчеров"
+  },
+  "app.settings.advanced.import-section.description": {
+    "message": "Перенесите сборки, миры и моды из других лаунчеров (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки.",
+    "defaultMessage": "Перенесите сборки, миры и моды из других лаунчеров (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
+  },
+  "app.settings.advanced.scan-launchers": {
+    "message": "Поиск лаунчеров",
+    "defaultMessage": "Поиск лаунчеров"
+  },
+  "app.settings.advanced.add-custom-folder": {
+    "message": "Выбрать папку...",
+    "defaultMessage": "Выбрать папку..."
+  },
+  "app.settings.advanced.search-instances": {
+    "message": "Поиск по названию сборки...",
+    "defaultMessage": "Поиск по названию сборки..."
+  },
+  "app.settings.advanced.no-launchers-detected": {
+    "message": "Сборки в стандартных папках других лаунчеров не обнаружены. Вы можете вручную указать папку выше.",
+    "defaultMessage": "Сборки в стандартных папках других лаунчеров не обнаружены. Вы можете вручную указать папку выше."
+  },
+  "app.settings.advanced.import-selected": {
+    "message": "Импортировать выбранные ({count})",
+    "defaultMessage": "Импортировать выбранные ({count})"
+  },
+  "app.settings.advanced.importing": {
+    "message": "Импорт...",
+    "defaultMessage": "Импорт..."
+  },
+  "app.settings.advanced.import-success.title": {
+    "message": "Импорт завершён",
+    "defaultMessage": "Импорт завершён"
+  },
+  "app.settings.advanced.import-success.text": {
+    "message": "Успешно импортировано сборок: {count}.",
+    "defaultMessage": "Успешно импортировано сборок: {count}."
+  },
+  "app.settings.advanced.clear-selection": {
+    "message": "Снять выбор",
+    "defaultMessage": "Снять выбор"
+  },
+  "app.settings.advanced.instances-count": {
+    "message": "{count} сборок",
+    "defaultMessage": "{count} сборок"
   }
 }

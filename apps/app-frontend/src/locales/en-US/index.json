@@ -3044,5 +3044,61 @@
   "installation-settings.link-modpack.no-versions": {
     "message": "No versions found for this modpack.",
     "defaultMessage": "No versions found for this modpack."
+  },
+  "app.settings.tabs.advanced": {
+    "message": "Advanced",
+    "defaultMessage": "Advanced"
+  },
+  "app.settings.advanced.title": {
+    "message": "Advanced settings",
+    "defaultMessage": "Advanced settings"
+  },
+  "app.settings.advanced.import-section.title": {
+    "message": "Import from other launchers",
+    "defaultMessage": "Import from other launchers"
+  },
+  "app.settings.advanced.import-section.description": {
+    "message": "Import your instances, mods, and worlds from other Minecraft launchers (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom directory.",
+    "defaultMessage": "Import your instances, mods, and worlds from other Minecraft launchers (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom directory."
+  },
+  "app.settings.advanced.scan-launchers": {
+    "message": "Scan launchers",
+    "defaultMessage": "Scan launchers"
+  },
+  "app.settings.advanced.add-custom-folder": {
+    "message": "Add custom folder...",
+    "defaultMessage": "Add custom folder..."
+  },
+  "app.settings.advanced.search-instances": {
+    "message": "Search instance name...",
+    "defaultMessage": "Search instance name..."
+  },
+  "app.settings.advanced.no-launchers-detected": {
+    "message": "No instances were automatically detected from other launchers. You can specify a custom directory above.",
+    "defaultMessage": "No instances were automatically detected from other launchers. You can specify a custom directory above."
+  },
+  "app.settings.advanced.import-selected": {
+    "message": "Import selected ({count})",
+    "defaultMessage": "Import selected ({count})"
+  },
+  "app.settings.advanced.importing": {
+    "message": "Importing...",
+    "defaultMessage": "Importing..."
+  },
+  "app.settings.advanced.import-success.title": {
+    "message": "Import completed",
+    "defaultMessage": "Import completed"
+  },
+  "app.settings.advanced.import-success.text": {
+    "message": "Successfully imported {count} instance(s).",
+    "defaultMessage": "Successfully imported {count} instance(s)."
+  },
+  "app.settings.advanced.clear-selection": {
+    "message": "Clear selection",
+    "defaultMessage": "Clear selection"
+  },
+  "app.settings.advanced.instances-count": {
+    "message": "{count} instance(s)",
+    "defaultMessage": "{count} instance(s)"
   }
 }

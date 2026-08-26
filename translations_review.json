@@ -16318,5 +16318,75 @@
     "package": "app-frontend",
     "en": "No versions found for this modpack.",
     "ru": "Версии для этой сборки не найдены."
+  },
+  "app.settings.tabs.advanced": {
+    "package": "app-frontend",
+    "en": "Advanced",
+    "ru": "Продвинутые"
+  },
+  "app.settings.advanced.title": {
+    "package": "app-frontend",
+    "en": "Advanced settings",
+    "ru": "Продвинутые настройки"
+  },
+  "app.settings.advanced.import-section.title": {
+    "package": "app-frontend",
+    "en": "Import from other launchers",
+    "ru": "Импорт данных из других лаунчеров"
+  },
+  "app.settings.advanced.import-section.description": {
+    "package": "app-frontend",
+    "en": "Import your instances, mods, and worlds from other Minecraft launchers (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom directory.",
+    "ru": "Перенесите сборки, миры и моды из других лаунчеров (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
+  },
+  "app.settings.advanced.scan-launchers": {
+    "package": "app-frontend",
+    "en": "Scan launchers",
+    "ru": "Поиск лаунчеров"
+  },
+  "app.settings.advanced.add-custom-folder": {
+    "package": "app-frontend",
+    "en": "Add custom folder...",
+    "ru": "Выбрать папку..."
+  },
+  "app.settings.advanced.search-instances": {
+    "package": "app-frontend",
+    "en": "Search instance name...",
+    "ru": "Поиск по названию сборки..."
+  },
+  "app.settings.advanced.no-launchers-detected": {
+    "package": "app-frontend",
+    "en": "No instances were automatically detected from other launchers. You can specify a custom directory above.",
+    "ru": "Сборки в стандартных папках других лаунчеров не обнаружены. Вы можете вручную указать папку выше."
+  },
+  "app.settings.advanced.import-selected": {
+    "package": "app-frontend",
+    "en": "Import selected ({count})",
+    "ru": "Импортировать выбранные ({count})"
+  },
+  "app.settings.advanced.importing": {
+    "package": "app-frontend",
+    "en": "Importing...",
+    "ru": "Импорт..."
+  },
+  "app.settings.advanced.import-success.title": {
+    "package": "app-frontend",
+    "en": "Import completed",
+    "ru": "Импорт завершён"
+  },
+  "app.settings.advanced.import-success.text": {
+    "package": "app-frontend",
+    "en": "Successfully imported {count} instance(s).",
+    "ru": "Успешно импортировано сборок: {count}."
+  },
+  "app.settings.advanced.clear-selection": {
+    "package": "app-frontend",
+    "en": "Clear selection",
+    "ru": "Снять выбор"
+  },
+  "app.settings.advanced.instances-count": {
+    "package": "app-frontend",
+    "en": "{count} instance(s)",
+    "ru": "{count} сборок"
   }
 }
