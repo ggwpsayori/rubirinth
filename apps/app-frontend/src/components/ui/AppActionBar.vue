@@ -16,7 +16,6 @@
 			<span class="text-sm text-contrast"> {{ formatMessage(messages.offline) }} </span>
 		</div>
 		<AppUpdateButton />
-		<AccountActionBarButton />
 		<div
 			class="flex border-solid border-surface-5 text-sm items-center gap-2 py-1.5 px-3 rounded-xl border"
 		>
@@ -120,6 +119,7 @@
 				<span class="text-secondary"> {{ formatMessage(messages.noInstancesRunning) }} </span>
 			</template>
 		</div>
+		<AccountActionBarButton />
 	</div>
 </template>
 
