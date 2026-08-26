@@ -139,7 +139,11 @@ const $locales = computed(() => {
 		})
 	}
 
-	return result.sort((a, b) => (b.coverage?.percentage ?? -1) - (a.coverage?.percentage ?? -1))
+	return result.sort((a, b) => {
+		if (a.tag === 'ru-RU') return -1
+		if (b.tag === 'ru-RU') return 1
+		return (b.coverage?.percentage ?? -1) - (a.coverage?.percentage ?? -1)
+	})
 })
 
 const $query = ref('')
