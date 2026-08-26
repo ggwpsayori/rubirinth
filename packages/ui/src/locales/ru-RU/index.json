@@ -6667,5 +6667,59 @@
   },
   "profile.button.shared-instances": {
     "defaultMessage": "Просмотр общих сборок"
+  },
+  "app.settings.sidebar.label.rubirinth": {
+    "defaultMessage": "Rubirinth"
+  },
+  "app.settings.tabs.external-auth-libraries": {
+    "defaultMessage": "Библиотеки авторизации"
+  },
+  "app.settings.external-auth-libraries.title": {
+    "defaultMessage": "Библиотеки авторизации"
+  },
+  "app.settings.external-auth-libraries.description": {
+    "defaultMessage": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.)."
+  },
+  "app.settings.external-auth-libraries.loading": {
+    "defaultMessage": "Загрузка доступных версий библиотек..."
+  },
+  "app.settings.external-auth-libraries.load-failed": {
+    "defaultMessage": "Не удалось загрузить библиотеки авторизации: {error}"
+  },
+  "app.settings.external-auth-libraries.retry": {
+    "defaultMessage": "Повторить"
+  },
+  "app.settings.external-auth-libraries.request-server": {
+    "defaultMessage": "Проверить обновления"
+  },
+  "app.settings.external-auth-libraries.requesting-server": {
+    "defaultMessage": "Проверка..."
+  },
+  "app.settings.external-auth-libraries.selected-version": {
+    "defaultMessage": "Выбранная версия"
+  },
+  "app.settings.external-auth-libraries.not-selected": {
+    "defaultMessage": "Не выбрано"
+  },
+  "app.settings.external-auth-libraries.version": {
+    "defaultMessage": "Версия"
+  },
+  "app.settings.external-auth-libraries.install-selected": {
+    "defaultMessage": "Установить"
+  },
+  "app.settings.external-auth-libraries.reinstall": {
+    "defaultMessage": "Переустановить"
+  },
+  "app.settings.external-auth-libraries.installing": {
+    "defaultMessage": "Установка..."
+  },
+  "app.settings.external-auth-libraries.installed": {
+    "defaultMessage": "Библиотека {providerName} {version} установлена"
+  },
+  "app.settings.external-auth-libraries.no-versions": {
+    "defaultMessage": "Совместимых версий библиотеки не найдено."
+  },
+  "app.settings.external-auth-libraries.local-only": {
+    "defaultMessage": "Отображаются только локально установленные версии, так как удаленный сервер недоступен."
   }
 }

@@ -6760,5 +6760,59 @@
   },
   "version.supplementary-resources.type": {
     "defaultMessage": "Type"
+  },
+  "app.settings.sidebar.label.rubirinth": {
+    "defaultMessage": "Rubirinth"
+  },
+  "app.settings.tabs.external-auth-libraries": {
+    "defaultMessage": "Authentication libraries"
+  },
+  "app.settings.external-auth-libraries.title": {
+    "defaultMessage": "Authentication libraries"
+  },
+  "app.settings.external-auth-libraries.description": {
+    "defaultMessage": "Choose and install the authentication library used when Minecraft starts with an external player profile (Ely.by, etc.)."
+  },
+  "app.settings.external-auth-libraries.loading": {
+    "defaultMessage": "Loading available library versions..."
+  },
+  "app.settings.external-auth-libraries.load-failed": {
+    "defaultMessage": "Could not load authentication libraries: {error}"
+  },
+  "app.settings.external-auth-libraries.retry": {
+    "defaultMessage": "Retry"
+  },
+  "app.settings.external-auth-libraries.request-server": {
+    "defaultMessage": "Check updates"
+  },
+  "app.settings.external-auth-libraries.requesting-server": {
+    "defaultMessage": "Checking..."
+  },
+  "app.settings.external-auth-libraries.selected-version": {
+    "defaultMessage": "Selected version"
+  },
+  "app.settings.external-auth-libraries.not-selected": {
+    "defaultMessage": "Not selected"
+  },
+  "app.settings.external-auth-libraries.version": {
+    "defaultMessage": "Version"
+  },
+  "app.settings.external-auth-libraries.install-selected": {
+    "defaultMessage": "Install"
+  },
+  "app.settings.external-auth-libraries.reinstall": {
+    "defaultMessage": "Reinstall"
+  },
+  "app.settings.external-auth-libraries.installing": {
+    "defaultMessage": "Installing..."
+  },
+  "app.settings.external-auth-libraries.installed": {
+    "defaultMessage": "{providerName} library {version} installed"
+  },
+  "app.settings.external-auth-libraries.no-versions": {
+    "defaultMessage": "No compatible library versions were found."
+  },
+  "app.settings.external-auth-libraries.local-only": {
+    "defaultMessage": "Only locally installed versions are shown because the remote server is unavailable."
   }
 }
