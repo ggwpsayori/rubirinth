@@ -399,18 +399,10 @@ const messages = defineMessages({
 				@click.stop
 			>
 				<!-- Popover Header -->
-				<div class="flex items-center justify-between mb-3 pb-2 border-0 border-b border-solid border-surface-4">
+				<div class="flex items-center mb-3 pb-2 border-0 border-b border-solid border-surface-4">
 					<h3 class="text-base text-primary font-medium m-0">
 						{{ formatMessage(messages.minecraftAccount) }}
 					</h3>
-					<IconButton
-						v-tooltip="formatMessage(messages.addAccount)"
-						type="quiet"
-						:label="formatMessage(messages.addAccount)"
-						@click="showAccountLoginModal"
-					>
-						<PlusIcon class="size-4 text-brand" />
-					</IconButton>
 				</div>
 
 				<!-- Accounts list -->
