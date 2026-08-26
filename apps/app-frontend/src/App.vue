@@ -211,9 +211,10 @@ watch(
 )
 const isHomePage = computed(() => route.path === '/')
 const isSkinsPage = computed(() => route.path.startsWith('/skins'))
+const isInstancePage = computed(() => route.path.startsWith('/instance'))
 const forceSidebar = computed(() => route.path.startsWith('/browse'))
 const sidebarVisible = computed(() => {
-	if (isHomePage.value || isSkinsPage.value) return false
+	if (isHomePage.value || isSkinsPage.value || isInstancePage.value) return false
 	return sidebarToggled.value || forceSidebar.value
 })
 const hostingRouteActive = computed(() => route.path.startsWith('/hosting'))
@@ -1876,7 +1877,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			</div>
 			<section data-tauri-drag-region class="flex shrink-0 ml-auto items-center">
 				<IconButton
-					v-if="!forceSidebar && !isHomePage && !isSkinsPage && appSettings.toggleSidebar"
+					v-if="!forceSidebar && !isHomePage && !isSkinsPage && !isInstancePage && appSettings.toggleSidebar"
 					:type="sidebarToggled ? 'base' : 'quiet'"
 					:label="formatMessage(messages.nextImage)"
 					class="mr-3 transition-transform"
