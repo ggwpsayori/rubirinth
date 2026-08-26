@@ -1773,10 +1773,17 @@ watch(
 watch(
 	() => instance.value?.link,
 	async (newInstanceLink, oldInstanceLink) => {
-		if (oldInstanceLink && !newInstanceLink) {
+		if (JSON.stringify(newInstanceLink) !== JSON.stringify(oldInstanceLink)) {
+			await queryClient.invalidateQueries({
+				queryKey: instanceKeys.linkedContent(instance.value.id),
+			})
+			await queryClient.invalidateQueries({
+				queryKey: instanceKeys.content(instance.value.id),
+			})
 			await initProjects('must_revalidate')
 		}
 	},
+	{ deep: true },
 )
 
 watch(

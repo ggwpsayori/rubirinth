@@ -281,6 +281,15 @@ async function handleConfirmLink() {
 		await queryClient.invalidateQueries({
 			queryKey: instanceKeys.detail(props.instance.id),
 		})
+		await queryClient.invalidateQueries({
+			queryKey: instanceKeys.content(props.instance.id),
+		})
+		await queryClient.invalidateQueries({
+			queryKey: instanceKeys.linkedContent(props.instance.id),
+		})
+		await queryClient.invalidateQueries({
+			queryKey: instanceKeys.all,
+		})
 
 		addNotification({
 			type: 'success',
