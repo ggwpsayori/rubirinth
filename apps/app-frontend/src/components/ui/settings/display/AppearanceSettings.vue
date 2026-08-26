@@ -171,15 +171,17 @@ provideAppearanceSettings({
 <template>
 	<AppearanceSettingsLayout />
 
-	<div class="mt-8 flex items-center justify-between gap-4">
-		<div>
-			<h2 class="m-0 text-lg font-semibold text-contrast">
+	<div class="mt-8 border-0 border-t border-solid border-divider pt-6">
+		<div class="flex items-center justify-between gap-4">
+			<div>
+				<h2 class="m-0 text-base font-semibold text-contrast">
 				{{ formatMessage(messages.discordRichPresenceTitle) }}
 			</h2>
-			<p class="m-0 mt-1 text-sm text-secondary">
-				{{ formatMessage(messages.discordRichPresenceDescription) }}
-			</p>
+				<p class="m-0 mt-1 text-sm text-secondary">
+					{{ formatMessage(messages.discordRichPresenceDescription) }}
+				</p>
+			</div>
+			<Toggle id="disable-discord-rpc" v-model="current.discordRpc" />
 		</div>
-		<Toggle id="disable-discord-rpc" v-model="current.discordRpc" />
 	</div>
 </template>
