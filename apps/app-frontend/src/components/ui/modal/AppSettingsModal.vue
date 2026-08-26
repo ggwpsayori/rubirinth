@@ -46,6 +46,8 @@ import {
 	type UnsavedChangesController,
 } from '@/providers/app-settings-modal'
 import { injectAppUpdateDownloadProgress } from '@/providers/download-progress.ts'
+import LauncherUpdateModal from '@/components/ui/rubirinth/LauncherUpdateModal.vue'
+import { isUpdateAvailable, latestRelease } from '@/helpers/rubirinth/update'
 
 // TODO: Apply COMPONENT_STRUCTURE.md here and extract out common setting option components
 const appSettings = useAppSettings()
