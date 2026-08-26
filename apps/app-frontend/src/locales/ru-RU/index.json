@@ -4150,5 +4150,45 @@
   "minecraft-required.other-sign-in-methods": {
     "message": "Способы входа",
     "defaultMessage": "Способы входа"
+  },
+  "rubirinth.app.launcher-update-modal.header": {
+    "message": "Доступно обновление",
+    "defaultMessage": "Доступно обновление"
+  },
+  "rubirinth.app.launcher-update-modal.title": {
+    "message": "Доступна новая версия Rubirinth!",
+    "defaultMessage": "Доступна новая версия Rubirinth!"
+  },
+  "rubirinth.app.launcher-update-modal.description": {
+    "message": "Обновите лаунчер, чтобы получить новые функции, улучшения и исправления ошибок.",
+    "defaultMessage": "Обновите лаунчер, чтобы получить новые функции, улучшения и исправления ошибок."
+  },
+  "rubirinth.app.launcher-update-modal.current-version": {
+    "message": "Текущая версия:",
+    "defaultMessage": "Текущая версия:"
+  },
+  "rubirinth.app.launcher-update-modal.latest-version": {
+    "message": "Новая версия:",
+    "defaultMessage": "Новая версия:"
+  },
+  "rubirinth.app.launcher-update-modal.changelog": {
+    "message": "Список изменений на GitHub",
+    "defaultMessage": "Список изменений на GitHub"
+  },
+  "rubirinth.app.launcher-update-modal.download-and-install": {
+    "message": "Обновить сейчас",
+    "defaultMessage": "Обновить сейчас"
+  },
+  "rubirinth.app.launcher-update-modal.downloading": {
+    "message": "Загрузка...",
+    "defaultMessage": "Загрузка..."
+  },
+  "rubirinth.app.launcher-update-modal.close": {
+    "message": "Позже",
+    "defaultMessage": "Позже"
+  },
+  "app.settings.update-available-button": {
+    "message": "Обновить до {version}",
+    "defaultMessage": "Обновить до {version}"
   }
 }

@@ -11148,6 +11148,7 @@ dependencies = [
  "dashmap",
  "either",
  "enumset",
+ "futures-util",
  "hyper 1.7.0",
  "hyper-util",
  "native-dialog",

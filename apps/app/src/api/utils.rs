@@ -23,7 +23,8 @@ pub fn init<R: Runtime>() -> tauri::plugin::TauriPlugin<R> {
             show_launcher_logs_folder,
             show_app_db_backups_folder,
             progress_bars_list,
-            get_opening_command
+            get_opening_command,
+            download_and_install_update
         ])
         .build()
 }
@@ -203,4 +204,70 @@ pub(crate) fn tauri_convert_file_src(path: &Path) -> Result<Url> {
     let encoded = urlencoding::encode(&path);
 
     Ok(theseus_try!(Url::parse(&format!("{BASE}{encoded}"))))
+}
+
+#[tauri::command]
+pub async fn download_and_install_update<R: Runtime>(
+    _app: tauri::AppHandle<R>,
+    download_url: String,
+    filename: String,
+) -> Result<()> {
+    let temp_dir = std::env::temp_dir();
+    let installer_path = temp_dir.join(&filename);
+
+    let progress = theseus::init_loading(
+        theseus::LoadingBarType::LauncherUpdate {
+            version: filename.clone(),
+            current_version: String::new(),
+        },
+        1.0,
+        "Downloading update...",
+    )
+    .await?;
+
+    let client = tauri_plugin_http::reqwest::Client::builder()
+        .user_agent(theseus::launcher_user_agent())
+        .build()?;
+
+    let response = client
+        .get(&download_url)
+        .send()
+        .await
+        .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::NetworkError(e.to_string()).into()))?;
+
+    let total_size = response.content_length().unwrap_or(0);
+
+    let mut dest_file = tokio::fs::File::create(&installer_path)
+        .await
+        .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::IOError(e.to_string()).into()))?;
+
+    use futures_util::StreamExt;
+    let mut stream = response.bytes_stream();
+    let mut downloaded: u64 = 0;
+
+    while let Some(chunk_result) = stream.next().await {
+        let chunk = chunk_result
+            .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::NetworkError(e.to_string()).into()))?;
+        tokio::io::AsyncWriteExt::write_all(&mut dest_file, &chunk)
+            .await
+            .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::IOError(e.to_string()).into()))?;
+        downloaded += chunk.len() as u64;
+        if total_size > 0 {
+            let _ = theseus::emit_loading(&progress, downloaded as f64 / total_size as f64, None);
+        }
+    }
+    let _ = tokio::io::AsyncWriteExt::flush(&mut dest_file).await;
+
+    tracing::info!("Update downloaded to {:?}, launching installer...", installer_path);
+
+    #[cfg(target_os = "windows")]
+    {
+        let installer_str = installer_path.to_string_lossy().to_string();
+        std::process::Command::new("cmd")
+            .args(&["/C", "start", "", &installer_str])
+            .spawn()
+            .map_err(|e| TheseusSerializableError::Theseus(theseus::ErrorKind::IOError(e.to_string()).into()))?;
+    }
+
+    Ok(())
 }

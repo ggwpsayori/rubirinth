@@ -99,3 +99,10 @@ export const releaseColor = (releaseType) => {
 export async function copyToClipboard(text) {
 	await navigator.clipboard.writeText(text)
 }
+
+export async function downloadAndInstallUpdate(downloadUrl, filename) {
+	return await invoke('plugin:utils|download_and_install_update', {
+		downloadUrl,
+		filename,
+	})
+}

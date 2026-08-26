@@ -244,6 +244,7 @@ function showProfile(): void {
 defineExpose({ show, showProfile })
 
 const { progress, version: downloadingVersion } = injectAppUpdateDownloadProgress()
+const launcherUpdateModal = ref<InstanceType<typeof LauncherUpdateModal> | null>(null)
 
 const version = await getVersion()
 const osPlatform = getOsPlatform()
@@ -290,6 +291,10 @@ const messages = defineMessages({
 	developerModeButtonLabel: {
 		id: 'app.settings.developer-mode-button.label',
 		defaultMessage: 'Toggle developer mode',
+	},
+	updateAvailableBtn: {
+		id: 'app.settings.update-available-button',
+		defaultMessage: 'Update to {version}',
 	},
 })
 </script>
@@ -363,7 +368,19 @@ const messages = defineMessages({
 						</p>
 					</div>
 				</div>
+				<div v-if="isUpdateAvailable" class="mt-3">
+					<Button
+						type="colored"
+						color="brand"
+						class="w-full justify-center"
+						@click="launcherUpdateModal?.show()"
+					>
+						<DownloadIcon class="w-4 h-4 mr-1.5" />
+						{{ formatMessage(messages.updateAvailableBtn, { version: latestRelease?.tag_name }) }}
+					</Button>
+				</div>
 			</div>
 		</template>
 	</TabbedModal>
+	<LauncherUpdateModal ref="launcherUpdateModal" :version="version" />
 </template>

@@ -76,6 +76,12 @@ import UnknownPackWarningModal from '@/components/ui/install_flow/UnknownPackWar
 import IconEditorModal from '@/components/ui/instance_settings/icon-editor-modal/index.vue'
 import MinecraftAuthErrorModal from '@/components/ui/minecraft-auth-error-modal/MinecraftAuthErrorModal.vue'
 import MinecraftRequiredModal from '@/components/ui/minecraft-required-modal/MinecraftRequiredModal.vue'
+import LauncherUpdateModal from '@/components/ui/rubirinth/LauncherUpdateModal.vue'
+import {
+	fetchLatestRelease,
+	isUpdateAvailable,
+	latestRelease,
+} from '@/helpers/rubirinth/update'
 import AppSettingsModal from '@/components/ui/modal/AppSettingsModal.vue'
 import InstallToPlayModal from '@/components/ui/modal/InstallToPlayModal.vue'
 import ModpackAlreadyInstalledModal from '@/components/ui/modal/ModpackAlreadyInstalledModal.vue'
@@ -847,6 +853,9 @@ const error = useError()
 const errorModal = ref()
 const minecraftAuthErrorModal = ref()
 const minecraftRequiredModal = ref()
+const launcherUpdateModal = ref()
+const currentAppVersion = ref('')
+void getVersion().then((v) => { currentAppVersion.value = v })
 
 const contentInstall = createContentInstall({ router, handleError, appEvents })
 provideContentInstall(contentInstall)
@@ -1985,6 +1994,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	<ErrorModal ref="errorModal" />
 	<MinecraftAuthErrorModal ref="minecraftAuthErrorModal" />
 	<MinecraftRequiredModal ref="minecraftRequiredModal" />
+	<LauncherUpdateModal ref="launcherUpdateModal" :version="currentAppVersion" />
 	<ContentInstallModal
 		ref="modInstallModal"
 		:instances="contentInstallInstances"
