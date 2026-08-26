@@ -139,6 +139,21 @@ onMounted(() => {
 	scanLaunchers()
 })
 
+function getLauncherDisplayName(name: string): string {
+	switch (name) {
+		case 'ModrinthApp':
+			return 'Modrinth App'
+		case 'AstralRinth':
+			return 'AstralRinth'
+		case 'PrismLauncher':
+			return 'Prism Launcher'
+		case 'Curseforge':
+			return 'CurseForge'
+		default:
+			return name
+	}
+}
+
 function filteredInstances(launcher: LauncherInfo): string[] {
 	if (!searchQuery.value.trim()) return launcher.instances
 	const q = searchQuery.value.toLowerCase()
@@ -378,7 +393,7 @@ async function handleImport() {
 							/>
 							<div class="flex flex-col min-w-0">
 								<span class="font-semibold text-contrast text-base truncate">
-									{{ launcher.name }}
+									{{ getLauncherDisplayName(launcher.name) }}
 								</span>
 								<span class="text-xs text-secondary truncate">{{ launcher.path }}</span>
 							</div>
