@@ -20,7 +20,7 @@ const EXTERNAL_AUTH_PROVIDERS: &[ExternalAuthProvider] = &[
         icon: "elyby",
         skin_management_url: Some("https://ely.by/skins"),
         authentication: OAuthAuthentication {
-            client_id: "astralrinth",
+            client_id: "rubirinth",
             device_authorization_url: "https://account.ely.by/api/oauth2/v1/devicecode",
             token_url: "https://account.ely.by/api/oauth2/v1/token",
             profile_url: "https://account.ely.by/api/account/v1/info",
