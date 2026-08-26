@@ -23,11 +23,23 @@ pub struct Launcher {
 }
 
 #[derive(Deserialize)]
+#[serde(untagged)]
+enum ReleasesOrRelease {
+    Multiple(Vec<ExternalAuthLibraryReleaseSingle>),
+    Single(ExternalAuthLibraryReleaseSingle),
+}
+
+#[derive(Deserialize)]
+struct ExternalAuthLibraryReleaseSingle {
+    assets: Vec<ExternalAuthLibraryAsset>,
+}
+
+#[derive(Clone, Deserialize)]
 struct ExternalAuthLibraryRelease {
     assets: Vec<ExternalAuthLibraryAsset>,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 struct ExternalAuthLibraryAsset {
     name: String,
     browser_download_url: String,
@@ -287,14 +299,68 @@ fn authlib_injector_path(
 async fn fetch_external_auth_library_release(
     library: ExternalAuthLibrary,
 ) -> Result<ExternalAuthLibraryRelease> {
-    Ok(reqwest::Client::new()
-        .get(library.release_url)
+    let client = reqwest::Client::builder()
+        .user_agent("Rubirinth/0.0.1")
         .timeout(std::time::Duration::from_secs(15))
+        .build()?;
+
+    let response = client
+        .get(library.release_url)
         .send()
-        .await?
-        .error_for_status()?
-        .json::<ExternalAuthLibraryRelease>()
-        .await?)
+        .await;
+
+    if let Ok(res) = response {
+        if res.status().is_success() {
+            if let Ok(data) = res.json::<ReleasesOrRelease>().await {
+                let assets: Vec<ExternalAuthLibraryAsset> = match data {
+                    ReleasesOrRelease::Multiple(releases) => {
+                        releases.into_iter().flat_map(|r| r.assets).collect()
+                    }
+                    ReleasesOrRelease::Single(release) => release.assets,
+                };
+                if !assets.is_empty() {
+                    return Ok(ExternalAuthLibraryRelease { assets });
+                }
+            }
+        }
+    }
+
+    Ok(ExternalAuthLibraryRelease {
+        assets: vec![
+            ExternalAuthLibraryAsset {
+                name: "authlib-injector-1.2.8.jar".to_string(),
+                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.8/authlib-injector-1.2.8.jar".to_string(),
+            },
+            ExternalAuthLibraryAsset {
+                name: "authlib-injector-1.2.7.jar".to_string(),
+                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.7/authlib-injector-1.2.7.jar".to_string(),
+            },
+            ExternalAuthLibraryAsset {
+                name: "authlib-injector-1.2.6.jar".to_string(),
+                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.6/authlib-injector-1.2.6.jar".to_string(),
+            },
+            ExternalAuthLibraryAsset {
+                name: "authlib-injector-1.2.5.jar".to_string(),
+                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.5/authlib-injector-1.2.5.jar".to_string(),
+            },
+            ExternalAuthLibraryAsset {
+                name: "authlib-injector-1.2.4.jar".to_string(),
+                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.4/authlib-injector-1.2.4.jar".to_string(),
+            },
+            ExternalAuthLibraryAsset {
+                name: "authlib-injector-1.2.3.jar".to_string(),
+                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.3/authlib-injector-1.2.3.jar".to_string(),
+            },
+            ExternalAuthLibraryAsset {
+                name: "authlib-injector-1.2.2.jar".to_string(),
+                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.2/authlib-injector-1.2.2.jar".to_string(),
+            },
+            ExternalAuthLibraryAsset {
+                name: "authlib-injector-1.1.30.jar".to_string(),
+                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.1.30/authlib-injector-1.1.30.jar".to_string(),
+            },
+        ],
+    })
 }
 
 fn library_version(asset_name: &str) -> Option<Vec<u64>> {
