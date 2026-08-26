@@ -3974,5 +3974,61 @@
   "astralrinth.app.settings.sidebar.label.astralrinth": {
     "message": "",
     "defaultMessage": ""
+  },
+  "installation-settings.link-modpack.button": {
+    "message": "Привязать к сборке Modrinth",
+    "defaultMessage": "Привязать к сборке Modrinth"
+  },
+  "installation-settings.link-modpack.modal-header": {
+    "message": "Привязка к сборке Modrinth",
+    "defaultMessage": "Привязка к сборке Modrinth"
+  },
+  "installation-settings.link-modpack.search-placeholder": {
+    "message": "Поиск сборок или ссылка / slug на Modrinth...",
+    "defaultMessage": "Поиск сборок или ссылка / slug на Modrinth..."
+  },
+  "installation-settings.link-modpack.search-label": {
+    "message": "Поиск сборок",
+    "defaultMessage": "Поиск сборок"
+  },
+  "installation-settings.link-modpack.search-results": {
+    "message": "Выберите сборку",
+    "defaultMessage": "Выберите сборку"
+  },
+  "installation-settings.link-modpack.no-results": {
+    "message": "По вашему запросу сборки не найдены.",
+    "defaultMessage": "По вашему запросу сборки не найдены."
+  },
+  "installation-settings.link-modpack.selected-modpack": {
+    "message": "Выбранная сборка",
+    "defaultMessage": "Выбранная сборка"
+  },
+  "installation-settings.link-modpack.change-modpack": {
+    "message": "Выбрать другую",
+    "defaultMessage": "Выбрать другую"
+  },
+  "installation-settings.link-modpack.select-version": {
+    "message": "Целевая версия сборки",
+    "defaultMessage": "Целевая версия сборки"
+  },
+  "installation-settings.link-modpack.compatible-badge": {
+    "message": "Совместимо",
+    "defaultMessage": "Совместимо"
+  },
+  "installation-settings.link-modpack.confirm-button": {
+    "message": "Привязать сборку",
+    "defaultMessage": "Привязать сборку"
+  },
+  "installation-settings.link-modpack.linking-button": {
+    "message": "Привязка...",
+    "defaultMessage": "Привязка..."
+  },
+  "installation-settings.link-modpack.success-title": {
+    "message": "Сборка привязана",
+    "defaultMessage": "Сборка привязана"
+  },
+  "installation-settings.link-modpack.success-message": {
+    "message": "Сборка успешно привязана к {name}.",
+    "defaultMessage": "Сборка успешно привязана к {name}."
   }
 }

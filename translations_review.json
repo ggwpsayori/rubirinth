@@ -16238,5 +16238,75 @@
     "package": "ui",
     "en": "Type",
     "ru": "Тип"
+  },
+  "installation-settings.link-modpack.button": {
+    "package": "app-frontend",
+    "en": "Link to Modrinth modpack",
+    "ru": "Привязать к сборке Modrinth"
+  },
+  "installation-settings.link-modpack.modal-header": {
+    "package": "app-frontend",
+    "en": "Link to Modrinth modpack",
+    "ru": "Привязка к сборке Modrinth"
+  },
+  "installation-settings.link-modpack.search-placeholder": {
+    "package": "app-frontend",
+    "en": "Search modpacks or paste Modrinth URL / slug...",
+    "ru": "Поиск сборок или ссылка / slug на Modrinth..."
+  },
+  "installation-settings.link-modpack.search-label": {
+    "package": "app-frontend",
+    "en": "Modpack search",
+    "ru": "Поиск сборок"
+  },
+  "installation-settings.link-modpack.search-results": {
+    "package": "app-frontend",
+    "en": "Select a modpack",
+    "ru": "Выберите сборку"
+  },
+  "installation-settings.link-modpack.no-results": {
+    "package": "app-frontend",
+    "en": "No modpacks found matching your search.",
+    "ru": "По вашему запросу сборки не найдены."
+  },
+  "installation-settings.link-modpack.selected-modpack": {
+    "package": "app-frontend",
+    "en": "Selected modpack",
+    "ru": "Выбранная сборка"
+  },
+  "installation-settings.link-modpack.change-modpack": {
+    "package": "app-frontend",
+    "en": "Change modpack",
+    "ru": "Выбрать другую"
+  },
+  "installation-settings.link-modpack.select-version": {
+    "package": "app-frontend",
+    "en": "Target modpack version",
+    "ru": "Целевая версия сборки"
+  },
+  "installation-settings.link-modpack.compatible-badge": {
+    "package": "app-frontend",
+    "en": "Compatible",
+    "ru": "Совместимо"
+  },
+  "installation-settings.link-modpack.confirm-button": {
+    "package": "app-frontend",
+    "en": "Link modpack",
+    "ru": "Привязать сборку"
+  },
+  "installation-settings.link-modpack.linking-button": {
+    "package": "app-frontend",
+    "en": "Linking...",
+    "ru": "Привязка..."
+  },
+  "installation-settings.link-modpack.success-title": {
+    "package": "app-frontend",
+    "en": "Instance linked",
+    "ru": "Сборка привязана"
+  },
+  "installation-settings.link-modpack.success-message": {
+    "package": "app-frontend",
+    "en": "Instance has been linked to {name} successfully.",
+    "ru": "Сборка успешно привязана к {name}."
   }
 }

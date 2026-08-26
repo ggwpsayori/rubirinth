@@ -2980,5 +2980,61 @@
   },
   "friends.title": {
     "defaultMessage": "Friends"
+  },
+  "installation-settings.link-modpack.button": {
+    "message": "Link to Modrinth modpack",
+    "defaultMessage": "Link to Modrinth modpack"
+  },
+  "installation-settings.link-modpack.modal-header": {
+    "message": "Link to Modrinth modpack",
+    "defaultMessage": "Link to Modrinth modpack"
+  },
+  "installation-settings.link-modpack.search-placeholder": {
+    "message": "Search modpacks or paste Modrinth URL / slug...",
+    "defaultMessage": "Search modpacks or paste Modrinth URL / slug..."
+  },
+  "installation-settings.link-modpack.search-label": {
+    "message": "Modpack search",
+    "defaultMessage": "Modpack search"
+  },
+  "installation-settings.link-modpack.search-results": {
+    "message": "Select a modpack",
+    "defaultMessage": "Select a modpack"
+  },
+  "installation-settings.link-modpack.no-results": {
+    "message": "No modpacks found matching your search.",
+    "defaultMessage": "No modpacks found matching your search."
+  },
+  "installation-settings.link-modpack.selected-modpack": {
+    "message": "Selected modpack",
+    "defaultMessage": "Selected modpack"
+  },
+  "installation-settings.link-modpack.change-modpack": {
+    "message": "Change modpack",
+    "defaultMessage": "Change modpack"
+  },
+  "installation-settings.link-modpack.select-version": {
+    "message": "Target modpack version",
+    "defaultMessage": "Target modpack version"
+  },
+  "installation-settings.link-modpack.compatible-badge": {
+    "message": "Compatible",
+    "defaultMessage": "Compatible"
+  },
+  "installation-settings.link-modpack.confirm-button": {
+    "message": "Link modpack",
+    "defaultMessage": "Link modpack"
+  },
+  "installation-settings.link-modpack.linking-button": {
+    "message": "Linking...",
+    "defaultMessage": "Linking..."
+  },
+  "installation-settings.link-modpack.success-title": {
+    "message": "Instance linked",
+    "defaultMessage": "Instance linked"
+  },
+  "installation-settings.link-modpack.success-message": {
+    "message": "Instance has been linked to {name} successfully.",
+    "defaultMessage": "Instance has been linked to {name} successfully."
   }
 }

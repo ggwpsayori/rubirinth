@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { Labrinth } from '@modrinth/api-client'
+import { LinkIcon } from '@modrinth/assets'
 import {
+	Button,
 	commonMessages,
 	defineMessages,
 	formatLoaderLabel,
@@ -39,6 +41,7 @@ import { provideInstanceBackup } from '@/providers/instance-backup'
 import type { Manifest } from '../../../../helpers/types'
 import { instanceKeys } from '../../query-options.ts'
 import { injectInstanceSettings } from './instance-settings-context.ts'
+import LinkModpackModal from './LinkModpackModal.vue'
 import SharedInstanceInstallationSettingsControls from './shared-instance-installation-settings-controls.vue'
 
 const { handleError } = injectNotificationManager()
@@ -50,6 +53,20 @@ const debug = useDebugLogger('AppInstallationSettings')
 const appSettings = useAppSettings()
 
 const { instance, offline, isMinecraftServer, onUnlinked, closeModal } = injectInstanceSettings()
+
+const linkModal = ref<InstanceType<typeof LinkModpackModal>>()
+
+
+
+async function onLinked() {
+	await queryClient.invalidateQueries({
+		queryKey: ['linkedModpackInfo', instance.value.id],
+	})
+	await queryClient.invalidateQueries({
+		queryKey: instanceKeys.instance(instance.value.id),
+	})
+}
+
 const managedContentPolicy = useManagedContentPolicy(instance)
 const skipNonEssentialWarnings = computed(() =>
 	appSettings.getFeatureFlag('skip_non_essential_warnings'),
@@ -164,6 +181,10 @@ async function unlinkSharedInstance() {
 }
 
 const messages = defineMessages({
+	linkModpackButton: {
+		id: 'installation-settings.link-modpack.button',
+		defaultMessage: 'Link to Modrinth modpack',
+	},
 	loaderVersion: {
 		id: 'instance.settings.tabs.installation.loader-version',
 		defaultMessage: '{loader} version',
@@ -490,6 +511,17 @@ provideInstallationSettings({
 
 <template>
 	<InstallationSettingsLayout>
+		<template #unlinked-extra-buttons>
+			<Button
+				type="colored"
+				color="blue"
+				:disabled="offline || installationSettingsBusy"
+				@click="linkModal?.show()"
+			>
+				<LinkIcon class="size-5" />
+				{{ formatMessage(messages.linkModpackButton) }}
+			</Button>
+		</template>
 		<template #extra>
 			<SharedInstanceInstallationSettingsControls
 				:can-unlink="canUnlinkSharedInstance"
@@ -499,4 +531,6 @@ provideInstallationSettings({
 			/>
 		</template>
 	</InstallationSettingsLayout>
+
+	<LinkModpackModal ref="linkModal" :instance="instance" @linked="onLinked" />
 </template>
