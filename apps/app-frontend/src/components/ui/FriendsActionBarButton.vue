@@ -55,7 +55,7 @@ onMounted(() => {
 
 const messages = defineMessages({
 	friends: {
-		id: 'friends.title',
+		id: 'friends.heading',
 		defaultMessage: 'Friends',
 	},
 })
@@ -67,6 +67,8 @@ const messages = defineMessages({
 			placement="bottom-end"
 			:triggers="['click']"
 			:hide-triggers="['click']"
+			:distance="8"
+			:auto-hide="true"
 			@show="showDropdown = true"
 			@hide="showDropdown = false"
 		>

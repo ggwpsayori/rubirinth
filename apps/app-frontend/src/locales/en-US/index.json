@@ -1821,7 +1821,7 @@
     "message": "View profile"
   },
   "friends.heading": {
-    "message": "Friends"
+    "defaultMessage": "Friends"
   },
   "friends.heading.active": {
     "message": "Active"
@@ -2977,5 +2977,8 @@
   },
   "app.settings.external-auth-libraries.local-only": {
     "defaultMessage": "Only locally installed versions are shown because the remote server is unavailable."
+  },
+  "friends.title": {
+    "defaultMessage": "Friends"
   }
 }

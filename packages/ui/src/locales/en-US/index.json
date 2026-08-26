@@ -6814,5 +6814,11 @@
   },
   "app.settings.external-auth-libraries.local-only": {
     "defaultMessage": "Only locally installed versions are shown because the remote server is unavailable."
+  },
+  "friends.heading": {
+    "defaultMessage": "Friends"
+  },
+  "friends.title": {
+    "defaultMessage": "Friends"
   }
 }

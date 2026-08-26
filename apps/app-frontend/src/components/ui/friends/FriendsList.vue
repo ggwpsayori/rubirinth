@@ -11,6 +11,7 @@ import {
 	useRelativeTime,
 	useVIntl,
 } from '@modrinth/ui'
+import dayjs from 'dayjs'
 import { computed, ref } from 'vue'
 
 import FriendsSection from '@/components/ui/friends/FriendsSection.vue'
@@ -82,7 +83,7 @@ const sortedFriends = computed<FriendWithUserData[]>(() =>
 			return -1 // `b` is null, move it after `a`
 		}
 		// Both are non-null, sort by date
-		return b.last_updated.diff(a.last_updated)
+		return dayjs(b.last_updated).diff(dayjs(a.last_updated))
 	}),
 )
 const filteredFriends = computed<FriendWithUserData[]>(() =>
@@ -104,13 +105,13 @@ const pendingFriends = computed(() =>
 	filteredFriends.value
 		.filter((x) => !x.accepted && x.id !== userCredentials.value?.user_id)
 		.slice()
-		.sort((a, b) => b.created.diff(a.created)),
+		.sort((a, b) => dayjs(b.created).diff(dayjs(a.created))),
 )
 const incomingRequests = computed(() =>
 	userFriends.value
 		.filter((x) => !x.accepted && x.id === userCredentials.value?.user_id)
 		.slice()
-		.sort((a, b) => b.created.diff(a.created)),
+		.sort((a, b) => dayjs(b.created).diff(dayjs(a.created))),
 )
 
 function addFriendFromModal() {
@@ -216,7 +217,7 @@ const messages = defineMessages({
 							</template>
 						</p>
 						<p class="m-0 text-sm text-secondary">
-							{{ formatRelativeTime(friend.created.toISOString()) }}
+							{{ formatRelativeTime(dayjs(friend.created).toISOString()) }}
 						</p>
 					</div>
 					<div class="flex gap-2">
