@@ -426,7 +426,7 @@ async function handleImport() {
 			<Button
 				type="colored"
 				color="brand"
-				size="large"
+				size="md"
 				:disabled="totalSelectedCount === 0 || importing"
 				@click="handleImport"
 			>
