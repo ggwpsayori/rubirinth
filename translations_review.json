@@ -4456,8 +4456,8 @@
   },
   "astralrinth.app.launcher-update.available.text": {
     "package": "app-frontend",
-    "en": "New version of AstralRinth is available for download.",
-    "ru": "Новая версия AstralRinth уже доступна для загрузки."
+    "en": "New version of AstralRinth App is available for download.",
+    "ru": "Новая версия AstralRinth App уже доступна для загрузки."
   },
   "astralrinth.app.launcher-update.available.title": {
     "package": "app-frontend",
@@ -4546,7 +4546,7 @@
   },
   "astralrinth.app.settings.sidebar.label.astralrinth": {
     "package": "app-frontend",
-    "en": "AstralRinth",
+    "en": "AstralRinth App",
     "ru": ""
   },
   "astralrinth.app.settings.tabs.external-auth-libraries": {
@@ -4576,8 +4576,8 @@
   },
   "astralrinth.app.settings.updates.description": {
     "package": "app-frontend",
-    "en": "Inspect the AstralRinth release channel, distribution status, and update-provider diagnostics.",
-    "ru": "Просматривайте канал релизов AstralRinth, состояние распространения и диагностику провайдера обновлений."
+    "en": "Inspect the AstralRinth App release channel, distribution status, and update-provider diagnostics.",
+    "ru": "Просматривайте канал релизов AstralRinth App, состояние распространения и диагностику провайдера обновлений."
   },
   "astralrinth.app.settings.updates.api-url": {
     "package": "app-frontend",
@@ -4666,8 +4666,8 @@
   },
   "astralrinth.app.launcher-update-modal.error.description": {
     "package": "app-frontend",
-    "en": "AstralRinth could not download the update file from the server.",
-    "ru": "AstralRinth не удалось скачать файл обновления с сервера."
+    "en": "AstralRinth App could not download the update file from the server.",
+    "ru": "AstralRinth App не удалось скачать файл обновления с сервера."
   },
   "astralrinth.app.launcher-update-modal.error.header": {
     "package": "app-frontend",
@@ -4676,8 +4676,8 @@
   },
   "astralrinth.app.launcher-update-modal.error.help-link": {
     "package": "app-frontend",
-    "en": "AstralRinth repository releases",
-    "ru": "релизы репозитория AstralRinth"
+    "en": "AstralRinth App repository releases",
+    "ru": "релизы репозитория AstralRinth App"
   },
   "astralrinth.app.launcher-update-modal.error.help-suffix": {
     "package": "app-frontend",
@@ -4691,8 +4691,8 @@
   },
   "astralrinth.app.launcher-update-modal.error.local-version": {
     "package": "app-frontend",
-    "en": "Local AstralRinth:",
-    "ru": "Локальная версия AstralRinth:"
+    "en": "Local AstralRinth App:",
+    "ru": "Локальная версия AstralRinth App:"
   },
   "astralrinth.app.launcher-update-modal.error.title": {
     "package": "app-frontend",
@@ -4716,8 +4716,8 @@
   },
   "astralrinth.app.launcher-update-modal.update.header": {
     "package": "app-frontend",
-    "en": "AstralRinth launcher update",
-    "ru": "Обновление лаунчера AstralRinth"
+    "en": "AstralRinth App launcher update",
+    "ru": "Обновление лаунчера AstralRinth App"
   },
   "astralrinth.app.launcher-update-modal.update.installer-description": {
     "package": "app-frontend",
@@ -4781,8 +4781,8 @@
   },
   "astralrinth.app.launcher-update-modal.update.title": {
     "package": "app-frontend",
-    "en": "A new version of the AstralRinth launcher is available.",
-    "ru": "Доступна новая версия лаунчера AstralRinth."
+    "en": "A new version of the AstralRinth App launcher is available.",
+    "ru": "Доступна новая версия лаунчера AstralRinth App."
   },
   "astralrinth.app.minecraft-account.error.input-offline.description": {
     "package": "app-frontend",
@@ -16406,7 +16406,7 @@
   },
   "app.settings.import.description": {
     "package": "app-frontend",
-    "en": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.",
-    "ru": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
+    "en": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.",
+    "ru": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
   }
 }

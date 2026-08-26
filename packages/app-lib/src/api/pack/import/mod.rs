@@ -299,7 +299,9 @@ pub fn get_default_launcher_path(
         }
         ImportLauncherType::AstralRinth => {
             let candidates = [
+                dirs::data_dir().map(|d| d.join("AstralRinthApp")),
                 dirs::data_dir().map(|d| d.join("astralrinth")),
+                dirs::config_dir().map(|d| d.join("AstralRinthApp")),
                 dirs::config_dir().map(|d| d.join("astralrinth")),
                 dirs::data_dir().map(|d| d.join("com.astralrinth.theseus")),
                 dirs::data_dir().map(|d| d.join("AstralRinth")),

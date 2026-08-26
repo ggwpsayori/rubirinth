@@ -3532,8 +3532,8 @@
     "defaultMessage": "Посмотреть обновление"
   },
   "astralrinth.app.launcher-update.available.text": {
-    "message": "Новая версия AstralRinth уже доступна для загрузки.",
-    "defaultMessage": "Новая версия AstralRinth уже доступна для загрузки."
+    "message": "Новая версия AstralRinth App уже доступна для загрузки.",
+    "defaultMessage": "Новая версия AstralRinth App уже доступна для загрузки."
   },
   "astralrinth.app.launcher-update.available.title": {
     "message": "Доступно обновление лаунчера",
@@ -3624,8 +3624,8 @@
     "defaultMessage": "Аналитика"
   },
   "astralrinth.app.settings.updates.description": {
-    "message": "Просматривайте канал релизов AstralRinth, состояние распространения и диагностику провайдера обновлений.",
-    "defaultMessage": "Просматривайте канал релизов AstralRinth, состояние распространения и диагностику провайдера обновлений."
+    "message": "Просматривайте канал релизов AstralRinth App, состояние распространения и диагностику провайдера обновлений.",
+    "defaultMessage": "Просматривайте канал релизов AstralRinth App, состояние распространения и диагностику провайдера обновлений."
   },
   "astralrinth.app.settings.updates.api-url": {
     "message": "URL API поставщика обновлений",
@@ -3696,16 +3696,16 @@
     "defaultMessage": "Закрыть"
   },
   "astralrinth.app.launcher-update-modal.error.description": {
-    "message": "AstralRinth не удалось скачать файл обновления с сервера.",
-    "defaultMessage": "AstralRinth не удалось скачать файл обновления с сервера."
+    "message": "AstralRinth App не удалось скачать файл обновления с сервера.",
+    "defaultMessage": "AstralRinth App не удалось скачать файл обновления с сервера."
   },
   "astralrinth.app.launcher-update-modal.error.header": {
     "message": "Не удалось скачать обновление",
     "defaultMessage": "Не удалось скачать обновление"
   },
   "astralrinth.app.launcher-update-modal.error.help-link": {
-    "message": "релизы репозитория AstralRinth",
-    "defaultMessage": "релизы репозитория AstralRinth"
+    "message": "релизы репозитория AstralRinth App",
+    "defaultMessage": "релизы репозитория AstralRinth App"
   },
   "astralrinth.app.launcher-update-modal.error.help-suffix": {
     "message": "если там доступен более новый релиз.",
@@ -3716,8 +3716,8 @@
     "defaultMessage": "Вы можете скачать его вручную из"
   },
   "astralrinth.app.launcher-update-modal.error.local-version": {
-    "message": "Локальная версия AstralRinth:",
-    "defaultMessage": "Локальная версия AstralRinth:"
+    "message": "Локальная версия AstralRinth App:",
+    "defaultMessage": "Локальная версия AstralRinth App:"
   },
   "astralrinth.app.launcher-update-modal.error.title": {
     "message": "Не удалось скачать файл",
@@ -3736,8 +3736,8 @@
     "defaultMessage": "Скачать обновление"
   },
   "astralrinth.app.launcher-update-modal.update.header": {
-    "message": "Обновление лаунчера AstralRinth",
-    "defaultMessage": "Обновление лаунчера AstralRinth"
+    "message": "Обновление лаунчера AstralRinth App",
+    "defaultMessage": "Обновление лаунчера AstralRinth App"
   },
   "astralrinth.app.launcher-update-modal.update.installer-description": {
     "message": "Выберите пакет установщика, с которым хотите продолжить.",
@@ -3788,8 +3788,8 @@
     "defaultMessage": "Выберите установщик"
   },
   "astralrinth.app.launcher-update-modal.update.title": {
-    "message": "Доступна новая версия лаунчера AstralRinth.",
-    "defaultMessage": "Доступна новая версия лаунчера AstralRinth."
+    "message": "Доступна новая версия лаунчера AstralRinth App.",
+    "defaultMessage": "Доступна новая версия лаунчера AstralRinth App."
   },
   "astralrinth.app.minecraft-account.error.input-offline.description": {
     "message": "Произошла ошибка при добавлении офлайн-аккаунта. Пожалуйста, выполните рекомендации ниже.",
@@ -4108,7 +4108,7 @@
     "defaultMessage": "Импорт сборок"
   },
   "app.settings.import.description": {
-    "message": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки.",
-    "defaultMessage": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
+    "message": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки.",
+    "defaultMessage": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
   }
 }

@@ -2673,7 +2673,7 @@
     "message": "View update"
   },
   "astralrinth.app.launcher-update.available.text": {
-    "message": "New version of AstralRinth is available for download."
+    "message": "New version of AstralRinth App is available for download."
   },
   "astralrinth.app.launcher-update.available.title": {
     "message": "Launcher update available"
@@ -2727,7 +2727,7 @@
     "message": "Version"
   },
   "astralrinth.app.settings.sidebar.label.astralrinth": {
-    "message": "AstralRinth"
+    "message": "AstralRinth App"
   },
   "astralrinth.app.settings.tabs.external-auth-libraries": {
     "message": "Authentication libraries"
@@ -2745,7 +2745,7 @@
     "message": "Analytics"
   },
   "astralrinth.app.settings.updates.description": {
-    "message": "Inspect the AstralRinth release channel, distribution status, and update-provider diagnostics."
+    "message": "Inspect the AstralRinth App release channel, distribution status, and update-provider diagnostics."
   },
   "astralrinth.app.settings.updates.api-url": {
     "message": "Update provider API URL"
@@ -2799,13 +2799,13 @@
     "message": "Close"
   },
   "astralrinth.app.launcher-update-modal.error.description": {
-    "message": "AstralRinth could not download the update file from the server."
+    "message": "AstralRinth App could not download the update file from the server."
   },
   "astralrinth.app.launcher-update-modal.error.header": {
     "message": "Could not download the update"
   },
   "astralrinth.app.launcher-update-modal.error.help-link": {
-    "message": "AstralRinth repository releases"
+    "message": "AstralRinth App repository releases"
   },
   "astralrinth.app.launcher-update-modal.error.help-suffix": {
     "message": "if a newer release is available there."
@@ -2814,7 +2814,7 @@
     "message": "You can try downloading it manually from"
   },
   "astralrinth.app.launcher-update-modal.error.local-version": {
-    "message": "Local AstralRinth:"
+    "message": "Local AstralRinth App:"
   },
   "astralrinth.app.launcher-update-modal.error.title": {
     "message": "Download failed"
@@ -2829,7 +2829,7 @@
     "message": "Download update"
   },
   "astralrinth.app.launcher-update-modal.update.header": {
-    "message": "AstralRinth launcher update"
+    "message": "AstralRinth App launcher update"
   },
   "astralrinth.app.launcher-update-modal.update.installer-description": {
     "message": "Choose the installer package you want to continue with."
@@ -2868,7 +2868,7 @@
     "message": "Select an installer"
   },
   "astralrinth.app.launcher-update-modal.update.title": {
-    "message": "A new version of the AstralRinth launcher is available."
+    "message": "A new version of the AstralRinth App launcher is available."
   },
   "astralrinth.app.minecraft-account.error.input-offline.description": {
     "message": "An error occurred while adding the offline account. Please follow the instructions below."
@@ -3114,7 +3114,7 @@
     "defaultMessage": "Import instances"
   },
   "app.settings.import.description": {
-    "message": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.",
-    "defaultMessage": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder."
+    "message": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.",
+    "defaultMessage": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder."
   }
 }

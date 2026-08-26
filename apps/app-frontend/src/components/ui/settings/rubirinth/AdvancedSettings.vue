@@ -46,7 +46,7 @@ const messages = defineMessages({
 	importSectionDescription: {
 		id: 'app.settings.import.description',
 		defaultMessage:
-			'Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.',
+			'Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.',
 	},
 	scanLaunchersButton: {
 		id: 'app.settings.advanced.scan-launchers',
@@ -134,7 +134,8 @@ function getLauncherDisplayName(name: string): string {
 		case 'ModrinthApp':
 			return 'Modrinth App'
 		case 'AstralRinth':
-			return 'AstralRinth'
+		case 'AstralRinthApp':
+			return 'AstralRinth App'
 		case 'PrismLauncher':
 			return 'Prism Launcher'
 		case 'Curseforge':
