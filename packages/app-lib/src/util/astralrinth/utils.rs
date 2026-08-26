@@ -31,18 +31,18 @@ enum ReleasesOrRelease {
 
 #[derive(Deserialize)]
 struct ExternalAuthLibraryReleaseSingle {
-    assets: Vec<ExternalAuthLibraryAsset>,
+    pub assets: Vec<ExternalAuthLibraryAsset>,
 }
 
 #[derive(Clone, Deserialize)]
-struct ExternalAuthLibraryRelease {
-    assets: Vec<ExternalAuthLibraryAsset>,
+pub struct ExternalAuthLibraryRelease {
+    pub assets: Vec<ExternalAuthLibraryAsset>,
 }
 
 #[derive(Clone, Deserialize)]
-struct ExternalAuthLibraryAsset {
-    name: String,
-    browser_download_url: String,
+pub struct ExternalAuthLibraryAsset {
+    pub name: String,
+    pub browser_download_url: String,
 }
 
 /// Resolves the selected library path for the given provider.
@@ -296,7 +296,7 @@ fn authlib_injector_path(
     authlib_injector_dir(libraries_dir, library).join(asset_name)
 }
 
-async fn fetch_external_auth_library_release(
+pub async fn fetch_external_auth_library_release(
     library: ExternalAuthLibrary,
 ) -> Result<ExternalAuthLibraryRelease> {
     let client = reqwest::Client::builder()

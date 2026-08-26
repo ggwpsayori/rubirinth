@@ -14,6 +14,7 @@ fn main() {
                     .commands(&[
                         "offline_login",
                         "get_external_auth_providers",
+                        "get_external_auth_library_catalog",
                         "get_external_auth_library_states",
                         "install_external_auth_library",
                         "select_external_auth_library",

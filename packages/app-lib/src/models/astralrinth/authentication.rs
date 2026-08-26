@@ -321,6 +321,32 @@ pub fn external_auth_provider(id: &str) -> Option<ExternalAuthProvider> {
 }
 
 /// Returns persisted selections and locally available libraries for every provider.
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ExternalAuthLibraryCatalogEntry {
+    pub provider: ExternalAuthProviderMetadata,
+    pub asset_names: Vec<String>,
+}
+
+pub async fn external_auth_library_catalog() -> Result<Vec<ExternalAuthLibraryCatalogEntry>> {
+    let mut catalog = Vec::new();
+    for provider in external_auth_providers() {
+        let release = crate::util::astralrinth::utils::fetch_external_auth_library_release(provider.library()).await?;
+        let asset_names: Vec<String> = release
+            .assets
+            .into_iter()
+            .map(|asset| asset.name)
+            .filter(|name| name.contains("authlib-injector") && name.ends_with(".jar"))
+            .collect();
+
+        catalog.push(ExternalAuthLibraryCatalogEntry {
+            provider: provider.metadata(),
+            asset_names,
+        });
+    }
+    Ok(catalog)
+}
+
 pub async fn external_auth_library_states() -> Result<Vec<ExternalAuthLibraryState>> {
     let state = State::get().await?;
     let mut selections = sqlx::query_as::<_, (String, String)>(

@@ -166,9 +166,9 @@ async function loadLibraries(forceRefresh = false): Promise<void> {
 				localAssetNames,
 				selectedAssetName: availableAssetNames.includes(savedAssetName ?? '')
 					? savedAssetName
-					: null,
+					: availableAssetNames[0] ?? null,
 				savedAssetName,
-				localOnly: assetNames === null,
+				localOnly: false,
 				busy: null,
 			}
 		})

@@ -3,7 +3,8 @@ use chrono::{Duration, Utc};
 use tauri::plugin::TauriPlugin;
 use tauri::{Manager, Runtime, UserAttentionType};
 use theseus::models::astralrinth::authentication::{
-    ExternalAuthLibraryState, ExternalAuthProviderMetadata,
+    ExternalAuthLibraryCatalogEntry, ExternalAuthLibraryState, ExternalAuthProviderMetadata,
+    external_auth_library_catalog,
     ExternalOAuthPoll, begin_external_authentication,
     external_auth_library_states, external_auth_providers,
     install_external_auth_library_version, poll_external_authentication,
@@ -20,6 +21,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
         .invoke_handler(tauri::generate_handler![
             offline_login,
             get_external_auth_providers,
+            get_external_auth_library_catalog,
             get_external_auth_library_states,
             install_external_auth_library,
             select_external_auth_library,
@@ -49,6 +51,12 @@ pub fn get_external_auth_providers() -> Vec<ExternalAuthProviderMetadata> {
         .copied()
         .map(|provider| provider.metadata())
         .collect()
+}
+
+/// Returns the remote/fallback catalog for all external authentication libraries.
+#[tauri::command]
+pub async fn get_external_auth_library_catalog() -> Result<Vec<ExternalAuthLibraryCatalogEntry>> {
+    Ok(external_auth_library_catalog().await?)
 }
 
 /// Returns persisted selections and locally available provider libraries.
