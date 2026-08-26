@@ -278,7 +278,7 @@ async function handleConfirmLink() {
 			queryKey: ['linkedModpackInfo', props.instance.id],
 		})
 		await queryClient.invalidateQueries({
-			queryKey: instanceKeys.instance(props.instance.id),
+			queryKey: instanceKeys.detail(props.instance.id),
 		})
 
 		addNotification({

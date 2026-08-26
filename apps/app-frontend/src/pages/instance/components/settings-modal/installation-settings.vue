@@ -63,7 +63,7 @@ async function onLinked() {
 		queryKey: ['linkedModpackInfo', instance.value.id],
 	})
 	await queryClient.invalidateQueries({
-		queryKey: instanceKeys.instance(instance.value.id),
+		queryKey: instanceKeys.detail(instance.value.id),
 	})
 }
 

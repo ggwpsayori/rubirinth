@@ -9,6 +9,7 @@ import { refreshWorlds } from '@/helpers/worlds'
 export const instanceKeys = {
 	all: ['instances'] as const,
 	detail: (instanceId: string) => [...instanceKeys.all, 'summary', instanceId] as const,
+	instance: (instanceId: string) => [...instanceKeys.all, 'summary', instanceId] as const,
 	processes: (instanceId: string) => [...instanceKeys.all, 'processes', instanceId] as const,
 	content: (instanceId: string) => [...instanceKeys.all, 'content', instanceId] as const,
 	contentUpdateCheck: (instanceId: string) =>
