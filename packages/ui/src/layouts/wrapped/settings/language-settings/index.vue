@@ -4,10 +4,6 @@
 			{{ formatMessage(commonSettingsMessages.language) }}
 		</h2>
 
-		<Admonition type="warning" class="mb-4 mt-2">
-			{{ formatMessage(languageSelectorMessages.languageWarning, { platform }) }}
-		</Admonition>
-
 		<p class="m-0 mb-4 text-secondary">
 			{{ formatMessage(languageSelectorMessages.languagesDescription, { platform }) }}
 		</p>
@@ -26,7 +22,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 
-import { Admonition } from '#ui/components/base'
 import { LOCALES, useVIntl } from '#ui/composables'
 import { injectI18n, injectUserPreferences } from '#ui/providers'
 import { commonSettingsMessages, languageSelectorMessages, useSavable } from '#ui/utils'
