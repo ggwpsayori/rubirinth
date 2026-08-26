@@ -131,8 +131,8 @@
   },
   "app.action-bar.install.summary.modrinth-unreachable": {
     "package": "app-frontend",
-    "en": "Couldn't reach Rubirinth",
-    "ru": "Не удалось подключиться к Rubirinth"
+    "en": "Couldn't reach Modrinth",
+    "ru": "Не удалось подключиться к Modrinth"
   },
   "app.action-bar.install.summary.no-write-permission": {
     "package": "app-frontend",
@@ -231,8 +231,8 @@
   },
   "app.ads-consent.body": {
     "package": "app-frontend",
-    "en": "Ads make Rubirinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance.",
-    "ru": "Реклама обеспечивает работу Rubirinth и выплаты авторам. Для персонализации и анализа рекламы наши партнёры могут использовать куки."
+    "en": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance.",
+    "ru": "Реклама обеспечивает работу Modrinth и выплаты авторам. Для персонализации и анализа рекламы наши партнёры могут использовать куки."
   },
   "app.ads-consent.manage": {
     "package": "app-frontend",
@@ -246,8 +246,8 @@
   },
   "app.ads-consent.title": {
     "package": "app-frontend",
-    "en": "Your privacy and how ads support Rubirinth",
-    "ru": "Конфиденциальность и реклама на Rubirinth"
+    "en": "Your privacy and how ads support Modrinth",
+    "ru": "Конфиденциальность и реклама на Modrinth"
   },
   "app.appearance-settings.compact-mode.description": {
     "package": "app-frontend",
@@ -331,8 +331,8 @@
   },
   "app.appearance-settings.unknown-pack-warning.description": {
     "package": "app-frontend",
-    "en": "Show a safety warning before installing a Modrinth Pack (.mrpack) that isn't hosted on Rubirinth.",
-    "ru": "Предупреждать о рисках перед установкой файлов (.mrpack), не размещённых на Rubirinth."
+    "en": "Show a safety warning before installing a Modrinth Pack (.mrpack) that isn't hosted on Modrinth.",
+    "ru": "Предупреждать о рисках перед установкой файлов (.mrpack), не размещённых на Modrinth."
   },
   "app.appearance-settings.unknown-pack-warning.title": {
     "package": "app-frontend",
@@ -371,8 +371,8 @@
   },
   "app.behavior-settings.sync-across-devices.signed-out-tooltip": {
     "package": "app-frontend",
-    "en": "Sign into a Rubirinth account to sync settings.",
-    "ru": "Войдите в аккаунт Rubirinth для синхронизации настроек."
+    "en": "Sign into a Modrinth account to sync settings.",
+    "ru": "Войдите в аккаунт Modrinth для синхронизации настроек."
   },
   "app.behavior-settings.sync-across-devices.title": {
     "package": "app-frontend",
@@ -576,8 +576,8 @@
   },
   "app.hosting.update-required.rinthbot-alt": {
     "package": "app-frontend",
-    "en": "Excited Rubirinth Bot",
-    "ru": "Восторженный Rubirinth Bot"
+    "en": "Excited Modrinth Bot",
+    "ru": "Восторженный Modrinth Bot"
   },
   "app.hosting.update-required.title": {
     "package": "app-frontend",
@@ -1206,8 +1206,8 @@
   },
   "app.instance.shared-instance-wrong-account.signed-out-header": {
     "package": "app-frontend",
-    "en": "You need to sign in to Rubirinth",
-    "ru": "Необходимо войти в Rubirinth"
+    "en": "You need to sign in to Modrinth",
+    "ru": "Необходимо войти в Modrinth"
   },
   "app.instance.shared-instance-wrong-account.user-admonition-body-v2": {
     "package": "app-frontend",
@@ -1216,8 +1216,8 @@
   },
   "app.instance.shared-instance-wrong-account.warning-header": {
     "package": "app-frontend",
-    "en": "You are using the wrong Rubirinth account",
-    "ru": "Вы используете неправильную учетную запись Rubirinth"
+    "en": "You are using the wrong Modrinth account",
+    "ru": "Вы используете неправильную учетную запись Modrinth"
   },
   "app.instance.shortcut.created": {
     "package": "app-frontend",
@@ -1886,13 +1886,13 @@
   },
   "app.modal.install-to-play.invite-warning": {
     "package": "app-frontend",
-    "en": "This invite was created by another Rubirinth user, not Rubirinth. Only accept invites from people you trust.",
-    "ru": "Приглашение создано другим пользователем, а не Rubirinth. Принимайте приглашения только от тех, кому доверяете."
+    "en": "This invite was created by another Modrinth user, not Modrinth. Only accept invites from people you trust.",
+    "ru": "Приглашение создано другим пользователем, а не Modrinth. Принимайте приглашения только от тех, кому доверяете."
   },
   "app.modal.install-to-play.invite-warning-with-creator": {
     "package": "app-frontend",
-    "en": "This invite was created by <creator>{username}</creator>, not Rubirinth. Only accept invites from people you trust.",
-    "ru": "Приглашение создано <creator>{username}</creator>, а не Rubirinth. Принимайте приглашения только от тех, кому доверяете."
+    "en": "This invite was created by <creator>{username}</creator>, not Modrinth. Only accept invites from people you trust.",
+    "ru": "Приглашение создано <creator>{username}</creator>, а не Modrinth. Принимайте приглашения только от тех, кому доверяете."
   },
   "app.modal.install-to-play.managed-content.modpack-header": {
     "package": "app-frontend",
@@ -1946,8 +1946,8 @@
   },
   "app.modal.install-to-play.reviewed-files": {
     "package": "app-frontend",
-    "en": "Files that aren't published to Rubirinth aren't reviewed.",
-    "ru": "Файлы не c Rubirinth не проверяются."
+    "en": "Files that aren't published to Modrinth aren't reviewed.",
+    "ru": "Файлы не c Modrinth не проверяются."
   },
   "app.modal.install-to-play.shared-instance": {
     "package": "app-frontend",
@@ -1961,13 +1961,13 @@
   },
   "app.modal.install-to-play.shared-instance-unknown-files-description": {
     "package": "app-frontend",
-    "en": "This shared instance contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust.",
-    "ru": "Совместная сборка содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
+    "en": "This shared instance contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
+    "ru": "Совместная сборка содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "app.modal.install-to-play.unknown-files-description": {
     "package": "app-frontend",
-    "en": "This server modpack contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust.",
-    "ru": "Серверная сборка содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
+    "en": "This server modpack contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
+    "ru": "Серверная сборка содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "app.modal.install-to-play.unknown-files-warning": {
     "package": "app-frontend",
@@ -2001,8 +2001,8 @@
   },
   "app.modal.update-to-play.server-modpack-unknown-files-description": {
     "package": "app-frontend",
-    "en": "This server modpack update contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust.",
-    "ru": "Обновление серверной сборки содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
+    "en": "This server modpack update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
+    "ru": "Обновление серверной сборки содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "app.modal.update-to-play.shared-instance-added-label": {
     "package": "app-frontend",
@@ -2016,8 +2016,8 @@
   },
   "app.modal.update-to-play.shared-instance-unknown-files-description": {
     "package": "app-frontend",
-    "en": "This shared instance update contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust.",
-    "ru": "Обновление совместной сборки содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
+    "en": "This shared instance update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
+    "ru": "Обновление совместной сборки содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "app.modal.update-to-play.update-required": {
     "package": "app-frontend",
@@ -2041,8 +2041,8 @@
   },
   "app.nav.modrinth-account": {
     "package": "app-frontend",
-    "en": "Rubirinth account",
-    "ru": "Аккаунт Rubirinth"
+    "en": "Modrinth account",
+    "ru": "Аккаунт Modrinth"
   },
   "app.nav.modrinth-hosting": {
     "package": "app-frontend",
@@ -2051,8 +2051,8 @@
   },
   "app.nav.sign-in-to-modrinth-account": {
     "package": "app-frontend",
-    "en": "Sign in to a Rubirinth account",
-    "ru": "Войти в аккаунт Rubirinth"
+    "en": "Sign in to a Modrinth account",
+    "ru": "Войти в аккаунт Modrinth"
   },
   "app.nav.signed-in-as": {
     "package": "app-frontend",
@@ -2061,8 +2061,8 @@
   },
   "app.nav.upgrade-to-modrinth-plus": {
     "package": "app-frontend",
-    "en": "Upgrade to Rubirinth+",
-    "ru": "Перейти на Rubirinth+"
+    "en": "Upgrade to Modrinth+",
+    "ru": "Перейти на Modrinth+"
   },
   "app.navigation.go-back": {
     "package": "app-frontend",
@@ -2346,8 +2346,8 @@
   },
   "app.settings.privacy.ads-consent.intro": {
     "package": "app-frontend",
-    "en": "Ads make Rubirinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below.",
-    "ru": "Реклама обеспечивает работу Rubirinth и выплаты авторам. Для персонализации и анализа рекламы наши партнёры могут использовать куки. Отказаться и настроить куки можно ниже."
+    "en": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below.",
+    "ru": "Реклама обеспечивает работу Modrinth и выплаты авторам. Для персонализации и анализа рекламы наши партнёры могут использовать куки. Отказаться и настроить куки можно ниже."
   },
   "app.settings.privacy.discord-rich-presence.description": {
     "package": "app-frontend",
@@ -2391,8 +2391,8 @@
   },
   "app.settings.resource-management.app-cache.description": {
     "package": "app-frontend",
-    "en": "Clear cached data and download it again from Rubirinth. The app may load more slowly until the cache is rebuilt.",
-    "ru": "Удаляет кешированные данные и повторно скачивает их с Rubirinth. Приложение может замедлиться, пока кеш не восстановится."
+    "en": "Clear cached data and download it again from Modrinth. The app may load more slowly until the cache is rebuilt.",
+    "ru": "Удаляет кешированные данные и повторно скачивает их с Modrinth. Приложение может замедлиться, пока кеш не восстановится."
   },
   "app.settings.resource-management.app-cache.purge": {
     "package": "app-frontend",
@@ -2716,13 +2716,13 @@
   },
   "app.skins.section.modrinth-pride": {
     "package": "app-frontend",
-    "en": "Rubirinth Pride",
-    "ru": "Rubirinth Pride"
+    "en": "Modrinth Pride",
+    "ru": "Modrinth Pride"
   },
   "app.skins.section.modrinth-pride.tooltip": {
     "package": "app-frontend",
-    "en": "You received these skins for donating to a Rubirinth Pride fundraiser during Pride Month.",
-    "ru": "Эти скины получены за участие в сборе средств Rubirinth Pride в месяц гордости."
+    "en": "You received these skins for donating to a Modrinth Pride fundraiser during Pride Month.",
+    "ru": "Эти скины получены за участие в сборе средств Modrinth Pride в месяц гордости."
   },
   "app.skins.section.mounts-of-mayhem": {
     "package": "app-frontend",
@@ -2781,8 +2781,8 @@
   },
   "app.survey.footer": {
     "package": "app-frontend",
-    "en": "This feedback will go directly to the Rubirinth team and help guide future updates!",
-    "ru": "Этот отзыв будет доставлен напрямую команде Rubirinth и поможет разрабатывать будущие обновления!"
+    "en": "This feedback will go directly to the Modrinth team and help guide future updates!",
+    "ru": "Этот отзыв будет доставлен напрямую команде Modrinth и поможет разрабатывать будущие обновления!"
   },
   "app.survey.no-thanks": {
     "package": "app-frontend",
@@ -3001,13 +3001,13 @@
   },
   "friends.add-friend.username.placeholder": {
     "package": "app-frontend",
-    "en": "Enter Rubirinth username...",
-    "ru": "Введите имя с Rubirinth..."
+    "en": "Enter Modrinth username...",
+    "ru": "Введите имя с Modrinth..."
   },
   "friends.add-friend.username.title": {
     "package": "app-frontend",
-    "en": "What's your friend's Rubirinth username?",
-    "ru": "Какое имя у друга на Rubirinth?"
+    "en": "What's your friend's Modrinth username?",
+    "ru": "Какое имя у друга на Modrinth?"
   },
   "friends.add-friends-to-share": {
     "package": "app-frontend",
@@ -3076,8 +3076,8 @@
   },
   "friends.sign-in-to-add-friends": {
     "package": "app-frontend",
-    "en": "<link>Sign in to a Rubirinth account</link> to add friends and see what they're playing!",
-    "ru": "<link>Войдите в аккаунт Rubirinth</link>, чтобы добавлять друзей и следить за ними!"
+    "en": "<link>Sign in to a Modrinth account</link> to add friends and see what they're playing!",
+    "ru": "<link>Войдите в аккаунт Modrinth</link>, чтобы добавлять друзей и следить за ними!"
   },
   "installation-settings.shared-instance.linked-title": {
     "package": "app-frontend",
@@ -3111,7 +3111,7 @@
   },
   "installation-settings.shared-instance.unpublish-description": {
     "package": "app-frontend",
-    "en": "Remove this shared instance from Rubirinth and stop sending updates to anyone using it. Your local instance will not be affected.",
+    "en": "Remove this shared instance from Modrinth and stop sending updates to anyone using it. Your local instance will not be affected.",
     "ru": "Удаляет сборку с серверов Modrinth и прекращает отправку обновлений. Локальная сборка останется нетронутой."
   },
   "installation-settings.shared-instance.unpublishing-button": {
@@ -3136,7 +3136,7 @@
   },
   "installation-settings.unpublish-shared-instance.modal.admonition-body": {
     "package": "app-frontend",
-    "en": "This deletes the shared instance from Rubirinth's servers. People using it in the Rubirinth App will stop receiving updates, but your local instance and its content will stay on this device.",
+    "en": "This deletes the shared instance from Modrinth's servers. People using it in the Rubirinth App will stop receiving updates, but your local instance and its content will stay on this device.",
     "ru": "Сборка будет удалена с серверов Modrinth. Локальная копия и её контент останутся на устройстве, а другие участники перестанут получать обновления."
   },
   "installation-settings.unpublish-shared-instance.modal.admonition-header": {
@@ -4356,8 +4356,8 @@
   },
   "modal.modrinth-account-required.description": {
     "package": "app-frontend",
-    "en": "You'll need to sign into your Rubirinth account before you can use this feature.",
-    "ru": "Войдите в аккаунт Rubirinth, чтобы использовать эту функцию."
+    "en": "You'll need to sign into your Modrinth account before you can use this feature.",
+    "ru": "Войдите в аккаунт Modrinth, чтобы использовать эту функцию."
   },
   "modal.modrinth-account-required.header": {
     "package": "app-frontend",
@@ -4371,13 +4371,13 @@
   },
   "modal.modrinth-account-required.sign-in-button": {
     "package": "app-frontend",
-    "en": "Sign in to Rubirinth",
-    "ru": "Войти в Rubirinth"
+    "en": "Sign in to Modrinth",
+    "ru": "Войти в Modrinth"
   },
   "modal.modrinth-account-required.sign-in-heading": {
     "package": "app-frontend",
-    "en": "Sign in to a Rubirinth account",
-    "ru": "Войдите в аккаунт Rubirinth"
+    "en": "Sign in to a Modrinth account",
+    "ru": "Войдите в аккаунт Modrinth"
   },
   "modal.modrinth-account-required.signing-in-header": {
     "package": "app-frontend",
@@ -4406,8 +4406,8 @@
   },
   "onboarding-checklist.login-modrinth": {
     "package": "app-frontend",
-    "en": "Sign in to Rubirinth",
-    "ru": "Войдите в Rubirinth"
+    "en": "Sign in to Modrinth",
+    "ru": "Войдите в Modrinth"
   },
   "onboarding-checklist.title": {
     "package": "app-frontend",
@@ -4456,8 +4456,8 @@
   },
   "astralrinth.app.launcher-update.available.text": {
     "package": "app-frontend",
-    "en": "New version of AstralRinth App is available for download.",
-    "ru": "Новая версия AstralRinth App уже доступна для загрузки."
+    "en": "New version of AstralRinth is available for download.",
+    "ru": "Новая версия AstralRinth уже доступна для загрузки."
   },
   "astralrinth.app.launcher-update.available.title": {
     "package": "app-frontend",
@@ -4546,7 +4546,7 @@
   },
   "astralrinth.app.settings.sidebar.label.astralrinth": {
     "package": "app-frontend",
-    "en": "AstralRinth App",
+    "en": "AstralRinth",
     "ru": ""
   },
   "astralrinth.app.settings.tabs.external-auth-libraries": {
@@ -4576,8 +4576,8 @@
   },
   "astralrinth.app.settings.updates.description": {
     "package": "app-frontend",
-    "en": "Inspect the AstralRinth App release channel, distribution status, and update-provider diagnostics.",
-    "ru": "Просматривайте канал релизов AstralRinth App, состояние распространения и диагностику провайдера обновлений."
+    "en": "Inspect the AstralRinth release channel, distribution status, and update-provider diagnostics.",
+    "ru": "Просматривайте канал релизов AstralRinth, состояние распространения и диагностику провайдера обновлений."
   },
   "astralrinth.app.settings.updates.api-url": {
     "package": "app-frontend",
@@ -4666,8 +4666,8 @@
   },
   "astralrinth.app.launcher-update-modal.error.description": {
     "package": "app-frontend",
-    "en": "AstralRinth App could not download the update file from the server.",
-    "ru": "AstralRinth App не удалось скачать файл обновления с сервера."
+    "en": "AstralRinth could not download the update file from the server.",
+    "ru": "AstralRinth не удалось скачать файл обновления с сервера."
   },
   "astralrinth.app.launcher-update-modal.error.header": {
     "package": "app-frontend",
@@ -4676,8 +4676,8 @@
   },
   "astralrinth.app.launcher-update-modal.error.help-link": {
     "package": "app-frontend",
-    "en": "AstralRinth App repository releases",
-    "ru": "релизы репозитория AstralRinth App"
+    "en": "AstralRinth repository releases",
+    "ru": "релизы репозитория AstralRinth"
   },
   "astralrinth.app.launcher-update-modal.error.help-suffix": {
     "package": "app-frontend",
@@ -4691,8 +4691,8 @@
   },
   "astralrinth.app.launcher-update-modal.error.local-version": {
     "package": "app-frontend",
-    "en": "Local AstralRinth App:",
-    "ru": "Локальная версия AstralRinth App:"
+    "en": "Local AstralRinth:",
+    "ru": "Локальная версия AstralRinth:"
   },
   "astralrinth.app.launcher-update-modal.error.title": {
     "package": "app-frontend",
@@ -4716,8 +4716,8 @@
   },
   "astralrinth.app.launcher-update-modal.update.header": {
     "package": "app-frontend",
-    "en": "AstralRinth App launcher update",
-    "ru": "Обновление лаунчера AstralRinth App"
+    "en": "AstralRinth launcher update",
+    "ru": "Обновление лаунчера AstralRinth"
   },
   "astralrinth.app.launcher-update-modal.update.installer-description": {
     "package": "app-frontend",
@@ -4781,8 +4781,8 @@
   },
   "astralrinth.app.launcher-update-modal.update.title": {
     "package": "app-frontend",
-    "en": "A new version of the AstralRinth App launcher is available.",
-    "ru": "Доступна новая версия лаунчера AstralRinth App."
+    "en": "A new version of the AstralRinth launcher is available.",
+    "ru": "Доступна новая версия лаунчера AstralRinth."
   },
   "astralrinth.app.minecraft-account.error.input-offline.description": {
     "package": "app-frontend",
@@ -5161,8 +5161,8 @@
   },
   "browse.offline": {
     "package": "ui",
-    "en": "You are currently offline. Connect to the internet to browse Rubirinth!",
-    "ru": "Вы не в сети. Подключитесь к интернету, чтобы искать на Rubirinth."
+    "en": "You are currently offline. Connect to the internet to browse Modrinth!",
+    "ru": "Вы не в сети. Подключитесь к интернету, чтобы искать на Modrinth."
   },
   "browse.search.placeholder": {
     "package": "ui",
@@ -5386,8 +5386,8 @@
   },
   "button.open-in-modrinth": {
     "package": "ui",
-    "en": "Open in Rubirinth",
-    "ru": "Открыть в Rubirinth"
+    "en": "Open in Modrinth",
+    "ru": "Открыть в Modrinth"
   },
   "button.play": {
     "package": "ui",
@@ -5861,8 +5861,8 @@
   },
   "content.diff-modal.reviewed-files": {
     "package": "ui",
-    "en": "Files that aren't published to Rubirinth aren't reviewed.",
-    "ru": "Файлы не c Rubirinth не проверяются."
+    "en": "Files that aren't published to Modrinth aren't reviewed.",
+    "ru": "Файлы не с Modrinth не проверяются."
   },
   "content.diff-modal.unknown-content-body": {
     "package": "ui",
@@ -5871,8 +5871,8 @@
   },
   "content.diff-modal.unknown-files-description": {
     "package": "ui",
-    "en": "This update contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust.",
-    "ru": "Обновление содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
+    "en": "This update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
+    "ru": "Обновление содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "content.diff-modal.unknown-files-warning": {
     "package": "ui",
@@ -6951,8 +6951,8 @@
   },
   "external-files.permissions-card.editor.modrinth-link-to-work": {
     "package": "ui",
-    "en": "This appears to be a Rubirinth link. If this content is available on Rubirinth, your pack was likely exported incorrectly. If you downloaded it from another site, try downloading the Rubirinth version instead; sometimes they are not identical files.",
-    "ru": "Похоже, это ссылка на Rubirinth. Если этот контент доступен на Rubirinth, вероятно, ваш набор был экспортирован неправильно. Если вы скачали его с другого сайта, попробуйте скачать версию с Rubirinth; иногда эти файлы различаются."
+    "en": "This appears to be a Modrinth link. If this content is available on Modrinth, your pack was likely exported incorrectly. If you downloaded it from another site, try downloading the Modrinth version instead; sometimes they are not identical files.",
+    "ru": "Похоже, это ссылка на Modrinth. Если этот контент доступен на Modrinth, вероятно, ваш набор был экспортирован неправильно. Если вы скачали его с другого сайта, попробуйте скачать версию с Modrinth; иногда эти файлы различаются."
   },
   "external-files.permissions-card.editor.notes-label": {
     "package": "ui",
@@ -6991,7 +6991,7 @@
   },
   "external-files.permissions-card.editor.proof-warning.title": {
     "package": "ui",
-    "en": "Rubirinth staff may verify submitted proof",
+    "en": "Modrinth staff may verify submitted proof",
     "ru": "Модераторы могут проверить предоставленные доказательства"
   },
   "external-files.permissions-card.editor.save": {
@@ -7136,8 +7136,8 @@
   },
   "external-files.permissions-card.reason.globally-allowed.description": {
     "package": "ui",
-    "en": "We've seen this file before and have prepared an attribution for you. If something seems wrong, please contact Rubirinth Support via the Help Center",
-    "ru": "Мы уже видели этот файл и подготовили для вас ссылку на источник. Если что-то не так, пожалуйста, обратитесь в службу поддержки Rubirinth через справочный центр"
+    "en": "We've seen this file before and have prepared an attribution for you. If something seems wrong, please contact Modrinth Support via the Help Center",
+    "ru": "Мы уже видели этот файл и подготовили для вас ссылку на источник. Если что-то не так, пожалуйста, обратитесь в службу поддержки Modrinth через справочный центр"
   },
   "external-files.permissions-card.reason.license": {
     "package": "ui",
@@ -8736,8 +8736,8 @@
   },
   "instances.managed-content-modal.external-content-description": {
     "package": "ui",
-    "en": "This file is not published on Rubirinth.",
-    "ru": "Этот файл не с Rubirinth."
+    "en": "This file is not published on Modrinth.",
+    "ru": "Этот файл не с Modrinth."
   },
   "instances.managed-content-modal.header": {
     "package": "ui",
@@ -9871,8 +9871,8 @@
   },
   "omorphia.component.badge.label.modrinth-team": {
     "package": "ui",
-    "en": "Rubirinth Team",
-    "ru": "Команда Rubirinth"
+    "en": "Modrinth Team",
+    "ru": "Команда Modrinth"
   },
   "omorphia.component.badge.label.pending": {
     "package": "ui",
@@ -10071,13 +10071,13 @@
   },
   "profile.bio.fallback.creator": {
     "package": "ui",
-    "en": "A Rubirinth creator.",
-    "ru": "Автор на Rubirinth."
+    "en": "A Modrinth creator.",
+    "ru": "Автор на Modrinth."
   },
   "profile.bio.fallback.user": {
     "package": "ui",
-    "en": "A Rubirinth user.",
-    "ru": "Пользователь Rubirinth."
+    "en": "A Modrinth user.",
+    "ru": "Пользователь Modrinth."
   },
   "profile.block-user.admonition-body": {
     "package": "ui",
@@ -10306,13 +10306,13 @@
   },
   "profile.official-account": {
     "package": "ui",
-    "en": "Official Rubirinth account",
-    "ru": "Официальный аккаунт Rubirinth"
+    "en": "Official Modrinth account",
+    "ru": "Официальный аккаунт Modrinth"
   },
   "profile.official-account.bio": {
     "package": "ui",
-    "en": "The official user account of Rubirinth. Get support at <support-link></support-link> or via email at <email></email>",
-    "ru": "Официальный аккаунт Rubirinth. Связь с поддержкой: <support-link></support-link> или по почте <email></email>"
+    "en": "The official user account of Modrinth. Get support at <support-link></support-link> or via email at <email></email>",
+    "ru": "Официальный аккаунт Modrinth. Связь с поддержкой: <support-link></support-link> или по почте <email></email>"
   },
   "profile.unblock-user.error-description": {
     "package": "ui",
@@ -12101,18 +12101,18 @@
   },
   "search.photosensitivity-warning-modal.body.1": {
     "package": "ui",
-    "en": "We cannot guarantee that all content on Rubirinth has been labeled appropriately.",
-    "ru": "Мы не гарантируем точность маркировки на Rubirinth."
+    "en": "We cannot guarantee that all content on Modrinth has been labeled appropriately.",
+    "ru": "Мы не гарантируем точность маркировки на Modrinth."
   },
   "search.photosensitivity-warning-modal.body.2": {
     "package": "ui",
-    "en": "Content labels for photosensitivity triggers are self-assigned by the creators who upload their content to Rubirinth. These projects have not gone through any safety testing.",
+    "en": "Content labels for photosensitivity triggers are self-assigned by the creators who upload their content to Modrinth. These projects have not gone through any safety testing.",
     "ru": "Предупреждения о вспышках указывают сами авторы — мы не проводим дополнительные проверки."
   },
   "search.photosensitivity-warning-modal.body.3": {
     "package": "ui",
-    "en": "Using any content on Rubirinth is at your own risk. Please stay safe! 💚",
-    "ru": "Используйте контент с Rubirinth на свой страх и риск. Берегите себя! 💚"
+    "en": "Using any content on Modrinth is at your own risk. Please stay safe! 💚",
+    "ru": "Используйте контент с Modrinth на свой страх и риск. Берегите себя! 💚"
   },
   "search.photosensitivity-warning-modal.dont-show-again": {
     "package": "ui",
@@ -13386,8 +13386,8 @@
   },
   "servers.grant-access-modal.target.label": {
     "package": "ui",
-    "en": "Rubirinth username",
-    "ru": "Имя пользователя Rubirinth"
+    "en": "Modrinth username",
+    "ru": "Имя пользователя Modrinth"
   },
   "servers.grant-access-modal.target.no-suggestions": {
     "package": "ui",
@@ -13396,8 +13396,8 @@
   },
   "servers.grant-access-modal.target.placeholder": {
     "package": "ui",
-    "en": "Enter Rubirinth username",
-    "ru": "Введите имя пользователя Rubirinth"
+    "en": "Enter Modrinth username",
+    "ru": "Введите имя пользователя Modrinth"
   },
   "servers.grant-access-modal.target.searching": {
     "package": "ui",
@@ -13536,8 +13536,8 @@
   },
   "servers.list-empty.sign-in-button": {
     "package": "ui",
-    "en": "Sign in to Rubirinth",
-    "ru": "Войти в Rubirinth"
+    "en": "Sign in to Modrinth",
+    "ru": "Войти в Modrinth"
   },
   "servers.list-empty.simple-setup-description": {
     "package": "ui",
@@ -13636,8 +13636,8 @@
   },
   "servers.listing.notice.suspended": {
     "package": "ui",
-    "en": "Your server has been suspended. Please contact Rubirinth Support for more information.",
-    "ru": "Ваш сервер был приостановлен. Пожалуйста, свяжитесь с поддержкой Rubirinth для получения большей информации."
+    "en": "Your server has been suspended. Please contact Modrinth Support for more information.",
+    "ru": "Ваш сервер был приостановлен. Пожалуйста, свяжитесь с поддержкой Modrinth для получения большей информации."
   },
   "servers.listing.notice.upgrading": {
     "package": "ui",
@@ -13691,8 +13691,8 @@
   },
   "servers.manage.contact-support-button": {
     "package": "ui",
-    "en": "Contact Rubirinth Support",
-    "ru": "Связаться с поддержкой Rubirinth"
+    "en": "Contact Modrinth Support",
+    "ru": "Связаться с поддержкой Modrinth"
   },
   "servers.manage.error.alert-notice": {
     "package": "ui",
@@ -13716,8 +13716,8 @@
   },
   "servers.manage.error.support-notice": {
     "package": "ui",
-    "en": "If you require personalized support regarding the status of your server, please contact Rubirinth Support.",
-    "ru": "Если нужна помощь по конкретному серверу, обратитесь в поддержку Rubirinth."
+    "en": "If you require personalized support regarding the status of your server, please contact Modrinth Support.",
+    "ru": "Если нужна помощь по конкретному серверу, обратитесь в поддержку Modrinth."
   },
   "servers.manage.error.title": {
     "package": "ui",
@@ -13771,7 +13771,7 @@
   },
   "servers.manage.resubscribe-error.text": {
     "package": "ui",
-    "en": "An error occurred while resubscribing to your Rubirinth server.",
+    "en": "An error occurred while resubscribing to your Modrinth server.",
     "ru": "Произошла ошибка при возобновлении подписки на сервер Modrinth."
   },
   "servers.manage.resubscribe-error.title": {
@@ -13851,13 +13851,13 @@
   },
   "servers.medal-listing.notice.suspended": {
     "package": "ui",
-    "en": "Your server has been suspended. Please update your billing information or contact Rubirinth Support for more information.",
-    "ru": "Ваш сервер был приостановлен. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Rubirinth для получения большей информации."
+    "en": "Your server has been suspended. Please update your billing information or contact Modrinth Support for more information.",
+    "ru": "Ваш сервер был приостановлен. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Modrinth для получения большей информации."
   },
   "servers.medal-listing.notice.suspended-with-reason": {
     "package": "ui",
-    "en": "Your server has been suspended: {reason}. Please update your billing information or contact Rubirinth Support for more information.",
-    "ru": "Ваш сервер был приостановлен: {reason}. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Rubirinth для получения большей информации."
+    "en": "Your server has been suspended: {reason}. Please update your billing information or contact Modrinth Support for more information.",
+    "ru": "Ваш сервер был приостановлен: {reason}. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Modrinth для получения большей информации."
   },
   "servers.medal-listing.notice.upgrading": {
     "package": "ui",
@@ -14206,8 +14206,8 @@
   },
   "servers.setup.onboarding.step.choose.description": {
     "package": "ui",
-    "en": "Pick your favorite modpack from Rubirinth, or choose a loader and add the mods you want.",
-    "ru": "Выберите вашу любимую сборку из Rubirinth, или выберите загрузчик и добавьте нужные моды."
+    "en": "Pick your favorite modpack from Modrinth, or choose a loader and add the mods you want.",
+    "ru": "Выберите вашу любимую сборку из Modrinth, или выберите загрузчик и добавьте нужные моды."
   },
   "servers.setup.onboarding.step.choose.title": {
     "package": "ui",
@@ -14251,8 +14251,8 @@
   },
   "servers.setup.onboarding.welcome.title": {
     "package": "ui",
-    "en": "Welcome to Rubirinth Hosting",
-    "ru": "Добро пожаловать в Rubirinth Hosting"
+    "en": "Welcome to Modrinth Hosting",
+    "ru": "Добро пожаловать в Modrinth Hosting"
   },
   "servers.setup.rate-limit.text": {
     "package": "ui",
@@ -14456,8 +14456,8 @@
   },
   "settings.display.theme.sync-across-devices.sign-in-tooltip": {
     "package": "ui",
-    "en": "Sign into Rubirinth to sync theme",
-    "ru": "Войдите в Rubirinth для синхронизации темы"
+    "en": "Sign into Modrinth to sync theme",
+    "ru": "Войдите в Modrinth для синхронизации темы"
   },
   "settings.display.theme.system": {
     "package": "ui",
@@ -14551,8 +14551,8 @@
   },
   "settings.preferences.update-failed.description": {
     "package": "ui",
-    "en": "Your settings could not be saved to your Rubirinth account. Please try again.",
-    "ru": "Не удалось сохранить настройки в аккаунте Rubirinth. Повторите попытку."
+    "en": "Your settings could not be saved to your Modrinth account. Please try again.",
+    "ru": "Не удалось сохранить настройки в аккаунте Modrinth. Повторите попытку."
   },
   "settings.preferences.update-failed.title": {
     "package": "ui",
@@ -14581,8 +14581,8 @@
   },
   "settings.profile.public-information.description": {
     "package": "ui",
-    "en": "Your profile information is publicly <profile-link>viewable on Rubirinth</profile-link> and through the <docs-link>Modrinth API</docs-link>.",
-    "ru": "Информация в вашем профиле <profile-link>доступна публично на Rubirinth</profile-link> и через <docs-link>API Modrinth</docs-link>."
+    "en": "Your profile information is publicly <profile-link>viewable on Modrinth</profile-link> and through the <docs-link>Modrinth API</docs-link>.",
+    "ru": "Информация в вашем профиле <profile-link>доступна публично на Modrinth</profile-link> и через <docs-link>API Modrinth</docs-link>."
   },
   "settings.profile.save-error": {
     "package": "ui",
@@ -14596,13 +14596,13 @@
   },
   "settings.profile.sign-in-required.description": {
     "package": "ui",
-    "en": "Sign in with a Rubirinth account to customize your public profile.",
-    "ru": "Войдите в Rubirinth, чтобы настраивать публичный профиль."
+    "en": "Sign in with a Modrinth account to customize your public profile.",
+    "ru": "Войдите в Modrinth, чтобы настраивать публичный профиль."
   },
   "settings.profile.sign-in-required.title": {
     "package": "ui",
-    "en": "Rubirinth account required",
-    "ru": "Требуется аккаунт Rubirinth"
+    "en": "Modrinth account required",
+    "ru": "Требуется аккаунт Modrinth"
   },
   "settings.profile.username.description": {
     "package": "ui",
@@ -14626,8 +14626,8 @@
   },
   "settings.social.blocked-users.description": {
     "package": "ui",
-    "en": "These are the users you have blocked on Rubirinth. They cannot:",
-    "ru": "Эти пользователи заблокированы вами на Rubirinth. Им нельзя:"
+    "en": "These are the users you have blocked on Modrinth. They cannot:",
+    "ru": "Эти пользователи заблокированы вами на Modrinth. Им нельзя:"
   },
   "settings.social.blocked-users.empty": {
     "package": "ui",
@@ -14691,8 +14691,8 @@
   },
   "settings.social.friend-requests.description": {
     "package": "ui",
-    "en": "Control who can send you friend requests on Rubirinth.",
-    "ru": "Настройте, кто может отправлять вам запросы дружбы на Rubirinth."
+    "en": "Control who can send you friend requests on Modrinth.",
+    "ru": "Настройте, кто может отправлять вам запросы дружбы на Modrinth."
   },
   "settings.social.friend-requests.title": {
     "package": "ui",
@@ -14756,13 +14756,13 @@
   },
   "settings.social.sign-in-required.description": {
     "package": "ui",
-    "en": "You can control who can interact with you, and manage blocked users with a Rubirinth Account",
-    "ru": "Войдите в Rubirinth, чтобы настраивать доступ к общению и список заблокированных пользователей."
+    "en": "You can control who can interact with you, and manage blocked users with a Modrinth Account",
+    "ru": "Войдите в Modrinth, чтобы настраивать доступ к общению и список заблокированных пользователей."
   },
   "settings.social.sign-in-required.title": {
     "package": "ui",
-    "en": "Rubirinth account required",
-    "ru": "Требуется аккаунт Rubirinth"
+    "en": "Modrinth account required",
+    "ru": "Требуется аккаунт Modrinth"
   },
   "settings.social.title": {
     "package": "ui",
@@ -14926,8 +14926,8 @@
   },
   "sharing.invite-players-modal.search-placeholder": {
     "package": "ui",
-    "en": "Enter Rubirinth username",
-    "ru": "Введите имя пользователя Rubirinth"
+    "en": "Enter Modrinth username",
+    "ru": "Введите имя пользователя Modrinth"
   },
   "sharing.invite-players-modal.searching": {
     "package": "ui",
@@ -15901,8 +15901,8 @@
   },
   "unknown-file-warning-modal.mod-warning-body": {
     "package": "ui",
-    "en": " isn’t published on Rubirinth. We strongly recommend only installing files from sources you trust.",
-    "ru": " не с Rubirinth. Устанавливайте только проверенные файлы."
+    "en": " isn’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
+    "ru": " не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "unknown-file-warning-modal.mod-warning-title": {
     "package": "ui",
@@ -15911,8 +15911,8 @@
   },
   "unknown-file-warning-modal.modpack-warning-body": {
     "package": "ui",
-    "en": " contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust.",
-    "ru": " содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
+    "en": " contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
+    "ru": " содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "unknown-file-warning-modal.modpack-warning-title": {
     "package": "ui",
@@ -15921,8 +15921,8 @@
   },
   "unknown-file-warning-modal.reviewed-files": {
     "package": "ui",
-    "en": "Files that aren't published to Rubirinth aren't reviewed.",
-    "ru": "Файлы не c Rubirinth не проверяются."
+    "en": "Files that aren't published to Modrinth aren't reviewed.",
+    "ru": "Файлы не c Modrinth не проверяются."
   },
   "unknown-file-warning-modal.unrecognized-files": {
     "package": "ui",
@@ -15931,8 +15931,8 @@
   },
   "user.profile.badge.alpha.about.1": {
     "package": "ui",
-    "en": "This user has been around since Rubirinth Alpha, which ended in November 2020.",
-    "ru": "Этот пользователь присоединился к Rubirinth до завершения альфа‑тестирования в ноябре 2020 года."
+    "en": "This user has been around since Modrinth Alpha, which ended in November 2020.",
+    "ru": "Этот пользователь присоединился к Modrinth до завершения альфа‑тестирования в ноябре 2020 года."
   },
   "user.profile.badge.alpha.name": {
     "package": "ui",
@@ -15941,13 +15941,13 @@
   },
   "user.profile.badge.beta.about.1": {
     "package": "ui",
-    "en": "This user has been around since Rubirinth Beta, which ended in February 2022.",
-    "ru": "Этот пользователь присоединился к Rubirinth до завершения бета‑тестирования в феврале 2022 года."
+    "en": "This user has been around since Modrinth Beta, which ended in February 2022.",
+    "ru": "Этот пользователь присоединился к Modrinth до завершения бета‑тестирования в феврале 2022 года."
   },
   "user.profile.badge.beta.link": {
     "package": "ui",
-    "en": "Click to read about the launch of Rubirinth Beta.",
-    "ru": "Нажмите, чтобы узнать о запуске бета‑версии Rubirinth."
+    "en": "Click to read about the launch of Modrinth Beta.",
+    "ru": "Нажмите, чтобы узнать о запуске бета‑версии Modrinth."
   },
   "user.profile.badge.beta.name": {
     "package": "ui",
@@ -15966,7 +15966,7 @@
   },
   "user.profile.badge.early-datapack-adopter.about.1": {
     "package": "ui",
-    "en": "This user helped us test Data Pack projects on Rubirinth before we launched them in January 2023.",
+    "en": "This user helped us test Data Pack projects on Modrinth before we launched them in January 2023.",
     "ru": "Этот пользователь помогал тестировать наборы данных до их запуска в январе 2023 года."
   },
   "user.profile.badge.early-datapack-adopter.name": {
@@ -15976,7 +15976,7 @@
   },
   "user.profile.badge.early-modpack-adopter.about.1": {
     "package": "ui",
-    "en": "This user helped us test Modpack projects on Rubirinth before we launched them in May 2022.",
+    "en": "This user helped us test Modpack projects on Modrinth before we launched them in May 2022.",
     "ru": "Этот пользователь помогал тестировать сборки до их запуска в мае 2022 года."
   },
   "user.profile.badge.early-modpack-adopter.name": {
@@ -15986,7 +15986,7 @@
   },
   "user.profile.badge.early-plugin-adopter.about.1": {
     "package": "ui",
-    "en": "This user helped us test Plugin projects on Rubirinth before we launched them in August 2022.",
+    "en": "This user helped us test Plugin projects on Modrinth before we launched them in August 2022.",
     "ru": "Этот пользователь помогал тестировать плагины до их запуска в августе 2022 года."
   },
   "user.profile.badge.early-plugin-adopter.name": {
@@ -15996,7 +15996,7 @@
   },
   "user.profile.badge.early-resourcepack-adopter.about.1": {
     "package": "ui",
-    "en": "This user helped us test Resource Pack projects on Rubirinth before we launched them in August 2022.",
+    "en": "This user helped us test Resource Pack projects on Modrinth before we launched them in August 2022.",
     "ru": "Этот пользователь помогал тестировать наборы ресурсов до их запуска в августе 2022 года."
   },
   "user.profile.badge.early-resourcepack-adopter.name": {
@@ -16006,7 +16006,7 @@
   },
   "user.profile.badge.early-server-adopter.about.1": {
     "package": "ui",
-    "en": "This user helped us test Server projects on Rubirinth before we launched them in March 2026.",
+    "en": "This user helped us test Server projects on Modrinth before we launched them in March 2026.",
     "ru": "Этот пользователь помогал тестировать серверы до их запуска в марте 2026 года."
   },
   "user.profile.badge.early-server-adopter.name": {
@@ -16016,7 +16016,7 @@
   },
   "user.profile.badge.early-shader-adopter.about.1": {
     "package": "ui",
-    "en": "This user helped us test Shader projects on Rubirinth before we launched them in January 2023.",
+    "en": "This user helped us test Shader projects on Modrinth before we launched them in January 2023.",
     "ru": "Этот пользователь помогал тестировать шейдеры до их запуска в январе 2023 года."
   },
   "user.profile.badge.early-shader-adopter.name": {
@@ -16036,12 +16036,12 @@
   },
   "user.profile.badge.moderator.about.1": {
     "package": "ui",
-    "en": "This user works for Rubirinth as a Content Moderator.",
-    "ru": "Этот пользователь работает в Rubirinth в роли модератора контента."
+    "en": "This user works for Modrinth as a Content Moderator.",
+    "ru": "Этот пользователь работает в Modrinth в роли модератора контента."
   },
   "user.profile.badge.moderator.about.2": {
     "package": "ui",
-    "en": "Content Moderators on Rubirinth review projects, handle reports, and help keep Rubirinth safe.",
+    "en": "Content Moderators on Modrinth review projects, handle reports, and help keep Modrinth safe.",
     "ru": "Модераторы контента проверяют проекты, обрабатывают жалобы и следят за порядком."
   },
   "user.profile.badge.moderator.name": {
@@ -16051,8 +16051,8 @@
   },
   "user.profile.badge.plus.about.1": {
     "package": "ui",
-    "en": "This user is going the extra mile to support Rubirinth and the creators on the platform.",
-    "ru": "Этот пользователь активно поддерживает Rubirinth и авторов на платформе."
+    "en": "This user is going the extra mile to support Modrinth and the creators on the platform.",
+    "ru": "Этот пользователь активно поддерживает Modrinth и авторов на платформе."
   },
   "user.profile.badge.plus.link": {
     "package": "ui",
@@ -16061,13 +16061,13 @@
   },
   "user.profile.badge.plus.name": {
     "package": "ui",
-    "en": "Rubirinth+ Member",
-    "ru": "Подписчик Rubirinth+"
+    "en": "Modrinth+ Member",
+    "ru": "Подписчик Modrinth+"
   },
   "user.profile.badge.pride.about.1": {
     "package": "ui",
-    "en": "This user participated in at least one of Rubirinth's Pride fundraisers for the LGBTQ+ community.",
-    "ru": "Этот пользователь поддержал сообщество ЛГБТК+ в благотворительной акции Rubirinth."
+    "en": "This user participated in at least one of Modrinth's Pride fundraisers for the LGBTQ+ community.",
+    "ru": "Этот пользователь поддержал сообщество ЛГБТК+ в благотворительной акции Modrinth."
   },
   "user.profile.badge.pride.link": {
     "package": "ui",
@@ -16081,13 +16081,13 @@
   },
   "user.profile.badge.staff.about.1": {
     "package": "ui",
-    "en": "This user works for Rubirinth.",
-    "ru": "Этот пользователь работает в Rubirinth."
+    "en": "This user works for Modrinth.",
+    "ru": "Этот пользователь работает в Modrinth."
   },
   "user.profile.badge.staff.name": {
     "package": "ui",
-    "en": "Rubirinth Team",
-    "ru": "Команда Rubirinth"
+    "en": "Modrinth Team",
+    "ru": "Команда Modrinth"
   },
   "version.content.name": {
     "package": "ui",
@@ -16238,175 +16238,5 @@
     "package": "ui",
     "en": "Type",
     "ru": "Тип"
-  },
-  "installation-settings.link-modpack.button": {
-    "package": "app-frontend",
-    "en": "Link to Modrinth modpack",
-    "ru": "Привязать к сборке Modrinth"
-  },
-  "installation-settings.link-modpack.modal-header": {
-    "package": "app-frontend",
-    "en": "Link to Modrinth modpack",
-    "ru": "Привязка к сборке Modrinth"
-  },
-  "installation-settings.link-modpack.search-placeholder": {
-    "package": "app-frontend",
-    "en": "Search modpacks or paste Modrinth URL / slug...",
-    "ru": "Поиск сборок или ссылка / slug на Modrinth..."
-  },
-  "installation-settings.link-modpack.search-label": {
-    "package": "app-frontend",
-    "en": "Modpack search",
-    "ru": "Поиск сборок"
-  },
-  "installation-settings.link-modpack.search-results": {
-    "package": "app-frontend",
-    "en": "Select a modpack",
-    "ru": "Выберите сборку"
-  },
-  "installation-settings.link-modpack.no-results": {
-    "package": "app-frontend",
-    "en": "No modpacks found matching your search.",
-    "ru": "По вашему запросу сборки не найдены."
-  },
-  "installation-settings.link-modpack.selected-modpack": {
-    "package": "app-frontend",
-    "en": "Selected modpack",
-    "ru": "Выбранная сборка"
-  },
-  "installation-settings.link-modpack.change-modpack": {
-    "package": "app-frontend",
-    "en": "Change modpack",
-    "ru": "Выбрать другую"
-  },
-  "installation-settings.link-modpack.select-version": {
-    "package": "app-frontend",
-    "en": "Target modpack version",
-    "ru": "Целевая версия сборки"
-  },
-  "installation-settings.link-modpack.compatible-badge": {
-    "package": "app-frontend",
-    "en": "Compatible",
-    "ru": "Совместимо"
-  },
-  "installation-settings.link-modpack.confirm-button": {
-    "package": "app-frontend",
-    "en": "Link modpack",
-    "ru": "Привязать сборку"
-  },
-  "installation-settings.link-modpack.linking-button": {
-    "package": "app-frontend",
-    "en": "Linking...",
-    "ru": "Привязка..."
-  },
-  "installation-settings.link-modpack.success-title": {
-    "package": "app-frontend",
-    "en": "Instance linked",
-    "ru": "Сборка привязана"
-  },
-  "installation-settings.link-modpack.success-message": {
-    "package": "app-frontend",
-    "en": "Instance has been linked to {name} successfully.",
-    "ru": "Сборка успешно привязана к {name}."
-  },
-  "installation-settings.link-modpack.loading-versions": {
-    "package": "app-frontend",
-    "en": "Loading modpack versions...",
-    "ru": "Загрузка версий сборки..."
-  },
-  "installation-settings.link-modpack.no-versions": {
-    "package": "app-frontend",
-    "en": "No versions found for this modpack.",
-    "ru": "Версии для этой сборки не найдены."
-  },
-  "app.settings.tabs.advanced": {
-    "package": "app-frontend",
-    "en": "Advanced",
-    "ru": "Продвинутые"
-  },
-  "app.settings.advanced.title": {
-    "package": "app-frontend",
-    "en": "Advanced settings",
-    "ru": "Продвинутые настройки"
-  },
-  "app.settings.advanced.import-section.title": {
-    "package": "app-frontend",
-    "en": "Import from other launchers",
-    "ru": "Импорт данных из других лаунчеров"
-  },
-  "app.settings.advanced.import-section.description": {
-    "package": "app-frontend",
-    "en": "Import your instances, mods, and worlds from other Minecraft launchers (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom directory.",
-    "ru": "Перенесите сборки, миры и моды из других лаунчеров (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
-  },
-  "app.settings.advanced.scan-launchers": {
-    "package": "app-frontend",
-    "en": "Scan launchers",
-    "ru": "Поиск лаунчеров"
-  },
-  "app.settings.advanced.add-custom-folder": {
-    "package": "app-frontend",
-    "en": "Add custom folder...",
-    "ru": "Выбрать папку..."
-  },
-  "app.settings.advanced.search-instances": {
-    "package": "app-frontend",
-    "en": "Search instance name...",
-    "ru": "Поиск по названию сборки..."
-  },
-  "app.settings.advanced.no-launchers-detected": {
-    "package": "app-frontend",
-    "en": "No instances were automatically detected from other launchers. You can specify a custom directory above.",
-    "ru": "Сборки в стандартных папках других лаунчеров не обнаружены. Вы можете вручную указать папку выше."
-  },
-  "app.settings.advanced.import-selected": {
-    "package": "app-frontend",
-    "en": "Import selected ({count})",
-    "ru": "Импортировать выбранные ({count})"
-  },
-  "app.settings.advanced.importing": {
-    "package": "app-frontend",
-    "en": "Importing...",
-    "ru": "Импорт..."
-  },
-  "app.settings.advanced.import-success.title": {
-    "package": "app-frontend",
-    "en": "Import completed",
-    "ru": "Импорт завершён"
-  },
-  "app.settings.advanced.import-success.text": {
-    "package": "app-frontend",
-    "en": "Successfully imported {count} instance(s).",
-    "ru": "Успешно импортировано сборок: {count}."
-  },
-  "app.settings.advanced.clear-selection": {
-    "package": "app-frontend",
-    "en": "Clear selection",
-    "ru": "Снять выбор"
-  },
-  "app.settings.advanced.instances-count": {
-    "package": "app-frontend",
-    "en": "{count} instance(s)",
-    "ru": "{count} сборок"
-  },
-  "app.settings.sidebar.label.advanced": {
-    "package": "app-frontend",
-    "en": "Advanced",
-    "ru": "Продвинутые"
-  },
-  "app.settings.tabs.import": {
-    "package": "app-frontend",
-    "en": "Import",
-    "ru": "Импорт"
-  },
-  "app.settings.import.title": {
-    "package": "app-frontend",
-    "en": "Import instances",
-    "ru": "Импорт сборок"
-  },
-  "app.settings.import.description": {
-    "package": "app-frontend",
-    "en": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.",
-    "ru": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
   }
 }

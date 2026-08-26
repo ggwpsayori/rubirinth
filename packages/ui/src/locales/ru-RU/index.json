@@ -148,8 +148,8 @@
     "message": "Ничего не найдено по вашему запросу."
   },
   "browse.offline": {
-    "defaultMessage": "Вы не в сети. Подключитесь к интернету, чтобы искать на Rubirinth.",
-    "message": "Вы не в сети. Подключитесь к интернету, чтобы искать на Rubirinth."
+    "defaultMessage": "Вы не в сети. Подключитесь к интернету, чтобы искать на Modrinth.",
+    "message": "Вы не в сети. Подключитесь к интернету, чтобы искать на Modrinth."
   },
   "browse.search.placeholder": {
     "defaultMessage": "Искать {projectType}...",
@@ -328,8 +328,8 @@
     "message": "Открыть в папке"
   },
   "button.open-in-modrinth": {
-    "defaultMessage": "Открыть в Rubirinth",
-    "message": "Открыть в Rubirinth"
+    "defaultMessage": "Открыть в Modrinth",
+    "message": "Открыть в Modrinth"
   },
   "button.play": {
     "defaultMessage": "Играть",
@@ -680,16 +680,16 @@
     "message": "Нет изменений контента"
   },
   "content.diff-modal.reviewed-files": {
-    "defaultMessage": "Файлы не c Rubirinth не проверяются.",
-    "message": "Файлы не c Rubirinth не проверяются."
+    "defaultMessage": "Файлы не с Modrinth не проверяются.",
+    "message": "Файлы не с Modrinth не проверяются."
   },
   "content.diff-modal.unknown-content-body": {
     "defaultMessage": "Часть файлов на сервере не удалось распознать, изменения могут повлиять на их работу.",
     "message": "Часть файлов на сервере не удалось распознать, изменения могут повлиять на их работу."
   },
   "content.diff-modal.unknown-files-description": {
-    "defaultMessage": "Обновление содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы.",
-    "message": "Обновление содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
+    "defaultMessage": "Обновление содержит файлы не с Modrinth. Устанавливайте только проверенные файлы.",
+    "message": "Обновление содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "content.diff-modal.unknown-files-warning": {
     "defaultMessage": "Предупреждение о неизвестных файлах",
@@ -1504,8 +1504,8 @@
     "message": "ссылка-на-работу"
   },
   "external-files.permissions-card.editor.modrinth-link-to-work": {
-    "defaultMessage": "Похоже, это ссылка на Rubirinth. Если этот контент доступен на Rubirinth, вероятно, ваш набор был экспортирован неправильно. Если вы скачали его с другого сайта, попробуйте скачать версию с Rubirinth; иногда эти файлы различаются.",
-    "message": "Похоже, это ссылка на Rubirinth. Если этот контент доступен на Rubirinth, вероятно, ваш набор был экспортирован неправильно. Если вы скачали его с другого сайта, попробуйте скачать версию с Rubirinth; иногда эти файлы различаются."
+    "defaultMessage": "Похоже, это ссылка на Modrinth. Если этот контент доступен на Modrinth, вероятно, ваш набор был экспортирован неправильно. Если вы скачали его с другого сайта, попробуйте скачать версию с Modrinth; иногда эти файлы различаются.",
+    "message": "Похоже, это ссылка на Modrinth. Если этот контент доступен на Modrinth, вероятно, ваш набор был экспортирован неправильно. Если вы скачали его с другого сайта, попробуйте скачать версию с Modrinth; иногда эти файлы различаются."
   },
   "external-files.permissions-card.editor.notes-label": {
     "defaultMessage": "Примечания",
@@ -1652,8 +1652,8 @@
     "message": "Атрибутировано автоматически"
   },
   "external-files.permissions-card.reason.globally-allowed.description": {
-    "defaultMessage": "Мы уже видели этот файл и подготовили для вас ссылку на источник. Если что-то не так, пожалуйста, обратитесь в службу поддержки Rubirinth через справочный центр",
-    "message": "Мы уже видели этот файл и подготовили для вас ссылку на источник. Если что-то не так, пожалуйста, обратитесь в службу поддержки Rubirinth через справочный центр"
+    "defaultMessage": "Мы уже видели этот файл и подготовили для вас ссылку на источник. Если что-то не так, пожалуйста, обратитесь в службу поддержки Modrinth через справочный центр",
+    "message": "Мы уже видели этот файл и подготовили для вас ссылку на источник. Если что-то не так, пожалуйста, обратитесь в службу поддержки Modrinth через справочный центр"
   },
   "external-files.permissions-card.reason.license": {
     "defaultMessage": "Лицензия",
@@ -2900,8 +2900,8 @@
     "message": "Сторонний"
   },
   "instances.managed-content-modal.external-content-description": {
-    "defaultMessage": "Этот файл не с Rubirinth.",
-    "message": "Этот файл не с Rubirinth."
+    "defaultMessage": "Этот файл не с Modrinth.",
+    "message": "Этот файл не с Modrinth."
   },
   "instances.managed-content-modal.header": {
     "defaultMessage": "Управляемый контент",
@@ -3804,8 +3804,8 @@
     "message": "Модератор"
   },
   "omorphia.component.badge.label.modrinth-team": {
-    "defaultMessage": "Команда Rubirinth",
-    "message": "Команда Rubirinth"
+    "defaultMessage": "Команда Modrinth",
+    "message": "Команда Modrinth"
   },
   "omorphia.component.badge.label.pending": {
     "defaultMessage": "В ожидании",
@@ -3964,12 +3964,12 @@
     "message": "Visa"
   },
   "profile.bio.fallback.creator": {
-    "defaultMessage": "Автор на Rubirinth.",
-    "message": "Автор на Rubirinth."
+    "defaultMessage": "Автор на Modrinth.",
+    "message": "Автор на Modrinth."
   },
   "profile.bio.fallback.user": {
-    "defaultMessage": "Пользователь Rubirinth.",
-    "message": "Пользователь Rubirinth."
+    "defaultMessage": "Пользователь Modrinth.",
+    "message": "Пользователь Modrinth."
   },
   "profile.block-user.admonition-body": {
     "defaultMessage": "{username} не сможет отправлять вам запросы дружбы, приглашать вас в сборки или приглашать вас управлять сервером Modrinth Hosting.",
@@ -4148,12 +4148,12 @@
     "message": "{count, plural, one {проект} few {проекта} other {проектов}}"
   },
   "profile.official-account": {
-    "defaultMessage": "Официальный аккаунт Rubirinth",
-    "message": "Официальный аккаунт Rubirinth"
+    "defaultMessage": "Официальный аккаунт Modrinth",
+    "message": "Официальный аккаунт Modrinth"
   },
   "profile.official-account.bio": {
-    "defaultMessage": "Официальный аккаунт Rubirinth. Связь с поддержкой: <support-link></support-link> или по почте <email></email>",
-    "message": "Официальный аккаунт Rubirinth. Связь с поддержкой: <support-link></support-link> или по почте <email></email>"
+    "defaultMessage": "Официальный аккаунт Modrinth. Связь с поддержкой: <support-link></support-link> или по почте <email></email>",
+    "message": "Официальный аккаунт Modrinth. Связь с поддержкой: <support-link></support-link> или по почте <email></email>"
   },
   "profile.unblock-user.error-description": {
     "defaultMessage": "Произошла ошибка при разблокировке пользователя. Попробуйте снова.",
@@ -5580,16 +5580,16 @@
     "message": "Загрузчик"
   },
   "search.photosensitivity-warning-modal.body.1": {
-    "defaultMessage": "Мы не гарантируем точность маркировки на Rubirinth.",
-    "message": "Мы не гарантируем точность маркировки на Rubirinth."
+    "defaultMessage": "Мы не гарантируем точность маркировки на Modrinth.",
+    "message": "Мы не гарантируем точность маркировки на Modrinth."
   },
   "search.photosensitivity-warning-modal.body.2": {
     "defaultMessage": "Предупреждения о вспышках указывают сами авторы — мы не проводим дополнительные проверки.",
     "message": "Предупреждения о вспышках указывают сами авторы — мы не проводим дополнительные проверки."
   },
   "search.photosensitivity-warning-modal.body.3": {
-    "defaultMessage": "Используйте контент с Rubirinth на свой страх и риск. Берегите себя! 💚",
-    "message": "Используйте контент с Rubirinth на свой страх и риск. Берегите себя! 💚"
+    "defaultMessage": "Используйте контент с Modrinth на свой страх и риск. Берегите себя! 💚",
+    "message": "Используйте контент с Modrinth на свой страх и риск. Берегите себя! 💚"
   },
   "search.photosensitivity-warning-modal.dont-show-again": {
     "defaultMessage": "Больше не показывать",
@@ -6608,16 +6608,16 @@
     "message": "Не используйте имя из Minecraft."
   },
   "servers.grant-access-modal.target.label": {
-    "defaultMessage": "Имя пользователя Rubirinth",
-    "message": "Имя пользователя Rubirinth"
+    "defaultMessage": "Имя пользователя Modrinth",
+    "message": "Имя пользователя Modrinth"
   },
   "servers.grant-access-modal.target.no-suggestions": {
     "defaultMessage": "Пользователи не найдены.",
     "message": "Пользователи не найдены."
   },
   "servers.grant-access-modal.target.placeholder": {
-    "defaultMessage": "Введите имя пользователя Rubirinth",
-    "message": "Введите имя пользователя Rubirinth"
+    "defaultMessage": "Введите имя пользователя Modrinth",
+    "message": "Введите имя пользователя Modrinth"
   },
   "servers.grant-access-modal.target.searching": {
     "defaultMessage": "Поиск...",
@@ -6728,8 +6728,8 @@
     "message": "Совместная игра"
   },
   "servers.list-empty.sign-in-button": {
-    "defaultMessage": "Войти в Rubirinth",
-    "message": "Войти в Rubirinth"
+    "defaultMessage": "Войти в Modrinth",
+    "message": "Войти в Modrinth"
   },
   "servers.list-empty.simple-setup-description": {
     "defaultMessage": "Настраивайте сервер подобно одиночному миру.",
@@ -6808,8 +6808,8 @@
     "message": "Ваша подписка будет отменена <date>{formattedDate}</date>. "
   },
   "servers.listing.notice.suspended": {
-    "defaultMessage": "Ваш сервер был приостановлен. Пожалуйста, свяжитесь с поддержкой Rubirinth для получения большей информации.",
-    "message": "Ваш сервер был приостановлен. Пожалуйста, свяжитесь с поддержкой Rubirinth для получения большей информации."
+    "defaultMessage": "Ваш сервер был приостановлен. Пожалуйста, свяжитесь с поддержкой Modrinth для получения большей информации.",
+    "message": "Ваш сервер был приостановлен. Пожалуйста, свяжитесь с поддержкой Modrinth для получения большей информации."
   },
   "servers.listing.notice.upgrading": {
     "defaultMessage": "Аппаратное обеспечение вашего сервера в настоящее время обновляется и вскоре будет снова подключено к сети.",
@@ -6852,8 +6852,8 @@
     "message": "Выполняется добавление"
   },
   "servers.manage.contact-support-button": {
-    "defaultMessage": "Связаться с поддержкой Rubirinth",
-    "message": "Связаться с поддержкой Rubirinth"
+    "defaultMessage": "Связаться с поддержкой Modrinth",
+    "message": "Связаться с поддержкой Modrinth"
   },
   "servers.manage.error.alert-notice": {
     "defaultMessage": "Наши системы автоматически оповещают о проблемах. Мы уже работаем над исправлением ошибки.",
@@ -6872,8 +6872,8 @@
     "message": "Если сервер Modrinth Hosting куплен недавно, он сейчас в очереди и скоро появится здесь. <warning>Не покупайте новый сервер.</warning>"
   },
   "servers.manage.error.support-notice": {
-    "defaultMessage": "Если нужна помощь по конкретному серверу, обратитесь в поддержку Rubirinth.",
-    "message": "Если нужна помощь по конкретному серверу, обратитесь в поддержку Rubirinth."
+    "defaultMessage": "Если нужна помощь по конкретному серверу, обратитесь в поддержку Modrinth.",
+    "message": "Если нужна помощь по конкретному серверу, обратитесь в поддержку Modrinth."
   },
   "servers.manage.error.title": {
     "defaultMessage": "Серверы не загрузились",
@@ -6980,12 +6980,12 @@
     "message": "Ваша пробная версия Medal server закончилась, и работа вашего сервера была приостановлена. Пожалуйста, улучшите его, чтобы продолжить пользоваться вашим сервером."
   },
   "servers.medal-listing.notice.suspended": {
-    "defaultMessage": "Ваш сервер был приостановлен. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Rubirinth для получения большей информации.",
-    "message": "Ваш сервер был приостановлен. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Rubirinth для получения большей информации."
+    "defaultMessage": "Ваш сервер был приостановлен. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Modrinth для получения большей информации.",
+    "message": "Ваш сервер был приостановлен. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Modrinth для получения большей информации."
   },
   "servers.medal-listing.notice.suspended-with-reason": {
-    "defaultMessage": "Ваш сервер был приостановлен: {reason}. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Rubirinth для получения большей информации.",
-    "message": "Ваш сервер был приостановлен: {reason}. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Rubirinth для получения большей информации."
+    "defaultMessage": "Ваш сервер был приостановлен: {reason}. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Modrinth для получения большей информации.",
+    "message": "Ваш сервер был приостановлен: {reason}. Пожалуйста, обновите вашу платежную информацию и свяжитесь с поддержкой Modrinth для получения большей информации."
   },
   "servers.medal-listing.notice.upgrading": {
     "defaultMessage": "Аппаратное обеспечение вашего сервера в настоящее время обновляется и вскоре будет снова подключено к сети.",
@@ -7264,8 +7264,8 @@
     "message": "Установить сервер"
   },
   "servers.setup.onboarding.step.choose.description": {
-    "defaultMessage": "Выберите вашу любимую сборку из Rubirinth, или выберите загрузчик и добавьте нужные моды.",
-    "message": "Выберите вашу любимую сборку из Rubirinth, или выберите загрузчик и добавьте нужные моды."
+    "defaultMessage": "Выберите вашу любимую сборку из Modrinth, или выберите загрузчик и добавьте нужные моды.",
+    "message": "Выберите вашу любимую сборку из Modrinth, или выберите загрузчик и добавьте нужные моды."
   },
   "servers.setup.onboarding.step.choose.title": {
     "defaultMessage": "Выберите во что поиграть",
@@ -7300,8 +7300,8 @@
     "message": "Ваш сервер готов. Вот что вам нужно сделать до начала игры!"
   },
   "servers.setup.onboarding.welcome.title": {
-    "defaultMessage": "Добро пожаловать в Rubirinth Hosting",
-    "message": "Добро пожаловать в Rubirinth Hosting"
+    "defaultMessage": "Добро пожаловать в Modrinth Hosting",
+    "message": "Добро пожаловать в Modrinth Hosting"
   },
   "servers.setup.rate-limit.text": {
     "defaultMessage": "Слишком много запросов. Пожалуйста, попробуйте позже.",
@@ -7464,8 +7464,8 @@
     "message": "Применять текущую тему везде, где вы вошли. Отключите, чтобы настроить это устройство отдельно."
   },
   "settings.display.theme.sync-across-devices.sign-in-tooltip": {
-    "defaultMessage": "Войдите в Rubirinth для синхронизации темы",
-    "message": "Войдите в Rubirinth для синхронизации темы"
+    "defaultMessage": "Войдите в Modrinth для синхронизации темы",
+    "message": "Войдите в Modrinth для синхронизации темы"
   },
   "settings.display.theme.system": {
     "defaultMessage": "Системная",
@@ -7540,8 +7540,8 @@
     "message": "Личные токены доступа"
   },
   "settings.preferences.update-failed.description": {
-    "defaultMessage": "Не удалось сохранить настройки в аккаунте Rubirinth. Повторите попытку.",
-    "message": "Не удалось сохранить настройки в аккаунте Rubirinth. Повторите попытку."
+    "defaultMessage": "Не удалось сохранить настройки в аккаунте Modrinth. Повторите попытку.",
+    "message": "Не удалось сохранить настройки в аккаунте Modrinth. Повторите попытку."
   },
   "settings.preferences.update-failed.title": {
     "defaultMessage": "Настройки не синхронизированы",
@@ -7564,8 +7564,8 @@
     "message": "Изображение профиля"
   },
   "settings.profile.public-information.description": {
-    "defaultMessage": "Информация в вашем профиле <profile-link>доступна публично на Rubirinth</profile-link> и через <docs-link>API Modrinth</docs-link>.",
-    "message": "Информация в вашем профиле <profile-link>доступна публично на Rubirinth</profile-link> и через <docs-link>API Modrinth</docs-link>."
+    "defaultMessage": "Информация в вашем профиле <profile-link>доступна публично на Modrinth</profile-link> и через <docs-link>API Modrinth</docs-link>.",
+    "message": "Информация в вашем профиле <profile-link>доступна публично на Modrinth</profile-link> и через <docs-link>API Modrinth</docs-link>."
   },
   "settings.profile.save-error": {
     "defaultMessage": "Не удалось обновить профиль",
@@ -7576,12 +7576,12 @@
     "message": "Произошла ошибка при обновлении профиля. Попробуйте снова."
   },
   "settings.profile.sign-in-required.description": {
-    "defaultMessage": "Войдите в Rubirinth, чтобы настраивать публичный профиль.",
-    "message": "Войдите в Rubirinth, чтобы настраивать публичный профиль."
+    "defaultMessage": "Войдите в Modrinth, чтобы настраивать публичный профиль.",
+    "message": "Войдите в Modrinth, чтобы настраивать публичный профиль."
   },
   "settings.profile.sign-in-required.title": {
-    "defaultMessage": "Требуется аккаунт Rubirinth",
-    "message": "Требуется аккаунт Rubirinth"
+    "defaultMessage": "Требуется аккаунт Modrinth",
+    "message": "Требуется аккаунт Modrinth"
   },
   "settings.profile.username.description": {
     "defaultMessage": "Уникальное имя для идентификации профиля.",
@@ -7600,8 +7600,8 @@
     "message": "Пользователь"
   },
   "settings.social.blocked-users.description": {
-    "defaultMessage": "Эти пользователи заблокированы вами на Rubirinth. Им нельзя:",
-    "message": "Эти пользователи заблокированы вами на Rubirinth. Им нельзя:"
+    "defaultMessage": "Эти пользователи заблокированы вами на Modrinth. Им нельзя:",
+    "message": "Эти пользователи заблокированы вами на Modrinth. Им нельзя:"
   },
   "settings.social.blocked-users.empty": {
     "defaultMessage": "Вы ещё никого не заблокировали.",
@@ -7652,8 +7652,8 @@
     "message": "Аватар {username}"
   },
   "settings.social.friend-requests.description": {
-    "defaultMessage": "Настройте, кто может отправлять вам запросы дружбы на Rubirinth.",
-    "message": "Настройте, кто может отправлять вам запросы дружбы на Rubirinth."
+    "defaultMessage": "Настройте, кто может отправлять вам запросы дружбы на Modrinth.",
+    "message": "Настройте, кто может отправлять вам запросы дружбы на Modrinth."
   },
   "settings.social.friend-requests.title": {
     "defaultMessage": "Запросы дружбы",
@@ -7704,12 +7704,12 @@
     "message": "Приглашения в совместные сборки"
   },
   "settings.social.sign-in-required.description": {
-    "defaultMessage": "Войдите в Rubirinth, чтобы настраивать доступ к общению и список заблокированных пользователей.",
-    "message": "Войдите в Rubirinth, чтобы настраивать доступ к общению и список заблокированных пользователей."
+    "defaultMessage": "Войдите в Modrinth, чтобы настраивать доступ к общению и список заблокированных пользователей.",
+    "message": "Войдите в Modrinth, чтобы настраивать доступ к общению и список заблокированных пользователей."
   },
   "settings.social.sign-in-required.title": {
-    "defaultMessage": "Требуется аккаунт Rubirinth",
-    "message": "Требуется аккаунт Rubirinth"
+    "defaultMessage": "Требуется аккаунт Modrinth",
+    "message": "Требуется аккаунт Modrinth"
   },
   "settings.social.title": {
     "defaultMessage": "Общение",
@@ -7836,8 +7836,8 @@
     "message": "Сохранить"
   },
   "sharing.invite-players-modal.search-placeholder": {
-    "defaultMessage": "Введите имя пользователя Rubirinth",
-    "message": "Введите имя пользователя Rubirinth"
+    "defaultMessage": "Введите имя пользователя Modrinth",
+    "message": "Введите имя пользователя Modrinth"
   },
   "sharing.invite-players-modal.searching": {
     "defaultMessage": "Поиск...",
@@ -8616,44 +8616,44 @@
     "message": "Вредоносное ПО часто распространяется через моды на таких платформах, как Discord."
   },
   "unknown-file-warning-modal.mod-warning-body": {
-    "defaultMessage": " не с Rubirinth. Устанавливайте только проверенные файлы.",
-    "message": " не с Rubirinth. Устанавливайте только проверенные файлы."
+    "defaultMessage": " не с Modrinth. Устанавливайте только проверенные файлы.",
+    "message": " не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "unknown-file-warning-modal.mod-warning-title": {
     "defaultMessage": "Предупреждение о неизвестном файле",
     "message": "Предупреждение о неизвестном файле"
   },
   "unknown-file-warning-modal.modpack-warning-body": {
-    "defaultMessage": " содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы.",
-    "message": " содержит файлы не с Rubirinth. Устанавливайте только проверенные файлы."
+    "defaultMessage": " содержит файлы не с Modrinth. Устанавливайте только проверенные файлы.",
+    "message": " содержит файлы не с Modrinth. Устанавливайте только проверенные файлы."
   },
   "unknown-file-warning-modal.modpack-warning-title": {
     "defaultMessage": "Предупреждение о неизвестных файлах",
     "message": "Предупреждение о неизвестных файлах"
   },
   "unknown-file-warning-modal.reviewed-files": {
-    "defaultMessage": "Файлы не c Rubirinth не проверяются.",
-    "message": "Файлы не c Rubirinth не проверяются."
+    "defaultMessage": "Файлы не c Modrinth не проверяются.",
+    "message": "Файлы не c Modrinth не проверяются."
   },
   "unknown-file-warning-modal.unrecognized-files": {
     "defaultMessage": "Нераспознанные файлы",
     "message": "Нераспознанные файлы"
   },
   "user.profile.badge.alpha.about.1": {
-    "defaultMessage": "Этот пользователь присоединился к Rubirinth до завершения альфа‑тестирования в ноябре 2020 года.",
-    "message": "Этот пользователь присоединился к Rubirinth до завершения альфа‑тестирования в ноябре 2020 года."
+    "defaultMessage": "Этот пользователь присоединился к Modrinth до завершения альфа‑тестирования в ноябре 2020 года.",
+    "message": "Этот пользователь присоединился к Modrinth до завершения альфа‑тестирования в ноябре 2020 года."
   },
   "user.profile.badge.alpha.name": {
     "defaultMessage": "Участник альфы",
     "message": "Участник альфы"
   },
   "user.profile.badge.beta.about.1": {
-    "defaultMessage": "Этот пользователь присоединился к Rubirinth до завершения бета‑тестирования в феврале 2022 года.",
-    "message": "Этот пользователь присоединился к Rubirinth до завершения бета‑тестирования в феврале 2022 года."
+    "defaultMessage": "Этот пользователь присоединился к Modrinth до завершения бета‑тестирования в феврале 2022 года.",
+    "message": "Этот пользователь присоединился к Modrinth до завершения бета‑тестирования в феврале 2022 года."
   },
   "user.profile.badge.beta.link": {
-    "defaultMessage": "Нажмите, чтобы узнать о запуске бета‑версии Rubirinth.",
-    "message": "Нажмите, чтобы узнать о запуске бета‑версии Rubirinth."
+    "defaultMessage": "Нажмите, чтобы узнать о запуске бета‑версии Modrinth.",
+    "message": "Нажмите, чтобы узнать о запуске бета‑версии Modrinth."
   },
   "user.profile.badge.beta.name": {
     "defaultMessage": "Участник беты",
@@ -8724,8 +8724,8 @@
     "message": "Участник альфы Modrinth Hosting"
   },
   "user.profile.badge.moderator.about.1": {
-    "defaultMessage": "Этот пользователь работает в Rubirinth в роли модератора контента.",
-    "message": "Этот пользователь работает в Rubirinth в роли модератора контента."
+    "defaultMessage": "Этот пользователь работает в Modrinth в роли модератора контента.",
+    "message": "Этот пользователь работает в Modrinth в роли модератора контента."
   },
   "user.profile.badge.moderator.about.2": {
     "defaultMessage": "Модераторы контента проверяют проекты, обрабатывают жалобы и следят за порядком.",
@@ -8736,20 +8736,20 @@
     "message": "Модератор контента"
   },
   "user.profile.badge.plus.about.1": {
-    "defaultMessage": "Этот пользователь активно поддерживает Rubirinth и авторов на платформе.",
-    "message": "Этот пользователь активно поддерживает Rubirinth и авторов на платформе."
+    "defaultMessage": "Этот пользователь активно поддерживает Modrinth и авторов на платформе.",
+    "message": "Этот пользователь активно поддерживает Modrinth и авторов на платформе."
   },
   "user.profile.badge.plus.link": {
     "defaultMessage": "Нажмите, чтобы узнать, как стать подписчиком.",
     "message": "Нажмите, чтобы узнать, как стать подписчиком."
   },
   "user.profile.badge.plus.name": {
-    "defaultMessage": "Подписчик Rubirinth+",
-    "message": "Подписчик Rubirinth+"
+    "defaultMessage": "Подписчик Modrinth+",
+    "message": "Подписчик Modrinth+"
   },
   "user.profile.badge.pride.about.1": {
-    "defaultMessage": "Этот пользователь поддержал сообщество ЛГБТК+ в благотворительной акции Rubirinth.",
-    "message": "Этот пользователь поддержал сообщество ЛГБТК+ в благотворительной акции Rubirinth."
+    "defaultMessage": "Этот пользователь поддержал сообщество ЛГБТК+ в благотворительной акции Modrinth.",
+    "message": "Этот пользователь поддержал сообщество ЛГБТК+ в благотворительной акции Modrinth."
   },
   "user.profile.badge.pride.link": {
     "defaultMessage": "Нажмите, чтобы узнать о последнем сборе средств.",
@@ -8760,12 +8760,12 @@
     "message": "Поддержка сообщества ЛГБТК+"
   },
   "user.profile.badge.staff.about.1": {
-    "defaultMessage": "Этот пользователь работает в Rubirinth.",
-    "message": "Этот пользователь работает в Rubirinth."
+    "defaultMessage": "Этот пользователь работает в Modrinth.",
+    "message": "Этот пользователь работает в Modrinth."
   },
   "user.profile.badge.staff.name": {
-    "defaultMessage": "Команда Rubirinth",
-    "message": "Команда Rubirinth"
+    "defaultMessage": "Команда Modrinth",
+    "message": "Команда Modrinth"
   },
   "version.content.name": {
     "defaultMessage": "Название",
