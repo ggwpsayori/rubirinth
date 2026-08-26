@@ -120,6 +120,7 @@
 			</template>
 		</div>
 		<AccountActionBarButton />
+		<FriendsActionBarButton />
 	</div>
 </template>
 
@@ -149,6 +150,7 @@ import { useRouter } from 'vue-router'
 
 import AppUpdateButton from '@/components/ui/app-update-button/index.vue'
 import AccountActionBarButton from '@/components/ui/AccountActionBarButton.vue'
+import FriendsActionBarButton from '@/components/ui/FriendsActionBarButton.vue'
 import { useInstallJobNotifications } from '@/composables/browse/install-job-notifications'
 import { useAppEvent } from '@/composables/use-app-event'
 import { trackEvent } from '@/helpers/analytics'
