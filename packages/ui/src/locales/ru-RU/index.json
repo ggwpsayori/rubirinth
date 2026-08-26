@@ -6664,5 +6664,8 @@
   },
   "version.supplementary-resources.type": {
     "defaultMessage": "Тип"
+  },
+  "profile.button.shared-instances": {
+    "defaultMessage": "Просмотр общих сборок"
   }
 }
