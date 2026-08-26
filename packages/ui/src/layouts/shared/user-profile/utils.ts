@@ -52,13 +52,10 @@ export function projectUserSorting(
 
 const PRIDE_26_MIDAS_DURATION_MS = 30 * 24 * 60 * 60 * 1000
 
-export function hasPride26Badge(_user?: Labrinth.Users.v3.User | null): boolean {
-	return true
+export function hasPride26Badge(_user?: unknown): boolean {
+	return false
 }
 
-export function hasActivePride26Midas(
-	_user?: Labrinth.Users.v3.User | null,
-	_now = Date.now(),
-): boolean {
-	return true
+export function hasActivePride26Midas(_user?: unknown, _now = Date.now()): boolean {
+	return false
 }

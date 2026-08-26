@@ -451,7 +451,7 @@ function passesCriterion(criterion: BadgeCriterion) {
 			return props.hasMidas === true
 		}
 		case 'pride': {
-			return props.hasPride === true
+			return false
 		}
 		case 'join_date': {
 			return props.joinDate < criterion.cutoff

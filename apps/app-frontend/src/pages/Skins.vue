@@ -79,7 +79,7 @@ type VirtualSkinSectionListExpose = {
 }
 
 const PENDING_SKIN_REFRESH_DELAY_MS = 11_000
-const DEFAULT_SKIN_SECTION_SORT_ORDER = ['Default skins', 'Modrinth Pride']
+const DEFAULT_SKIN_SECTION_SORT_ORDER = ['Default skins']
 const EARS_NOTICE_PLACEHOLDER = '__EARS_MOD_NAME__'
 const messages = defineMessages({
 	modrinthPrideSection: {
@@ -281,12 +281,9 @@ const { data: modrinthUser } = useQuery({
 	enabled: () => !!auth.session_token.value,
 	retry: false,
 })
-const hasModrinthPrideCampaign = computed(
-	() => !!auth.session_token.value && hasPride26Badge(modrinthUser.value?.campaigns?.pride_26),
-)
 const defaultSkins = computed(() =>
 	filterDefaultSkins(skins.value).filter(
-		(skin) => skin.section !== 'Modrinth Pride' || hasModrinthPrideCampaign.value,
+		(skin) => skin.section !== 'Modrinth Pride' && !skin.section?.toLowerCase().includes('pride'),
 	),
 )
 const defaultSkinSections = computed(() => {

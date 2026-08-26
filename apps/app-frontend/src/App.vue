@@ -85,7 +85,6 @@ import NavButton from '@/components/ui/NavButton.vue'
 import NewIconEditorNotification from '@/components/ui/new-icon-editor-notification/index.vue'
 import { shouldShowNewIconEditorNotification } from '@/components/ui/new-icon-editor-notification/show-notification'
 import OnboardingChecklist from '@/components/ui/onboarding-checklist/index.vue'
-import PrideFundraiserBanner from '@/components/ui/PrideFundraiserBanner.vue'
 import PromotionWrapper from '@/components/ui/PromotionWrapper.vue'
 import QuickInstanceSwitcher from '@/components/ui/QuickInstanceSwitcher.vue'
 import SharedInstanceInviteHandler from '@/components/ui/shared-instances/shared-instance-invite-handler/index.vue'
@@ -199,7 +198,6 @@ updateHistoryNavigationState()
 const APP_LEFT_NAV_WIDTH = '4rem'
 const APP_SIDEBAR_WIDTH = 300
 const INTERCOM_BUBBLE_DEFAULT_PADDING = 20
-const PRIDE_FUNDRAISER_END_DATE = new Date('2026-07-01T00:00:00Z').getTime()
 const credentials = ref()
 let credentialsRefreshId = 0
 const sidebarToggled = ref(true)
@@ -224,9 +222,7 @@ const hostingUpdateRequired = computed(
 		!!appUpdateState.availableUpdate.value &&
 		appUpdateState.updatesEnabled.value,
 )
-const prideFundraiserEnabled = computed(
-	() => appSettings.getFeatureFlag('pride_fundraiser') && Date.now() < PRIDE_FUNDRAISER_END_DATE,
-)
+const prideFundraiserEnabled = computed(() => false)
 const hostingIntercomIdentityKey = computed(() => {
 	const rawServerId = route.params.id
 	const serverId = Array.isArray(rawServerId) ? rawServerId[0] : rawServerId
