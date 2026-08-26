@@ -16,9 +16,8 @@ import {
 	injectNotificationManager,
 	useVIntl,
 } from '@modrinth/ui'
-import { Dropdown } from 'floating-vue'
 import type { Ref } from 'vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 import AccountsErrorModals from '@/components/ui/astralrinth/accounts/error/AccountsErrorModals.vue'
 import AccountsInputModals from '@/components/ui/astralrinth/accounts/input/AccountsInputModals.vue'
@@ -76,7 +75,25 @@ const offlineLoginDisabled = ref(false)
 const defaultUser = ref<string | undefined>()
 const equippedSkin = ref<Skin | null>(null)
 const headUrlCache = ref(new Map<string, string>())
-const showDropdown = ref(false)
+const isOpen = ref(false)
+
+function toggleOpen() {
+	if (accounts.value.length === 0) {
+		showAccountLoginModal()
+		return
+	}
+	isOpen.value = !isOpen.value
+}
+
+function close() {
+	isOpen.value = false
+}
+
+function handleKeydown(e: KeyboardEvent) {
+	if (e.key === 'Escape' && isOpen.value) {
+		close()
+	}
+}
 
 const accountsInputModals = ref<AccountsInputModalsHandle | null>(null)
 const accountsErrorModals = ref<AccountsErrorModalsHandle | null>(null)
@@ -87,6 +104,7 @@ const { authenticate: addExternalProfile, disabled: externalAuthDisabled } =
 		onAuthenticated: async (credentials) => {
 			await setAccount(credentials)
 			accountsInputModals.value?.hideAuth()
+			close()
 		},
 		onError: (error) => {
 			handleError(error)
@@ -106,10 +124,12 @@ function getAccountType(account?: MinecraftCredential) {
 }
 
 function showOfflineLoginModal() {
+	close()
 	accountsInputModals.value?.showOffline()
 }
 
 function showAccountLoginModal() {
+	close()
 	accountsInputModals.value?.showAuth()
 }
 
@@ -124,61 +144,57 @@ function clearOfflineFields() {
 	offlinePlayerName.value = ''
 }
 
+function startOfflineCooldown() {
+	offlineLoginDisabled.value = true
+	setTimeout(() => {
+		offlineLoginDisabled.value = false
+	}, offlineLoginCooldownMs)
+}
+
+function isOfflinePlayerNameValid(name: string) {
+	return (
+		name.length >= minOfflinePlayerNameLength &&
+		name.length <= maxOfflinePlayerNameLength &&
+		nameRegex.test(name)
+	)
+}
+
 async function addOfflineProfile() {
 	if (offlineLoginDisabled.value) {
 		return
 	}
 
-	offlineLoginDisabled.value = true
-
+	startOfflineCooldown()
 	const name = offlinePlayerName.value.trim()
-	const isValidName =
-		nameRegex.test(name) &&
-		name.length >= minOfflinePlayerNameLength &&
-		name.length <= maxOfflinePlayerNameLength
 
-	if (!isValidName) {
-		accountsInputModals.value?.hideOffline()
+	if (!isOfflinePlayerNameValid(name)) {
 		accountsErrorModals.value?.showInputOfflineError()
-		offlineLoginDisabled.value = false
-		clearOfflineFields()
 		return
 	}
 
 	try {
-		const result = await offline_login(name)
+		const user = await offline_login(name)
+		await setAccount(user)
+		clearOfflineFields()
 		accountsInputModals.value?.hideOffline()
-
-		if (result) {
-			await setAccount(result)
-			await refreshValues()
-		} else {
-			accountsErrorModals.value?.showUnexpectedError()
-		}
+		close()
 	} catch (error) {
 		handleError(error)
 		accountsErrorModals.value?.showUnexpectedError()
-	} finally {
-		clearOfflineFields()
-		window.setTimeout(() => {
-			offlineLoginDisabled.value = false
-		}, offlineLoginCooldownMs)
 	}
 }
 
 async function refreshValues() {
 	try {
-		defaultUser.value = await get_default_user().catch(() => undefined)
-		const userList = await users().catch(() => [])
-		accounts.value = Array.isArray(userList) ? [...userList] : []
-		accounts.value.sort((a, b) => (a.profile?.name ?? '').localeCompare(b.profile?.name ?? ''))
+		accounts.value = await users().catch(handleError) ?? []
+		defaultUser.value = await get_default_user().catch(handleError)
 
-		if (selectedAccount.value && (selectedAccount.value.account_type === 'microsoft' || !selectedAccount.value.account_type)) {
+		if (selectedAccount.value) {
 			try {
-				const skins = await get_available_skins()
-				equippedSkin.value = skins.find((skin) => skin.is_equipped) ?? null
+				const availableSkins = await get_available_skins(selectedAccount.value.profile.id)
+				equippedSkin.value = availableSkins.find((s) => s.state === 'Equipped') ?? null
 
-				if (equippedSkin.value) {
+				if (equippedSkin.value?.texture_key) {
 					try {
 						const headUrl = await getPlayerHeadUrl(equippedSkin.value)
 						headUrlCache.value = new Map(headUrlCache.value).set(
@@ -257,6 +273,7 @@ async function setAccount(account: MinecraftCredential) {
 	await set_default_user(account.profile.id).catch(handleError)
 	await refreshValues()
 	emit('change')
+	close()
 }
 
 async function login() {
@@ -266,6 +283,7 @@ async function login() {
 	if (loggedIn) {
 		await setAccount(loggedIn)
 		accountsInputModals.value?.hideAuth()
+		close()
 	}
 
 	trackEvent('AccountLogIn')
@@ -294,6 +312,11 @@ useAppEvent('process', async (e) => {
 onMounted(() => {
 	void refreshValues()
 	void loadExternalAuthProviders().catch(handleError)
+	window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+	window.removeEventListener('keydown', handleKeydown)
 })
 
 const messages = defineMessages({
@@ -322,31 +345,18 @@ const messages = defineMessages({
 
 <template>
 	<div class="relative flex items-center">
-		<!-- When no accounts: button in frame to add account -->
+		<!-- Main Action Bar Trigger Button -->
 		<button
-			v-if="accounts.length === 0"
 			type="button"
-			class="flex border-solid border-surface-5 text-sm items-center gap-1.5 py-1.5 px-3 rounded-xl border bg-transparent hover:bg-surface-2 cursor-pointer transition-colors text-primary font-medium select-none"
+			class="flex border-solid border-surface-5 text-sm items-center gap-2 py-1.5 px-3 rounded-xl border bg-transparent hover:bg-surface-2 cursor-pointer transition-colors text-primary font-medium select-none"
 			:disabled="loginDisabled || offlineLoginDisabled || externalAuthDisabled"
-			@click="showAccountLoginModal"
+			@click="toggleOpen"
 		>
-			<PlusIcon class="size-4 text-brand shrink-0" />
-			<span>{{ formatMessage(messages.addAccount) }}</span>
-		</button>
-
-		<!-- When accounts exist: Dropdown in a frame -->
-		<Dropdown
-			v-else
-			placement="bottom-end"
-			:triggers="['click']"
-			:hide-triggers="['click']"
-			@show="showDropdown = true"
-			@hide="showDropdown = false"
-		>
-			<button
-				type="button"
-				class="flex border-solid border-surface-5 text-sm items-center gap-2 py-1.5 px-3 rounded-xl border bg-transparent hover:bg-surface-2 cursor-pointer transition-colors text-primary font-medium select-none"
-			>
+			<template v-if="accounts.length === 0">
+				<PlusIcon class="size-4 text-brand shrink-0" />
+				<span class="text-contrast font-medium">{{ formatMessage(messages.addAccount) }}</span>
+			</template>
+			<template v-else>
 				<Avatar
 					:src="selectedAccount ? avatarUrl : 'https://launcher-files.modrinth.com/assets/steve_head.png'"
 					size="20px"
@@ -360,44 +370,83 @@ const messages = defineMessages({
 				<span class="max-w-[120px] truncate text-contrast font-medium">
 					{{ selectedAccount ? selectedAccount.profile.name : formatMessage(messages.selectAccount) }}
 				</span>
-				<DropdownIcon class="size-3 text-secondary transition-transform shrink-0" :class="{ 'rotate-180': showDropdown }" />
-			</button>
+				<DropdownIcon
+					class="size-3 text-secondary transition-transform shrink-0"
+					:class="{ 'rotate-180': isOpen }"
+				/>
+			</template>
+		</button>
 
-			<template #popper>
-				<div class="flex w-[20rem] max-h-[24rem] flex-col gap-1 p-2 bg-bg-raised border border-solid border-surface-5 rounded-xl shadow-xl overflow-auto">
+		<!-- Backdrop to close on outside click -->
+		<div
+			v-if="isOpen"
+			class="fixed inset-0 z-40 bg-transparent"
+			@click="close"
+		/>
+
+		<!-- Dropdown popup matching Friends popover style -->
+		<Transition
+			enter-active-class="transition duration-150 ease-out"
+			enter-from-class="transform scale-95 opacity-0"
+			enter-to-class="transform scale-100 opacity-100"
+			leave-active-class="transition duration-100 ease-in"
+			leave-from-class="transform scale-100 opacity-100"
+			leave-to-class="transform scale-95 opacity-0"
+		>
+			<div
+				v-if="isOpen"
+				class="absolute right-0 top-full mt-2 z-50 flex w-[22rem] max-h-[30rem] flex-col p-3 bg-bg-raised border border-solid border-surface-5 rounded-2xl shadow-2xl overflow-y-auto"
+				@click.stop
+			>
+				<!-- Popover Header -->
+				<div class="flex items-center justify-between mb-3 pb-2 border-0 border-b border-solid border-surface-4">
+					<h3 class="text-base text-primary font-medium m-0">
+						{{ formatMessage(messages.minecraftAccount) }}
+					</h3>
+					<IconButton
+						v-tooltip="formatMessage(messages.addAccount)"
+						type="quiet"
+						:label="formatMessage(messages.addAccount)"
+						@click="showAccountLoginModal"
+					>
+						<PlusIcon class="size-4 text-brand" />
+					</IconButton>
+				</div>
+
+				<!-- Accounts list -->
+				<div class="flex flex-col gap-1.5 overflow-y-auto">
 					<div
 						v-for="account in accounts"
 						:key="account.profile.id"
-						class="flex w-full items-center gap-1.5 rounded-lg p-1.5 transition-colors hover:bg-surface-3"
+						class="flex w-full items-center gap-2 rounded-xl p-2 transition-colors hover:bg-surface-3 cursor-pointer"
 						:class="{ 'bg-surface-3': selectedAccount && selectedAccount.profile.id === account.profile.id }"
+						@click="setAccount(account)"
 					>
-						<button
-							type="button"
-							class="flex flex-grow items-center gap-2 bg-transparent border-0 cursor-pointer min-w-0 p-1 text-left"
-							@click="setAccount(account)"
-						>
-							<RadioButtonCheckedIcon
-								v-if="selectedAccount && selectedAccount.profile.id === account.profile.id"
-								class="w-4 h-4 text-brand shrink-0"
-							/>
-							<RadioButtonIcon v-else class="w-4 h-4 text-secondary shrink-0" />
-							<Avatar
-								:src="getAccountAvatarUrl(account)"
-								size="24px"
-								disable-conditional-icon-padding
-							/>
-							<component
-								:is="getAccountType(account)"
-								v-if="getAccountType(account)"
-								class="w-3.5 h-3.5 shrink-0 opacity-80"
-							/>
-							<span
-								class="truncate text-sm"
-								:class="selectedAccount && selectedAccount.profile.id === account.profile.id ? 'text-contrast font-semibold' : 'text-primary'"
-							>
-								{{ account.profile.name }}
-							</span>
-						</button>
+						<RadioButtonCheckedIcon
+							v-if="selectedAccount && selectedAccount.profile.id === account.profile.id"
+							class="w-4 h-4 text-brand shrink-0"
+						/>
+						<RadioButtonIcon v-else class="w-4 h-4 text-secondary shrink-0" />
+						<Avatar
+							:src="getAccountAvatarUrl(account)"
+							size="28px"
+							disable-conditional-icon-padding
+						/>
+						<div class="flex flex-col min-w-0 flex-1">
+							<div class="flex items-center gap-1.5">
+								<span
+									class="truncate text-sm"
+									:class="selectedAccount && selectedAccount.profile.id === account.profile.id ? 'text-contrast font-semibold' : 'text-primary'"
+								>
+									{{ account.profile.name }}
+								</span>
+								<component
+									:is="getAccountType(account)"
+									v-if="getAccountType(account)"
+									class="w-3.5 h-3.5 shrink-0 opacity-80"
+								/>
+							</div>
+						</div>
 						<IconButton
 							v-tooltip="formatMessage(messages.removeAccount)"
 							type="quiet"
@@ -411,20 +460,25 @@ const messages = defineMessages({
 						</IconButton>
 					</div>
 
-					<div class="pt-2 mt-1 border-0 border-t border-solid border-surface-4">
-						<Button
-							type="colored"
-							color="brand"
-							class="w-full !justify-start !text-xs !py-1.5"
-							@click="showAccountLoginModal"
-						>
-							<PlusIcon class="size-3.5" />
-							{{ formatMessage(messages.addAccount) }}
-						</Button>
+					<div v-if="accounts.length === 0" class="p-3 text-center text-sm text-secondary">
+						{{ formatMessage(messages.notSignedIn) }}
 					</div>
 				</div>
-			</template>
-		</Dropdown>
+
+				<!-- Add Account Button footer -->
+				<div class="pt-3 mt-2 border-0 border-t border-solid border-surface-4">
+					<Button
+						type="colored"
+						color="brand"
+						class="w-full !justify-center !text-sm !py-2"
+						@click="showAccountLoginModal"
+					>
+						<PlusIcon class="size-4" />
+						{{ formatMessage(messages.addAccount) }}
+					</Button>
+				</div>
+			</div>
+		</Transition>
 
 		<AccountsInputModals
 			ref="accountsInputModals"
