@@ -1484,60 +1484,42 @@ function showDelayedUpdatePopup() {
 }
 
 async function checkUpdates() {
-	if (!(await areUpdatesEnabled())) {
-		console.log('Skipping update check as updates are disabled in this build or environment')
-		updatesEnabled.value = false
-
-		if (os.value === 'Linux' && !isDevEnvironment.value) {
-			checkLinuxUpdates()
-			setInterval(checkLinuxUpdates, 5 * 60 * 1000)
-		}
-		return
-	}
-
 	async function performCheck() {
-		const update = await invoke('plugin:updater|check')
-		if (!update) {
-			console.log('No update available')
-			return
+		try {
+			console.log('[App] Checking for Rubirinth updates...')
+			await fetchLatestRelease()
+			console.log('[App] isUpdateAvailable:', isUpdateAvailable.value, 'tag:', latestRelease.value?.tag_name)
+			if (isUpdateAvailable.value && latestRelease.value) {
+				addPopupNotification({
+					contentType: 'standard',
+					title: formatMessage(updatePopupMessages.updateAvailable),
+					text: `Доступна новая версия Rubirinth ${latestRelease.value.tag_name}!`,
+					type: 'info',
+					autoCloseMs: null,
+					actions: [
+						{
+							label: 'Обновить',
+							action: () => launcherUpdateModal.value?.show(),
+							primary: true,
+						},
+						{
+							label: formatMessage(updatePopupMessages.changelog),
+							action: () => {
+								if (latestRelease.value?.html_url) {
+									window.open(latestRelease.value.html_url, '_blank')
+								}
+							},
+						},
+					],
+				})
+			}
+		} catch (e) {
+			console.error('[App] Failed to check for Rubirinth updates:', e)
 		}
-
-		const isExistingUpdate = update.version === availableUpdate.value?.version
-
-		if (isExistingUpdate) {
-			console.log('Update is already known')
-			scheduleDelayedUpdatePopup()
-			return
-		}
-
-		appUpdateDownload.progress.value = 0
-		finishedDownloading.value = false
-		downloading.value = false
-		updateSize.value = null
-		availableUpdate.value = update
-
-		console.log(`Update ${update.version} is available.`)
-
-		metered.value = await isNetworkMetered()
-		if (!metered.value) {
-			console.log('Starting download of update')
-			downloadUpdate(update)
-		} else {
-			console.log(`Metered connection detected, not auto-downloading update.`)
-			markAppUpdateActionable(update.version)
-			scheduleDelayedUpdatePopup()
-		}
-
-		getUpdateSize(update.rid).then((size) => (updateSize.value = size))
 	}
 
 	await performCheck()
-	setTimeout(
-		() => {
-			checkUpdates()
-		},
-		5 /* min */ * 60 /* sec */ * 1000 /* ms */,
-	)
+	setInterval(performCheck, 15 * 60 * 1000)
 }
 
 async function checkLinuxUpdates() {

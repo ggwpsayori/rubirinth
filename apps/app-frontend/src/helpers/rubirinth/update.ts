@@ -1,4 +1,5 @@
-﻿import { getVersion } from '@tauri-apps/api/app'
+import { getVersion } from '@tauri-apps/api/app'
+import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { ref } from 'vue'
 
 import { downloadAndInstallUpdate, getOS } from '@/helpers/utils.js'
@@ -29,12 +30,15 @@ export async function fetchLatestRelease(): Promise<void> {
 	try {
 		const os = (await getOS()).toLowerCase()
 		if (os !== 'windows') {
+			console.log('Skipping update check on non-windows platform:', os)
 			return
 		}
 
-		const response = await fetch(GITHUB_LATEST_RELEASE_API, {
+		const fetchFn = typeof tauriFetch === 'function' ? tauriFetch : fetch
+		const response = await fetchFn(GITHUB_LATEST_RELEASE_API, {
 			headers: {
 				Accept: 'application/vnd.github+json',
+				'User-Agent': 'Rubirinth-App',
 			},
 		})
 		if (!response.ok) {
@@ -50,16 +54,14 @@ export async function fetchLatestRelease(): Promise<void> {
 		latestReleaseInstaller.value = exeAsset ?? null
 
 		const currentRaw = await getVersion()
-		const currentVer = normalizeVersion(currentRaw)
+		const currentVer = "0.0.1" // For test comparison
 		const remoteVer = normalizeVersion(release.tag_name)
 
-		if (compareVersions(remoteVer, currentVer) > 0) {
-			isUpdateAvailable.value = true
-		} else {
-			isUpdateAvailable.value = false
-		}
+		const isNewer = compareVersions(remoteVer, currentVer) > 0
+		console.log('[Updater] Current:', currentVer, 'Remote:', remoteVer, 'IsNewer:', isNewer)
+		isUpdateAvailable.value = isNewer
 	} catch (error) {
-		console.error('Failed to check for updates:', error)
+		console.error('[Updater] Failed to check for updates:', error)
 	}
 }
 
