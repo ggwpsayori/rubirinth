@@ -4110,5 +4110,29 @@
   "app.settings.import.description": {
     "message": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.",
     "defaultMessage": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder."
+  },
+  "instance.badge.locked": {
+    "message": "Locked",
+    "defaultMessage": "Locked"
+  },
+  "instance.badge.locked.aria-label": {
+    "message": "Locked instance information",
+    "defaultMessage": "Locked instance information"
+  },
+  "instance.badge.shared": {
+    "message": "Shared",
+    "defaultMessage": "Shared"
+  },
+  "instance.badge.shared.aria-label": {
+    "message": "Shared instance information",
+    "defaultMessage": "Shared instance information"
+  },
+  "instance.metadata.loader-version.tooltip": {
+    "message": "Mod loader and Minecraft version",
+    "defaultMessage": "Mod loader and Minecraft version"
+  },
+  "instance.metadata.playtime.tooltip": {
+    "message": "Total playtime",
+    "defaultMessage": "Total playtime"
   }
 }

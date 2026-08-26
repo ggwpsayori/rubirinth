@@ -16,7 +16,7 @@
 		<PageHeaderMetadataItem
 			v-if="showInstancePlayTime && playtimeLabel"
 			:icon="TimerIcon"
-			tooltip="Total playtime"
+			:tooltip="formatMessage(messages.totalPlaytimeTooltip)"
 		>
 			{{ playtimeLabel }}
 		</PageHeaderMetadataItem>
@@ -27,12 +27,23 @@
 import type { Labrinth } from '@modrinth/api-client'
 import { TimerIcon } from '@modrinth/assets'
 import {
+	defineMessages,
 	PageHeaderMetadata,
 	PageHeaderMetadataItem,
 	ServerOnlinePlayers,
 	ServerPing,
 	ServerRegion,
+	useVIntl,
 } from '@modrinth/ui'
+
+const { formatMessage } = useVIntl()
+
+const messages = defineMessages({
+	totalPlaytimeTooltip: {
+		id: 'instance.metadata.playtime.tooltip',
+		defaultMessage: 'Total playtime',
+	},
+})
 
 defineProps<{
 	loadingServerPing?: boolean

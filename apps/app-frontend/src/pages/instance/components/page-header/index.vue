@@ -8,18 +8,18 @@
 			<PageHeaderBadgeItem
 				v-if="instance.quarantined"
 				:icon="LockIcon"
-				aria-label="Locked instance information"
+				:aria-label="formatMessage(messages.lockedBadgeAriaLabel)"
 				class="!border-orange !bg-highlight-orange !text-orange"
 			>
-				Locked
+				{{ formatMessage(messages.lockedBadge) }}
 			</PageHeaderBadgeItem>
 			<PageHeaderBadgeItem
 				v-else
 				:tooltip="sharedInstanceTooltip"
-				aria-label="Shared instance information"
+				:aria-label="formatMessage(messages.sharedBadgeAriaLabel)"
 				class="!border-blue !bg-highlight-blue !text-blue"
 			>
-				Shared
+				{{ formatMessage(messages.sharedBadge) }}
 				<UnknownIcon class="block size-4 shrink-0 text-current" aria-hidden="true" />
 			</PageHeaderBadgeItem>
 		</template>
@@ -39,14 +39,14 @@
 				<PageHeaderMetadataItem
 					:icon="TagIcon"
 					:icon-props="{ tag: loaderDisplayName, enforceType: 'loader' }"
-					tooltip="Mod loader and Minecraft version"
+					:tooltip="formatMessage(messages.loaderVersionTooltip)"
 				>
 					{{ loaderLabel }}
 				</PageHeaderMetadataItem>
 				<PageHeaderMetadataItem
 					v-if="showInstancePlayTime && playtimeLabel"
 					:icon="TimerIcon"
-					tooltip="Total playtime"
+					:tooltip="formatMessage(messages.totalPlaytimeTooltip)"
 				>
 					{{ playtimeLabel }}
 				</PageHeaderMetadataItem>
@@ -56,7 +56,7 @@
 					:date="instance.last_played"
 					:label="formatMessage(messages.lastPlayed)"
 				/>
-				<PageHeaderMetadataItem v-else :icon="ClockIcon" tooltip="Last played">
+				<PageHeaderMetadataItem v-else :icon="ClockIcon" :tooltip="formatMessage(messages.lastPlayed)">
 					{{ formatMessage(messages.neverPlayed) }}
 				</PageHeaderMetadataItem>
 			</PageHeaderMetadata>
@@ -202,7 +202,31 @@ import type { GameInstance } from '@/helpers/types'
 import InstanceHeaderServerMetadata from './instance-page-header-server-metadata.vue'
 
 const messages = defineMessages({
-	createShortcut: {
+	lockedBadge: {
+		id: 'instance.badge.locked',
+		defaultMessage: 'Locked',
+	},
+	lockedBadgeAriaLabel: {
+		id: 'instance.badge.locked.aria-label',
+		defaultMessage: 'Locked instance information',
+	},
+	sharedBadge: {
+		id: 'instance.badge.shared',
+		defaultMessage: 'Shared',
+	},
+	sharedBadgeAriaLabel: {
+		id: 'instance.badge.shared.aria-label',
+		defaultMessage: 'Shared instance information',
+	},
+	loaderVersionTooltip: {
+		id: 'instance.metadata.loader-version.tooltip',
+		defaultMessage: 'Mod loader and Minecraft version',
+	},
+	totalPlaytimeTooltip: {
+		id: 'instance.metadata.playtime.tooltip',
+		defaultMessage: 'Total playtime',
+	},
+		createShortcut: {
 		id: 'instance.action.create-shortcut',
 		defaultMessage: 'Create shortcut',
 	},

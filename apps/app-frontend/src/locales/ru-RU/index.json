@@ -4110,5 +4110,29 @@
   "app.settings.import.description": {
     "message": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки.",
     "defaultMessage": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
+  },
+  "instance.badge.locked": {
+    "message": "Заблокировано",
+    "defaultMessage": "Заблокировано"
+  },
+  "instance.badge.locked.aria-label": {
+    "message": "Информация о заблокированной сборке",
+    "defaultMessage": "Информация о заблокированной сборке"
+  },
+  "instance.badge.shared": {
+    "message": "Совместная",
+    "defaultMessage": "Совместная"
+  },
+  "instance.badge.shared.aria-label": {
+    "message": "Информация о совместной сборке",
+    "defaultMessage": "Информация о совместной сборке"
+  },
+  "instance.metadata.loader-version.tooltip": {
+    "message": "Загрузчик модов и версия Minecraft",
+    "defaultMessage": "Загрузчик модов и версия Minecraft"
+  },
+  "instance.metadata.playtime.tooltip": {
+    "message": "Общее игровое время",
+    "defaultMessage": "Общее игровое время"
   }
 }
