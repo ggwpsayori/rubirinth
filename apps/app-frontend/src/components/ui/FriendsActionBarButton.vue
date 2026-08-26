@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { DropdownIcon, UsersIcon } from '@modrinth/assets'
 import { defineMessages, injectNotificationManager, useVIntl } from '@modrinth/ui'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 import FriendsList from '@/components/ui/friends/FriendsList.vue'
 import { useAppEvent } from '@/composables/use-app-event'
@@ -12,7 +12,21 @@ const { formatMessage } = useVIntl()
 const { handleError } = injectNotificationManager()
 
 const credentials = ref<ModrinthCredentials | null>(null)
-const showDropdown = ref(false)
+const isOpen = ref(false)
+
+function toggleOpen() {
+	isOpen.value = !isOpen.value
+}
+
+function close() {
+	isOpen.value = false
+}
+
+function handleKeydown(e: KeyboardEvent) {
+	if (e.key === 'Escape' && isOpen.value) {
+		close()
+	}
+}
 
 async function fetchCredentials() {
 	try {
@@ -51,6 +65,11 @@ useAppEvent('mr_auth', async () => {
 
 onMounted(() => {
 	void fetchCredentials()
+	window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+	window.removeEventListener('keydown', handleKeydown)
 })
 
 const messages = defineMessages({
@@ -63,52 +82,61 @@ const messages = defineMessages({
 
 <template>
 	<div class="relative flex items-center">
-		<Dropdown
-			placement="bottom-end"
-			:triggers="['click']"
-			:hide-triggers="['click']"
-			:distance="8"
-			:auto-hide="true"
-			@show="showDropdown = true"
-			@hide="showDropdown = false"
+		<!-- Trigger button matching header style -->
+		<button
+			type="button"
+			class="flex border-solid border-surface-5 text-sm items-center gap-2 py-1.5 px-3 rounded-xl border bg-transparent hover:bg-surface-2 cursor-pointer transition-colors text-primary font-medium select-none"
+			@click="toggleOpen"
 		>
-			<button
-				type="button"
-				class="flex border-solid border-surface-5 text-sm items-center gap-2 py-1.5 px-3 rounded-xl border bg-transparent hover:bg-surface-2 cursor-pointer transition-colors text-primary font-medium select-none"
+			<UsersIcon class="size-4 text-brand shrink-0" />
+			<span class="text-contrast font-medium">
+				{{ formatMessage(messages.friends) }}
+			</span>
+			<span
+				v-if="pendingCount > 0"
+				class="flex items-center justify-center px-1.5 text-[10px] font-bold rounded-full bg-brand text-[var(--color-accent-contrast)] leading-none min-w-[16px] h-4"
 			>
-				<UsersIcon class="size-4 text-brand shrink-0" />
-				<span class="text-contrast font-medium">
-					{{ formatMessage(messages.friends) }}
-				</span>
-				<span
-					v-if="pendingCount > 0"
-					class="flex items-center justify-center px-1.5 text-[10px] font-bold rounded-full bg-brand text-[var(--color-accent-contrast)] leading-none min-w-[16px] h-4"
-				>
-					{{ pendingCount }}
-				</span>
-				<span
-					v-else-if="onlineCount > 0"
-					class="flex items-center gap-1 text-xs text-green font-semibold"
-				>
-					<span class="size-1.5 rounded-full bg-green inline-block"></span>
-					{{ onlineCount }}
-				</span>
-				<DropdownIcon
-					class="size-3 text-secondary transition-transform shrink-0"
-					:class="{ 'rotate-180': showDropdown }"
-				/>
-			</button>
+				{{ pendingCount }}
+			</span>
+			<span
+				v-else-if="onlineCount > 0"
+				class="flex items-center gap-1 text-xs text-green font-semibold"
+			>
+				<span class="size-1.5 rounded-full bg-green inline-block"></span>
+				{{ onlineCount }}
+			</span>
+			<DropdownIcon
+				class="size-3 text-secondary transition-transform shrink-0"
+				:class="{ 'rotate-180': isOpen }"
+			/>
+		</button>
 
-			<template #popper>
-				<div
-					class="flex w-[22rem] max-h-[30rem] flex-col p-3 bg-bg-raised border border-solid border-surface-5 rounded-xl shadow-xl overflow-y-auto"
-				>
-					<FriendsList
-						:credentials="credentials"
-						:sign-in="signIn"
-					/>
-				</div>
-			</template>
-		</Dropdown>
+		<!-- Backdrop to close on outside click -->
+		<div
+			v-if="isOpen"
+			class="fixed inset-0 z-40 bg-transparent"
+			@click="close"
+		/>
+
+		<!-- Dropdown popup -->
+		<Transition
+			enter-active-class="transition duration-150 ease-out"
+			enter-from-class="transform scale-95 opacity-0"
+			enter-to-class="transform scale-100 opacity-100"
+			leave-active-class="transition duration-100 ease-in"
+			leave-from-class="transform scale-100 opacity-100"
+			leave-to-class="transform scale-95 opacity-0"
+		>
+			<div
+				v-if="isOpen"
+				class="absolute right-0 top-full mt-2 z-50 flex w-[22rem] max-h-[30rem] flex-col p-3 bg-bg-raised border border-solid border-surface-5 rounded-2xl shadow-2xl overflow-y-auto"
+				@click.stop
+			>
+				<FriendsList
+					:credentials="credentials"
+					:sign-in="signIn"
+				/>
+			</div>
+		</Transition>
 	</div>
 </template>
