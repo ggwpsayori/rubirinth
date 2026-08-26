@@ -41,7 +41,7 @@ const messages = defineMessages({
 const homeBreadcrumb = useRootBreadcrumb({
 	slot: 'root',
 	id: 'home',
-	label: formatMessage(messages.home),
+	label: () => formatMessage(messages.home),
 	to: '/',
 	visual: { type: 'icon', component: PlayIcon },
 })

@@ -632,6 +632,8 @@ async function setupApp() {
 	// Initialize locale from saved settings
 	if (locale) {
 		i18n.global.locale.value = locale
+	} else {
+		i18n.global.locale.value = 'ru-RU'
 	}
 
 	os.value = await getOS()

@@ -8,7 +8,7 @@ const localeModules = import.meta.glob<{ default: CrowdinMessages }>('./locales/
 
 const i18n = createI18n({
 	legacy: false,
-	locale: 'en-US',
+	locale: 'ru-RU',
 	fallbackLocale: 'en-US',
 	messageCompiler: createMessageCompiler(),
 	missingWarn: false,
