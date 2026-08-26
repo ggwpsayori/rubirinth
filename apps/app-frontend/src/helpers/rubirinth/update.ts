@@ -54,7 +54,7 @@ export async function fetchLatestRelease(): Promise<void> {
 		latestReleaseInstaller.value = exeAsset ?? null
 
 		const currentRaw = await getVersion()
-		const currentVer = "0.0.1" // For test comparison
+		const currentVer = normalizeVersion(currentRaw)
 		const remoteVer = normalizeVersion(release.tag_name)
 
 		const isNewer = compareVersions(remoteVer, currentVer) > 0
