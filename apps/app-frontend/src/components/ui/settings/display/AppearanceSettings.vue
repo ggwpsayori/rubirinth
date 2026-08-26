@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import {
 	AppearanceSettingsLayout,
+	defineMessages,
 	injectAuth,
 	injectUserPreferences,
 	provideAppearanceSettings,
+	Toggle,
 	useSavable,
+	useVIntl,
 } from '@modrinth/ui'
 import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
@@ -13,6 +16,7 @@ import { type AppSettings, get, set } from '@/helpers/settings.ts'
 import { getOS } from '@/helpers/utils'
 import { appSettingsModalContextKey } from '@/providers/app-settings-modal'
 
+const { formatMessage } = useVIntl()
 const theme = useTheme()
 const auth = injectAuth()
 const { updatePreferences } = injectUserPreferences()
@@ -20,11 +24,24 @@ const settingsModal = inject(appSettingsModalContextKey, null)
 const os = await getOS()
 const settings = ref(await get())
 
+const messages = defineMessages({
+	discordRichPresenceTitle: {
+		id: 'app.settings.privacy.discord-rich-presence.title',
+		defaultMessage: 'Discord Rich Presence',
+	},
+	discordRichPresenceDescription: {
+		id: 'app.settings.privacy.discord-rich-presence.description',
+		defaultMessage:
+			'Show Rubirinth App as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart.',
+	},
+})
+
 type AppearanceSettingsState = {
 	theme: ColorTheme
 	syncAcrossDevices: boolean
 	advancedRendering: boolean
 	nativeDecorations: boolean
+	discordRpc: boolean
 }
 
 function getAppearanceSettingsState(settings: AppSettings): AppearanceSettingsState {
@@ -33,6 +50,7 @@ function getAppearanceSettingsState(settings: AppSettings): AppearanceSettingsSt
 		syncAcrossDevices: settings.sync_theme_across_devices,
 		advancedRendering: settings.advanced_rendering,
 		nativeDecorations: settings.native_decorations,
+		discordRpc: settings.discord_rpc,
 	}
 }
 
@@ -56,6 +74,7 @@ const { saved, current, changes, saving, hasChanges, reset, save } = useSavable(
 			sync_theme_across_devices: value.syncAcrossDevices,
 			advanced_rendering: value.advancedRendering,
 			native_decorations: value.nativeDecorations,
+			discord_rpc: value.discordRpc,
 		}
 
 		await set(nextSettings)
@@ -151,4 +170,16 @@ provideAppearanceSettings({
 
 <template>
 	<AppearanceSettingsLayout />
+
+	<div class="mt-8 flex items-center justify-between gap-4">
+		<div>
+			<h2 class="m-0 text-lg font-semibold text-contrast">
+				{{ formatMessage(messages.discordRichPresenceTitle) }}
+			</h2>
+			<p class="m-0 mt-1 text-sm text-secondary">
+				{{ formatMessage(messages.discordRichPresenceDescription) }}
+			</p>
+		</div>
+		<Toggle id="disable-discord-rpc" v-model="current.discordRpc" />
+	</div>
 </template>
