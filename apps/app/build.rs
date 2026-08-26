@@ -336,6 +336,7 @@ fn main() {
                         "show_app_db_backups_folder",
                         "progress_bars_list",
                         "get_opening_command",
+                        "download_and_install_update",
                     ])
                     .default_permission(
                         DefaultPermissionRule::AllowAllCommands,
