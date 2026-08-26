@@ -37,18 +37,18 @@ export interface LocaleDefinition {
 
 export const LOCALES: LocaleDefinition[] = [
 	{
-		code: 'ru-RU',
-		name: 'Русский',
-		translatedName: defineMessage({ id: 'locale.ru-RU', defaultMessage: 'Russian' }),
-		numeric: 'always',
-	},
-	{
 		code: 'en-US',
 		name: 'English (United States)',
 		translatedName: defineMessage({
 			id: 'locale.en-US',
 			defaultMessage: 'English (United States)',
 		}),
+	},
+	{
+		code: 'ru-RU',
+		name: 'Русский',
+		translatedName: defineMessage({ id: 'locale.ru-RU', defaultMessage: 'Russian' }),
+		numeric: 'always',
 	},
 ]
 
