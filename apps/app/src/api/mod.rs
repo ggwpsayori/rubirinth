@@ -136,6 +136,7 @@ macro_rules! impl_serialize {
 impl_serialize! {
     IO,
     Tauri,
+    Http,
 }
 
 #[cfg(feature = "updater")]
