@@ -19,8 +19,6 @@ import {
 } from '@modrinth/ui'
 import { computed, onMounted, ref } from 'vue'
 
-import RubirinthSettingsPage from './RubirinthSettingsPage.vue'
-
 const { formatMessage } = useVIntl()
 const { handleError, addNotification } = injectNotificationManager()
 const importProvider = injectInstanceImport()
@@ -41,11 +39,11 @@ const expandedLaunchers = ref<Set<string>>(new Set())
 const selectedInstances = ref<Record<string, Set<string>>>({})
 
 const messages = defineMessages({
-	pageTitle: {
+	importSectionTitle: {
 		id: 'app.settings.import.title',
 		defaultMessage: 'Import instances',
 	},
-	pageDescription: {
+	importSectionDescription: {
 		id: 'app.settings.import.description',
 		defaultMessage:
 			'Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.',
@@ -56,7 +54,7 @@ const messages = defineMessages({
 	},
 	addCustomFolderButton: {
 		id: 'app.settings.advanced.add-custom-folder',
-		defaultMessage: 'Add folder...',
+		defaultMessage: 'Add custom folder...',
 	},
 	searchPlaceholder: {
 		id: 'app.settings.advanced.search-instances',
@@ -291,12 +289,20 @@ async function handleImport() {
 </script>
 
 <template>
-	<RubirinthSettingsPage
-		:title="formatMessage(messages.pageTitle)"
-		:description="formatMessage(messages.pageDescription)"
-	>
-		<template #actions>
-			<div class="flex items-center gap-2">
+	<div class="flex flex-col gap-6">
+		<!-- Section Header -->
+		<div class="flex flex-col gap-1">
+			<h2 class="m-0 text-lg font-semibold text-contrast">
+				{{ formatMessage(messages.importSectionTitle) }}
+			</h2>
+			<p class="m-0 text-sm text-secondary leading-relaxed">
+				{{ formatMessage(messages.importSectionDescription) }}
+			</p>
+		</div>
+
+		<!-- Action buttons toolbar -->
+		<div class="flex flex-wrap items-center justify-between gap-3">
+			<div class="flex items-center gap-2.5">
 				<Button
 					type="outlined"
 					:disabled="scanning || importing"
@@ -315,124 +321,122 @@ async function handleImport() {
 					{{ formatMessage(messages.addCustomFolderButton) }}
 				</Button>
 			</div>
-		</template>
 
-		<div class="flex flex-col gap-4">
-			<!-- Search bar and selection clear -->
-			<div v-if="launchers.length > 0" class="flex items-center gap-3">
-				<Input
-					v-model="searchQuery"
-					:placeholder="formatMessage(messages.searchPlaceholder)"
-					class="w-full"
-				>
-					<template #prefix>
-						<SearchIcon class="size-4 text-secondary" />
-					</template>
-				</Input>
-
-				<Button
-					v-if="totalSelectedCount > 0"
-					type="quiet"
-					class="shrink-0 text-secondary"
-					@click="clearSelection"
-				>
-					{{ formatMessage(messages.clearSelection) }}
-				</Button>
-			</div>
-
-			<!-- Loading state -->
-			<div
-				v-if="loading"
-				class="flex items-center justify-center py-10 rounded-2xl bg-surface-2 text-secondary text-sm gap-2"
+			<Button
+				v-if="totalSelectedCount > 0"
+				type="quiet"
+				class="text-secondary"
+				@click="clearSelection"
 			>
-				<SpinnerIcon class="size-5 animate-spin" />
-				<span>Scanning for installed Minecraft launchers...</span>
-			</div>
+				{{ formatMessage(messages.clearSelection) }}
+			</Button>
+		</div>
 
-			<!-- Detected Launchers List -->
-			<div v-else-if="visibleLaunchers.length > 0" class="flex flex-col gap-3">
+		<!-- Search bar if any launchers found -->
+		<div v-if="launchers.length > 0" class="w-full">
+			<Input
+				v-model="searchQuery"
+				:placeholder="formatMessage(messages.searchPlaceholder)"
+				class="w-full"
+			>
+				<template #prefix>
+					<SearchIcon class="size-4 text-secondary" />
+				</template>
+			</Input>
+		</div>
+
+		<!-- Loading state -->
+		<div
+			v-if="loading"
+			class="flex items-center justify-center py-10 rounded-2xl bg-surface-2 text-secondary text-sm gap-2"
+		>
+			<SpinnerIcon class="size-5 animate-spin" />
+			<span>Scanning for installed Minecraft launchers...</span>
+		</div>
+
+		<!-- Detected Launchers List -->
+		<div v-else-if="visibleLaunchers.length > 0" class="flex flex-col gap-3">
+			<div
+				v-for="launcher in visibleLaunchers"
+				:key="launcher.name"
+				class="flex flex-col rounded-2xl border border-solid border-divider bg-surface-2 overflow-hidden shadow-sm"
+			>
+				<!-- Launcher Header Accordion -->
 				<div
-					v-for="launcher in visibleLaunchers"
-					:key="launcher.name"
-					class="flex flex-col rounded-2xl border border-solid border-divider bg-surface-2 overflow-hidden shadow-sm"
+					class="flex items-center justify-between p-3.5 bg-surface-3 cursor-pointer select-none transition-colors hover:bg-surface-4"
+					@click="toggleExpanded(launcher.name)"
 				>
-					<!-- Launcher Header Accordion -->
-					<div
-						class="flex items-center justify-between p-3.5 bg-surface-3 cursor-pointer select-none transition-colors hover:bg-surface-4"
-						@click="toggleExpanded(launcher.name)"
-					>
-						<div class="flex items-center gap-3 min-w-0">
-							<ChevronRightIcon
-								class="size-5 shrink-0 text-secondary transition-transform duration-150"
-								:class="{ 'rotate-90': expandedLaunchers.has(launcher.name) }"
-							/>
-							<Checkbox
-								:model-value="getLauncherCheckState(launcher)"
-								:indeterminate="getLauncherIndeterminate(launcher)"
-								@update:model-value="toggleLauncherAll(launcher, $event)"
-								@click.stop
-							/>
-							<div class="flex flex-col min-w-0">
-								<span class="font-semibold text-contrast text-base truncate">
-									{{ getLauncherDisplayName(launcher.name) }}
-								</span>
-								<span class="text-xs text-secondary truncate">{{ launcher.path }}</span>
-							</div>
+					<div class="flex items-center gap-3 min-w-0">
+						<ChevronRightIcon
+							class="size-5 shrink-0 text-secondary transition-transform duration-150"
+							:class="{ 'rotate-90': expandedLaunchers.has(launcher.name) }"
+						/>
+						<Checkbox
+							:model-value="getLauncherCheckState(launcher)"
+							:indeterminate="getLauncherIndeterminate(launcher)"
+							@update:model-value="toggleLauncherAll(launcher, $event)"
+							@click.stop
+						/>
+						<div class="flex flex-col min-w-0">
+							<span class="font-semibold text-contrast text-base truncate">
+								{{ getLauncherDisplayName(launcher.name) }}
+							</span>
+							<span class="text-xs text-secondary truncate">{{ launcher.path }}</span>
 						</div>
-
-						<span class="text-xs font-semibold text-secondary rounded-full bg-surface-2 px-2.5 py-1">
-							{{ formatMessage(messages.instancesCount, { count: launcher.instances.length }) }}
-						</span>
 					</div>
 
-					<!-- Instances List (Expanded) -->
+					<span class="text-xs font-semibold text-secondary rounded-full bg-surface-2 px-2.5 py-1">
+						{{ formatMessage(messages.instancesCount, { count: launcher.instances.length }) }}
+					</span>
+				</div>
+
+				<!-- Instances List (Expanded) -->
+				<div
+					v-if="expandedLaunchers.has(launcher.name)"
+					class="flex flex-col divide-y divide-solid divide-divider border-t border-divider max-h-60 overflow-y-auto"
+				>
 					<div
-						v-if="expandedLaunchers.has(launcher.name)"
-						class="flex flex-col divide-y divide-solid divide-divider border-t border-divider max-h-60 overflow-y-auto"
+						v-for="instance in filteredInstances(launcher)"
+						:key="instance"
+						class="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-surface-3 cursor-pointer"
+						@click="toggleInstance(launcher.name, instance)"
 					>
-						<div
-							v-for="instance in filteredInstances(launcher)"
-							:key="instance"
-							class="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-surface-3 cursor-pointer"
-							@click="toggleInstance(launcher.name, instance)"
-						>
-							<Checkbox
-								:model-value="isInstanceSelected(launcher.name, instance)"
-								@update:model-value="toggleInstance(launcher.name, instance)"
-								@click.stop
-							/>
-							<span class="font-medium text-contrast text-sm truncate">{{ instance }}</span>
-						</div>
+						<Checkbox
+							:model-value="isInstanceSelected(launcher.name, instance)"
+							@update:model-value="toggleInstance(launcher.name, instance)"
+							@click.stop
+						/>
+						<span class="font-medium text-contrast text-sm truncate">{{ instance }}</span>
 					</div>
 				</div>
 			</div>
-
-			<!-- No Launchers Empty State -->
-			<div
-				v-else
-				class="flex flex-col items-center justify-center p-8 rounded-2xl bg-surface-2 text-center text-secondary text-sm gap-2"
-			>
-				<span>{{ formatMessage(messages.noLaunchersDetected) }}</span>
-			</div>
-
-			<!-- Import Action Button -->
-			<div v-if="launchers.length > 0" class="mt-2 flex justify-end">
-				<Button
-					type="colored"
-					color="brand"
-					size="large"
-					:disabled="totalSelectedCount === 0 || importing"
-					@click="handleImport"
-				>
-					<SpinnerIcon v-if="importing" class="size-5 animate-spin" />
-					<CheckIcon v-else class="size-5" />
-					{{
-						importing
-							? formatMessage(messages.importingButton)
-							: formatMessage(messages.importSelectedButton, { count: totalSelectedCount })
-					}}
-				</Button>
-			</div>
 		</div>
-	</RubirinthSettingsPage>
+
+		<!-- No Launchers Empty State -->
+		<div
+			v-else
+			class="flex flex-col items-center justify-center p-8 rounded-2xl bg-surface-2 text-center text-secondary text-sm gap-2"
+		>
+			<span>{{ formatMessage(messages.noLaunchersDetected) }}</span>
+		</div>
+
+		<!-- Import Action Button -->
+		<div v-if="launchers.length > 0" class="flex justify-end pt-2">
+			<Button
+				type="colored"
+				color="brand"
+				size="large"
+				:disabled="totalSelectedCount === 0 || importing"
+				@click="handleImport"
+			>
+				<SpinnerIcon v-if="importing" class="size-5 animate-spin" />
+				<CheckIcon v-else class="size-5" />
+				{{
+					importing
+						? formatMessage(messages.importingButton)
+						: formatMessage(messages.importSelectedButton, { count: totalSelectedCount })
+				}}
+			</Button>
+		</div>
+	</div>
 </template>
