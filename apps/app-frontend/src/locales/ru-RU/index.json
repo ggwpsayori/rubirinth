@@ -3412,28 +3412,28 @@
     "defaultMessage": "Войти в Minecraft"
   },
   "minecraft-required.description": {
-    "message": "Для запуска и игры требуется аккаунт Microsoft с приобретённым Minecraft.",
-    "defaultMessage": "Для запуска и игры требуется аккаунт Microsoft с приобретённым Minecraft."
+    "message": "Перед запуском игры необходимо добавить аккаунт Minecraft.",
+    "defaultMessage": "Перед запуском игры необходимо добавить аккаунт Minecraft."
   },
   "minecraft-required.description-header": {
-    "message": "Войдите в аккаунт Microsoft",
-    "defaultMessage": "Войдите в аккаунт Microsoft"
+    "message": "Войдите в аккаунт Minecraft",
+    "defaultMessage": "Войдите в аккаунт Minecraft"
   },
   "minecraft-required.dont-have-account": {
     "message": "Нет аккаунта?",
     "defaultMessage": "Нет аккаунта?"
   },
   "minecraft-required.get-minecraft": {
-    "message": "Приобрести Minecraft",
-    "defaultMessage": "Приобрести Minecraft"
+    "message": "Купить Minecraft",
+    "defaultMessage": "Купить Minecraft"
   },
   "minecraft-required.get-support": {
     "message": "Поддержка",
     "defaultMessage": "Поддержка"
   },
   "minecraft-required.header": {
-    "message": "Требуется Minecraft",
-    "defaultMessage": "Требуется Minecraft"
+    "message": "Требуется аккаунт Minecraft",
+    "defaultMessage": "Требуется аккаунт Minecraft"
   },
   "minecraft-required.sign-in": {
     "message": "Войти в Microsoft",
@@ -4146,5 +4146,9 @@
   "instance.playtime.seconds": {
     "message": "{count, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунд}}",
     "defaultMessage": "{count, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунд}}"
+  },
+  "minecraft-required.other-sign-in-methods": {
+    "message": "Способы входа",
+    "defaultMessage": "Способы входа"
   }
 }

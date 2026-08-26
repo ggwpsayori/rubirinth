@@ -3444,12 +3444,12 @@
     "defaultMessage": "Sign in to Minecraft"
   },
   "minecraft-required.description": {
-    "message": "You need a Microsoft account that owns Minecraft before you can launch and play.",
-    "defaultMessage": "You need a Microsoft account that owns Minecraft before you can launch and play."
+    "message": "You need a Minecraft account before you can launch and play.",
+    "defaultMessage": "You need a Minecraft account before you can launch and play."
   },
   "minecraft-required.description-header": {
-    "message": "Sign in to a Microsoft account",
-    "defaultMessage": "Sign in to a Microsoft account"
+    "message": "Sign in to a Minecraft account",
+    "defaultMessage": "Sign in to a Minecraft account"
   },
   "minecraft-required.dont-have-account": {
     "message": "Don’t have an account?",
@@ -4146,5 +4146,9 @@
   "instance.playtime.seconds": {
     "message": "{count, plural, one {# second} other {# seconds}}",
     "defaultMessage": "{count, plural, one {# second} other {# seconds}}"
+  },
+  "minecraft-required.other-sign-in-methods": {
+    "message": "Sign-in methods",
+    "defaultMessage": "Sign-in methods"
   }
 }
