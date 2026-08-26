@@ -3100,5 +3100,21 @@
   "app.settings.advanced.instances-count": {
     "message": "{count} instance(s)",
     "defaultMessage": "{count} instance(s)"
+  },
+  "app.settings.sidebar.label.advanced": {
+    "message": "Advanced",
+    "defaultMessage": "Advanced"
+  },
+  "app.settings.tabs.import": {
+    "message": "Import",
+    "defaultMessage": "Import"
+  },
+  "app.settings.import.title": {
+    "message": "Import instances",
+    "defaultMessage": "Import instances"
+  },
+  "app.settings.import.description": {
+    "message": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.",
+    "defaultMessage": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder."
   }
 }

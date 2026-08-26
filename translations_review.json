@@ -16388,5 +16388,25 @@
     "package": "app-frontend",
     "en": "{count} instance(s)",
     "ru": "{count} сборок"
+  },
+  "app.settings.sidebar.label.advanced": {
+    "package": "app-frontend",
+    "en": "Advanced",
+    "ru": "Продвинутые"
+  },
+  "app.settings.tabs.import": {
+    "package": "app-frontend",
+    "en": "Import",
+    "ru": "Импорт"
+  },
+  "app.settings.import.title": {
+    "package": "app-frontend",
+    "en": "Import instances",
+    "ru": "Импорт сборок"
+  },
+  "app.settings.import.description": {
+    "package": "app-frontend",
+    "en": "Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.",
+    "ru": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
   }
 }

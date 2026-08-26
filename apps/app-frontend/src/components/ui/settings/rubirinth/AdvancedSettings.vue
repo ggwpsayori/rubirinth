@@ -3,12 +3,9 @@ import {
 	CheckIcon,
 	ChevronRightIcon,
 	FolderIcon,
-	PlusIcon,
 	RefreshCwIcon,
 	SearchIcon,
 	SpinnerIcon,
-	WrenchIcon,
-	XIcon,
 } from '@modrinth/assets'
 import {
 	Button,
@@ -21,6 +18,8 @@ import {
 	useVIntl,
 } from '@modrinth/ui'
 import { computed, onMounted, ref } from 'vue'
+
+import RubirinthSettingsPage from './RubirinthSettingsPage.vue'
 
 const { formatMessage } = useVIntl()
 const { handleError, addNotification } = injectNotificationManager()
@@ -40,22 +39,16 @@ const searchQuery = ref('')
 const launchers = ref<LauncherInfo[]>([])
 const expandedLaunchers = ref<Set<string>>(new Set())
 const selectedInstances = ref<Record<string, Set<string>>>({})
-const newCustomPath = ref('')
-const showAddCustomModal = ref(false)
 
 const messages = defineMessages({
-	advancedTitle: {
-		id: 'app.settings.advanced.title',
-		defaultMessage: 'Advanced settings',
+	pageTitle: {
+		id: 'app.settings.import.title',
+		defaultMessage: 'Import instances',
 	},
-	importSectionTitle: {
-		id: 'app.settings.advanced.import-section.title',
-		defaultMessage: 'Import from other launchers',
-	},
-	importSectionDescription: {
-		id: 'app.settings.advanced.import-section.description',
+	pageDescription: {
+		id: 'app.settings.import.description',
 		defaultMessage:
-			'Import your instances, mods, and worlds from other Minecraft launchers (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom directory.',
+			'Import instances, mods, and worlds from other Minecraft launchers (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) or a custom folder.',
 	},
 	scanLaunchersButton: {
 		id: 'app.settings.advanced.scan-launchers',
@@ -63,7 +56,7 @@ const messages = defineMessages({
 	},
 	addCustomFolderButton: {
 		id: 'app.settings.advanced.add-custom-folder',
-		defaultMessage: 'Add custom folder...',
+		defaultMessage: 'Add folder...',
 	},
 	searchPlaceholder: {
 		id: 'app.settings.advanced.search-instances',
@@ -119,7 +112,6 @@ async function scanLaunchers() {
 			instances: l.instances ?? [],
 		}))
 
-		// Auto expand all detected launchers that have instances
 		const newExpanded = new Set<string>()
 		for (const l of launchers.value) {
 			if (l.instances.length > 0) {
@@ -237,7 +229,7 @@ async function handleBrowseCustomFolder() {
 			addNotification({
 				type: 'error',
 				title: formatMessage(messages.noInstancesFound),
-				message: 'No importable instances were found at the specified path.',
+				text: 'No importable instances were found at the specified path.',
 			})
 			return
 		}
@@ -256,7 +248,7 @@ async function handleBrowseCustomFolder() {
 		addNotification({
 			type: 'success',
 			title: 'Folder added',
-			message: `Found ${instances.length} instance(s) in ${pathName}`,
+			text: `Found ${instances.length} instance(s) in ${pathName}`,
 		})
 	} catch (err) {
 		handleError(err)
@@ -286,7 +278,7 @@ async function handleImport() {
 		addNotification({
 			type: 'success',
 			title: formatMessage(messages.importSuccessTitle),
-			message: formatMessage(messages.importSuccessText, { count }),
+			text: formatMessage(messages.importSuccessText, { count }),
 		})
 
 		clearSelection()
@@ -299,55 +291,35 @@ async function handleImport() {
 </script>
 
 <template>
-	<div class="flex flex-col gap-6">
-		<!-- Import section -->
-		<section class="flex flex-col gap-4">
-			<div class="flex flex-col gap-1">
-				<h2 class="m-0 text-xl font-semibold text-contrast">
-					{{ formatMessage(messages.importSectionTitle) }}
-				</h2>
-				<p class="m-0 text-secondary text-sm">
-					{{ formatMessage(messages.importSectionDescription) }}
-				</p>
-			</div>
-
-			<!-- Actions header -->
-			<div class="flex flex-wrap items-center justify-between gap-3">
-				<div class="flex items-center gap-2">
-					<Button
-						type="outlined"
-						size="small"
-						:disabled="scanning || importing"
-						@click="scanLaunchers"
-					>
-						<SpinnerIcon v-if="scanning" class="size-4 animate-spin" />
-						<RefreshCwIcon v-else class="size-4" />
-						{{ formatMessage(messages.scanLaunchersButton) }}
-					</Button>
-					<Button
-						type="outlined"
-						size="small"
-						:disabled="scanning || importing"
-						@click="handleBrowseCustomFolder"
-					>
-						<FolderIcon class="size-4" />
-						{{ formatMessage(messages.addCustomFolderButton) }}
-					</Button>
-				</div>
-
+	<RubirinthSettingsPage
+		:title="formatMessage(messages.pageTitle)"
+		:description="formatMessage(messages.pageDescription)"
+	>
+		<template #actions>
+			<div class="flex items-center gap-2">
 				<Button
-					v-if="totalSelectedCount > 0"
-					type="quiet"
-					size="small"
-					class="text-secondary"
-					@click="clearSelection"
+					type="outlined"
+					:disabled="scanning || importing"
+					@click="scanLaunchers"
 				>
-					{{ formatMessage(messages.clearSelection) }}
+					<SpinnerIcon v-if="scanning" class="size-4 animate-spin" />
+					<RefreshCwIcon v-else class="size-4" />
+					{{ formatMessage(messages.scanLaunchersButton) }}
+				</Button>
+				<Button
+					type="outlined"
+					:disabled="scanning || importing"
+					@click="handleBrowseCustomFolder"
+				>
+					<FolderIcon class="size-4" />
+					{{ formatMessage(messages.addCustomFolderButton) }}
 				</Button>
 			</div>
+		</template>
 
-			<!-- Search bar if any launchers found -->
-			<div v-if="launchers.length > 0" class="w-full">
+		<div class="flex flex-col gap-4">
+			<!-- Search bar and selection clear -->
+			<div v-if="launchers.length > 0" class="flex items-center gap-3">
 				<Input
 					v-model="searchQuery"
 					:placeholder="formatMessage(messages.searchPlaceholder)"
@@ -357,6 +329,15 @@ async function handleImport() {
 						<SearchIcon class="size-4 text-secondary" />
 					</template>
 				</Input>
+
+				<Button
+					v-if="totalSelectedCount > 0"
+					type="quiet"
+					class="shrink-0 text-secondary"
+					@click="clearSelection"
+				>
+					{{ formatMessage(messages.clearSelection) }}
+				</Button>
 			</div>
 
 			<!-- Loading state -->
@@ -452,6 +433,6 @@ async function handleImport() {
 					}}
 				</Button>
 			</div>
-		</section>
-	</div>
+		</div>
+	</RubirinthSettingsPage>
 </template>

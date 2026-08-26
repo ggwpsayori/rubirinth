@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {
 	CoffeeIcon,
-	WrenchIcon,
+	DownloadIcon,
 	GameIcon,
 	GaugeIcon,
 	HeartHandshakeIcon,
@@ -75,6 +75,10 @@ const tabCategories = defineMessages({
 	rubirinth: {
 		id: 'app.settings.sidebar.label.rubirinth',
 		defaultMessage: 'Rubirinth',
+	},
+	advanced: {
+		id: 'app.settings.sidebar.label.advanced',
+		defaultMessage: 'Advanced',
 	},
 })
 
@@ -163,11 +167,11 @@ const tabs = [
 	},
 	{
 		name: defineMessage({
-			id: 'app.settings.tabs.advanced',
-			defaultMessage: 'Advanced',
+			id: 'app.settings.tabs.import',
+			defaultMessage: 'Import',
 		}),
-		category: tabCategories.rubirinth,
-		icon: WrenchIcon,
+		category: tabCategories.advanced,
+		icon: DownloadIcon,
 		content: AdvancedSettings,
 	},
 ]

@@ -4094,5 +4094,21 @@
   "app.settings.advanced.instances-count": {
     "message": "{count} сборок",
     "defaultMessage": "{count} сборок"
+  },
+  "app.settings.sidebar.label.advanced": {
+    "message": "Продвинутые",
+    "defaultMessage": "Продвинутые"
+  },
+  "app.settings.tabs.import": {
+    "message": "Импорт",
+    "defaultMessage": "Импорт"
+  },
+  "app.settings.import.title": {
+    "message": "Импорт сборок",
+    "defaultMessage": "Импорт сборок"
+  },
+  "app.settings.import.description": {
+    "message": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки.",
+    "defaultMessage": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
   }
 }
