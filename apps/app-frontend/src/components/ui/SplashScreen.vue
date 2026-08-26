@@ -184,8 +184,8 @@ useAppEvent('loading', (e) => {
 	height: 100vh;
 	width: 100vw;
 	background:
-		linear-gradient(180deg, rgba(66, 131, 92, 0.275) 0%, rgba(17, 35, 43, 0.5) 97.29%),
-		linear-gradient(0deg, rgba(22, 24, 28, 0.64), rgba(22, 24, 28, 0.64));
+		linear-gradient(180deg, rgba(70, 127, 197, 0.35) 0%, rgba(14, 25, 42, 0.65) 97.29%),
+		linear-gradient(0deg, rgba(15, 18, 24, 0.7), rgba(15, 18, 24, 0.7));
 	z-index: 9997;
 }
 
@@ -199,7 +199,7 @@ useAppEvent('loading', (e) => {
 	width: 180vw;
 	height: 180vh;
 	opacity: 0.8;
-	background: #16181c url('@/assets/loading/cube.png') center no-repeat;
+	background: #11151c url('@/assets/loading/cube.png') center no-repeat;
 	background-size: contain;
 
 	z-index: 9996;
