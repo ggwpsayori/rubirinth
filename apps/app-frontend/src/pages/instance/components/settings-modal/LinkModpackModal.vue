@@ -3,8 +3,10 @@ import type { Labrinth } from '@modrinth/api-client'
 import {
 	Avatar,
 	Button,
+	Combobox,
+	type ComboboxOption,
+	commonMessages,
 	defineMessages,
-	DropdownSelect,
 	injectModrinthClient,
 	injectNotificationManager,
 	Input,
@@ -90,10 +92,6 @@ const messages = defineMessages({
 		id: 'installation-settings.link-modpack.compatible-badge',
 		defaultMessage: 'Compatible',
 	},
-	cancelButton: {
-		id: 'common.cancel',
-		defaultMessage: 'Cancel',
-	},
 	linkButton: {
 		id: 'installation-settings.link-modpack.confirm-button',
 		defaultMessage: 'Link modpack',
@@ -109,6 +107,14 @@ const messages = defineMessages({
 	linkSuccessMessage: {
 		id: 'installation-settings.link-modpack.success-message',
 		defaultMessage: 'Instance has been linked to {name} successfully.',
+	},
+	loadingVersions: {
+		id: 'installation-settings.link-modpack.loading-versions',
+		defaultMessage: 'Loading modpack versions...',
+	},
+	noVersions: {
+		id: 'installation-settings.link-modpack.no-versions',
+		defaultMessage: 'No versions found for this modpack.',
 	},
 })
 
@@ -140,7 +146,6 @@ async function performSearch(query: string) {
 
 	searchLoading.value = true
 	try {
-		// First try direct slug/ID match if it's a single word/slug
 		let directProject: any = null
 		if (!parsed.includes(' ')) {
 			directProject = await get_project(parsed).catch(() => null)
@@ -202,7 +207,6 @@ async function selectProject(project: any) {
 
 		versions.value = fetchedVersions
 
-		// Try to find a compatible version matching game_version and loader
 		const instanceLoader = props.instance.loader?.toLowerCase()
 		const instanceGameVersion = props.instance.game_version
 
@@ -230,29 +234,26 @@ function clearSelectedProject() {
 	selectedVersionId.value = null
 }
 
-const versionOptions = computed(() => {
+const versionComboboxOptions = computed<ComboboxOption<string>[]>(() => {
+	const instanceLoader = props.instance.loader?.toLowerCase()
+	const instanceGameVersion = props.instance.game_version
+	const compatibleLabel = formatMessage(messages.compatibleBadge)
+
 	return versions.value.map((v) => {
-		const instanceLoader = props.instance.loader?.toLowerCase()
-		const instanceGameVersion = props.instance.game_version
 		const isCompatible =
 			v.game_versions.includes(instanceGameVersion) &&
 			(!instanceLoader || v.loaders.some((l) => l.toLowerCase() === instanceLoader))
 
+		const name = v.name || v.version_number
+		const loaders = v.loaders.map((l) => l.charAt(0).toUpperCase() + l.slice(1)).join(', ')
+		const gameVersions = v.game_versions.slice(0, 3).join(', ') + (v.game_versions.length > 3 ? '...' : '')
+
 		return {
 			value: v.id,
-			label: `${v.name || v.version_number} (${v.game_versions.slice(0, 2).join(', ')}${v.game_versions.length > 2 ? '...' : ''})`,
-			isCompatible,
-			version: v,
+			label: isCompatible ? `★ ${name} (${v.version_number})` : `${name} (${v.version_number})`,
+			subLabel: `${gameVersions} • ${loaders}${isCompatible ? ` — ${compatibleLabel}` : ''}`,
 		}
 	})
-})
-
-const selectedVersionOption = computed(() => {
-	return (
-		versionOptions.value.find((opt) => opt.value === selectedVersionId.value)?.label ??
-		selectedVersionId.value ??
-		''
-	)
 })
 
 async function handleConfirmLink() {
@@ -372,7 +373,7 @@ defineExpose({
 
 			<!-- Selected Modpack & Version Selector -->
 			<div v-else class="flex flex-col gap-4">
-				<div class="flex items-center justify-between gap-3 rounded-xl bg-surface-2 p-3.5">
+				<div class="flex items-center justify-between gap-4 rounded-xl bg-surface-2 p-3.5">
 					<div class="flex min-w-0 items-center gap-3">
 						<Avatar
 							:src="selectedProject.icon_url"
@@ -380,17 +381,20 @@ defineExpose({
 							size="3rem"
 							no-shadow
 							raised
+							class="shrink-0"
 						/>
 						<div class="flex min-w-0 flex-col">
 							<span class="truncate font-semibold text-contrast text-base">
 								{{ selectedProject.title }}
 							</span>
-							<span class="truncate text-xs text-secondary">{{ selectedProject.description }}</span>
+							<span v-if="selectedProject.author" class="truncate text-xs text-secondary">
+								by {{ selectedProject.author }}
+							</span>
 						</div>
 					</div>
 					<Button
 						type="outlined"
-						size="small"
+						class="shrink-0 ml-auto"
 						:disabled="linking || versionsLoading"
 						@click="clearSelectedProject"
 					>
@@ -405,35 +409,18 @@ defineExpose({
 
 					<div v-if="versionsLoading" class="flex items-center gap-2 text-sm text-secondary py-2">
 						<SpinnerIcon class="size-4 animate-spin" />
-						<span>Loading modpack versions...</span>
+						<span>{{ formatMessage(messages.loadingVersions) }}</span>
 					</div>
 
 					<div v-else-if="versions.length > 0" class="flex flex-col gap-2">
-						<DropdownSelect
-							:options="versionOptions.map((opt) => opt.value)"
-							:selected-option="selectedVersionOption"
-							@select="selectedVersionId = $event"
-						>
-							<template #default="{ selected }">
-								<span class="font-medium">{{ selected }}</span>
-							</template>
-							<template #option="{ option }">
-								<div class="flex items-center justify-between gap-2 py-1">
-									<span>
-										{{ versionOptions.find((o) => o.value === option)?.label ?? option }}
-									</span>
-									<span
-										v-if="versionOptions.find((o) => o.value === option)?.isCompatible"
-										class="rounded bg-green/20 px-1.5 py-0.5 text-xs font-semibold text-green"
-									>
-										{{ formatMessage(messages.compatibleBadge) }}
-									</span>
-								</div>
-							</template>
-						</DropdownSelect>
+						<Combobox
+							v-model="selectedVersionId"
+							:options="versionComboboxOptions"
+							:placeholder="formatMessage(messages.selectVersionLabel)"
+						/>
 					</div>
 					<div v-else class="text-sm text-secondary">
-						No versions available for this modpack.
+						{{ formatMessage(messages.noVersions) }}
 					</div>
 				</div>
 			</div>
@@ -443,7 +430,7 @@ defineExpose({
 			<div class="flex justify-end gap-2">
 				<Button type="outlined" :disabled="linking" @click="modal?.hide()">
 					<XIcon />
-					{{ formatMessage(messages.cancelButton) }}
+					{{ formatMessage(commonMessages.cancelButton) }}
 				</Button>
 				<Button
 					type="colored"

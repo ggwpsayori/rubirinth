@@ -3036,5 +3036,13 @@
   "installation-settings.link-modpack.success-message": {
     "message": "Instance has been linked to {name} successfully.",
     "defaultMessage": "Instance has been linked to {name} successfully."
+  },
+  "installation-settings.link-modpack.loading-versions": {
+    "message": "Loading modpack versions...",
+    "defaultMessage": "Loading modpack versions..."
+  },
+  "installation-settings.link-modpack.no-versions": {
+    "message": "No versions found for this modpack.",
+    "defaultMessage": "No versions found for this modpack."
   }
 }

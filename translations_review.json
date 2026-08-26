@@ -16308,5 +16308,15 @@
     "package": "app-frontend",
     "en": "Instance has been linked to {name} successfully.",
     "ru": "Сборка успешно привязана к {name}."
+  },
+  "installation-settings.link-modpack.loading-versions": {
+    "package": "app-frontend",
+    "en": "Loading modpack versions...",
+    "ru": "Загрузка версий сборки..."
+  },
+  "installation-settings.link-modpack.no-versions": {
+    "package": "app-frontend",
+    "en": "No versions found for this modpack.",
+    "ru": "Версии для этой сборки не найдены."
   }
 }

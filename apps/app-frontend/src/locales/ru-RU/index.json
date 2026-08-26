@@ -4030,5 +4030,13 @@
   "installation-settings.link-modpack.success-message": {
     "message": "Сборка успешно привязана к {name}.",
     "defaultMessage": "Сборка успешно привязана к {name}."
+  },
+  "installation-settings.link-modpack.loading-versions": {
+    "message": "Загрузка версий сборки...",
+    "defaultMessage": "Загрузка версий сборки..."
+  },
+  "installation-settings.link-modpack.no-versions": {
+    "message": "Версии для этой сборки не найдены.",
+    "defaultMessage": "Версии для этой сборки не найдены."
   }
 }
