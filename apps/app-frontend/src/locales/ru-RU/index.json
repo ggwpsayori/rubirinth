@@ -1205,9 +1205,7 @@
   "app.nav.modrinth-account": {
     "message": "Аккаунт Rubirinth"
   },
-  "app.nav.modrinth-hosting": {
-    "message": "Modrinth Hosting"
-  },
+  "app.nav.modrinth-hosting": "Хостинг",
   "app.nav.sign-in-to-modrinth-account": {
     "message": "Войти в аккаунт Rubirinth"
   },
@@ -1292,9 +1290,7 @@
   "app.restarting": {
     "message": "Перезапуск..."
   },
-  "app.settings.app-version": {
-    "message": "Rubirinth App {version}"
-  },
+  "app.settings.app-version": "Приложение Rubirinth {version}",
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Переменные среды при запуске игры."
   },
@@ -1391,9 +1387,7 @@
   "app.settings.privacy.discord-rich-presence.description": {
     "message": "Показывать Rubirinth App в текущей активности Discord. Не влияет на Rich Presence модов. Требуется перезапуск."
   },
-  "app.settings.privacy.discord-rich-presence.title": {
-    "message": "Discord Rich Presence"
-  },
+  "app.settings.privacy.discord-rich-presence.title": "Интеграция с Discord (RPC)",
   "app.settings.privacy.telemetry.description": {
     "message": "Rubirinth собирает анонимные данные об использовании для персонализации и улучшения сервиса. Отключите этот параметр, чтобы отказаться от сбора данных."
   },
@@ -1589,12 +1583,8 @@
   "app.skins.reorder-error.title": {
     "message": "Не удалось изменить порядок скинов"
   },
-  "app.skins.section.builders-and-biomes": {
-    "message": "Builders & Biomes"
-  },
-  "app.skins.section.chaos-cubed": {
-    "message": "Chaos Cubed"
-  },
+  "app.skins.section.builders-and-biomes": "Строители и биомы",
+  "app.skins.section.chaos-cubed": "Хаос в кубе",
   "app.skins.section.chase-the-skies": {
     "message": "Chase the Skies"
   },
@@ -1607,9 +1597,7 @@
   "app.skins.section.modrinth": {
     "message": "Rubirinth"
   },
-  "app.skins.section.modrinth-pride": {
-    "message": "Rubirinth Pride"
-  },
+  "app.skins.section.modrinth-pride": "Rubirinth Pride",
   "app.skins.section.modrinth-pride.tooltip": {
     "message": "Эти скины получены за участие в сборе средств Rubirinth Pride в месяц гордости."
   },
@@ -1619,18 +1607,10 @@
   "app.skins.section.saved-skins": {
     "message": "Сохранённые скины"
   },
-  "app.skins.section.striding-hero": {
-    "message": "Striding Hero"
-  },
-  "app.skins.section.the-copper-age": {
-    "message": "The Copper Age"
-  },
-  "app.skins.section.the-garden-awakens": {
-    "message": "The Garden Awakens"
-  },
-  "app.skins.section.tiny-takeover": {
-    "message": "Tiny Takeover"
-  },
+  "app.skins.section.striding-hero": "Шагающий герой",
+  "app.skins.section.the-copper-age": "Медный век",
+  "app.skins.section.the-garden-awakens": "Пробуждение сада",
+  "app.skins.section.tiny-takeover": "Крошечный захват",
   "app.skins.sign-in.button": {
     "message": "Войти в Microsoft"
   },
@@ -2953,5 +2933,14 @@
   },
   "friends.title": {
     "defaultMessage": "Друзья"
-  }
+  },
+  "app.instance.confirm-delete.bulk-admonition-body": "Все данные для этих {count} сборок будут безвозвратно удалены, включая их миры, конфигурации и весь установленный контент.",
+  "app.instance.confirm-delete.bulk-delete-button": "Удалить {count} сборок",
+  "app.instance.confirm-delete.bulk-header": "Удаление {count} сборок",
+  "app.instance.mods.projects-were-added": "Добавлено проектов: {count}",
+  "app.instance.share.invite-modal.user-limit-reached": "Эта сборка достигла лимита в {limit} пользователей.",
+  "app.instance.worlds.search-worlds-placeholder": "Поиск среди {count} миров...",
+  "app.library.selection.selected-count": "Выбрано: {count}",
+  "instance.files.adding-files": "Добавление файлов ({completed}/{total})",
+  "astralrinth.app.settings.sidebar.label.astralrinth": "Rubirinth"
 }

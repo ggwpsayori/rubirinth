@@ -5024,9 +5024,7 @@
   "servers.list-empty.learn-more-link": {
     "defaultMessage": "Подробнее"
   },
-  "servers.list-empty.modrinth-hosting-label": {
-    "defaultMessage": "Modrinth Hosting"
-  },
+  "servers.list-empty.modrinth-hosting-label": "Хостинг",
   "servers.list-empty.new-server-button": {
     "defaultMessage": "Новый сервер"
   },
@@ -5207,9 +5205,7 @@
   "servers.manage.search-placeholder": {
     "defaultMessage": "Поиск по {count, plural, one {# серверу} other {# серверам}}..."
   },
-  "servers.manage.servers-title": {
-    "defaultMessage": "Modrinth Hosting"
-  },
+  "servers.manage.servers-title": "Хостинг",
   "servers.manage.settings-hint.description": {
     "defaultMessage": "Теперь они находятся здесь!"
   },
@@ -6727,5 +6723,36 @@
   },
   "friends.title": {
     "defaultMessage": "Друзья"
-  }
+  },
+  "billing.resubscribe-modal.cpus": "{sharedCpus} общих CPU",
+  "content.confirm-deletion.delete-button": "Удалить {count, number} {itemType}",
+  "content.dependency-warning.bulk-admonition-body": "Некоторые выбранные проекты установлены как зависимости. Их удаление может нарушить работу вашей сборки ({context}) или привести к ошибкам загрузки зависимого контента.",
+  "content.dependency-warning.effect-instance": "Ваша {context} может аварийно завершиться, не запуститься или работать некорректно",
+  "content.dependency-warning.single-admonition-body": "{project} установлен как зависимость. Его удаление может нарушить работу вашей сборки ({context}) или привести к ошибкам загрузки зависимого контента.",
+  "content.diff-modal.added-count": "Добавлено: {count}",
+  "content.diff-modal.removed-count": "Удалено: {count}",
+  "content.diff-modal.removed-disabled-count": "Удалено (отключено): {count}",
+  "content.diff-modal.updated-count": "Обновлено: {count}",
+  "content.inline-backup.warning-body": "Мы рекомендуем создать резервную копию перед продолжением, чтобы вы могли восстановить ваш {type} в случае сбоя.",
+  "content.page-layout.search-placeholder": "Поиск среди {count, number} {contentType}...",
+  "content.selection-bar.bulk.deleting": "Удаление {progress}/{total} {contentType}...",
+  "content.selection-bar.bulk.deleting-count": "Удаление {count, number} {contentType}",
+  "content.selection-bar.bulk.disabling": "Отключение {progress}/{total} {contentType}...",
+  "content.selection-bar.bulk.disabling-count": "Отключение {count, number} {contentType}",
+  "content.selection-bar.bulk.enabling": "Включение {progress}/{total} {contentType}...",
+  "content.selection-bar.bulk.enabling-count": "Включение {count, number} {contentType}",
+  "content.selection-bar.bulk.updating": "Обновление {progress}/{total} {contentType}...",
+  "content.selection-bar.bulk.updating-count": "Обновление {count, number} {contentType}",
+  "content.selection-bar.selected-count": "Выбрано {count, number} {contentType}",
+  "files.conflict-modal.overwrite-warning": "Следующие файлы ({count}) уже существуют на вашем сервере и будут перезаписаны при распаковке.",
+  "files.conflict-modal.overwritten-count": "Перезаписано: {count}",
+  "files.create-modal.create-button": "Создать {type}",
+  "files.create-modal.header": "Создать {type}",
+  "files.editor.find-match-count": "{current} из {total}",
+  "files.layout.selected-count": "Выбрано: {count}",
+  "files.upload.drag-and-drop.drop-to-upload": "Перетащите {type} сюда для загрузки",
+  "hosting.specs.shared-cpus": "{cpus} общих CPU",
+  "markdown-editor.max-length.value": "{currentLength}/{maxLength}",
+  "project.disclosure.derivative-work.show-more": "Показать еще {count}",
+  "sharing.invite-players-modal.friends-heading": "Ваши друзья — {count}"
 }
