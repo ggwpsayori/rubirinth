@@ -324,13 +324,7 @@ function getCategoryName(category: Category): string {
 							</span>
 						</span>
 
-						<span
-							v-if="loc.coverage"
-							v-tooltip="getCoverageTooltip(loc.coverage)"
-							class="ml-auto shrink-0 text-xs font-normal text-secondary sm:text-sm"
-						>
-							{{ loc.coverage.percentage }}%
-						</span>
+
 					</Button>
 				</template>
 			</template>
