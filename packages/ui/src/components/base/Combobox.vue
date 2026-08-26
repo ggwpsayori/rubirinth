@@ -136,7 +136,7 @@
 										:aria-selected="listbox && item.value === modelValue"
 										:aria-disabled="item.disabled || undefined"
 										:data-focused="focusedIndex === index"
-										class="group/option flex items-center gap-2.5 cursor-pointer px-4 py-3 text-left transition-all duration-150"
+										class="group/option flex items-center gap-2.5 cursor-pointer px-4 py-3 text-left transition-colors"
 										:class="getOptionClasses(item, index)"
 										tabindex="-1"
 										@mousedown.prevent
@@ -155,19 +155,19 @@
 														:is="item.icon"
 														v-if="item.icon"
 														class="h-5 w-5"
-														:class="item.value === modelValue ? 'text-green' : 'text-primary'"
+														:class="item.value === modelValue ? 'text-brand' : 'text-primary'"
 													/>
 													<div class="flex flex-col gap-1.5">
 														<span
 															class="font-semibold leading-tight"
-															:class="item.value === modelValue ? 'text-green' : 'text-primary'"
+															:class="item.value === modelValue ? 'text-brand' : 'text-primary'"
 														>
 															{{ item.label }}
 														</span>
 														<span
 															v-if="item.subLabel"
 															class="text-sm"
-															:class="item.value === modelValue ? 'text-green' : 'text-secondary'"
+															:class="item.value === modelValue ? 'text-brand' : 'text-secondary'"
 														>
 															{{ item.subLabel }}
 														</span>
@@ -460,7 +460,7 @@ function getOptionClasses(item: ComboboxOption<T> & { key: string }, _index: num
 		item.class,
 		{
 			'bg-surface-4 text-contrast hover:brightness-[115%] focus:brightness-[115%]': !isSelected,
-			'bg-highlight-green text-green hover:bg-highlight-green focus:bg-highlight-green': isSelected,
+			'bg-brand-highlight text-brand hover:bg-brand-highlight focus:bg-brand-highlight': isSelected,
 			'cursor-not-allowed opacity-50 pointer-events-none': item.disabled,
 		},
 	]
@@ -639,8 +639,8 @@ async function openDropdown() {
 	emit('open')
 
 	await nextTick()
-	await updateDropdownPosition()
-	await initializeOptionsOverlayScrollbars()
+	updateDropdownPosition()
+	initializeOptionsOverlayScrollbars()
 
 	setInitialFocus()
 	startPositionTracking()
