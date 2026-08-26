@@ -63,10 +63,12 @@ import { hasPride26Badge } from '@/helpers/user-campaigns.ts'
 import { useRootBreadcrumb } from '@/providers/breadcrumbs'
 import { appMessages } from '@/utils/app-messages'
 
+const { formatMessage } = useVIntl()
+
 useRootBreadcrumb({
 	slot: 'root',
 	id: 'skins',
-	label: 'Skin selector',
+	label: () => formatMessage(appMessages.skinSelectorLabel),
 	to: '/skins',
 	visual: { type: 'icon', component: ShirtIcon },
 })
@@ -212,7 +214,6 @@ const editSkinModal = useTemplateRef('editSkinModal')
 const addSkinFileInput = useTemplateRef<HTMLInputElement>('addSkinFileInput')
 const skinSectionList = useTemplateRef<VirtualSkinSectionListExpose>('skinSectionList')
 
-const { formatMessage } = useVIntl()
 const notifications = injectNotificationManager()
 const { addNotification, handleError } = notifications
 const auth = injectAuth()
