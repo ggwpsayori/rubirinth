@@ -58,13 +58,9 @@ const externalAuthLibraryCatalogRefreshCooldownMs = 30_000
 
 export const DEFAULT_AUTHLIB_INJECTOR_VERSIONS = [
 	'authlib-injector-1.2.8.jar',
-	'authlib-injector-1.2.7.jar',
-	'authlib-injector-1.2.6.jar',
-	'authlib-injector-1.2.5.jar',
-	'authlib-injector-1.2.4.jar',
-	'authlib-injector-1.2.3.jar',
-	'authlib-injector-1.2.2.jar',
-	'authlib-injector-1.1.30.jar',
+	'old_authlib-injector-1.2.7.jar',
+	'old_authlib-injector-1.2.6.jar',
+	'old_authlib-injector-1.2.5.jar',
 ]
 
 /** Loads provider metadata once and adapts it for account-selection controls. */

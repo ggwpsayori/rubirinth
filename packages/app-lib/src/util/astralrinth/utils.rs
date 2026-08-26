@@ -329,35 +329,19 @@ pub async fn fetch_external_auth_library_release(
         assets: vec![
             ExternalAuthLibraryAsset {
                 name: "authlib-injector-1.2.8.jar".to_string(),
-                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.8/authlib-injector-1.2.8.jar".to_string(),
+                browser_download_url: "https://xorison.dev/libs/minecraft/elyby/authlib-injector-1.2.8.jar".to_string(),
             },
             ExternalAuthLibraryAsset {
-                name: "authlib-injector-1.2.7.jar".to_string(),
-                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.7/authlib-injector-1.2.7.jar".to_string(),
+                name: "old_authlib-injector-1.2.7.jar".to_string(),
+                browser_download_url: "https://xorison.dev/libs/minecraft/elyby/old_authlib-injector-1.2.7.jar".to_string(),
             },
             ExternalAuthLibraryAsset {
-                name: "authlib-injector-1.2.6.jar".to_string(),
-                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.6/authlib-injector-1.2.6.jar".to_string(),
+                name: "old_authlib-injector-1.2.6.jar".to_string(),
+                browser_download_url: "https://xorison.dev/libs/minecraft/elyby/old_authlib-injector-1.2.6.jar".to_string(),
             },
             ExternalAuthLibraryAsset {
-                name: "authlib-injector-1.2.5.jar".to_string(),
-                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.5/authlib-injector-1.2.5.jar".to_string(),
-            },
-            ExternalAuthLibraryAsset {
-                name: "authlib-injector-1.2.4.jar".to_string(),
-                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.4/authlib-injector-1.2.4.jar".to_string(),
-            },
-            ExternalAuthLibraryAsset {
-                name: "authlib-injector-1.2.3.jar".to_string(),
-                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.3/authlib-injector-1.2.3.jar".to_string(),
-            },
-            ExternalAuthLibraryAsset {
-                name: "authlib-injector-1.2.2.jar".to_string(),
-                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.2.2/authlib-injector-1.2.2.jar".to_string(),
-            },
-            ExternalAuthLibraryAsset {
-                name: "authlib-injector-1.1.30.jar".to_string(),
-                browser_download_url: "https://github.com/yushijinhun/authlib-injector/releases/download/v1.1.30/authlib-injector-1.1.30.jar".to_string(),
+                name: "old_authlib-injector-1.2.5.jar".to_string(),
+                browser_download_url: "https://xorison.dev/libs/minecraft/elyby/old_authlib-injector-1.2.5.jar".to_string(),
             },
         ],
     })
