@@ -250,6 +250,19 @@ const messages = defineMessages({
 		id: 'instance.playtime.never-played',
 		defaultMessage: 'Never played',
 	},
+	playtimeHours: {
+		id: 'instance.playtime.hours',
+		defaultMessage: '{count, plural, one {# hour} other {# hours}}',
+	},
+	playtimeMinutes: {
+		id: 'instance.playtime.minutes',
+		defaultMessage: '{count, plural, one {# minute} other {# minutes}}',
+	},
+	playtimeSeconds: {
+		id: 'instance.playtime.seconds',
+		defaultMessage: '{count, plural, one {# second} other {# seconds}}',
+	},
+	
 	lastPlayed: {
 		id: 'instance.last-played',
 		defaultMessage: 'Last played',
@@ -358,15 +371,15 @@ const playtimeLabel = computed(() => {
 
 	const hours = Math.floor(seconds / 3600)
 	if (hours >= 1) {
-		return `${hours} hour${hours > 1 ? 's' : ''}`
+		return formatMessage(messages.playtimeHours, { count: hours })
 	}
 
 	const minutes = Math.floor(seconds / 60)
 	if (minutes >= 1) {
-		return `${minutes} minute${minutes > 1 ? 's' : ''}`
+		return formatMessage(messages.playtimeMinutes, { count: minutes })
 	}
 
-	return `${seconds} second${seconds === 1 ? '' : 's'}`
+	return formatMessage(messages.playtimeSeconds, { count: seconds })
 })
 const serverPlayOptions = computed<OverflowMenuOption[]>(() => [
 	{

@@ -4134,5 +4134,17 @@
   "instance.metadata.playtime.tooltip": {
     "message": "Total playtime",
     "defaultMessage": "Total playtime"
+  },
+  "instance.playtime.hours": {
+    "message": "{count, plural, one {# hour} other {# hours}}",
+    "defaultMessage": "{count, plural, one {# hour} other {# hours}}"
+  },
+  "instance.playtime.minutes": {
+    "message": "{count, plural, one {# minute} other {# minutes}}",
+    "defaultMessage": "{count, plural, one {# minute} other {# minutes}}"
+  },
+  "instance.playtime.seconds": {
+    "message": "{count, plural, one {# second} other {# seconds}}",
+    "defaultMessage": "{count, plural, one {# second} other {# seconds}}"
   }
 }

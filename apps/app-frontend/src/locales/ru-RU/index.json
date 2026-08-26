@@ -4134,5 +4134,17 @@
   "instance.metadata.playtime.tooltip": {
     "message": "Общее игровое время",
     "defaultMessage": "Общее игровое время"
+  },
+  "instance.playtime.hours": {
+    "message": "{count, plural, one {# час} few {# часа} many {# часов} other {# часов}}",
+    "defaultMessage": "{count, plural, one {# час} few {# часа} many {# часов} other {# часов}}"
+  },
+  "instance.playtime.minutes": {
+    "message": "{count, plural, one {# минута} few {# минуты} many {# минут} other {# минут}}",
+    "defaultMessage": "{count, plural, one {# минута} few {# минуты} many {# минут} other {# минут}}"
+  },
+  "instance.playtime.seconds": {
+    "message": "{count, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунд}}",
+    "defaultMessage": "{count, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунд}}"
   }
 }
