@@ -121,7 +121,7 @@ import {
 	take_ads_window_hold,
 } from '@/helpers/ads.js'
 import { debugAnalytics, initAnalytics, trackEvent } from '@/helpers/analytics'
-import { check_reachable } from '@/helpers/auth.js'
+import { check_reachable } from '@/helpers/auth'
 import { get_user, get_user_many, get_version } from '@/helpers/cache.js'
 import { install_create_modpack_instance, install_get_modpack_preview } from '@/helpers/install'
 import {

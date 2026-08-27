@@ -11,7 +11,7 @@ import { Admonition, Button, ButtonLink, Collapsible, IconButton, NewModal } fro
 import { computed, ref } from 'vue'
 
 import { handleSevereError } from '@/composables/use-error.js'
-import { login as login_flow, set_default_user } from '@/helpers/auth.js'
+import { login as login_flow, set_default_user } from '@/helpers/auth'
 
 import { findMinecraftAuthError, type MinecraftAuthError } from './minecraft-auth-errors'
 
