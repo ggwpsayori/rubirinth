@@ -184,6 +184,7 @@ function isOfflinePlayerNameValid(name: string) {
 async function onAccountAdded(account: MinecraftCredential) {
 	try {
 		await set_default_user(account.profile.id)
+		window.dispatchEvent(new CustomEvent('rubirinth-accounts-updated'))
 	} catch (e) {
 		handleError(e)
 	}

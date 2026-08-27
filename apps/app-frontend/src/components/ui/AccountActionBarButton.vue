@@ -344,14 +344,20 @@ useAppEvent('process', async (e) => {
 	}
 })
 
+function onAccountsUpdated() {
+	void refreshValues()
+}
+
 onMounted(() => {
 	void refreshValues()
 	void loadExternalAuthProviders().catch(handleError)
 	window.addEventListener('keydown', handleKeydown)
+	window.addEventListener('rubirinth-accounts-updated', onAccountsUpdated)
 })
 
 onUnmounted(() => {
 	window.removeEventListener('keydown', handleKeydown)
+	window.removeEventListener('rubirinth-accounts-updated', onAccountsUpdated)
 })
 
 const messages = defineMessages({

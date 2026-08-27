@@ -111,6 +111,7 @@ async function loginMinecraft() {
 
 		if (loggedIn) {
 			await set_default_user(loggedIn.profile.id).catch(handleError)
+			window.dispatchEvent(new CustomEvent('rubirinth-accounts-updated'))
 		}
 
 		await trackEvent('AccountLogIn', { source: 'ErrorModal' })

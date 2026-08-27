@@ -822,8 +822,9 @@ async function login() {
 	try {
 		const loggedIn = await login_flow().catch(handleSevereError)
 
-		if (loggedIn && accountsCard.value) {
-			await accountsCard.value.refreshValues?.()
+		if (loggedIn) {
+			window.dispatchEvent(new CustomEvent('rubirinth-accounts-updated'))
+			await accountsCard.value?.refreshValues?.()
 		}
 
 		trackEvent('AccountLogIn')

@@ -46,6 +46,7 @@ async function signInAgain() {
 		const loggedIn = await login_flow()
 		if (loggedIn) {
 			await set_default_user(loggedIn.profile.id)
+			window.dispatchEvent(new CustomEvent('rubirinth-accounts-updated'))
 		}
 		loadingSignIn.value = false
 		modal.value?.hide()
