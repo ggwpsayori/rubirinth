@@ -14,6 +14,7 @@ import {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	CompassIcon,
+	ImagesIcon,
 	LogInIcon,
 	LogOutIcon,
 	NewspaperIcon,
@@ -64,6 +65,7 @@ import { renderString } from '@modrinth/utils'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import { getVersion } from '@tauri-apps/api/app'
 import { convertFileSrc, invoke } from '@tauri-apps/api/core'
+import { listen } from '@tauri-apps/api/event'
 import { getCurrentWindow } from '@tauri-apps/api/window'
 import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { openUrl } from '@tauri-apps/plugin-opener'
@@ -123,7 +125,12 @@ import { debugAnalytics, initAnalytics, trackEvent } from '@/helpers/analytics'
 import { check_reachable } from '@/helpers/auth.js'
 import { get_user, get_user_many, get_version } from '@/helpers/cache.js'
 import { install_create_modpack_instance, install_get_modpack_preview } from '@/helpers/install'
-import { can_current_user_use_shared_instances, get as getInstance, run } from '@/helpers/instance'
+import {
+	can_current_user_use_shared_instances,
+	get as getInstance,
+	get_global_synced_options,
+	run,
+} from '@/helpers/instance'
 import {
 	get as getCreds,
 	getAll as getAllCreds,
@@ -178,7 +185,10 @@ import { generateSkinPreviews } from './helpers/rendering/batch-skin-renderer'
 import { get_available_capes, get_available_skins } from './helpers/skins'
 import { AppNotificationManager } from './providers/app-notifications'
 import { AppPopupNotificationManager } from './providers/app-popup-notifications'
-import { appSettingsModalOpenProfileKey } from './providers/app-settings-modal'
+import {
+	appSettingsModalOpenProfileKey,
+	appSettingsModalOpenSyncedOptionsKey,
+} from './providers/app-settings-modal'
 
 const appSettings = useAppSettings()
 const appTheme = useTheme()
@@ -437,6 +447,11 @@ const os = ref('')
 const isDevEnvironment = ref(false)
 
 const stateInitialized = ref(false)
+const globalSyncedOptionsQuery = useQuery({
+	queryKey: ['global-synced-options'],
+	queryFn: get_global_synced_options,
+	enabled: computed(() => stateInitialized.value),
+})
 
 const criticalErrorMessage = ref()
 
@@ -468,7 +483,24 @@ const authUnreachable = computed(() => {
 	return false
 })
 
+let unlistenEditMenu
+
+function handleEditMenuAction(action) {
+	const event = new CustomEvent(`edit-menu:${action}`, { cancelable: true })
+	if (document.dispatchEvent(event)) document.execCommand(action)
+}
+
 onMounted(async () => {
+	try {
+		const listeners = await Promise.all([
+			listen('edit-menu://undo', () => handleEditMenuAction('undo')),
+			listen('edit-menu://redo', () => handleEditMenuAction('redo')),
+		])
+		unlistenEditMenu = () => listeners.forEach((unlisten) => unlisten())
+	} catch (error) {
+		handleError(error)
+	}
+
 	await useCheckDisableMouseover()
 	try {
 		handleAdsConsentRequired(await should_show_ads_consent_popup())
@@ -489,6 +521,7 @@ onUnmounted(async () => {
 	document.querySelector('body').removeEventListener('auxclick', handleAuxClick)
 	document.querySelector('body').removeEventListener('contextmenu', handleContextMenu)
 	document.removeEventListener('fullscreenchange', handleFullscreenChange)
+	unlistenEditMenu?.()
 	clearDelayedUpdatePopup()
 
 	if (fullscreenAdsWindowHold) {
@@ -555,6 +588,10 @@ const messages = defineMessages({
 	modrinthHosting: {
 		id: 'app.nav.modrinth-hosting',
 		defaultMessage: 'Modrinth Hosting',
+	},
+	screenshots: {
+		id: 'app.nav.screenshots',
+		defaultMessage: 'Screenshots',
 	},
 	createNewInstance: {
 		id: 'app.nav.create-new-instance',
@@ -989,6 +1026,7 @@ const updateToPlayModal = ref()
 const modrinthLoginModal = ref()
 const appSettingsModal = ref()
 provide(appSettingsModalOpenProfileKey, () => appSettingsModal.value?.showProfile())
+provide(appSettingsModalOpenSyncedOptionsKey, () => appSettingsModal.value?.showSyncedOptions())
 
 watch(incompatibilityWarningModal, (modal) => {
 	if (modal) {
@@ -1997,7 +2035,13 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			<NavButton v-tooltip.right="formatMessage(appMessages.skinSelectorLabel)" to="/skins">
 				<ShirtIcon />
 			</NavButton>
-			
+			<NavButton
+				v-if="globalSyncedOptionsQuery.data.value?.screenshots"
+				v-tooltip.right="formatMessage(messages.screenshots)"
+				to="/screenshots"
+			>
+				<ImagesIcon />
+			</NavButton>
 			<suspense>
 				<QuickInstanceSwitcher />
 			</suspense>

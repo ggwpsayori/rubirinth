@@ -1,1785 +1,1350 @@
 {
   "app.action-bar.downloading-java": {
-    "message": "Downloading Java {version}",
-    "defaultMessage": "Downloading Java {version}"
+    "message": "Downloading Java {version}"
   },
   "app.action-bar.downloading-update": {
-    "message": "Downloading update",
-    "defaultMessage": "Downloading update"
+    "message": "Downloading update"
   },
   "app.action-bar.downloads": {
-    "message": "Downloads",
-    "defaultMessage": "Downloads"
+    "message": "Downloads"
   },
   "app.action-bar.hide-downloads": {
-    "message": "Hide active downloads",
-    "defaultMessage": "Hide active downloads"
+    "message": "Hide active downloads"
   },
   "app.action-bar.hide-more-running-instances": {
-    "message": "Hide more running instances",
-    "defaultMessage": "Hide more running instances"
+    "message": "Hide more running instances"
   },
   "app.action-bar.install.copied-details": {
-    "message": "Copied",
-    "defaultMessage": "Copied"
+    "message": "Copied"
   },
   "app.action-bar.install.copy-details": {
-    "message": "Copy details",
-    "defaultMessage": "Copy details"
+    "message": "Copy details"
   },
   "app.action-bar.install.dismiss": {
-    "message": "Dismiss",
-    "defaultMessage": "Dismiss"
+    "message": "Dismiss"
   },
   "app.action-bar.install.open-instance": {
-    "message": "Open instance",
-    "defaultMessage": "Open instance"
+    "message": "Open instance"
   },
   "app.action-bar.install.retry": {
-    "message": "Retry",
-    "defaultMessage": "Retry"
+    "message": "Retry"
   },
   "app.action-bar.install.summary.app-closing": {
-    "message": "Canceled due to app closing",
-    "defaultMessage": "Canceled due to app closing"
+    "message": "Canceled due to app closing"
   },
   "app.action-bar.install.summary.bad-modpack-file": {
-    "message": "Couldn't read modpack",
-    "defaultMessage": "Couldn't read modpack"
+    "message": "Couldn't read modpack"
   },
   "app.action-bar.install.summary.canceled": {
-    "message": "Canceled",
-    "defaultMessage": "Canceled"
+    "message": "Canceled"
   },
   "app.action-bar.install.summary.cleanup-incomplete": {
-    "message": "Cleanup didn't finish",
-    "defaultMessage": "Cleanup didn't finish"
+    "message": "Cleanup didn't finish"
   },
   "app.action-bar.install.summary.content-download-failed": {
-    "message": "Couldn't download files",
-    "defaultMessage": "Couldn't download files"
+    "message": "Couldn't download files"
   },
   "app.action-bar.install.summary.corrupt-download": {
-    "message": "Downloaded file is corrupt",
-    "defaultMessage": "Downloaded file is corrupt"
+    "message": "Downloaded file is corrupt"
   },
   "app.action-bar.install.summary.could-not-save-files": {
-    "message": "Couldn't save files",
-    "defaultMessage": "Couldn't save files"
+    "message": "Couldn't save files"
   },
   "app.action-bar.install.summary.download-failed": {
-    "message": "Download couldn't finish",
-    "defaultMessage": "Download couldn't finish"
+    "message": "Download couldn't finish"
   },
   "app.action-bar.install.summary.instance-not-found": {
-    "message": "Instance couldn't be found",
-    "defaultMessage": "Instance couldn't be found"
+    "message": "Instance couldn't be found"
   },
   "app.action-bar.install.summary.invalid-file-path": {
-    "message": "File path is invalid",
-    "defaultMessage": "File path is invalid"
+    "message": "File path is invalid"
   },
   "app.action-bar.install.summary.invalid-modpack": {
-    "message": "Modpack data invalid",
-    "defaultMessage": "Modpack data invalid"
+    "message": "Modpack data invalid"
   },
   "app.action-bar.install.summary.invalid-modpack-files": {
-    "message": "Modpack files have invalid metadata",
-    "defaultMessage": "Modpack files have invalid metadata"
+    "message": "Modpack files have invalid metadata"
   },
   "app.action-bar.install.summary.java-setup-failed": {
-    "message": "Java setup couldn't finish",
-    "defaultMessage": "Java setup couldn't finish"
+    "message": "Java setup couldn't finish"
   },
   "app.action-bar.install.summary.loader-setup-failed": {
-    "message": "Loader setup failed",
-    "defaultMessage": "Loader setup failed"
+    "message": "Loader setup failed"
   },
   "app.action-bar.install.summary.local-data-error": {
-    "message": "Couldn't update local data",
-    "defaultMessage": "Couldn't update local data"
+    "message": "Couldn't update local data"
   },
   "app.action-bar.install.summary.minecraft-setup-failed": {
-    "message": "Minecraft setup failed",
-    "defaultMessage": "Minecraft setup failed"
+    "message": "Minecraft setup failed"
   },
   "app.action-bar.install.summary.modrinth-unreachable": {
-    "message": "Couldn't reach Modrinth",
-    "defaultMessage": "Couldn't reach Modrinth"
+    "message": "Couldn't reach Modrinth"
   },
   "app.action-bar.install.summary.no-write-permission": {
-    "message": "No permission to write",
-    "defaultMessage": "No permission to write"
+    "message": "No permission to write"
   },
   "app.action-bar.install.summary.pack-download-failed": {
-    "message": "Couldn't download pack",
-    "defaultMessage": "Couldn't download pack"
+    "message": "Couldn't download pack"
   },
   "app.action-bar.install.summary.unexpected-error": {
-    "message": "Something went wrong",
-    "defaultMessage": "Something went wrong"
+    "message": "Something went wrong"
   },
   "app.action-bar.install.unknown-instance": {
-    "message": "Unknown instance",
-    "defaultMessage": "Unknown instance"
+    "message": "Unknown instance"
   },
   "app.action-bar.install.updating-shared-content": {
-    "message": "Updating shared content",
-    "defaultMessage": "Updating shared content"
+    "message": "Updating shared content"
   },
   "app.action-bar.installs": {
-    "message": "Installs",
-    "defaultMessage": "Installs"
+    "message": "Installs"
   },
   "app.action-bar.make-primary-instance": {
-    "message": "Make primary instance",
-    "defaultMessage": "Make primary instance"
+    "message": "Make primary instance"
   },
   "app.action-bar.no-instances-running": {
-    "message": "No instances running",
-    "defaultMessage": "No instances running"
+    "message": "No instances running"
   },
   "app.action-bar.offline": {
-    "message": "Offline",
-    "defaultMessage": "Offline"
+    "message": "Offline"
   },
   "app.action-bar.primary-instance": {
-    "message": "Primary instance",
-    "defaultMessage": "Primary instance"
+    "message": "Primary instance"
   },
   "app.action-bar.reload-to-update": {
-    "message": "Reload to update",
-    "defaultMessage": "Reload to update"
+    "message": "Reload to update"
   },
   "app.action-bar.show-downloads": {
-    "message": "Show active downloads",
-    "defaultMessage": "Show active downloads"
+    "message": "Show active downloads"
   },
   "app.action-bar.show-more-running-instances": {
-    "message": "Show more running instances",
-    "defaultMessage": "Show more running instances"
+    "message": "Show more running instances"
   },
   "app.action-bar.stop-instance": {
-    "message": "Stop instance",
-    "defaultMessage": "Stop instance"
+    "message": "Stop instance"
   },
   "app.action-bar.update": {
-    "message": "Update",
-    "defaultMessage": "Update"
+    "message": "Update"
   },
   "app.action-bar.view-active-downloads": {
-    "message": "View active downloads",
-    "defaultMessage": "View active downloads"
+    "message": "View active downloads"
   },
   "app.action-bar.view-instance": {
-    "message": "View instance",
-    "defaultMessage": "View instance"
+    "message": "View instance"
   },
   "app.action-bar.view-logs": {
-    "message": "View logs",
-    "defaultMessage": "View logs"
+    "message": "View logs"
   },
   "app.ads-consent.accept": {
-    "message": "Accept all",
-    "defaultMessage": "Accept all"
+    "message": "Accept all"
   },
   "app.ads-consent.body": {
-    "message": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance.",
-    "defaultMessage": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance."
+    "message": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance."
   },
   "app.ads-consent.manage": {
-    "message": "Manage preferences",
-    "defaultMessage": "Manage preferences"
+    "message": "Manage preferences"
   },
   "app.ads-consent.reject": {
-    "message": "Reject all",
-    "defaultMessage": "Reject all"
+    "message": "Reject all"
   },
   "app.ads-consent.title": {
-    "message": "Your privacy and how ads support Modrinth",
-    "defaultMessage": "Your privacy and how ads support Modrinth"
+    "message": "Your privacy and how ads support Modrinth"
   },
   "app.appearance-settings.compact-mode.description": {
-    "message": "Display library instances in a compact row layout.",
-    "defaultMessage": "Display library instances in a compact row layout."
+    "message": "Display library instances in a compact row layout."
   },
   "app.appearance-settings.compact-mode.title": {
-    "message": "Compact mode",
-    "defaultMessage": "Compact mode"
+    "message": "Compact mode"
   },
   "app.appearance-settings.default-landing-page.home": {
-    "message": "Home",
-    "defaultMessage": "Home"
+    "message": "Home"
   },
   "app.appearance-settings.default-landing-page.library": {
-    "message": "Library",
-    "defaultMessage": "Library"
+    "message": "Library"
   },
   "app.appearance-settings.hide-nametag.description": {
-    "message": "Hide your username above the player preview on the Skin selector page.",
-    "defaultMessage": "Hide your username above the player preview on the Skin selector page."
+    "message": "Hide your username above the player preview on the Skin selector page."
   },
   "app.appearance-settings.hide-nametag.title": {
-    "message": "Hide nametag",
-    "defaultMessage": "Hide nametag"
+    "message": "Hide nametag"
   },
   "app.appearance-settings.jump-back-into-worlds.description": {
-    "message": "Show recently played worlds or instances in the \"Jump in\" section on the Home page.",
-    "defaultMessage": "Show recently played worlds or instances in the \"Jump in\" section on the Home page."
+    "message": "Show recently played worlds or instances in the \"Jump in\" section on the Home page."
   },
   "app.appearance-settings.jump-back-into-worlds.title": {
-    "message": "Jump into worlds or instances",
-    "defaultMessage": "Jump into worlds or instances"
+    "message": "Jump into worlds or instances"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "Minimize Rubirinth App when Minecraft starts.",
-    "defaultMessage": "Minimize Rubirinth App when Minecraft starts."
+    "message": "Minimize Modrinth App when Minecraft starts."
   },
   "app.appearance-settings.minimize-launcher.title": {
-    "message": "Minimize app",
-    "defaultMessage": "Minimize app"
+    "message": "Minimize app"
   },
   "app.appearance-settings.show-play-time.description": {
-    "message": "Show how long you've played each instance.",
-    "defaultMessage": "Show how long you've played each instance."
+    "message": "Show how long you've played each instance."
   },
   "app.appearance-settings.show-play-time.title": {
-    "message": "Show play time",
-    "defaultMessage": "Show play time"
+    "message": "Show play time"
   },
   "app.appearance-settings.skip-non-essential-warnings.description": {
-    "message": "Skip confirmations for low-risk actions such as duplicate installs, normal content deletion, bulk updates, unlinking, and repairs. Warnings for dangerous actions are always shown.",
-    "defaultMessage": "Skip confirmations for low-risk actions such as duplicate installs, normal content deletion, bulk updates, unlinking, and repairs. Warnings for dangerous actions are always shown."
+    "message": "Skip confirmations for low-risk actions such as duplicate installs, normal content deletion, bulk updates, unlinking, and repairs. Warnings for dangerous actions are always shown."
   },
   "app.appearance-settings.skip-non-essential-warnings.title": {
-    "message": "Skip non-essential warnings",
-    "defaultMessage": "Skip non-essential warnings"
+    "message": "Skip non-essential warnings"
   },
   "app.appearance-settings.toggle-sidebar.description": {
-    "message": "Hide the right sidebar by default and add a button to show or hide it.",
-    "defaultMessage": "Hide the right sidebar by default and add a button to show or hide it."
+    "message": "Hide the right sidebar by default and add a button to show or hide it."
   },
   "app.appearance-settings.toggle-sidebar.title": {
-    "message": "Hide right sidebar",
-    "defaultMessage": "Hide right sidebar"
+    "message": "Hide right sidebar"
   },
   "app.appearance-settings.unknown-pack-warning.description": {
-    "message": "Show a safety warning before installing a Modrinth Pack (.mrpack) that isn't hosted on Modrinth.",
-    "defaultMessage": "Show a safety warning before installing a Modrinth Pack (.mrpack) that isn't hosted on Modrinth."
+    "message": "Show a safety warning before installing a Modrinth Pack (.mrpack) that isn't hosted on Modrinth."
   },
   "app.appearance-settings.unknown-pack-warning.title": {
-    "message": "Warn me before installing unknown modpacks",
-    "defaultMessage": "Warn me before installing unknown modpacks"
+    "message": "Warn me before installing unknown modpacks"
   },
   "app.auth-servers.unreachable.body": {
-    "message": "Minecraft authentication servers may be down right now. Check your internet connection and try again later.",
-    "defaultMessage": "Minecraft authentication servers may be down right now. Check your internet connection and try again later."
+    "message": "Minecraft authentication servers may be down right now. Check your internet connection and try again later."
   },
   "app.auth-servers.unreachable.header": {
-    "message": "Cannot reach authentication servers",
-    "defaultMessage": "Cannot reach authentication servers"
+    "message": "Cannot reach authentication servers"
   },
   "app.behavior-settings.confirmations.title": {
-    "message": "Confirmations",
-    "defaultMessage": "Confirmations"
+    "message": "Confirmations"
   },
   "app.behavior-settings.content.title": {
-    "message": "Home and content",
-    "defaultMessage": "Home and content"
+    "message": "Home and content"
   },
   "app.behavior-settings.startup-and-navigation.title": {
-    "message": "Startup and navigation",
-    "defaultMessage": "Startup and navigation"
+    "message": "Startup and navigation"
   },
   "app.behavior-settings.sync-across-devices.description": {
-    "message": "Use these behavior settings everywhere you're signed in. Turn this off to keep separate settings on this device.",
-    "defaultMessage": "Use these behavior settings everywhere you're signed in. Turn this off to keep separate settings on this device."
+    "message": "Use these behavior settings everywhere you're signed in. Turn this off to keep separate settings on this device."
   },
   "app.behavior-settings.sync-across-devices.signed-out-tooltip": {
-    "message": "Sign into a Modrinth account to sync settings.",
-    "defaultMessage": "Sign into a Modrinth account to sync settings."
+    "message": "Sign into a Modrinth account to sync settings."
   },
   "app.behavior-settings.sync-across-devices.title": {
-    "message": "Sync behavior across devices",
-    "defaultMessage": "Sync behavior across devices"
+    "message": "Sync behavior across devices"
   },
   "app.browse.add-servers-to-instance": {
-    "message": "Adding server to instance",
-    "defaultMessage": "Adding server to instance"
+    "message": "Adding server to instance"
   },
   "app.browse.add-to-an-instance": {
-    "message": "Add to an instance",
-    "defaultMessage": "Add to an instance"
+    "message": "Add to an instance"
   },
   "app.browse.add-to-instance": {
-    "message": "Add to instance",
-    "defaultMessage": "Add to instance"
+    "message": "Add to instance"
   },
   "app.browse.add-to-instance-name": {
-    "message": "Add to {instanceName}",
-    "defaultMessage": "Add to {instanceName}"
+    "message": "Add to {instanceName}"
   },
   "app.browse.added": {
-    "message": "Added",
-    "defaultMessage": "Added"
+    "message": "Added"
   },
   "app.browse.already-added": {
-    "message": "Already added",
-    "defaultMessage": "Already added"
+    "message": "Already added"
   },
   "app.browse.back-to-instance": {
-    "message": "Back to instance",
-    "defaultMessage": "Back to instance"
+    "message": "Back to instance"
   },
   "app.browse.discover-project-type": {
-    "message": "Discover {projectType}",
-    "defaultMessage": "Discover {projectType}"
+    "message": "Discover {projectType}"
   },
   "app.browse.discover-servers": {
-    "message": "Discover servers",
-    "defaultMessage": "Discover servers"
+    "message": "Discover servers"
   },
   "app.browse.hide-added-servers": {
-    "message": "Hide servers already added",
-    "defaultMessage": "Hide servers already added"
+    "message": "Hide servers already added"
   },
   "app.browse.hide-installed-modpacks": {
-    "message": "Hide already installed",
-    "defaultMessage": "Hide already installed"
+    "message": "Hide already installed"
   },
   "app.browse.project-actions.label": {
     "message": "Project actions"
   },
   "app.browse.project-type.data-packs": {
-    "message": "Data Packs",
-    "defaultMessage": "Data Packs"
+    "message": "Data Packs"
   },
   "app.browse.project-type.modpacks": {
-    "message": "Modpacks",
-    "defaultMessage": "Modpacks"
+    "message": "Modpacks"
   },
   "app.browse.project-type.mods": {
-    "message": "Mods",
-    "defaultMessage": "Mods"
+    "message": "Mods"
   },
   "app.browse.project-type.resource-packs": {
-    "message": "Resource Packs",
-    "defaultMessage": "Resource Packs"
+    "message": "Resource Packs"
   },
   "app.browse.project-type.servers": {
-    "message": "Servers",
-    "defaultMessage": "Servers"
+    "message": "Servers"
   },
   "app.browse.project-type.shaders": {
-    "message": "Shaders",
-    "defaultMessage": "Shaders"
+    "message": "Shaders"
   },
   "app.browse.server-instance-content-warning": {
-    "message": "Adding content may prevent you from joining this server. Any content you add will be removed when the managed server content is updated.",
-    "defaultMessage": "Adding content may prevent you from joining this server. Any content you add will be removed when the managed server content is updated."
+    "message": "Adding content may prevent you from joining this server. Any content you add will be removed when the managed server content is updated."
   },
   "app.browse.server.installing": {
-    "message": "Installing",
-    "defaultMessage": "Installing"
+    "message": "Installing"
   },
   "app.content-install.no-compatible-versions": {
-    "message": "No available versions match {compatibilityLabel}. Select a version to install anyway. Dependencies will not be installed automatically.",
-    "defaultMessage": "No available versions match {compatibilityLabel}. Select a version to install anyway. Dependencies will not be installed automatically."
+    "message": "No available versions match {compatibilityLabel}. Select a version to install anyway. Dependencies will not be installed automatically."
   },
   "app.error.state-init.open-backups-folder": {
     "message": "Open backups folder"
   },
   "app.export-modal.description-placeholder": {
-    "message": "Enter modpack description...",
-    "defaultMessage": "Enter modpack description..."
+    "message": "Enter modpack description..."
   },
   "app.export-modal.export-button": {
-    "message": "Export",
-    "defaultMessage": "Export"
+    "message": "Export"
   },
   "app.export-modal.export-complete": {
-    "message": "Export complete",
-    "defaultMessage": "Export complete"
+    "message": "Export complete"
   },
   "app.export-modal.export-complete-description": {
-    "message": "{name} was exported successfully.",
-    "defaultMessage": "{name} was exported successfully."
+    "message": "{name} was exported successfully."
   },
   "app.export-modal.header": {
-    "message": "Export modpack",
-    "defaultMessage": "Export modpack"
+    "message": "Export modpack"
   },
   "app.export-modal.modpack-name-label": {
-    "message": "Modpack name",
-    "defaultMessage": "Modpack name"
+    "message": "Modpack name"
   },
   "app.export-modal.modpack-name-placeholder": {
-    "message": "Modpack name",
-    "defaultMessage": "Modpack name"
+    "message": "Modpack name"
   },
   "app.export-modal.version-number-label": {
-    "message": "Version number",
-    "defaultMessage": "Version number"
+    "message": "Version number"
   },
   "app.export-modal.version-number-placeholder": {
-    "message": "1.0.0",
-    "defaultMessage": "1.0.0"
+    "message": "1.0.0"
   },
   "app.home.jump-back-in.actions.label": {
     "message": "Instance actions"
   },
   "app.home.jump-back-in.instance-locked": {
-    "message": "This instance has been locked",
-    "defaultMessage": "This instance has been locked"
+    "message": "This instance has been locked"
   },
   "app.home.jump-back-in.instance-open": {
-    "message": "Instance is already open",
-    "defaultMessage": "Instance is already open"
+    "message": "Instance is already open"
   },
   "app.home.jump-back-in.more-options": {
-    "message": "More options",
-    "defaultMessage": "More options"
+    "message": "More options"
   },
   "app.home.jump-back-in.never-played": {
-    "message": "Never played",
-    "defaultMessage": "Never played"
+    "message": "Never played"
   },
   "app.home.jump-back-in.new-instance": {
-    "message": "New instance",
-    "defaultMessage": "New instance"
+    "message": "New instance"
   },
   "app.home.jump-back-in.resize": {
-    "message": "Drag to resize",
-    "defaultMessage": "Drag to resize"
+    "message": "Drag to resize"
   },
   "app.home.jump-back-in.title": {
-    "message": "Jump in",
-    "defaultMessage": "Jump in"
+    "message": "Jump in"
   },
   "app.home.jump-back-in.view-instance": {
-    "message": "View instance",
-    "defaultMessage": "View instance"
+    "message": "View instance"
   },
   "app.hosting.update-required.description": {
-    "message": "You need to update to use Modrinth Hosting through the Rubirinth App",
-    "defaultMessage": "You need to update to use Modrinth Hosting through the Rubirinth App"
+    "message": "You need to update to use Modrinth Hosting through the Modrinth App"
   },
   "app.hosting.update-required.download": {
-    "message": "Download to update",
-    "defaultMessage": "Download to update"
+    "message": "Download to update"
   },
   "app.hosting.update-required.rinthbot-alt": {
-    "message": "Excited Modrinth Bot",
-    "defaultMessage": "Excited Modrinth Bot"
+    "message": "Excited Modrinth Bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Rubirinth App update required",
-    "defaultMessage": "Rubirinth App update required"
+    "message": "Modrinth App update required"
   },
   "app.icon-editor.apply-icons-modal.apply-error": {
-    "message": "Failed to apply random icons to instances.",
-    "defaultMessage": "Failed to apply random icons to instances."
+    "message": "Failed to apply random icons to instances."
   },
   "app.icon-editor.apply-icons-modal.apply-success": {
-    "message": "Randomized icon for {num, plural, one {# instance} other {# instances}}.",
-    "defaultMessage": "Randomized icon for {num, plural, one {# instance} other {# instances}}."
+    "message": "Randomized icon for {num, plural, one {# instance} other {# instances}}."
   },
   "app.icon-editor.apply-icons-modal.badge": {
-    "message": "New this update",
-    "defaultMessage": "New this update"
+    "message": "New this update"
   },
   "app.icon-editor.apply-icons-modal.close": {
-    "message": "Close",
-    "defaultMessage": "Close"
+    "message": "Close"
   },
   "app.icon-editor.apply-icons-modal.description": {
-    "message": "Create custom icons for your instances right in the Rubirinth App. Mix and match backgrounds with symbols from Minecraft and popular mods!",
-    "defaultMessage": "Create custom icons for your instances right in the Rubirinth App. Mix and match backgrounds with symbols from Minecraft and popular mods!"
+    "message": "Create custom icons for your instances right in the Modrinth App. Mix and match backgrounds with symbols from Minecraft and popular mods!"
   },
   "app.icon-editor.apply-icons-modal.instances-without-icons": {
-    "message": "{count, plural, one {# instance doesn’t} other {# instances don’t}} have icons yet. Want us to give {count, plural, one {it} other {them}} random ones to get started?",
-    "defaultMessage": "{count, plural, one {# instance doesn’t} other {# instances don’t}} have icons yet. Want us to give {count, plural, one {it} other {them}} random ones to get started?"
+    "message": "{count, plural, one {# instance doesn’t} other {# instances don’t}} have icons yet. Want us to give {count, plural, one {it} other {them}} random ones to get started?"
   },
   "app.icon-editor.apply-icons-modal.random-icons": {
-    "message": "Random icons",
-    "defaultMessage": "Random icons"
+    "message": "Random icons"
   },
   "app.icon-editor.apply-icons-modal.skip": {
-    "message": "Skip",
-    "defaultMessage": "Skip"
+    "message": "Skip"
   },
   "app.icon-editor.apply-icons-modal.title": {
-    "message": "Custom icon editor",
-    "defaultMessage": "Custom icon editor"
+    "message": "Custom icon editor"
   },
   "app.icon-editor.notification.close": {
-    "message": "Close",
-    "defaultMessage": "Close"
+    "message": "Close"
   },
   "app.icon-editor.notification.description": {
-    "message": "Personalize your instances!",
-    "defaultMessage": "Personalize your instances!"
+    "message": "Personalize your instances!"
   },
   "app.icon-editor.notification.dismiss": {
-    "message": "Dismiss",
-    "defaultMessage": "Dismiss"
+    "message": "Dismiss"
   },
   "app.icon-editor.notification.title": {
-    "message": "New icon editor",
-    "defaultMessage": "New icon editor"
+    "message": "New icon editor"
   },
   "app.icon-editor.notification.view-update": {
-    "message": "View update",
-    "defaultMessage": "View update"
+    "message": "View update"
   },
   "app.install.phase.downloading_content": {
-    "message": "Downloading content",
-    "defaultMessage": "Downloading content"
+    "message": "Downloading content"
   },
   "app.install.phase.downloading_minecraft": {
-    "message": "Downloading Minecraft",
-    "defaultMessage": "Downloading Minecraft"
+    "message": "Downloading Minecraft"
   },
   "app.install.phase.downloading_pack_file": {
-    "message": "Downloading pack file",
-    "defaultMessage": "Downloading pack file"
+    "message": "Downloading pack file"
   },
   "app.install.phase.extracting_overrides": {
-    "message": "Extracting overrides",
-    "defaultMessage": "Extracting overrides"
+    "message": "Extracting overrides"
   },
   "app.install.phase.finalizing": {
-    "message": "Finalizing",
-    "defaultMessage": "Finalizing"
+    "message": "Finalizing"
   },
   "app.install.phase.preparing_instance": {
-    "message": "Queued to install",
-    "defaultMessage": "Queued to install"
+    "message": "Queued to install"
   },
   "app.install.phase.preparing_java": {
-    "message": "Preparing Java",
-    "defaultMessage": "Preparing Java"
+    "message": "Preparing Java"
   },
   "app.install.phase.preparing_java.downloading": {
-    "message": "Downloading Java {version}",
-    "defaultMessage": "Downloading Java {version}"
+    "message": "Downloading Java {version}"
   },
   "app.install.phase.preparing_java.extracting": {
-    "message": "Extracting Java {version}",
-    "defaultMessage": "Extracting Java {version}"
+    "message": "Extracting Java {version}"
   },
   "app.install.phase.preparing_java.fetching-metadata": {
-    "message": "Fetching Java {version}",
-    "defaultMessage": "Fetching Java {version}"
+    "message": "Fetching Java {version}"
   },
   "app.install.phase.preparing_java.resolving": {
-    "message": "Preparing Java {version}",
-    "defaultMessage": "Preparing Java {version}"
+    "message": "Preparing Java {version}"
   },
   "app.install.phase.preparing_java.validating": {
-    "message": "Validating Java {version}",
-    "defaultMessage": "Validating Java {version}"
+    "message": "Validating Java {version}"
   },
   "app.install.phase.reading_pack_manifest": {
-    "message": "Reading pack manifest",
-    "defaultMessage": "Reading pack manifest"
+    "message": "Reading pack manifest"
   },
   "app.install.phase.resolving_loader": {
-    "message": "Resolving loader",
-    "defaultMessage": "Resolving loader"
+    "message": "Resolving loader"
   },
   "app.install.phase.resolving_minecraft": {
-    "message": "Resolving Minecraft",
-    "defaultMessage": "Resolving Minecraft"
+    "message": "Resolving Minecraft"
   },
   "app.install.phase.resolving_pack": {
-    "message": "Resolving content",
-    "defaultMessage": "Resolving content"
+    "message": "Resolving content"
   },
   "app.install.phase.rolling_back": {
-    "message": "Rolling back",
-    "defaultMessage": "Rolling back"
+    "message": "Rolling back"
   },
   "app.install.phase.running_loader_processors": {
-    "message": "Running loader processors",
-    "defaultMessage": "Running loader processors"
+    "message": "Running loader processors"
   },
   "app.instance.action.add-content": {
-    "message": "Add content",
-    "defaultMessage": "Add content"
+    "message": "Add content"
   },
   "app.instance.action.copy-path": {
-    "message": "Copy path",
-    "defaultMessage": "Copy path"
+    "message": "Copy path"
   },
   "app.instance.action.edit": {
-    "message": "Edit",
-    "defaultMessage": "Edit"
+    "message": "Edit"
   },
   "app.instance.action.open-folder": {
-    "message": "Open folder",
-    "defaultMessage": "Open folder"
+    "message": "Open folder"
   },
   "app.instance.action.play": {
-    "message": "Play",
-    "defaultMessage": "Play"
+    "message": "Play"
   },
   "app.instance.action.stop": {
-    "message": "Stop",
-    "defaultMessage": "Stop"
+    "message": "Stop"
   },
   "app.instance.actions.label": {
     "message": "Instance actions"
   },
   "app.instance.add-server.add": {
-    "message": "Add",
-    "defaultMessage": "Add"
+    "message": "Add"
   },
   "app.instance.add-server.added": {
-    "message": "Added",
-    "defaultMessage": "Added"
+    "message": "Added"
   },
   "app.instance.add-server.adding": {
-    "message": "Adding...",
-    "defaultMessage": "Adding..."
+    "message": "Adding..."
   },
   "app.instance.add-server.cancel": {
-    "message": "Cancel",
-    "defaultMessage": "Cancel"
+    "message": "Cancel"
   },
   "app.instance.add-server.compatibility-warning": {
-    "message": "This server may not be compatible with all instances.",
-    "defaultMessage": "This server may not be compatible with all instances."
+    "message": "This server may not be compatible with all instances."
   },
   "app.instance.add-server.search-placeholder": {
-    "message": "Search for an instance",
-    "defaultMessage": "Search for an instance"
+    "message": "Search for an instance"
   },
   "app.instance.add-server.title": {
-    "message": "Add server to instance",
-    "defaultMessage": "Add server to instance"
+    "message": "Add server to instance"
   },
   "app.instance.admonitions.shared-instance.added-label": {
-    "message": "Added",
-    "defaultMessage": "Added"
+    "message": "Added"
   },
   "app.instance.admonitions.shared-instance.changes-body": {
-    "message": "Your local instance is ahead of the users you've shared it with.",
-    "defaultMessage": "Your local instance is ahead of the users you've shared it with."
+    "message": "Your local instance is ahead of the users you've shared it with."
   },
   "app.instance.admonitions.shared-instance.changes-header": {
-    "message": "Your changes haven't been shared yet",
-    "defaultMessage": "Your changes haven't been shared yet"
+    "message": "Your changes haven't been shared yet"
   },
   "app.instance.admonitions.shared-instance.publish-button": {
-    "message": "Push update",
-    "defaultMessage": "Push update"
+    "message": "Push update"
   },
   "app.instance.admonitions.shared-instance.publishing-button": {
-    "message": "Pushing...",
-    "defaultMessage": "Pushing..."
+    "message": "Pushing..."
   },
   "app.instance.admonitions.shared-instance.removed-label": {
-    "message": "Removed",
-    "defaultMessage": "Removed"
+    "message": "Removed"
   },
   "app.instance.admonitions.shared-instance.review-admonition-header": {
-    "message": "Push update",
-    "defaultMessage": "Push update"
+    "message": "Push update"
   },
   "app.instance.admonitions.shared-instance.review-description": {
-    "message": "Review the content changes that will be shared with everyone using this instance.",
-    "defaultMessage": "Review the content changes that will be shared with everyone using this instance."
+    "message": "Review the content changes that will be shared with everyone using this instance."
   },
   "app.instance.admonitions.shared-instance.review-header": {
-    "message": "Review changes",
-    "defaultMessage": "Review changes"
+    "message": "Review changes"
   },
   "app.instance.admonitions.shared-instance.reviewing-button": {
-    "message": "Reviewing...",
-    "defaultMessage": "Reviewing..."
+    "message": "Reviewing..."
   },
   "app.instance.card.icon-alt": {
-    "message": "Instance icon",
-    "defaultMessage": "Instance icon"
+    "message": "Instance icon"
   },
   "app.instance.card.installing": {
-    "message": "Installing...",
-    "defaultMessage": "Installing..."
+    "message": "Installing..."
   },
   "app.instance.card.loading": {
-    "message": "Instance is loading...",
-    "defaultMessage": "Instance is loading..."
+    "message": "Instance is loading..."
   },
   "app.instance.card.never-played": {
-    "message": "Never played",
-    "defaultMessage": "Never played"
+    "message": "Never played"
   },
   "app.instance.card.play": {
-    "message": "Play",
-    "defaultMessage": "Play"
+    "message": "Play"
   },
   "app.instance.card.played": {
-    "message": "Played {relativeTime}",
-    "defaultMessage": "Played {relativeTime}"
+    "message": "Played {relativeTime}"
   },
   "app.instance.card.repair": {
-    "message": "Repair",
-    "defaultMessage": "Repair"
+    "message": "Repair"
   },
   "app.instance.card.stop": {
-    "message": "Stop",
-    "defaultMessage": "Stop"
+    "message": "Stop"
   },
   "app.instance.confirm-delete.admonition-body": {
-    "message": "All data for your instance will be permanently deleted, including your worlds, configs, and all installed content.",
-    "defaultMessage": "All data for your instance will be permanently deleted, including your worlds, configs, and all installed content."
+    "message": "All data for your instance will be permanently deleted, including your worlds, configs, and all installed content."
   },
   "app.instance.confirm-delete.admonition-header": {
-    "message": "This action cannot be undone",
-    "defaultMessage": "This action cannot be undone"
+    "message": "This action cannot be undone"
   },
   "app.instance.confirm-delete.bulk-admonition-body": {
-    "message": "All data for these {count} instances will be permanently deleted, including their worlds, configs, and all installed content.",
-    "defaultMessage": "All data for these {count} instances will be permanently deleted, including their worlds, configs, and all installed content."
+    "message": "All data for these {count} instances will be permanently deleted, including their worlds, configs, and all installed content."
   },
   "app.instance.confirm-delete.bulk-delete-button": {
-    "message": "Delete {count} instances",
-    "defaultMessage": "Delete {count} instances"
+    "message": "Delete {count} instances"
   },
   "app.instance.confirm-delete.bulk-header": {
-    "message": "Delete {count} instances",
-    "defaultMessage": "Delete {count} instances"
+    "message": "Delete {count} instances"
   },
   "app.instance.confirm-delete.delete-button": {
-    "message": "Delete instance",
-    "defaultMessage": "Delete instance"
+    "message": "Delete instance"
   },
   "app.instance.confirm-delete.header": {
-    "message": "Delete instance",
-    "defaultMessage": "Delete instance"
+    "message": "Delete instance"
   },
   "app.instance.confirm-delete.instances-label": {
-    "message": "{count, plural, one {Instance} other {Instances ({count})}}",
-    "defaultMessage": "{count, plural, one {Instance} other {Instances ({count})}}"
+    "message": "{count, plural, one {Instance} other {Instances ({count})}}"
   },
   "app.instance.content.managed-content.modpack-header": {
-    "message": "Modpack content",
-    "defaultMessage": "Modpack content"
+    "message": "Modpack content"
   },
   "app.instance.content.managed-content.shared-header": {
-    "message": "Shared content",
-    "defaultMessage": "Shared content"
+    "message": "Shared content"
   },
   "app.instance.modpack-already-installed.body": {
-    "message": "This modpack is already installed in the <bold>{instanceName}</bold> instance. Are you sure you want to duplicate it?",
-    "defaultMessage": "This modpack is already installed in the <bold>{instanceName}</bold> instance. Are you sure you want to duplicate it?"
+    "message": "This modpack is already installed in the <bold>{instanceName}</bold> instance. Are you sure you want to duplicate it?"
   },
   "app.instance.modpack-already-installed.create": {
-    "message": "Create",
-    "defaultMessage": "Create"
+    "message": "Create"
   },
   "app.instance.modpack-already-installed.header": {
-    "message": "Modpack already installed",
-    "defaultMessage": "Modpack already installed"
+    "message": "Modpack already installed"
   },
   "app.instance.modpack-already-installed.instance": {
-    "message": "Instance",
-    "defaultMessage": "Instance"
+    "message": "Instance"
   },
   "app.instance.mods.bulk-update.downloading-projects": {
-    "message": "Downloading {current, number}/{total, number} projects...",
-    "defaultMessage": "Downloading {current, number}/{total, number} projects..."
+    "message": "Downloading {current, number}/{total, number} projects..."
   },
   "app.instance.mods.bulk-update.finishing": {
-    "message": "Finishing update...",
-    "defaultMessage": "Finishing update..."
+    "message": "Finishing update..."
   },
   "app.instance.mods.bulk-update.resolving-versions": {
-    "message": "Resolving versions...",
-    "defaultMessage": "Resolving versions..."
+    "message": "Resolving versions..."
   },
   "app.instance.mods.content-type-project": {
-    "message": "project",
-    "defaultMessage": "project"
+    "message": "project"
   },
   "app.instance.mods.freeze-content": {
-    "message": "Freeze version",
-    "defaultMessage": "Freeze version"
+    "message": "Freeze version"
   },
   "app.instance.mods.locked-content": {
-    "message": "Content in locked instances cannot be changed.",
-    "defaultMessage": "Content in locked instances cannot be changed."
+    "message": "Content in locked instances cannot be changed."
   },
   "app.instance.mods.project-was-added": {
-    "message": "\"{name}\" was added",
-    "defaultMessage": "\"{name}\" was added"
+    "message": "\"{name}\" was added"
   },
   "app.instance.mods.projects-were-added": {
-    "message": "{count} projects were added",
-    "defaultMessage": "{count} projects were added"
+    "message": "{count} projects were added"
   },
   "app.instance.mods.share-text": {
-    "message": "Check out the projects I'm using in my modpack!",
-    "defaultMessage": "Check out the projects I'm using in my modpack!"
+    "message": "Check out the projects I'm using in my modpack!"
   },
   "app.instance.mods.share-title": {
-    "message": "Sharing modpack content",
-    "defaultMessage": "Sharing modpack content"
+    "message": "Sharing modpack content"
   },
   "app.instance.mods.successfully-uploaded": {
-    "message": "Successfully uploaded",
-    "defaultMessage": "Successfully uploaded"
+    "message": "Successfully uploaded"
   },
   "app.instance.mods.unfreeze-content": {
-    "message": "Unfreeze version",
-    "defaultMessage": "Unfreeze version"
+    "message": "Unfreeze version"
   },
   "app.instance.navigation.back-to-instance": {
-    "message": "Back to instance",
-    "defaultMessage": "Back to instance"
+    "message": "Back to instance"
   },
   "app.instance.share.empty.description": {
-    "message": "You can share this instance with your friends!",
-    "defaultMessage": "You can share this instance with your friends!"
+    "message": "You can share this instance with your friends!"
   },
   "app.instance.share.empty.heading": {
-    "message": "No friends invited",
-    "defaultMessage": "No friends invited"
+    "message": "No friends invited"
   },
   "app.instance.share.empty.invite-friends-button": {
-    "message": "Invite friends",
-    "defaultMessage": "Invite friends"
+    "message": "Invite friends"
   },
   "app.instance.share.invite-modal.heading": {
-    "message": "Share {name}",
-    "defaultMessage": "Share {name}"
+    "message": "Share {name}"
   },
   "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "This instance has reached the {limit}-user limit.",
-    "defaultMessage": "This instance has reached the {limit}-user limit."
+    "message": "This instance has reached the {limit}-user limit."
   },
   "app.instance.share.locked.empty-description-prefix": {
-    "message": "You need to sign in as",
-    "defaultMessage": "You need to sign in as"
+    "message": "You need to sign in as"
   },
   "app.instance.share.locked.empty-description-suffix": {
-    "message": "to access this page.",
-    "defaultMessage": "to access this page."
+    "message": "to access this page."
   },
   "app.instance.share.locked.linked-account-fallback": {
-    "message": "the linked account",
-    "defaultMessage": "the linked account"
+    "message": "the linked account"
   },
   "app.instance.share.locked.signed-out-heading": {
-    "message": "Not signed in",
-    "defaultMessage": "Not signed in"
+    "message": "Not signed in"
   },
   "app.instance.share.locked.switch-account-button": {
-    "message": "Switch account",
-    "defaultMessage": "Switch account"
+    "message": "Switch account"
   },
   "app.instance.share.locked.wrong-account-heading": {
-    "message": "Wrong account",
-    "defaultMessage": "Wrong account"
+    "message": "Wrong account"
   },
   "app.instance.share.members.empty": {
-    "message": "No users have joined yet",
-    "defaultMessage": "No users have joined yet"
+    "message": "No users have joined yet"
   },
   "app.instance.share.members.no-filter-results": {
-    "message": "No users match your filters.",
-    "defaultMessage": "No users match your filters."
+    "message": "No users match your filters."
   },
   "app.instance.share.remove-user-modal.effect-access": {
-    "message": "They will no longer receive updates for this shared instance",
-    "defaultMessage": "They will no longer receive updates for this shared instance"
+    "message": "They will no longer receive updates for this shared instance"
   },
   "app.instance.share.remove-user-modal.effect-installed-copy": {
-    "message": "Any copy they already installed will stay on their device",
-    "defaultMessage": "Any copy they already installed will stay on their device"
+    "message": "Any copy they already installed will stay on their device"
   },
   "app.instance.share.remove-user-modal.effect-invite-again": {
-    "message": "You can invite them again later",
-    "defaultMessage": "You can invite them again later"
+    "message": "You can invite them again later"
   },
   "app.instance.share.remove-user-modal.effect-last-user": {
-    "message": "This is the last user, sharing will be turned off for this instance",
-    "defaultMessage": "This is the last user, sharing will be turned off for this instance"
+    "message": "This is the last user, sharing will be turned off for this instance"
   },
   "app.instance.share.remove-user-modal.effects-label": {
-    "message": "What happens?",
-    "defaultMessage": "What happens?"
+    "message": "What happens?"
   },
   "app.instance.share.remove-user-modal.header": {
-    "message": "Revoke access",
-    "defaultMessage": "Revoke access"
+    "message": "Revoke access"
   },
   "app.instance.share.remove-user-modal.remove-button": {
-    "message": "Revoke access",
-    "defaultMessage": "Revoke access"
+    "message": "Revoke access"
   },
   "app.instance.share.remove-user-modal.user-avatar-alt": {
-    "message": "{username}'s avatar",
-    "defaultMessage": "{username}'s avatar"
+    "message": "{username}'s avatar"
   },
   "app.instance.share.remove-user-modal.warning-body": {
-    "message": "If you revoke {username}'s access to this shared instance, you'll need to invite them again before they can receive updates.",
-    "defaultMessage": "If you revoke {username}'s access to this shared instance, you'll need to invite them again before they can receive updates."
+    "message": "If you revoke {username}'s access to this shared instance, you'll need to invite them again before they can receive updates."
   },
   "app.instance.share.sign-in.button": {
-    "message": "Sign in",
-    "defaultMessage": "Sign in"
+    "message": "Sign in"
   },
   "app.instance.share.unable-to-connect.description": {
-    "message": "The shared instances service is not accessible at the moment, please try again later",
-    "defaultMessage": "The shared instances service is not accessible at the moment, please try again later"
+    "message": "The shared instances service is not accessible at the moment, please try again later"
   },
   "app.instance.share.unable-to-connect.heading": {
-    "message": "Unable to connect",
-    "defaultMessage": "Unable to connect"
+    "message": "Unable to connect"
   },
   "app.instance.share.unlink.body": {
-    "message": "You must unlink this modpack to share your instance",
-    "defaultMessage": "You must unlink this modpack to share your instance"
+    "message": "You must unlink this modpack to share your instance"
   },
   "app.instance.share.unlink.header": {
-    "message": "Sharing requires unlinking",
-    "defaultMessage": "Sharing requires unlinking"
+    "message": "Sharing requires unlinking"
   },
   "app.instance.shared-instance-already-installed.body": {
-    "message": "This shared instance is already installed as <bold>{instanceName}</bold>. Are you sure you want to install another copy?",
-    "defaultMessage": "This shared instance is already installed as <bold>{instanceName}</bold>. Are you sure you want to install another copy?"
+    "message": "This shared instance is already installed as <bold>{instanceName}</bold>. Are you sure you want to install another copy?"
   },
   "app.instance.shared-instance-already-installed.header": {
-    "message": "Shared instance already installed",
-    "defaultMessage": "Shared instance already installed"
+    "message": "Shared instance already installed"
   },
   "app.instance.shared-instance-already-installed.install-anyway": {
-    "message": "Install anyway",
-    "defaultMessage": "Install anyway"
+    "message": "Install anyway"
   },
   "app.instance.shared-instance-already-installed.instance": {
-    "message": "Instance",
-    "defaultMessage": "Instance"
+    "message": "Instance"
   },
   "app.instance.shared-instance-wrong-account.fallback-username": {
-    "message": "the linked account",
-    "defaultMessage": "the linked account"
+    "message": "the linked account"
   },
   "app.instance.shared-instance-wrong-account.owner-admonition-body-v2": {
-    "message": "to manage this shared instance. You won't be able to push updates to users.",
-    "defaultMessage": "to manage this shared instance. You won't be able to push updates to users."
+    "message": "to manage this shared instance. You won't be able to push updates to users."
   },
   "app.instance.shared-instance-wrong-account.sign-in-as-label": {
-    "message": "Sign in as",
-    "defaultMessage": "Sign in as"
+    "message": "Sign in as"
   },
   "app.instance.shared-instance-wrong-account.signed-out-header": {
-    "message": "You need to sign in to Modrinth",
-    "defaultMessage": "You need to sign in to Modrinth"
+    "message": "You need to sign in to Modrinth"
   },
   "app.instance.shared-instance-wrong-account.user-admonition-body-v2": {
-    "message": "to receive updates for this shared instance.",
-    "defaultMessage": "to receive updates for this shared instance."
+    "message": "to receive updates for this shared instance."
   },
   "app.instance.shared-instance-wrong-account.warning-header": {
-    "message": "You are using the wrong Modrinth account",
-    "defaultMessage": "You are using the wrong Modrinth account"
+    "message": "You are using the wrong Modrinth account"
   },
   "app.instance.shortcut.created": {
-    "message": "Shortcut created",
-    "defaultMessage": "Shortcut created"
+    "message": "Shortcut created"
   },
   "app.instance.shortcut.creation-error": {
-    "message": "Error creating shortcut",
-    "defaultMessage": "Error creating shortcut"
+    "message": "Error creating shortcut"
   },
   "app.instance.tab.content": {
-    "message": "Content",
-    "defaultMessage": "Content"
+    "message": "Content"
   },
   "app.instance.tab.files": {
-    "message": "Files",
-    "defaultMessage": "Files"
+    "message": "Files"
   },
   "app.instance.tab.logs": {
-    "message": "Logs",
-    "defaultMessage": "Logs"
+    "message": "Logs"
   },
   "app.instance.tab.share": {
-    "message": "Share",
-    "defaultMessage": "Share"
+    "message": "Share"
   },
   "app.instance.tab.worlds": {
-    "message": "Worlds",
-    "defaultMessage": "Worlds"
+    "message": "Worlds"
   },
   "app.instance.worlds.add-server": {
-    "message": "Add server",
-    "defaultMessage": "Add server"
+    "message": "Add server"
   },
   "app.instance.worlds.browse-servers": {
-    "message": "Browse servers",
-    "defaultMessage": "Browse servers"
+    "message": "Browse servers"
   },
   "app.instance.worlds.delete-world-modal.delete-button": {
-    "message": "Delete world",
-    "defaultMessage": "Delete world"
+    "message": "Delete world"
   },
   "app.instance.worlds.delete-world-modal.title": {
-    "message": "Delete world",
-    "defaultMessage": "Delete world"
+    "message": "Delete world"
   },
   "app.instance.worlds.delete-world-modal.warning-body": {
-    "message": "This world will be permanently deleted from this instance. This action cannot be undone.",
-    "defaultMessage": "This world will be permanently deleted from this instance. This action cannot be undone."
+    "message": "This world will be permanently deleted from this instance. This action cannot be undone."
   },
   "app.instance.worlds.delete-world-modal.warning-header": {
-    "message": "Deleting {name}",
-    "defaultMessage": "Deleting {name}"
+    "message": "Deleting {name}"
   },
   "app.instance.worlds.filter-modded": {
-    "message": "Modded",
-    "defaultMessage": "Modded"
+    "message": "Modded"
   },
   "app.instance.worlds.filter-offline": {
-    "message": "Offline",
-    "defaultMessage": "Offline"
+    "message": "Offline"
   },
   "app.instance.worlds.filter-online": {
-    "message": "Online",
-    "defaultMessage": "Online"
+    "message": "Online"
   },
   "app.instance.worlds.filter-vanilla": {
-    "message": "Vanilla",
-    "defaultMessage": "Vanilla"
+    "message": "Vanilla"
   },
   "app.instance.worlds.no-worlds-description": {
-    "message": "Add a server or browse to get started",
-    "defaultMessage": "Add a server or browse to get started"
+    "message": "Add a server or browse to get started"
   },
   "app.instance.worlds.no-worlds-heading": {
-    "message": "No servers or worlds added",
-    "defaultMessage": "No servers or worlds added"
+    "message": "No servers or worlds added"
   },
   "app.instance.worlds.refreshing": {
-    "message": "Refreshing...",
-    "defaultMessage": "Refreshing..."
+    "message": "Refreshing..."
   },
   "app.instance.worlds.remove-server-modal.remove-button": {
-    "message": "Remove server",
-    "defaultMessage": "Remove server"
+    "message": "Remove server"
   },
   "app.instance.worlds.remove-server-modal.title": {
-    "message": "Remove server",
-    "defaultMessage": "Remove server"
+    "message": "Remove server"
   },
   "app.instance.worlds.remove-server-modal.warning-body": {
-    "message": "This server will be removed from your server list and from the in-game server list. You can add it again later if you know the address.",
-    "defaultMessage": "This server will be removed from your server list and from the in-game server list. You can add it again later if you know the address."
+    "message": "This server will be removed from your server list and from the in-game server list. You can add it again later if you know the address."
   },
   "app.instance.worlds.remove-server-modal.warning-header": {
-    "message": "Removing {name}",
-    "defaultMessage": "Removing {name}"
+    "message": "Removing {name}"
   },
   "app.instance.worlds.search-worlds-placeholder": {
-    "message": "Search {count} worlds...",
-    "defaultMessage": "Search {count} worlds..."
+    "message": "Search {count} worlds..."
   },
   "app.java-detection.cancel": {
-    "message": "Cancel",
-    "defaultMessage": "Cancel"
+    "message": "Cancel"
   },
   "app.java-detection.columns.actions": {
-    "message": "Actions",
-    "defaultMessage": "Actions"
+    "message": "Actions"
   },
   "app.java-detection.columns.path": {
-    "message": "Path",
-    "defaultMessage": "Path"
+    "message": "Path"
   },
   "app.java-detection.columns.version": {
-    "message": "Version",
-    "defaultMessage": "Version"
+    "message": "Version"
   },
   "app.java-detection.no-installations-found": {
-    "message": "No Java installations found.",
-    "defaultMessage": "No Java installations found."
+    "message": "No Java installations found."
   },
   "app.java-detection.select": {
-    "message": "Select",
-    "defaultMessage": "Select"
+    "message": "Select"
   },
   "app.java-detection.selected": {
-    "message": "Selected",
-    "defaultMessage": "Selected"
+    "message": "Selected"
   },
   "app.java-detection.title": {
-    "message": "Select Java installation",
-    "defaultMessage": "Select Java installation"
+    "message": "Select Java installation"
   },
   "app.java-selector.already-installed": {
-    "message": "Already installed",
-    "defaultMessage": "Already installed"
+    "message": "Already installed"
   },
   "app.java-selector.browse": {
-    "message": "Browse",
-    "defaultMessage": "Browse"
+    "message": "Browse"
   },
   "app.java-selector.detect": {
-    "message": "Detect",
-    "defaultMessage": "Detect"
+    "message": "Detect"
   },
   "app.java-selector.install-recommended": {
-    "message": "Install recommended",
-    "defaultMessage": "Install recommended"
+    "message": "Install recommended"
   },
   "app.java-selector.installing": {
-    "message": "Installing...",
-    "defaultMessage": "Installing..."
+    "message": "Installing..."
   },
   "app.java-selector.path.placeholder": {
-    "message": "/path/to/java",
-    "defaultMessage": "/path/to/java"
+    "message": "/path/to/java"
   },
   "app.java-selector.test-installation": {
-    "message": "Test Java installation",
-    "defaultMessage": "Test Java installation"
+    "message": "Test Java installation"
   },
   "app.library.actions.label": {
     "message": "Library actions"
   },
   "app.library.context-menu.create-instance": {
-    "message": "New instance",
-    "defaultMessage": "New instance"
+    "message": "New instance"
   },
   "app.library.filter.add": {
-    "message": "Add filter",
-    "defaultMessage": "Add filter"
+    "message": "Add filter"
   },
   "app.library.filter.clear": {
-    "message": "Clear filters",
-    "defaultMessage": "Clear filters"
+    "message": "Clear filters"
   },
   "app.library.filter.game-version": {
-    "message": "Game version",
-    "defaultMessage": "Game version"
+    "message": "Game version"
   },
   "app.library.filter.instance-type": {
-    "message": "Instance type",
-    "defaultMessage": "Instance type"
+    "message": "Instance type"
   },
   "app.library.filter.instance-type.custom": {
-    "message": "Custom",
-    "defaultMessage": "Custom"
+    "message": "Custom"
   },
   "app.library.filter.instance-type.modpack": {
-    "message": "Modpack",
-    "defaultMessage": "Modpack"
+    "message": "Modpack"
   },
   "app.library.filter.instance-type.server": {
-    "message": "Server",
-    "defaultMessage": "Server"
+    "message": "Server"
   },
   "app.library.filter.label": {
-    "message": "Filter by",
-    "defaultMessage": "Filter by"
+    "message": "Filter by"
   },
   "app.library.filter.loader": {
-    "message": "Loader",
-    "defaultMessage": "Loader"
+    "message": "Loader"
   },
   "app.library.group-by.custom-group": {
-    "message": "Custom group",
-    "defaultMessage": "Custom group"
+    "message": "Custom group"
   },
   "app.library.group-by.game-version": {
-    "message": "Game version",
-    "defaultMessage": "Game version"
+    "message": "Game version"
   },
   "app.library.group-by.instance-type": {
-    "message": "Instance type",
-    "defaultMessage": "Instance type"
+    "message": "Instance type"
   },
   "app.library.group-by.label": {
-    "message": "Group by",
-    "defaultMessage": "Group by"
+    "message": "Group by"
   },
   "app.library.group-by.loader": {
-    "message": "Loader",
-    "defaultMessage": "Loader"
+    "message": "Loader"
   },
   "app.library.group-by.none": {
-    "message": "No grouping",
-    "defaultMessage": "No grouping"
+    "message": "No grouping"
   },
   "app.library.group.actions.label": {
     "message": "Group actions"
   },
   "app.library.group.collapse": {
-    "message": "Collapse group",
-    "defaultMessage": "Collapse group"
+    "message": "Collapse group"
   },
   "app.library.group.context-menu.add-to-group": {
-    "message": "Add to group",
-    "defaultMessage": "Add to group"
+    "message": "Add to group"
   },
   "app.library.group.create": {
-    "message": "Create group",
-    "defaultMessage": "Create group"
+    "message": "Create group"
   },
   "app.library.group.create.cancel": {
-    "message": "Cancel",
-    "defaultMessage": "Cancel"
+    "message": "Cancel"
   },
   "app.library.group.delete": {
-    "message": "Delete group",
-    "defaultMessage": "Delete group"
+    "message": "Delete group"
   },
   "app.library.group.delete-description": {
-    "message": "Instances in this group will be ungrouped.",
-    "defaultMessage": "Instances in this group will be ungrouped."
+    "message": "Instances in this group will be ungrouped."
   },
   "app.library.group.edit-name": {
-    "message": "Edit group name",
-    "defaultMessage": "Edit group name"
+    "message": "Edit group name"
   },
   "app.library.group.empty": {
-    "message": "Drag and drop to add instances.",
-    "defaultMessage": "Drag and drop to add instances."
+    "message": "Drag and drop to add instances."
   },
   "app.library.group.expand": {
-    "message": "Expand group",
-    "defaultMessage": "Expand group"
+    "message": "Expand group"
   },
   "app.library.group.favorites": {
-    "message": "Favorites",
-    "defaultMessage": "Favorites"
+    "message": "Favorites"
   },
   "app.library.group.instance.add": {
-    "message": "Add",
-    "defaultMessage": "Add"
+    "message": "Add"
   },
   "app.library.group.instance.added": {
-    "message": "Added",
-    "defaultMessage": "Added"
+    "message": "Added"
   },
   "app.library.group.instances-modal.add": {
-    "message": "Add",
-    "defaultMessage": "Add"
+    "message": "Add"
   },
   "app.library.group.instances-modal.added": {
-    "message": "Added",
-    "defaultMessage": "Added"
+    "message": "Added"
   },
   "app.library.group.instances-modal.no-instances-found": {
-    "message": "No instances found",
-    "defaultMessage": "No instances found"
+    "message": "No instances found"
   },
   "app.library.group.instances-modal.search-placeholder": {
-    "message": "Search instance",
-    "defaultMessage": "Search instance"
+    "message": "Search instance"
   },
   "app.library.group.instances-modal.title": {
-    "message": "Add instances to \"{groupName}\"",
-    "defaultMessage": "Add instances to \"{groupName}\""
+    "message": "Add instances to \"{groupName}\""
   },
   "app.library.group.move-down": {
-    "message": "Move group down",
-    "defaultMessage": "Move group down"
+    "message": "Move group down"
   },
   "app.library.group.move-up": {
-    "message": "Move group up",
-    "defaultMessage": "Move group up"
+    "message": "Move group up"
   },
   "app.library.group.name": {
-    "message": "Group name",
-    "defaultMessage": "Group name"
+    "message": "Group name"
   },
   "app.library.group.name-empty": {
-    "message": "Group names cannot be empty.",
-    "defaultMessage": "Group names cannot be empty."
+    "message": "Group names cannot be empty."
   },
   "app.library.group.name-placeholder": {
-    "message": "Enter group name",
-    "defaultMessage": "Enter group name"
+    "message": "Enter group name"
   },
   "app.library.group.name-reserved": {
-    "message": "\"None\" is reserved and cannot be used as a group name.",
-    "defaultMessage": "\"None\" is reserved and cannot be used as a group name."
+    "message": "\"None\" is reserved and cannot be used as a group name."
   },
   "app.library.group.name-too-long": {
-    "message": "Group names cannot be longer than {maxLength} characters.",
-    "defaultMessage": "Group names cannot be longer than {maxLength} characters."
+    "message": "Group names cannot be longer than {maxLength} characters."
   },
   "app.library.group.new": {
-    "message": "New group",
-    "defaultMessage": "New group"
+    "message": "New group"
   },
   "app.library.group.no-instances-found": {
-    "message": "No instances found",
-    "defaultMessage": "No instances found"
+    "message": "No instances found"
   },
   "app.library.group.rename-failed": {
-    "message": "Unable to rename group",
-    "defaultMessage": "Unable to rename group"
+    "message": "Unable to rename group"
   },
   "app.library.group.search-instance": {
-    "message": "Search instance",
-    "defaultMessage": "Search instance"
+    "message": "Search instance"
   },
   "app.library.group.ungrouped": {
-    "message": "Ungrouped",
-    "defaultMessage": "Ungrouped"
+    "message": "Ungrouped"
   },
   "app.library.group.unknown": {
-    "message": "Unknown group",
-    "defaultMessage": "Unknown group"
+    "message": "Unknown group"
   },
   "app.library.instance.action.add-content": {
-    "message": "Add content",
-    "defaultMessage": "Add content"
+    "message": "Add content"
   },
   "app.library.instance.action.add-to-favorites": {
-    "message": "Add to favorites",
-    "defaultMessage": "Add to favorites"
+    "message": "Add to favorites"
   },
   "app.library.instance.action.copy-path": {
-    "message": "Copy path",
-    "defaultMessage": "Copy path"
+    "message": "Copy path"
   },
   "app.library.instance.action.delete": {
-    "message": "Delete",
-    "defaultMessage": "Delete"
+    "message": "Delete"
   },
   "app.library.instance.action.duplicate": {
-    "message": "Duplicate instance",
-    "defaultMessage": "Duplicate instance"
+    "message": "Duplicate instance"
   },
   "app.library.instance.action.open-folder": {
-    "message": "Open folder",
-    "defaultMessage": "Open folder"
+    "message": "Open folder"
   },
   "app.library.instance.action.play": {
-    "message": "Play",
-    "defaultMessage": "Play"
+    "message": "Play"
   },
   "app.library.instance.action.remove-from-favorites": {
-    "message": "Remove from favorites",
-    "defaultMessage": "Remove from favorites"
+    "message": "Remove from favorites"
   },
   "app.library.instance.action.remove-from-group": {
-    "message": "Remove from group",
-    "defaultMessage": "Remove from group"
+    "message": "Remove from group"
   },
   "app.library.instance.action.stop": {
-    "message": "Stop",
-    "defaultMessage": "Stop"
+    "message": "Stop"
   },
   "app.library.instance.action.view-instance": {
-    "message": "View instance",
-    "defaultMessage": "View instance"
+    "message": "View instance"
   },
   "app.library.instance.actions.label": {
     "message": "Instance actions"
   },
   "app.library.instance.deselect": {
-    "message": "Deselect instance",
-    "defaultMessage": "Deselect instance"
+    "message": "Deselect instance"
   },
   "app.library.instance.deselect-with-name": {
-    "message": "Deselect {name}",
-    "defaultMessage": "Deselect {name}"
+    "message": "Deselect {name}"
   },
   "app.library.instance.installing": {
-    "message": "Installing...",
-    "defaultMessage": "Installing..."
+    "message": "Installing..."
   },
   "app.library.instance.loading": {
-    "message": "Instance is loading...",
-    "defaultMessage": "Instance is loading..."
+    "message": "Instance is loading..."
   },
   "app.library.instance.new": {
-    "message": "New instance",
-    "defaultMessage": "New instance"
+    "message": "New instance"
   },
   "app.library.instance.open-with-name": {
-    "message": "Open {name}",
-    "defaultMessage": "Open {name}"
+    "message": "Open {name}"
   },
   "app.library.instance.play": {
-    "message": "Play",
-    "defaultMessage": "Play"
+    "message": "Play"
   },
   "app.library.instance.repair": {
-    "message": "Repair",
-    "defaultMessage": "Repair"
+    "message": "Repair"
   },
   "app.library.instance.select": {
-    "message": "Select instance",
-    "defaultMessage": "Select instance"
+    "message": "Select instance"
   },
   "app.library.instance.select-with-name": {
-    "message": "Select {name}",
-    "defaultMessage": "Select {name}"
+    "message": "Select {name}"
   },
   "app.library.instance.stop": {
-    "message": "Stop",
-    "defaultMessage": "Stop"
+    "message": "Stop"
   },
   "app.library.search.no-results.title": {
-    "message": "No instances match your search.",
-    "defaultMessage": "No instances match your search."
+    "message": "No instances match your search."
   },
   "app.library.search.placeholder": {
-    "message": "Search",
-    "defaultMessage": "Search"
+    "message": "Search"
   },
   "app.library.selection.aria-label": {
-    "message": "Selected instances",
-    "defaultMessage": "Selected instances"
+    "message": "Selected instances"
   },
   "app.library.selection.deleting": {
-    "message": "Deleting selected instances",
-    "defaultMessage": "Deleting selected instances"
+    "message": "Deleting selected instances"
   },
   "app.library.selection.new-group": {
-    "message": "New group",
-    "defaultMessage": "New group"
+    "message": "New group"
   },
   "app.library.selection.remove-from-group": {
-    "message": "Remove from group",
-    "defaultMessage": "Remove from group"
+    "message": "Remove from group"
   },
   "app.library.selection.selected-count": {
-    "message": "{count} selected",
-    "defaultMessage": "{count} selected"
+    "message": "{count} selected"
   },
   "app.library.sort.date-created": {
-    "message": "Date created",
-    "defaultMessage": "Date created"
+    "message": "Date created"
   },
   "app.library.sort.date-modified": {
-    "message": "Date modified",
-    "defaultMessage": "Date modified"
+    "message": "Date modified"
   },
   "app.library.sort.game-version": {
-    "message": "Game version",
-    "defaultMessage": "Game version"
+    "message": "Game version"
   },
   "app.library.sort.hours-played": {
-    "message": "Hours played",
-    "defaultMessage": "Hours played"
+    "message": "Hours played"
   },
   "app.library.sort.label": {
-    "message": "Sort by",
-    "defaultMessage": "Sort by"
+    "message": "Sort by"
   },
   "app.library.sort.last-played": {
-    "message": "Last played",
-    "defaultMessage": "Last played"
+    "message": "Last played"
   },
   "app.library.sort.loader": {
-    "message": "Loader",
-    "defaultMessage": "Loader"
+    "message": "Loader"
   },
   "app.library.sort.name": {
-    "message": "Name",
-    "defaultMessage": "Name"
+    "message": "Name"
   },
   "app.library.title": {
-    "message": "Library",
-    "defaultMessage": "Library"
+    "message": "Library"
   },
   "app.modal.install-to-play.additional-context": {
-    "message": "Additional context",
-    "defaultMessage": "Additional context"
+    "message": "Additional context"
   },
   "app.modal.install-to-play.additional-context-placeholder": {
-    "message": "Include links and images if possible and relevant",
-    "defaultMessage": "Include links and images if possible and relevant"
+    "message": "Include links and images if possible and relevant"
   },
   "app.modal.install-to-play.block-user": {
-    "message": "Block user",
-    "defaultMessage": "Block user"
+    "message": "Block user"
   },
   "app.modal.install-to-play.content-you-are-reporting": {
-    "message": "Instance you’re reporting",
-    "defaultMessage": "Instance you’re reporting"
+    "message": "Instance you’re reporting"
   },
   "app.modal.install-to-play.delete-instance": {
-    "message": "Delete instance",
-    "defaultMessage": "Delete instance"
+    "message": "Delete instance"
   },
   "app.modal.install-to-play.external-files-dont-install": {
-    "message": "Don't install",
-    "defaultMessage": "Don't install"
+    "message": "Don't install"
   },
   "app.modal.install-to-play.header": {
-    "message": "Install to play",
-    "defaultMessage": "Install to play"
+    "message": "Install to play"
   },
   "app.modal.install-to-play.install-anyway": {
-    "message": "Install anyway",
-    "defaultMessage": "Install anyway"
+    "message": "Install anyway"
   },
   "app.modal.install-to-play.install-button": {
-    "message": "Install",
-    "defaultMessage": "Install"
+    "message": "Install"
   },
   "app.modal.install-to-play.invite-warning": {
-    "message": "This invite was created by another Modrinth user, not Modrinth. Only accept invites from people you trust.",
-    "defaultMessage": "This invite was created by another Modrinth user, not Modrinth. Only accept invites from people you trust."
+    "message": "This invite was created by another Modrinth user, not Modrinth. Only accept invites from people you trust."
   },
   "app.modal.install-to-play.invite-warning-with-creator": {
-    "message": "This invite was created by <creator>{username}</creator>, not Modrinth. Only accept invites from people you trust.",
-    "defaultMessage": "This invite was created by <creator>{username}</creator>, not Modrinth. Only accept invites from people you trust."
+    "message": "This invite was created by <creator>{username}</creator>, not Modrinth. Only accept invites from people you trust."
   },
   "app.modal.install-to-play.managed-content.modpack-header": {
-    "message": "Modpack content",
-    "defaultMessage": "Modpack content"
+    "message": "Modpack content"
   },
   "app.modal.install-to-play.mod-count": {
-    "message": "{count, plural, one {# mod} other {# mods}}",
-    "defaultMessage": "{count, plural, one {# mod} other {# mods}}"
+    "message": "{count, plural, one {# mod} other {# mods}}"
   },
   "app.modal.install-to-play.report-description": {
-    "message": "Use this form to report instances that may violate our <rules-link>Rules</rules-link> or <terms-link>Terms of Use</terms-link>.",
-    "defaultMessage": "Use this form to report instances that may violate our <rules-link>Rules</rules-link> or <terms-link>Terms of Use</terms-link>."
+    "message": "Use this form to report instances that may violate our <rules-link>Rules</rules-link> or <terms-link>Terms of Use</terms-link>."
   },
   "app.modal.install-to-play.report-image-invalid-type": {
-    "message": "File is not an accepted image type",
-    "defaultMessage": "File is not an accepted image type"
+    "message": "File is not an accepted image type"
   },
   "app.modal.install-to-play.report-image-too-large": {
-    "message": "File exceeds the 1 MiB size limit",
-    "defaultMessage": "File exceeds the 1 MiB size limit"
+    "message": "File exceeds the 1 MiB size limit"
   },
   "app.modal.install-to-play.report-legal-claims": {
-    "message": "For DMCA notices or other legal claims, see our <copyright-link>Copyright Policy</copyright-link>.",
-    "defaultMessage": "For DMCA notices or other legal claims, see our <copyright-link>Copyright Policy</copyright-link>."
+    "message": "For DMCA notices or other legal claims, see our <copyright-link>Copyright Policy</copyright-link>."
   },
   "app.modal.install-to-play.report-reason": {
-    "message": "Which rule does this instance violate?",
-    "defaultMessage": "Which rule does this instance violate?"
+    "message": "Which rule does this instance violate?"
   },
   "app.modal.install-to-play.report-shared-instance-header": {
-    "message": "Report shared instance",
-    "defaultMessage": "Report shared instance"
+    "message": "Report shared instance"
   },
   "app.modal.install-to-play.report-submitted": {
-    "message": "Report submitted",
-    "defaultMessage": "Report submitted"
+    "message": "Report submitted"
   },
   "app.modal.install-to-play.report-support-and-bugs": {
-    "message": "For support requests, contact our <support-link>support team</support-link>. For bug reports, open a <github-link>GitHub issue</github-link>.",
-    "defaultMessage": "For support requests, contact our <support-link>support team</support-link>. For bug reports, open a <github-link>GitHub issue</github-link>."
+    "message": "For support requests, contact our <support-link>support team</support-link>. For bug reports, open a <github-link>GitHub issue</github-link>."
   },
   "app.modal.install-to-play.reviewed-files": {
-    "message": "Files that aren't published to Modrinth aren't reviewed.",
-    "defaultMessage": "Files that aren't published to Modrinth aren't reviewed."
+    "message": "Files that aren't published to Modrinth aren't reviewed."
   },
   "app.modal.install-to-play.shared-instance": {
-    "message": "Shared instance",
-    "defaultMessage": "Shared instance"
+    "message": "Shared instance"
   },
   "app.modal.install-to-play.shared-instance-content": {
-    "message": "Shared instance content",
-    "defaultMessage": "Shared instance content"
+    "message": "Shared instance content"
   },
   "app.modal.install-to-play.shared-instance-unknown-files-description": {
-    "message": "This shared instance contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
-    "defaultMessage": "This shared instance contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "message": "This shared instance contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
   },
   "app.modal.install-to-play.unknown-files-description": {
-    "message": "This server modpack contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
-    "defaultMessage": "This server modpack contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "message": "This server modpack contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
   },
   "app.modal.install-to-play.unknown-files-warning": {
-    "message": "Unknown files warning",
-    "defaultMessage": "Unknown files warning"
+    "message": "Unknown files warning"
   },
   "app.modal.install-to-play.unrecognized-files": {
-    "message": "Unrecognized files",
-    "defaultMessage": "Unrecognized files"
+    "message": "Unrecognized files"
   },
   "app.modal.install-to-play.user-blocked": {
-    "message": "User blocked",
-    "defaultMessage": "User blocked"
+    "message": "User blocked"
   },
   "app.modal.install-to-play.view-contents": {
-    "message": "View contents",
-    "defaultMessage": "View contents"
+    "message": "View contents"
   },
   "app.modal.update-to-play.header": {
-    "message": "Update to play",
-    "defaultMessage": "Update to play"
+    "message": "Update to play"
   },
   "app.modal.update-to-play.removed": {
-    "message": "Removed",
-    "defaultMessage": "Removed"
+    "message": "Removed"
   },
   "app.modal.update-to-play.server-modpack-unknown-files-description": {
-    "message": "This server modpack update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
-    "defaultMessage": "This server modpack update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "message": "This server modpack update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
   },
   "app.modal.update-to-play.shared-instance-added-label": {
-    "message": "Added",
-    "defaultMessage": "Added"
+    "message": "Added"
   },
   "app.modal.update-to-play.shared-instance-removed-label": {
-    "message": "Removed",
-    "defaultMessage": "Removed"
+    "message": "Removed"
   },
   "app.modal.update-to-play.shared-instance-unknown-files-description": {
-    "message": "This shared instance update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust.",
-    "defaultMessage": "This shared instance update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "message": "This shared instance update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
   },
   "app.modal.update-to-play.update-required": {
-    "message": "Update required",
-    "defaultMessage": "Update required"
+    "message": "Update required"
   },
   "app.modal.update-to-play.update-required-description": {
-    "message": "An update is required to play {name}. Please update to latest version to launch the game.",
-    "defaultMessage": "An update is required to play {name}. Please update to latest version to launch the game."
+    "message": "An update is required to play {name}. Please update to latest version to launch the game."
   },
   "app.nav.add-account": {
     "message": "Add account"
   },
   "app.nav.create-new-instance": {
-    "message": "Create new instance",
-    "defaultMessage": "Create new instance"
+    "message": "Create new instance"
   },
   "app.nav.home": {
-    "message": "Home",
-    "defaultMessage": "Home"
+    "message": "Home"
   },
   "app.nav.loading-profile": {
     "message": "Loading profile..."
   },
   "app.nav.modrinth-account": {
-    "message": "Modrinth account",
-    "defaultMessage": "Modrinth account"
+    "message": "Modrinth account"
   },
   "app.nav.modrinth-hosting": {
-    "message": "Modrinth Hosting",
-    "defaultMessage": "Modrinth Hosting"
+    "message": "Modrinth Hosting"
   },
   "app.nav.remove-account": {
     "message": "Remove account"
   },
   "app.nav.sign-in-to-modrinth-account": {
-    "message": "Sign in to a Modrinth account",
-    "defaultMessage": "Sign in to a Modrinth account"
+    "message": "Sign into Modrinth"
   },
   "app.nav.switch-account": {
     "message": "Switch account"
   },
   "app.nav.upgrade-to-modrinth-plus": {
-    "message": "Upgrade to Modrinth+",
-    "defaultMessage": "Upgrade to Modrinth+"
+    "message": "Upgrade to Modrinth+"
   },
   "app.nav.view-profile": {
     "message": "View profile"
   },
   "app.navigation.go-back": {
-    "message": "Go back",
-    "defaultMessage": "Go back"
+    "message": "Go back"
   },
   "app.navigation.go-forward": {
-    "message": "Go forward",
-    "defaultMessage": "Go forward"
+    "message": "Go forward"
   },
   "app.navigation.home": {
-    "message": "Home",
-    "defaultMessage": "Home"
+    "message": "Home"
   },
   "app.navigation.next-image": {
-    "message": "Next image",
-    "defaultMessage": "Next image"
+    "message": "Next image"
   },
   "app.news.title": {
-    "message": "News",
-    "defaultMessage": "News"
+    "message": "News"
   },
   "app.news.view-all": {
-    "message": "View all news",
-    "defaultMessage": "View all news"
+    "message": "View all news"
   },
   "app.notification.warning": {
-    "message": "Warning",
-    "defaultMessage": "Warning"
+    "message": "Warning"
   },
   "app.project.actions.label": {
     "message": "Project actions"
   },
   "app.project.coming-soon": {
-    "message": "Coming soon",
-    "defaultMessage": "Coming soon"
+    "message": "Coming soon"
   },
   "app.project.install-button.already-installed": {
-    "message": "This project is already installed",
-    "defaultMessage": "This project is already installed"
+    "message": "This project is already installed"
   },
   "app.project.install-button.switch-version": {
-    "message": "Switch version",
-    "defaultMessage": "Switch version"
+    "message": "Switch version"
   },
   "app.project.install-context.back-to-browse": {
-    "message": "Back to discover",
-    "defaultMessage": "Back to discover"
+    "message": "Back to discover"
   },
   "app.project.install-context.back-to-instance": {
-    "message": "Back to instance",
-    "defaultMessage": "Back to instance"
+    "message": "Back to instance"
   },
   "app.project.load-error": {
-    "message": "Project data could not be loaded.",
-    "defaultMessage": "Project data could not be loaded."
+    "message": "Project data could not be loaded."
   },
   "app.project.more-options": {
-    "message": "More options",
-    "defaultMessage": "More options"
+    "message": "More options"
   },
   "app.project.tab.description": {
-    "message": "Description",
-    "defaultMessage": "Description"
+    "message": "Description"
   },
   "app.project.tab.gallery": {
-    "message": "Gallery",
-    "defaultMessage": "Gallery"
+    "message": "Gallery"
   },
   "app.project.tab.versions": {
-    "message": "Versions",
-    "defaultMessage": "Versions"
+    "message": "Versions"
   },
   "app.project.version.all-versions": {
-    "message": "All versions",
-    "defaultMessage": "All versions"
+    "message": "All versions"
   },
   "app.project.version.download-in-browser": {
-    "message": "Download in browser",
-    "defaultMessage": "Download in browser"
+    "message": "Download in browser"
   },
   "app.project.version.installing": {
-    "message": "Installing",
-    "defaultMessage": "Installing"
+    "message": "Installing"
   },
   "app.project.versions.already-installed": {
-    "message": "Already installed",
-    "defaultMessage": "Already installed"
+    "message": "Already installed"
   },
   "app.quick-instance-switcher.actions.label": {
     "message": "Instance actions"
   },
   "app.quick-instance-switcher.drag-show-tooltip": {
-    "message": "Drag to show recent instances",
-    "defaultMessage": "Drag to show recent instances"
+    "message": "Drag to show recent instances"
   },
   "app.quick-instance-switcher.drag-tooltip": {
-    "message": "Drag to resize",
-    "defaultMessage": "Drag to resize"
+    "message": "Drag to resize"
   },
   "app.quick-instance-switcher.instance-locked": {
     "message": "This instance has been locked"
@@ -1788,1339 +1353,1007 @@
     "message": "View instance"
   },
   "app.restarting": {
-    "message": "Restarting...",
-    "defaultMessage": "Restarting..."
+    "message": "Restarting..."
   },
   "app.settings.app-version": {
-    "message": "Rubirinth App {version}",
-    "defaultMessage": "Rubirinth App {version}"
+    "message": "Modrinth App {version}"
   },
   "app.settings.default-instance-options.environment-variables.description": {
-    "message": "Environment variables set when launching an instance.",
-    "defaultMessage": "Environment variables set when launching an instance."
+    "message": "Environment variables set when launching an instance."
   },
   "app.settings.default-instance-options.environment-variables.placeholder": {
-    "message": "Enter environment variables...",
-    "defaultMessage": "Enter environment variables..."
+    "message": "Enter environment variables..."
   },
   "app.settings.default-instance-options.environment-variables.title": {
-    "message": "Environment variables",
-    "defaultMessage": "Environment variables"
+    "message": "Environment variables"
   },
   "app.settings.default-instance-options.fullscreen.description": {
-    "message": "Start instances in fullscreen by updating their options.txt file.",
-    "defaultMessage": "Start instances in fullscreen by updating their options.txt file."
+    "message": "Start instances in fullscreen by updating their options.txt file."
   },
   "app.settings.default-instance-options.fullscreen.title": {
-    "message": "Fullscreen",
-    "defaultMessage": "Fullscreen"
+    "message": "Fullscreen"
   },
   "app.settings.default-instance-options.height.description": {
-    "message": "The height of the game window when launched.",
-    "defaultMessage": "The height of the game window when launched."
+    "message": "The height of the game window when launched."
   },
   "app.settings.default-instance-options.height.placeholder": {
-    "message": "Enter height...",
-    "defaultMessage": "Enter height..."
+    "message": "Enter height..."
   },
   "app.settings.default-instance-options.height.title": {
-    "message": "Height",
-    "defaultMessage": "Height"
+    "message": "Height"
   },
   "app.settings.default-instance-options.java-arguments.description": {
-    "message": "Arguments passed to Java when launching an instance.",
-    "defaultMessage": "Arguments passed to Java when launching an instance."
+    "message": "Arguments passed to Java when launching an instance."
   },
   "app.settings.default-instance-options.java-arguments.placeholder": {
-    "message": "Enter Java arguments...",
-    "defaultMessage": "Enter Java arguments..."
+    "message": "Enter Java arguments..."
   },
   "app.settings.default-instance-options.java-arguments.title": {
-    "message": "Java arguments",
-    "defaultMessage": "Java arguments"
+    "message": "Java arguments"
   },
   "app.settings.default-instance-options.memory-allocation.description": {
-    "message": "Maximum memory available to each instance.",
-    "defaultMessage": "Maximum memory available to each instance."
+    "message": "Maximum memory available to each instance."
   },
   "app.settings.default-instance-options.memory-allocation.title": {
-    "message": "Memory allocation",
-    "defaultMessage": "Memory allocation"
+    "message": "Memory allocation"
   },
   "app.settings.default-instance-options.post-exit-hook.description": {
-    "message": "Runs after the game closes.",
-    "defaultMessage": "Runs after the game closes."
+    "message": "Runs after the game closes."
   },
   "app.settings.default-instance-options.post-exit-hook.placeholder": {
-    "message": "Enter post-exit command...",
-    "defaultMessage": "Enter post-exit command..."
+    "message": "Enter post-exit command..."
   },
   "app.settings.default-instance-options.post-exit-hook.title": {
-    "message": "Post-exit hook",
-    "defaultMessage": "Post-exit hook"
+    "message": "Post-exit hook"
   },
   "app.settings.default-instance-options.pre-launch-hook.description": {
-    "message": "Runs before the instance starts.",
-    "defaultMessage": "Runs before the instance starts."
+    "message": "Runs before the instance starts."
   },
   "app.settings.default-instance-options.pre-launch-hook.placeholder": {
-    "message": "Enter pre-launch command...",
-    "defaultMessage": "Enter pre-launch command..."
+    "message": "Enter pre-launch command..."
   },
   "app.settings.default-instance-options.pre-launch-hook.title": {
-    "message": "Pre-launch hook",
-    "defaultMessage": "Pre-launch hook"
+    "message": "Pre-launch hook"
   },
   "app.settings.default-instance-options.width.description": {
-    "message": "The width of the game window when launched.",
-    "defaultMessage": "The width of the game window when launched."
+    "message": "The width of the game window when launched."
   },
   "app.settings.default-instance-options.width.placeholder": {
-    "message": "Enter width...",
-    "defaultMessage": "Enter width..."
+    "message": "Enter width..."
   },
   "app.settings.default-instance-options.width.title": {
-    "message": "Width",
-    "defaultMessage": "Width"
+    "message": "Width"
   },
   "app.settings.default-instance-options.wrapper-hook.description": {
-    "message": "Command used to wrap the Minecraft launch process.",
-    "defaultMessage": "Command used to wrap the Minecraft launch process."
+    "message": "Command used to wrap the Minecraft launch process."
   },
   "app.settings.default-instance-options.wrapper-hook.placeholder": {
-    "message": "Enter wrapper command...",
-    "defaultMessage": "Enter wrapper command..."
+    "message": "Enter wrapper command..."
   },
   "app.settings.default-instance-options.wrapper-hook.title": {
-    "message": "Wrapper hook",
-    "defaultMessage": "Wrapper hook"
+    "message": "Wrapper hook"
   },
   "app.settings.developer-mode-button.label": {
-    "message": "Toggle developer mode",
-    "defaultMessage": "Toggle developer mode"
+    "message": "Toggle developer mode"
   },
   "app.settings.developer-mode-enabled": {
-    "message": "Developer mode enabled.",
-    "defaultMessage": "Developer mode enabled."
+    "message": "Developer mode enabled."
   },
   "app.settings.downloading": {
-    "message": "Downloading v{version}",
-    "defaultMessage": "Downloading v{version}"
+    "message": "Downloading v{version}"
   },
   "app.settings.java-installations.location.title": {
-    "message": "Java {version, number} location",
-    "defaultMessage": "Java {version, number} location"
+    "message": "Java {version, number} location"
   },
   "app.settings.operating-system.macos": {
-    "message": "macOS",
-    "defaultMessage": "macOS"
+    "message": "macOS"
   },
   "app.settings.privacy.ads-consent.intro": {
-    "message": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below.",
-    "defaultMessage": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below."
+    "message": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below."
   },
   "app.settings.privacy.discord-rich-presence.description": {
-    "message": "Show Rubirinth App as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart.",
-    "defaultMessage": "Show Rubirinth App as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart."
+    "message": "Show Modrinth App as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart."
   },
   "app.settings.privacy.discord-rich-presence.title": {
-    "message": "Discord Rich Presence",
-    "defaultMessage": "Discord Rich Presence"
+    "message": "Discord Rich Presence"
   },
   "app.settings.privacy.telemetry.description": {
-    "message": "Rubirinth collects anonymized analytics and usage data to improve our user experience and customize your experience. By disabling this option, you opt out and your data will no longer be collected.",
-    "defaultMessage": "Rubirinth collects anonymized analytics and usage data to improve our user experience and customize your experience. By disabling this option, you opt out and your data will no longer be collected."
+    "message": "Modrinth collects anonymized analytics and usage data to improve our user experience and customize your experience. By disabling this option, you opt out and your data will no longer be collected."
   },
   "app.settings.privacy.telemetry.title": {
-    "message": "Telemetry",
-    "defaultMessage": "Telemetry"
+    "message": "Telemetry"
   },
   "app.settings.resource-management.always-show-copy-details.description": {
-    "message": "Show the Copy details action while an install is queued or running. It is always available for failed or interrupted installs.",
-    "defaultMessage": "Show the Copy details action while an install is queued or running. It is always available for failed or interrupted installs."
+    "message": "Show the Copy details action while an install is queued or running. It is always available for failed or interrupted installs."
   },
   "app.settings.resource-management.always-show-copy-details.title": {
-    "message": "Always show copy details",
-    "defaultMessage": "Always show copy details"
+    "message": "Always show copy details"
   },
   "app.settings.resource-management.app-cache.confirm.description": {
-    "message": "The app may load more slowly until the cache is rebuilt.",
-    "defaultMessage": "The app may load more slowly until the cache is rebuilt."
+    "message": "The app may load more slowly until the cache is rebuilt."
   },
   "app.settings.resource-management.app-cache.confirm.title": {
-    "message": "Purge the app cache?",
-    "defaultMessage": "Purge the app cache?"
+    "message": "Purge the app cache?"
   },
   "app.settings.resource-management.app-cache.description": {
-    "message": "Clear cached data and download it again from Modrinth. The app may load more slowly until the cache is rebuilt.",
-    "defaultMessage": "Clear cached data and download it again from Modrinth. The app may load more slowly until the cache is rebuilt."
+    "message": "Clear cached data and download it again from Modrinth. The app may load more slowly until the cache is rebuilt."
   },
   "app.settings.resource-management.app-cache.purge": {
-    "message": "Purge cache",
-    "defaultMessage": "Purge cache"
+    "message": "Purge cache"
   },
   "app.settings.resource-management.app-cache.title": {
-    "message": "App cache",
-    "defaultMessage": "App cache"
+    "message": "App cache"
   },
   "app.settings.resource-management.app-database-backups.description": {
-    "message": "Backups of important app data are stored here in case you need to recover them later.",
-    "defaultMessage": "Backups of important app data are stored here in case you need to recover them later."
+    "message": "Backups of important app data are stored here in case you need to recover them later."
   },
   "app.settings.resource-management.app-database-backups.open-folder": {
-    "message": "Open backups folder",
-    "defaultMessage": "Open backups folder"
+    "message": "Open backups folder"
   },
   "app.settings.resource-management.app-database-backups.title": {
-    "message": "App database backups",
-    "defaultMessage": "App database backups"
+    "message": "App database backups"
   },
   "app.settings.resource-management.app-directory.browse": {
-    "message": "Browse for an app directory",
-    "defaultMessage": "Browse for an app directory"
+    "message": "Browse for an app directory"
   },
   "app.settings.resource-management.app-directory.description": {
-    "message": "Where Rubirinth App stores instances and other files. Changes take effect after restarting the app.",
-    "defaultMessage": "Where Rubirinth App stores instances and other files. Changes take effect after restarting the app."
+    "message": "Where Modrinth App stores instances and other files. Changes take effect after restarting the app."
   },
   "app.settings.resource-management.app-directory.select": {
-    "message": "Select a new app directory",
-    "defaultMessage": "Select a new app directory"
+    "message": "Select a new app directory"
   },
   "app.settings.resource-management.app-directory.title": {
-    "message": "App directory",
-    "defaultMessage": "App directory"
+    "message": "App directory"
   },
   "app.settings.resource-management.maximum-concurrent-downloads.description": {
-    "message": "Number of files the app can download at once. Lower this if downloads are unreliable on your connection. Requires an app restart.",
-    "defaultMessage": "Number of files the app can download at once. Lower this if downloads are unreliable on your connection. Requires an app restart."
+    "message": "Number of files the app can download at once. Lower this if downloads are unreliable on your connection. Requires an app restart."
   },
   "app.settings.resource-management.maximum-concurrent-downloads.title": {
-    "message": "Maximum concurrent downloads",
-    "defaultMessage": "Maximum concurrent downloads"
+    "message": "Maximum concurrent downloads"
   },
   "app.settings.resource-management.maximum-concurrent-writes.description": {
-    "message": "Number of files the app can write to disk at once. Lower this if you frequently encounter I/O errors. Requires an app restart.",
-    "defaultMessage": "Number of files the app can write to disk at once. Lower this if you frequently encounter I/O errors. Requires an app restart."
+    "message": "Number of files the app can write to disk at once. Lower this if you frequently encounter I/O errors. Requires an app restart."
   },
   "app.settings.resource-management.maximum-concurrent-writes.title": {
-    "message": "Maximum concurrent writes",
-    "defaultMessage": "Maximum concurrent writes"
+    "message": "Maximum concurrent writes"
   },
   "app.settings.sidebar.label.instances": {
-    "message": "Instances",
-    "defaultMessage": "Instances"
+    "message": "Instances"
   },
   "app.settings.tabs.appearance": {
-    "message": "Appearance",
-    "defaultMessage": "Appearance"
+    "message": "Appearance"
   },
   "app.settings.tabs.behavior": {
-    "message": "Behavior",
-    "defaultMessage": "Behavior"
+    "message": "Behavior"
   },
   "app.settings.tabs.default-instance-options": {
     "message": "Default game options",
     "defaultMessage": "Default game options"
   },
   "app.settings.tabs.java-installations": {
-    "message": "Java installations",
-    "defaultMessage": "Java installations"
+    "message": "Java installations"
   },
   "app.settings.tabs.language": {
-    "message": "Language",
-    "defaultMessage": "Language"
+    "message": "Language"
   },
   "app.settings.tabs.privacy": {
-    "message": "Privacy",
-    "defaultMessage": "Privacy"
+    "message": "Privacy"
   },
   "app.settings.tabs.resource-management": {
-    "message": "Resource management",
-    "defaultMessage": "Resource management"
+    "message": "Resource management"
   },
   "app.sidebar.playing-as": {
-    "message": "Playing as",
-    "defaultMessage": "Playing as"
+    "message": "Playing as"
   },
   "app.skins.add-button": {
-    "message": "Add skin",
-    "defaultMessage": "Add skin"
+    "message": "Add skin"
   },
   "app.skins.add-button.drag-and-drop": {
-    "message": "Drag and drop",
-    "defaultMessage": "Drag and drop"
+    "message": "Drag and drop"
   },
   "app.skins.apply-button": {
-    "message": "Apply",
-    "defaultMessage": "Apply"
+    "message": "Apply"
   },
   "app.skins.delete-button": {
-    "message": "Delete skin",
-    "defaultMessage": "Delete skin"
+    "message": "Delete skin"
   },
   "app.skins.delete-modal.description": {
-    "message": "This will permanently delete the selected skin. This action cannot be undone.",
-    "defaultMessage": "This will permanently delete the selected skin. This action cannot be undone."
+    "message": "This will permanently delete the selected skin. This action cannot be undone."
   },
   "app.skins.delete-modal.title": {
-    "message": "Are you sure you want to delete this skin?",
-    "defaultMessage": "Are you sure you want to delete this skin?"
+    "message": "Are you sure you want to delete this skin?"
   },
   "app.skins.demo.apply-tooltip": {
-    "message": "Sign in to apply skins.",
-    "defaultMessage": "Sign in to apply skins."
+    "message": "Sign in to apply skins."
   },
   "app.skins.demo.description": {
-    "message": "Sign in to your Minecraft account to save and apply skins!",
-    "defaultMessage": "Sign in to your Minecraft account to save and apply skins!"
+    "message": "Sign in to your Minecraft account to save and apply skins!"
   },
   "app.skins.demo.title": {
-    "message": "Editing with a demo account",
-    "defaultMessage": "Editing with a demo account"
+    "message": "Editing with a demo account"
   },
   "app.skins.dropped-file-error.text": {
-    "message": "Failed to read the dropped file.",
-    "defaultMessage": "Failed to read the dropped file."
+    "message": "Failed to read the dropped file."
   },
   "app.skins.dropped-file-error.title": {
-    "message": "Error processing file",
-    "defaultMessage": "Error processing file"
+    "message": "Error processing file"
   },
   "app.skins.ears-feature-notice": {
-    "message": "This skin uses features from the {ears} mod",
-    "defaultMessage": "This skin uses features from the {ears} mod"
+    "message": "This skin uses features from the {ears} mod"
   },
   "app.skins.edit-button": {
-    "message": "Edit skin",
-    "defaultMessage": "Edit skin"
+    "message": "Edit skin"
   },
   "app.skins.modal.add-skin-button": {
-    "message": "Add skin",
-    "defaultMessage": "Add skin"
+    "message": "Add skin"
   },
   "app.skins.modal.add-title": {
-    "message": "Adding a skin",
-    "defaultMessage": "Adding a skin"
+    "message": "Adding a skin"
   },
   "app.skins.modal.arm-style-section": {
-    "message": "Arm style",
-    "defaultMessage": "Arm style"
+    "message": "Arm style"
   },
   "app.skins.modal.arm-style-slim": {
-    "message": "Slim",
-    "defaultMessage": "Slim"
+    "message": "Slim"
   },
   "app.skins.modal.arm-style-wide": {
-    "message": "Wide",
-    "defaultMessage": "Wide"
+    "message": "Wide"
   },
   "app.skins.modal.cape-fallback-name": {
-    "message": "Cape",
-    "defaultMessage": "Cape"
+    "message": "Cape"
   },
   "app.skins.modal.cape-section": {
-    "message": "Cape",
-    "defaultMessage": "Cape"
+    "message": "Cape"
   },
   "app.skins.modal.demo-save-tooltip": {
-    "message": "Sign in to save skins.",
-    "defaultMessage": "Sign in to save skins."
+    "message": "Sign in to save skins."
   },
   "app.skins.modal.edit-title": {
-    "message": "Editing skin",
-    "defaultMessage": "Editing skin"
+    "message": "Editing skin"
   },
   "app.skins.modal.make-edit-first-tooltip": {
-    "message": "Make an edit to the skin first!",
-    "defaultMessage": "Make an edit to the skin first!"
+    "message": "Make an edit to the skin first!"
   },
   "app.skins.modal.no-cape-tooltip": {
-    "message": "No cape",
-    "defaultMessage": "No cape"
+    "message": "No cape"
   },
   "app.skins.modal.none-cape-option": {
-    "message": "None",
-    "defaultMessage": "None"
+    "message": "None"
   },
   "app.skins.modal.replace-texture-button": {
-    "message": "Replace texture",
-    "defaultMessage": "Replace texture"
+    "message": "Replace texture"
   },
   "app.skins.modal.save-skin-button": {
-    "message": "Save skin",
-    "defaultMessage": "Save skin"
+    "message": "Save skin"
   },
   "app.skins.modal.saving-tooltip": {
-    "message": "Saving...",
-    "defaultMessage": "Saving..."
+    "message": "Saving..."
   },
   "app.skins.modal.texture-section": {
-    "message": "Texture",
-    "defaultMessage": "Texture"
+    "message": "Texture"
   },
   "app.skins.modal.upload-skin-first-tooltip": {
-    "message": "Upload a skin first!",
-    "defaultMessage": "Upload a skin first!"
+    "message": "Upload a skin first!"
   },
   "app.skins.preview.edit-button": {
-    "message": "Edit skin",
-    "defaultMessage": "Edit skin"
+    "message": "Edit skin"
   },
   "app.skins.previewing-badge": {
-    "message": "Previewing",
-    "defaultMessage": "Previewing"
+    "message": "Previewing"
   },
   "app.skins.rate-limit.text": {
-    "message": "You're changing your skin too frequently. Mojang's servers have temporarily blocked further requests. Please wait a moment before trying again.",
-    "defaultMessage": "You're changing your skin too frequently. Mojang's servers have temporarily blocked further requests. Please wait a moment before trying again."
+    "message": "You're changing your skin too frequently. Mojang's servers have temporarily blocked further requests. Please wait a moment before trying again."
   },
   "app.skins.rate-limit.title": {
-    "message": "Slow down!",
-    "defaultMessage": "Slow down!"
+    "message": "Slow down!"
   },
   "app.skins.reorder-error.text": {
-    "message": "Your skin order could not be saved.",
-    "defaultMessage": "Your skin order could not be saved."
+    "message": "Your skin order could not be saved."
   },
   "app.skins.reorder-error.title": {
-    "message": "Failed to reorder skins",
-    "defaultMessage": "Failed to reorder skins"
+    "message": "Failed to reorder skins"
   },
   "app.skins.section.builders-and-biomes": {
-    "message": "Builders & Biomes",
-    "defaultMessage": "Builders & Biomes"
+    "message": "Builders & Biomes"
   },
   "app.skins.section.chaos-cubed": {
-    "message": "Chaos Cubed",
-    "defaultMessage": "Chaos Cubed"
+    "message": "Chaos Cubed"
   },
   "app.skins.section.chase-the-skies": {
-    "message": "Chase the Skies",
-    "defaultMessage": "Chase the Skies"
+    "message": "Chase the Skies"
   },
   "app.skins.section.default-skins": {
-    "message": "Default skins",
-    "defaultMessage": "Default skins"
+    "message": "Default skins"
   },
   "app.skins.section.minecon-earth-2017": {
-    "message": "MINECON Earth 2017",
-    "defaultMessage": "MINECON Earth 2017"
+    "message": "MINECON Earth 2017"
   },
   "app.skins.section.modrinth": {
-    "message": "Rubirinth",
-    "defaultMessage": "Rubirinth"
+    "message": "Modrinth"
   },
   "app.skins.section.modrinth-pride": {
-    "message": "Modrinth Pride",
-    "defaultMessage": "Modrinth Pride"
+    "message": "Modrinth Pride"
   },
   "app.skins.section.modrinth-pride.tooltip": {
-    "message": "You received these skins for donating to a Modrinth Pride fundraiser during Pride Month.",
-    "defaultMessage": "You received these skins for donating to a Modrinth Pride fundraiser during Pride Month."
+    "message": "You received these skins for donating to a Modrinth Pride fundraiser during Pride Month."
   },
   "app.skins.section.mounts-of-mayhem": {
-    "message": "Mounts of Mayhem",
-    "defaultMessage": "Mounts of Mayhem"
+    "message": "Mounts of Mayhem"
   },
   "app.skins.section.saved-skins": {
-    "message": "Saved skins",
-    "defaultMessage": "Saved skins"
+    "message": "Saved skins"
   },
   "app.skins.section.striding-hero": {
-    "message": "Striding Hero",
-    "defaultMessage": "Striding Hero"
+    "message": "Striding Hero"
   },
   "app.skins.section.the-copper-age": {
-    "message": "The Copper Age",
-    "defaultMessage": "The Copper Age"
+    "message": "The Copper Age"
   },
   "app.skins.section.the-garden-awakens": {
-    "message": "The Garden Awakens",
-    "defaultMessage": "The Garden Awakens"
+    "message": "The Garden Awakens"
   },
   "app.skins.section.tiny-takeover": {
-    "message": "Tiny Takeover",
-    "defaultMessage": "Tiny Takeover"
+    "message": "Tiny Takeover"
   },
   "app.skins.sign-in.button": {
-    "message": "Sign in to Microsoft",
-    "defaultMessage": "Sign in to Microsoft"
+    "message": "Sign in to Microsoft"
   },
   "app.skins.title": {
-    "message": "Skin selector",
-    "defaultMessage": "Skin selector"
+    "message": "Skin selector"
   },
   "app.skins.toggle-ears-features-off": {
-    "message": "Toggle off",
-    "defaultMessage": "Toggle off"
+    "message": "Toggle off"
   },
   "app.skins.toggle-ears-features-on": {
-    "message": "Toggle on",
-    "defaultMessage": "Toggle on"
+    "message": "Toggle on"
   },
   "app.survey.body": {
-    "message": "Would you mind answering a few questions about your experience with Rubirinth App?",
-    "defaultMessage": "Would you mind answering a few questions about your experience with Rubirinth App?"
+    "message": "Would you mind answering a few questions about your experience with Modrinth App?"
   },
   "app.survey.footer": {
-    "message": "This feedback will go directly to the Modrinth team and help guide future updates!",
-    "defaultMessage": "This feedback will go directly to the Modrinth team and help guide future updates!"
+    "message": "This feedback will go directly to the Modrinth team and help guide future updates!"
   },
   "app.survey.no-thanks": {
-    "message": "No thanks",
-    "defaultMessage": "No thanks"
+    "message": "No thanks"
   },
   "app.survey.take-survey": {
-    "message": "Take survey",
-    "defaultMessage": "Take survey"
+    "message": "Take survey"
   },
   "app.survey.title": {
-    "message": "Hey there Rubirinth user!",
-    "defaultMessage": "Hey there Rubirinth user!"
+    "message": "Hey there Modrinth user!"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Rubirinth App v{version} has finished downloading. Reload to update now, or automatically when you close Rubirinth App.",
-    "defaultMessage": "Rubirinth App v{version} has finished downloading. Reload to update now, or automatically when you close Rubirinth App."
+    "message": "Modrinth App v{version} has finished downloading. Reload to update now, or automatically when you close Modrinth App."
   },
   "app.update-popup.body.linux": {
-    "message": "Rubirinth App v{version} is available. Use your package manager to update for the latest features and fixes!",
-    "defaultMessage": "Rubirinth App v{version} is available. Use your package manager to update for the latest features and fixes!"
+    "message": "Modrinth App v{version} is available. Use your package manager to update for the latest features and fixes!"
   },
   "app.update-popup.body.metered": {
-    "message": "Rubirinth App v{version} is available now! Since you're on a metered network, we didn't automatically download it.",
-    "defaultMessage": "Rubirinth App v{version} is available now! Since you're on a metered network, we didn't automatically download it."
+    "message": "Modrinth App v{version} is available now! Since you're on a metered network, we didn't automatically download it."
   },
   "app.update-popup.changelog": {
-    "message": "Changelog",
-    "defaultMessage": "Changelog"
+    "message": "Changelog"
   },
   "app.update-popup.download": {
-    "message": "Download ({size})",
-    "defaultMessage": "Download ({size})"
+    "message": "Download ({size})"
   },
   "app.update-popup.download-complete": {
-    "message": "Download complete",
-    "defaultMessage": "Download complete"
+    "message": "Download complete"
   },
   "app.update-popup.reload": {
-    "message": "Reload to update",
-    "defaultMessage": "Reload to update"
+    "message": "Reload to update"
   },
   "app.update-popup.title": {
-    "message": "Update available",
-    "defaultMessage": "Update available"
+    "message": "Update available"
   },
   "app.update.complete-toast.text": {
-    "message": "Click here to view the changelog.",
-    "defaultMessage": "Click here to view the changelog."
+    "message": "Click here to view the changelog."
   },
   "app.update.complete-toast.title": {
-    "message": "Version {version} was successfully installed!",
-    "defaultMessage": "Version {version} was successfully installed!"
+    "message": "Version {version} was successfully installed!"
   },
   "app.update.download-error.missing-version": {
-    "message": "Failed to download update: no version available",
-    "defaultMessage": "Failed to download update: no version available"
+    "message": "Failed to download update: no version available"
   },
   "app.user.project.install-to-instance": {
-    "message": "Install to instance",
-    "defaultMessage": "Install to instance"
+    "message": "Install to instance"
   },
   "app.welcome-screen.create-instance": {
-    "message": "Create an instance",
-    "defaultMessage": "Create an instance"
+    "message": "Create an instance"
   },
   "app.welcome-screen.description": {
-    "message": "Ready to start playing?",
-    "defaultMessage": "Ready to start playing?"
+    "message": "Ready to start playing?"
   },
   "app.welcome-screen.import-from-launcher": {
-    "message": "Import from launcher",
-    "defaultMessage": "Import from launcher"
+    "message": "Import from launcher"
   },
   "app.welcome-screen.import-prompt": {
-    "message": "Escaping another launcher?",
-    "defaultMessage": "Escaping another launcher?"
+    "message": "Escaping another launcher?"
   },
   "app.welcome-screen.quick-create-hint": {
-    "message": "Press <shortcut>N</shortcut> to quick create an instance",
-    "defaultMessage": "Press <shortcut>N</shortcut> to quick create an instance"
+    "message": "Press <shortcut>N</shortcut> to quick create an instance"
   },
   "app.welcome-screen.title": {
-    "message": "Welcome to Rubirinth",
-    "defaultMessage": "Welcome to Rubirinth"
+    "message": "Welcome to Modrinth"
   },
   "app.world.server-modal.placeholder-address": {
-    "message": "example.modrinth.gg",
-    "defaultMessage": "example.modrinth.gg"
+    "message": "example.modrinth.gg"
   },
   "app.world.server-modal.select-an-option": {
-    "message": "Select an option",
-    "defaultMessage": "Select an option"
+    "message": "Select an option"
   },
   "app.world.world-item.incompatible-version": {
-    "message": "Incompatible version {version}",
-    "defaultMessage": "Incompatible version {version}"
+    "message": "Incompatible version {version}"
   },
   "app.world.world-item.not-played-yet": {
-    "message": "Not played yet",
-    "defaultMessage": "Not played yet"
+    "message": "Not played yet"
   },
   "app.world.world-item.offline": {
-    "message": "Offline",
-    "defaultMessage": "Offline"
+    "message": "Offline"
   },
   "app.world.world-item.players-online": {
-    "message": "{count} online",
-    "defaultMessage": "{count} online"
+    "message": "{count} online"
   },
   "content.shared-instance.change-version-body": {
-    "message": "Changing the version only changes your local copy. Future shared instance updates may restore or change it again.",
-    "defaultMessage": "Changing the version only changes your local copy. Future shared instance updates may restore or change it again."
+    "message": "Changing the version only changes your local copy. Future shared instance updates may restore or change it again."
   },
   "content.shared-instance.delete-bulk-body": {
-    "message": "Some selected projects are part of the shared instance. Deleting them only changes your local copy, and future shared instance updates may restore or change them again.",
-    "defaultMessage": "Some selected projects are part of the shared instance. Deleting them only changes your local copy, and future shared instance updates may restore or change them again."
+    "message": "Some selected projects are part of the shared instance. Deleting them only changes your local copy, and future shared instance updates may restore or change them again."
   },
   "content.shared-instance.delete-button": {
-    "message": "Delete anyway",
-    "defaultMessage": "Delete anyway"
+    "message": "Delete anyway"
   },
   "content.shared-instance.delete-many-button": {
-    "message": "Delete {count, number} projects anyway",
-    "defaultMessage": "Delete {count, number} projects anyway"
+    "message": "Delete {count, number} projects anyway"
   },
   "content.shared-instance.delete-single-body": {
-    "message": "Deleting it only changes your local copy. Future shared instance updates may restore or change it again.",
-    "defaultMessage": "Deleting it only changes your local copy. Future shared instance updates may restore or change it again."
+    "message": "Deleting it only changes your local copy. Future shared instance updates may restore or change it again."
   },
   "content.shared-instance.disable-bulk-body": {
-    "message": "Some selected projects are part of the shared instance. Disabling them only changes your local copy, and future shared instance updates may re-enable, restore, or change them again.",
-    "defaultMessage": "Some selected projects are part of the shared instance. Disabling them only changes your local copy, and future shared instance updates may re-enable, restore, or change them again."
+    "message": "Some selected projects are part of the shared instance. Disabling them only changes your local copy, and future shared instance updates may re-enable, restore, or change them again."
   },
   "content.shared-instance.disable-button": {
-    "message": "Disable anyway",
-    "defaultMessage": "Disable anyway"
+    "message": "Disable anyway"
   },
   "content.shared-instance.disable-many-button": {
-    "message": "Disable {count, number} projects anyway",
-    "defaultMessage": "Disable {count, number} projects anyway"
+    "message": "Disable {count, number} projects anyway"
   },
   "content.shared-instance.disable-single-body": {
-    "message": "Disabling it only changes your local copy. Future shared instance updates may re-enable, restore, or change it again.",
-    "defaultMessage": "Disabling it only changes your local copy. Future shared instance updates may re-enable, restore, or change it again."
+    "message": "Disabling it only changes your local copy. Future shared instance updates may re-enable, restore, or change it again."
   },
   "content.shared-instance.unlink-body": {
-    "message": "Unlinking only changes your local copy. Future shared instance updates may restore or change it again.",
-    "defaultMessage": "Unlinking only changes your local copy. Future shared instance updates may restore or change it again."
+    "message": "Unlinking only changes your local copy. Future shared instance updates may restore or change it again."
   },
   "content.shared-instance.warning-header": {
-    "message": "This is part of the shared instance",
-    "defaultMessage": "This is part of the shared instance"
+    "message": "This is part of the shared instance"
   },
   "friends.action.add-friend": {
-    "message": "Add a friend",
-    "defaultMessage": "Add a friend"
+    "message": "Add a friend"
   },
   "friends.action.view-friend-requests": {
-    "message": "{count} friend {count, plural, one {request} other {requests}}",
-    "defaultMessage": "{count} friend {count, plural, one {request} other {requests}}"
+    "message": "{count} friend {count, plural, one {request} other {requests}}"
   },
   "friends.add-friend.submit": {
-    "message": "Send friend request",
-    "defaultMessage": "Send friend request"
+    "message": "Send friend request"
   },
   "friends.add-friend.title": {
-    "message": "Adding a friend",
-    "defaultMessage": "Adding a friend"
+    "message": "Adding a friend"
   },
   "friends.add-friend.username.description": {
-    "message": "It may be different from their Minecraft username!",
-    "defaultMessage": "It may be different from their Minecraft username!"
+    "message": "It may be different from their Minecraft username!"
   },
   "friends.add-friend.username.placeholder": {
-    "message": "Enter Modrinth username...",
-    "defaultMessage": "Enter Modrinth username..."
+    "message": "Enter Modrinth username..."
   },
   "friends.add-friend.username.title": {
-    "message": "What's your friend's Modrinth username?",
-    "defaultMessage": "What's your friend's Modrinth username?"
+    "message": "What's your friend's Modrinth username?"
   },
   "friends.add-friends-to-share": {
-    "message": "<link>Add friends</link> to see what they're playing!",
-    "defaultMessage": "<link>Add friends</link> to see what they're playing!"
+    "message": "<link>Add friends</link> to see what they're playing!"
   },
   "friends.friend.actions.label": {
     "message": "Friend actions"
   },
   "friends.friend.cancel-request": {
-    "message": "Cancel request",
-    "defaultMessage": "Cancel request"
+    "message": "Cancel request"
   },
   "friends.friend.remove-friend": {
-    "message": "Remove friend",
-    "defaultMessage": "Remove friend"
+    "message": "Remove friend"
   },
   "friends.friend.request-sent": {
-    "message": "Friend request sent",
-    "defaultMessage": "Friend request sent"
+    "message": "Friend request sent"
   },
   "friends.friend.view-profile": {
-    "message": "View profile",
-    "defaultMessage": "View profile"
+    "message": "View profile"
   },
   "friends.heading": {
-    "defaultMessage": "Friends",
     "message": "Friends"
   },
   "friends.heading.active": {
-    "message": "Active",
-    "defaultMessage": "Active"
+    "message": "Active"
   },
   "friends.heading.offline": {
-    "message": "Offline",
-    "defaultMessage": "Offline"
+    "message": "Offline"
   },
   "friends.heading.online": {
-    "message": "Online",
-    "defaultMessage": "Online"
+    "message": "Online"
   },
   "friends.heading.pending": {
-    "message": "Pending",
-    "defaultMessage": "Pending"
+    "message": "Pending"
   },
   "friends.no-friends-match": {
-    "message": "No friends matching ''{query}''",
-    "defaultMessage": "No friends matching ''{query}''"
+    "message": "No friends matching ''{query}''"
   },
   "friends.search-friends-placeholder": {
-    "message": "Search friends...",
-    "defaultMessage": "Search friends..."
+    "message": "Search friends..."
   },
   "friends.section.heading": {
-    "message": "{title} - {count}",
-    "defaultMessage": "{title} - {count}"
+    "message": "{title} - {count}"
   },
   "friends.sign-in-to-add-friends": {
-    "message": "<link>Sign in to a Modrinth account</link> to add friends and see what they're playing!",
-    "defaultMessage": "<link>Sign in to a Modrinth account</link> to add friends and see what they're playing!"
+    "message": "<link>Sign in to a Modrinth account</link> to add friends and see what they're playing!"
   },
   "installation-settings.shared-instance.linked-title": {
-    "message": "Linked shared instance",
-    "defaultMessage": "Linked shared instance"
+    "message": "Linked shared instance"
   },
   "installation-settings.shared-instance.title": {
-    "message": "Unpublish instance",
-    "defaultMessage": "Unpublish instance"
+    "message": "Unpublish instance"
   },
   "installation-settings.shared-instance.unlink-button": {
-    "message": "Unlink shared instance",
-    "defaultMessage": "Unlink shared instance"
+    "message": "Unlink shared instance"
   },
   "installation-settings.shared-instance.unlink-description": {
-    "message": "Disconnect this local instance from future shared updates.",
-    "defaultMessage": "Disconnect this local instance from future shared updates."
+    "message": "Disconnect this local instance from future shared updates."
   },
   "installation-settings.shared-instance.unlinking-button": {
-    "message": "Unlinking...",
-    "defaultMessage": "Unlinking..."
+    "message": "Unlinking..."
   },
   "installation-settings.shared-instance.unpublish-button": {
-    "message": "Unpublish shared instance",
-    "defaultMessage": "Unpublish shared instance"
+    "message": "Unpublish shared instance"
   },
   "installation-settings.shared-instance.unpublish-description": {
-    "message": "Remove this shared instance from Modrinth and stop sending updates to anyone using it. Your local instance will not be affected.",
-    "defaultMessage": "Remove this shared instance from Modrinth and stop sending updates to anyone using it. Your local instance will not be affected."
+    "message": "Remove this shared instance from Modrinth and stop sending updates to anyone using it. Your local instance will not be affected."
   },
   "installation-settings.shared-instance.unpublishing-button": {
-    "message": "Unpublishing...",
-    "defaultMessage": "Unpublishing..."
+    "message": "Unpublishing..."
   },
   "installation-settings.unlink-shared-instance.modal.admonition-body": {
-    "message": "This only affects your local instance. Your installed content will stay on this device, and the shared instance and other people using it will not be affected.",
-    "defaultMessage": "This only affects your local instance. Your installed content will stay on this device, and the shared instance and other people using it will not be affected."
+    "message": "This only affects your local instance. Your installed content will stay on this device, and the shared instance and other people using it will not be affected."
   },
   "installation-settings.unlink-shared-instance.modal.admonition-header": {
-    "message": "Unlinking shared instance",
-    "defaultMessage": "Unlinking shared instance"
+    "message": "Unlinking shared instance"
   },
   "installation-settings.unlink-shared-instance.modal.header": {
-    "message": "Unlink shared instance",
-    "defaultMessage": "Unlink shared instance"
+    "message": "Unlink shared instance"
   },
   "installation-settings.unpublish-shared-instance.modal.admonition-body": {
-    "message": "This deletes the shared instance from Modrinth's servers. People using it in the Rubirinth App will stop receiving updates, but your local instance and its content will stay on this device.",
-    "defaultMessage": "This deletes the shared instance from Modrinth's servers. People using it in the Rubirinth App will stop receiving updates, but your local instance and its content will stay on this device."
+    "message": "This deletes the shared instance from Modrinth's servers. People using it in the Modrinth App will stop receiving updates, but your local instance and its content will stay on this device."
   },
   "installation-settings.unpublish-shared-instance.modal.admonition-header": {
-    "message": "Unpublishing shared instance",
-    "defaultMessage": "Unpublishing shared instance"
+    "message": "Unpublishing shared instance"
   },
   "installation-settings.unpublish-shared-instance.modal.header": {
-    "message": "Unpublish shared instance",
-    "defaultMessage": "Unpublish shared instance"
+    "message": "Unpublish shared instance"
   },
   "instance.action.create-shortcut": {
-    "message": "Create shortcut",
-    "defaultMessage": "Create shortcut"
+    "message": "Create shortcut"
   },
   "instance.action.export-modpack": {
-    "message": "Export modpack",
-    "defaultMessage": "Export modpack"
+    "message": "Export modpack"
   },
   "instance.action.launch-instance": {
-    "message": "Launch instance",
-    "defaultMessage": "Launch instance"
+    "message": "Launch instance"
   },
   "instance.action.more-actions": {
-    "message": "More actions",
-    "defaultMessage": "More actions"
+    "message": "More actions"
   },
   "instance.action.open-folder": {
-    "message": "Open folder",
-    "defaultMessage": "Open folder"
+    "message": "Open folder"
   },
   "instance.action.repair": {
-    "message": "Repair",
-    "defaultMessage": "Repair"
+    "message": "Repair"
   },
   "instance.action.settings": {
-    "message": "Instance settings",
-    "defaultMessage": "Instance settings"
+    "message": "Instance settings"
   },
   "instance.action.starting": {
-    "message": "Starting...",
-    "defaultMessage": "Starting..."
+    "message": "Starting..."
   },
   "instance.action.stopping": {
-    "message": "Stopping...",
-    "defaultMessage": "Stopping..."
+    "message": "Stopping..."
   },
   "instance.add-server.add-and-play": {
-    "message": "Add and play",
-    "defaultMessage": "Add and play"
+    "message": "Add and play"
   },
   "instance.add-server.add-server": {
-    "message": "Add server",
-    "defaultMessage": "Add server"
+    "message": "Add server"
   },
   "instance.add-server.resource-pack.disabled": {
-    "message": "Disabled",
-    "defaultMessage": "Disabled"
+    "message": "Disabled"
   },
   "instance.add-server.resource-pack.enabled": {
-    "message": "Enabled",
-    "defaultMessage": "Enabled"
+    "message": "Enabled"
   },
   "instance.add-server.resource-pack.prompt": {
-    "message": "Prompt",
-    "defaultMessage": "Prompt"
+    "message": "Prompt"
   },
   "instance.add-server.title": {
-    "message": "Add a server",
-    "defaultMessage": "Add a server"
+    "message": "Add a server"
   },
   "instance.edit-server.title": {
-    "message": "Edit server",
-    "defaultMessage": "Edit server"
+    "message": "Edit server"
   },
   "instance.edit-world.hide-from-home": {
-    "message": "Hide from the Home page",
-    "defaultMessage": "Hide from the Home page"
+    "message": "Hide from the Home page"
   },
   "instance.edit-world.name": {
-    "message": "Name",
-    "defaultMessage": "Name"
+    "message": "Name"
   },
   "instance.edit-world.placeholder-name": {
-    "message": "Minecraft World",
-    "defaultMessage": "Minecraft World"
+    "message": "Minecraft World"
   },
   "instance.edit-world.reset-icon": {
-    "message": "Reset icon",
-    "defaultMessage": "Reset icon"
+    "message": "Reset icon"
   },
   "instance.edit-world.title": {
-    "message": "Edit world",
-    "defaultMessage": "Edit world"
+    "message": "Edit world"
   },
   "instance.files.adding-files": {
-    "message": "Adding files ({completed}/{total})",
-    "defaultMessage": "Adding files ({completed}/{total})"
+    "message": "Adding files ({completed}/{total})"
   },
   "instance.files.save-as": {
-    "message": "Save as...",
-    "defaultMessage": "Save as..."
+    "message": "Save as..."
   },
   "instance.icon-editor.background": {
-    "message": "Background",
-    "defaultMessage": "Background"
+    "message": "Background"
   },
   "instance.icon-editor.background.blue": {
-    "message": "Blue",
-    "defaultMessage": "Blue"
+    "message": "Blue"
   },
   "instance.icon-editor.background.dark-gray": {
-    "message": "Dark gray",
-    "defaultMessage": "Dark gray"
+    "message": "Dark gray"
   },
   "instance.icon-editor.background.dark-green": {
-    "message": "Dark green",
-    "defaultMessage": "Dark green"
+    "message": "Dark green"
   },
   "instance.icon-editor.background.gray": {
-    "message": "Gray",
-    "defaultMessage": "Gray"
+    "message": "Gray"
   },
   "instance.icon-editor.background.green": {
-    "message": "Green",
-    "defaultMessage": "Green"
+    "message": "Green"
   },
   "instance.icon-editor.background.indigo": {
-    "message": "Indigo",
-    "defaultMessage": "Indigo"
+    "message": "Indigo"
   },
   "instance.icon-editor.background.lavender": {
-    "message": "Lavender",
-    "defaultMessage": "Lavender"
+    "message": "Lavender"
   },
   "instance.icon-editor.background.light-gray": {
-    "message": "Light gray",
-    "defaultMessage": "Light gray"
+    "message": "Light gray"
   },
   "instance.icon-editor.background.lime": {
-    "message": "Lime",
-    "defaultMessage": "Lime"
+    "message": "Lime"
   },
   "instance.icon-editor.background.orange": {
-    "message": "Orange",
-    "defaultMessage": "Orange"
+    "message": "Orange"
   },
   "instance.icon-editor.background.pink": {
-    "message": "Pink",
-    "defaultMessage": "Pink"
+    "message": "Pink"
   },
   "instance.icon-editor.background.purple": {
-    "message": "Purple",
-    "defaultMessage": "Purple"
+    "message": "Purple"
   },
   "instance.icon-editor.background.red": {
-    "message": "Red",
-    "defaultMessage": "Red"
+    "message": "Red"
   },
   "instance.icon-editor.background.rose": {
-    "message": "Rose",
-    "defaultMessage": "Rose"
+    "message": "Rose"
   },
   "instance.icon-editor.background.yellow": {
-    "message": "Yellow",
-    "defaultMessage": "Yellow"
+    "message": "Yellow"
   },
   "instance.icon-editor.description": {
-    "message": "Mix and match elements to create a custom icon.",
-    "defaultMessage": "Mix and match elements to create a custom icon."
+    "message": "Mix and match elements to create a custom icon."
   },
   "instance.icon-editor.recents": {
-    "message": "Recents",
-    "defaultMessage": "Recents"
+    "message": "Recents"
   },
   "instance.icon-editor.save": {
-    "message": "Save icon",
-    "defaultMessage": "Save icon"
+    "message": "Save icon"
   },
   "instance.icon-editor.surprise-me": {
-    "message": "Randomize",
-    "defaultMessage": "Randomize"
+    "message": "Randomize"
   },
   "instance.icon-editor.symbol": {
-    "message": "Symbol",
-    "defaultMessage": "Symbol"
+    "message": "Symbol"
   },
   "instance.icon-editor.symbol.backpack": {
-    "message": "Backpack",
-    "defaultMessage": "Backpack"
+    "message": "Backpack"
   },
   "instance.icon-editor.symbol.beacon": {
-    "message": "Beacon",
-    "defaultMessage": "Beacon"
+    "message": "Beacon"
   },
   "instance.icon-editor.symbol.blue-shark": {
-    "message": "Blue Shark",
-    "defaultMessage": "Blue Shark"
+    "message": "Blue Shark"
   },
   "instance.icon-editor.symbol.bookshelf": {
-    "message": "Bookshelf",
-    "defaultMessage": "Bookshelf"
+    "message": "Bookshelf"
   },
   "instance.icon-editor.symbol.brown-bear": {
-    "message": "Brown Bear",
-    "defaultMessage": "Brown Bear"
+    "message": "Brown Bear"
   },
   "instance.icon-editor.symbol.cake": {
-    "message": "Cake",
-    "defaultMessage": "Cake"
+    "message": "Cake"
   },
   "instance.icon-editor.symbol.campfire": {
-    "message": "Campfire",
-    "defaultMessage": "Campfire"
+    "message": "Campfire"
   },
   "instance.icon-editor.symbol.chest": {
-    "message": "Chest",
-    "defaultMessage": "Chest"
+    "message": "Chest"
   },
   "instance.icon-editor.symbol.cogwheel": {
-    "message": "Cogwheel",
-    "defaultMessage": "Cogwheel"
+    "message": "Cogwheel"
   },
   "instance.icon-editor.symbol.command-block": {
-    "message": "Command Block",
-    "defaultMessage": "Command Block"
+    "message": "Command Block"
   },
   "instance.icon-editor.symbol.cooking-pot": {
-    "message": "Cooking Pot",
-    "defaultMessage": "Cooking Pot"
+    "message": "Cooking Pot"
   },
   "instance.icon-editor.symbol.couch": {
-    "message": "Couch",
-    "defaultMessage": "Couch"
+    "message": "Couch"
   },
   "instance.icon-editor.symbol.crafting-table": {
-    "message": "Crafting Table",
-    "defaultMessage": "Crafting Table"
+    "message": "Crafting Table"
   },
   "instance.icon-editor.symbol.create-wrench": {
-    "message": "Wrench",
-    "defaultMessage": "Wrench"
+    "message": "Wrench"
   },
   "instance.icon-editor.symbol.creeper": {
-    "message": "Creeper",
-    "defaultMessage": "Creeper"
+    "message": "Creeper"
   },
   "instance.icon-editor.symbol.enchanting-table": {
-    "message": "Enchanting Table",
-    "defaultMessage": "Enchanting Table"
+    "message": "Enchanting Table"
   },
   "instance.icon-editor.symbol.ender-chest": {
-    "message": "Ender Chest",
-    "defaultMessage": "Ender Chest"
+    "message": "Ender Chest"
   },
   "instance.icon-editor.symbol.ender-dragon": {
-    "message": "Ender Dragon",
-    "defaultMessage": "Ender Dragon"
+    "message": "Ender Dragon"
   },
   "instance.icon-editor.symbol.engine": {
-    "message": "Engine",
-    "defaultMessage": "Engine"
+    "message": "Engine"
   },
   "instance.icon-editor.symbol.fabric": {
-    "message": "Fabric",
-    "defaultMessage": "Fabric"
+    "message": "Fabric"
   },
   "instance.icon-editor.symbol.forge": {
-    "message": "Forge",
-    "defaultMessage": "Forge"
+    "message": "Forge"
   },
   "instance.icon-editor.symbol.furnace": {
-    "message": "Furnace",
-    "defaultMessage": "Furnace"
+    "message": "Furnace"
   },
   "instance.icon-editor.symbol.gizmo": {
-    "message": "Gizmo",
-    "defaultMessage": "Gizmo"
+    "message": "Gizmo"
   },
   "instance.icon-editor.symbol.globe": {
-    "message": "Globe",
-    "defaultMessage": "Globe"
+    "message": "Globe"
   },
   "instance.icon-editor.symbol.grass-block": {
-    "message": "Grass Block",
-    "defaultMessage": "Grass Block"
+    "message": "Grass Block"
   },
   "instance.icon-editor.symbol.lantern": {
-    "message": "Lantern",
-    "defaultMessage": "Lantern"
+    "message": "Lantern"
   },
   "instance.icon-editor.symbol.moobloom": {
-    "message": "Moobloom",
-    "defaultMessage": "Moobloom"
+    "message": "Moobloom"
   },
   "instance.icon-editor.symbol.mr-pack": {
-    "message": "Mr Pack",
-    "defaultMessage": "Mr Pack"
+    "message": "Mr Pack"
   },
   "instance.icon-editor.symbol.neoforge": {
-    "message": "NeoForge",
-    "defaultMessage": "NeoForge"
+    "message": "NeoForge"
   },
   "instance.icon-editor.symbol.orb": {
-    "message": "Orb",
-    "defaultMessage": "Orb"
+    "message": "Orb"
   },
   "instance.icon-editor.symbol.oxygen-distributor": {
-    "message": "Oxygen Distributor",
-    "defaultMessage": "Oxygen Distributor"
+    "message": "Oxygen Distributor"
   },
   "instance.icon-editor.symbol.pancakes": {
-    "message": "Pancakes",
-    "defaultMessage": "Pancakes"
+    "message": "Pancakes"
   },
   "instance.icon-editor.symbol.pickaxe": {
-    "message": "Pickaxe",
-    "defaultMessage": "Pickaxe"
+    "message": "Pickaxe"
   },
   "instance.icon-editor.symbol.poke-ball": {
-    "message": "Poke Ball",
-    "defaultMessage": "Poke Ball"
+    "message": "Poke Ball"
   },
   "instance.icon-editor.symbol.quilt": {
-    "message": "Quilt",
-    "defaultMessage": "Quilt"
+    "message": "Quilt"
   },
   "instance.icon-editor.symbol.redstone-block": {
-    "message": "Redstone Block",
-    "defaultMessage": "Redstone Block"
+    "message": "Redstone Block"
   },
   "instance.icon-editor.symbol.sculk-sensor": {
-    "message": "Sculk Sensor",
-    "defaultMessage": "Sculk Sensor"
+    "message": "Sculk Sensor"
   },
   "instance.icon-editor.symbol.skeleton": {
-    "message": "Skeleton",
-    "defaultMessage": "Skeleton"
+    "message": "Skeleton"
   },
   "instance.icon-editor.symbol.skillet": {
-    "message": "Skillet",
-    "defaultMessage": "Skillet"
+    "message": "Skillet"
   },
   "instance.icon-editor.symbol.slime-block": {
-    "message": "Slime Block",
-    "defaultMessage": "Slime Block"
+    "message": "Slime Block"
   },
   "instance.icon-editor.symbol.space-helmet": {
-    "message": "Space Helmet",
-    "defaultMessage": "Space Helmet"
+    "message": "Space Helmet"
   },
   "instance.icon-editor.symbol.sticky-piston": {
-    "message": "Sticky Piston",
-    "defaultMessage": "Sticky Piston"
+    "message": "Sticky Piston"
   },
   "instance.icon-editor.symbol.sword": {
-    "message": "Sword",
-    "defaultMessage": "Sword"
+    "message": "Sword"
   },
   "instance.icon-editor.symbol.terminal": {
-    "message": "Terminal",
-    "defaultMessage": "Terminal"
+    "message": "Terminal"
   },
   "instance.icon-editor.symbol.tiny-potato": {
-    "message": "Tiny Potato",
-    "defaultMessage": "Tiny Potato"
+    "message": "Tiny Potato"
   },
   "instance.icon-editor.symbol.tire": {
-    "message": "Tire",
-    "defaultMessage": "Tire"
+    "message": "Tire"
   },
   "instance.icon-editor.symbol.tnt": {
-    "message": "TNT",
-    "defaultMessage": "TNT"
+    "message": "TNT"
   },
   "instance.icon-editor.symbol.wrenth-rinth": {
-    "message": "Rubirinth Wrench",
-    "defaultMessage": "Rubirinth Wrench"
+    "message": "Modrinth Wrench"
   },
   "instance.icon-editor.symbol.zombie": {
-    "message": "Zombie",
-    "defaultMessage": "Zombie"
+    "message": "Zombie"
   },
   "instance.icon-editor.title": {
-    "message": "Icon editor",
-    "defaultMessage": "Icon editor"
+    "message": "Icon editor"
   },
   "instance.last-played": {
-    "message": "Last played",
-    "defaultMessage": "Last played"
+    "message": "Last played"
   },
   "instance.locked.delete-button": {
-    "message": "Delete instance",
-    "defaultMessage": "Delete instance"
+    "message": "Delete instance"
   },
   "instance.locked.play-tooltip": {
-    "message": "This instance has been locked",
-    "defaultMessage": "This instance has been locked"
+    "message": "This instance has been locked"
   },
   "instance.playtime.never-played": {
-    "message": "Never played",
-    "defaultMessage": "Never played"
+    "message": "Never played"
   },
   "instance.server-modal.address": {
-    "message": "Address",
-    "defaultMessage": "Address"
+    "message": "Address"
   },
   "instance.server-modal.name": {
-    "message": "Name",
-    "defaultMessage": "Name"
+    "message": "Name"
   },
   "instance.server-modal.placeholder-name": {
-    "message": "Minecraft Server",
-    "defaultMessage": "Minecraft Server"
+    "message": "Minecraft Server"
   },
   "instance.server-modal.resource-pack": {
-    "message": "Resource pack",
-    "defaultMessage": "Resource pack"
+    "message": "Resource pack"
   },
   "instance.settings.sharing.active-invites.actions": {
-    "message": "Actions",
-    "defaultMessage": "Actions"
+    "message": "Actions"
   },
   "instance.settings.sharing.active-invites.code": {
-    "message": "Invite link",
-    "defaultMessage": "Invite link"
+    "message": "Invite link"
   },
   "instance.settings.sharing.active-invites.description": {
-    "message": "Anyone with one of these invite links can join while it remains active.",
-    "defaultMessage": "Anyone with one of these invite links can join while it remains active."
+    "message": "Anyone with one of these invite links can join while it remains active."
   },
   "instance.settings.sharing.active-invites.empty": {
-    "message": "There are no active invites.",
-    "defaultMessage": "There are no active invites."
+    "message": "There are no active invites."
   },
   "instance.settings.sharing.active-invites.expires": {
-    "message": "Expires",
-    "defaultMessage": "Expires"
+    "message": "Expires"
   },
   "instance.settings.sharing.active-invites.revoke": {
-    "message": "Revoke invite",
-    "defaultMessage": "Revoke invite"
+    "message": "Revoke invite"
   },
   "instance.settings.sharing.active-invites.revoke-with-code": {
-    "message": "Revoke invite {code}",
-    "defaultMessage": "Revoke invite {code}"
+    "message": "Revoke invite {code}"
   },
   "instance.settings.sharing.active-invites.title": {
-    "message": "Active invites",
-    "defaultMessage": "Active invites"
+    "message": "Active invites"
   },
   "instance.settings.sharing.active-invites.uses": {
-    "message": "Uses",
-    "defaultMessage": "Uses"
+    "message": "Uses"
   },
   "instance.settings.sharing.revoke-invite.admonition-body": {
-    "message": "The invite link <monospace>{code}</monospace> will stop working immediately. People who already joined will keep access.",
-    "defaultMessage": "The invite link <monospace>{code}</monospace> will stop working immediately. People who already joined will keep access."
+    "message": "The invite link <monospace>{code}</monospace> will stop working immediately. People who already joined will keep access."
   },
   "instance.settings.sharing.revoke-invite.admonition-header": {
-    "message": "This action cannot be undone",
-    "defaultMessage": "This action cannot be undone"
+    "message": "This action cannot be undone"
   },
   "instance.settings.sharing.revoke-invite.confirm": {
-    "message": "Revoke invite",
-    "defaultMessage": "Revoke invite"
+    "message": "Revoke invite"
   },
   "instance.settings.sharing.revoke-invite.header": {
-    "message": "Revoke invite",
-    "defaultMessage": "Revoke invite"
+    "message": "Revoke invite"
   },
   "instance.settings.tabs.general": {
-    "message": "General",
-    "defaultMessage": "General"
+    "message": "General"
   },
   "instance.settings.tabs.general.delete": {
-    "message": "Delete instance",
-    "defaultMessage": "Delete instance"
+    "message": "Delete instance"
   },
   "instance.settings.tabs.general.delete.button": {
-    "message": "Delete instance",
-    "defaultMessage": "Delete instance"
+    "message": "Delete instance"
   },
   "instance.settings.tabs.general.delete.description": {
-    "message": "Permanently deletes an instance from your device, including your worlds, configs, and all installed content. Be careful, as once you delete a instance there is no way to recover it.",
-    "defaultMessage": "Permanently deletes an instance from your device, including your worlds, configs, and all installed content. Be careful, as once you delete a instance there is no way to recover it."
+    "message": "Permanently deletes an instance from your device, including your worlds, configs, and all installed content. Be careful, as once you delete a instance there is no way to recover it."
   },
   "instance.settings.tabs.general.deleting.button": {
-    "message": "Deleting...",
-    "defaultMessage": "Deleting..."
+    "message": "Deleting..."
   },
   "instance.settings.tabs.general.duplicate-button": {
-    "message": "Duplicate",
-    "defaultMessage": "Duplicate"
+    "message": "Duplicate"
   },
   "instance.settings.tabs.general.duplicate-button.tooltip.installing": {
-    "message": "Cannot duplicate while installing.",
-    "defaultMessage": "Cannot duplicate while installing."
+    "message": "Cannot duplicate while installing."
   },
   "instance.settings.tabs.general.duplicate-instance": {
-    "message": "Duplicate instance",
-    "defaultMessage": "Duplicate instance"
+    "message": "Duplicate instance"
   },
   "instance.settings.tabs.general.duplicate-instance.description": {
-    "message": "Creates a copy of this instance, including worlds, configs, mods, etc.",
-    "defaultMessage": "Creates a copy of this instance, including worlds, configs, mods, etc."
+    "message": "Creates a copy of this instance, including worlds, configs, mods, etc."
   },
   "instance.settings.tabs.general.edit-icon": {
-    "message": "Edit icon",
-    "defaultMessage": "Edit icon"
+    "message": "Edit icon"
   },
   "instance.settings.tabs.general.edit-icon.create": {
-    "message": "Create an icon",
-    "defaultMessage": "Create an icon"
+    "message": "Create an icon"
   },
   "instance.settings.tabs.general.edit-icon.edit-created": {
-    "message": "Edit icon",
-    "defaultMessage": "Edit icon"
+    "message": "Edit icon"
   },
   "instance.settings.tabs.general.edit-icon.remove": {
-    "message": "Remove icon",
-    "defaultMessage": "Remove icon"
+    "message": "Remove icon"
   },
   "instance.settings.tabs.general.edit-icon.replace": {
-    "message": "Replace icon",
-    "defaultMessage": "Replace icon"
+    "message": "Replace icon"
   },
   "instance.settings.tabs.general.edit-icon.select": {
-    "message": "Select icon",
-    "defaultMessage": "Select icon"
+    "message": "Select icon"
   },
   "instance.settings.tabs.general.icon": {
-    "message": "Icon",
-    "defaultMessage": "Icon"
+    "message": "Icon"
   },
   "instance.settings.tabs.general.name": {
-    "message": "Name",
-    "defaultMessage": "Name"
+    "message": "Name"
   },
   "instance.settings.tabs.general.update-channel": {
-    "message": "Update channel",
-    "defaultMessage": "Update channel"
+    "message": "Update channel"
   },
   "instance.settings.tabs.general.update-channel.alpha": {
-    "message": "Alpha",
-    "defaultMessage": "Alpha"
+    "message": "Alpha"
   },
   "instance.settings.tabs.general.update-channel.alpha.description": {
-    "message": "Release, beta, and alpha versions will be shown as available updates.",
-    "defaultMessage": "Release, beta, and alpha versions will be shown as available updates."
+    "message": "Release, beta, and alpha versions will be shown as available updates."
   },
   "instance.settings.tabs.general.update-channel.beta": {
-    "message": "Beta",
-    "defaultMessage": "Beta"
+    "message": "Beta"
   },
   "instance.settings.tabs.general.update-channel.beta.description": {
-    "message": "Release and beta versions will be shown as available updates.",
-    "defaultMessage": "Release and beta versions will be shown as available updates."
+    "message": "Release and beta versions will be shown as available updates."
   },
   "instance.settings.tabs.general.update-channel.release": {
-    "message": "Release",
-    "defaultMessage": "Release"
+    "message": "Release"
   },
   "instance.settings.tabs.general.update-channel.release.description": {
-    "message": "Only release versions will be shown as available updates.",
-    "defaultMessage": "Only release versions will be shown as available updates."
+    "message": "Only release versions will be shown as available updates."
   },
   "instance.settings.tabs.general.update-channel.select": {
-    "message": "Select update channel",
-    "defaultMessage": "Select update channel"
+    "message": "Select update channel"
   },
   "instance.settings.tabs.hooks": {
     "message": "Launch hooks",
@@ -3131,482 +2364,365 @@
     "defaultMessage": "Custom launch hooks"
   },
   "instance.settings.tabs.hooks.description": {
-    "message": "Hooks allow advanced users to run certain system commands before and after launching the game.",
-    "defaultMessage": "Hooks allow advanced users to run certain system commands before and after launching the game."
+    "message": "Hooks allow advanced users to run certain system commands before and after launching the game."
   },
   "instance.settings.tabs.hooks.post-exit": {
-    "message": "Post-exit",
-    "defaultMessage": "Post-exit"
+    "message": "Post-exit"
   },
   "instance.settings.tabs.hooks.post-exit.description": {
-    "message": "Ran after the game closes.",
-    "defaultMessage": "Ran after the game closes."
+    "message": "Ran after the game closes."
   },
   "instance.settings.tabs.hooks.post-exit.enter": {
-    "message": "Enter post-exit command...",
-    "defaultMessage": "Enter post-exit command..."
+    "message": "Enter post-exit command..."
   },
   "instance.settings.tabs.hooks.pre-launch": {
-    "message": "Pre-launch",
-    "defaultMessage": "Pre-launch"
+    "message": "Pre-launch"
   },
   "instance.settings.tabs.hooks.pre-launch.description": {
-    "message": "Ran before the instance is launched.",
-    "defaultMessage": "Ran before the instance is launched."
+    "message": "Ran before the instance is launched."
   },
   "instance.settings.tabs.hooks.pre-launch.enter": {
-    "message": "Enter pre-launch command...",
-    "defaultMessage": "Enter pre-launch command..."
+    "message": "Enter pre-launch command..."
   },
   "instance.settings.tabs.hooks.title": {
-    "message": "Game launch hooks",
-    "defaultMessage": "Game launch hooks"
+    "message": "Game launch hooks"
   },
   "instance.settings.tabs.hooks.variables.description": {
-    "message": "Hooks run in the working directory of the instance, with the following variables:",
-    "defaultMessage": "Hooks run in the working directory of the instance, with the following variables:"
+    "message": "Hooks run in the working directory of the instance, with the following variables:"
   },
   "instance.settings.tabs.hooks.variables.inst-dir.description": {
-    "message": "$INST_DIR: The absolute path to the instance's folder",
-    "defaultMessage": "$INST_DIR: The absolute path to the instance's folder"
+    "message": "$INST_DIR: The absolute path to the instance's folder"
   },
   "instance.settings.tabs.hooks.variables.inst-id.description": {
-    "message": "$INST_ID: The name of the instance's folder",
-    "defaultMessage": "$INST_ID: The name of the instance's folder"
+    "message": "$INST_ID: The name of the instance's folder"
   },
   "instance.settings.tabs.hooks.variables.inst-java-args.description": {
-    "message": "$INST_JAVA_ARGS: The JVM Arguments provided to the game",
-    "defaultMessage": "$INST_JAVA_ARGS: The JVM Arguments provided to the game"
+    "message": "$INST_JAVA_ARGS: The JVM Arguments provided to the game"
   },
   "instance.settings.tabs.hooks.variables.inst-java.description": {
-    "message": "$INST_JAVA: The absolute path to the java binary",
-    "defaultMessage": "$INST_JAVA: The absolute path to the java binary"
+    "message": "$INST_JAVA: The absolute path to the java binary"
   },
   "instance.settings.tabs.hooks.variables.inst-mc-dir.description": {
-    "message": "$INST_MC_DIR: An alias for $INST_DIR",
-    "defaultMessage": "$INST_MC_DIR: An alias for $INST_DIR"
+    "message": "$INST_MC_DIR: An alias for $INST_DIR"
   },
   "instance.settings.tabs.hooks.variables.inst-name.description": {
-    "message": "$INST_NAME: The name of the instance",
-    "defaultMessage": "$INST_NAME: The name of the instance"
+    "message": "$INST_NAME: The name of the instance"
   },
   "instance.settings.tabs.hooks.wrapper": {
-    "message": "Wrapper",
-    "defaultMessage": "Wrapper"
+    "message": "Wrapper"
   },
   "instance.settings.tabs.hooks.wrapper.description": {
-    "message": "Wrapper command for launching Minecraft.",
-    "defaultMessage": "Wrapper command for launching Minecraft."
+    "message": "Wrapper command for launching Minecraft."
   },
   "instance.settings.tabs.hooks.wrapper.enter": {
-    "message": "Enter wrapper command...",
-    "defaultMessage": "Enter wrapper command..."
+    "message": "Enter wrapper command..."
   },
   "instance.settings.tabs.installation": {
-    "message": "Installation",
-    "defaultMessage": "Installation"
+    "message": "Installation"
   },
   "instance.settings.tabs.installation.loader-version": {
-    "message": "{loader} version",
-    "defaultMessage": "{loader} version"
+    "message": "{loader} version"
   },
   "instance.settings.tabs.installation.locked": {
-    "message": "Installation settings are unavailable while this instance is locked.",
-    "defaultMessage": "Installation settings are unavailable while this instance is locked."
+    "message": "Installation settings are unavailable while this instance is locked."
   },
   "instance.settings.tabs.java": {
     "message": "Java and memory",
     "defaultMessage": "Java and memory"
   },
   "instance.settings.tabs.java.custom-environment-variables": {
-    "message": "Custom environment variables",
-    "defaultMessage": "Custom environment variables"
+    "message": "Use custom environment variables for this instance."
   },
   "instance.settings.tabs.java.custom-java-arguments": {
-    "message": "Custom Java arguments",
-    "defaultMessage": "Custom Java arguments"
+    "message": "Use custom Java arguments for this instance."
   },
   "instance.settings.tabs.java.custom-java-installation": {
-    "message": "Custom Java installation",
-    "defaultMessage": "Custom Java installation"
+    "message": "Use a custom Java installation for this instance."
   },
   "instance.settings.tabs.java.custom-memory-allocation": {
-    "message": "Custom memory allocation",
-    "defaultMessage": "Custom memory allocation"
+    "message": "Use a custom memory allocation for this instance."
   },
   "instance.settings.tabs.java.enter-environment-variables": {
-    "message": "Enter environmental variables...",
-    "defaultMessage": "Enter environmental variables..."
+    "message": "Enter environmental variables..."
   },
   "instance.settings.tabs.java.enter-java-arguments": {
-    "message": "Enter Java arguments...",
-    "defaultMessage": "Enter Java arguments..."
+    "message": "Enter Java arguments..."
   },
   "instance.settings.tabs.java.environment-variables": {
-    "message": "Environment variables",
-    "defaultMessage": "Environment variables"
+    "message": "Environment variables"
   },
   "instance.settings.tabs.java.hooks": {
-    "message": "Hooks",
-    "defaultMessage": "Hooks"
+    "message": "Hooks"
   },
   "instance.settings.tabs.java.java-arguments": {
-    "message": "Java arguments",
-    "defaultMessage": "Java arguments"
+    "message": "Java arguments"
   },
   "instance.settings.tabs.java.java-installation": {
-    "message": "Java installation",
-    "defaultMessage": "Java installation"
+    "message": "Java installation"
   },
   "instance.settings.tabs.java.java-memory": {
-    "message": "Memory allocated",
-    "defaultMessage": "Memory allocated"
+    "message": "Memory allocated"
   },
   "instance.settings.tabs.java.java-path-placeholder": {
-    "message": "/path/to/java",
-    "defaultMessage": "/path/to/java"
+    "message": "/path/to/java"
   },
   "instance.settings.tabs.sharing": {
-    "message": "Sharing",
-    "defaultMessage": "Sharing"
+    "message": "Sharing"
   },
   "instance.settings.tabs.window": {
-    "message": "Window",
-    "defaultMessage": "Window"
+    "message": "Window"
   },
   "instance.settings.tabs.window.custom-window-settings": {
-    "message": "Custom window settings",
-    "defaultMessage": "Custom window settings"
+    "message": "Use custom window settings for this instance."
   },
   "instance.settings.tabs.window.fullscreen": {
-    "message": "Fullscreen",
-    "defaultMessage": "Fullscreen"
+    "message": "Fullscreen"
   },
   "instance.settings.tabs.window.fullscreen.description": {
-    "message": "Make the game start in full screen when launched (using options.txt).",
-    "defaultMessage": "Make the game start in full screen when launched (using options.txt)."
+    "message": "Make the game start in full screen when launched (using options.txt)."
   },
   "instance.settings.tabs.window.height": {
-    "message": "Height",
-    "defaultMessage": "Height"
+    "message": "Height"
   },
   "instance.settings.tabs.window.height.description": {
-    "message": "The height of the game window when launched.",
-    "defaultMessage": "The height of the game window when launched."
+    "message": "The height of the game window when launched."
   },
   "instance.settings.tabs.window.height.enter": {
-    "message": "Enter height...",
-    "defaultMessage": "Enter height..."
+    "message": "Enter height..."
   },
   "instance.settings.tabs.window.width": {
-    "message": "Width",
-    "defaultMessage": "Width"
+    "message": "Width"
   },
   "instance.settings.tabs.window.width.description": {
-    "message": "The width of the game window when launched.",
-    "defaultMessage": "The width of the game window when launched."
+    "message": "The width of the game window when launched."
   },
   "instance.settings.tabs.window.width.enter": {
-    "message": "Enter width...",
-    "defaultMessage": "Enter width..."
+    "message": "Enter width..."
   },
   "instance.shared-instance.error.title": {
-    "message": "Something has gone wrong",
-    "defaultMessage": "Something has gone wrong"
+    "message": "Something has gone wrong"
   },
   "instance.shared-instance.network-error.text": {
-    "message": "Unable to connect to shared instances API",
-    "defaultMessage": "Unable to connect to shared instances API"
+    "message": "Unable to connect to shared instances API"
   },
   "instance.shared-instance.network-error.title": {
-    "message": "Network error",
-    "defaultMessage": "Network error"
+    "message": "Network error"
   },
   "instance.shared-instance.owner-tooltip": {
-    "message": "This instance's content is being shared to other users.",
-    "defaultMessage": "This instance's content is being shared to other users."
+    "message": "This instance's content is being shared to other users."
   },
   "instance.shared-instance.publish-review.added-label": {
-    "message": "Added",
-    "defaultMessage": "Added"
+    "message": "Added"
   },
   "instance.shared-instance.publish-review.admonition-header": {
-    "message": "Push update to players",
-    "defaultMessage": "Push update to players"
+    "message": "Push update to players"
   },
   "instance.shared-instance.publish-review.config-title-v2": {
-    "message": "Select config files",
-    "defaultMessage": "Select config files"
+    "message": "Select config files"
   },
   "instance.shared-instance.publish-review.description": {
-    "message": "Review the content changes and choose any config files to include in this update.",
-    "defaultMessage": "Review the content changes and choose any config files to include in this update."
+    "message": "Review the content changes and choose any config files to include in this update."
   },
   "instance.shared-instance.publish-review.header": {
-    "message": "Review changes",
-    "defaultMessage": "Review changes"
+    "message": "Review changes"
   },
   "instance.shared-instance.publish-review.publish-button": {
-    "message": "Push update",
-    "defaultMessage": "Push update"
+    "message": "Push update"
   },
   "instance.shared-instance.publish-review.removed-label": {
-    "message": "Removed",
-    "defaultMessage": "Removed"
+    "message": "Removed"
   },
   "instance.shared-instance.tooltip": {
-    "message": "This instance's content is being managed by someone else.",
-    "defaultMessage": "This instance's content is being managed by someone else."
+    "message": "This instance's content is being managed by someone else."
   },
   "instance.shared-instance.unavailable.access-revoked-text": {
-    "message": "Your access to the shared instance was revoked. This instance is still available, but it is no longer linked and will no longer receive updates.",
-    "defaultMessage": "Your access to the shared instance was revoked. This instance is still available, but it is no longer linked and will no longer receive updates."
+    "message": "Your access to the shared instance was revoked. This instance is still available, but it is no longer linked and will no longer receive updates."
   },
   "instance.shared-instance.unavailable.deleted-text": {
-    "message": "The primary instance was deleted. This instance is still available, but it is no longer linked and will no longer receive updates.",
-    "defaultMessage": "The primary instance was deleted. This instance is still available, but it is no longer linked and will no longer receive updates."
+    "message": "The primary instance was deleted. This instance is still available, but it is no longer linked and will no longer receive updates."
   },
   "instance.shared-instance.unavailable.locked-text": {
-    "message": "This shared instance was locked by the Content Moderation team. It will no longer receive updates from the primary instance and cannot be played.",
-    "defaultMessage": "This shared instance was locked by the Content Moderation team. It will no longer receive updates from the primary instance and cannot be played."
+    "message": "This shared instance was locked by the Content Moderation team. It will no longer receive updates from the primary instance and cannot be played."
   },
   "instance.shared-instance.unavailable.locked-title": {
-    "message": "Instance locked",
-    "defaultMessage": "Instance locked"
+    "message": "Instance locked"
   },
   "instance.shared-instance.unavailable.manager-fallback": {
-    "message": "the instance manager",
-    "defaultMessage": "the instance manager"
+    "message": "the instance manager"
   },
   "instance.shared-instance.unavailable.text": {
-    "message": "Your local instance is still available, but it is no longer linked and won't receive updates.",
-    "defaultMessage": "Your local instance is still available, but it is no longer linked and won't receive updates."
+    "message": "Your local instance is still available, but it is no longer linked and won't receive updates."
   },
   "instance.shared-instance.unavailable.title": {
-    "message": "Shared instance no longer available",
-    "defaultMessage": "Shared instance no longer available"
+    "message": "Shared instance no longer available"
   },
   "instance.worlds.a_minecraft_server": {
-    "message": "A Minecraft Server",
-    "defaultMessage": "A Minecraft Server"
+    "message": "A Minecraft Server"
   },
   "instance.worlds.actions.label": {
     "message": "World actions"
   },
   "instance.worlds.cant_connect": {
-    "message": "Can't connect to server",
-    "defaultMessage": "Can't connect to server"
+    "message": "Can't connect to server"
   },
   "instance.worlds.copy_address": {
-    "message": "Copy address",
-    "defaultMessage": "Copy address"
+    "message": "Copy address"
   },
   "instance.worlds.create_shortcut": {
-    "message": "Create shortcut",
-    "defaultMessage": "Create shortcut"
+    "message": "Create shortcut"
   },
   "instance.worlds.dont_show_on_home": {
-    "message": "Don't show on Home",
-    "defaultMessage": "Don't show on Home"
+    "message": "Don't show on Home"
   },
   "instance.worlds.game_already_open": {
-    "message": "Instance is already open",
-    "defaultMessage": "Instance is already open"
+    "message": "Instance is already open"
   },
   "instance.worlds.hardcore": {
-    "message": "Hardcore mode",
-    "defaultMessage": "Hardcore mode"
+    "message": "Hardcore mode"
   },
   "instance.worlds.incompatible_server": {
-    "message": "Server is incompatible",
-    "defaultMessage": "Server is incompatible"
+    "message": "Server is incompatible"
   },
   "instance.worlds.instance-locked": {
-    "message": "This instance has been locked",
-    "defaultMessage": "This instance has been locked"
+    "message": "This instance has been locked"
   },
   "instance.worlds.linked_server": {
-    "message": "Managed by server project",
-    "defaultMessage": "Managed by server project"
+    "message": "Managed by server project"
   },
   "instance.worlds.more-options": {
-    "message": "More options",
-    "defaultMessage": "More options"
+    "message": "More options"
   },
   "instance.worlds.no_contact": {
-    "message": "Server couldn't be contacted",
-    "defaultMessage": "Server couldn't be contacted"
+    "message": "Server couldn't be contacted"
   },
   "instance.worlds.no_server_quick_play": {
-    "message": "You can only jump straight into servers on Minecraft Alpha 1.0.5+",
-    "defaultMessage": "You can only jump straight into servers on Minecraft Alpha 1.0.5+"
+    "message": "You can only jump straight into servers on Minecraft Alpha 1.0.5+"
   },
   "instance.worlds.no_singleplayer_quick_play": {
-    "message": "You can only jump straight into singleplayer worlds on Minecraft 1.20+",
-    "defaultMessage": "You can only jump straight into singleplayer worlds on Minecraft 1.20+"
+    "message": "You can only jump straight into singleplayer worlds on Minecraft 1.20+"
   },
   "instance.worlds.play_instance": {
-    "message": "Play instance",
-    "defaultMessage": "Play instance"
+    "message": "Play instance"
   },
   "instance.worlds.play_world": {
     "message": "Play world"
   },
   "instance.worlds.shortcut-created": {
-    "message": "Shortcut created",
-    "defaultMessage": "Shortcut created"
+    "message": "Shortcut created"
   },
   "instance.worlds.shortcut-creation-failed": {
-    "message": "Failed to create shortcut",
-    "defaultMessage": "Failed to create shortcut"
+    "message": "Failed to create shortcut"
   },
   "instance.worlds.view_instance": {
-    "message": "View instance",
-    "defaultMessage": "View instance"
+    "message": "View instance"
   },
   "instance.worlds.world_in_use": {
-    "message": "World is in use",
-    "defaultMessage": "World is in use"
+    "message": "World is in use"
   },
   "minecraft-account.add-account": {
-    "message": "Add account",
-    "defaultMessage": "Add account"
+    "message": "Add account"
   },
   "minecraft-account.label": {
-    "message": "Minecraft account",
-    "defaultMessage": "Minecraft account"
+    "message": "Minecraft account"
   },
   "minecraft-account.not-signed-in": {
-    "message": "Not signed in",
-    "defaultMessage": "Not signed in"
+    "message": "Not signed in"
   },
   "minecraft-account.remove-account": {
-    "message": "Remove account",
-    "defaultMessage": "Remove account"
+    "message": "Remove account"
   },
   "minecraft-account.select-account": {
-    "message": "Select account",
-    "defaultMessage": "Select account"
+    "message": "Select account"
   },
   "minecraft-account.sign-in": {
-    "message": "Sign in to Minecraft",
-    "defaultMessage": "Sign in to Minecraft"
+    "message": "Sign in to Minecraft"
   },
   "minecraft-required.description": {
-    "message": "You need a Minecraft account before you can launch and play.",
-    "defaultMessage": "You need a Minecraft account before you can launch and play."
+    "message": "You need a Microsoft account that owns Minecraft before you can launch and play."
   },
   "minecraft-required.description-header": {
-    "message": "Sign in to a Minecraft account",
-    "defaultMessage": "Sign in to a Minecraft account"
+    "message": "Sign in to a Microsoft account"
   },
   "minecraft-required.dont-have-account": {
-    "message": "Don’t have an account?",
-    "defaultMessage": "Don’t have an account?"
+    "message": "Don’t have an account?"
   },
   "minecraft-required.get-minecraft": {
-    "message": "Get Minecraft",
-    "defaultMessage": "Get Minecraft"
+    "message": "Get Minecraft"
   },
   "minecraft-required.get-support": {
-    "message": "Get support",
-    "defaultMessage": "Get support"
+    "message": "Get support"
   },
   "minecraft-required.header": {
-    "message": "Minecraft required",
-    "defaultMessage": "Minecraft required"
+    "message": "Minecraft required"
   },
   "minecraft-required.sign-in": {
-    "message": "Sign in to Microsoft",
-    "defaultMessage": "Sign in to Microsoft"
+    "message": "Sign in to Microsoft"
   },
   "modal.modrinth-account-required.browser-description": {
-    "message": "A new tab opened to sign in. Complete the sign in there, then return to the app.",
-    "defaultMessage": "A new tab opened to sign in. Complete the sign in there, then return to the app."
+    "message": "A new tab opened to sign in. Complete the sign in there, then return to the app."
   },
   "modal.modrinth-account-required.continue-in-browser-heading": {
-    "message": "Continue in your browser",
-    "defaultMessage": "Continue in your browser"
+    "message": "Continue in your browser"
   },
   "modal.modrinth-account-required.create-account-button": {
-    "message": "Create an account",
-    "defaultMessage": "Create an account"
+    "message": "Create an account"
   },
   "modal.modrinth-account-required.description": {
-    "message": "You'll need to sign into your Modrinth account before you can use this feature.",
-    "defaultMessage": "You'll need to sign into your Modrinth account before you can use this feature."
+    "message": "You'll need to sign into your Modrinth account before you can use this feature."
   },
   "modal.modrinth-account-required.header": {
-    "message": "Account required",
-    "defaultMessage": "Account required"
+    "message": "Account required"
   },
   "modal.modrinth-account-required.open-browser-again-button": {
-    "message": "Open browser again",
-    "defaultMessage": "Open browser again"
+    "message": "Open browser again"
   },
   "modal.modrinth-account-required.sign-in-button": {
-    "message": "Sign in to Modrinth",
-    "defaultMessage": "Sign in to Modrinth"
+    "message": "Sign in to Modrinth"
   },
   "modal.modrinth-account-required.sign-in-heading": {
-    "message": "Sign in to a Modrinth account",
-    "defaultMessage": "Sign in to a Modrinth account"
+    "message": "Sign in to a Modrinth account"
   },
   "modal.modrinth-account-required.signing-in-header": {
-    "message": "Signing in",
-    "defaultMessage": "Signing in"
+    "message": "Signing in"
   },
   "modal.modrinth-account-required.support-prompt": {
-    "message": "Having trouble signing in? <support>Get support</support>",
-    "defaultMessage": "Having trouble signing in? <support>Get support</support>"
+    "message": "Having trouble signing in? <support>Get support</support>"
   },
   "modal.modrinth-account-required.waiting-for-browser": {
-    "message": "Waiting for browser confirmation...",
-    "defaultMessage": "Waiting for browser confirmation..."
+    "message": "Waiting for browser confirmation..."
   },
   "onboarding-checklist.create-instance": {
-    "message": "Create first instance",
-    "defaultMessage": "Create first instance"
+    "message": "Create first instance"
   },
   "onboarding-checklist.login-minecraft": {
-    "message": "Sign in to Minecraft",
-    "defaultMessage": "Sign in to Minecraft"
+    "message": "Sign in to Minecraft"
   },
   "onboarding-checklist.login-modrinth": {
-    "message": "Sign in to Modrinth",
-    "defaultMessage": "Sign in to Modrinth"
+    "message": "Sign in to Modrinth"
   },
   "onboarding-checklist.title": {
-    "message": "Getting started",
-    "defaultMessage": "Getting started"
+    "message": "Getting started"
   },
   "search.filter.locked.instance": {
-    "message": "Provided by the instance",
-    "defaultMessage": "Provided by the instance"
+    "message": "Provided by the instance"
   },
   "search.filter.locked.instance-game-version.title": {
-    "message": "Game version is provided by the instance",
-    "defaultMessage": "Game version is provided by the instance"
+    "message": "Game version is provided by the instance"
   },
   "search.filter.locked.instance-loader.title": {
-    "message": "Loader is provided by the instance",
-    "defaultMessage": "Loader is provided by the instance"
+    "message": "Loader is provided by the instance"
   },
   "search.filter.locked.instance.sync": {
-    "message": "Sync with instance",
-    "defaultMessage": "Sync with instance"
+    "message": "Sync with instance"
   },
   "search.filter.locked.server-environment.title": {
-    "message": "Only client-side mods can be added to the server instance",
-    "defaultMessage": "Only client-side mods can be added to the server instance"
+    "message": "Only client-side mods can be added to the server instance"
   },
   "settings.sidebar.label.account": {
-    "message": "Account",
-    "defaultMessage": "Account"
+    "message": "Account"
   },
   "settings.sidebar.label.display": {
-    "message": "Display",
-    "defaultMessage": "Display"
+    "message": "Display"
   },
   "app.nav.signed-in-as": {
     "message": "Signed in as <user>{username}</user>",
@@ -4263,5 +3379,296 @@
   "app.behavior-settings.ping-servers.description": {
     "defaultMessage": "Check server availability and ping in catalog and world list.",
     "message": "Check server availability and ping in catalog and world list."
+  },
+  "app.instance.tab.screenshots": {
+    "message": "Screenshots"
+  },
+  "app.instance.worlds.remove-server-modal.synced-removal-notice": {
+    "message": "This server will also be removed from {count, plural, one {# other instance} other {# other instances}} because it’s synced."
+  },
+  "app.nav.screenshots": {
+    "message": "Screenshots"
+  },
+  "app.screenshots.copied": {
+    "message": "Copied"
+  },
+  "app.screenshots.copy": {
+    "message": "Copy image"
+  },
+  "app.screenshots.delete-description": {
+    "message": "Permanently delete {name}? This action cannot be undone."
+  },
+  "app.screenshots.delete-success": {
+    "message": "Screenshot deleted"
+  },
+  "app.screenshots.delete-title": {
+    "message": "Delete screenshot"
+  },
+  "app.screenshots.deselect": {
+    "message": "Deselect {name}"
+  },
+  "app.screenshots.edit": {
+    "message": "Edit screenshot"
+  },
+  "app.screenshots.empty-description": {
+    "message": "Screenshots you take in-game will appear here."
+  },
+  "app.screenshots.empty-heading": {
+    "message": "No screenshots yet"
+  },
+  "app.screenshots.error-heading": {
+    "message": "Failed to load screenshots"
+  },
+  "app.screenshots.go-to-instance": {
+    "message": "Go to instance"
+  },
+  "app.screenshots.group-by": {
+    "message": "Group by"
+  },
+  "app.screenshots.group.all-screenshots": {
+    "message": "All screenshots"
+  },
+  "app.screenshots.group.collapse": {
+    "message": "Collapse group"
+  },
+  "app.screenshots.group.custom": {
+    "message": "Custom group"
+  },
+  "app.screenshots.group.date": {
+    "message": "Date"
+  },
+  "app.screenshots.group.delete": {
+    "message": "Delete group"
+  },
+  "app.screenshots.group.delete-description": {
+    "message": "Screenshots in this group will become ungrouped."
+  },
+  "app.screenshots.group.edit": {
+    "message": "Edit group name"
+  },
+  "app.screenshots.group.empty": {
+    "message": "Drag and drop to add screenshots."
+  },
+  "app.screenshots.group.expand": {
+    "message": "Expand group"
+  },
+  "app.screenshots.group.instance": {
+    "message": "Instance"
+  },
+  "app.screenshots.group.new": {
+    "message": "New group"
+  },
+  "app.screenshots.group.none": {
+    "message": "No grouping"
+  },
+  "app.screenshots.group.this-month": {
+    "message": "This month"
+  },
+  "app.screenshots.group.this-week": {
+    "message": "This week"
+  },
+  "app.screenshots.group.today": {
+    "message": "Today"
+  },
+  "app.screenshots.group.ungrouped": {
+    "message": "Ungrouped"
+  },
+  "app.screenshots.group.yesterday": {
+    "message": "Yesterday"
+  },
+  "app.screenshots.heading": {
+    "message": "Screenshots"
+  },
+  "app.screenshots.more-actions": {
+    "message": "More actions"
+  },
+  "app.screenshots.no-results-description": {
+    "message": "Try a different search or filter."
+  },
+  "app.screenshots.no-results-heading": {
+    "message": "No matching screenshots"
+  },
+  "app.screenshots.preview.instance-and-date": {
+    "message": "{instance} · {date}"
+  },
+  "app.screenshots.search": {
+    "message": "Search"
+  },
+  "app.screenshots.select": {
+    "message": "Select {name}"
+  },
+  "app.screenshots.selection.aria-label": {
+    "message": "Selected screenshots"
+  },
+  "app.screenshots.selection.delete-description": {
+    "message": "Delete {count, plural, one {# screenshot} other {# screenshots}}? This action cannot be undone."
+  },
+  "app.screenshots.selection.delete-success": {
+    "message": "{count, plural, one {# screenshot deleted} other {# screenshots deleted}}"
+  },
+  "app.screenshots.selection.delete-title": {
+    "message": "Delete selected screenshots"
+  },
+  "app.screenshots.selection.export-zip": {
+    "message": "Export ZIP"
+  },
+  "app.screenshots.selection.global-export-filename": {
+    "message": "Modrinth screenshots.zip"
+  },
+  "app.screenshots.selection.instance-export-filename": {
+    "message": "{instance} screenshots.zip"
+  },
+  "app.screenshots.selection.remove-from-group": {
+    "message": "Remove from group"
+  },
+  "app.screenshots.selection.selected-count": {
+    "message": "{count} selected"
+  },
+  "app.screenshots.selection.zip-archive": {
+    "message": "ZIP archive"
+  },
+  "app.screenshots.show-in-folder": {
+    "message": "Show in folder"
+  },
+  "app.screenshots.sort-by": {
+    "message": "Sort by"
+  },
+  "app.screenshots.sort.name": {
+    "message": "Name"
+  },
+  "app.screenshots.sort.newest": {
+    "message": "Newest"
+  },
+  "app.screenshots.sort.oldest": {
+    "message": "Oldest"
+  },
+  "app.settings.default-instance-options.java-and-memory.title": {
+    "message": "Java and memory"
+  },
+  "app.settings.default-instance-options.launch-hooks.title": {
+    "message": "Launch hooks"
+  },
+  "app.settings.default-instance-options.window.title": {
+    "message": "Window"
+  },
+  "app.settings.synced-options.command-history": {
+    "message": "Command history"
+  },
+  "app.settings.synced-options.command-history.description": {
+    "message": "Sync command history across your instances."
+  },
+  "app.settings.synced-options.command-history.editor-title": {
+    "message": "Edit command history"
+  },
+  "app.settings.synced-options.creative-hotbars": {
+    "message": "Saved creative hotbars"
+  },
+  "app.settings.synced-options.creative-hotbars.description": {
+    "message": "Sync saved creative hotbars across your instances."
+  },
+  "app.settings.synced-options.multiplayer-servers": {
+    "message": "Multiplayer servers"
+  },
+  "app.settings.synced-options.multiplayer-servers.address": {
+    "message": "Server address"
+  },
+  "app.settings.synced-options.multiplayer-servers.description": {
+    "message": "Sync multiplayer servers across your instances."
+  },
+  "app.settings.synced-options.multiplayer-servers.editor-title": {
+    "message": "Edit synced servers"
+  },
+  "app.settings.synced-options.multiplayer-servers.empty": {
+    "message": "No user-added servers are currently synced."
+  },
+  "app.settings.synced-options.multiplayer-servers.name": {
+    "message": "Server name"
+  },
+  "app.settings.synced-options.multiplayer-servers.none-synced-yet": {
+    "message": "No servers synced yet"
+  },
+  "app.settings.synced-options.screenshots": {
+    "message": "Screenshots"
+  },
+  "app.settings.synced-options.screenshots.description": {
+    "message": "View screenshots from your instances in one place."
+  },
+  "app.settings.tabs.synced-options": {
+    "message": "Synced settings"
+  },
+  "instance.settings.tabs.settings-overrides": {
+    "message": "Sync overrides"
+  },
+  "instance.settings.tabs.synced-options.command-history": {
+    "message": "Command history"
+  },
+  "instance.settings.tabs.synced-options.command-history.disabled-in-app": {
+    "message": "Command history syncing is turned off in app settings."
+  },
+  "instance.settings.tabs.synced-options.command-history.exclude-description": {
+    "message": "Exclude this instance from command history syncing."
+  },
+  "instance.settings.tabs.synced-options.creative-hotbars": {
+    "message": "Saved creative hotbars"
+  },
+  "instance.settings.tabs.synced-options.creative-hotbars.disabled-in-app": {
+    "message": "Saved creative hotbar syncing is turned off in app settings."
+  },
+  "instance.settings.tabs.synced-options.creative-hotbars.exclude-description": {
+    "message": "Exclude this instance from saved creative hotbar syncing."
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.backup-description": {
+    "message": "The version being replaced will be backed up before anything changes."
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.description": {
+    "message": "{instance} and your synced version have different creative hotbars. Choose which one to use across your instances."
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.title": {
+    "message": "Choose creative hotbars"
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.use-instance": {
+    "message": "Overwrite others"
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.use-synced": {
+    "message": "Use synced"
+  },
+  "instance.settings.tabs.synced-options.multiplayer-servers": {
+    "message": "Multiplayer servers"
+  },
+  "instance.settings.tabs.synced-options.multiplayer-servers.disabled-in-app": {
+    "message": "Multiplayer server syncing is turned off in app settings."
+  },
+  "instance.settings.tabs.synced-options.multiplayer-servers.exclude-description": {
+    "message": "Exclude this instance from multiplayer server syncing."
+  },
+  "instance.settings.tabs.synced-options.open-app-settings": {
+    "message": "Open synced settings"
+  },
+  "instance.settings.tabs.synced-options.screenshots": {
+    "message": "Screenshots"
+  },
+  "instance.settings.tabs.synced-options.screenshots.disabled-in-app": {
+    "message": "Screenshots are turned off in app settings."
+  },
+  "instance.settings.tabs.synced-options.screenshots.exclude-description": {
+    "message": "Exclude this instance’s screenshots from the Screenshots page."
+  },
+  "instance.settings.tabs.synced-options.shared-settings.description": {
+    "message": "Game settings can be shared between instances. Choose what to share in app settings."
+  },
+  "instance.worlds.desync-server.description": {
+    "message": "Do you want to keep this server in other synced instances, or remove it from them?"
+  },
+  "instance.worlds.desync-server.keep": {
+    "message": "Keep"
+  },
+  "instance.worlds.desync-server.remove": {
+    "message": "Remove"
+  },
+  "instance.worlds.desync-server.title": {
+    "message": "Desync server"
+  },
+  "instance.worlds.desync_server": {
+    "message": "Desync"
   }
 }

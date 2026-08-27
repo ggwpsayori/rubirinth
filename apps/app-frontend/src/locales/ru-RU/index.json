@@ -1943,10 +1943,6 @@
     "message": "Поведение",
     "defaultMessage": "Поведение"
   },
-  "app.settings.tabs.default-instance-options": {
-    "message": "Предустановки игры",
-    "defaultMessage": "Предустановки игры"
-  },
   "app.settings.tabs.java-installations": {
     "message": "Расположение Java",
     "defaultMessage": "Расположение Java"
@@ -3039,14 +3035,6 @@
     "message": "Выберите канал обновления",
     "defaultMessage": "Выберите канал обновления"
   },
-  "instance.settings.tabs.hooks": {
-    "message": "Команды запуска",
-    "defaultMessage": "Команды запуска"
-  },
-  "instance.settings.tabs.hooks.custom-hooks": {
-    "message": "Переопределение команд запуска",
-    "defaultMessage": "Переопределение команд запуска"
-  },
   "instance.settings.tabs.hooks.description": {
     "message": "Позволяет опытным пользователям задать системные команды, выполняемые до и после запуска игры.",
     "defaultMessage": "Позволяет опытным пользователям задать системные команды, выполняемые до и после запуска игры."
@@ -3130,10 +3118,6 @@
   "instance.settings.tabs.installation.locked": {
     "message": "Параметры установки недоступны, пока сборка заблокирована.",
     "defaultMessage": "Параметры установки недоступны, пока сборка заблокирована."
-  },
-  "instance.settings.tabs.java": {
-    "message": "Java и память",
-    "defaultMessage": "Java и память"
   },
   "instance.settings.tabs.java.custom-environment-variables": {
     "message": "Переопределение переменных среды",
@@ -3518,6 +3502,22 @@
   "settings.sidebar.label.display": {
     "message": "Отображение",
     "defaultMessage": "Отображение"
+  },
+  "app.settings.tabs.default-instance-options": {
+    "message": "Предустановки игры",
+    "defaultMessage": "Предустановки игры"
+  },
+  "instance.settings.tabs.hooks": {
+    "message": "Команды запуска",
+    "defaultMessage": "Команды запуска"
+  },
+  "instance.settings.tabs.hooks.custom-hooks": {
+    "message": "Переопределение команд запуска",
+    "defaultMessage": "Переопределение команд запуска"
+  },
+  "instance.settings.tabs.java": {
+    "message": "Java и память",
+    "defaultMessage": "Java и память"
   },
   "app.nav.signed-in-as": {
     "message": "Текущий аккаунт: <user>{username}</user>",
