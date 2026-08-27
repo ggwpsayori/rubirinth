@@ -50,7 +50,7 @@
 			<template v-if="accounts.length > 0">
 				<Draggable
 					:list="accounts"
-					item-key="profile.id"
+					:item-key="(account) => account.profile.id" :force-fallback="true" :fallback-on-body="true" :fallback-tolerance="2"
 					handle=".account-drag-handle"
 					:animation="200"
 					ghost-class="opacity-40"
@@ -60,7 +60,7 @@
 					<template #item="{ element: account }">
 						<div class="group/card-account flex gap-1 items-center px-1">
 							<div
-								class="account-drag-handle flex items-center justify-center p-1 text-secondary opacity-0 group-hover/card-account:opacity-100 transition-opacity cursor-grab active:cursor-grabbing hover:text-contrast shrink-0"
+								class="account-drag-handle select-none touch-none flex items-center justify-center p-1 text-secondary opacity-35 group-hover/card-account:opacity-100 hover:!opacity-100 transition-opacity cursor-grab active:cursor-grabbing hover:text-contrast shrink-0"
 								@click.stop
 							>
 								<GripVerticalIcon class="w-3.5 h-3.5" />

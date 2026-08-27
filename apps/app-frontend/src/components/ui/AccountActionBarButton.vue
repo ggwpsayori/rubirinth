@@ -444,7 +444,7 @@ const messages = defineMessages({
 				<div class="flex flex-col gap-1.5 overflow-y-auto">
 					<Draggable
 						:list="accounts"
-						item-key="profile.id"
+						:item-key="(account) => account.profile.id" :force-fallback="true" :fallback-on-body="true" :fallback-tolerance="2"
 						handle=".account-drag-handle"
 						:animation="200"
 						ghost-class="opacity-40"
@@ -458,7 +458,7 @@ const messages = defineMessages({
 								@click="setAccount(account)"
 							>
 								<div
-									class="account-drag-handle flex items-center justify-center p-0.5 -ml-1 text-secondary opacity-0 group-hover/account:opacity-100 transition-opacity cursor-grab active:cursor-grabbing hover:text-contrast shrink-0"
+									class="account-drag-handle select-none touch-none flex items-center justify-center p-0.5 -ml-1 text-secondary opacity-35 group-hover/account:opacity-100 hover:!opacity-100 transition-opacity cursor-grab active:cursor-grabbing hover:text-contrast shrink-0"
 									@click.stop
 								>
 									<GripVerticalIcon class="w-3.5 h-3.5" />
