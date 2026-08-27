@@ -234,8 +234,23 @@ const isHomePage = computed(() => route.path === '/')
 const isSkinsPage = computed(() => route.path.startsWith('/skins'))
 const isInstancePage = computed(() => route.path.startsWith('/instance'))
 const forceSidebar = computed(() => route.path.startsWith('/browse'))
+const hasSidebarPage = computed(() => {
+	return (
+		route.path.startsWith('/browse') ||
+		route.path.startsWith('/project') ||
+		route.path.startsWith('/mod') ||
+		route.path.startsWith('/plugin') ||
+		route.path.startsWith('/datapack') ||
+		route.path.startsWith('/shader') ||
+		route.path.startsWith('/resourcepack') ||
+		route.path.startsWith('/modpack') ||
+		route.path.startsWith('/user') ||
+		route.path.startsWith('/org')
+	)
+})
 const sidebarVisible = computed(() => {
 	if (isHomePage.value || isSkinsPage.value || isInstancePage.value) return false
+	if (!hasSidebarPage.value) return false
 	return sidebarToggled.value || forceSidebar.value
 })
 const hostingRouteActive = computed(() => route.path.startsWith('/hosting'))
@@ -731,21 +746,7 @@ async function setupApp() {
 			)
 		})
 
-	fetch(`https://modrinth.com/news/feed/articles.json`)
-		.then((response) => response.json())
-		.then((res) => {
-			if (res && res.articles) {
-				news.value = res.articles
-					.map((article) => ({
-						...article,
-						path: article.link,
-					}))
-					.slice(0, 4)
-			}
-		})
-		.catch((error) => {
-			console.error('Failed to fetch news articles', error)
-		})
+
 
 	get_opening_command().then(handleCommand)
 	fetchCredentials()
@@ -2111,7 +2112,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			</div>
 			<section data-tauri-drag-region class="flex shrink-0 ml-auto items-center">
 				<IconButton
-					v-if="!forceSidebar && !isHomePage && !isSkinsPage && !isInstancePage && appSettings.toggleSidebar"
+					v-if="hasSidebarPage && !forceSidebar && appSettings.toggleSidebar"
 					:type="sidebarToggled ? 'base' : 'quiet'"
 					:label="formatMessage(messages.nextImage)"
 					class="mr-3 transition-transform"
@@ -2202,51 +2203,6 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				data-overlayscrollbars-initialize
 			>
 				<div id="sidebar-teleport-target" class="sidebar-teleport-content"></div>
-				<div
-					class="sidebar-default-content flex flex-col gap-4"
-					:class="{ 'sidebar-enabled': sidebarVisible }"
-				>
-					<div class="app-sidebar-content-container p-4 pb-0 flex flex-col gap-4">
-						<suspense>
-							<AccountsCard ref="accounts" />
-						</suspense>
-					</div>
-					<div
-						v-show="showFriendsList"
-						class="p-4 border-0 border-b-[1px] border-[--brand-gradient-border] border-solid"
-					>
-						<suspense>
-							<FriendsList
-								ref="friendsList"
-								:credentials="credentials"
-								:sign-in="() => requestSignIn()"
-							/>
-						</suspense>
-					</div>
-					<div v-if="news && news.length > 0" class="p-4 flex flex-col items-center">
-						<h3 class="text-base mb-4 text-primary font-medium m-0 text-left w-full">
-							{{ formatMessage(messages.news) }}
-						</h3>
-						<div class="space-y-4 flex flex-col items-center w-full">
-							<NewsArticleCard
-								v-for="(item, index) in news"
-								:key="`news-${index}`"
-								:article="item"
-							/>
-							<ButtonLink
-								type="colored"
-								color="brand"
-								size="xl"
-								href="https://modrinth.com/news"
-								target="_blank"
-								class="my-4"
-							>
-								<NewspaperIcon />
-								{{ formatMessage(messages.viewAllNews) }}
-							</ButtonLink>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -2414,7 +2370,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	*,
 	:deep(*) {
 		box-shadow: none !important;
-		--tw-drop-shadow:;
+		--tw-drop-shadow: ;
 	}
 }
 
