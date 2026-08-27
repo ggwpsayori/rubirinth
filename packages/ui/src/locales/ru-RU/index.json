@@ -9154,5 +9154,153 @@
   "browse.sidebar.server-online-only": {
     "defaultMessage": "Online only",
     "message": "Только в сети"
+  },
+  "image-viewer.close": {
+    "message": "Закрыть",
+    "defaultMessage": "Закрыть"
+  },
+  "image-viewer.previous": {
+    "message": "Предыдущее изображение",
+    "defaultMessage": "Предыдущее изображение"
+  },
+  "image-viewer.next": {
+    "message": "Следующее изображение",
+    "defaultMessage": "Следующее изображение"
+  },
+  "image-viewer.edit": {
+    "message": "Редактировать",
+    "defaultMessage": "Редактировать"
+  },
+  "image-viewer.editor.save-as-new": {
+    "message": "Сохранить копию",
+    "defaultMessage": "Сохранить копию"
+  },
+  "image-viewer.editor.overwrite": {
+    "message": "Перезаписать",
+    "defaultMessage": "Перезаписать"
+  },
+  "image-viewer.editor.more-save-options": {
+    "message": "Другие варианты сохранения",
+    "defaultMessage": "Другие варианты сохранения"
+  },
+  "image-viewer.editor.save-image": {
+    "message": "Сохранить изображение",
+    "defaultMessage": "Сохранить изображение"
+  },
+  "image-viewer.editor.tool.select": {
+    "message": "Выделение",
+    "defaultMessage": "Выделение"
+  },
+  "image-viewer.editor.tool.pen": {
+    "message": "Карандаш",
+    "defaultMessage": "Карандаш"
+  },
+  "image-viewer.editor.tool.highlight": {
+    "message": "Маркер",
+    "defaultMessage": "Маркер"
+  },
+  "image-viewer.editor.tool.eraser": {
+    "message": "Ластик",
+    "defaultMessage": "Ластик"
+  },
+  "image-viewer.editor.tool.crop": {
+    "message": "Кадрирование",
+    "defaultMessage": "Кадрирование"
+  },
+  "image-viewer.editor.tool.text": {
+    "message": "Текст",
+    "defaultMessage": "Текст"
+  },
+  "image-viewer.editor.tool.arrow": {
+    "message": "Стрелка",
+    "defaultMessage": "Стрелка"
+  },
+  "image-viewer.editor.tool.rectangle": {
+    "message": "Прямоугольник",
+    "defaultMessage": "Прямоугольник"
+  },
+  "image-viewer.editor.tool.ellipse": {
+    "message": "Эллипс",
+    "defaultMessage": "Эллипс"
+  },
+  "image-viewer.editor.tool.censor": {
+    "message": "Скрытие",
+    "defaultMessage": "Скрытие"
+  },
+  "image-viewer.editor.censor.blur": {
+    "message": "Размытие",
+    "defaultMessage": "Размытие"
+  },
+  "image-viewer.editor.censor.solid": {
+    "message": "Заливка",
+    "defaultMessage": "Заливка"
+  },
+  "image-viewer.editor.censor.mode": {
+    "message": "Тип скрытия",
+    "defaultMessage": "Тип скрытия"
+  },
+  "image-viewer.editor.eraser.mode": {
+    "message": "Режим ластика",
+    "defaultMessage": "Режим ластика"
+  },
+  "image-viewer.editor.eraser.element": {
+    "message": "Объект",
+    "defaultMessage": "Объект"
+  },
+  "image-viewer.editor.eraser.area": {
+    "message": "Область",
+    "defaultMessage": "Область"
+  },
+  "image-viewer.editor.crop.dimensions": {
+    "message": "{width} × {height} пкс",
+    "defaultMessage": "{width} × {height} пкс"
+  },
+  "image-viewer.editor.crop.reset": {
+    "message": "Сбросить кадрирование",
+    "defaultMessage": "Сбросить кадрирование"
+  },
+  "image-viewer.editor.colour": {
+    "message": "Цвет",
+    "defaultMessage": "Цвет"
+  },
+  "image-viewer.editor.width": {
+    "message": "Толщина",
+    "defaultMessage": "Толщина"
+  },
+  "image-viewer.editor.size": {
+    "message": "Размер",
+    "defaultMessage": "Размер"
+  },
+  "image-viewer.editor.undo": {
+    "message": "Отменить",
+    "defaultMessage": "Отменить"
+  },
+  "image-viewer.editor.redo": {
+    "message": "Повторить",
+    "defaultMessage": "Повторить"
+  },
+  "image-viewer.editor.delete-selection": {
+    "message": "Удалить выделенную аннотацию",
+    "defaultMessage": "Удалить выделенную аннотацию"
+  },
+  "image-viewer.editor.zoom-in": {
+    "message": "Приблизить",
+    "defaultMessage": "Приблизить"
+  },
+  "image-viewer.editor.zoom-out": {
+    "message": "Отдалить",
+    "defaultMessage": "Отдалить"
+  },
+  "image-viewer.editor.zoom-fit": {
+    "message": "По размеру",
+    "defaultMessage": "По размеру"
+  },
+  "image-viewer.editor.zoom-fit-workspace": {
+    "message": "Вписать в область",
+    "defaultMessage": "Вписать в область"
+  },
+  "image-viewer.editor.image-editing-tools": {
+    "message": "Инструменты редактирования",
+    "defaultMessage": "Инструменты редактирования"
   }
 }
