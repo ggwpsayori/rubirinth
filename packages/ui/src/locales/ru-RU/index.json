@@ -9094,5 +9094,13 @@
   "sharing.invite-players-modal.friends-heading": {
     "message": "",
     "defaultMessage": ""
+  },
+  "browse.view-mode.list": {
+    "defaultMessage": "List",
+    "message": "Список"
+  },
+  "browse.view-mode.grid": {
+    "defaultMessage": "Cards",
+    "message": "Карточки"
   }
 }

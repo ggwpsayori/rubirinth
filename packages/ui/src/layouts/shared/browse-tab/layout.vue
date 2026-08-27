@@ -47,6 +47,14 @@ const maxResultsOptions = computed<ComboboxOption<number>[]>(() =>
 )
 
 const messages = defineMessages({
+	listView: {
+		id: 'browse.view-mode.list',
+		defaultMessage: 'List',
+	},
+	gridView: {
+		id: 'browse.view-mode.grid',
+		defaultMessage: 'Cards',
+	},
 	searchPlaceholder: {
 		id: 'browse.search.placeholder',
 		defaultMessage: 'Search {projectType}...',
@@ -219,12 +227,13 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 
 		<div
 			v-if="ctx.cycleDisplayMode || ctx.displayMode"
-			class="flex items-center rounded-xl bg-surface-2 p-0.5 border border-solid border-surface-5 shrink-0"
+			class="flex items-center rounded-xl bg-surface-2 p-1 border border-solid border-surface-5 h-[38px] box-border shrink-0"
 		>
 			<button
 				type="button"
-				v-tooltip="'Список'"
-				class="flex size-7 items-center justify-center rounded-lg transition-colors cursor-pointer border-0"
+				:aria-label="formatMessage(messages.listView)"
+				v-tooltip="formatMessage(messages.listView)"
+				class="flex h-7 px-2.5 items-center justify-center gap-1.5 rounded-lg transition-all cursor-pointer border-0 text-xs font-semibold"
 				:class="
 					ctx.effectiveLayout.value === 'list'
 						? 'bg-surface-4 text-contrast shadow-sm'
@@ -232,12 +241,14 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 				"
 				@click="ctx.displayMode ? (ctx.displayMode.value = 'list') : ctx.cycleDisplayMode?.()"
 			>
-				<ListIcon class="size-4" />
+				<ListIcon class="size-4 shrink-0" />
+				<span>{{ formatMessage(messages.listView) }}</span>
 			</button>
 			<button
 				type="button"
-				v-tooltip="'Карточки'"
-				class="flex size-7 items-center justify-center rounded-lg transition-colors cursor-pointer border-0"
+				:aria-label="formatMessage(messages.gridView)"
+				v-tooltip="formatMessage(messages.gridView)"
+				class="flex h-7 px-2.5 items-center justify-center gap-1.5 rounded-lg transition-all cursor-pointer border-0 text-xs font-semibold"
 				:class="
 					ctx.effectiveLayout.value === 'grid'
 						? 'bg-surface-4 text-contrast shadow-sm'
@@ -245,7 +256,8 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 				"
 				@click="ctx.displayMode ? (ctx.displayMode.value = 'grid') : ctx.cycleDisplayMode?.()"
 			>
-				<GridIcon class="size-4" />
+				<LayoutGridIcon class="size-4 shrink-0" />
+				<span>{{ formatMessage(messages.gridView) }}</span>
 			</button>
 		</div>
 

@@ -9109,5 +9109,13 @@
   "friends.title": {
     "defaultMessage": "Friends",
     "message": "Friends"
+  },
+  "browse.view-mode.list": {
+    "defaultMessage": "List",
+    "message": "List"
+  },
+  "browse.view-mode.grid": {
+    "defaultMessage": "Cards",
+    "message": "Cards"
   }
 }
