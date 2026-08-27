@@ -139,7 +139,6 @@ jobs:
           # Clean up any accidental 'main' release
           gh release delete main --yes 2>/dev/null || true
 
-          NOTES_ARG="--generate-notes"
           NOTES_FILE=""
           if [ -f "release-notes/${RELEASE_TITLE}.md" ]; then
             NOTES_FILE="release-notes/${RELEASE_TITLE}.md"
@@ -152,12 +151,16 @@ jobs:
             fi
           fi
 
-          if [ -n "$NOTES_FILE" ]; then
-            NOTES_ARG="--notes-file $NOTES_FILE"
+          if [ -n "$NOTES_FILE" ] && [ -f "$NOTES_FILE" ]; then
+            echo "Creating GitHub Release for ${VERSION_TAG} with notes file '${NOTES_FILE}'..."
+            gh release create "${VERSION_TAG}" \
+              --title "${RELEASE_TITLE}" \
+              --notes-file "${NOTES_FILE}" \
+              target/release/bundle/nsis/*-setup.exe
+          else
+            echo "Creating GitHub Release for ${VERSION_TAG} with generated notes..."
+            gh release create "${VERSION_TAG}" \
+              --title "${RELEASE_TITLE}" \
+              --generate-notes \
+              target/release/bundle/nsis/*-setup.exe
           fi
-
-          echo "Creating GitHub Release for ${VERSION_TAG} with ${NOTES_ARG}..."
-          gh release create "${VERSION_TAG}" \
-            --title "${RELEASE_TITLE}" \
-            ${NOTES_ARG} \
-            target/release/bundle/nsis/*-setup.exe
