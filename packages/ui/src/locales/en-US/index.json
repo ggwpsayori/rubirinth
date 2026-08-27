@@ -9117,5 +9117,57 @@
   "browse.view-mode.grid": {
     "defaultMessage": "Cards",
     "message": "Cards"
+  },
+  "browse.sort.relevance": {
+    "defaultMessage": "Relevance",
+    "message": "Relevance"
+  },
+  "browse.sort.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Downloads"
+  },
+  "browse.sort.follows": {
+    "defaultMessage": "Followers",
+    "message": "Followers"
+  },
+  "browse.sort.newest": {
+    "defaultMessage": "Date published",
+    "message": "Date published"
+  },
+  "browse.sort.updated": {
+    "defaultMessage": "Recently updated",
+    "message": "Recently updated"
+  },
+  "browse.sort.players": {
+    "defaultMessage": "Players",
+    "message": "Players"
+  },
+  "browse.sort.recent-players": {
+    "defaultMessage": "Recent players",
+    "message": "Recent players"
+  },
+  "browse.sort.ping": {
+    "defaultMessage": "Ping",
+    "message": "Ping"
+  },
+  "browse.sort.date-published": {
+    "defaultMessage": "Date published",
+    "message": "Date published"
+  },
+  "browse.sort.date-updated": {
+    "defaultMessage": "Date updated",
+    "message": "Date updated"
+  },
+  "browse.sort.verified-plays": {
+    "defaultMessage": "Verified Plays",
+    "message": "Verified Plays"
+  },
+  "browse.display-mode.prefix": {
+    "defaultMessage": "Mode:",
+    "message": "Mode:"
+  },
+  "browse.sidebar.server-online-only": {
+    "defaultMessage": "Online only",
+    "message": "Online only"
   }
 }

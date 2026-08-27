@@ -1,37 +1,39 @@
 <template>
-	<div v-if="count > 1" class="flex items-center gap-1">
-		<template v-if="page > 1">
-			<ButtonLink
-				v-if="linkFunction"
-				v-tooltip="formatMessage(messages.previousPage)"
-				:aria-label="formatMessage(messages.previousPage)"
-				:href="linkFunction(page - 1)"
-				type="quiet"
-				class="!w-9 !px-0 !rounded-full"
-				@click.prevent="switchPage(page - 1)"
-			>
-				<ChevronLeftIcon aria-hidden="true" />
-			</ButtonLink>
-			<IconButton
-				v-else
-				v-tooltip="formatMessage(messages.previousPage)"
-				:label="formatMessage(messages.previousPage)"
-				type="quiet"
-				@click="switchPage(page - 1)"
-			>
-				<ChevronLeftIcon aria-hidden="true" />
-			</IconButton>
-		</template>
+	<div v-if="count > 1" class="flex items-center gap-1 shrink-0">
+		<ButtonLink
+			v-if="linkFunction"
+			v-tooltip="page > 1 ? formatMessage(messages.previousPage) : undefined"
+			:aria-label="formatMessage(messages.previousPage)"
+			:href="page > 1 ? linkFunction(page - 1) : undefined"
+			:disabled="page <= 1"
+			type="quiet"
+			class="!w-9 !h-9 !px-0 !rounded-full shrink-0 justify-center"
+			@click.prevent="page > 1 ? switchPage(page - 1) : null"
+		>
+			<ChevronLeftIcon aria-hidden="true" />
+		</ButtonLink>
+		<IconButton
+			v-else
+			v-tooltip="page > 1 ? formatMessage(messages.previousPage) : undefined"
+			:label="formatMessage(messages.previousPage)"
+			:disabled="page <= 1"
+			type="quiet"
+			class="!w-9 !h-9 !rounded-full shrink-0 justify-center"
+			@click="page > 1 ? switchPage(page - 1) : null"
+		>
+			<ChevronLeftIcon aria-hidden="true" />
+		</IconButton>
+
 		<div
 			v-for="(item, index) in pages"
 			:key="'page-' + item + '-' + index"
 			:class="{
 				'page-number': page !== item,
-				shrink: item !== '-' && item > 99,
+				shrink: typeof item === 'number' && item > 99,
 			}"
-			class="page-number-container"
+			class="page-number-container flex items-center justify-center !w-9 !h-9 shrink-0"
 		>
-			<form v-if="item === '-'" class="grid place-content-center" @submit.prevent="goToPage">
+			<form v-if="item === '-'" class="grid place-content-center w-full h-full" @submit.prevent="goToPage">
 				<Input
 					v-if="showPageInput === index"
 					:ref="focusInput"
@@ -48,12 +50,12 @@
 					@keydown.escape="showPageInput = undefined"
 				/>
 
-				<div v-else class="rotate-90">
+				<div v-else class="rotate-90 flex items-center justify-center w-full h-full">
 					<button
 						v-tooltip="formatMessage(messages.goToPage)"
 						type="button"
 						:aria-label="formatMessage(messages.goToPage)"
-						class="grid place-content-center"
+						class="grid place-content-center size-8 rounded-full border-0 bg-transparent text-secondary hover:text-primary cursor-pointer transition-colors"
 						@click="openPageInput(index)"
 					>
 						<EllipsisVerticalIcon aria-hidden="true" />
@@ -68,7 +70,7 @@
 					:color="page === item ? 'brand' : undefined"
 					:interaction="page === item ? 'filled' : undefined"
 					:aria-current="page === item ? 'page' : undefined"
-					:class="['!min-w-9 !rounded-full', page === item ? '!bg-brand-highlight' : '']"
+					:class="['!w-9 !h-9 !px-0 !rounded-full justify-center', page === item ? '!bg-brand-highlight' : '']"
 					@click.prevent="page !== item ? switchPage(item) : null"
 				>
 					{{ item }}
@@ -79,7 +81,7 @@
 					:color="page === item ? 'brand' : undefined"
 					:interaction="page === item ? 'filled' : undefined"
 					:aria-current="page === item ? 'page' : undefined"
-					:class="['!min-w-9 !rounded-full', page === item ? '!bg-brand-highlight' : '']"
+					:class="['!w-9 !h-9 !px-0 !rounded-full justify-center', page === item ? '!bg-brand-highlight' : '']"
 					@click="page !== item ? switchPage(item) : null"
 				>
 					{{ item }}
@@ -87,30 +89,32 @@
 			</template>
 		</div>
 
-		<template v-if="page !== pages[pages.length - 1]">
-			<ButtonLink
-				v-if="linkFunction"
-				v-tooltip="formatMessage(messages.nextPage)"
-				:aria-label="formatMessage(messages.nextPage)"
-				:href="linkFunction(page + 1)"
-				type="quiet"
-				class="!w-9 !px-0 !rounded-full"
-				@click.prevent="switchPage(page + 1)"
-			>
-				<ChevronRightIcon aria-hidden="true" />
-			</ButtonLink>
-			<IconButton
-				v-else
-				v-tooltip="formatMessage(messages.nextPage)"
-				:label="formatMessage(messages.nextPage)"
-				type="quiet"
-				@click="switchPage(page + 1)"
-			>
-				<ChevronRightIcon aria-hidden="true" />
-			</IconButton>
-		</template>
+		<ButtonLink
+			v-if="linkFunction"
+			v-tooltip="page < count ? formatMessage(messages.nextPage) : undefined"
+			:aria-label="formatMessage(messages.nextPage)"
+			:href="page < count ? linkFunction(page + 1) : undefined"
+			:disabled="page >= count"
+			type="quiet"
+			class="!w-9 !h-9 !px-0 !rounded-full shrink-0 justify-center"
+			@click.prevent="page < count ? switchPage(page + 1) : null"
+		>
+			<ChevronRightIcon aria-hidden="true" />
+		</ButtonLink>
+		<IconButton
+			v-else
+			v-tooltip="page < count ? formatMessage(messages.nextPage) : undefined"
+			:label="formatMessage(messages.nextPage)"
+			:disabled="page >= count"
+			type="quiet"
+			class="!w-9 !h-9 !rounded-full shrink-0 justify-center"
+			@click="page < count ? switchPage(page + 1) : null"
+		>
+			<ChevronRightIcon aria-hidden="true" />
+		</IconButton>
 	</div>
 </template>
+
 <script setup lang="ts">
 import { ChevronLeftIcon, ChevronRightIcon, EllipsisVerticalIcon } from '@modrinth/assets'
 import { type ComponentPublicInstance, computed, ref } from 'vue'
@@ -140,37 +144,25 @@ const props = withDefaults(
 const showPageInput = ref<number | undefined>(undefined)
 const pageInput = ref<number | undefined>(undefined)
 
-const pages = computed(() => {
-	const pages: ('-' | number)[] = []
+const pages = computed<Array<number | '-'>>(() => {
+	const last = Math.max(1, props.count || 1)
+	const current = Math.min(Math.max(1, props.page || 1), last)
 
-	const first = 1
-	const last = props.count
-	const current = props.page
-	const prev = current - 1
-	const next = current + 1
-	const gap = '-'
-
-	if (prev > first) {
-		pages.push(first)
-	}
-	if (prev > first + 1) {
-		pages.push(gap)
-	}
-	if (prev >= first) {
-		pages.push(prev)
-	}
-	pages.push(current)
-	if (next <= last) {
-		pages.push(next)
-	}
-	if (next < last - 1) {
-		pages.push(gap)
-	}
-	if (next < last) {
-		pages.push(last)
+	if (last <= 7) {
+		const res: Array<number | '-'> = []
+		for (let i = 1; i <= last; i++) res.push(i)
+		return res
 	}
 
-	return pages
+	if (current <= 4) {
+		return [1, 2, 3, 4, 5, '-', last]
+	}
+
+	if (current >= last - 3) {
+		return [1, '-', last - 4, last - 3, last - 2, last - 1, last]
+	}
+
+	return [1, '-', current - 1, current, current + 1, '-', last]
 })
 
 function switchPage(newPage: number) {

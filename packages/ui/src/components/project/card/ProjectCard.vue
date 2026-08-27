@@ -26,13 +26,14 @@
 					class="absolute w-full h-full inset-0 object-cover object-center placeholder-banner scale-[200%]"
 				/>
 			</div>
+
 			<div class="p-4 flex flex-col gap-3 grow">
 				<div class="flex gap-3">
 					<Avatar :src="iconUrl" size="96px" class="project-card__icon ease-brightness" no-shadow />
 					<div class="flex flex-col gap-2 w-full">
 						<div class="grid grid-cols-[1fr_auto] gap-4">
-							<div class="flex flex-col gap-1">
-								<div class="flex gap-2 items-center">
+							<div class="flex flex-col gap-1 min-w-0">
+								<div class="flex gap-2 items-center flex-wrap">
 									<ProjectCardTitle :title="title" compact />
 									<ProjectCardAuthor v-if="author" :author="author" />
 									<ProjectStatusBadge v-if="status" :status="status" class="text-sm" />
@@ -44,9 +45,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="flex gap-2 shrink-0 empty:hidden smart-clickable:allow-pointer-events">
-					<slot name="actions" />
-				</div>
+
 				<div class="mt-auto flex flex-col gap-3 flex-wrap overflow-hidden justify-between grow">
 					<div class="flex items-center gap-1 flex-wrap overflow-hidden">
 						<template v-if="isServerProject">
@@ -85,6 +84,7 @@
 							class="text-primary"
 						/>
 					</div>
+
 					<div
 						v-if="downloads !== undefined || followers !== undefined"
 						class="flex items-center gap-3 justify-between flex-wrap"
@@ -94,11 +94,15 @@
 						</div>
 						<ProjectCardDate v-if="date && autoDisplayDate" :type="autoDisplayDate" :date="date" />
 					</div>
+
+					<!-- Full-width bottom action bar -->
+					<div class="pt-1 flex items-center justify-center w-full smart-clickable:allow-pointer-events [&>div]:w-full [&_button]:w-full [&_button]:justify-center">
+						<slot name="actions" />
+					</div>
 				</div>
 			</div>
 		</div>
-		<div
-			v-else
+		<div v-else
 			:class="[
 				baseCardStyle,
 				'p-4 grid grid-project-card-list gap-x-3 gap-y-2',

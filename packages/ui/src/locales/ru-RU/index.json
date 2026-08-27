@@ -9102,5 +9102,57 @@
   "browse.view-mode.grid": {
     "defaultMessage": "Cards",
     "message": "Карточки"
+  },
+  "browse.sort.relevance": {
+    "defaultMessage": "Relevance",
+    "message": "Релевантность"
+  },
+  "browse.sort.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Скачивания"
+  },
+  "browse.sort.follows": {
+    "defaultMessage": "Followers",
+    "message": "Подписчики"
+  },
+  "browse.sort.newest": {
+    "defaultMessage": "Date published",
+    "message": "Новизна"
+  },
+  "browse.sort.updated": {
+    "defaultMessage": "Recently updated",
+    "message": "Дата обновления"
+  },
+  "browse.sort.players": {
+    "defaultMessage": "Players",
+    "message": "Игроки"
+  },
+  "browse.sort.recent-players": {
+    "defaultMessage": "Recent players",
+    "message": "Недавние игроки"
+  },
+  "browse.sort.ping": {
+    "defaultMessage": "Ping",
+    "message": "Пинг"
+  },
+  "browse.sort.date-published": {
+    "defaultMessage": "Date published",
+    "message": "Дата публикации"
+  },
+  "browse.sort.date-updated": {
+    "defaultMessage": "Date updated",
+    "message": "Дата обновления"
+  },
+  "browse.sort.verified-plays": {
+    "defaultMessage": "Verified Plays",
+    "message": "Проверенные игры"
+  },
+  "browse.display-mode.prefix": {
+    "defaultMessage": "Mode:",
+    "message": "Режим:"
+  },
+  "browse.sidebar.server-online-only": {
+    "defaultMessage": "Online only",
+    "message": "Только в сети"
   }
 }

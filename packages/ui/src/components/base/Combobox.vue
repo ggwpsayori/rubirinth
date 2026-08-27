@@ -392,7 +392,7 @@ const dropdownTransformOrigin = computed(() =>
 )
 
 const selectedOption = computed<ComboboxOption<T> | undefined>(() => {
-	return props.options.find(
+	return (props.options ?? []).find(
 		(opt): opt is ComboboxOption<T> => isDropdownOption(opt) && opt.value === props.modelValue,
 	)
 })
@@ -428,7 +428,7 @@ const hasMinimumSearchLength = computed(
 )
 
 const optionsWithKeys = computed(() => {
-	return props.options.map((opt, index) => ({
+	return (props.options ?? []).map((opt, index) => ({
 		...opt,
 		key: isDivider(opt) ? `divider-${index}` : `option-${opt.value}`,
 	}))
@@ -475,7 +475,7 @@ function setOptionRef(el: HTMLElement | null, index: number) {
 
 function setInitialFocus() {
 	focusedIndex.value = props.listbox
-		? props.options.findIndex((opt) => isDropdownOption(opt) && opt.value === props.modelValue)
+		? (props.options ?? []).findIndex((opt) => isDropdownOption(opt) && opt.value === props.modelValue)
 		: -1
 
 	if (focusedIndex.value >= 0) {
@@ -1083,7 +1083,7 @@ watch(
 	[() => props.modelValue, () => props.options],
 	([val]) => {
 		if (props.searchable && props.syncWithSelection && !isOpen.value && !userHasTyped.value) {
-			const opt = props.options.find((o) => isDropdownOption(o) && o.value === val)
+			const opt = (props.options ?? []).find((o) => isDropdownOption(o) && o.value === val)
 			searchQuery.value = opt && isDropdownOption(opt) ? opt.label : ''
 		}
 		if (isOpen.value) {

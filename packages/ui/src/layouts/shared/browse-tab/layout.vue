@@ -25,28 +25,36 @@ import type { CardAction } from './types'
 
 const ctx = injectBrowseManager()
 const { formatMessage } = useVIntl()
-const lockedMessages = computed(() => toValue(ctx.lockedFilterMessages))
-const stickyInstallHeaderRef = ref<HTMLElement | null>(null)
-const { isStuck: isInstallHeaderStuck } = useStickyObserver(
-	stickyInstallHeaderRef,
-	'BrowseInstallHeader',
-)
-
-const sortOptions = computed<ComboboxOption<SortType>[]>(() =>
-	ctx.effectiveSortTypes.value.map((st) => ({
-		value: st,
-		label: st.display,
-	})),
-)
-
-const maxResultsOptions = computed<ComboboxOption<number>[]>(() =>
-	(ctx.maxResultsOptions?.value ?? [5, 10, 15, 20, 50, 100]).map((n) => ({
-		value: n,
-		label: String(n),
-	})),
-)
 
 const messages = defineMessages({
+	sortRelevance: {
+		id: 'browse.sort.relevance',
+		defaultMessage: 'Relevance',
+	},
+	sortDownloads: {
+		id: 'browse.sort.downloads',
+		defaultMessage: 'Downloads',
+	},
+	sortFollows: {
+		id: 'browse.sort.follows',
+		defaultMessage: 'Followers',
+	},
+	sortDatePublished: {
+		id: 'browse.sort.date-published',
+		defaultMessage: 'Date published',
+	},
+	sortDateUpdated: {
+		id: 'browse.sort.date-updated',
+		defaultMessage: 'Date updated',
+	},
+	sortVerifiedPlays: {
+		id: 'browse.sort.verified-plays',
+		defaultMessage: 'Verified Plays',
+	},
+	sortPlayers: {
+		id: 'browse.sort.players',
+		defaultMessage: 'Players',
+	},
 	listView: {
 		id: 'browse.view-mode.list',
 		defaultMessage: 'List',
@@ -84,6 +92,52 @@ const messages = defineMessages({
 		defaultMessage: 'Apply saved preferences',
 	},
 })
+const lockedMessages = computed(() => toValue(ctx.lockedFilterMessages))
+const stickyInstallHeaderRef = ref<HTMLElement | null>(null)
+const { isStuck: isInstallHeaderStuck } = useStickyObserver(
+	stickyInstallHeaderRef,
+	'BrowseInstallHeader',
+)
+
+function toggleDisplayMode() {
+	if (ctx.displayMode) {
+		ctx.displayMode.value = ctx.effectiveLayout.value === 'list' ? 'grid' : 'list'
+	} else if (ctx.cycleDisplayMode) {
+		ctx.cycleDisplayMode()
+	}
+}
+
+function getSortLabel(st?: SortType | null): string {
+	if (!st) return ''
+	const name = st.name || ''
+	const display = st.display || ''
+
+	if (name === 'relevance' || display === 'Relevance') return formatMessage(messages.sortRelevance)
+	if (name === 'downloads' || display === 'Downloads') return formatMessage(messages.sortDownloads)
+	if (name === 'follows' || display === 'Followers') return formatMessage(messages.sortFollows)
+	if (name === 'newest' || name === 'date_created' || display === 'Date Published' || display === 'Date published') return formatMessage(messages.sortDatePublished)
+	if (name === 'updated' || name === 'date_modified' || display === 'Date Updated' || display === 'Date updated') return formatMessage(messages.sortDateUpdated)
+	if (name === 'minecraft_java_server.verified_plays_2w' || display === 'Verified Plays') return formatMessage(messages.sortVerifiedPlays)
+	if (name === 'minecraft_java_server.ping.data.players_online' || name === 'players' || display === 'Players' || display === 'Online players') return formatMessage(messages.sortPlayers)
+
+	return display || name
+}
+
+const sortOptions = computed<ComboboxOption<SortType>[]>(() =>
+	(ctx.effectiveSortTypes?.value ?? []).map((st) => ({
+		value: st,
+		label: getSortLabel(st),
+	})),
+)
+
+const maxResultsOptions = computed<ComboboxOption<number>[]>(() =>
+	(ctx.maxResultsOptions?.value ?? [5, 10, 15, 20, 50, 100]).map((n) => ({
+		value: n,
+		label: String(n),
+	})),
+)
+
+
 
 function cardActionType(action: CardAction) {
 	if (action.type === 'transparent') return 'quiet'
@@ -225,41 +279,19 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 			</Button>
 		</div>
 
-		<div
+		<IconButton
 			v-if="ctx.cycleDisplayMode || ctx.displayMode"
-			class="flex items-center rounded-xl bg-surface-2 p-1 border border-solid border-surface-5 h-[38px] box-border shrink-0"
+			:circular="false"
+			type="base"
+			size="md"
+			:label="ctx.effectiveLayout.value === 'list' ? formatMessage(messages.gridView) : formatMessage(messages.listView)"
+			v-tooltip="ctx.effectiveLayout.value === 'list' ? formatMessage(messages.gridView) : formatMessage(messages.listView)"
+			class="!h-9 !w-9 !rounded-xl shrink-0"
+			@click="toggleDisplayMode"
 		>
-			<button
-				type="button"
-				:aria-label="formatMessage(messages.listView)"
-				v-tooltip="formatMessage(messages.listView)"
-				class="flex h-7 px-2.5 items-center justify-center gap-1.5 rounded-lg transition-all cursor-pointer border-0 text-xs font-semibold"
-				:class="
-					ctx.effectiveLayout.value === 'list'
-						? 'bg-surface-4 text-contrast shadow-sm'
-						: 'bg-transparent text-secondary hover:text-primary'
-				"
-				@click="ctx.displayMode ? (ctx.displayMode.value = 'list') : ctx.cycleDisplayMode?.()"
-			>
-				<ListIcon class="size-4 shrink-0" />
-				<span>{{ formatMessage(messages.listView) }}</span>
-			</button>
-			<button
-				type="button"
-				:aria-label="formatMessage(messages.gridView)"
-				v-tooltip="formatMessage(messages.gridView)"
-				class="flex h-7 px-2.5 items-center justify-center gap-1.5 rounded-lg transition-all cursor-pointer border-0 text-xs font-semibold"
-				:class="
-					ctx.effectiveLayout.value === 'grid'
-						? 'bg-surface-4 text-contrast shadow-sm'
-						: 'bg-transparent text-secondary hover:text-primary'
-				"
-				@click="ctx.displayMode ? (ctx.displayMode.value = 'grid') : ctx.cycleDisplayMode?.()"
-			>
-				<LayoutGridIcon class="size-4 shrink-0" />
-				<span>{{ formatMessage(messages.gridView) }}</span>
-			</button>
-		</div>
+			<LayoutGridIcon v-if="ctx.effectiveLayout.value === 'list'" class="size-5" />
+			<ListIcon v-else class="size-5" />
+		</IconButton>
 
 		<Pagination
 			:page="ctx.currentPage.value"
@@ -272,7 +304,7 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 	<SearchFilterControl
 		v-if="ctx.isServerType.value"
 		v-model:selected-filters="ctx.serverCurrentFilters.value"
-		:filters="ctx.serverFilterTypes.value"
+		:filters="(ctx.serverFilterTypes?.value ?? []).filter((f) => f.display !== 'none' && f.id !== 'server_status' && !(ctx.hiddenFilterTypes?.value ?? []).includes(f.id))"
 		:project-type="ctx.projectType.value"
 		:provided-filters="[]"
 		:overridden-provided-filter-types="[]"
@@ -281,7 +313,7 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 		v-else
 		v-model:selected-filters="ctx.currentFilters.value"
 		:filters="
-			ctx.filters.value.filter(
+			(ctx.filters?.value ?? []).filter(
 				(f) => f.display !== 'none' && !(ctx.hiddenFilterTypes?.value ?? []).includes(f.id),
 			)
 		"
