@@ -4247,5 +4247,9 @@
   "app.settings.update-available-button": {
     "message": "Update to {version}",
     "defaultMessage": "Update to {version}"
+  },
+  "rubirinth.app.launcher-update-modal.changelog-title": {
+    "message": "What's new:",
+    "defaultMessage": "What's new:"
   }
 }

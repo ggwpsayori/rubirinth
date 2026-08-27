@@ -1,7 +1,8 @@
 ﻿<script setup lang="ts">
 import { DownloadIcon, GithubIcon, SpinnerIcon } from '@modrinth/assets'
 import { Button, ButtonLink, defineMessages, NewModal, useVIntl } from '@modrinth/ui'
-import { ref } from 'vue'
+import { renderString } from '@modrinth/utils'
+import { computed, ref } from 'vue'
 
 import {
 	GITHUB_RELEASES_URL,
@@ -17,6 +18,16 @@ const props = defineProps<{
 
 const { formatMessage } = useVIntl()
 const modal = ref<InstanceType<typeof NewModal> | null>(null)
+
+const changelogContent = computed(() => {
+	const raw = latestRelease.value?.body || ''
+	if (!raw) return ''
+
+	// Strip out the installation instructions section from GitHub release notes
+	const installHeaderRegex = /(?:(?:\r?\n)+\s*(?:---|___|\*\*\*)\s*)*(?:\r?\n)+#{1,4}\s*(?:Установка|Installation)[\s\S]*$/i
+	const trimmed = raw.replace(installHeaderRegex, '').trim()
+	return trimmed || raw
+})
 
 const messages = defineMessages({
 	header: {
@@ -35,6 +46,10 @@ const messages = defineMessages({
 	currentVersion: {
 		id: 'rubirinth.app.launcher-update-modal.current-version',
 		defaultMessage: 'Current version:',
+	},
+	changelogTitle: {
+		id: 'rubirinth.app.launcher-update-modal.changelog-title',
+		defaultMessage: "What's new:",
 	},
 	latestVersion: {
 		id: 'rubirinth.app.launcher-update-modal.latest-version',
@@ -80,7 +95,7 @@ defineExpose({
 </script>
 
 <template>
-	<NewModal ref="modal" :header="formatMessage(messages.header)" max-width="500px">
+	<NewModal ref="modal" :header="formatMessage(messages.header)" max-width="560px">
 		<div class="flex flex-col gap-4">
 			<div>
 				<h3 class="m-0 text-lg font-bold text-contrast">
@@ -100,6 +115,20 @@ defineExpose({
 					<span class="text-secondary">{{ formatMessage(messages.latestVersion) }}</span>
 					<span class="font-bold text-brand">{{ latestRelease?.tag_name }}</span>
 				</div>
+			</div>
+
+			<!-- Release changelog from GitHub -->
+			<div
+				v-if="changelogContent"
+				class="flex flex-col gap-1.5 rounded-xl border border-solid border-divider bg-bg-secondary p-3.5 max-h-60 overflow-y-auto"
+			>
+				<span class="text-xs font-semibold uppercase tracking-wider text-secondary">
+					{{ formatMessage(messages.changelogTitle) }}
+				</span>
+				<div
+					class="markdown-body text-sm text-primary leading-relaxed"
+					v-html="renderString(changelogContent)"
+				/>
 			</div>
 
 			<div v-if="latestRelease?.html_url" class="text-sm">
