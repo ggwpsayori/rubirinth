@@ -157,10 +157,20 @@ jobs:
           gh release delete main --yes 2>/dev/null || true
 
           NOTES_ARG="--generate-notes"
-          if [ -f "release-notes/${VERSION_TAG}.md" ]; then
-            NOTES_ARG="--notes-file release-notes/${VERSION_TAG}.md"
-          elif [ -f "release-notes/v${VERSION}.md" ]; then
-            NOTES_ARG="--notes-file release-notes/v${VERSION}.md"
+          NOTES_FILE=""
+          if [ -f "release-notes/${RELEASE_TITLE}.md" ]; then
+            NOTES_FILE="release-notes/${RELEASE_TITLE}.md"
+          else
+            MATCHING_FILE=$(ls release-notes/Rubirinth\ App\ ${VERSION}*.md 2>/dev/null | head -n 1 || true)
+            if [ -n "$MATCHING_FILE" ] && [ -f "$MATCHING_FILE" ]; then
+              NOTES_FILE="$MATCHING_FILE"
+            elif [ -f "release-notes/${VERSION_TAG}.md" ]; then
+              NOTES_FILE="release-notes/${VERSION_TAG}.md"
+            fi
+          fi
+
+          if [ -n "$NOTES_FILE" ]; then
+            NOTES_ARG="--notes-file $NOTES_FILE"
           fi
 
           echo "Creating GitHub Release for ${VERSION_TAG} with ${NOTES_ARG}..."
