@@ -224,7 +224,8 @@ const skins = ref<Skin[]>([])
 const capes = ref<Cape[]>([])
 const offline = ref(!navigator.onLine)
 
-const accountsCard = inject('accountsCard') as Ref<typeof AccountsCard>
+const accountsCard = inject<Ref<any>>('accountsCard', ref(null))
+const loginDisabled = ref(false)
 const currentUser = ref(undefined)
 const currentUserId = ref<string | undefined>(undefined)
 
@@ -569,7 +570,7 @@ function setLocallyEquippedSkin(skinToApply: Skin) {
 	originalSelectedSkin.value =
 		skins.value.find((skin) => skinsMatch(skin, skinToApply)) ?? skinToApply
 	selectedSkin.value = originalSelectedSkin.value
-	void accountsCard.value?.setEquippedSkin(originalSelectedSkin.value)
+	void accountsCard.value?.setEquippedSkin?.(originalSelectedSkin.value)
 }
 
 function insertLocalSkin(savedSkin: Skin) {
@@ -625,7 +626,7 @@ function updateLocalSkin(savedSkin: Skin, applied: boolean, previousSkin?: Skin)
 
 		originalSelectedSkin.value = locallyEquippedSkin
 		selectedSkin.value = locallyEquippedSkin
-		void accountsCard.value?.setEquippedSkin(locallyEquippedSkin)
+		void accountsCard.value?.setEquippedSkin?.(locallyEquippedSkin)
 	} else {
 		const locallySavedSkin =
 			skins.value.find((skin) => skin.texture_key === savedSkin.texture_key) ?? savedSkin
@@ -708,7 +709,7 @@ async function preserveExternalSkins(skinsToPersist: Skin[]) {
 
 		if (skinsMatchIgnoringSource(originalSelectedSkin.value, skin)) {
 			originalSelectedSkin.value = preservedSkin
-			void accountsCard.value?.setEquippedSkin(preservedSkin)
+			void accountsCard.value?.setEquippedSkin?.(preservedSkin)
 		}
 
 		preservedSkins.push(preservedSkin)
@@ -744,7 +745,7 @@ function schedulePendingSkinRefresh() {
 		}
 
 		if (accountsCard.value) {
-			await accountsCard.value.refreshValues()
+			await accountsCard.value?.refreshValues?.()
 		}
 
 		await loadCapes()
@@ -817,15 +818,18 @@ function getBakedSkinTextures(skin: Skin): RenderResult | undefined {
 }
 
 async function login() {
-	accountsCard.value.setLoginDisabled(true)
-	const loggedIn = await login_flow().catch(handleSevereError)
+	loginDisabled.value = true
+	try {
+		const loggedIn = await login_flow().catch(handleSevereError)
 
-	if (loggedIn && accountsCard) {
-		await accountsCard.value.refreshValues()
+		if (loggedIn && accountsCard.value) {
+			await accountsCard.value.refreshValues?.()
+		}
+
+		trackEvent('AccountLogIn')
+	} finally {
+		loginDisabled.value = false
 	}
-
-	trackEvent('AccountLogIn')
-	accountsCard.value.setLoginDisabled(false)
 }
 
 function openAddSkinFileBrowser() {
@@ -1294,13 +1298,12 @@ await loadSkins()
 				</div>
 			</div>
 			<Button
-				v-show="accountsCard"
 				type="colored"
 				color="brand"
-				:disabled="accountsCard.loginDisabled"
+				:disabled="loginDisabled"
 				@click="login"
 			>
-				<SpinnerIcon v-if="accountsCard.loginDisabled" class="animate-spin" />
+				<SpinnerIcon v-if="loginDisabled" class="animate-spin" />
 				<WindowsIcon v-else />
 				{{ formatMessage(messages.signInButton) }}
 			</Button>
