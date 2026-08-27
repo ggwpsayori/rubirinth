@@ -3940,36 +3940,36 @@
     "message": "Друзья"
   },
   "app.instance.confirm-delete.bulk-admonition-body": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "Все данные для {count, plural, one {# этой сборки} few {# этих сборок} many {# этих сборок} other {# этих сборок}} будут безвозвратно удалены, включая миры, конфигурации и весь установленный контент.",
+    "defaultMessage": "Все данные для {count, plural, one {# этой сборки} few {# этих сборок} many {# этих сборок} other {# этих сборок}} будут безвозвратно удалены, включая миры, конфигурации и весь установленный контент."
   },
   "app.instance.confirm-delete.bulk-delete-button": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}",
+    "defaultMessage": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}"
   },
   "app.instance.confirm-delete.bulk-header": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}",
+    "defaultMessage": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}"
   },
   "app.instance.mods.projects-were-added": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "{count, plural, one {Добавлен # проект} few {Добавлено # проекта} many {Добавлено # проектов} other {Добавлено # проектов}}",
+    "defaultMessage": "{count, plural, one {Добавлен # проект} few {Добавлено # проекта} many {Добавлено # проектов} other {Добавлено # проектов}}"
   },
   "app.instance.share.invite-modal.user-limit-reached": {
     "message": "",
     "defaultMessage": ""
   },
   "app.instance.worlds.search-worlds-placeholder": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "{count, plural, one {Поиск по # миру...} few {Поиск по # мирам...} many {Поиск по # мирам...} other {Поиск по # мирам...}}",
+    "defaultMessage": "{count, plural, one {Поиск по # миру...} few {Поиск по # мирам...} many {Поиск по # мирам...} other {Поиск по # мирам...}}"
   },
   "app.library.selection.selected-count": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "{count, plural, one {Выбрана # сборка} few {Выбрано # сборки} many {Выбрано # сборок} other {Выбрано # сборок}}",
+    "defaultMessage": "{count, plural, one {Выбрана # сборка} few {Выбрано # сборки} many {Выбрано # сборок} other {Выбрано # сборок}}"
   },
   "instance.files.adding-files": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "Добавление файлов ({completed}/{total})",
+    "defaultMessage": "Добавление файлов ({completed}/{total})"
   },
   "astralrinth.app.settings.sidebar.label.astralrinth": {
     "message": "",
@@ -4638,5 +4638,25 @@
   "instance.settings.tabs.settings-overrides": {
     "message": "Синхронизация",
     "defaultMessage": "Синхронизация"
+  },
+  "app.instance.actions.label": {
+    "message": "Действия со сборкой",
+    "defaultMessage": "Действия со сборкой"
+  },
+  "app.library.actions.label": {
+    "message": "Действия с библиотекой",
+    "defaultMessage": "Действия с библиотекой"
+  },
+  "app.library.group.actions.label": {
+    "message": "Действия с группой",
+    "defaultMessage": "Действия с группой"
+  },
+  "app.library.instance.actions.label": {
+    "message": "Действия со сборкой",
+    "defaultMessage": "Действия со сборкой"
+  },
+  "app.project.actions.label": {
+    "message": "Действия с проектом",
+    "defaultMessage": "Действия с проектом"
   }
 }

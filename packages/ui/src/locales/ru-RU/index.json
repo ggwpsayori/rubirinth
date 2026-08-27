@@ -480,12 +480,12 @@
     "message": "Приватная"
   },
   "content-type.content.lowercase": {
-    "defaultMessage": "контент",
-    "message": "контент"
+    "message": "контент",
+    "defaultMessage": "контент"
   },
   "content-type.item.lowercase": {
-    "defaultMessage": "{count, plural,  one {# элемент}  few {# элемента} many {# элементов} other {#элементов}}",
-    "message": "{count, plural,  one {# элемент}  few {# элемента} many {# элементов} other {#элементов}}"
+    "message": "{count, plural, one {элемент} few {элемента} many {элементов} other {элементов}}",
+    "defaultMessage": "{count, plural, one {элемент} few {элемента} many {элементов} other {элементов}}"
   },
   "content.card.frozen": {
     "defaultMessage": "Этот проект заблокирован на его текущей версии до разморозки.",
@@ -988,8 +988,8 @@
     "message": "Обновление проектов..."
   },
   "content.selection-bar.selected-count-simple": {
-    "defaultMessage": "Выбрано: {count, number}",
-    "message": "Выбрано: {count, number}"
+    "message": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}",
+    "defaultMessage": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}"
   },
   "creation-flow.button.create-instance": {
     "defaultMessage": "Создать сборку",
@@ -2876,8 +2876,8 @@
     "message": "Совместимые сборки не найдены"
   },
   "instances.content-install.search-placeholder": {
-    "defaultMessage": "Поиск сборки",
-    "message": "Поиск сборки"
+    "message": "Поиск...",
+    "defaultMessage": "Поиск..."
   },
   "instances.content-install.show-unavailable": {
     "defaultMessage": "Показать недоступные",
@@ -2920,8 +2920,8 @@
     "message": "Открыть в Slicer"
   },
   "instances.managed-content-modal.search-placeholder": {
-    "defaultMessage": "Поиск по {count, number} {count, plural, one {проекту} other {проектам}}",
-    "message": "Поиск по {count, number} {count, plural, one {проекту} other {проектам}}"
+    "message": "{count, plural, one {Поиск по # проекту...} few {Поиск по # проектам...} many {Поиск по # проектам...} other {Поиск по # проектам...}}",
+    "defaultMessage": "{count, plural, one {Поиск по # проекту...} few {Поиск по # проектам...} many {Поиск по # проектам...} other {Поиск по # проектам...}}"
   },
   "instances.updater-modal.badge.current": {
     "defaultMessage": "Текущая",
@@ -4220,8 +4220,8 @@
     "message": "Наборы данных"
   },
   "project-type.datapack.lowercase": {
-    "defaultMessage": "{count, plural, one {набор данных} few {набора данных} other {наборов данных}}",
-    "message": "{count, plural, one {набор данных} few {набора данных} other {наборов данных}}"
+    "message": "{count, plural, one {набор данных} few {набора данных} many {наборов данных} other {наборов данных}}",
+    "defaultMessage": "{count, plural, one {набор данных} few {набора данных} many {наборов данных} other {наборов данных}}"
   },
   "project-type.mod.capital": {
     "defaultMessage": "{count, plural, one {мод} few {мода} other {модов}}",
@@ -4232,8 +4232,8 @@
     "message": "Моды"
   },
   "project-type.mod.lowercase": {
-    "defaultMessage": "{count, plural, one {мод} few {мода} other {модов}}",
-    "message": "{count, plural, one {мод} few {мода} other {модов}}"
+    "message": "{count, plural, one {мод} few {мода} many {модов} other {модов}}",
+    "defaultMessage": "{count, plural, one {мод} few {мода} many {модов} other {модов}}"
   },
   "project-type.modpack.capital": {
     "defaultMessage": "{count, plural, one {сборка} few {сборки} other {сборок}}",
@@ -4244,8 +4244,8 @@
     "message": "Сборки"
   },
   "project-type.modpack.lowercase": {
-    "defaultMessage": "{count, plural, one {сборка} few {сборки} other {сборок}}",
-    "message": "{count, plural, one {сборка} few {сборки} other {сборок}}"
+    "message": "{count, plural, one {сборка} few {сборки} many {сборок} other {сборок}}",
+    "defaultMessage": "{count, plural, one {сборка} few {сборки} many {сборок} other {сборок}}"
   },
   "project-type.plugin.capital": {
     "defaultMessage": "{count, plural, one {плагин} few {плагина} other {плагинов}}",
@@ -4256,8 +4256,8 @@
     "message": "Плагины"
   },
   "project-type.plugin.lowercase": {
-    "defaultMessage": "{count, plural, one {плагин} few {плагина} other {плагинов}}",
-    "message": "{count, plural, one {плагин} few {плагина} other {плагинов}}"
+    "message": "{count, plural, one {плагин} few {плагина} many {плагинов} other {плагинов}}",
+    "defaultMessage": "{count, plural, one {плагин} few {плагина} many {плагинов} other {плагинов}}"
   },
   "project-type.project.capital": {
     "defaultMessage": "{count, plural, one {проект} few {проекта} other {проектов}}",
@@ -4268,8 +4268,8 @@
     "message": "Проекты"
   },
   "project-type.project.lowercase": {
-    "defaultMessage": "{count, plural, one {проект} few {проекта} other {проектов}}",
-    "message": "{count, plural, one {проект} few {проекта} other {проектов}}"
+    "message": "{count, plural, one {проект} few {проекта} many {проектов} other {проектов}}",
+    "defaultMessage": "{count, plural, one {проект} few {проекта} many {проектов} other {проектов}}"
   },
   "project-type.resourcepack.capital": {
     "defaultMessage": "{count, plural, one {набор ресурсов} few {набора ресурсов} other {наборов ресурсов}}",
@@ -4280,8 +4280,8 @@
     "message": "Наборы ресурсов"
   },
   "project-type.resourcepack.lowercase": {
-    "defaultMessage": "{count, plural, one {набор ресурсов} few {набора ресурсов} other {наборов ресурсов}}",
-    "message": "{count, plural, one {набор ресурсов} few {набора ресурсов} other {наборов ресурсов}}"
+    "message": "{count, plural, one {набор ресурсов} few {набора ресурсов} many {наборов ресурсов} other {наборов ресурсов}}",
+    "defaultMessage": "{count, plural, one {набор ресурсов} few {набора ресурсов} many {наборов ресурсов} other {наборов ресурсов}}"
   },
   "project-type.server.capital": {
     "defaultMessage": "{count, plural, one {сервер} few {сервера} other {серверов}}",
@@ -4292,8 +4292,8 @@
     "message": "Серверы"
   },
   "project-type.server.lowercase": {
-    "defaultMessage": "{count, plural, one {сервер} few {сервера} other {серверов}}",
-    "message": "{count, plural, one {сервер} few {сервера} other {серверов}}"
+    "message": "{count, plural, one {сервер} few {сервера} many {серверов} other {серверов}}",
+    "defaultMessage": "{count, plural, one {сервер} few {сервера} many {серверов} other {серверов}}"
   },
   "project-type.shader.capital": {
     "defaultMessage": "{count, plural, one {шейдер} few {шейдера} other {шейдеров}}",
@@ -4304,8 +4304,8 @@
     "message": "Шейдеры"
   },
   "project-type.shader.lowercase": {
-    "defaultMessage": "{count, plural, one {шейдер} few {шейдера} other {шейдеров}}",
-    "message": "{count, plural, one {шейдер} few {шейдера} other {шейдеров}}"
+    "message": "{count, plural, one {шейдер} few {шейдера} many {шейдеров} other {шейдеров}}",
+    "defaultMessage": "{count, plural, one {шейдер} few {шейдера} many {шейдеров} other {шейдеров}}"
   },
   "project.about.compatibility.environments": {
     "defaultMessage": "Поддерживаемые среды",
@@ -5940,8 +5940,8 @@
     "message": "Запуск, остановка и просмотр сервера без возможности вносить изменения."
   },
   "servers.access-page.search-users-placeholder": {
-    "defaultMessage": "Поиск по {count, plural, one {# пользователю} other {# пользователям}}...",
-    "message": "Поиск по {count, plural, one {# пользователю} other {# пользователям}}..."
+    "message": "{count, plural, one {Поиск по # пользователю...} few {Поиск по # пользователям...} many {Поиск по # пользователям...} other {Поиск по # пользователям...}}",
+    "defaultMessage": "{count, plural, one {Поиск по # пользователю...} few {Поиск по # пользователям...} many {Поиск по # пользователям...} other {Поиск по # пользователям...}}"
   },
   "servers.access-role.editor": {
     "defaultMessage": "Редактор",
@@ -6940,8 +6940,8 @@
     "message": "Готово"
   },
   "servers.manage.search-placeholder": {
-    "defaultMessage": "Поиск по {count, plural, one {# серверу} other {# серверам}}...",
-    "message": "Поиск по {count, plural, one {# серверу} other {# серверам}}..."
+    "message": "{count, plural, one {Поиск по # серверу...} few {Поиск по # серверам...} many {Поиск по # серверам...} other {Поиск по # серверам...}}",
+    "defaultMessage": "{count, plural, one {Поиск по # серверу...} few {Поиск по # серверам...} many {Поиск по # серверам...} other {Поиск по # серверам...}}"
   },
   "servers.manage.servers-title": {
     "defaultMessage": "Modrinth Hosting",
@@ -9012,8 +9012,8 @@
     "defaultMessage": ""
   },
   "content.page-layout.search-placeholder": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "Поиск: {count, number} {contentType}...",
+    "defaultMessage": "Поиск: {count, number} {contentType}..."
   },
   "content.selection-bar.bulk.deleting": {
     "message": "",
@@ -9044,12 +9044,12 @@
     "defaultMessage": ""
   },
   "content.selection-bar.bulk.updating-count": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "Обновление: {count, number} {contentType}",
+    "defaultMessage": "Обновление: {count, number} {contentType}"
   },
   "content.selection-bar.selected-count": {
-    "message": "",
-    "defaultMessage": ""
+    "message": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}",
+    "defaultMessage": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}"
   },
   "files.conflict-modal.overwrite-warning": {
     "message": "",
