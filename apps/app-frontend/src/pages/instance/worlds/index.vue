@@ -428,7 +428,9 @@ async function initWorldsTab() {
 	protocolVersionReady.value = true
 
 	if (worlds.value.length > 0) {
+		if (appSettings.featureFlags.ping_servers) {
 		refreshServers(worlds.value, serverData.value, protocolVersion.value)
+	}
 	}
 }
 

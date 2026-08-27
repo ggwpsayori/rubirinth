@@ -13,7 +13,7 @@ import { commonMessages, defineMessages, useDebugLogger, useVIntl } from '@modri
 import { useQueryClient } from '@tanstack/vue-query'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import type { ComputedRef, Ref } from 'vue'
-import { onUnmounted, ref, shallowRef } from 'vue'
+import { onUnmounted, ref, shallowRef, watch } from 'vue'
 import type { Router } from 'vue-router'
 
 import {
@@ -21,6 +21,7 @@ import {
 	getFreshCachedServerStatus,
 } from '@/composables/instances/use-server-status-query'
 import { useAppEvent } from '@/composables/use-app-event'
+import { useAppSettings } from '@/composables/use-app-settings'
 import { kill, list as listInstances } from '@/helpers/instance'
 import { get_by_instance_id } from '@/helpers/process'
 import type { GameInstance } from '@/helpers/types'
@@ -69,6 +70,7 @@ const messages = defineMessages({
 })
 
 export function useAppServerBrowse(options: UseAppServerBrowseOptions) {
+	const appSettings = useAppSettings()
 	const { formatMessage } = useVIntl()
 	const queryClient = useQueryClient()
 	const debugLog = useDebugLogger('BrowseServer')
@@ -149,6 +151,10 @@ export function useAppServerBrowse(options: UseAppServerBrowseOptions) {
 
 	async function pingServerHits(hits: Labrinth.Search.v3.ResultSearchProject[]) {
 		debugLog('pingServerHits', { hitCount: hits.length })
+		if (!appSettings.featureFlags.ping_servers) {
+			serverPings.value = {}
+			return
+		}
 		const pingsToFetch = hits.flatMap((hit) => {
 			const address = hit.minecraft_java_server?.address
 			if (!address) return []
@@ -179,6 +185,17 @@ export function useAppServerBrowse(options: UseAppServerBrowseOptions) {
 			}),
 		)
 	}
+
+	watch(
+		() => appSettings.featureFlags.ping_servers,
+		(enabled) => {
+			if (enabled) {
+				pingServerHits(lastServerHits.value)
+			} else {
+				serverPings.value = {}
+			}
+		},
+	)
 
 	function updateServerHits(hits: Labrinth.Search.v3.ResultSearchProject[]) {
 		lastServerHits.value = hits

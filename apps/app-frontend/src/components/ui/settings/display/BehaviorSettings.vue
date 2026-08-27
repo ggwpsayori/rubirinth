@@ -28,6 +28,7 @@ const compactInstanceCardsFlag: FeatureFlag = 'compact_instance_cards'
 const skipNonEssentialWarningsFlag: FeatureFlag = 'skip_non_essential_warnings'
 const skipUnknownPackWarningFlag: FeatureFlag = 'skip_unknown_pack_warning'
 const showPlayTimeFlag: FeatureFlag = 'show_instance_play_time'
+const pingServersFlag: FeatureFlag = 'ping_servers'
 
 const messages = defineMessages({
 	syncAcrossDevicesTitle: {
@@ -50,6 +51,18 @@ const messages = defineMessages({
 	contentTitle: {
 		id: 'app.behavior-settings.content.title',
 		defaultMessage: 'Home and content',
+	},
+	serversTitle: {
+		id: 'app.behavior-settings.servers.title',
+		defaultMessage: 'Servers',
+	},
+	pingServersTitle: {
+		id: 'app.behavior-settings.ping-servers.title',
+		defaultMessage: 'Ping servers',
+	},
+	pingServersDescription: {
+		id: 'app.behavior-settings.ping-servers.description',
+		defaultMessage: 'Check server availability and ping in catalog and world list.',
 	},
 	confirmationsTitle: {
 		id: 'app.behavior-settings.confirmations.title',
@@ -140,6 +153,7 @@ type BehaviorSettingsState = {
 	compactInstanceCards: boolean
 	showPlayTime: boolean
 	hideNametag: boolean
+	pingServers: boolean
 	warnOnUnknownModpacks: boolean
 	skipNonEssentialWarnings: boolean
 }
@@ -157,6 +171,8 @@ function getBehaviorSettingsState(settings: AppSettings): BehaviorSettingsState 
 			DEFAULT_FEATURE_FLAGS[compactInstanceCardsFlag],
 		showPlayTime:
 			settings.feature_flags[showPlayTimeFlag] ?? DEFAULT_FEATURE_FLAGS[showPlayTimeFlag],
+		pingServers:
+			settings.feature_flags[pingServersFlag] ?? DEFAULT_FEATURE_FLAGS[pingServersFlag],
 		hideNametag: settings.hide_nametag_skins_page,
 		warnOnUnknownModpacks: !(
 			settings.feature_flags[skipUnknownPackWarningFlag] ??
@@ -199,6 +215,7 @@ const { saved, current, changes, saving, hasChanges, reset, save } = useSavable(
 				[worldsInHomeFlag]: value.showJumpIn,
 				[compactInstanceCardsFlag]: value.compactInstanceCards,
 				[showPlayTimeFlag]: value.showPlayTime,
+				[pingServersFlag]: value.pingServers,
 				[skipUnknownPackWarningFlag]: !value.warnOnUnknownModpacks,
 				[skipNonEssentialWarningsFlag]: value.skipNonEssentialWarnings,
 			},
@@ -212,6 +229,7 @@ const { saved, current, changes, saving, hasChanges, reset, save } = useSavable(
 		appSettings.featureFlags[worldsInHomeFlag] = value.showJumpIn
 		appSettings.featureFlags[compactInstanceCardsFlag] = value.compactInstanceCards
 		appSettings.featureFlags[showPlayTimeFlag] = value.showPlayTime
+		appSettings.featureFlags[pingServersFlag] = value.pingServers
 		appSettings.featureFlags[skipUnknownPackWarningFlag] = !value.warnOnUnknownModpacks
 		appSettings.featureFlags[skipNonEssentialWarningsFlag] = value.skipNonEssentialWarnings
 	},
@@ -342,6 +360,25 @@ onBeforeUnmount(() => {
 					<p class="m-0 mt-1">{{ formatMessage(messages.hideNametagDescription) }}</p>
 				</div>
 				<Toggle id="hide-nametag-skins-page" v-model="current.hideNametag" />
+			</div>
+		</div>
+	</section>
+
+		<section class="mt-8 border-0 border-t border-solid border-divider pt-6">
+		<h2 class="m-0 text-xl font-semibold text-contrast">
+			{{ formatMessage(messages.serversTitle) }}
+		</h2>
+		<div class="mt-4 flex flex-col gap-6">
+			<div class="flex items-center justify-between gap-4">
+				<div>
+					<h3 class="m-0 text-lg font-semibold text-contrast">
+						{{ formatMessage(messages.pingServersTitle) }}
+					</h3>
+					<p class="m-0 mt-1">
+						{{ formatMessage(messages.pingServersDescription) }}
+					</p>
+				</div>
+				<Toggle id="ping-servers" v-model="current.pingServers" />
 			</div>
 		</div>
 	</section>

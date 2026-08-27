@@ -387,10 +387,10 @@ function resetServerStatus() {
 
 const serverAddress = computed(() => linkedProjectV3.value?.minecraft_java_server?.address)
 watch(
-	[instanceId, serverAddress, isServerInstance],
+	[instanceId, serverAddress, isServerInstance, () => appSettings.featureFlags.ping_servers],
 	([requestedInstanceId, address, serverInstance]) => {
 		resetServerStatus()
-		if (serverInstance && address) {
+		if (serverInstance && address && appSettings.featureFlags.ping_servers) {
 			const cachedStatus = getFreshCachedServerStatus(queryClient, address)
 			if (cachedStatus) {
 				applyServerStatus(cachedStatus)

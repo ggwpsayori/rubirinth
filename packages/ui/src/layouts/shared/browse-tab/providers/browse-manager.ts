@@ -74,6 +74,7 @@ export interface BrowseManagerContext {
 	hideSelectedLabel?: ComputedRef<string>
 	serverOnly?: Ref<boolean>
 	showServerOnly?: ComputedRef<boolean>
+	showServerOnlineOnly?: ComputedRef<boolean>
 	serverOnlyLabel?: ComputedRef<string>
 	hiddenFilterTypes?: ComputedRef<string[]>
 	advancedFiltersCollapsed?: Ref<boolean>

@@ -69,6 +69,8 @@ import {
 
 const { handleError } = injectNotificationManager()
 const { formatMessage } = useVIntl()
+
+
 const { installingServerProjects, playServerProject, showAddServerToInstanceModal } =
 	injectServerInstall()
 const { install: installVersion } = injectContentInstall()
@@ -1209,6 +1211,25 @@ if (instance.value?.game_version) {
 
 void searchState.refreshSearch()
 
+watch(
+	() => appSettings.featureFlags.ping_servers,
+	(enabled) => {
+		if (enabled) {
+			if (!searchState.serverCurrentFilters.value.some((f) => f.type === 'server_status')) {
+				searchState.serverCurrentFilters.value.push({ type: 'server_status', option: 'online' })
+				searchState.onFilterChange()
+			}
+		} else {
+			searchState.serverCurrentFilters.value = searchState.serverCurrentFilters.value.filter(
+				(f) => f.type !== 'server_status',
+			)
+			searchState.onFilterChange()
+		}
+	},
+	{ immediate: true },
+)
+
+
 useAppEvent('instance', async (event) => {
 	if (event.event === 'created' || event.event === 'removed') {
 		if (!route.query.i) {
@@ -1283,6 +1304,7 @@ provideBrowseManager({
 	}),
 	selectableProjectTypes,
 	showProjectTypeTabs: computed(() => !isServerContext.value),
+	showServerOnlineOnly: computed(() => appSettings.featureFlags.ping_servers),
 	variant: 'app',
 	getCardActions,
 	installContext,

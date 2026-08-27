@@ -4251,5 +4251,17 @@
   "rubirinth.app.launcher-update-modal.changelog-title": {
     "message": "What's new:",
     "defaultMessage": "What's new:"
+  },
+  "app.behavior-settings.servers.title": {
+    "defaultMessage": "Servers",
+    "message": "Servers"
+  },
+  "app.behavior-settings.ping-servers.title": {
+    "defaultMessage": "Ping servers",
+    "message": "Ping servers"
+  },
+  "app.behavior-settings.ping-servers.description": {
+    "defaultMessage": "Check server availability and ping in catalog and world list.",
+    "message": "Check server availability and ping in catalog and world list."
   }
 }

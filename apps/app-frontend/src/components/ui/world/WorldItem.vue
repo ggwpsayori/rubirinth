@@ -480,7 +480,7 @@ function openContextMenu(event: MouseEvent) {
 								<SpinnerIcon aria-hidden="true" class="animate-spin shrink-0" />
 								{{ formatMessage(commonMessages.loadingLabel) }}
 							</template>
-							<template v-else-if="serverStatus">
+							<template v-else-if="serverStatus && pingServersEnabled">
 								<template v-if="serverIncompatible">
 									<IssuesIcon class="shrink-0 text-orange" aria-hidden="true" />
 									<span class="text-orange">
@@ -573,7 +573,7 @@ function openContextMenu(event: MouseEvent) {
 							class="motd-renderer font-normal font-minecraft line-clamp-2 text-secondary leading-5"
 							v-html="renderedMotd"
 						/>
-						<div v-else-if="!serverStatus" class="font-normal font-minecraft text-red leading-5">
+						<div v-else-if="!serverStatus && pingServersEnabled" class="font-normal font-minecraft text-red leading-5">
 							{{ formatMessage(messages.cantConnect) }}
 						</div>
 						<div v-else class="font-normal font-minecraft text-secondary leading-5">

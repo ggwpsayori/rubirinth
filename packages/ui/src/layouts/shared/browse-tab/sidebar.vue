@@ -6,7 +6,7 @@ import { IconButton } from '#ui/components/base/buttons'
 import Toggle from '#ui/components/base/Toggle.vue'
 import PhotosensitivityWarningModal from '#ui/components/modal/PhotosensitivityWarningModal.vue'
 import SearchSidebarFilter from '#ui/components/search/SearchSidebarFilter.vue'
-import { useVIntl } from '#ui/composables/i18n'
+import { defineMessages, useVIntl } from '#ui/composables/i18n'
 import { useAdvancedPrefs } from '#ui/utils/advanced-filter-preferences'
 import { commonMessages } from '#ui/utils/common-messages'
 
@@ -22,6 +22,30 @@ const advancedPrefs = useAdvancedPrefs()
 const isApp = computed(() => ctx.variant === 'app')
 const lockedMessages = computed(() => toValue(ctx.lockedFilterMessages))
 const hiddenFilterTypes = computed(() => ctx.hiddenFilterTypes?.value ?? [])
+
+const messages = defineMessages({
+	serverOnlineOnly: {
+		id: 'browse.sidebar.server-online-only',
+		defaultMessage: 'Online only',
+	},
+})
+
+const isServerOnlineOnly = computed(() =>
+	ctx.serverCurrentFilters.value.some((f) => f.type === 'server_status' && f.option === 'online'),
+)
+
+function toggleServerOnlineOnly(val: boolean) {
+	if (val) {
+		if (!isServerOnlineOnly.value) {
+			ctx.serverCurrentFilters.value.push({ type: 'server_status', option: 'online' })
+		}
+	} else {
+		ctx.serverCurrentFilters.value = ctx.serverCurrentFilters.value.filter(
+			(f) => f.type !== 'server_status',
+		)
+	}
+	ctx.onFilterChange()
+}
 
 const advancedFiltersCollapsed = computed(() => ctx.advancedFiltersCollapsed?.value ?? true)
 const photosensitivityWarningModal = useTemplateRef('photosensitivityWarningModal')
@@ -162,7 +186,10 @@ function getFilterOpenByDefault(filterId: string): boolean {
 
 		<div
 			v-if="
-				ctx.showHideInstalled?.value || ctx.showHideSelected?.value || ctx.showServerOnly?.value
+				ctx.showHideInstalled?.value ||
+				ctx.showHideSelected?.value ||
+				ctx.showServerOnly?.value ||
+				(ctx.isServerType.value && (ctx.showServerOnlineOnly?.value ?? false))
 			"
 			:class="
 				isApp
@@ -170,6 +197,18 @@ function getFilterOpenByDefault(filterId: string): boolean {
 					: 'card-shadow flex flex-col gap-3 rounded-2xl bg-bg-raised border-solid border-surface-4 border p-4'
 			"
 		>
+			<label
+				v-if="ctx.isServerType.value && (ctx.showServerOnlineOnly?.value ?? false)"
+				class="flex cursor-pointer items-center justify-between gap-3 text-contrast font-medium"
+			>
+				{{ formatMessage(messages.serverOnlineOnly) }}
+				<Toggle
+					:model-value="isServerOnlineOnly"
+					small
+					class="shrink-0"
+					@update:model-value="toggleServerOnlineOnly"
+				/>
+			</label>
 			<label
 				v-if="ctx.showServerOnly?.value"
 				class="flex cursor-pointer items-center justify-between gap-3 text-contrast font-medium"
@@ -213,7 +252,7 @@ function getFilterOpenByDefault(filterId: string): boolean {
 		<template v-if="ctx.isServerType.value">
 			<SearchSidebarFilter
 				v-for="filterType in ctx.serverFilterTypes.value.filter(
-					(f) => f.options.length > 0 && !hiddenFilterTypes.includes(f.id),
+					(f) => f.options.length > 0 && f.id !== 'server_status' && !hiddenFilterTypes.includes(f.id),
 				)"
 				:key="`server-filter-${filterType.id}`"
 				v-model:selected-filters="ctx.serverCurrentFilters.value"

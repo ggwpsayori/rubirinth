@@ -4,6 +4,7 @@ export const DEFAULT_FEATURE_FLAGS = {
 	project_background: false,
 	page_path: false,
 	worlds_in_home: true,
+	ping_servers: false,
 	server_project_qa: false,
 	show_version_environment_column: false,
 	server_ram_as_bytes_always_on: false,

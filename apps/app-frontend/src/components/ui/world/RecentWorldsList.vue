@@ -242,6 +242,7 @@ async function populateJumpBackIn() {
 			),
 		)
 
+		if (appSettings.featureFlags.ping_servers) {
 		// initialize server data
 		servers.forEach(({ address }) => {
 			if (!serverData.value[address]) {
@@ -254,6 +255,7 @@ async function populateJumpBackIn() {
 		servers.forEach(({ instanceId, address }) =>
 			refreshServerData(serverData.value[address], protocolVersions.value[instanceId], address),
 		)
+		}
 	}
 
 	const instanceItems: InstanceJumpBackInItem[] = []
