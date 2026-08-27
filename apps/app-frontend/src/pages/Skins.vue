@@ -29,7 +29,8 @@ import type { Ref } from 'vue'
 import { computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 
 import EarsModIcon from '@/assets/skins/ears-mod.png'
-import type AccountActionBarButton from '@/components/ui/AccountActionBarButton.vue'
+import AccountActionBarButton from '@/components/ui/AccountActionBarButton.vue'
+import type { MinecraftCredential } from '@/models/astralrinth/authentication'
 import EditSkinModal from '@/components/ui/skin/EditSkinModal.vue'
 import UnsupportedSkinAccount from '@/components/ui/astralrinth/skin/UnsupportedSkinAccount.vue'
 import VirtualSkinSectionList from '@/components/ui/skin/VirtualSkinSectionList.vue'
@@ -210,7 +211,7 @@ const messages = defineMessages({
 	},
 })
 
-const editSkinModal = useTemplateRef('editSkinModal')
+const editSkinModal = useTemplateRef<InstanceType<typeof EditSkinModal>>('editSkinModal')
 const addSkinFileInput = useTemplateRef<HTMLInputElement>('addSkinFileInput')
 const skinSectionList = useTemplateRef<VirtualSkinSectionListExpose>('skinSectionList')
 
@@ -226,7 +227,7 @@ const offline = ref(!navigator.onLine)
 
 const accountsCard = inject<Ref<InstanceType<typeof AccountActionBarButton> | null>>('accountsCard', ref(null))
 const loginDisabled = ref(false)
-const currentUser = ref(undefined)
+const currentUser = ref<MinecraftCredential | undefined>(undefined)
 const currentUserId = ref<string | undefined>(undefined)
 
 const username = computed(() => currentUser.value?.profile?.name ?? undefined)
