@@ -189,21 +189,6 @@ const { saved, current, changes, saving, hasChanges, reset, save } = useSavable(
 	async () => {
 		const value = current.value
 
-		if (value.syncBehaviorAcrossDevices && auth.user.value) {
-			await updatePreferences({
-				behavior: {
-					minimize_app: value.minimizeApp,
-					hide_right_sidebar: value.hideRightSidebar,
-					show_jump_in: value.showJumpIn,
-					compact_instance_cards: value.compactInstanceCards,
-					show_play_time: value.showPlayTime,
-					hide_nametag: value.hideNametag,
-					warn_on_unknown_modpacks: value.warnOnUnknownModpacks,
-					skip_non_essential_warnings: value.skipNonEssentialWarnings,
-				},
-			})
-		}
-
 		const nextSettings: AppSettings = {
 			...persistedSettings.value,
 			sync_behavior_across_devices: value.syncBehaviorAcrossDevices,
@@ -232,14 +217,33 @@ const { saved, current, changes, saving, hasChanges, reset, save } = useSavable(
 		appSettings.featureFlags[pingServersFlag] = value.pingServers
 		appSettings.featureFlags[skipUnknownPackWarningFlag] = !value.warnOnUnknownModpacks
 		appSettings.featureFlags[skipNonEssentialWarningsFlag] = value.skipNonEssentialWarnings
+
+		if (value.syncBehaviorAcrossDevices && auth.user.value) {
+			try {
+				await updatePreferences({
+					behavior: {
+						minimize_app: value.minimizeApp,
+						hide_right_sidebar: value.hideRightSidebar,
+						show_jump_in: value.showJumpIn,
+						compact_instance_cards: value.compactInstanceCards,
+						show_play_time: value.showPlayTime,
+						hide_nametag: value.hideNametag,
+						warn_on_unknown_modpacks: value.warnOnUnknownModpacks,
+						skip_non_essential_warnings: value.skipNonEssentialWarnings,
+					},
+				})
+			} catch (error) {
+				console.warn('Failed to sync behavior preferences to cloud:', error)
+			}
+		}
 	},
 )
 
 async function saveBehaviorSettings(): Promise<void> {
 	try {
 		await save()
-	} catch {
-		return
+	} catch (error) {
+		console.error('Failed to save behavior settings:', error)
 	}
 }
 
