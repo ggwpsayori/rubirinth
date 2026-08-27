@@ -9302,5 +9302,25 @@
   "image-viewer.editor.image-editing-tools": {
     "message": "Инструменты редактирования",
     "defaultMessage": "Инструменты редактирования"
+  },
+  "layout.account-switcher.switching": {
+    "message": "Переключение аккаунтов...",
+    "defaultMessage": "Переключение аккаунтов..."
+  },
+  "user.role.moderator": {
+    "message": "Модератор контента",
+    "defaultMessage": "Модератор контента"
+  },
+  "user.role.modrinth-team": {
+    "message": "Команда Modrinth",
+    "defaultMessage": "Команда Modrinth"
+  },
+  "project.versions.filter.channel": {
+    "message": "Канал версий",
+    "defaultMessage": "Канал версий"
+  },
+  "project.versions.filter.selected-count": {
+    "message": "Выбрано: {count, number}",
+    "defaultMessage": "Выбрано: {count, number}"
   }
 }
