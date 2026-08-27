@@ -1,7 +1,16 @@
 diff --git a/dist/floating-vue.mjs b/dist/floating-vue.mjs
-index d54beb90f1fd341fb0aa41e1503afdbbece12cbb..cf9e46bf477ce7b291430068c91b117201b10eda 100644
+index d54beb90f1fd341fb0aa41e1503afdbbece12cbb..6e5f67632a095a2d48639a2b78a4703aa4385197 100644
 --- a/dist/floating-vue.mjs
 +++ b/dist/floating-vue.mjs
+@@ -604,7 +604,7 @@ const q = "__floating-vue__popper", Q = () => O({
+     async $_applyShowEffect() {
+       if (this.$_hideInProgress)
+         return;
+-      if (this.computeTransformOrigin) {
++      if (this.computeTransformOrigin && this.$_referenceNode && this.$_popperNode) {
+         const t = this.$_referenceNode.getBoundingClientRect(), o = this.$_popperNode.querySelector(".v-popper__wrapper"), i = o.parentNode.getBoundingClientRect(), s = t.x + t.width / 2 - (i.left + o.offsetLeft), r = t.y + t.height / 2 - (i.top + o.offsetTop);
+         this.result.transformOrigin = `${s}px ${r}px`;
+       }
 @@ -714,6 +714,7 @@ const q = "__floating-vue__popper", Q = () => O({
          e ? t.shownChildren.add(this.randomId) : (t.shownChildren.delete(this.randomId), t.pendingHide && t.hide()), t = t.parentPopper;
      },
