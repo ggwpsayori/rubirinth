@@ -159,8 +159,8 @@ jobs:
           NOTES_ARG="--generate-notes"
           if [ -f "release-notes/${VERSION_TAG}.md" ]; then
             NOTES_ARG="--notes-file release-notes/${VERSION_TAG}.md"
-          elif [ -f "release-notes/${VERSION}.md" ]; then
-            NOTES_ARG="--notes-file release-notes/${VERSION}.md"
+          elif [ -f "release-notes/v${VERSION}.md" ]; then
+            NOTES_ARG="--notes-file release-notes/v${VERSION}.md"
           fi
 
           echo "Creating GitHub Release for ${VERSION_TAG} with ${NOTES_ARG}..."
