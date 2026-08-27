@@ -231,6 +231,10 @@
     "defaultMessage": "Продолжить",
     "message": "Продолжить"
   },
+  "button.copied-to-clipboard": {
+    "defaultMessage": "Скопировано в буфер обмена",
+    "message": "Скопировано в буфер обмена"
+  },
   "button.copy-filename": {
     "defaultMessage": "Копировать имя файла",
     "message": "Копировать имя файла"

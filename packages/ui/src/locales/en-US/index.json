@@ -235,6 +235,9 @@
     "defaultMessage": "Continue",
     "message": "Continue"
   },
+  "button.copied-to-clipboard": {
+    "defaultMessage": "Copied to clipboard"
+  },
   "button.copy-filename": {
     "defaultMessage": "Copy filename",
     "message": "Copy filename"
