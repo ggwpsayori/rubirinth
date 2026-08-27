@@ -119,7 +119,7 @@
 				<span class="text-secondary"> {{ formatMessage(messages.noInstancesRunning) }} </span>
 			</template>
 		</div>
-		<AccountActionBarButton />
+		<AccountActionBarButton ref="accountActionBarButton" />
 		<FriendsActionBarButton />
 	</div>
 </template>
@@ -150,6 +150,7 @@ import { useRouter } from 'vue-router'
 
 import AppUpdateButton from '@/components/ui/app-update-button/index.vue'
 import AccountActionBarButton from '@/components/ui/AccountActionBarButton.vue'
+import { provide } from 'vue'
 import FriendsActionBarButton from '@/components/ui/FriendsActionBarButton.vue'
 import { useInstallJobNotifications } from '@/composables/browse/install-job-notifications'
 import { useAppEvent } from '@/composables/use-app-event'
@@ -162,6 +163,8 @@ import { progress_bars_list } from '@/helpers/state'
 import type { GameInstance } from '@/helpers/types'
 
 const { handleError } = injectNotificationManager()
+const accountActionBarButton = ref<InstanceType<typeof AccountActionBarButton> | null>(null)
+provide('accountsCard', accountActionBarButton)
 const popupNotificationManager = injectPopupNotificationManager()
 const { formatMessage } = useVIntl()
 

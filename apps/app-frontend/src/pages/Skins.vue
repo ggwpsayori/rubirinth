@@ -29,7 +29,7 @@ import type { Ref } from 'vue'
 import { computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 
 import EarsModIcon from '@/assets/skins/ears-mod.png'
-import type AccountsCard from '@/components/ui/AccountsCard.vue'
+import type AccountActionBarButton from '@/components/ui/AccountActionBarButton.vue'
 import EditSkinModal from '@/components/ui/skin/EditSkinModal.vue'
 import UnsupportedSkinAccount from '@/components/ui/astralrinth/skin/UnsupportedSkinAccount.vue'
 import VirtualSkinSectionList from '@/components/ui/skin/VirtualSkinSectionList.vue'
@@ -224,7 +224,7 @@ const skins = ref<Skin[]>([])
 const capes = ref<Cape[]>([])
 const offline = ref(!navigator.onLine)
 
-const accountsCard = inject<Ref<any>>('accountsCard', ref(null))
+const accountsCard = inject<Ref<InstanceType<typeof AccountActionBarButton> | null>>('accountsCard', ref(null))
 const loginDisabled = ref(false)
 const currentUser = ref(undefined)
 const currentUserId = ref<string | undefined>(undefined)
