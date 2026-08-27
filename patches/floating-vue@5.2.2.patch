@@ -1,0 +1,12 @@
+diff --git a/dist/floating-vue.mjs b/dist/floating-vue.mjs
+index d54beb90f1fd341fb0aa41e1503afdbbece12cbb..cf9e46bf477ce7b291430068c91b117201b10eda 100644
+--- a/dist/floating-vue.mjs
++++ b/dist/floating-vue.mjs
+@@ -714,6 +714,7 @@ const q = "__floating-vue__popper", Q = () => O({
+         e ? t.shownChildren.add(this.randomId) : (t.shownChildren.delete(this.randomId), t.pendingHide && t.hide()), t = t.parentPopper;
+     },
+     $_isAimingPopper() {
++      if (!this.$_referenceNode || !this.$_popperNode) return !1;
+       const e = this.$_referenceNode.getBoundingClientRect();
+       if (y >= e.left && y <= e.right && _ >= e.top && _ <= e.bottom) {
+         const t = this.$_popperNode.getBoundingClientRect(), o = y - c, i = _ - m, r = t.left + t.width / 2 - c + (t.top + t.height / 2) - m + t.width + t.height, p = c + o * r, a = m + i * r;
