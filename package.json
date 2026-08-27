@@ -1,6 +1,6 @@
 {
   "name": "@modrinth/monorepo",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": true,
   "scripts": {
     "web:dev": "pnpm i18n:coverage && turbo run dev --filter=@modrinth/frontend",
