@@ -1,4 +1,4 @@
-name: CI
+﻿name: CI
 
 on:
   push:
@@ -41,7 +41,7 @@ jobs:
         id: merge-queue-ci-skipper
         uses: ./.github/merge-queue-ci-skipper
         with:
-          secret: ${{ secrets.GH_ACCESS_TOKEN }}
+          secret: ${{ github.token }}
 
       - name: Check merge_group synthetic commit
         id: check
@@ -62,7 +62,7 @@ jobs:
 
   build:
     name: Lint and Test
-    runs-on: ${{ needs.skip-if-clean.outputs.internal == 'true' && 'namespace-profile-modrinth-turbo' || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
     needs: [skip-if-clean]
     if: ${{ needs.skip-if-clean.outputs.skip != 'true' }}
 
