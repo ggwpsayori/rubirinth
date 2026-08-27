@@ -1,10 +1,14 @@
-<template>
+﻿<template>
 	<Transition name="splash-fade" @after-leave="onAfterLeave">
-		<div v-if="!doneLoading" class="splash-screen dark">
-			<div class="app-logo-wrapper" data-tauri-drag-region>
+		<div
+			v-if="!doneLoading"
+			class="splash-screen"
+			:class="[theme.currentTheme.value.appearance]"
+		>
+			<div class="app-logo-wrapper">
 				<TextLogo class="app-logo" />
 				<ProgressBar class="loading-bar" :progress="Math.min(loadingProgress, 100)" />
-				<span v-if="message" class="loading-message">{{ message }}</span>
+				<span v-if="message">{{ message }}</span>
 			</div>
 			<div class="gradient-bg" data-tauri-drag-region></div>
 			<div class="cube-bg"></div>
@@ -19,6 +23,9 @@ import { ref, watch } from 'vue'
 
 import ProgressBar from '@/components/ui/ProgressBar.vue'
 import { useAppEvent } from '@/composables/use-app-event'
+import { useTheme } from '@/composables/use-theme.ts'
+
+const theme = useTheme()
 
 const doneLoading = ref(false)
 const loadingProgress = ref(0)
@@ -71,7 +78,7 @@ function fakeLoadingIncrease() {
 useAppEvent('loading', (e) => {
 	if (e.event.type === 'directory_move') {
 		loadingProgress.value = 100 * (e.fraction ?? 1)
-		message.value = 'Обновление директории приложения...'
+		message.value = 'Updating app directory...'
 	}
 })
 </script>
@@ -81,6 +88,12 @@ useAppEvent('loading', (e) => {
 	position: fixed;
 	inset: 0;
 	z-index: 10000;
+
+	--splash-cube-image: url('@/assets/loading/cube.png');
+
+	&.light-mode {
+		--splash-cube-image: url('@/assets/loading/cube-light.webp');
+	}
 }
 
 .splash-fade-leave-active {
@@ -101,25 +114,19 @@ useAppEvent('loading', (e) => {
 	justify-content: center;
 	align-items: center;
 
-	gap: 1.5rem;
+	gap: 1rem;
+	color: var(--color-contrast);
 
 	z-index: 9998;
 }
 
 .app-logo {
-	height: 3.25rem;
-	width: auto;
-	color: var(--color-contrast);
-	pointer-events: none;
+	height: 2.25rem;
+	width: fit-content;
 }
 
 .loading-bar {
 	max-width: 20rem;
-}
-
-.loading-message {
-	font-size: 0.875rem;
-	color: var(--color-secondary);
 }
 
 .gradient-bg {
@@ -127,8 +134,8 @@ useAppEvent('loading', (e) => {
 	height: 100vh;
 	width: 100vw;
 	background:
-		linear-gradient(180deg, rgba(70, 127, 197, 0.35) 0%, rgba(14, 25, 42, 0.65) 97.29%),
-		linear-gradient(0deg, rgba(15, 18, 24, 0.7), rgba(15, 18, 24, 0.7));
+		linear-gradient(180deg, var(--splash-tint-top) 0%, var(--splash-tint-bottom) 97.29%),
+		linear-gradient(0deg, var(--splash-overlay), var(--splash-overlay));
 	z-index: 9997;
 }
 
@@ -141,11 +148,19 @@ useAppEvent('loading', (e) => {
 
 	width: 180vw;
 	height: 180vh;
-	opacity: 0.8;
-	background: #11151c url('@/assets/loading/cube.png') center no-repeat;
-	background-size: contain;
+	background-color: var(--color-bg);
 
 	z-index: 9996;
+
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: var(--splash-cube-image) center no-repeat;
+		background-size: contain;
+		opacity: var(--splash-cube-opacity);
+		mix-blend-mode: var(--splash-cube-blend);
+	}
 }
 
 .base-bg {

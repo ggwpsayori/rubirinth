@@ -1615,10 +1615,6 @@
     "message": "Войти в аккаунт Modrinth",
     "defaultMessage": "Войти в аккаунт Modrinth"
   },
-  "app.nav.signed-in-as": {
-    "message": "Текущий аккаунт: <user>{username}</user>",
-    "defaultMessage": "Текущий аккаунт: <user>{username}</user>"
-  },
   "app.nav.upgrade-to-modrinth-plus": {
     "message": "Перейти на Modrinth+",
     "defaultMessage": "Перейти на Modrinth+"
@@ -1634,10 +1630,6 @@
   "app.navigation.home": {
     "message": "Главная",
     "defaultMessage": "Главная"
-  },
-  "app.navigation.more-options": {
-    "message": "Дополнительно",
-    "defaultMessage": "Дополнительно"
   },
   "app.navigation.next-image": {
     "message": "Следующее изображение",
@@ -3526,6 +3518,14 @@
   "settings.sidebar.label.display": {
     "message": "Отображение",
     "defaultMessage": "Отображение"
+  },
+  "app.nav.signed-in-as": {
+    "message": "Текущий аккаунт: <user>{username}</user>",
+    "defaultMessage": "Текущий аккаунт: <user>{username}</user>"
+  },
+  "app.navigation.more-options": {
+    "message": "Дополнительно",
+    "defaultMessage": "Дополнительно"
   },
   "astralrinth.app.launcher-update.available.action": {
     "message": "Посмотреть обновление",

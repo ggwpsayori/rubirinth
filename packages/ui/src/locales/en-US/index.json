@@ -3479,6 +3479,9 @@
     "defaultMessage": "Yes",
     "message": "Yes"
   },
+  "layout.account-switcher.switching": {
+    "defaultMessage": "Switching accounts..."
+  },
   "locale.cs-CZ": {
     "defaultMessage": "Czech",
     "message": "Czech"
@@ -5358,6 +5361,12 @@
   "project.versions.channel.release.symbol": {
     "defaultMessage": "R",
     "message": "R"
+  },
+  "project.versions.filter.channel": {
+    "defaultMessage": "Channel"
+  },
+  "project.versions.filter.selected-count": {
+    "defaultMessage": "{count, number} selected"
   },
   "project.versions.filter.toggle-tooltip": {
     "defaultMessage": "Toggle filter for {filter}",
@@ -8894,6 +8903,12 @@
   "user.profile.badge.staff.name": {
     "defaultMessage": "Modrinth Team",
     "message": "Modrinth Team"
+  },
+  "user.role.moderator": {
+    "defaultMessage": "Content Moderator"
+  },
+  "user.role.modrinth-team": {
+    "defaultMessage": "Modrinth Team"
   },
   "version.content.name": {
     "defaultMessage": "Name",
