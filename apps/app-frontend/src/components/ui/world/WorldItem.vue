@@ -493,7 +493,7 @@ function openContextMenu(event: MouseEvent) {
 								</template>
 								<template v-else>
 									<SignalIcon
-										v-tooltip="`${serverStatus.ping}ms`"
+										v-tooltip="serverStatus?.ping != null ? `${serverStatus.ping}ms` : undefined"
 										aria-hidden="true"
 										:style="`--_signal-${getPingLevel(serverStatus.ping ?? 0)}: var(--color-green)`"
 										stroke-width="3px"
