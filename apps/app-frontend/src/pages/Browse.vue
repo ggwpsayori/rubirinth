@@ -20,6 +20,7 @@ import {
 	CreationFlowModal,
 	defineMessages,
 	formatProjectTypeSentence,
+	getProjectTypeCategoryMessage,
 	getLatestMatchingInstallVersion,
 	getSelectedInstallPreferences,
 	getTargetInstallPreferences,
@@ -106,11 +107,9 @@ const breadcrumbLabel = computed(() => {
 	}
 
 	return formatMessage(breadcrumbMessages.discoverProjectType, {
-		projectType: formatProjectTypeSentence(
-			formatMessage,
-			String(browseRoute.params.projectType ?? ''),
-			2,
-		),
+		projectType: formatMessage(
+			getProjectTypeCategoryMessage(String(browseRoute.params.projectType ?? '')),
+		).toLowerCase(),
 	})
 })
 const appSettings = useAppSettings()

@@ -15,7 +15,7 @@ import ProjectCardList from '#ui/components/project/ProjectCardList.vue'
 import SearchFilterControl from '#ui/components/search/SearchFilterControl.vue'
 import { defineMessages, useVIntl } from '#ui/composables/i18n'
 import { useStickyObserver } from '#ui/composables/sticky-observer'
-import { commonMessages, formatProjectTypeSentence } from '#ui/utils/common-messages'
+import { commonMessages, formatProjectTypeSentence, getProjectTypeCategoryMessage } from '#ui/utils/common-messages'
 import type { SortType } from '#ui/utils/search'
 
 import SelectedProjectsFloatingBar from './components/SelectedProjectsFloatingBar.vue'
@@ -213,7 +213,9 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 		autocomplete="off"
 		:placeholder="
 			formatMessage(messages.searchPlaceholder, {
-				projectType: formatProjectTypeSentence(formatMessage, ctx.projectType.value, 2),
+				projectType: formatMessage(
+					getProjectTypeCategoryMessage(ctx.projectType.value),
+				).toLowerCase(),
 			})
 		"
 		clearable
