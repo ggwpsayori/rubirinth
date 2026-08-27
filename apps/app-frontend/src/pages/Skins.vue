@@ -805,8 +805,8 @@ async function loadCurrentUser() {
 		const defaultId = await get_default_user()
 		currentUserId.value = defaultId
 
-		const allAccounts: MinecraftCredential[] = (await users()) ?? []
-		currentUser.value = allAccounts.find((acc) => acc.profile.id === defaultId)
+		const allAccounts = ((await users()) ?? []) as MinecraftCredential[]
+		currentUser.value = allAccounts.find((acc: MinecraftCredential) => acc.profile?.id === defaultId)
 	} catch (e) {
 		handleError(e as Error)
 		currentUser.value = undefined
