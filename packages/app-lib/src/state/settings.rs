@@ -54,6 +54,7 @@ pub enum FeatureFlag {
     PagePath,
     ProjectBackground,
     WorldsInHome,
+    PingServers,
     ServerRamAsBytesAlwaysOn,
     AlwaysShowAppControls,
     SkipUnknownPackWarning,
