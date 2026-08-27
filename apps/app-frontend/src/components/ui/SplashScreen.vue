@@ -3,9 +3,9 @@
 		<div
 			v-if="!doneLoading"
 			class="splash-screen"
-			:class="[theme.currentTheme.value.appearance]"
+			:class="`${theme.active}-mode`"
 		>
-			<div class="app-logo-wrapper">
+			<div class="app-logo-wrapper" data-tauri-drag-region>
 				<TextLogo class="app-logo" />
 				<ProgressBar class="loading-bar" :progress="Math.min(loadingProgress, 100)" />
 				<span v-if="message">{{ message }}</span>
