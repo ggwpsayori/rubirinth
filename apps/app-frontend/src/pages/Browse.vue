@@ -36,6 +36,7 @@ import {
 } from '@modrinth/ui'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import type { Ref } from 'vue'
+import { useLocalStorage } from '@vueuse/core'
 import { computed, onBeforeUnmount, ref, shallowRef, watch } from 'vue'
 import type { LocationQuery } from 'vue-router'
 import { useRoute, useRouter } from 'vue-router'
@@ -1150,7 +1151,13 @@ const lockedFilterMessages = computed(() => ({
 	providedBy: formatMessage(messages.providedByInstance),
 }))
 
+const displayMode = useLocalStorage<'list' | 'grid'>('rubirinth_browse_display_mode', 'list')
+function cycleDisplayMode() {
+	displayMode.value = displayMode.value === 'grid' ? 'list' : 'grid'
+}
+
 const searchState = useBrowseSearch({
+	displayMode,
 	projectType,
 	tags,
 	active: browseRouteActive,
@@ -1260,6 +1267,8 @@ const dismissedPhotosensitivityFilterWarning = computed({
 
 provideBrowseManager({
 	tags,
+	displayMode,
+	cycleDisplayMode,
 	projectType,
 	...searchState,
 	advancedFiltersCollapsed,

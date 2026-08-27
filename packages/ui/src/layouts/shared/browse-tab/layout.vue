@@ -217,13 +217,37 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 			</Button>
 		</div>
 
-		<IconButton
-			v-if="ctx.cycleDisplayMode"
-			label="Change display mode"
-			@click="ctx.cycleDisplayMode!()"
+		<div
+			v-if="ctx.cycleDisplayMode || ctx.displayMode"
+			class="flex items-center rounded-xl bg-surface-2 p-0.5 border border-solid border-surface-5 shrink-0"
 		>
-			<slot name="display-mode-icon" />
-		</IconButton>
+			<button
+				type="button"
+				v-tooltip="'Список'"
+				class="flex size-7 items-center justify-center rounded-lg transition-colors cursor-pointer border-0"
+				:class="
+					ctx.effectiveLayout.value === 'list'
+						? 'bg-surface-4 text-contrast shadow-sm'
+						: 'bg-transparent text-secondary hover:text-primary'
+				"
+				@click="ctx.displayMode ? (ctx.displayMode.value = 'list') : ctx.cycleDisplayMode?.()"
+			>
+				<ListIcon class="size-4" />
+			</button>
+			<button
+				type="button"
+				v-tooltip="'Карточки'"
+				class="flex size-7 items-center justify-center rounded-lg transition-colors cursor-pointer border-0"
+				:class="
+					ctx.effectiveLayout.value === 'grid'
+						? 'bg-surface-4 text-contrast shadow-sm'
+						: 'bg-transparent text-secondary hover:text-primary'
+				"
+				@click="ctx.displayMode ? (ctx.displayMode.value = 'grid') : ctx.cycleDisplayMode?.()"
+			>
+				<GridIcon class="size-4" />
+			</button>
+		</div>
 
 		<Pagination
 			:page="ctx.currentPage.value"
