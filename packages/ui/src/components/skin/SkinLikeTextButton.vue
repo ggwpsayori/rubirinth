@@ -55,7 +55,7 @@ defineExpose({ getRootElement })
 	<div
 		ref="root"
 		v-tooltip="tooltip ?? undefined"
-		class="group relative flex flex-col items-center justify-center overflow-hidden rounded-[20px] border border-dashed transition-[background,border-color,box-shadow] duration-200 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand"
+		class="group relative flex flex-col items-center justify-center overflow-hidden rounded-[20px] border border-dashed transition-[background,border-color,box-shadow] duration-200 [&:has(:focus-visible)]:ring-2 [&:has(:focus-visible)]:ring-brand [&:has(:focus-visible)]:ring-offset-2 [&:has(:focus-visible)]:ring-offset-surface-1"
 		:class="[
 			isHighlighted
 				? 'border-brand bg-brand-highlight'
@@ -72,7 +72,7 @@ defineExpose({ getRootElement })
 		<button
 			type="button"
 			:aria-label="tooltip ?? undefined"
-			class="absolute inset-0 z-0 cursor-pointer border-none bg-transparent p-0"
+			class="absolute inset-0 z-0 cursor-pointer border-none bg-transparent p-0 focus-visible:outline-none"
 			:class="{ 'cursor-not-allowed': disabled }"
 			:disabled="disabled"
 			@click="(e) => emit('click', e)"
