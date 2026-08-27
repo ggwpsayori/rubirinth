@@ -1,4 +1,4 @@
-﻿<template>
+<template>
 	<NewModal ref="modal" :header="formatMessage(messages.header)" max-width="544px" no-padding>
 		<div class="grid grid-cols-[1fr_auto] gap-2.5 h-[154px] px-7 pt-4 pb-1 pr-9">
 			<div class="flex flex-col gap-2.5 items-start justify-center h-min mt-5">
@@ -47,18 +47,45 @@
 			</p>
 		</div>
 	</NewModal>
+
+	<AccountsInputModals
+		ref="accountsInputModals"
+		v-model:offline-player-name="offlinePlayerName"
+		:offline-login-disabled="offlineLoginDisabled"
+		:login-disabled="loginDisabled"
+		:external-auth-disabled="externalAuthDisabled"
+		:external-auth-providers="externalAuthProviders"
+		@submit-offline="addOfflineProfile"
+		@login-microsoft="login"
+		@login-external="addExternalProfile"
+	/>
+
+	<AccountsErrorModals
+		ref="accountsErrorModals"
+		@retry-add-offline="retryAddOfflineProfile"
+	/>
 </template>
 
 <script setup lang="ts">
 import { LogInIcon, MessagesSquareIcon } from '@modrinth/assets'
-import { Button, ButtonLink, defineMessages, NewModal, useVIntl } from '@modrinth/ui'
-import { inject, type Ref, ref } from 'vue'
+import { Button, ButtonLink, defineMessages, injectNotificationManager, NewModal, useVIntl } from '@modrinth/ui'
+import { onMounted, ref } from 'vue'
 
 import steveImage from '@/assets/steve-look-up-left.webp'
-import type AccountsCard from '@/components/ui/AccountsCard.vue'
+import AccountsErrorModals from '@/components/ui/astralrinth/accounts/error/AccountsErrorModals.vue'
+import AccountsInputModals from '@/components/ui/astralrinth/accounts/input/AccountsInputModals.vue'
+import { handleSevereError } from '@/composables/use-error.js'
+import { trackEvent } from '@/helpers/analytics'
+import { login as login_flow, offline_login, set_default_user } from '@/helpers/auth'
+import {
+	externalAuthProviders,
+	loadExternalAuthProviders,
+	type MinecraftCredential,
+	useExternalAuthentication,
+} from '@/models/astralrinth/authentication'
 
 const { formatMessage } = useVIntl()
-const accountsCard = inject('accountsCard') as Ref<InstanceType<typeof AccountsCard> | null>
+const { handleError } = injectNotificationManager()
 
 const messages = defineMessages({
 	header: {
@@ -84,7 +111,7 @@ const messages = defineMessages({
 	},
 	dontHaveAccount: {
 		id: 'minecraft-required.dont-have-account',
-		defaultMessage: 'Don’t have an account?',
+		defaultMessage: 'Don\'t have an account?',
 	},
 	getMinecraft: {
 		id: 'minecraft-required.get-minecraft',
@@ -93,16 +120,116 @@ const messages = defineMessages({
 })
 
 const modal = ref<InstanceType<typeof NewModal>>()
+const accountsInputModals = ref<InstanceType<typeof AccountsInputModals> | null>(null)
+const accountsErrorModals = ref<InstanceType<typeof AccountsErrorModals> | null>(null)
+
 const loadingSignIn = ref(false)
+const loginDisabled = ref(false)
+const offlineLoginDisabled = ref(false)
+const offlinePlayerName = ref('')
+
+const offlineLoginCooldownMs = 1000
+const minOfflinePlayerNameLength = 3
+const maxOfflinePlayerNameLength = 20
+const nameExp = 'a-zA-Z0-9_'
+const nameRegex = new RegExp('^[' + nameExp + ']+$')
+
+const { authenticate: addExternalProfile, disabled: externalAuthDisabled } =
+	useExternalAuthentication({
+		onAuthenticated: async (credentials) => {
+			await onAccountAdded(credentials)
+			accountsInputModals.value?.hideAuth()
+		},
+		onError: (error) => {
+			handleError(error)
+			accountsErrorModals.value?.showUnexpectedError()
+		},
+	})
 
 function show() {
 	modal.value?.show()
 }
 
 function showAccountLoginModal() {
-	accountsCard.value?.showAccountLoginModal()
 	modal.value?.hide()
+	accountsInputModals.value?.showAuth()
 }
+
+function showOfflineLoginModal() {
+	accountsInputModals.value?.showOffline()
+}
+
+function retryAddOfflineProfile() {
+	accountsErrorModals.value?.hideInputOfflineError()
+	offlineLoginDisabled.value = false
+	offlinePlayerName.value = ''
+	showOfflineLoginModal()
+}
+
+function startOfflineCooldown() {
+	offlineLoginDisabled.value = true
+	setTimeout(() => {
+		offlineLoginDisabled.value = false
+	}, offlineLoginCooldownMs)
+}
+
+function isOfflinePlayerNameValid(name: string) {
+	return (
+		name.length >= minOfflinePlayerNameLength &&
+		name.length <= maxOfflinePlayerNameLength &&
+		nameRegex.test(name)
+	)
+}
+
+async function onAccountAdded(account: MinecraftCredential) {
+	try {
+		await set_default_user(account.profile.id)
+	} catch (e) {
+		handleError(e)
+	}
+}
+
+async function addOfflineProfile() {
+	if (offlineLoginDisabled.value) {
+		return
+	}
+
+	startOfflineCooldown()
+	const name = offlinePlayerName.value.trim()
+
+	if (!isOfflinePlayerNameValid(name)) {
+		accountsErrorModals.value?.showInputOfflineError()
+		return
+	}
+
+	try {
+		const user = await offline_login(name)
+		await onAccountAdded(user)
+		offlinePlayerName.value = ''
+		accountsInputModals.value?.hideOffline()
+	} catch (error) {
+		handleError(error)
+		accountsErrorModals.value?.showUnexpectedError()
+	}
+}
+
+async function login() {
+	loginDisabled.value = true
+	try {
+		const loggedIn = await login_flow().catch(handleSevereError)
+		if (loggedIn) {
+			await onAccountAdded(loggedIn)
+			accountsInputModals.value?.hideAuth()
+		}
+		trackEvent('AccountLogIn')
+	} finally {
+		loginDisabled.value = false
+	}
+}
+
+onMounted(() => {
+	void loadExternalAuthProviders().catch(handleError)
+})
 
 defineExpose({
 	show,
