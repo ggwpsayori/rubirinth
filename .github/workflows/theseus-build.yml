@@ -156,8 +156,15 @@ jobs:
           # Clean up any accidental 'main' release
           gh release delete main --yes 2>/dev/null || true
 
-          echo "Creating GitHub Release for ${VERSION_TAG}..."
+          NOTES_ARG="--generate-notes"
+          if [ -f "release-notes/${VERSION_TAG}.md" ]; then
+            NOTES_ARG="--notes-file release-notes/${VERSION_TAG}.md"
+          elif [ -f "release-notes/${VERSION}.md" ]; then
+            NOTES_ARG="--notes-file release-notes/${VERSION}.md"
+          fi
+
+          echo "Creating GitHub Release for ${VERSION_TAG} with ${NOTES_ARG}..."
           gh release create "${VERSION_TAG}" \
             --title "${RELEASE_TITLE}" \
-            --generate-notes \
+            ${NOTES_ARG} \
             target/release/bundle/nsis/*-setup.exe
