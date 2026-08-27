@@ -48,44 +48,62 @@
 		</template>
 		<div class="bg-button-bg pt-1 pb-2 border-0 border-t border-solid border-surface-5">
 			<template v-if="accounts.length > 0">
-				<div v-for="account in accounts" :key="account.profile.id" class="flex gap-1 items-center">
-					<button
-						class="flex items-center flex-shrink flex-grow overflow-clip gap-2 p-2 border-0 bg-transparent cursor-pointer button-base min-w-0"
-						@click="setAccount(account)"
-					>
-						<RadioButtonCheckedIcon
-							v-if="selectedAccount && selectedAccount.profile.id === account.profile.id"
-							class="w-5 h-5 text-brand shrink-0"
-						/>
-						<RadioButtonIcon v-else class="w-5 h-5 text-secondary shrink-0" />
-						<Avatar :src="getAccountAvatarUrl(account)" size="24px" />
-						<p
-							class="m-0 truncate min-w-0 inline-flex items-center gap-1.5"
-							:class="
-								selectedAccount && selectedAccount.profile.id === account.profile.id
-									? 'text-contrast font-semibold'
-									: 'text-primary'
-							"
-						>
-							<component
-								:is="getAccountType(account)"
-								v-if="getAccountType(account)"
-								class="w-3.5 h-3.5 shrink-0 opacity-80"
-							/>
-							<span class="truncate">{{ account.profile.name }}</span>
-						</p>
-					</button>
-					<IconButton
-						v-tooltip="formatMessage(messages.removeAccount)"
-						type="quiet"
-						color="red"
-						:label="formatMessage(messages.removeAccount)"
-						class="mr-2 !bg-button-bg !text-primary ![box-shadow:var(--shadow-button)] hover:!bg-red focus-visible:!bg-red hover:!text-[var(--color-accent-contrast)] focus-visible:!text-[var(--color-accent-contrast)]"
-						@click="logout(account.profile.id)"
-					>
-						<TrashIcon />
-					</IconButton>
-				</div>
+				<Draggable
+					:list="accounts"
+					item-key="profile.id"
+					handle=".account-drag-handle"
+					:animation="200"
+					ghost-class="opacity-40"
+					class="flex flex-col"
+					@end="onAccountsReordered"
+				>
+					<template #item="{ element: account }">
+						<div class="group/card-account flex gap-1 items-center px-1">
+							<div
+								class="account-drag-handle flex items-center justify-center p-1 text-secondary opacity-0 group-hover/card-account:opacity-100 transition-opacity cursor-grab active:cursor-grabbing hover:text-contrast shrink-0"
+								@click.stop
+							>
+								<GripVerticalIcon class="w-3.5 h-3.5" />
+							</div>
+							<button
+								class="flex items-center flex-shrink flex-grow overflow-clip gap-2 p-2 border-0 bg-transparent cursor-pointer button-base min-w-0"
+								@click="setAccount(account)"
+							>
+								<RadioButtonCheckedIcon
+									v-if="selectedAccount && selectedAccount.profile.id === account.profile.id"
+									class="w-5 h-5 text-brand shrink-0"
+								/>
+								<RadioButtonIcon v-else class="w-5 h-5 text-secondary shrink-0" />
+								<Avatar :src="getAccountAvatarUrl(account)" size="24px" />
+								<p
+									class="m-0 truncate min-w-0 inline-flex items-center gap-1.5"
+									:class="
+										selectedAccount && selectedAccount.profile.id === account.profile.id
+											? 'text-contrast font-semibold'
+											: 'text-primary'
+									"
+								>
+									<component
+										:is="getAccountType(account)"
+										v-if="getAccountType(account)"
+										class="w-3.5 h-3.5 shrink-0 opacity-80"
+									/>
+									<span class="truncate">{{ account.profile.name }}</span>
+								</p>
+							</button>
+							<IconButton
+								v-tooltip="formatMessage(messages.removeAccount)"
+								type="quiet"
+								color="red"
+								:label="formatMessage(messages.removeAccount)"
+								class="mr-2 !bg-button-bg !text-primary ![box-shadow:var(--shadow-button)] hover:!bg-red focus-visible:!bg-red hover:!text-[var(--color-accent-contrast)] focus-visible:!text-[var(--color-accent-contrast)] opacity-0 group-hover/card-account:opacity-100 transition-opacity"
+								@click="logout(account.profile.id)"
+							>
+								<TrashIcon />
+							</IconButton>
+						</div>
+					</template>
+				</Draggable>
 			</template>
 			<div class="flex flex-col gap-2 px-2 pt-2">
 				<Button
@@ -144,6 +162,7 @@ import type { Skin } from '@/helpers/skins'
 import { get_available_skins } from '@/helpers/skins'
 import { handleSevereError } from '@/composables/use-error.js'
 import {
+	GripVerticalIcon,
 	MicrosoftIcon,
 	OfflineIcon,
 	PlusIcon,
@@ -162,6 +181,7 @@ import {
 } from '@modrinth/ui'
 import type { Ref } from 'vue'
 import { computed, onMounted, ref } from 'vue'
+import Draggable from 'vuedraggable'
 
 const { formatMessage } = useVIntl()
 const { handleError } = injectNotificationManager()
@@ -190,6 +210,38 @@ const nameExp = 'a-zA-Z0-9_'
 const nameRegex = new RegExp('^[' + nameExp + ']+$')
 
 const accounts: Ref<MinecraftCredential[]> = ref([])
+const ACCOUNTS_ORDER_STORAGE_KEY = 'rubirinth_accounts_order'
+
+function sortAccountsBySavedOrder(loadedAccounts: MinecraftCredential[]): MinecraftCredential[] {
+	try {
+		const rawOrder = localStorage.getItem(ACCOUNTS_ORDER_STORAGE_KEY)
+		if (!rawOrder) return loadedAccounts
+		const order: string[] = JSON.parse(rawOrder)
+		if (!Array.isArray(order)) return loadedAccounts
+
+		return [...loadedAccounts].sort((a, b) => {
+			const indexA = order.indexOf(a.profile.id)
+			const indexB = order.indexOf(b.profile.id)
+			if (indexA === -1 && indexB === -1) return 0
+			if (indexA === -1) return 1
+			if (indexB === -1) return -1
+			return indexA - indexB
+		})
+	} catch {
+		return loadedAccounts
+	}
+}
+
+function onAccountsReordered() {
+	try {
+		const order = accounts.value.map((a) => a.profile.id)
+		localStorage.setItem(ACCOUNTS_ORDER_STORAGE_KEY, JSON.stringify(order))
+		emit('change')
+	} catch (e) {
+		console.error('Failed to save accounts order', e)
+	}
+}
+
 const loginDisabled = ref(false)
 const offlineLoginDisabled = ref(false)
 const defaultUser = ref<string | undefined>()
