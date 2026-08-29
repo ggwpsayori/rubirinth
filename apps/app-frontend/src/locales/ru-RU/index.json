@@ -3956,8 +3956,8 @@
     "defaultMessage": "{count, plural, one {Добавлен # проект} few {Добавлено # проекта} many {Добавлено # проектов} other {Добавлено # проектов}}"
   },
   "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "",
-    "defaultMessage": ""
+    "defaultMessage": "Для этого инстанса достигнут лимит в {limit, number} пользователей.",
+    "message": "Для этого инстанса достигнут лимит в {limit, number} пользователей."
   },
   "app.instance.worlds.search-worlds-placeholder": {
     "message": "{count, plural, one {Поиск по # миру...} few {Поиск по # мирам...} many {Поиск по # мирам...} other {Поиск по # мирам...}}",
@@ -3972,8 +3972,8 @@
     "defaultMessage": "Добавление файлов ({completed}/{total})"
   },
   "astralrinth.app.settings.sidebar.label.astralrinth": {
-    "message": "",
-    "defaultMessage": ""
+    "defaultMessage": "Astralrinth",
+    "message": "Astralrinth"
   },
   "installation-settings.link-modpack.button": {
     "message": "Привязать к сборке Modrinth",
