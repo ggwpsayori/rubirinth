@@ -96,7 +96,7 @@
 					</div>
 
 					<!-- Full-width bottom action bar -->
-					<div class="pt-1 flex items-center justify-center w-full smart-clickable:allow-pointer-events [&>div]:w-full [&_button]:w-full [&_button]:justify-center">
+					<div class="pt-1 flex items-center justify-center w-full smart-clickable:allow-pointer-events [&>div]:w-full [&>div]:items-center [&>button]:w-full [&>button]:justify-center [&_button.grow]:w-full [&_button.grow]:justify-center">
 						<slot name="actions" />
 					</div>
 				</div>

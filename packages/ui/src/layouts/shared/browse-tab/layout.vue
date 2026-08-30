@@ -372,7 +372,7 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 					@mouseleave="ctx.onProjectHoverEnd?.()"
 				>
 					<template v-if="ctx.getCardActions?.(result, ctx.projectType.value)?.length" #actions>
-						<div class="flex gap-2">
+						<div class="flex items-center gap-2 w-full">
 							<template
 								v-for="action in ctx.getCardActions(result, ctx.projectType.value)"
 								:key="action.key"
@@ -382,7 +382,7 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 									v-tooltip="action.tooltip"
 									:type="cardActionType(action)"
 									:color="cardActionColor(action)"
-									:class="cardActionClass(action)"
+									:class="['!shrink-0 !w-9', cardActionClass(action)]"
 									:label="action.label || action.tooltip || action.key"
 									:disabled="action.disabled"
 									@click.stop="action.onClick"
@@ -394,7 +394,7 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 									v-tooltip="action.tooltip"
 									:type="cardActionType(action)"
 									:color="cardActionColor(action)"
-									:class="cardActionClass(action)"
+									:class="['!grow !w-full justify-center', cardActionClass(action)]"
 									:disabled="action.disabled"
 									@click.stop="action.onClick"
 								>
@@ -447,7 +447,7 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 					@mouseleave="ctx.onProjectHoverEnd?.()"
 				>
 					<template v-if="ctx.getCardActions?.(result, ctx.projectType.value)?.length" #actions>
-						<div class="flex gap-2">
+						<div class="flex items-center gap-2 w-full">
 							<template
 								v-for="action in ctx.getCardActions(result, ctx.projectType.value)"
 								:key="action.key"
@@ -457,7 +457,7 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 									v-tooltip="action.tooltip"
 									:type="cardActionType(action)"
 									:color="cardActionColor(action)"
-									:class="cardActionClass(action)"
+									:class="['!shrink-0 !w-9', cardActionClass(action)]"
 									:label="action.label || action.tooltip || action.key"
 									:disabled="action.disabled"
 									@click.stop="action.onClick"
@@ -469,7 +469,7 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 									v-tooltip="action.tooltip"
 									:type="cardActionType(action)"
 									:color="cardActionColor(action)"
-									:class="cardActionClass(action)"
+									:class="['!grow !w-full justify-center', cardActionClass(action)]"
 									:disabled="action.disabled"
 									@click.stop="action.onClick"
 								>
