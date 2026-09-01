@@ -1,38 +1,36 @@
 <template>
-	<Teleport to="body">
-		<section
-			v-if="showControls"
-			ref="controlsEl"
-			class="pointer-events-auto fixed top-0 right-0 z-[10001] flex h-12 items-center gap-2 bg-bg-raised rounded-bl-2xl px-1.5"
-			data-tauri-drag-region-exclude
+	<section
+		v-if="showControls"
+		ref="controlsEl"
+		class="flex items-center gap-2 mr-1.5"
+		data-tauri-drag-region-exclude
+	>
+		<IconButton
+			type="quiet"
+			label="Minimize window"
+			class="relative expanded-button"
+			@click="getCurrentWindow().minimize()"
 		>
-			<IconButton
-				type="quiet"
-				label="Minimize window"
-				class="relative expanded-button"
-				@click="getCurrentWindow().minimize()"
-			>
-				<MinimizeIcon />
-			</IconButton>
-			<IconButton
-				type="quiet"
-				label="Toggle maximize window"
-				class="relative expanded-button"
-				@click="getCurrentWindow().toggleMaximize()"
-			>
-				<RestoreIcon v-if="isMaximized" />
-				<MaximizeIcon v-else />
-			</IconButton>
-			<IconButton
-				type="quiet"
-				label="Close window"
-				class="relative expanded-button close-button"
-				@click="handleClose"
-			>
-				<XIcon />
-			</IconButton>
-		</section>
-	</Teleport>
+			<MinimizeIcon />
+		</IconButton>
+		<IconButton
+			type="quiet"
+			label="Toggle maximize window"
+			class="relative expanded-button"
+			@click="getCurrentWindow().toggleMaximize()"
+		>
+			<RestoreIcon v-if="isMaximized" />
+			<MaximizeIcon v-else />
+		</IconButton>
+		<IconButton
+			type="quiet"
+			label="Close window"
+			class="relative expanded-button close-button"
+			@click="handleClose"
+		>
+			<XIcon />
+		</IconButton>
+	</section>
 </template>
 
 <script setup>
