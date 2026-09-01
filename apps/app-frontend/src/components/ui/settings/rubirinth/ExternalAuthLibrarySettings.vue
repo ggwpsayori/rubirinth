@@ -114,7 +114,18 @@ const busy = computed(() => libraries.value.some((library) => library.busy !== n
 let refreshTimer: number | undefined
 
 function getErrorMessage(error: unknown): string {
-	return error instanceof Error ? error.message : String(error)
+	if (error instanceof Error) return error.message
+	if (typeof error === 'string') return error
+	if (typeof error === 'object' && error !== null) {
+		const err = error as Record<string, any>
+		if (typeof err.message === 'string') return err.message
+		if (typeof err.error === 'string') return err.error
+		if (typeof err.details === 'string') return err.details
+		try {
+			return JSON.stringify(error)
+		} catch {}
+	}
+	return String(error)
 }
 
 function sortLibraryVersions(assetNames: string[]): string[] {
@@ -205,6 +216,15 @@ async function selectLibrary(library: Library, rawAssetName?: string | { option?
 	if (!assetName || typeof assetName !== 'string') {
 		return
 	}
+
+	library.selectedAssetName = assetName
+
+	// If the version is not downloaded locally yet, only update selectedAssetName in UI.
+	// The user can click the Install/Download button to download and select it.
+	if (!library.localAssetNames.includes(assetName)) {
+		return
+	}
+
 	if (library.busy || assetName === library.savedAssetName) {
 		return
 	}
