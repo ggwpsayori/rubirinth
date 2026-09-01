@@ -71,6 +71,7 @@ const messages = defineMessages({
 	pingServersDescription: {
 		id: 'app.behavior-settings.ping-servers.description',
 		defaultMessage: 'Check server availability and ping in catalog and world list.',
+	},
 	showAllScreenshotsTitle: {
 		id: 'app.behavior-settings.show-all-screenshots.title',
 		defaultMessage: 'Show all screenshots together',
