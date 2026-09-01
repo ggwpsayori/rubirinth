@@ -3036,8 +3036,7 @@
     "defaultMessage": "Выберите канал обновления"
   },
   "instance.settings.tabs.hooks.description": {
-    "message": "Позволяет опытным пользователям задать системные команды, выполняемые до и после запуска игры.",
-    "defaultMessage": "Позволяет опытным пользователям задать системные команды, выполняемые до и после запуска игры."
+    "message": "Запуск системных команд перед запуском и после завершения игры."
   },
   "instance.settings.tabs.hooks.post-exit": {
     "message": "После выхода",
@@ -3120,20 +3119,16 @@
     "defaultMessage": "Параметры установки недоступны, пока сборка заблокирована."
   },
   "instance.settings.tabs.java.custom-environment-variables": {
-    "message": "Переопределение переменных среды",
-    "defaultMessage": "Переопределение переменных среды"
+    "message": "Задать переменные среды отдельно для этой сборки."
   },
   "instance.settings.tabs.java.custom-java-arguments": {
-    "message": "Переопределение аргументов Java",
-    "defaultMessage": "Переопределение аргументов Java"
+    "message": "Задать аргументы Java отдельно для этой сборки."
   },
   "instance.settings.tabs.java.custom-java-installation": {
-    "message": "Переопределение расположения Java",
-    "defaultMessage": "Переопределение расположения Java"
+    "message": "Выбрать другую установку Java для этой сборки."
   },
   "instance.settings.tabs.java.custom-memory-allocation": {
-    "message": "Переопределение выделенной памяти",
-    "defaultMessage": "Переопределение выделенной памяти"
+    "message": "Задать выделение памяти отдельно для этой сборки."
   },
   "instance.settings.tabs.java.enter-environment-variables": {
     "message": "Введите переменные среды...",
@@ -3172,12 +3167,10 @@
     "defaultMessage": "Доступ"
   },
   "instance.settings.tabs.window": {
-    "message": "Окно",
-    "defaultMessage": "Окно"
+    "message": "Пользовательские настройки окна"
   },
   "instance.settings.tabs.window.custom-window-settings": {
-    "message": "Переопределение настроек окна",
-    "defaultMessage": "Переопределение настроек окна"
+    "message": "Настроить полноэкранный режим и разрешение запуска отдельно для этой сборки."
   },
   "instance.settings.tabs.window.fullscreen": {
     "message": "Полноэкранный режим",
@@ -4420,52 +4413,40 @@
     "defaultMessage": "Сначала старые"
   },
   "app.settings.synced-options.command-history": {
-    "message": "История команд",
-    "defaultMessage": "История команд"
+    "message": "Синхронизация истории команд"
   },
   "app.settings.synced-options.command-history.description": {
-    "message": "Синхронизация истории введенных команд между сборками.",
-    "defaultMessage": "Синхронизация истории введенных команд между сборками."
+    "message": "Использовать единую историю команд во всех ваших сборках."
   },
   "app.settings.synced-options.command-history.editor-title": {
-    "message": "Редактирование истории команд",
-    "defaultMessage": "Редактирование истории команд"
+    "message": "Редактировать историю команд"
   },
   "app.settings.synced-options.creative-hotbars": {
-    "message": "Панели быстрого доступа в креативе",
-    "defaultMessage": "Панели быстрого доступа в креативе"
+    "message": "Синхронизация панелей творчества"
   },
   "app.settings.synced-options.creative-hotbars.description": {
-    "message": "Синхронизация сохраненных панелей хотбаров креатива между сборками.",
-    "defaultMessage": "Синхронизация сохраненных панелей хотбаров креатива между сборками."
+    "message": "Использовать сохраненные панели быстрого доступа во всех ваших сборках."
   },
   "app.settings.synced-options.multiplayer-servers": {
-    "message": "Сетевые серверы",
-    "defaultMessage": "Сетевые серверы"
+    "message": "Синхронизация серверов"
   },
   "app.settings.synced-options.multiplayer-servers.address": {
-    "message": "Адрес сервера",
-    "defaultMessage": "Адрес сервера"
+    "message": "Адрес сервера"
   },
   "app.settings.synced-options.multiplayer-servers.description": {
-    "message": "Синхронизация списка добавленных сетевых серверов между сборками.",
-    "defaultMessage": "Синхронизация списка добавленных сетевых серверов между сборками."
+    "message": "Использовать единый список сетевых серверов во всех ваших сборках."
   },
   "app.settings.synced-options.multiplayer-servers.editor-title": {
-    "message": "Редактирование синхронизированных серверов",
-    "defaultMessage": "Редактирование синхронизированных серверов"
+    "message": "Редактировать синхронизированные серверы"
   },
   "app.settings.synced-options.multiplayer-servers.empty": {
-    "message": "Синхронизированные серверы отсутствуют.",
-    "defaultMessage": "Синхронизированные серверы отсутствуют."
+    "message": "Синхронизированных серверов нет."
   },
   "app.settings.synced-options.multiplayer-servers.name": {
-    "message": "Название сервера",
-    "defaultMessage": "Название сервера"
+    "message": "Название сервера"
   },
   "app.settings.synced-options.multiplayer-servers.none-synced-yet": {
-    "message": "Серверы еще не синхронизированы",
-    "defaultMessage": "Серверы еще не синхронизированы"
+    "message": "Серверы еще не синхронизированы"
   },
   "app.settings.synced-options.screenshots": {
     "message": "Скриншоты",
@@ -4480,64 +4461,52 @@
     "defaultMessage": "Синхронизация настроек"
   },
   "instance.settings.tabs.synced-options.command-history": {
-    "message": "История команд",
-    "defaultMessage": "История команд"
+    "message": "Отключить синхронизацию истории команд"
   },
   "instance.settings.tabs.synced-options.command-history.disabled-in-app": {
-    "message": "Синхронизация истории команд выключена в настройках приложения.",
-    "defaultMessage": "Синхронизация истории команд выключена в настройках приложения."
+    "message": "Синхронизация истории команд отключена в настройках приложения."
   },
   "instance.settings.tabs.synced-options.command-history.exclude-description": {
     "message": "Исключить эту сборку из синхронизации истории команд.",
     "defaultMessage": "Исключить эту сборку из синхронизации истории команд."
   },
   "instance.settings.tabs.synced-options.creative-hotbars": {
-    "message": "Панели быстрого доступа в креативе",
-    "defaultMessage": "Панели быстрого доступа в креативе"
+    "message": "Отключить синхронизацию панелей творчества"
   },
   "instance.settings.tabs.synced-options.creative-hotbars.disabled-in-app": {
-    "message": "Синхронизация хотбаров креатива выключена в настройках приложения.",
-    "defaultMessage": "Синхронизация хотбаров креатива выключена в настройках приложения."
+    "message": "Синхронизация панелей творчества отключена в настройках приложения."
   },
   "instance.settings.tabs.synced-options.creative-hotbars.exclude-description": {
     "message": "Исключить эту сборку из синхронизации панелей хотбаров.",
     "defaultMessage": "Исключить эту сборку из синхронизации панелей хотбаров."
   },
   "instance.settings.tabs.synced-options.hotbars-conflict.backup-description": {
-    "message": "Заменяемая версия будет сохранена в резервную копию перед внесением изменений.",
-    "defaultMessage": "Заменяемая версия будет сохранена в резервную копию перед внесением изменений."
+    "message": "Заменяемая версия будет сохранена в резервной копии перед внесением изменений."
   },
   "instance.settings.tabs.synced-options.hotbars-conflict.description": {
-    "message": "В сборке {instance} и в синхронизированной версии различаются панели хотбаров. Выберите, какую версию использовать.",
-    "defaultMessage": "В сборке {instance} и в синхронизированной версии различаются панели хотбаров. Выберите, какую версию использовать."
+    "message": "В сборке «{instance}» и в синхронизированной версии разные панели творчества. Выберите, какую версию использовать."
   },
   "instance.settings.tabs.synced-options.hotbars-conflict.title": {
-    "message": "Конфликт панелей хотбаров",
-    "defaultMessage": "Конфликт панелей хотбаров"
+    "message": "Выберите панели творчества"
   },
   "instance.settings.tabs.synced-options.hotbars-conflict.use-instance": {
-    "message": "Использовать из сборки",
-    "defaultMessage": "Использовать из сборки"
+    "message": "Перезаписать остальные"
   },
   "instance.settings.tabs.synced-options.hotbars-conflict.use-synced": {
-    "message": "Использовать синхронизированную",
-    "defaultMessage": "Использовать синхронизированную"
+    "message": "Использовать синхронизированные"
   },
   "instance.settings.tabs.synced-options.multiplayer-servers": {
-    "message": "Сетевые серверы",
-    "defaultMessage": "Сетевые серверы"
+    "message": "Отключить синхронизацию серверов"
   },
   "instance.settings.tabs.synced-options.multiplayer-servers.disabled-in-app": {
-    "message": "Синхронизация серверов выключена в настройках приложения.",
-    "defaultMessage": "Синхронизация серверов выключена в настройках приложения."
+    "message": "Синхронизация серверов отключена в настройках приложения."
   },
   "instance.settings.tabs.synced-options.multiplayer-servers.exclude-description": {
     "message": "Исключить эту сборку из синхронизации сетевых серверов.",
     "defaultMessage": "Исключить эту сборку из синхронизации сетевых серверов."
   },
   "instance.settings.tabs.synced-options.open-app-settings": {
-    "message": "Открыть настройки синхронизации",
-    "defaultMessage": "Открыть настройки синхронизации"
+    "message": "Управление синхронизацией"
   },
   "instance.settings.tabs.synced-options.screenshots": {
     "message": "Скриншоты",
@@ -4552,8 +4521,7 @@
     "defaultMessage": "Исключить скриншоты этой сборки из общего раздела скриншотов."
   },
   "instance.settings.tabs.synced-options.shared-settings.description": {
-    "message": "Игровые настройки могут быть общими между сборками. Выберите нужные параметры в настройках лаунчера.",
-    "defaultMessage": "Игровые настройки могут быть общими между сборками. Выберите нужные параметры в настройках лаунчера."
+    "message": "Включите переопределение, чтобы хранить настройку отдельно для этой сборки."
   },
   "instance.worlds.desync-server.description": {
     "message": "Оставить этот сервер в других синхронизированных сборках или удалить из них?",
@@ -4658,5 +4626,44 @@
   "app.project.actions.label": {
     "message": "Действия с проектом",
     "defaultMessage": "Действия с проектом"
+  },
+  "app.behavior-settings.show-all-screenshots.title": {
+    "message": "Показывать все скриншоты вместе"
+  },
+  "app.behavior-settings.show-all-screenshots.description": {
+    "message": "Отображать скриншоты со всех ваших сборок на странице «Скриншоты»."
+  },
+  "app.settings.synced-options.choose-sync-source.command-history-description": {
+    "message": "Выберите сборку, история команд которой станет общей копией."
+  },
+  "app.settings.synced-options.choose-sync-source.creative-hotbars-description": {
+    "message": "Выберите сборку, сохраненные панели быстрого доступа которой станут общей копией."
+  },
+  "app.settings.synced-options.choose-sync-source.multiplayer-servers-description": {
+    "message": "Выберите сборку, список серверов которой станет общей копией."
+  },
+  "app.settings.synced-options.choose-sync-source.no-instances-found": {
+    "message": "Сборки не найдены"
+  },
+  "app.settings.synced-options.choose-sync-source.search-placeholder": {
+    "message": "Поиск сборки"
+  },
+  "app.settings.synced-options.choose-sync-source.sync": {
+    "message": "Синхронизировать"
+  },
+  "app.settings.synced-options.choose-sync-source.title": {
+    "message": "Выберите источник синхронизации"
+  },
+  "instance.settings.tabs.tab-visibility": {
+    "message": "Вкладки"
+  },
+  "instance.settings.tabs.synced-options.command-history.override-description": {
+    "message": "Хранить историю команд этой сборки отдельно от синхронизированной."
+  },
+  "instance.settings.tabs.synced-options.creative-hotbars.override-description": {
+    "message": "Хранить панели творчества этой сборки отдельно от синхронизированных."
+  },
+  "instance.settings.tabs.synced-options.multiplayer-servers.override-description": {
+    "message": "Хранить сетевые серверы этой сборки отдельно от синхронизированных."
   }
 }
