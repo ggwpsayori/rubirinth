@@ -196,7 +196,15 @@ async function refreshLibraries(): Promise<void> {
 	await loadLibraries(true)
 }
 
-async function selectLibrary(library: Library, assetName: string): Promise<void> {
+async function selectLibrary(library: Library, rawAssetName?: string | { option?: string }): Promise<void> {
+	const assetName =
+		typeof rawAssetName === 'string'
+			? rawAssetName
+			: (rawAssetName?.option ?? library.selectedAssetName)
+
+	if (!assetName || typeof assetName !== 'string') {
+		return
+	}
 	if (library.busy || assetName === library.savedAssetName) {
 		return
 	}

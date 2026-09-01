@@ -171,9 +171,10 @@ export async function installExternalAuthLibrary(
 /** Selects an already-downloaded provider library asset. */
 export async function selectExternalAuthLibrary(
 	provider: string,
-	assetName: string,
+	assetName: string | { option?: string },
 ): Promise<boolean> {
-	return await invoke('plugin:auth|select_external_auth_library', { provider, assetName })
+	const normalizedName = typeof assetName === 'string' ? assetName : (assetName?.option ?? String(assetName))
+	return await invoke('plugin:auth|select_external_auth_library', { provider, assetName: normalizedName })
 }
 
 /** Finds the UI metadata for a stored external account type. */
