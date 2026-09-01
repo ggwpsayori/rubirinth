@@ -109,11 +109,11 @@ defineExpose({
 			<div class="rounded-xl border border-solid border-divider bg-bg-secondary p-3 text-sm flex flex-col gap-1.5">
 				<div class="flex justify-between">
 					<span class="text-secondary">{{ formatMessage(messages.currentVersion) }}</span>
-					<span class="font-semibold text-contrast">v{{ props.version }}</span>
+					<span class="font-semibold text-contrast">{{ props.version?.replace(/^v/, "") }}</span>
 				</div>
 				<div class="flex justify-between">
 					<span class="text-secondary">{{ formatMessage(messages.latestVersion) }}</span>
-					<span class="font-bold text-brand">{{ latestRelease?.tag_name }}</span>
+					<span class="font-bold text-brand">{{ latestRelease?.tag_name?.replace(/^v/, "") }}</span>
 				</div>
 			</div>
 
