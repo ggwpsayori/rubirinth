@@ -60,6 +60,7 @@ pub fn init<R: tauri::Runtime>() -> tauri::plugin::TauriPlugin<R> {
             get_search_results_v3_many,
             purge_cache_types,
             get_project_versions,
+            curseforge_request,
         ])
         .build()
 }
@@ -71,11 +72,24 @@ pub async fn purge_cache_types(cache_types: Vec<CacheValueType>) -> Result<()> {
 
 #[tauri::command]
 pub async fn get_project_versions(
-    project_id: &str,
+    id: Option<&str>,
+    project_id: Option<&str>,
     cache_behaviour: Option<CacheBehaviour>,
 ) -> Result<Option<Vec<Version>>> {
+    let pid = project_id.or(id).ok_or_else(|| {
+        theseus::Error::from(theseus::ErrorKind::InputError("Missing projectId".to_string()))
+    })?;
     Ok(
-        theseus::cache::get_project_versions(project_id, cache_behaviour)
+        theseus::cache::get_project_versions(pid, cache_behaviour)
             .await?,
     )
+}
+
+#[tauri::command]
+pub async fn curseforge_request(
+    path: &str,
+    method: Option<&str>,
+    body: Option<serde_json::Value>,
+) -> Result<serde_json::Value> {
+    Ok(theseus::util::curseforge::curseforge_raw_request(path, method, body).await?)
 }

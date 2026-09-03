@@ -1,0 +1,1264 @@
+import type { Labrinth } from '../labrinth/types'
+import type { CurseforgeCategory } from './types'
+import { CURSEFORGE_CLASS_IDS, CURSEFORGE_LOADER_TYPES } from './client'
+
+export const CURSEFORGE_CATEGORIES: CurseforgeCategory[] = [
+  {
+    "id": 434,
+    "gameId": 432,
+    "name": "Armor, Tools, and Weapons",
+    "slug": "armor-weapons-tools",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/armor-weapons-tools",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/47/635351498790409758.png",
+    "dateModified": "2014-05-08T17:44:39.057Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 405,
+    "gameId": 432,
+    "name": "Miscellaneous",
+    "slug": "miscellaneous",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/miscellaneous",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/59/635351501101869320.png",
+    "dateModified": "2020-06-30T17:54:39.157Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 20
+  },
+  {
+    "id": 393,
+    "gameId": 432,
+    "name": "16x",
+    "slug": "sixteen-x",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/sixteen-x",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/75/635351598555753321.png",
+    "dateModified": "2020-06-30T17:54:39.077Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": -10
+  },
+  {
+    "id": 4485,
+    "gameId": 432,
+    "name": "Blood Magic",
+    "slug": "blood-magic",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/blood-magic",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/464/635596759347078801.png",
+    "dateModified": "2015-02-16T15:32:14.707Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 6553,
+    "gameId": 432,
+    "name": "Realistic",
+    "slug": "realistic",
+    "url": "https://www.curseforge.com/minecraft/shaders/realistic",
+    "iconUrl": "https://media.forgecdn.net/avatars/862/443/638270958069562788.png",
+    "dateModified": "2023-08-08T12:50:06.957Z",
+    "isClass": false,
+    "classId": 6552,
+    "parentCategoryId": 6552,
+    "displayIndex": 0
+  },
+  {
+    "id": 6484,
+    "gameId": 432,
+    "name": "Create",
+    "slug": "create",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/create",
+    "iconUrl": "https://media.forgecdn.net/avatars/834/490/638225251884617502.png",
+    "dateModified": "2023-06-16T15:13:08.513Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 2
+  },
+  {
+    "id": 6954,
+    "gameId": 432,
+    "name": "Integrated Dynamics",
+    "slug": "integrated-dynamics",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/integrated-dynamics",
+    "iconUrl": "https://media.forgecdn.net/avatars/944/336/638428206124514065.png",
+    "dateModified": "2024-02-06T12:50:12.453Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 410,
+    "gameId": 432,
+    "name": "Dimensions",
+    "slug": "world-dimensions",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/world-gen/world-dimensions",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/25/635351494468414756.png",
+    "dateModified": "2014-05-08T17:37:26.84Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 406,
+    "displayIndex": 0
+  },
+  {
+    "id": 435,
+    "gameId": 432,
+    "name": "Server Utility",
+    "slug": "server-utility",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/server-utility",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/48/635351498950580836.png",
+    "dateModified": "2014-05-08T17:44:55.057Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 394,
+    "gameId": 432,
+    "name": "32x",
+    "slug": "thirty-two-x",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/thirty-two-x",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/77/635351599006894511.png",
+    "dateModified": "2020-06-30T17:54:39.087Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": -9
+  },
+  {
+    "id": 4482,
+    "gameId": 432,
+    "name": "Extra Large",
+    "slug": "extra-large",
+    "url": "https://www.curseforge.com/minecraft/modpacks/extra-large",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/472/635596760403562826.png",
+    "dateModified": "2015-02-16T15:34:00.357Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 400,
+    "gameId": 432,
+    "name": "Photo Realistic",
+    "slug": "photo-realistic",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/photo-realistic",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/51/635351499583447065.png",
+    "dateModified": "2020-06-30T17:54:39.123Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 423,
+    "gameId": 432,
+    "name": "Map and Information",
+    "slug": "map-information",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/map-information",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/38/635351497437388438.png",
+    "dateModified": "2014-05-08T17:42:23.74Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 426,
+    "gameId": 432,
+    "name": "Addons",
+    "slug": "mc-addons",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons",
+    "iconUrl": "https://media.forgecdn.net/avatars/5/998/635351477886290676.png",
+    "dateModified": "2014-05-08T17:09:48.63Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 4481,
+    "gameId": 432,
+    "name": "Small / Light",
+    "slug": "small-light",
+    "url": "https://www.curseforge.com/minecraft/modpacks/small-light",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/478/635596761449660932.png",
+    "dateModified": "2015-02-16T15:35:44.967Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 4483,
+    "gameId": 432,
+    "name": "Combat / PvP",
+    "slug": "combat-pvp",
+    "url": "https://www.curseforge.com/minecraft/modpacks/combat-pvp",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/313/635591779575605594.png",
+    "dateModified": "2015-02-10T21:12:37.56Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 4474,
+    "gameId": 432,
+    "name": "Sci-Fi",
+    "slug": "sci-fi",
+    "url": "https://www.curseforge.com/minecraft/modpacks/sci-fi",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/323/635591780581068715.png",
+    "dateModified": "2015-02-10T21:14:18.107Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 5232,
+    "gameId": 432,
+    "name": "Galacticraft",
+    "slug": "galacticraft",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/galacticraft",
+    "iconUrl": "https://media.forgecdn.net/avatars/479/10/637775731174942465.png",
+    "dateModified": "2022-01-12T08:31:57.493Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 4475,
+    "gameId": 432,
+    "name": "Adventure and RPG",
+    "slug": "adventure-and-rpg",
+    "url": "https://www.curseforge.com/minecraft/modpacks/adventure-and-rpg",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/480/635596775049811800.png",
+    "dateModified": "2015-02-16T15:58:24.98Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 6554,
+    "gameId": 432,
+    "name": "Fantasy",
+    "slug": "fantasy",
+    "url": "https://www.curseforge.com/minecraft/shaders/fantasy",
+    "iconUrl": "https://media.forgecdn.net/avatars/862/444/638270958152572728.png",
+    "dateModified": "2023-08-08T12:50:15.257Z",
+    "isClass": false,
+    "classId": 6552,
+    "parentCategoryId": 6552,
+    "displayIndex": 0
+  },
+  {
+    "id": 6821,
+    "gameId": 432,
+    "name": "Bug Fixes",
+    "slug": "bug-fixes",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/bug-fixes",
+    "iconUrl": "https://media.forgecdn.net/avatars/934/473/638410713616155958.png",
+    "dateModified": "2024-01-17T06:56:01.62Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 4487,
+    "gameId": 432,
+    "name": "FTB Official Pack",
+    "slug": "ftb-official-pack",
+    "url": "https://www.curseforge.com/minecraft/modpacks/ftb-official-pack",
+    "iconUrl": "https://media.forgecdn.net/avatars/15/166/635616941825349689.png",
+    "dateModified": "2015-03-11T23:09:42.55Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 4478,
+    "gameId": 432,
+    "name": "Quests",
+    "slug": "quests",
+    "url": "https://www.curseforge.com/minecraft/modpacks/quests",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/487/635596816137981263.png",
+    "dateModified": "2015-02-16T17:06:53.797Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 4472,
+    "gameId": 432,
+    "name": "Tech",
+    "slug": "tech",
+    "url": "https://www.curseforge.com/minecraft/modpacks/tech",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/479/635596761534662757.png",
+    "dateModified": "2015-02-16T15:35:53.467Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 4545,
+    "gameId": 432,
+    "name": "Applied Energistics 2",
+    "slug": "applied-energistics-2",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/applied-energistics-2",
+    "iconUrl": "https://media.forgecdn.net/avatars/25/698/635778191285491081.png",
+    "dateModified": "2015-09-14T14:18:48.563Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 4736,
+    "gameId": 432,
+    "name": "Skyblock",
+    "slug": "skyblock",
+    "url": "https://www.curseforge.com/minecraft/modpacks/skyblock",
+    "iconUrl": "https://media.forgecdn.net/avatars/162/818/636678840408956323.png",
+    "dateModified": "2018-07-22T19:20:40.897Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 5314,
+    "gameId": 432,
+    "name": "KubeJS",
+    "slug": "kubejs",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/kubejs",
+    "iconUrl": "https://media.forgecdn.net/avatars/538/559/637863803856518049.png",
+    "dateModified": "2022-04-24T06:59:45.66Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 407,
+    "gameId": 432,
+    "name": "Biomes",
+    "slug": "world-biomes",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/world-gen/world-biomes",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/22/635351492995856506.png",
+    "dateModified": "2014-05-08T17:34:59.587Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 406,
+    "displayIndex": 0
+  },
+  {
+    "id": 421,
+    "gameId": 432,
+    "name": "API and Library",
+    "slug": "library-api",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/library-api",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/36/635351496947765531.png",
+    "dateModified": "2014-05-23T03:21:44.06Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 15
+  },
+  {
+    "id": 4480,
+    "gameId": 432,
+    "name": "Map Based",
+    "slug": "map-based",
+    "url": "https://www.curseforge.com/minecraft/modpacks/map-based",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/475/635596760683250342.png",
+    "dateModified": "2015-02-16T15:34:28.34Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 6555,
+    "gameId": 432,
+    "name": "Vanilla",
+    "slug": "vanilla",
+    "url": "https://www.curseforge.com/minecraft/shaders/vanilla",
+    "iconUrl": "https://media.forgecdn.net/avatars/862/447/638270958719512560.png",
+    "dateModified": "2023-08-08T12:51:11.953Z",
+    "isClass": false,
+    "classId": 6552,
+    "parentCategoryId": 6552,
+    "displayIndex": 0
+  },
+  {
+    "id": 398,
+    "gameId": 432,
+    "name": "512x and Higher",
+    "slug": "five-twelve-x-and-beyond",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/five-twelve-x-and-beyond",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/80/635351599620886449.png",
+    "dateModified": "2020-06-30T17:54:39.11Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": -5
+  },
+  {
+    "id": 436,
+    "gameId": 432,
+    "name": "Food",
+    "slug": "mc-food",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-food",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/49/635351499265510402.png",
+    "dateModified": "2014-05-08T17:45:26.55Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 428,
+    "gameId": 432,
+    "name": "Tinker's Construct",
+    "slug": "addons-tinkers-construct",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/addons-tinkers-construct",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/469/635596759818651045.png",
+    "dateModified": "2015-02-16T15:33:01.867Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 429,
+    "gameId": 432,
+    "name": "Industrial Craft",
+    "slug": "addons-industrialcraft",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/addons-industrialcraft",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/466/635596759547931864.png",
+    "dateModified": "2015-02-16T15:32:34.81Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 416,
+    "gameId": 432,
+    "name": "Farming",
+    "slug": "technology-farming",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/technology/technology-farming",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/31/635351495615556933.png",
+    "dateModified": "2014-05-08T17:39:21.57Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 412,
+    "displayIndex": 0
+  },
+  {
+    "id": 411,
+    "gameId": 432,
+    "name": "Mobs",
+    "slug": "world-mobs",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/world-gen/world-mobs",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/53/635351500195070414.png",
+    "dateModified": "2014-05-08T17:46:59.507Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 406,
+    "displayIndex": 0
+  },
+  {
+    "id": 5299,
+    "gameId": 432,
+    "name": "Education",
+    "slug": "education",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/education",
+    "iconUrl": "https://media.forgecdn.net/avatars/522/431/637843331461575794.png",
+    "dateModified": "2022-03-31T14:19:06.267Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 432,
+    "gameId": 432,
+    "name": "Buildcraft",
+    "slug": "addons-buildcraft",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/addons-buildcraft",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/463/635596759188303231.png",
+    "dateModified": "2015-02-16T15:31:58.86Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 403,
+    "gameId": 432,
+    "name": "Traditional",
+    "slug": "traditional",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/traditional",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/57/635351500831419880.png",
+    "dateModified": "2020-06-30T17:54:39.14Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 412,
+    "gameId": 432,
+    "name": "Technology",
+    "slug": "technology",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/technology",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/27/635351494745973439.png",
+    "dateModified": "2014-05-08T17:37:54.597Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 420,
+    "gameId": 432,
+    "name": "Storage",
+    "slug": "storage",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/storage",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/35/635351496772023801.png",
+    "dateModified": "2014-05-08T17:41:17.203Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 4843,
+    "gameId": 432,
+    "name": "Automation",
+    "slug": "technology-automation",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/technology/technology-automation",
+    "iconUrl": "https://media.forgecdn.net/avatars/352/517/637508115731820565.png",
+    "dateModified": "2021-03-08T14:46:13.24Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 412,
+    "displayIndex": 0
+  },
+  {
+    "id": 4773,
+    "gameId": 432,
+    "name": "CraftTweaker",
+    "slug": "crafttweaker",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/crafttweaker",
+    "iconUrl": "https://media.forgecdn.net/avatars/177/676/636772941470587416.png",
+    "dateModified": "2023-06-16T13:16:03.86Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 1
+  },
+  {
+    "id": 5191,
+    "gameId": 432,
+    "name": "Utility & QoL",
+    "slug": "utility-qol",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/utility-qol",
+    "iconUrl": "https://media.forgecdn.net/avatars/456/558/637727379086405233.png",
+    "dateModified": "2021-11-17T11:45:09.143Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 7418,
+    "gameId": 432,
+    "name": "Horror",
+    "slug": "horror",
+    "url": "https://www.curseforge.com/minecraft/modpacks/horror",
+    "iconUrl": "https://media.forgecdn.net/avatars/1062/213/638594627103104125.png",
+    "dateModified": "2024-08-18T10:11:59.67Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 409,
+    "gameId": 432,
+    "name": "Structures",
+    "slug": "world-structures",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/world-gen/world-structures",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/24/635351494371736208.png",
+    "dateModified": "2014-05-08T17:37:17.173Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 406,
+    "displayIndex": 0
+  },
+  {
+    "id": 396,
+    "gameId": 432,
+    "name": "128x",
+    "slug": "one-twenty-eight-x",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/one-twenty-eight-x",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/78/635351599155374805.png",
+    "dateModified": "2020-06-30T17:54:39.097Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": -7
+  },
+  {
+    "id": 397,
+    "gameId": 432,
+    "name": "256x",
+    "slug": "two-fifty-six-x",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/two-fifty-six-x",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/79/635351599486461159.png",
+    "dateModified": "2020-06-30T17:54:39.103Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": -6
+  },
+  {
+    "id": 4484,
+    "gameId": 432,
+    "name": "Multiplayer",
+    "slug": "multiplayer",
+    "url": "https://www.curseforge.com/minecraft/modpacks/multiplayer",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/481/635596792838491141.png",
+    "dateModified": "2015-02-16T16:28:03.85Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 4477,
+    "gameId": 432,
+    "name": "Mini Game",
+    "slug": "mini-game",
+    "url": "https://www.curseforge.com/minecraft/modpacks/mini-game",
+    "iconUrl": "https://media.forgecdn.net/avatars/15/517/635627406184649114.png",
+    "dateModified": "2015-03-24T01:50:18.513Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 427,
+    "gameId": 432,
+    "name": "Thermal Expansion",
+    "slug": "addons-thermalexpansion",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/addons-thermalexpansion",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/468/635596759720145473.png",
+    "dateModified": "2015-02-16T15:32:52.013Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 415,
+    "gameId": 432,
+    "name": "Energy, Fluid, and Item Transport",
+    "slug": "technology-item-fluid-energy-transport",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/technology/technology-item-fluid-energy-transport",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/30/635351495478719291.png",
+    "dateModified": "2014-05-08T17:39:07.873Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 412,
+    "displayIndex": 0
+  },
+  {
+    "id": 4558,
+    "gameId": 432,
+    "name": "Redstone",
+    "slug": "redstone",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/redstone",
+    "iconUrl": "https://media.forgecdn.net/avatars/32/937/635888173116238506.png",
+    "dateModified": "2016-01-19T22:21:51.64Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 4473,
+    "gameId": 432,
+    "name": "Magic",
+    "slug": "magic",
+    "url": "https://www.curseforge.com/minecraft/modpacks/magic",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/474/635596760578719019.png",
+    "dateModified": "2015-02-16T15:34:17.873Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 5244,
+    "gameId": 432,
+    "name": "Font Packs",
+    "slug": "font-packs",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/font-packs",
+    "iconUrl": "https://media.forgecdn.net/avatars/493/926/637804403044903691.png",
+    "dateModified": "2022-02-14T12:58:24.507Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 395,
+    "gameId": 432,
+    "name": "64x",
+    "slug": "sixty-four-x",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/sixty-four-x",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/76/635351598683223748.png",
+    "dateModified": "2020-06-30T17:54:39.09Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": -8
+  },
+  {
+    "id": 5128,
+    "gameId": 432,
+    "name": "Vanilla+",
+    "slug": "vanilla",
+    "url": "https://www.curseforge.com/minecraft/modpacks/vanilla",
+    "iconUrl": "https://media.forgecdn.net/avatars/451/388/637713564446392425.png",
+    "dateModified": "2021-11-01T09:40:44.687Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 8937,
+    "gameId": 432,
+    "name": "ModJam 2025",
+    "slug": "modjam-2025",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/modjam-2025",
+    "iconUrl": "https://media.forgecdn.net/avatars/1427/886/638925048115066914.png",
+    "dateModified": "2025-09-03T14:00:11.507Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 433,
+    "gameId": 432,
+    "name": "Forestry",
+    "slug": "addons-forestry",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/addons-forestry",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/465/635596759463504748.png",
+    "dateModified": "2015-02-16T15:32:26.35Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 4465,
+    "gameId": 432,
+    "name": "Mod Support",
+    "slug": "mod-support",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/mod-support",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/623/635363922411546592.png",
+    "dateModified": "2020-06-30T17:54:39.16Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 4906,
+    "gameId": 432,
+    "name": "MCreator",
+    "slug": "mc-creator",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-creator",
+    "iconUrl": "https://media.forgecdn.net/avatars/380/489/637562419922532076.png",
+    "dateModified": "2021-05-10T11:13:12.27Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 425,
+    "gameId": 432,
+    "name": "Miscellaneous",
+    "slug": "mc-miscellaneous",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-miscellaneous",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/40/635351497693711265.png",
+    "dateModified": "2014-06-15T04:27:14.543Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 20
+  },
+  {
+    "id": 418,
+    "gameId": 432,
+    "name": "Genetics",
+    "slug": "technology-genetics",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/technology/technology-genetics",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/33/635351495921521214.png",
+    "dateModified": "2014-05-08T17:39:52.153Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 412,
+    "displayIndex": 0
+  },
+  {
+    "id": 402,
+    "gameId": 432,
+    "name": "Medieval",
+    "slug": "medieval",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/medieval",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/56/635351500686687873.png",
+    "dateModified": "2020-06-30T17:54:39.137Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 406,
+    "gameId": 432,
+    "name": "World Gen",
+    "slug": "world-gen",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/world-gen",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/26/635351494599748860.png",
+    "dateModified": "2017-10-16T21:40:11.473Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 4479,
+    "gameId": 432,
+    "name": "Hardcore",
+    "slug": "hardcore",
+    "url": "https://www.curseforge.com/minecraft/modpacks/hardcore",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/473/635596760504656528.png",
+    "dateModified": "2015-02-16T15:34:10.467Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 6814,
+    "gameId": 432,
+    "name": "Performance",
+    "slug": "performance",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/performance",
+    "iconUrl": "https://media.forgecdn.net/avatars/933/987/638409849610531091.png",
+    "dateModified": "2024-01-16T06:56:01.057Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 7669,
+    "gameId": 432,
+    "name": "Twilight Forest",
+    "slug": "twilight-forest",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/twilight-forest",
+    "iconUrl": "https://media.forgecdn.net/avatars/1116/398/638670854795143644.png",
+    "dateModified": "2024-11-13T09:04:39.517Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 424,
+    "gameId": 432,
+    "name": "Cosmetic",
+    "slug": "cosmetic",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/cosmetic",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/39/635351497555976928.png",
+    "dateModified": "2014-05-08T17:42:35.597Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 430,
+    "gameId": 432,
+    "name": "Thaumcraft",
+    "slug": "addons-thaumcraft",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/addons-thaumcraft",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/467/635596759629629848.png",
+    "dateModified": "2015-02-16T15:32:42.963Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 4671,
+    "gameId": 432,
+    "name": "Twitch Integration",
+    "slug": "twitch-integration",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/twitch-integration",
+    "iconUrl": "https://media.forgecdn.net/avatars/150/336/636595916053434614.png",
+    "dateModified": "2018-04-17T19:53:25.39Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 4476,
+    "gameId": 432,
+    "name": "Exploration",
+    "slug": "exploration",
+    "url": "https://www.curseforge.com/minecraft/modpacks/exploration",
+    "iconUrl": "https://media.forgecdn.net/avatars/14/486/635596815896417213.png",
+    "dateModified": "2015-02-16T17:06:29.69Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 5193,
+    "gameId": 432,
+    "name": "Data Packs",
+    "slug": "data-packs",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/data-packs",
+    "iconUrl": "https://media.forgecdn.net/avatars/456/553/637727355382131318.png",
+    "dateModified": "2021-11-17T08:45:38.23Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 408,
+    "gameId": 432,
+    "name": "Ores and Resources",
+    "slug": "world-ores-resources",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/world-gen/world-ores-resources",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/23/635351494012336510.png",
+    "dateModified": "2014-05-08T17:36:41.233Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 406,
+    "displayIndex": 0
+  },
+  {
+    "id": 414,
+    "gameId": 432,
+    "name": "Player Transport",
+    "slug": "technology-player-transport",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/technology/technology-player-transport",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/29/635351495383551178.png",
+    "dateModified": "2014-05-08T17:38:58.357Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 412,
+    "displayIndex": 0
+  },
+  {
+    "id": 417,
+    "gameId": 432,
+    "name": "Energy",
+    "slug": "technology-energy",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/technology/technology-energy",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/32/635351495737894438.png",
+    "dateModified": "2014-05-08T17:39:33.79Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 412,
+    "displayIndex": 0
+  },
+  {
+    "id": 422,
+    "gameId": 432,
+    "name": "Adventure and RPG",
+    "slug": "adventure-rpg",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/adventure-rpg",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/37/635351497295252123.png",
+    "dateModified": "2014-05-08T17:42:09.54Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 404,
+    "gameId": 432,
+    "name": "Animated",
+    "slug": "animated",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/animated",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/58/635351500950558738.png",
+    "dateModified": "2020-06-30T17:54:39.147Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 401,
+    "gameId": 432,
+    "name": "Modern",
+    "slug": "modern",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/modern",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/55/635351500520222907.png",
+    "dateModified": "2020-06-30T17:54:39.13Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 399,
+    "gameId": 432,
+    "name": "Steampunk",
+    "slug": "steampunk",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/steampunk",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/50/635351499448616079.png",
+    "dateModified": "2020-06-30T17:54:39.117Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 413,
+    "gameId": 432,
+    "name": "Processing",
+    "slug": "technology-processing",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/technology/technology-processing",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/28/635351495219610266.png",
+    "dateModified": "2014-05-08T17:38:41.96Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 412,
+    "displayIndex": 0
+  },
+  {
+    "id": 419,
+    "gameId": 432,
+    "name": "Magic",
+    "slug": "magic",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/magic",
+    "iconUrl": "https://media.forgecdn.net/avatars/6/34/635351496247862494.png",
+    "dateModified": "2014-05-08T17:40:24.787Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 6145,
+    "gameId": 432,
+    "name": "Skyblock",
+    "slug": "skyblock",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/skyblock",
+    "iconUrl": "https://media.forgecdn.net/avatars/789/474/638143969072514550.png",
+    "dateModified": "2023-03-14T13:21:47.273Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 9026,
+    "gameId": 432,
+    "name": "CreativeMode",
+    "slug": "creativemode",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/creativemode",
+    "iconUrl": "https://media.forgecdn.net/avatars/1478/817/638961161997981312.png",
+    "dateModified": "2025-10-15T09:09:59.807Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  },
+  {
+    "id": 9049,
+    "gameId": 432,
+    "name": "Refined Storage",
+    "slug": "refined-storage",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/refined-storage",
+    "iconUrl": "https://media.forgecdn.net/avatars/1494/894/638971150986336698.png",
+    "dateModified": "2025-10-26T22:38:18.643Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 8939,
+    "gameId": 432,
+    "name": "ModJam 2025",
+    "slug": "modjam-2025",
+    "url": "https://www.curseforge.com/minecraft/texture-packs/modjam-2025",
+    "iconUrl": "https://media.forgecdn.net/avatars/1427/888/638925048212967193.png",
+    "dateModified": "2025-11-17T11:47:57.657Z",
+    "isClass": false,
+    "classId": 12,
+    "parentCategoryId": 12,
+    "displayIndex": 0
+  },
+  {
+    "id": 9243,
+    "gameId": 432,
+    "name": "Expert",
+    "slug": "expert",
+    "url": "https://www.curseforge.com/minecraft/modpacks/expert",
+    "iconUrl": "https://media.forgecdn.net/avatars/1585/295/639026019554106289.png",
+    "dateModified": "2025-12-29T10:45:55.42Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 10683,
+    "gameId": 432,
+    "name": "RLCraft",
+    "slug": "rlcraft",
+    "url": "https://www.curseforge.com/minecraft/modpacks/rlcraft",
+    "iconUrl": "https://media.forgecdn.net/avatars/1729/298/639100433200568522.png",
+    "dateModified": "2026-03-25T13:48:40.063Z",
+    "isClass": false,
+    "classId": 4471,
+    "parentCategoryId": 4471,
+    "displayIndex": 0
+  },
+  {
+    "id": 10754,
+    "gameId": 432,
+    "name": "Farmer's Delight",
+    "slug": "farmers-delight",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mc-addons/farmers-delight",
+    "iconUrl": "https://media.forgecdn.net/avatars/1754/643/639116704582021388.png",
+    "dateModified": "2026-04-13T09:47:38.21Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 426,
+    "displayIndex": 0
+  },
+  {
+    "id": 10775,
+    "gameId": 432,
+    "name": "Horror",
+    "slug": "horror",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/horror",
+    "iconUrl": "https://media.forgecdn.net/avatars/1771/649/639125575926276242.png",
+    "dateModified": "2026-04-23T16:13:12.63Z",
+    "isClass": false,
+    "classId": 6,
+    "parentCategoryId": 6,
+    "displayIndex": 0
+  }
+]
+
+export function projectTypeToCurseforgeClassId(projectType: string): number {
+	switch (projectType) {
+		case 'modpack':
+			return CURSEFORGE_CLASS_IDS.MODPACKS
+		case 'resourcepack':
+			return CURSEFORGE_CLASS_IDS.RESOURCE_PACKS
+		case 'shader':
+			return CURSEFORGE_CLASS_IDS.SHADERS
+		case 'mod':
+		default:
+			return CURSEFORGE_CLASS_IDS.MODS
+	}
+}
+
+export function loaderNameToCurseforgeLoaderType(loaderName: string): number {
+	const lower = loaderName.toLowerCase()
+	switch (lower) {
+		case 'forge':
+			return CURSEFORGE_LOADER_TYPES.FORGE
+		case 'fabric':
+			return CURSEFORGE_LOADER_TYPES.FABRIC
+		case 'quilt':
+			return CURSEFORGE_LOADER_TYPES.QUILT
+		case 'neoforge':
+			return CURSEFORGE_LOADER_TYPES.NEOFORGE
+		default:
+			return CURSEFORGE_LOADER_TYPES.ANY
+	}
+}
+
+export function findCurseforgeCategoryId(projectType: string, slug: string): number | undefined {
+	const classId = projectTypeToCurseforgeClassId(projectType)
+	const cat = CURSEFORGE_CATEGORIES.find((c) => c.classId === classId && c.slug.toLowerCase() === slug.toLowerCase())
+	return cat?.id
+}
+
+const RP_RESOLUTION_SLUGS = new Set([
+	'sixteen-x',
+	'thirty-two-x',
+	'sixty-four-x',
+	'one-twenty-eight-x',
+	'two-fifty-six-x',
+	'five-twelve-x-and-beyond',
+])
+
+export function toLabrinthCategory(cfCat: CurseforgeCategory): Labrinth.Tags.v2.Category {
+	let projectType: Labrinth.Projects.v3.ProjectType = 'mod'
+	if (cfCat.classId === CURSEFORGE_CLASS_IDS.MODPACKS) {
+		projectType = 'modpack'
+	} else if (cfCat.classId === CURSEFORGE_CLASS_IDS.RESOURCE_PACKS) {
+		projectType = 'resourcepack'
+	} else if (cfCat.classId === CURSEFORGE_CLASS_IDS.SHADERS) {
+		projectType = 'shader'
+	}
+
+	const header = projectType === 'resourcepack' && RP_RESOLUTION_SLUGS.has(cfCat.slug)
+		? 'resolutions'
+		: 'categories'
+
+	return {
+		icon: cfCat.iconUrl || '',
+		name: cfCat.slug,
+		project_type: projectType,
+		header,
+	}
+}
+
+export function getCurseforgeLabrinthCategories(classId?: number): Labrinth.Tags.v2.Category[] {
+	const cats = classId
+		? CURSEFORGE_CATEGORIES.filter((c) => c.classId === classId)
+		: CURSEFORGE_CATEGORIES
+
+	return cats.map(toLabrinthCategory)
+}

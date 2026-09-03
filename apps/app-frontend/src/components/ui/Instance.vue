@@ -1,4 +1,5 @@
 <script setup>
+import InstanceSourceIcon from '@/components/ui/InstanceSourceIcon.vue'
 import {
 	DownloadIcon,
 	GameIcon,
@@ -182,7 +183,10 @@ onMounted(() => {
 				pad-transparent-corners
 			/>
 			<div class="h-full flex items-center font-bold text-contrast leading-normal">
-				<span class="line-clamp-2">{{ instance.name }}</span>
+				<span class="inline-flex items-center gap-1.5 line-clamp-2">
+					<InstanceSourceIcon :instance="instance" size="xs" />
+					<span>{{ instance.name }}</span>
+				</span>
 			</div>
 			<div class="flex items-center">
 				<IconButton
@@ -296,8 +300,9 @@ onMounted(() => {
 				</div>
 			</div>
 			<div class="flex flex-col gap-1">
-				<p class="m-0 text-md font-bold text-contrast leading-tight line-clamp-1">
-					{{ instance.name }}
+				<p class="m-0 flex items-center gap-1.5 text-md font-bold text-contrast leading-tight line-clamp-1">
+					<InstanceSourceIcon :instance="instance" size="xs" />
+					<span class="truncate">{{ instance.name }}</span>
 				</p>
 				<div class="flex items-center col-span-3 gap-1 text-secondary font-semibold mt-auto">
 					<GameIcon class="shrink-0" />

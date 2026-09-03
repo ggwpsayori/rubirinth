@@ -3278,12 +3278,12 @@
     "message": "Friends"
   },
   "installation-settings.link-modpack.button": {
-    "message": "Link to Modrinth modpack",
-    "defaultMessage": "Link to Modrinth modpack"
+    "message": "Link to modpack",
+    "defaultMessage": "Link to modpack"
   },
   "installation-settings.link-modpack.modal-header": {
-    "message": "Link to Modrinth modpack",
-    "defaultMessage": "Link to Modrinth modpack"
+    "message": "Link to modpack",
+    "defaultMessage": "Link to modpack"
   },
   "installation-settings.link-modpack.search-placeholder": {
     "message": "Search modpacks or paste Modrinth URL / slug...",

@@ -38,6 +38,7 @@ import _SteamColorIcon from './external/color/steam.svg?component'
 import _USDCColorIcon from './external/color/usdc.svg?component'
 import _VenmoColorIcon from './external/color/venmo.svg?component'
 import _CurseForgeIcon from './external/curseforge.svg?component'
+import _HomeNavIcon from './icons/rubirinth-home.svg?component'
 import _DiscordIcon from './external/discord.svg?component'
 import _FacebookIcon from './external/facebook.svg?component'
 import _FlathubIcon from './external/flathub.svg?component'
@@ -111,6 +112,7 @@ export const BlueskyIcon = _BlueskyIcon
 export const BuyMeACoffeeIcon = _BuyMeACoffeeIcon
 export const GithubIcon = _GithubIcon
 export const CurseForgeIcon = _CurseForgeIcon
+export const HomeNavIcon = _HomeNavIcon
 export const DiscordIcon = _DiscordIcon
 export const FacebookIcon = _FacebookIcon
 export const FlathubIcon = _FlathubIcon
@@ -158,11 +160,112 @@ export const NoMessagesIllustration = _NoMessagesIllustration
 export const NoSearchResultIllustration = _NoSearchResultIllustration
 export const NoTasksIllustration = _NoTasksIllustration
 
+export const CURSEFORGE_CATEGORY_ICON_MAP: Record<string, string> = {
+	// Modpacks
+	'combat-pvp': 'combat',
+	vanilla: 'vanilla-like',
+	exploration: 'compass',
+	'small-light': 'lightweight',
+	'mini-game': 'minigame',
+	'map-based': 'map-pinned',
+	'sci-fi': 'terminal',
+	'ftb-official-pack': 'badge',
+	'adventure-and-rpg': 'adventure',
+	'adventure-rpg': 'adventure',
+	'extra-large': 'kitchen-sink',
+	tech: 'technology',
+	hardcore: 'skull',
+	horror: 'cursed',
+	expert: 'trophy',
+	rlcraft: 'swords',
+	skyblock: 'cloud',
+	multiplayer: 'users',
+	quests: 'quests',
+	magic: 'magic',
+
+	// Mods
+	'armor-weapons-tools': 'shield',
+	'world-dimensions': 'globe',
+	'server-utility': 'terminal',
+	'map-information': 'map-pinned',
+	'mc-addons': 'blocks',
+	'world-biomes': 'tree-pine',
+	'library-api': 'library',
+	'mc-food': 'food',
+	'technology-farming': 'foliage',
+	'world-mobs': 'mobs',
+	'technology-automation': 'refresh-ccw',
+	'utility-qol': 'utility',
+	'world-structures': 'castle',
+	'technology-item-fluid-energy-transport': 'transportation',
+	redstone: 'gauge',
+	'mc-miscellaneous': 'grid-3x3',
+	'world-gen': 'blocks',
+	performance: 'optimization',
+	cosmetic: 'palette',
+	'world-ores-resources': 'pickaxe',
+	'technology-processing': 'refresh-ccw',
+	'blood-magic': 'wand-sparkles',
+	create: 'refresh-ccw',
+	'integrated-dynamics': 'terminal',
+	galacticraft: 'globe',
+	'bug-fixes': 'tweaks',
+	'applied-energistics-2': 'storage',
+	kubejs: 'terminal',
+	'addons-tinkers-construct': 'swords',
+	'addons-industrialcraft': 'technology',
+	education: 'scroll-text',
+	'addons-buildcraft': 'pickaxe',
+	crafttweaker: 'terminal',
+	'addons-thermalexpansion': 'technology',
+	'addons-forestry': 'foliage',
+	'mc-creator': 'blocks',
+	'technology-genetics': 'game-mechanics',
+	'twilight-forest': 'tree-pine',
+	'addons-thaumcraft': 'magic',
+	'twitch-integration': 'clapperboard',
+	'technology-player-transport': 'transportation',
+	'technology-energy': 'gauge',
+	creativemode: 'palette',
+	'refined-storage': 'storage',
+	'farmers-delight': 'food',
+	'modjam-2025': 'trophy',
+	storage: 'storage',
+
+	// Resource packs & resolutions
+	'sixteen-x': 'square',
+	'thirty-two-x': 'square',
+	'sixty-four-x': 'square',
+	'one-twenty-eight-x': 'square',
+	'two-fifty-six-x': 'square',
+	'five-twelve-x-and-beyond': 'square',
+	'photo-realistic': 'realistic',
+	traditional: 'simplistic',
+	animated: 'film',
+	modern: 'building-2',
+	steampunk: 'technology',
+	medieval: 'castle',
+	'font-packs': 'fonts',
+	'mod-support': 'blocks',
+	'data-packs': 'blocks',
+	miscellaneous: 'grid-3x3',
+
+	// Shaders
+	realistic: 'realistic',
+	fantasy: 'fantasy',
+}
+
 export function getCategoryIcon(categoryName: string): IconComponent | undefined {
 	if (!categoryName) {
 		return undefined
 	}
-	return categoryIconMap[categoryName.toLowerCase()]
+	const lower = categoryName.toLowerCase()
+	return (
+		categoryIconMap[lower] ??
+		(CURSEFORGE_CATEGORY_ICON_MAP[lower]
+			? categoryIconMap[CURSEFORGE_CATEGORY_ICON_MAP[lower]]
+			: undefined)
+	)
 }
 
 export function getLoaderIcon(loaderName: string): IconComponent | undefined {

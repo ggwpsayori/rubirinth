@@ -4,6 +4,13 @@
 		:summary="project.description"
 		@contextmenu="emit('contextmenu', $event)"
 	>
+		<template #title-prefix>
+			<SourceBrandIcon
+				:source="project.id.startsWith('cf:') ? 'curseforge' : 'modrinth'"
+				size="lg"
+			/>
+		</template>
+
 		<template #leading>
 			<Avatar
 				:src="project.icon_url"
@@ -14,7 +21,7 @@
 			/>
 		</template>
 
-		<template v-if="showStatusBadge" #badges>
+		<template v-if="showStatusBadge && projectV3?.status" #badges>
 			<ProjectStatusBadge :status="projectV3.status" />
 		</template>
 
@@ -36,6 +43,7 @@
 						:tooltip="formatNumber(project.downloads)"
 					/>
 					<PageHeaderMetadataNumberItem
+						v-if="!project.id.startsWith('cf:')"
 						:icon="HeartIcon"
 						:value="project.followers"
 						:label="formatMessage(messages.followersStat, { count: project.followers })"
@@ -70,6 +78,7 @@ import { defineMessages, useFormatNumber, useVIntl } from '../../composables'
 import Avatar from '../base/Avatar.vue'
 import FormattedTag from '../base/FormattedTag.vue'
 import PageHeader from '../base/page-header/index.vue'
+import SourceBrandIcon from '../base/SourceBrandIcon.vue'
 import PageHeaderMetadata from '../base/page-header/metadata/index.vue'
 import PageHeaderMetadataNumberItem from '../base/page-header/metadata/page-header-metadata-number-item.vue'
 import PageHeaderMetadataTagsItem from '../base/page-header/metadata/page-header-metadata-tags-item.vue'

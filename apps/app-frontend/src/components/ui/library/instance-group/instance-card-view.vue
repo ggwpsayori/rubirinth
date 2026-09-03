@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import InstanceSourceIcon from '@/components/ui/InstanceSourceIcon.vue'
 import { Avatar, truncatedTooltip } from '@modrinth/ui'
 import { computed, ref } from 'vue'
 
@@ -64,9 +65,10 @@ const versionRef = ref<HTMLElement | null>(null)
 			<p
 				ref="nameRef"
 				v-tooltip="truncatedTooltip(nameRef, instance.name)"
-				class="m-0 w-full truncate text-base font-semibold leading-5 text-contrast"
+				class="m-0 flex w-full items-center gap-1.5 truncate text-base font-semibold leading-5 text-contrast"
 			>
-				{{ instance.name }}
+				<InstanceSourceIcon :instance="instance" size="sm" />
+				<span class="truncate">{{ instance.name }}</span>
 			</p>
 			<p
 				ref="versionRef"

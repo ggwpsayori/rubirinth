@@ -3969,12 +3969,12 @@
     "message": "Astralrinth"
   },
   "installation-settings.link-modpack.button": {
-    "message": "Привязать к сборке Modrinth",
-    "defaultMessage": "Привязать к сборке Modrinth"
+    "message": "Привязать к сборке",
+    "defaultMessage": "Привязать к сборке"
   },
   "installation-settings.link-modpack.modal-header": {
-    "message": "Привязка к сборке Modrinth",
-    "defaultMessage": "Привязка к сборке Modrinth"
+    "message": "Привязать к сборке",
+    "defaultMessage": "Привязать к сборке"
   },
   "installation-settings.link-modpack.search-placeholder": {
     "message": "Поиск сборок или ссылка / slug на Modrinth...",
@@ -4665,5 +4665,25 @@
   },
   "instance.settings.tabs.synced-options.multiplayer-servers.override-description": {
     "message": "Хранить сетевые серверы этой сборки отдельно от синхронизированных."
+  },
+  "instance.settings.tabs.behavior.description": {
+    "message": "Выберите, какие вкладки будут отображаться у этой сборки.",
+    "defaultMessage": "Choose which tabs appear on this instance."
+  },
+  "instance.settings.tabs.behavior.files": {
+    "message": "Показывать вкладку «Файлы»",
+    "defaultMessage": "Show Files tab"
+  },
+  "instance.settings.tabs.behavior.worlds": {
+    "message": "Показывать вкладку «Миры»",
+    "defaultMessage": "Show Worlds tab"
+  },
+  "instance.settings.tabs.behavior.screenshots": {
+    "message": "Показывать вкладку «Скриншоты»",
+    "defaultMessage": "Show Screenshots tab"
+  },
+  "instance.settings.tabs.behavior.screenshots.required": {
+    "message": "Вкладка «Скриншоты» не может быть скрыта, пока глобальная страница скриншотов отключена.",
+    "defaultMessage": "The Screenshots tab cannot be hidden while the global Screenshots page is turned off."
   }
 }

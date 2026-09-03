@@ -29,6 +29,7 @@ export interface BreadcrumbDefinition {
 	label: MaybeRefOrGetter<string>
 	to?: MaybeRefOrGetter<RouteLocationRaw | undefined>
 	visual?: MaybeRefOrGetter<BreadcrumbVisual | undefined>
+	source?: MaybeRefOrGetter<'modrinth' | 'curseforge' | string | null | undefined>
 }
 
 export interface ResolvedBreadcrumb {
@@ -37,6 +38,7 @@ export interface ResolvedBreadcrumb {
 	label: string
 	to?: RouteLocationRaw
 	visual?: BreadcrumbVisual
+	source?: 'modrinth' | 'curseforge' | string | null
 }
 
 export interface BreadcrumbHandle {
@@ -171,6 +173,7 @@ export function createBreadcrumbManager(): BreadcrumbManager {
 			label: toValue(definition.label),
 			to: definition.to === undefined ? undefined : toValue(definition.to),
 			visual: definition.visual === undefined ? undefined : toValue(definition.visual),
+			source: definition.source === undefined ? undefined : toValue(definition.source),
 		})),
 	)
 

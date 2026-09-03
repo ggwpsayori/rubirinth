@@ -5,10 +5,10 @@ import {
 	EyeIcon,
 	InfoIcon,
 	RotateCounterClockwiseIcon,
-	ShirtIcon,
 	SpinnerIcon,
 	WindowsIcon,
 } from '@modrinth/assets'
+import SkinNavIcon from '@/components/ui/SkinNavIcon.vue'
 import {
 	Button,
 	commonMessages,
@@ -71,7 +71,7 @@ useRootBreadcrumb({
 	id: 'skins',
 	label: () => formatMessage(appMessages.skinSelectorLabel),
 	to: '/skins',
-	visual: { type: 'icon', component: ShirtIcon },
+	visual: { type: 'icon', component: SkinNavIcon },
 })
 
 type UnlistenFn = () => void

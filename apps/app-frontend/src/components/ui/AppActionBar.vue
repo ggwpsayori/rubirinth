@@ -25,9 +25,10 @@
 					<router-link
 						v-tooltip="formatMessage(messages.viewInstance)"
 						:to="`/instance/${encodeURIComponent(selectedProcess.instance.id)}`"
-						class="hover:underline"
+						class="hover:underline flex items-center gap-1.5"
 					>
-						{{ selectedProcess.instance.name }}
+						<InstanceSourceIcon :instance="selectedProcess.instance" size="xs" />
+						<span>{{ selectedProcess.instance.name }}</span>
 					</router-link>
 					<Dropdown
 						v-if="currentProcesses.length > 1"
@@ -75,8 +76,9 @@
 										@click="selectProcess(process)"
 									>
 										<OnlineIndicatorIcon />
-										<span class="mr-auto text-contrast flex items-center gap-2">
-											{{ process.instance.name }}
+										<span class="mr-auto text-contrast flex items-center gap-1.5">
+											<InstanceSourceIcon :instance="process.instance" size="xs" />
+											<span>{{ process.instance.name }}</span>
 											<StarIcon v-if="process.uuid === selectedProcess.uuid" class="text-orange" />
 										</span>
 									</button>
@@ -125,6 +127,7 @@
 </template>
 
 <script setup lang="ts">
+import InstanceSourceIcon from '@/components/ui/InstanceSourceIcon.vue'
 import {
 	DownloadIcon,
 	DropdownIcon,

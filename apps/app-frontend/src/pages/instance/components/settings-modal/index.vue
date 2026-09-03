@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import InstanceSourceIcon from '@/components/ui/InstanceSourceIcon.vue'
 import type { Labrinth } from '@modrinth/api-client'
 import {
 	ChevronRightIcon,
@@ -192,6 +193,7 @@ defineExpose({ show, hide })
 					:tint-by="props.instance.id"
 					pad-transparent-corners
 				/>
+				<InstanceSourceIcon :instance="instance" size="sm" />
 				{{ instance.name }} <ChevronRightIcon />
 				<span class="font-extrabold text-contrast">{{
 					formatMessage(commonMessages.settingsLabel)

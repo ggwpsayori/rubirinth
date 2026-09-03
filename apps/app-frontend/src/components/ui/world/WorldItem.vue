@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import InstanceSourceIcon from '@/components/ui/InstanceSourceIcon.vue'
+import type { GameInstance } from '@/helpers/types'
 import {
 	ClipboardCopyIcon,
 	EditIcon,
@@ -103,6 +105,7 @@ const props = withDefaults(
 		instanceName?: string
 		instanceIcon?: string
 		shortcutInstanceId?: string
+		instance?: GameInstance
 	}>(),
 	{
 		playingInstance: false,
@@ -567,6 +570,7 @@ function openContextMenu(event: MouseEvent) {
 									no-shadow
 									pad-transparent-corners
 								/>
+								<InstanceSourceIcon :instance="instance" size="xs" />
 								<span class="truncate">{{ instanceName }}</span>
 							</router-link>
 							<BulletDivider class="shrink-0" />

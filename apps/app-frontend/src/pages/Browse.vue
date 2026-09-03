@@ -3,10 +3,23 @@ defineOptions({ name: 'Browse' })
 
 import type { Labrinth } from '@modrinth/api-client'
 import {
+	CURSEFORGE_CLASS_IDS,
+	CURSEFORGE_LOADER_TYPES,
+	curseforgeClient,
+	findCurseforgeCategoryId,
+	getCurseforgeLabrinthCategories,
+	isCurseforgeId,
+	loaderNameToCurseforgeLoaderType,
+	mapCurseforgeModToSearchV3Project,
+	projectTypeToCurseforgeClassId,
+} from '@modrinth/api-client'
+import {
 	CheckIcon,
 	CompassIcon,
+	CurseForgeIcon,
 	ExternalIcon,
 	GlobeIcon,
+	ModrinthIcon,
 	PlusIcon,
 	ServerStackIcon,
 	SpinnerIcon,
@@ -19,6 +32,7 @@ import {
 	ContextMenu,
 	CreationFlowModal,
 	defineMessages,
+	OptionGroup,
 	formatProjectTypeSentence,
 	getProjectTypeCategoryMessage,
 	getLatestMatchingInstallVersion,
@@ -45,10 +59,11 @@ import { useRoute, useRouter } from 'vue-router'
 import { useAppServerBrowse } from '@/composables/browse/use-app-server-browse'
 import { useAppEvent } from '@/composables/use-app-event'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
-import { get_project, get_search_results_v3, get_version_many } from '@/helpers/cache.js'
+import { get_project, get_project_versions, get_search_results_v3, get_version_many } from '@/helpers/cache.js'
 import {
 	get_installed_project_ids as getInstalledProjectIds,
 	getInstanceIconUrl,
+	getInstanceModpackSource,
 	list as listInstances,
 } from '@/helpers/instance'
 import { get_loader_versions as getLoaderManifest } from '@/helpers/metadata'
@@ -171,6 +186,11 @@ const linkedInstanceProjectQuery = useQuery(
 )
 const installedProjectIds: Ref<string[] | null> = ref(null)
 const instanceHideInstalled = ref(route.query.ai === 'true')
+const contentSource = useLocalStorage<'Modrinth' | 'CurseForge'>(
+	'rubirinth_browse_content_source',
+	'Modrinth',
+)
+
 const newlyInstalled = ref<string[]>([])
 const hiddenInstanceProjectIds = ref<Set<string>>(new Set())
 const hiddenInstanceProjectIdsInitialized = ref(false)
@@ -265,10 +285,52 @@ const [categories, loaders, availableGameVersions] = await Promise.all([
 		.then(ref<Labrinth.Tags.v2.GameVersion[]>),
 ])
 
+const isServerTab = computed(
+	() =>
+		(displayedBrowseRoute.value?.params.projectType as string) === 'server' ||
+		(route.params.projectType as string) === 'server',
+)
+
+const isDatapackTab = computed(
+	() =>
+		(displayedBrowseRoute.value?.params.projectType as string) === 'datapack' ||
+		(route.params.projectType as string) === 'datapack',
+)
+
+const displayedContentSource = computed<'Modrinth' | 'CurseForge'>({
+	get: () => (isDatapackTab.value ? 'Modrinth' : contentSource.value),
+	set: (val) => {
+		if (!isDatapackTab.value) {
+			contentSource.value = val
+		}
+	},
+})
+
+const isCurseForge = computed(
+	() => !isServerTab.value && !isDatapackTab.value && contentSource.value?.toLowerCase() === 'curseforge',
+)
+
+const curseforgeCategories = computed<Labrinth.Tags.v2.Category[]>(() => {
+	return getCurseforgeLabrinthCategories()
+})
+
+const curseforgeLoaders = computed<Labrinth.Tags.v2.Loader[]>(() => {
+	const cfLoaderNames = ['fabric', 'forge', 'neoforge', 'quilt']
+	const baseLoaders = loaders.value ?? []
+	return cfLoaderNames.map((name) => {
+		const existing = baseLoaders.find((l) => l.name.toLowerCase() === name)
+		return {
+			name,
+			icon: existing?.icon ?? '',
+			supported_project_types: ['mod', 'modpack'],
+		}
+	})
+})
+
 const tags: Ref<Tags> = computed(() => ({
 	gameVersions: availableGameVersions.value ?? [],
-	loaders: loaders.value ?? [],
-	categories: categories.value ?? [],
+	loaders: isCurseForge.value ? curseforgeLoaders.value : (loaders.value ?? []),
+	categories: isCurseForge.value ? curseforgeCategories.value : (categories.value ?? []),
 }))
 
 if (isFromWorlds.value && route.params.projectType !== 'server') {
@@ -767,6 +829,7 @@ const installContext = computed(() => {
 	if (instance.value) {
 		return {
 			name: instance.value.name,
+			source: getInstanceModpackSource(instance.value),
 			loader: instance.value.loader,
 			gameVersion: instance.value.game_version,
 			iconSrc: getInstanceIconUrl(instance.value.icon_path),
@@ -831,6 +894,9 @@ function getInstanceInstallTargetPreferences(projectTypeValue: string) {
 }
 
 async function getInstallProjectVersions(projectId: string) {
+	if (isCurseforgeId(projectId)) {
+		return (await get_project_versions(projectId, 'must_revalidate')) as Labrinth.Versions.v2.Version[]
+	}
 	const project = await get_project(projectId, 'must_revalidate')
 	return (await get_version_many(
 		project.versions,
@@ -872,7 +938,7 @@ async function chooseFilterMatchingInstallVersion(
 	const plan = await resolveInstallPlan({
 		project: {
 			project_id: project.project_id,
-			title: project.title,
+			title: project.name || (project as any).title,
 			icon_url: project.icon_url,
 		},
 		contentType: projectTypeValue as BrowseInstallContentType,
@@ -1081,6 +1147,157 @@ async function search(requestParams: string) {
 	debugLog('searching v3', requestParams)
 	const isServer = projectType.value === 'server'
 
+	if (isCurseForge.value) {
+		const urlParams = new URLSearchParams(
+			requestParams.startsWith('?') ? requestParams.slice(1) : requestParams,
+		)
+		const rawQuery = urlParams.get('query')
+		const queryText = rawQuery ? decodeURIComponent(rawQuery) : ''
+		const limit = Math.min(Number(urlParams.get('limit') || '20'), 50)
+		const offset = Number(urlParams.get('offset') || '0')
+		const sortIndex = urlParams.get('index') || searchState.effectiveCurrentSortType.value?.name || 'relevance'
+
+		try {
+			const classId = projectTypeToCurseforgeClassId(projectType.value)
+			const supportsLoaders = projectType.value === 'mod' || projectType.value === 'modpack'
+
+			let modLoaderType = CURSEFORGE_LOADER_TYPES.ANY
+			let gameVersion: string | undefined = undefined
+			let categoryId: number | undefined = undefined
+
+			// 1. Determine gameVersion
+			const gvFilter = searchState.currentFilters.value.find((f) => f.type === 'game_version')
+			if (gvFilter?.option) {
+				gameVersion = gvFilter.option
+			} else if (instance.value?.game_version) {
+				gameVersion = instance.value.game_version
+			}
+
+			// 2. Determine modLoaderType (only for mods and modpacks)
+			if (supportsLoaders) {
+				const loaderFilter = searchState.currentFilters.value.find(
+					(f) => f.type === 'mod_loader' || f.type === 'modpack_loader',
+				)
+				if (loaderFilter?.option) {
+					modLoaderType = loaderNameToCurseforgeLoaderType(loaderFilter.option)
+				} else if (instance.value?.loader) {
+					modLoaderType = loaderNameToCurseforgeLoaderType(instance.value.loader)
+				}
+			}
+
+			// 3. Determine categoryId
+			const catFilter = searchState.currentFilters.value.find(
+				(f) => f.type.startsWith('category_'),
+			)
+			if (catFilter?.option) {
+				categoryId = findCurseforgeCategoryId(projectType.value, catFilter.option)
+			}
+
+			// 4. URL params fallback for direct links/navigation
+			const newFiltersStr = urlParams.get('new_filters')
+			if (newFiltersStr) {
+				const decoded = decodeURIComponent(newFiltersStr)
+				if (!gameVersion) {
+					const gvMatch = decoded.match(/(?:game_)?versions?\s*=\s*['"]([^'"]+)['"]/i)
+					if (gvMatch) gameVersion = gvMatch[1]
+				}
+				if (supportsLoaders && modLoaderType === CURSEFORGE_LOADER_TYPES.ANY) {
+					const lMatch = decoded.match(/categories\s*=\s*['"](forge|fabric|quilt|neoforge)['"]/i)
+					if (lMatch) modLoaderType = loaderNameToCurseforgeLoaderType(lMatch[1])
+				}
+				if (categoryId === undefined) {
+					const catMatches = [...decoded.matchAll(/categories\s*=\s*['"]([^'"]+)['"]/gi)]
+					for (const m of catMatches) {
+						const slug = m[1].toLowerCase()
+						if (!['forge', 'fabric', 'quilt', 'neoforge'].includes(slug)) {
+							const foundId = findCurseforgeCategoryId(projectType.value, slug)
+							if (foundId !== undefined) {
+								categoryId = foundId
+								break
+							}
+						}
+					}
+				}
+			}
+
+			let sortField = queryText ? 2 : 6
+			if (sortIndex === 'downloads') sortField = 6
+			else if (sortIndex === 'newest') sortField = 11
+			else if (sortIndex === 'updated') sortField = 3
+			else if (sortIndex === 'relevance') sortField = queryText ? 2 : 6
+
+			const cfRes = await queryClient.fetchQuery({
+				queryKey: [
+					'curseforge-search',
+					classId,
+					categoryId,
+					queryText,
+					gameVersion,
+					modLoaderType,
+					sortField,
+					offset,
+					limit,
+				],
+				queryFn: () =>
+					curseforgeClient.searchMods({
+						classId,
+						categoryId,
+						searchFilter: queryText || undefined,
+						gameVersion,
+						modLoaderType: modLoaderType !== CURSEFORGE_LOADER_TYPES.ANY ? modLoaderType : undefined,
+						sortField,
+						sortOrder: 'desc',
+						index: offset,
+						pageSize: limit,
+					}),
+				staleTime: 30_000,
+			})
+
+			const hits = (cfRes?.data || []).map((mod) => {
+				const mapped = mapCurseforgeModToSearchV3Project(mod)
+				for (const identifier of [mapped.project_id, mapped.slug]) {
+					if (identifier) {
+						queryClient.setQueryData(['projects', 'summary', identifier], mapped)
+					}
+				}
+				const mappedWithInstalled: Labrinth.Search.v3.ResultSearchProject & { installed?: boolean } = {
+					...mapped,
+				}
+				if (instance.value || isServerContext.value || projectType.value === 'modpack') {
+					const installedIds =
+						isServerContext.value && projectType.value !== 'modpack'
+							? serverContentProjectIds.value
+							: new Set([...newlyInstalled.value, ...(installedProjectIds.value ?? [])])
+					mappedWithInstalled.installed = installedIds.has(mapped.project_id)
+				}
+				return mappedWithInstalled
+			})
+
+			if (sortIndex === 'downloads') {
+				hits.sort((a, b) => (b.downloads ?? 0) - (a.downloads ?? 0))
+			} else if (sortIndex === 'newest') {
+				hits.sort((a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime())
+			} else if (sortIndex === 'updated') {
+				hits.sort((a, b) => new Date(b.date_modified).getTime() - new Date(a.date_modified).getTime())
+			}
+
+			return {
+				projectHits: hits,
+				serverHits: [],
+				total_hits: cfRes?.pagination?.totalCount || 0,
+				per_page: limit,
+			}
+		} catch (err) {
+			console.error('CurseForge search error:', err)
+			return {
+				projectHits: [],
+				serverHits: [],
+				total_hits: 0,
+				per_page: limit,
+			}
+		}
+	}
+
 	const rawResults = await queryClient.fetchQuery({
 		queryKey: ['search', 'v3', requestParams],
 		queryFn: () =>
@@ -1285,14 +1502,52 @@ const dismissedPhotosensitivityFilterWarning = computed({
 	},
 })
 
+const hiddenFilterTypes = computed(() => {
+	if (isCurseForge.value) {
+		return [
+			'environment',
+			'advanced',
+			'compatible_dependency_project_ids',
+		]
+	}
+	return []
+})
+
+const effectiveSortTypes = computed(() => {
+	if (isCurseForge.value) {
+		return searchState.effectiveSortTypes.value.filter((st) => st.name !== 'follows')
+	}
+	return searchState.effectiveSortTypes.value
+})
+
+watch(contentSource, () => {
+	searchState.currentPage.value = 1
+	searchState.projectHits.value = []
+	searchState.totalHits.value = 0
+
+	if (isCurseForge.value && searchState.effectiveCurrentSortType.value?.name === 'follows') {
+		const fallback = searchState.effectiveSortTypes.value.find((s) => s.name === 'relevance') || searchState.effectiveSortTypes.value[0]
+		if (fallback) searchState.effectiveCurrentSortType.value = fallback
+	}
+
+	// Clear platform-specific filters when switching platform
+	searchState.currentFilters.value = searchState.currentFilters.value.filter(
+		(f) => f.type === 'game_version' || f.type === 'mod_loader' || f.type === 'modpack_loader',
+	)
+
+	void searchState.refreshSearch()
+})
+
 provideBrowseManager({
 	tags,
 	displayMode,
 	cycleDisplayMode,
 	projectType,
 	...searchState,
+	effectiveSortTypes,
 	advancedFiltersCollapsed,
 	dismissedPhotosensitivityFilterWarning,
+	hiddenFilterTypes,
 	getProjectLink: (result: Labrinth.Search.v3.ResultSearchProject) => ({
 		path: `/project/${result.project_id ?? result.slug}`,
 		query: getProjectBrowseQuery(),
@@ -1364,6 +1619,38 @@ provideBrowseManager({
 <template>
 	<div class="flex flex-col gap-2 p-6">
 		<BrowsePageLayout>
+			<template #header-controls>
+				<div
+					v-if="!isServerContext && !isServerTab"
+					v-tooltip="isDatapackTab ? 'CurseForge не поддерживает наборы данных' : null"
+					class="flex items-center gap-2"
+				>
+					<OptionGroup
+						v-model="displayedContentSource"
+						:options="['Modrinth', 'CurseForge']"
+						:disabled="isDatapackTab"
+					>
+						<template #default="{ option, selected }">
+							<div
+								class="flex items-center justify-center p-0.5"
+								:title="option"
+								:aria-label="option"
+							>
+								<ModrinthIcon
+									v-if="option === 'Modrinth'"
+									class="size-5 transition-colors"
+									:class="selected ? 'text-[#00af5c]' : 'text-secondary hover:text-contrast'"
+								/>
+								<CurseForgeIcon
+									v-else
+									class="size-5 transition-colors"
+									:class="selected ? 'text-[#f16436]' : 'text-secondary hover:text-contrast'"
+								/>
+							</div>
+						</template>
+					</OptionGroup>
+				</div>
+			</template>
 			<template #after>
 				<ContextMenu ref="contextMenuRef" :label="formatMessage(messages.projectActionsLabel)">
 					<template #open_link="{ option }">

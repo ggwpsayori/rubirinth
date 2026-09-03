@@ -200,11 +200,15 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 	</template>
 	<SelectedProjectsFloatingBar v-if="ctx.installContext?.value && ctx.variant !== 'web'" />
 
-	<NavTabs
-		v-if="ctx.showProjectTypeTabs.value"
-		:links="ctx.selectableProjectTypes.value"
-		:replace="ctx.variant === 'app'"
-	/>
+	<div class="flex flex-wrap items-center justify-between gap-3">
+		<NavTabs
+			v-if="ctx.showProjectTypeTabs.value"
+			:links="ctx.selectableProjectTypes.value"
+			:replace="ctx.variant === 'app'"
+		/>
+		<div v-else />
+		<slot name="header-controls" />
+	</div>
 
 	<Input
 		v-model="ctx.query.value"
@@ -433,7 +437,7 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 					:all-tags="getProjectCardTags(result, false)"
 					:deprioritized-tags="ctx.deprioritizedTags.value"
 					:exclude-loaders="ctx.excludeLoaders.value"
-					:followers="result.follows"
+					:followers="result.project_id.startsWith('cf:') ? undefined : result.follows"
 					:banner="result.featured_gallery ?? undefined"
 					:color="result.color ?? undefined"
 					:environment="

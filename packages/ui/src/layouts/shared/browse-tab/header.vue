@@ -8,6 +8,7 @@ import Admonition from '#ui/components/base/Admonition.vue'
 import Avatar from '#ui/components/base/Avatar.vue'
 import { IconButton } from '#ui/components/base/buttons'
 import PageHeader from '#ui/components/base/page-header/index.vue'
+import SourceBrandIcon from '#ui/components/base/SourceBrandIcon.vue'
 import PageHeaderMetadata from '#ui/components/base/page-header/metadata/index.vue'
 import PageHeaderMetadataItem from '#ui/components/base/page-header/metadata/page-header-metadata-item.vue'
 import TagIcon from '#ui/components/base/TagIcon.vue'
@@ -147,6 +148,9 @@ async function handleSelectedProjectsLeaveResult(
 			title-class="leading-8"
 			truncate-title
 		>
+			<template v-if="installContext.source" #title-prefix>
+				<SourceBrandIcon :source="installContext.source" size="lg" />
+			</template>
 			<template #leading>
 				<IconButton
 					v-tooltip="installContext.backLabel"

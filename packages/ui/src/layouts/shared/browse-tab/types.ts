@@ -20,6 +20,7 @@ export interface BrowseSelectedProject {
 
 export interface BrowseInstallContext {
 	name: string
+	source?: 'modrinth' | 'curseforge' | string | null
 	loader: string
 	gameVersion: string
 	serverId?: string | null

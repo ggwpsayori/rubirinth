@@ -52,6 +52,7 @@ fn main() {
                         "get_search_results_v3_many",
                         "purge_cache_types",
                         "get_project_versions",
+                        "curseforge_request",
                     ])
                     .default_permission(
                         DefaultPermissionRule::AllowAllCommands,

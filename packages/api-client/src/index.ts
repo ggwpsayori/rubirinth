@@ -1,4 +1,4 @@
-export { AbstractModrinthClient } from './core/abstract-client'
+﻿export { AbstractModrinthClient } from './core/abstract-client'
 export { AbstractFeature, type FeatureConfig } from './core/abstract-feature'
 export {
 	AbstractSyncClient,
@@ -53,3 +53,6 @@ export {
 	SseParser,
 } from './utils/sse'
 export type { Override, RawDecimal } from './utils/types'
+
+export * from './modules/curseforge'
+

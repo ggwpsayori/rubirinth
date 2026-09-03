@@ -9326,5 +9326,317 @@
   "version.supplementary-resources.type": {
     "defaultMessage": "Тип",
     "message": "Тип"
+  },
+  "tag.category.extra-large": {
+    "defaultMessage": "Extra Large",
+    "message": "Сверхбольшие"
+  },
+  "tag.category.small-light": {
+    "defaultMessage": "Small / Light",
+    "message": "Легковесные"
+  },
+  "tag.category.combat-pvp": {
+    "defaultMessage": "Combat / PvP",
+    "message": "Бой / PvP"
+  },
+  "tag.category.sci-fi": {
+    "defaultMessage": "Sci-Fi",
+    "message": "Научная фантастика"
+  },
+  "tag.category.adventure-and-rpg": {
+    "defaultMessage": "Adventure and RPG",
+    "message": "Приключения и RPG"
+  },
+  "tag.category.adventure-rpg": {
+    "defaultMessage": "Adventure & RPG",
+    "message": "Приключения и RPG"
+  },
+  "tag.category.ftb-official-pack": {
+    "defaultMessage": "FTB Official Pack",
+    "message": "Официальные FTB"
+  },
+  "tag.category.map-based": {
+    "defaultMessage": "Map Based",
+    "message": "На основе карт"
+  },
+  "tag.category.horror": {
+    "defaultMessage": "Horror",
+    "message": "Хоррор"
+  },
+  "tag.category.mini-game": {
+    "defaultMessage": "Mini Game",
+    "message": "Мини-игры"
+  },
+  "tag.category.exploration": {
+    "defaultMessage": "Exploration",
+    "message": "Исследования"
+  },
+  "tag.category.expert": {
+    "defaultMessage": "Expert",
+    "message": "Экспертные"
+  },
+  "tag.category.armor-weapons-tools": {
+    "defaultMessage": "Armor, Tools, and Weapons",
+    "message": "Броня, оружие и инструменты"
+  },
+  "tag.category.world-dimensions": {
+    "defaultMessage": "Dimensions",
+    "message": "Измерения"
+  },
+  "tag.category.server-utility": {
+    "defaultMessage": "Server Utility",
+    "message": "Утилиты сервера"
+  },
+  "tag.category.map-information": {
+    "defaultMessage": "Map and Information",
+    "message": "Карты и информация"
+  },
+  "tag.category.mc-addons": {
+    "defaultMessage": "Addons",
+    "message": "Аддоны"
+  },
+  "tag.category.world-biomes": {
+    "defaultMessage": "Biomes",
+    "message": "Биомы"
+  },
+  "tag.category.library-api": {
+    "defaultMessage": "API and Library",
+    "message": "Библиотеки и API"
+  },
+  "tag.category.mc-food": {
+    "defaultMessage": "Food",
+    "message": "Еда"
+  },
+  "tag.category.technology-farming": {
+    "defaultMessage": "Farming",
+    "message": "Фермерство"
+  },
+  "tag.category.world-mobs": {
+    "defaultMessage": "Mobs",
+    "message": "Мобы"
+  },
+  "tag.category.technology-automation": {
+    "defaultMessage": "Automation",
+    "message": "Автоматизация"
+  },
+  "tag.category.utility-qol": {
+    "defaultMessage": "Utility & QoL",
+    "message": "Утилиты и удобства"
+  },
+  "tag.category.world-structures": {
+    "defaultMessage": "Structures",
+    "message": "Структуры"
+  },
+  "tag.category.technology-item-fluid-energy-transport": {
+    "defaultMessage": "Energy, Fluid, and Item Transport",
+    "message": "Транспортировка ресурсов"
+  },
+  "tag.category.redstone": {
+    "defaultMessage": "Redstone",
+    "message": "Редстоун"
+  },
+  "tag.category.mc-miscellaneous": {
+    "defaultMessage": "Miscellaneous",
+    "message": "Разное"
+  },
+  "tag.category.world-gen": {
+    "defaultMessage": "World Gen",
+    "message": "Генерация мира"
+  },
+  "tag.category.performance": {
+    "defaultMessage": "Performance",
+    "message": "Оптимизация"
+  },
+  "tag.category.cosmetic": {
+    "defaultMessage": "Cosmetic",
+    "message": "Косметика"
+  },
+  "tag.category.world-ores-resources": {
+    "defaultMessage": "Ores and Resources",
+    "message": "Руды и ресурсы"
+  },
+  "tag.category.technology-processing": {
+    "defaultMessage": "Processing",
+    "message": "Переработка"
+  },
+  "tag.category.sixteen-x": {
+    "defaultMessage": "16x",
+    "message": "16x"
+  },
+  "tag.category.thirty-two-x": {
+    "defaultMessage": "32x",
+    "message": "32x"
+  },
+  "tag.category.sixty-four-x": {
+    "defaultMessage": "64x",
+    "message": "64x"
+  },
+  "tag.category.one-twenty-eight-x": {
+    "defaultMessage": "128x",
+    "message": "128x"
+  },
+  "tag.category.two-fifty-six-x": {
+    "defaultMessage": "256x",
+    "message": "256x"
+  },
+  "tag.category.five-twelve-x-and-beyond": {
+    "defaultMessage": "512x and Higher",
+    "message": "512x и выше"
+  },
+  "tag.category.photo-realistic": {
+    "defaultMessage": "Photo Realistic",
+    "message": "Фотореализм"
+  },
+  "tag.category.traditional": {
+    "defaultMessage": "Traditional",
+    "message": "Традиционные"
+  },
+  "tag.category.animated": {
+    "defaultMessage": "Animated",
+    "message": "Анимированные"
+  },
+  "tag.category.modern": {
+    "defaultMessage": "Modern",
+    "message": "Современные"
+  },
+  "tag.category.steampunk": {
+    "defaultMessage": "Steampunk",
+    "message": "Стимпанк"
+  },
+  "tag.category.medieval": {
+    "defaultMessage": "Medieval",
+    "message": "Средневековье"
+  },
+  "tag.category.font-packs": {
+    "defaultMessage": "Font Packs",
+    "message": "Шрифты"
+  },
+  "tag.category.mod-support": {
+    "defaultMessage": "Mod Support",
+    "message": "Поддержка модов"
+  },
+  "tag.category.data-packs": {
+    "defaultMessage": "Data Packs",
+    "message": "Датапаки"
+  },
+  "tag.category.vanilla": {
+    "defaultMessage": "Vanilla+",
+    "message": "Ванилла / Ванилла+"
+  },
+  "tag.category.tech": {
+    "defaultMessage": "Tech",
+    "message": "Технологии"
+  },
+  "tag.category.hardcore": {
+    "defaultMessage": "Hardcore",
+    "message": "Хардкор"
+  },
+  "tag.category.blood-magic": {
+    "defaultMessage": "Blood Magic",
+    "message": "Blood Magic"
+  },
+  "tag.category.create": {
+    "defaultMessage": "Create",
+    "message": "Create"
+  },
+  "tag.category.integrated-dynamics": {
+    "defaultMessage": "Integrated Dynamics",
+    "message": "Integrated Dynamics"
+  },
+  "tag.category.galacticraft": {
+    "defaultMessage": "Galacticraft",
+    "message": "Galacticraft"
+  },
+  "tag.category.bug-fixes": {
+    "defaultMessage": "Bug Fixes",
+    "message": "Исправление ошибок"
+  },
+  "tag.category.applied-energistics-2": {
+    "defaultMessage": "Applied Energistics 2",
+    "message": "Applied Energistics 2"
+  },
+  "tag.category.kubejs": {
+    "defaultMessage": "KubeJS",
+    "message": "KubeJS"
+  },
+  "tag.category.addons-tinkers-construct": {
+    "defaultMessage": "Tinker's Construct",
+    "message": "Tinkers' Construct"
+  },
+  "tag.category.addons-industrialcraft": {
+    "defaultMessage": "Industrial Craft",
+    "message": "Industrial Craft"
+  },
+  "tag.category.education": {
+    "defaultMessage": "Education",
+    "message": "Образование"
+  },
+  "tag.category.addons-buildcraft": {
+    "defaultMessage": "Buildcraft",
+    "message": "BuildCraft"
+  },
+  "tag.category.crafttweaker": {
+    "defaultMessage": "CraftTweaker",
+    "message": "CraftTweaker"
+  },
+  "tag.category.addons-thermalexpansion": {
+    "defaultMessage": "Thermal Expansion",
+    "message": "Thermal Expansion"
+  },
+  "tag.category.addons-forestry": {
+    "defaultMessage": "Forestry",
+    "message": "Forestry"
+  },
+  "tag.category.mc-creator": {
+    "defaultMessage": "MCreator",
+    "message": "MCreator"
+  },
+  "tag.category.technology-genetics": {
+    "defaultMessage": "Genetics",
+    "message": "Генетика"
+  },
+  "tag.category.twilight-forest": {
+    "defaultMessage": "Twilight Forest",
+    "message": "Twilight Forest"
+  },
+  "tag.category.addons-thaumcraft": {
+    "defaultMessage": "Thaumcraft",
+    "message": "Thaumcraft"
+  },
+  "tag.category.twitch-integration": {
+    "defaultMessage": "Twitch Integration",
+    "message": "Интеграция с Twitch"
+  },
+  "tag.category.technology-player-transport": {
+    "defaultMessage": "Player Transport",
+    "message": "Перемещение игрока"
+  },
+  "tag.category.technology-energy": {
+    "defaultMessage": "Energy",
+    "message": "Энергия"
+  },
+  "tag.category.creativemode": {
+    "defaultMessage": "CreativeMode",
+    "message": "Творческий режим"
+  },
+  "tag.category.refined-storage": {
+    "defaultMessage": "Refined Storage",
+    "message": "Refined Storage"
+  },
+  "tag.category.rlcraft": {
+    "defaultMessage": "RLCraft",
+    "message": "RLCraft"
+  },
+  "tag.category.farmers-delight": {
+    "defaultMessage": "Farmer's Delight",
+    "message": "Farmer's Delight"
+  },
+  "tag.category.modjam-2025": {
+    "defaultMessage": "ModJam 2025",
+    "message": "ModJam 2025"
+  },
+  "tag.category.miscellaneous": {
+    "defaultMessage": "Miscellaneous",
+    "message": "Разное"
   }
 }

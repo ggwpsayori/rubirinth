@@ -17,6 +17,7 @@ import type { RouteLocationRaw } from 'vue-router'
 import AutoLink from '#ui/components/base/AutoLink.vue'
 import Avatar from '#ui/components/base/Avatar.vue'
 import BulletDivider from '#ui/components/base/BulletDivider.vue'
+import SourceBrandIcon from '#ui/components/base/SourceBrandIcon.vue'
 import type { ButtonMenuOption } from '#ui/components/base/buttons'
 import { IconButton, TeleportOverflowMenu } from '#ui/components/base/buttons'
 import Checkbox from '#ui/components/base/Checkbox.vue'
@@ -35,6 +36,13 @@ import type {
 } from '../types'
 
 const { formatMessage } = useVIntl()
+
+const resolvedProjectSource = computed(() => {
+	if (props.project?.id?.startsWith('cf:')) return 'curseforge'
+	if (!props.external && props.project?.id && !props.project.id.includes('.')) return 'modrinth'
+	return null
+})
+
 
 const messages = defineMessages({
 	selectProject: {
@@ -201,7 +209,12 @@ const installTooltip = computed(() => {
 					</div>
 				</div>
 				<div class="flex min-w-0 flex-col gap-0.5">
-					<div class="flex min-w-0 items-center gap-1">
+					<div class="flex min-w-0 items-center gap-1.5">
+						<SourceBrandIcon
+							v-if="resolvedProjectSource"
+							:source="resolvedProjectSource"
+							size="sm"
+						/>
 						<AutoLink
 							:target="
 								typeof projectLink === 'string' && projectLink.startsWith('http')

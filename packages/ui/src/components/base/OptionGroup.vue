@@ -1,7 +1,7 @@
 <template>
 	<nav
 		ref="scrollContainer"
-		class="card-shadow relative flex w-fit overflow-x-auto rounded-full bg-bg-raised p-1 text-sm font-bold"
+		class="card-shadow relative flex w-fit overflow-x-auto rounded-full bg-bg-raised p-1 text-sm font-bold" :class="{ 'opacity-50 pointer-events-none cursor-not-allowed': disabled }"
 	>
 		<Button
 			v-for="(option, index) in options"
@@ -9,12 +9,12 @@
 			ref="optionButtons"
 			type="quiet"
 			interaction="none"
-			class="z-[1] !h-auto !gap-2 !rounded-full !px-4 !py-2"
+			:disabled="disabled" class="z-[1] !h-auto !gap-2 !rounded-full !px-4 !py-2"
 			:class="{
 				'!text-brand': modelValue === option,
 				'!text-primary': modelValue !== option,
 			}"
-			@click="setOption(option)"
+			@click="!disabled && setOption(option)"
 		>
 			<slot :option="option" :selected="modelValue === option" />
 		</Button>
@@ -41,6 +41,7 @@ const modelValue = defineModel<T>({ required: true })
 
 const props = defineProps<{
 	options: T[]
+	disabled?: boolean
 }>()
 
 const scrollContainer = ref<HTMLElement | null>(null)

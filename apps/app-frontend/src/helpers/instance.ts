@@ -762,3 +762,48 @@ export async function unlink_shared_instance(instanceId: string): Promise<void> 
 export async function unpublish_shared_instance(instanceId: string): Promise<void> {
 	return await invoke('plugin:instance|instance_share_unpublish', { instanceId })
 }
+
+export type InstanceModpackSource = 'modrinth' | 'curseforge' | null
+
+export function getInstanceModpackSource(
+	instance?: { link?: InstanceLink | null } | null,
+): InstanceModpackSource {
+	if (!instance?.link) return null
+
+	const link = instance.link
+	const projectId =
+		link.project_id ??
+		(link as any).content_project_id ??
+		(link as any).server_project_id ??
+		(link as any).modpack_project_id
+
+	if (typeof projectId === 'string' && projectId.length > 0) {
+		if (projectId.startsWith('cf:')) {
+			return 'curseforge'
+		}
+		return 'modrinth'
+	}
+
+	const versionId =
+		link.version_id ??
+		(link as any).content_version_id ??
+		(link as any).modpack_version_id
+
+	if (typeof versionId === 'string' && versionId.length > 0) {
+		if (versionId.startsWith('cf:')) {
+			return 'curseforge'
+		}
+	}
+
+	if (link.type === 'imported_modpack') {
+		const filename = (link as any).filename?.toLowerCase() ?? ''
+		if (filename.endsWith('.mrpack')) {
+			return 'modrinth'
+		}
+		if (filename.endsWith('.zip')) {
+			return 'curseforge'
+		}
+	}
+
+	return null
+}

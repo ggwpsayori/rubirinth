@@ -126,6 +126,301 @@ export const loaderMessages = defineMessages({
 })
 
 export const categoryMessages = defineMessages({
+	'redstone': {
+		id: 'tag.category.redstone',
+		defaultMessage: 'Redstone',
+	},
+
+	'expert': {
+		id: 'tag.category.expert',
+		defaultMessage: 'Expert',
+	},
+
+	'exploration': {
+		id: 'tag.category.exploration',
+		defaultMessage: 'Exploration',
+	},
+
+	'cosmetic': {
+		id: 'tag.category.cosmetic',
+		defaultMessage: 'Cosmetic',
+	},
+
+	'performance': {
+		id: 'tag.category.performance',
+		defaultMessage: 'Performance',
+	},
+
+	'horror': {
+		id: 'tag.category.horror',
+		defaultMessage: 'Horror',
+	},
+
+	'magic': {
+		id: 'tag.category.magic',
+		defaultMessage: 'Magic',
+	},
+
+	'storage': {
+		id: 'tag.category.storage',
+		defaultMessage: 'Storage',
+	},
+
+	'technology': {
+		id: 'tag.category.technology',
+		defaultMessage: 'Technology',
+	},
+
+	'miscellaneous': {
+		id: 'tag.category.miscellaneous',
+		defaultMessage: 'Miscellaneous',
+	},
+
+	'modjam-2025': {
+		id: 'tag.category.modjam-2025',
+		defaultMessage: 'ModJam 2025',
+	},
+
+	'farmers-delight': {
+		id: 'tag.category.farmers-delight',
+		defaultMessage: "Farmer's Delight",
+	},
+
+	'rlcraft': {
+		id: 'tag.category.rlcraft',
+		defaultMessage: 'RLCraft',
+	},
+
+	'refined-storage': {
+		id: 'tag.category.refined-storage',
+		defaultMessage: 'Refined Storage',
+	},
+
+	'creativemode': {
+		id: 'tag.category.creativemode',
+		defaultMessage: 'CreativeMode',
+	},
+
+	'technology-energy': {
+		id: 'tag.category.technology-energy',
+		defaultMessage: 'Energy',
+	},
+
+	'technology-player-transport': {
+		id: 'tag.category.technology-player-transport',
+		defaultMessage: 'Player Transport',
+	},
+
+	'twitch-integration': {
+		id: 'tag.category.twitch-integration',
+		defaultMessage: 'Twitch Integration',
+	},
+
+	'addons-thaumcraft': {
+		id: 'tag.category.addons-thaumcraft',
+		defaultMessage: 'Thaumcraft',
+	},
+
+	'twilight-forest': {
+		id: 'tag.category.twilight-forest',
+		defaultMessage: 'Twilight Forest',
+	},
+
+	'technology-genetics': {
+		id: 'tag.category.technology-genetics',
+		defaultMessage: 'Genetics',
+	},
+
+	'mc-creator': {
+		id: 'tag.category.mc-creator',
+		defaultMessage: 'MCreator',
+	},
+
+	'addons-forestry': {
+		id: 'tag.category.addons-forestry',
+		defaultMessage: 'Forestry',
+	},
+
+	'addons-thermalexpansion': {
+		id: 'tag.category.addons-thermalexpansion',
+		defaultMessage: 'Thermal Expansion',
+	},
+
+	'crafttweaker': {
+		id: 'tag.category.crafttweaker',
+		defaultMessage: 'CraftTweaker',
+	},
+
+	'addons-buildcraft': {
+		id: 'tag.category.addons-buildcraft',
+		defaultMessage: 'Buildcraft',
+	},
+
+	'education': {
+		id: 'tag.category.education',
+		defaultMessage: 'Education',
+	},
+
+	'addons-industrialcraft': {
+		id: 'tag.category.addons-industrialcraft',
+		defaultMessage: 'Industrial Craft',
+	},
+
+	'addons-tinkers-construct': {
+		id: 'tag.category.addons-tinkers-construct',
+		defaultMessage: "Tinker's Construct",
+	},
+
+	'kubejs': {
+		id: 'tag.category.kubejs',
+		defaultMessage: 'KubeJS',
+	},
+
+	'applied-energistics-2': {
+		id: 'tag.category.applied-energistics-2',
+		defaultMessage: 'Applied Energistics 2',
+	},
+
+	'bug-fixes': {
+		id: 'tag.category.bug-fixes',
+		defaultMessage: 'Bug Fixes',
+	},
+
+	'galacticraft': {
+		id: 'tag.category.galacticraft',
+		defaultMessage: 'Galacticraft',
+	},
+
+	'integrated-dynamics': {
+		id: 'tag.category.integrated-dynamics',
+		defaultMessage: 'Integrated Dynamics',
+	},
+
+	'create': {
+		id: 'tag.category.create',
+		defaultMessage: 'Create',
+	},
+
+	'blood-magic': {
+		id: 'tag.category.blood-magic',
+		defaultMessage: 'Blood Magic',
+	},
+
+	'hardcore': {
+		id: 'tag.category.hardcore',
+		defaultMessage: 'Hardcore',
+	},
+
+	'multiplayer': {
+		id: 'tag.category.multiplayer',
+		defaultMessage: 'Multiplayer',
+	},
+
+	'skyblock': {
+		id: 'tag.category.skyblock',
+		defaultMessage: 'Skyblock',
+	},
+
+	'quests': {
+		id: 'tag.category.quests',
+		defaultMessage: 'Quests',
+	},
+
+	'tech': {
+		id: 'tag.category.tech',
+		defaultMessage: 'Tech',
+	},
+
+	'vanilla': {
+		id: 'tag.category.vanilla',
+		defaultMessage: 'Vanilla+',
+	},
+
+	'fantasy': {
+		id: 'tag.category.fantasy',
+		defaultMessage: 'Fantasy',
+	},
+
+	'realistic': {
+		id: 'tag.category.realistic',
+		defaultMessage: 'Realistic',
+	},
+
+	'data-packs': {
+		id: 'tag.category.data-packs',
+		defaultMessage: 'Data Packs',
+	},
+
+	'mod-support': {
+		id: 'tag.category.mod-support',
+		defaultMessage: 'Mod Support',
+	},
+
+	'font-packs': {
+		id: 'tag.category.font-packs',
+		defaultMessage: 'Font Packs',
+	},
+
+	'medieval': {
+		id: 'tag.category.medieval',
+		defaultMessage: 'Medieval',
+	},
+
+	'steampunk': {
+		id: 'tag.category.steampunk',
+		defaultMessage: 'Steampunk',
+	},
+
+	'modern': {
+		id: 'tag.category.modern',
+		defaultMessage: 'Modern',
+	},
+
+	'animated': {
+		id: 'tag.category.animated',
+		defaultMessage: 'Animated',
+	},
+
+	'traditional': {
+		id: 'tag.category.traditional',
+		defaultMessage: 'Traditional',
+	},
+
+	'photo-realistic': {
+		id: 'tag.category.photo-realistic',
+		defaultMessage: 'Photo Realistic',
+	},
+
+	'five-twelve-x-and-beyond': {
+		id: 'tag.category.five-twelve-x-and-beyond',
+		defaultMessage: '512x and Higher',
+	},
+
+	'two-fifty-six-x': {
+		id: 'tag.category.two-fifty-six-x',
+		defaultMessage: '256x',
+	},
+
+	'one-twenty-eight-x': {
+		id: 'tag.category.one-twenty-eight-x',
+		defaultMessage: '128x',
+	},
+
+	'sixty-four-x': {
+		id: 'tag.category.sixty-four-x',
+		defaultMessage: '64x',
+	},
+
+	'thirty-two-x': {
+		id: 'tag.category.thirty-two-x',
+		defaultMessage: '32x',
+	},
+
+	'sixteen-x': {
+		id: 'tag.category.sixteen-x',
+		defaultMessage: '16x',
+	},
+
 	'128x': {
 		id: 'tag.category.128x',
 		defaultMessage: '128x',
@@ -157,6 +452,138 @@ export const categoryMessages = defineMessages({
 	'8x-': {
 		id: 'tag.category.8x-',
 		defaultMessage: '8x or lower',
+	},
+	'extra-large': {
+		id: 'tag.category.extra-large',
+		defaultMessage: 'Extra Large',
+	},
+	'small-light': {
+		id: 'tag.category.small-light',
+		defaultMessage: 'Small / Light',
+	},
+	'combat-pvp': {
+		id: 'tag.category.combat-pvp',
+		defaultMessage: 'Combat / PvP',
+	},
+	'sci-fi': {
+		id: 'tag.category.sci-fi',
+		defaultMessage: 'Sci-Fi',
+	},
+	'adventure-and-rpg': {
+		id: 'tag.category.adventure-and-rpg',
+		defaultMessage: 'Adventure and RPG',
+	},
+	'adventure-rpg': {
+		id: 'tag.category.adventure-rpg',
+		defaultMessage: 'Adventure & RPG',
+	},
+	'ftb-official-pack': {
+		id: 'tag.category.ftb-official-pack',
+		defaultMessage: 'FTB Official Pack',
+	},
+	'map-based': {
+		id: 'tag.category.map-based',
+		defaultMessage: 'Map Based',
+	},
+	horror: {
+		id: 'tag.category.horror',
+		defaultMessage: 'Horror',
+	},
+	'mini-game': {
+		id: 'tag.category.mini-game',
+		defaultMessage: 'Mini Game',
+	},
+	exploration: {
+		id: 'tag.category.exploration',
+		defaultMessage: 'Exploration',
+	},
+	expert: {
+		id: 'tag.category.expert',
+		defaultMessage: 'Expert',
+	},
+	'armor-weapons-tools': {
+		id: 'tag.category.armor-weapons-tools',
+		defaultMessage: 'Armor, Tools, and Weapons',
+	},
+	'world-dimensions': {
+		id: 'tag.category.world-dimensions',
+		defaultMessage: 'Dimensions',
+	},
+	'server-utility': {
+		id: 'tag.category.server-utility',
+		defaultMessage: 'Server Utility',
+	},
+	'map-information': {
+		id: 'tag.category.map-information',
+		defaultMessage: 'Map and Information',
+	},
+	'mc-addons': {
+		id: 'tag.category.mc-addons',
+		defaultMessage: 'Addons',
+	},
+	'world-biomes': {
+		id: 'tag.category.world-biomes',
+		defaultMessage: 'Biomes',
+	},
+	'library-api': {
+		id: 'tag.category.library-api',
+		defaultMessage: 'API and Library',
+	},
+	'mc-food': {
+		id: 'tag.category.mc-food',
+		defaultMessage: 'Food',
+	},
+	'technology-farming': {
+		id: 'tag.category.technology-farming',
+		defaultMessage: 'Farming',
+	},
+	'world-mobs': {
+		id: 'tag.category.world-mobs',
+		defaultMessage: 'Mobs',
+	},
+	'technology-automation': {
+		id: 'tag.category.technology-automation',
+		defaultMessage: 'Automation',
+	},
+	'utility-qol': {
+		id: 'tag.category.utility-qol',
+		defaultMessage: 'Utility & QoL',
+	},
+	'world-structures': {
+		id: 'tag.category.world-structures',
+		defaultMessage: 'Structures',
+	},
+	'technology-item-fluid-energy-transport': {
+		id: 'tag.category.technology-item-fluid-energy-transport',
+		defaultMessage: 'Energy, Fluid, and Item Transport',
+	},
+	redstone: {
+		id: 'tag.category.redstone',
+		defaultMessage: 'Redstone',
+	},
+	'mc-miscellaneous': {
+		id: 'tag.category.mc-miscellaneous',
+		defaultMessage: 'Miscellaneous',
+	},
+	'world-gen': {
+		id: 'tag.category.world-gen',
+		defaultMessage: 'World Gen',
+	},
+	performance: {
+		id: 'tag.category.performance',
+		defaultMessage: 'Performance',
+	},
+	cosmetic: {
+		id: 'tag.category.cosmetic',
+		defaultMessage: 'Cosmetic',
+	},
+	'world-ores-resources': {
+		id: 'tag.category.world-ores-resources',
+		defaultMessage: 'Ores and Resources',
+	},
+	'technology-processing': {
+		id: 'tag.category.technology-processing',
+		defaultMessage: 'Processing',
 	},
 	adventure: {
 		id: 'tag.category.adventure',

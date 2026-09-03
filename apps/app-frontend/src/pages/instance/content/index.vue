@@ -467,7 +467,11 @@ const managedContent = computed<ManagedContentData | null>(() => {
 				iconUrl: project.icon_url ?? undefined,
 				link: linkedModpackProject.value
 					? {
-							path: `/project/${project.slug ?? project.id}`,
+							path: `/project/${
+								linkedModpackProject.value.id?.startsWith('cf:')
+									? linkedModpackProject.value.id
+									: (project.slug ?? project.id)
+							}`,
 							query: { i: instancePage.instanceId.value },
 						}
 					: undefined,
@@ -477,7 +481,11 @@ const managedContent = computed<ManagedContentData | null>(() => {
 			versionLink:
 				linkedModpackProject.value && linkedModpackVersion.value
 					? {
-							path: `/project/${linkedModpackProject.value.slug ?? linkedModpackProject.value.id}/version/${linkedModpackVersion.value.id}`,
+							path: `/project/${
+								linkedModpackProject.value.id?.startsWith('cf:')
+									? linkedModpackProject.value.id
+									: (linkedModpackProject.value.slug ?? linkedModpackProject.value.id)
+							}/version/${linkedModpackVersion.value.id}`,
 							query: { i: instancePage.instanceId.value },
 						}
 					: undefined,

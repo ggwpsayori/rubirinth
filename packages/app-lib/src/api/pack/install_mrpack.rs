@@ -1,3 +1,29 @@
+
+async fn read_pack_manifest_from_zip(
+    zip_reader: &mut MrpackZipReader,
+) -> crate::Result<PackFormat> {
+    if let Some(manifest_idx) = zip_reader.file().entries().iter().position(|f| {
+        matches!(f.filename().as_str(), Ok("modrinth.index.json"))
+    }) {
+        let manifest_str = zip_reader.read_entry_to_string(manifest_idx).await?;
+        let pack: PackFormat = serde_json::from_str(&manifest_str)?;
+        return Ok(pack);
+    }
+
+    if let Some(manifest_idx) = zip_reader.file().entries().iter().position(|f| {
+        matches!(f.filename().as_str(), Ok("manifest.json"))
+    }) {
+        let manifest_str = zip_reader.read_entry_to_string(manifest_idx).await?;
+        let cf_manifest: crate::util::curseforge::CurseforgeManifest =
+            serde_json::from_str(&manifest_str)?;
+        let pack = crate::util::curseforge::curseforge_manifest_to_pack_format(&cf_manifest).await?;
+        return Ok(pack);
+    }
+
+    Err(crate::Error::from(crate::ErrorKind::InputError(
+        "No pack manifest (modrinth.index.json or manifest.json) found in modpack archive".to_string(),
+    )))
+}
 use crate::State;
 use crate::api::instance::CONFIG_FILE_EXTENSIONS;
 use crate::event::emit::loading_try_for_each_concurrent;
@@ -264,18 +290,7 @@ pub(crate) async fn get_external_files_from_mrpack(
     mut progress: impl FnMut(u64, u64) -> crate::Result<()> + Send,
 ) -> crate::Result<Vec<String>> {
     let mut zip_reader = MrpackZipReader::new(file).await?;
-    let Some(manifest_idx) =
-        zip_reader.file().entries().iter().position(|entry| {
-            matches!(entry.filename().as_str(), Ok("modrinth.index.json"))
-        })
-    else {
-        return Err(crate::Error::from(crate::ErrorKind::InputError(
-            "No pack manifest found in mrpack".to_string(),
-        )));
-    };
-
-    let manifest = zip_reader.read_entry_to_string(manifest_idx).await?;
-    let pack: PackFormat = serde_json::from_str(&manifest)?;
+    let pack = read_pack_manifest_from_zip(&mut zip_reader).await?;
     let mut candidates = pack
         .files
         .into_iter()
@@ -513,19 +528,7 @@ pub(crate) async fn install_zipped_mrpack_files_with_reporter(
         )
         .await?;
 
-    // Extract index of modrinth.index.json
-    let Some(manifest_idx) = zip_reader.file().entries().iter().position(|f| {
-        matches!(f.filename().as_str(), Ok("modrinth.index.json"))
-    }) else {
-        return Err(crate::Error::from(crate::ErrorKind::InputError(
-            "No pack manifest found in mrpack".to_string(),
-        )));
-    };
-
-    let mut manifest = String::new();
-    manifest.push_str(&zip_reader.read_entry_to_string(manifest_idx).await?);
-
-    let pack: PackFormat = serde_json::from_str(&manifest)?;
+    let pack = read_pack_manifest_from_zip(&mut zip_reader).await?;
     if &*pack.game != "minecraft" {
         return Err(crate::ErrorKind::InputError(
             "Pack does not support Minecraft".to_string(),
@@ -1187,18 +1190,7 @@ pub async fn remove_all_related_files(
     // Updates can remove files from a locally imported or downloaded pack, so share the same reader path.
     let mut zip_reader = MrpackZipReader::new(&mrpack_file).await?;
 
-    // Extract index of modrinth.index.json
-    let Some(manifest_idx) = zip_reader.file().entries().iter().position(|f| {
-        matches!(f.filename().as_str(), Ok("modrinth.index.json"))
-    }) else {
-        return Err(crate::Error::from(crate::ErrorKind::InputError(
-            "No pack manifest found in mrpack".to_string(),
-        )));
-    };
-
-    let manifest = zip_reader.read_entry_to_string(manifest_idx).await?;
-
-    let pack: PackFormat = serde_json::from_str(&manifest)?;
+    let pack = read_pack_manifest_from_zip(&mut zip_reader).await?;
 
     if &*pack.game != "minecraft" {
         return Err(crate::ErrorKind::InputError(

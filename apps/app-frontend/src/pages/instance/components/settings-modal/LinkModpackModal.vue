@@ -1,5 +1,6 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import type { Labrinth } from '@modrinth/api-client'
+import { curseforgeClient } from '@modrinth/api-client'
 import {
 	Avatar,
 	Button,
@@ -11,6 +12,7 @@ import {
 	injectNotificationManager,
 	Input,
 	NewModal,
+	OptionGroup,
 	useDebugLogger,
 	useVIntl,
 } from '@modrinth/ui'
@@ -25,6 +27,7 @@ import {
 } from '@modrinth/assets'
 import { useQueryClient } from '@tanstack/vue-query'
 import { computed, ref, watch } from 'vue'
+import InstanceSourceIcon from '@/components/ui/InstanceSourceIcon.vue'
 
 import { get_project, get_project_versions } from '@/helpers/cache'
 import { edit } from '@/helpers/instance'
@@ -46,6 +49,7 @@ const queryClient = useQueryClient()
 const debug = useDebugLogger('LinkModpackModal')
 
 const modal = ref<InstanceType<typeof NewModal>>()
+const contentSource = ref<'Modrinth' | 'CurseForge'>('Modrinth')
 const searchQuery = ref('')
 const searchLoading = ref(false)
 const searchResults = ref<any[]>([])
@@ -58,11 +62,15 @@ const linking = ref(false)
 const messages = defineMessages({
 	modalHeader: {
 		id: 'installation-settings.link-modpack.modal-header',
-		defaultMessage: 'Link to Modrinth modpack',
+		defaultMessage: 'Link to modpack',
 	},
-	searchPlaceholder: {
-		id: 'installation-settings.link-modpack.search-placeholder',
-		defaultMessage: 'Search modpacks or paste Modrinth URL / slug...',
+	searchPlaceholderModrinth: {
+		id: 'installation-settings.link-modpack.search-placeholder-modrinth',
+		defaultMessage: 'Search Modrinth modpacks or paste Modrinth URL / slug...',
+	},
+	searchPlaceholderCurseforge: {
+		id: 'installation-settings.link-modpack.search-placeholder-curseforge',
+		defaultMessage: 'Search CurseForge modpacks or paste CurseForge URL / ID...',
 	},
 	searchLabel: {
 		id: 'installation-settings.link-modpack.search-label',
@@ -120,8 +128,20 @@ const messages = defineMessages({
 
 function parseModpackQuery(input: string): string {
 	const trimmed = input.trim()
-	const urlMatch = trimmed.match(/modrinth\.com\/modpack\/([a-zA-Z0-9_-]+)/)
-	if (urlMatch) return urlMatch[1]
+	const mrMatch = trimmed.match(/modrinth\.com\/modpack\/([a-zA-Z0-9_-]+)/)
+	if (mrMatch) {
+		contentSource.value = 'Modrinth'
+		return mrMatch[1]
+	}
+	const cfMatch = trimmed.match(/curseforge\.com\/minecraft\/modpacks\/([a-zA-Z0-9_-]+)/)
+	if (cfMatch) {
+		contentSource.value = 'CurseForge'
+		return cfMatch[1]
+	}
+	if (trimmed.startsWith('cf:')) {
+		contentSource.value = 'CurseForge'
+		return trimmed.slice(3)
+	}
 	return trimmed
 }
 
@@ -140,52 +160,135 @@ watch(searchQuery, (newQuery) => {
 	}, 300)
 })
 
+watch(contentSource, () => {
+	searchResults.value = []
+	if (searchQuery.value.trim()) {
+		performSearch(searchQuery.value)
+	}
+})
+
 async function performSearch(query: string) {
 	const parsed = parseModpackQuery(query)
 	if (!parsed) return
 
 	searchLoading.value = true
 	try {
-		let directProject: any = null
-		if (!parsed.includes(' ')) {
-			directProject = await get_project(parsed).catch(() => null)
-			if (directProject && directProject.project_type !== 'modpack') {
-				directProject = null
+		if (contentSource.value === 'CurseForge') {
+			let directProject: any = null
+			const cleanQuery = parsed.trim()
+
+			if (/^\d+$/.test(cleanQuery)) {
+				const mod = await curseforgeClient.getMod(parseInt(cleanQuery, 10)).catch(() => null)
+				if (mod) {
+					directProject = {
+						id: `cf:${mod.id}`,
+						slug: mod.slug,
+						title: mod.name,
+						description: mod.summary,
+						icon_url: mod.logo?.thumbnailUrl || mod.logo?.url,
+						author: mod.authors?.[0]?.name,
+						downloads: mod.downloadCount,
+					}
+				}
 			}
-		}
 
-		const results = await client.labrinth.projects_v3.search({
-			query: parsed,
-			new_filters: 'project_types = "modpack"',
-			limit: 8,
-		})
-
-		const hits = results.hits.map((hit) => ({
-			id: hit.project_id,
-			slug: hit.slug,
-			title: hit.name,
-			description: hit.description,
-			icon_url: hit.icon_url,
-			author: hit.author,
-			downloads: hit.downloads,
-		}))
-
-		if (directProject) {
-			const exists = hits.some((h) => h.id === directProject.id)
-			if (!exists) {
-				hits.unshift({
-					id: directProject.id,
-					slug: directProject.slug,
-					title: directProject.title,
-					description: directProject.description,
-					icon_url: directProject.icon_url,
-					author: directProject.author ?? directProject.team,
-					downloads: directProject.downloads,
-				})
+			let slugMod: any = null
+			if (!cleanQuery.includes(' ') && !directProject) {
+				const slugRes = await curseforgeClient.searchMods({
+					classId: 4471,
+					slug: cleanQuery.toLowerCase(),
+					pageSize: 1,
+				}).catch(() => null)
+				if (slugRes?.data?.[0]) {
+					const mod = slugRes.data[0]
+					slugMod = {
+						id: `cf:${mod.id}`,
+						slug: mod.slug,
+						title: mod.name,
+						description: mod.summary,
+						icon_url: mod.logo?.thumbnailUrl || mod.logo?.url,
+						author: mod.authors?.[0]?.name,
+						downloads: mod.downloadCount,
+					}
+				}
 			}
-		}
 
-		searchResults.value = hits
+			const results = await curseforgeClient.searchMods({
+				classId: 4471, // modpacks
+				searchFilter: cleanQuery,
+				sortField: 2, // Popularity
+				sortOrder: 'desc',
+				pageSize: 15,
+			})
+
+			let hits = (results.data || []).map((mod: any) => ({
+				id: `cf:${mod.id}`,
+				slug: mod.slug,
+				title: mod.name,
+				description: mod.summary,
+				icon_url: mod.logo?.thumbnailUrl || mod.logo?.url,
+				author: mod.authors?.[0]?.name,
+				downloads: mod.downloadCount,
+			}))
+
+			if (slugMod && !hits.some((h: any) => h.id === slugMod.id)) {
+				hits.unshift(slugMod)
+			}
+			if (directProject && !hits.some((h: any) => h.id === directProject.id)) {
+				hits.unshift(directProject)
+			}
+
+			hits.sort((a: any, b: any) => {
+				const aExact = a.slug?.toLowerCase() === cleanQuery.toLowerCase() || a.title?.toLowerCase() === cleanQuery.toLowerCase()
+				const bExact = b.slug?.toLowerCase() === cleanQuery.toLowerCase() || b.title?.toLowerCase() === cleanQuery.toLowerCase()
+				if (aExact && !bExact) return -1
+				if (!aExact && bExact) return 1
+				return (b.downloads ?? 0) - (a.downloads ?? 0)
+			})
+
+			searchResults.value = hits
+		} else {
+			let directProject: any = null
+			if (!parsed.includes(' ')) {
+				directProject = await get_project(parsed).catch(() => null)
+				if (directProject && directProject.project_type !== 'modpack') {
+					directProject = null
+				}
+			}
+
+			const results = await client.labrinth.projects_v3.search({
+				query: parsed,
+				new_filters: 'project_types = "modpack"',
+				limit: 8,
+			})
+
+			const hits = results.hits.map((hit) => ({
+				id: hit.project_id,
+				slug: hit.slug,
+				title: hit.name,
+				description: hit.description,
+				icon_url: hit.icon_url,
+				author: hit.author,
+				downloads: hit.downloads,
+			}))
+
+			if (directProject) {
+				const exists = hits.some((h) => h.id === directProject.id)
+				if (!exists) {
+					hits.unshift({
+						id: directProject.id,
+						slug: directProject.slug,
+						title: directProject.title,
+						description: directProject.description,
+						icon_url: directProject.icon_url,
+						author: directProject.author ?? directProject.team,
+						downloads: directProject.downloads,
+					})
+				}
+			}
+
+			searchResults.value = hits
+		}
 	} catch (err) {
 		debug('performSearch: error', err)
 		searchResults.value = []
@@ -250,8 +353,8 @@ const versionComboboxOptions = computed<ComboboxOption<string>[]>(() => {
 
 		return {
 			value: v.id,
-			label: isCompatible ? `★ ${name} (${v.version_number})` : `${name} (${v.version_number})`,
-			subLabel: `${gameVersions} • ${loaders}${isCompatible ? ` — ${compatibleLabel}` : ''}`,
+			label: isCompatible ? `✓ ${name} (${v.version_number})` : `${name} (${v.version_number})`,
+			subLabel: `${gameVersions}   ${loaders}${isCompatible ? ` - ${compatibleLabel}` : ''}`,
 		}
 	})
 })
@@ -316,6 +419,11 @@ function show() {
 	clearSelectedProject()
 	searchQuery.value = ''
 	searchResults.value = []
+	if (props.instance.link?.project_id?.startsWith('cf:')) {
+		contentSource.value = 'CurseForge'
+	} else {
+		contentSource.value = 'Modrinth'
+	}
 	modal.value?.show()
 }
 
@@ -328,16 +436,25 @@ defineExpose({
 	<NewModal
 		ref="modal"
 		:header="formatMessage(messages.modalHeader)"
-		max-width="580px"
+		width="680px"
+		max-width="min(680px, calc(100vw - 2rem))"
 		:closable="!linking"
 	>
 		<div class="flex flex-col gap-5">
-			<!-- If no modpack is selected yet, show search input and list -->
+			<!-- If no modpack is selected yet, show source switcher, search input and list -->
 			<div v-if="!selectedProject" class="flex flex-col gap-3">
+				<div class="flex items-center gap-2">
+					<OptionGroup v-model="contentSource" :options="['Modrinth', 'CurseForge']">
+						<template #default="{ option }">
+							{{ option }}
+						</template>
+					</OptionGroup>
+				</div>
+
 				<div class="relative flex items-center">
 					<Input
 						v-model="searchQuery"
-						:placeholder="formatMessage(messages.searchPlaceholder)"
+						:placeholder="formatMessage(contentSource === 'CurseForge' ? messages.searchPlaceholderCurseforge : messages.searchPlaceholderModrinth)"
 						class="w-full"
 						:aria-label="formatMessage(messages.searchLabel)"
 					>
@@ -363,6 +480,7 @@ defineExpose({
 						<Avatar :src="project.icon_url" :alt="project.title" size="2.5rem" no-shadow raised />
 						<div class="flex min-w-0 flex-1 flex-col">
 							<div class="flex items-center gap-2">
+								<InstanceSourceIcon :source="project.id.startsWith('cf:') ? 'curseforge' : 'modrinth'" size="xs" />
 								<span class="truncate font-semibold text-contrast">{{ project.title }}</span>
 								<span v-if="project.author" class="text-xs text-secondary truncate">
 									by {{ project.author }}
@@ -393,9 +511,12 @@ defineExpose({
 							class="shrink-0"
 						/>
 						<div class="flex min-w-0 flex-col">
-							<span class="truncate font-semibold text-contrast text-base">
-								{{ selectedProject.title }}
-							</span>
+							<div class="flex items-center gap-2">
+								<InstanceSourceIcon :source="selectedProject.id.startsWith('cf:') ? 'curseforge' : 'modrinth'" size="sm" />
+								<span class="truncate font-semibold text-contrast text-base">
+									{{ selectedProject.title }}
+								</span>
+							</div>
 							<span v-if="selectedProject.author" class="truncate text-xs text-secondary">
 								by {{ selectedProject.author }}
 							</span>

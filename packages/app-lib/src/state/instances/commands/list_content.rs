@@ -297,9 +297,28 @@ pub(crate) async fn list_linked_modpack_content(
         .await;
     }
 
-    let Some((_, version_id)) = linked_modpack_ids(&link) else {
+    let Some((project_id, version_id)) = linked_modpack_ids(&link) else {
         return Ok(Vec::new());
     };
+    if project_id.starts_with("cf:") || version_id.starts_with("cf:") {
+        let files = content_projects_for_scope(
+            &resolved,
+            cache_behaviour,
+            state,
+            ContentFilter::All,
+        )
+        .await?;
+        let files = files.into_iter().collect::<Vec<_>>();
+
+        return content_files_to_content_items(
+            &resolved.instance,
+            resolved.content_set.loader,
+            &files,
+            cache_behaviour,
+            state,
+        )
+        .await;
+    }
     let modpack_ids = match get_modpack_identifiers(
         &version_id,
         &resolved.content_set,
@@ -636,10 +655,144 @@ async fn content_projects_for_scope(
         &state.api_semaphore,
     )
     .await?;
-    let file_info_by_hash = file_info
+    let mut file_info_by_hash = file_info
         .into_iter()
         .map(|file| (file.hash.clone(), file))
         .collect::<HashMap<_, _>>();
+
+    let instance_full_path = state.directories.instances_dir().join(&resolved.instance.path);
+
+    let link = sqlite::instance_rows::get_instance_link(
+        &resolved.instance.id,
+        &state.pool,
+    )
+    .await?;
+    let is_curseforge_pack = linked_modpack_ids(&link)
+        .map_or(false, |(p, _)| p.starts_with("cf:"));
+
+    // Identify files to fingerprint on CurseForge:
+    // ONLY check files that have NO assigned project_id in the instance database!
+    let unmapped_files: Vec<_> = files
+        .iter()
+        .filter(|f| {
+            if f.missing || !f.file_name.ends_with(".jar") {
+                return false;
+            }
+            let entry = entries_by_file_id.get(f.id.as_str());
+            // If the file already has a known project_id (e.g. installed from Modrinth or CurseForge), NEVER overwrite it!
+            if entry.and_then(|e| e.project_id.as_deref()).is_some() {
+                return false;
+            }
+            // If Modrinth cache already recognized the file and this is not a CurseForge pack, don't fingerprint on CF
+            if !is_curseforge_pack && file_info_by_hash.contains_key(&f.sha1) {
+                return false;
+            }
+            true
+        })
+        .cloned()
+        .collect();
+
+    if !unmapped_files.is_empty() {
+        let files_to_fingerprint = unmapped_files
+            .iter()
+            .map(|f| (f.sha1.clone(), instance_full_path.join(&f.relative_path)))
+            .collect::<Vec<_>>();
+
+        let fp_results: Vec<(String, u32)> = tokio::task::spawn_blocking(move || {
+            let mut res = Vec::new();
+            for (sha1, path) in files_to_fingerprint {
+                if let Ok(data) = std::fs::read(&path) {
+                    let fp = crate::util::curseforge::compute_curseforge_fingerprint(&data);
+                    res.push((sha1, fp));
+                }
+            }
+            res
+        })
+        .await
+        .unwrap_or_default();
+
+        if !fp_results.is_empty() {
+            let fp_map: HashMap<u32, String> = fp_results.iter().map(|(s, fp)| (*fp, s.clone())).collect();
+            let fps: Vec<u32> = fp_results.iter().map(|(_, fp)| *fp).collect();
+
+            if let Ok(matches) = crate::util::curseforge::get_curseforge_fingerprint_matches(&fps).await {
+                let mut new_mod_ids = Vec::new();
+                let mut entries_to_cache = Vec::new();
+
+                for m in matches {
+                    let sha1 = m
+                        .file
+                        .hashes
+                        .iter()
+                        .find(|h| h.algo == 1)
+                        .map(|h| h.value.to_lowercase())
+                        .or_else(|| {
+                            m.file
+                                .file_fingerprint
+                                .and_then(|fp| fp_map.get(&(fp as u32)).cloned())
+                        });
+
+                    if let Some(sha1) = sha1 {
+                        let cf_file = CachedFile {
+                            hash: sha1.clone(),
+                            project_id: format!("cf:{}", m.file.mod_id),
+                            version_id: format!("cf:{}", m.file.id),
+                        };
+                        new_mod_ids.push(m.file.mod_id);
+                        file_info_by_hash.insert(sha1.clone(), cf_file.clone());
+
+                        entries_to_cache.push(crate::state::CacheValue::File(cf_file).get_entry());
+                        let ver = crate::util::curseforge::map_curseforge_file_to_version(&m.file);
+                        entries_to_cache.push(crate::state::CacheValue::Version(ver).get_entry());
+                    }
+                }
+
+                if !new_mod_ids.is_empty() {
+                    new_mod_ids.sort();
+                    new_mod_ids.dedup();
+                    for chunk in new_mod_ids.chunks(100) {
+                        if let Ok(mods) = crate::util::curseforge::get_curseforge_mods_batch(chunk).await {
+                            for m in mods {
+                                let project = crate::util::curseforge::map_curseforge_mod_to_project(&m, None);
+                                entries_to_cache.push(crate::state::CacheValue::Project(project).get_entry());
+                            }
+                        }
+                    }
+
+                    if !entries_to_cache.is_empty() {
+                        let _ = CachedEntry::upsert_many(&entries_to_cache, &state.pool).await;
+                    }
+
+                    let mut tx = state.pool.begin().await.ok();
+                    for (file_id, entry) in &entries_by_file_id {
+                        // STRICT RULE: ONLY update entries that had NO project_id!
+                        if entry.project_id.is_none() {
+                            if let Some(file) = files.iter().find(|f| f.id == **file_id) {
+                                if let Some(cf_info) = file_info_by_hash.get(&file.sha1) {
+                                    if cf_info.project_id.starts_with("cf:") {
+                                        if let Some(ref mut transaction) = tx {
+                                            let _ = sqlx::query(
+                                                "UPDATE instance_content_entries SET project_id = ?, version_id = ? WHERE file_id = ?",
+                                            )
+                                            .bind(&cf_info.project_id)
+                                            .bind(&cf_info.version_id)
+                                            .bind(file_id)
+                                            .execute(&mut **transaction)
+                                            .await;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if let Some(transaction) = tx {
+                        let _ = transaction.commit().await;
+                    }
+                }
+            }
+        }
+    }
+
     let installed_channels = get_installed_update_channels(
         &file_info_by_hash,
         cache_behaviour,
@@ -647,40 +800,112 @@ async fn content_projects_for_scope(
         &state.api_semaphore,
     )
     .await?;
-    let update_keys = files
+    // Separate files into Modrinth vs CurseForge so they NEVER cross platforms for updates
+    let (mr_files, cf_files): (Vec<_>, Vec<_>) = files
         .iter()
         .filter(|file| file_info_by_hash.contains_key(&file.sha1))
-        .filter_map(|file| {
-            let project_type = project_type_for_file(file)?;
-            let channel = resolved.instance.update_channel.least_stable(
-                installed_channels
-                    .get(&file.sha1)
-                    .copied()
-                    .unwrap_or(resolved.instance.update_channel),
-            );
-            Some(file_update_cache_key(
-                &file.sha1,
-                project_type,
-                &resolved.content_set,
-                channel,
-            ))
-        })
-        .collect::<Vec<_>>();
-    let update_key_refs =
-        update_keys.iter().map(String::as_str).collect::<Vec<_>>();
-    let file_updates = CachedEntry::get_file_update_many(
-        &update_key_refs,
-        cache_behaviour,
-        &state.pool,
-        &state.api_semaphore,
-    )
-    .await?;
+        .partition(|file| {
+            if let Some(info) = file_info_by_hash.get(&file.sha1) {
+                !info.project_id.starts_with("cf:")
+                    && !info.version_id.starts_with("cf:")
+            } else {
+                true
+            }
+        });
+
     let mut updates_by_hash: HashMap<String, Vec<String>> = HashMap::new();
-    for update in file_updates {
-        updates_by_hash
-            .entry(update.hash)
-            .or_default()
-            .push(update.update_version_id);
+
+    // 1. Modrinth files: check updates ONLY via Modrinth file update API
+    if !mr_files.is_empty() {
+        let update_keys = mr_files
+            .iter()
+            .filter_map(|file| {
+                let project_type = project_type_for_file(file)?;
+                let channel = resolved.instance.update_channel.least_stable(
+                    installed_channels
+                        .get(&file.sha1)
+                        .copied()
+                        .unwrap_or(resolved.instance.update_channel),
+                );
+                Some(file_update_cache_key(
+                    &file.sha1,
+                    project_type,
+                    &resolved.content_set,
+                    channel,
+                ))
+            })
+            .collect::<Vec<_>>();
+        let update_key_refs =
+            update_keys.iter().map(String::as_str).collect::<Vec<_>>();
+        let file_updates = CachedEntry::get_file_update_many(
+            &update_key_refs,
+            cache_behaviour,
+            &state.pool,
+            &state.api_semaphore,
+        )
+        .await?;
+        for update in file_updates {
+            updates_by_hash
+                .entry(update.hash)
+                .or_default()
+                .push(update.update_version_id);
+        }
+    }
+
+    // 2. CurseForge files: check updates ONLY via CurseForge project versions
+    if !cf_files.is_empty() {
+        let mut cf_project_ids = std::collections::HashSet::new();
+        for file in &cf_files {
+            if let Some(info) = file_info_by_hash.get(&file.sha1) {
+                if info.project_id.starts_with("cf:") {
+                    cf_project_ids.insert(info.project_id.clone());
+                }
+            }
+        }
+
+        let project_id_list: Vec<String> = cf_project_ids.into_iter().collect();
+        // In list_content, if there are many CF files (> 15), skip synchronous network update checks to avoid freezing page load with 100+ HTTP requests
+        let version_futures: Vec<_> = if project_id_list.len() > 15 {
+            Vec::new()
+        } else {
+            project_id_list.iter().map(|pid| {
+                CachedEntry::get_project_versions(
+                    pid,
+                    cache_behaviour,
+                    &state.pool,
+                    &state.api_semaphore,
+                )
+            }).collect()
+        };
+        let versions_results = futures::future::join_all(version_futures).await;
+
+        let mut cf_versions_by_project: HashMap<String, Vec<Version>> = HashMap::new();
+        for (pid, res) in project_id_list.into_iter().zip(versions_results) {
+            if let Ok(Some(versions)) = res {
+                cf_versions_by_project.insert(pid, versions);
+            }
+        }
+
+        for file in &cf_files {
+            if let Some(info) = file_info_by_hash.get(&file.sha1) {
+                if info.project_id.starts_with("cf:") {
+                    if let Some(versions) = cf_versions_by_project.get(&info.project_id) {
+                        if let Some(update_version_id) =
+                            super::check_content_updates::check_file_version_update(
+                                &info.version_id,
+                                versions,
+                                &resolved.content_set.game_version,
+                                resolved.content_set.loader.as_str(),
+                                resolved.instance.update_channel,
+                            )
+                        {
+                            updates_by_hash
+                                .insert(file.sha1.clone(), vec![update_version_id]);
+                        }
+                    }
+                }
+            }
+        }
     }
     let output = DashMap::new();
 
@@ -1278,6 +1503,17 @@ async fn get_modpack_identifiers(
     pool: &SqlitePool,
     fetch_semaphore: &FetchSemaphore,
 ) -> crate::Result<ModpackIdentifiers> {
+    if version_id.starts_with("cf:") {
+        let entries = sqlite::content_rows::get_content_entries(&content_set.id, pool).await?;
+        let project_ids = entries
+            .iter()
+            .filter_map(|e| e.project_id.clone())
+            .collect::<HashSet<_>>();
+        return Ok(ModpackIdentifiers {
+            hashes: HashSet::new(),
+            project_ids,
+        });
+    }
     if let Some(cached) =
         CachedEntry::get_modpack_files(version_id, pool, fetch_semaphore)
             .await?

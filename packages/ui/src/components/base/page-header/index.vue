@@ -9,6 +9,7 @@
 				<div class="flex min-w-0 flex-1 flex-col justify-center gap-2">
 					<div class="flex flex-col justify-center gap-1.5">
 						<div class="flex flex-wrap items-center gap-2">
+							<slot name="title-prefix" />
 							<h1
 								class="m-0 min-w-0 max-w-full text-2xl font-semibold leading-none text-contrast"
 								:class="titleClassValue"

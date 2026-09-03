@@ -33,7 +33,7 @@
 				:summary="project.summary"
 				:tags="getProjectCardTags(project)"
 				:all-tags="getProjectCardAllTags(project)"
-				:followers="project.followers"
+				:followers="project.id.startsWith('cf:') ? undefined : project.followers"
 				:banner="project.gallery?.find((image) => image.featured)?.url"
 				:color="project.color"
 				:environment="project.environment?.[0]"

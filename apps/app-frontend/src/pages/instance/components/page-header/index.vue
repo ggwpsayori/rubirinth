@@ -1,5 +1,9 @@
 <template>
 	<PageHeader :title="instance.name">
+		<template #title-prefix>
+			<InstanceSourceIcon :instance="instance" size="xl" />
+		</template>
+
 		<template #leading>
 			<Avatar
 				:src="iconSrc"
@@ -168,6 +172,7 @@
 </template>
 
 <script setup lang="ts">
+import InstanceSourceIcon from '@/components/ui/InstanceSourceIcon.vue'
 import type { Labrinth } from '@modrinth/api-client'
 import {
 	ClockIcon,

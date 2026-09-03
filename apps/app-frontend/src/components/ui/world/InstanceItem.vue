@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import InstanceSourceIcon from '@/components/ui/InstanceSourceIcon.vue'
 import {
 	EyeIcon,
 	FolderOpenIcon,
@@ -223,9 +224,10 @@ function openContextMenu(event: MouseEvent) {
 					pad-transparent-corners
 				/>
 				<div class="flex flex-col col-span-2 justify-center gap-1 h-full">
-					<div class="flex items-center gap-1.5">
-						<div class="text-contrast truncate text-base font-semibold">
-							{{ instance.name }}
+					<div class="flex items-center gap-1.5 min-w-0">
+						<div class="text-contrast truncate text-base font-semibold flex items-center gap-1.5 min-w-0">
+							<InstanceSourceIcon :instance="instance" size="sm" />
+							<span class="truncate">{{ instance.name }}</span>
 						</div>
 						<TagItem
 							v-if="newlyAdded"

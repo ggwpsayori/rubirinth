@@ -442,6 +442,7 @@ onUnmounted(() => {
 						"
 						:instance-id="item.instance.id"
 						:instance-name="item.instance.name"
+						:instance="item.instance"
 						:instance-icon="item.instance.icon_path"
 						@refresh="
 							() =>

@@ -84,10 +84,14 @@
 		</div>
 		<ContextMenu ref="options" :label="formatMessage(messages.instanceActionsLabel)" />
 	</div>
+	<div v-else class="flex h-full w-full items-center justify-center p-12">
+		<LoaderCircleIcon class="h-10 w-10 animate-spin text-primary" />
+	</div>
 </template>
 <script setup lang="ts">
 import {
 	BoxesIcon,
+	LoaderCircleIcon,
 	ClipboardCopyIcon,
 	EditIcon,
 	FolderOpenIcon,

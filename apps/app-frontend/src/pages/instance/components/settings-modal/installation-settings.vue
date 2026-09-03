@@ -183,7 +183,7 @@ async function unlinkSharedInstance() {
 const messages = defineMessages({
 	linkModpackButton: {
 		id: 'installation-settings.link-modpack.button',
-		defaultMessage: 'Link to Modrinth modpack',
+		defaultMessage: 'Link to modpack',
 	},
 	loaderVersion: {
 		id: 'instance.settings.tabs.installation.loader-version',

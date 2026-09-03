@@ -86,6 +86,12 @@ async fn record_current_app_version(pool: &Pool<Sqlite>) -> crate::Result<()> {
 async fn stale_data_cleanup(pool: &Pool<Sqlite>) -> crate::Result<()> {
     let mut tx = pool.begin().await?;
 
+    // Clear any CurseForge aliases in the cache table to prevent UNIQUE (data_type, alias) collisions
+    sqlx::query("UPDATE cache SET alias = NULL WHERE (id LIKE 'cf:%' OR id LIKE 'cf-%') AND alias IS NOT NULL")
+        .execute(&mut *tx)
+        .await
+        .ok();
+
     let has_skin_tables = sqlx::query!(
 		"SELECT COUNT(*) AS \"count!: i64\" FROM sqlite_master WHERE type = 'table' AND name IN ('custom_minecraft_skins', 'minecraft_users')",
 	)

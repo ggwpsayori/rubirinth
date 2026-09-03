@@ -1,4 +1,4 @@
-import type { Labrinth } from '@modrinth/api-client'
+import { isCurseforgeId, type Labrinth } from '@modrinth/api-client'
 import type { ContentInstallInstance, ContentInstallProjectInfo, ContentItem } from '@modrinth/ui'
 import {
 	createContext,
@@ -17,6 +17,7 @@ import {
 	get_organization,
 	get_project,
 	get_project_many,
+	get_project_versions,
 	get_team,
 	get_version_many,
 } from '@/helpers/cache.js'
@@ -397,6 +398,11 @@ export function createContentInstall(opts: {
 			removeInstallingItems(event.instance_id, event.project_ids)
 			markInstanceContentInstallFailed(event.instance_id)
 			markInstanceContentChanged(event.instance_id)
+			const storeInstance = instances.value.find((i) => i.id === event.instance_id)
+			if (storeInstance) {
+				storeInstance.installed = false
+				storeInstance.installing = false
+			}
 			opts.handleError(event.message)
 		}
 	})
@@ -883,16 +889,25 @@ export function createContentInstall(opts: {
 			})
 			callback(version)
 		} else if (instanceId) {
-			const [instanceOrNull, instanceProjects, versions] = await Promise.all([
-				get(instanceId),
-				get_projects(instanceId),
-				get_version_many(project.versions, 'must_revalidate') as Promise<
-					Labrinth.Versions.v2.Version[]
-				>,
-			])
+			const instanceOrNull = await get(instanceId)
 			if (!instanceOrNull) return
-
 			const instance = instanceOrNull
+
+			let versionsPromise: Promise<Labrinth.Versions.v2.Version[]>
+			if (isCurseforgeId(project.id) && instance.game_version) {
+				versionsPromise = get_project_versions(project.id, undefined, {
+					gameVersion: instance.game_version,
+				}).then((v) => (v && v.length > 0 ? v : get_version_many(project.versions, 'must_revalidate'))) as Promise<Labrinth.Versions.v2.Version[]>
+			} else {
+				versionsPromise = get_version_many(project.versions, 'must_revalidate') as Promise<
+					Labrinth.Versions.v2.Version[]
+				>
+			}
+
+			const [instanceProjects, versions] = await Promise.all([
+				get_projects(instanceId),
+				versionsPromise,
+			])
 			const projectVersions = versions.sort(
 				(a, b) => dayjs(b.date_published).valueOf() - dayjs(a.date_published).valueOf(),
 			)

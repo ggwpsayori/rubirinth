@@ -186,7 +186,7 @@
 						{
 							label: formatMessage(messages.galleryTab),
 							href: projectGalleryHref,
-							shown: data.gallery.length > 0,
+							shown: (data.gallery?.length ?? 0) > 0,
 						},
 					]"
 				/>
@@ -301,6 +301,7 @@ import {
 	get as getInstance,
 	get_projects as getInstanceProjects,
 	getInstanceIconUrl,
+	getInstanceModpackSource,
 	kill,
 	list as listInstances,
 } from '@/helpers/instance'
@@ -532,6 +533,7 @@ const projectInstallContext = computed(() => {
 	if (instance.value) {
 		return {
 			name: instance.value.name,
+			source: getInstanceModpackSource(instance.value),
 			loader: instance.value.loader,
 			gameVersion: instance.value.game_version,
 			iconSrc: getInstanceIconUrl(instance.value.icon_path),

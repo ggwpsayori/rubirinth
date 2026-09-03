@@ -126,7 +126,8 @@ async function addServer(instance) {
 							class="mr-2 [--size:2rem]"
 							pad-transparent-corners
 						/>
-						{{ instance.name }}
+						<InstanceSourceIcon :instance="instance" size="xs" />
+						<span>{{ instance.name }}</span>
 					</router-link>
 					<Button :disabled="instance.added || instance.adding" @click="addServer(instance)">
 						<PlusIcon v-if="!instance.added && !instance.adding" />

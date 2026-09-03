@@ -95,6 +95,8 @@ import InstallToPlayModal from '@/components/ui/modal/InstallToPlayModal.vue'
 import ModpackAlreadyInstalledModal from '@/components/ui/modal/ModpackAlreadyInstalledModal.vue'
 import ModrinthAccountRequiredModal from '@/components/ui/modal/ModrinthAccountRequiredModal.vue'
 import UpdateToPlayModal from '@/components/ui/modal/UpdateToPlayModal.vue'
+import HomeNavIcon from '@/components/ui/HomeNavIcon.vue'
+import SkinNavIcon from '@/components/ui/SkinNavIcon.vue'
 import NavButton from '@/components/ui/NavButton.vue'
 import NewIconEditorNotification from '@/components/ui/new-icon-editor-notification/index.vue'
 import { shouldShowNewIconEditorNotification } from '@/components/ui/new-icon-editor-notification/show-notification'
@@ -2020,7 +2022,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 						(route.path.startsWith('/browse') || route.path.startsWith('/project')) && route.query.i
 				"
 			>
-				<PlayIcon class="ml-0.5" />
+				<HomeNavIcon class="!size-[28px] ml-0.5" />
 			</NavButton>
 			<NavButton
 				v-tooltip.right="formatMessage(commonMessages.discoverContentLabel)"
@@ -2033,7 +2035,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				<CompassIcon />
 			</NavButton>
 			<NavButton v-tooltip.right="formatMessage(appMessages.skinSelectorLabel)" to="/skins">
-				<ShirtIcon />
+				<SkinNavIcon />
 			</NavButton>
 			<NavButton
 				v-if="globalSyncedOptionsQuery.data.value?.screenshots"

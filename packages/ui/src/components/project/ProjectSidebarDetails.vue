@@ -23,6 +23,13 @@
 		<div
 			class="flex flex-col gap-3 [&>div>svg]:shrink-0 [&>div>svg]:mt-[1px] [&>div]:flex [&>div]:gap-2 [&>div]:items-start [&>div>div]:min-w-0"
 		>
+			<div class="flex items-center gap-2">
+				<SourceBrandIcon
+					:source="project.id.startsWith('cf:') ? 'curseforge' : 'modrinth'"
+					size="sm"
+				/>
+				<span class="font-medium text-contrast">{{ project.id.startsWith('cf:') ? 'CurseForge' : 'Modrinth' }}</span>
+			</div>
 			<div v-if="photosensitivityDisclosure" class="text-orange">
 				<EyeIcon aria-hidden="true" />
 				<div class="flex flex-col gap-1">
@@ -178,7 +185,7 @@
 					</button>
 				</div>
 			</div>
-			<div v-if="showFollowers">
+			<div v-if="showFollowers && !project.id.startsWith('cf:')">
 				<HeartIcon aria-hidden="true" />
 				<div>
 					{{ formatMessage(commonMessages.projectFollowers, { count: project.followers }) }}

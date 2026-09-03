@@ -786,10 +786,34 @@ impl CacheValue {
 
     fn get_alias(&self) -> Option<String> {
         match self {
-            CacheValue::Project(project) => project.slug.clone(),
-            CacheValue::ProjectV3(project) => project.slug.clone(),
-            CacheValue::User(user) => Some(user.username.clone()),
-            CacheValue::Organization(org) => Some(org.slug.clone()),
+            CacheValue::Project(project) => {
+                if project.id.starts_with("cf:") {
+                    None
+                } else {
+                    project.slug.clone()
+                }
+            }
+            CacheValue::ProjectV3(project) => {
+                if project.id.starts_with("cf:") {
+                    None
+                } else {
+                    project.slug.clone()
+                }
+            }
+            CacheValue::User(user) => {
+                if user.id.starts_with("cf-user-") || user.id.starts_with("cf:") {
+                    None
+                } else {
+                    Some(user.username.clone())
+                }
+            }
+            CacheValue::Organization(org) => {
+                if org.id.starts_with("cf:") {
+                    None
+                } else {
+                    Some(org.slug.clone())
+                }
+            }
 
             CacheValue::FileHash(_) => {
                 Some(format!("{}.disabled", self.get_key()))
@@ -1104,11 +1128,141 @@ impl CachedEntry {
                         data: Some(data),
                         expires: row.expires,
                     });
-                } else {
+                } else if !row.id.starts_with("cf:") && !row.id.starts_with("cf-") {
                     remaining_keys.retain(remove_matching_key);
                 }
             }
         }
+
+        // Intercept CurseForge (cf:, cf-team-) keys for Project, Version, ProjectVersions, and Team
+        let mut cf_return_vals = Vec::new();
+        let cf_keys: Vec<String> = remaining_keys
+            .iter()
+            .filter(|k| k.starts_with("cf:") || k.starts_with("cf-team-") || k.starts_with("cf-user-"))
+            .map(|k| k.to_string())
+            .collect();
+
+        if !cf_keys.is_empty() {
+            match type_ {
+                CacheValueType::Project => {
+                    let mut mod_ids = Vec::new();
+                    for k in &cf_keys {
+                        let raw_id = k.strip_prefix("cf:").unwrap_or(k);
+                        if let Ok(mod_id) = raw_id.parse::<u32>() {
+                            mod_ids.push(mod_id);
+                        }
+                    }
+                    if mod_ids.len() == 1 {
+                        let mod_id = mod_ids[0];
+                        if let Ok(mod_) = crate::util::curseforge::get_curseforge_mod(mod_id).await {
+                            let body = crate::util::curseforge::get_curseforge_mod_description(mod_id).await.ok();
+                            let project = crate::util::curseforge::map_curseforge_mod_to_project(&mod_, body);
+                            cf_return_vals.push(CacheValue::Project(project).get_entry());
+                        }
+                    } else if !mod_ids.is_empty() {
+                        if let Ok(mods) = crate::util::curseforge::get_curseforge_mods_batch(&mod_ids).await {
+                            for m in mods {
+                                let project = crate::util::curseforge::map_curseforge_mod_to_project(&m, None);
+                                cf_return_vals.push(CacheValue::Project(project).get_entry());
+                            }
+                        }
+                    }
+                }
+                CacheValueType::Version => {
+                    let mut file_ids = Vec::new();
+                    for k in &cf_keys {
+                        remaining_keys.remove(k.as_str());
+                        let raw_id = k.strip_prefix("cf:").unwrap_or(k);
+                        if let Ok(fid) = raw_id.parse::<u32>() {
+                            file_ids.push(fid);
+                        }
+                    }
+                    if !file_ids.is_empty() {
+                        if let Ok(files) = crate::util::curseforge::get_curseforge_files_batch(&file_ids).await {
+                            for f in files {
+                                let ver = crate::util::curseforge::map_curseforge_file_to_version(&f);
+                                cf_return_vals.push(CacheValue::Version(ver).get_entry());
+                            }
+                        }
+                    }
+                }
+                CacheValueType::ProjectVersions => {
+                    for k in &cf_keys {
+                        remaining_keys.remove(k.as_str());
+                        let raw_id = k.strip_prefix("cf:").unwrap_or(k);
+                        if let Ok(mod_id) = raw_id.parse::<u32>() {
+                            if let Ok(files) = crate::util::curseforge::get_curseforge_files(mod_id, 50).await {
+                                let versions = files.iter().map(|f| crate::util::curseforge::map_curseforge_file_to_version(f)).collect();
+                                cf_return_vals.push(CacheValue::ProjectVersions(CachedProjectVersions {
+                                    project_id: k.clone(),
+                                    versions,
+                                }).get_entry());
+                            }
+                        }
+                    }
+                }
+                CacheValueType::Team => {
+                    for k in &cf_keys {
+                        remaining_keys.remove(k.as_str());
+                        let raw_id = k.strip_prefix("cf-team-").or_else(|| k.strip_prefix("cf:")).unwrap_or(k);
+                        if let Ok(mod_id) = raw_id.parse::<u32>() {
+                            let mut members = Vec::new();
+                            if let Ok(mod_) = crate::util::curseforge::get_curseforge_mod(mod_id).await {
+                                for (idx, author) in mod_.authors.iter().enumerate() {
+                                    members.push(TeamMember {
+                                        team_id: k.clone(),
+                                        user: User {
+                                            id: format!("cf-user-{}", author.id),
+                                            username: author.name.clone(),
+                                            avatar_url: None,
+                                            bio: None,
+                                            created: Utc::now(),
+                                            role: "author".to_string(),
+                                            badges: 0,
+                                        },
+                                        is_owner: idx == 0,
+                                        role: if idx == 0 { "Owner".to_string() } else { "Author".to_string() },
+                                        ordering: idx as i64,
+                                    });
+                                }
+                            }
+                            if members.is_empty() {
+                                members.push(TeamMember {
+                                    team_id: k.clone(),
+                                    user: User {
+                                        id: format!("cf-user-{}", mod_id),
+                                        username: "CurseForge Author".to_string(),
+                                        avatar_url: None,
+                                        bio: None,
+                                        created: Utc::now(),
+                                        role: "author".to_string(),
+                                        badges: 0,
+                                    },
+                                    is_owner: true,
+                                    role: "Owner".to_string(),
+                                    ordering: 0,
+                                });
+                            }
+                            cf_return_vals.push(CacheValue::Team(members).get_entry());
+                        }
+                    }
+                }
+                _ => {
+                    for k in &cf_keys {
+                        remaining_keys.remove(k.as_str());
+                    }
+                }
+            }
+
+            if !cf_return_vals.is_empty() {
+                Self::upsert_many(&cf_return_vals, pool).await?;
+                return_vals.extend(cf_return_vals);
+            }
+        }
+
+        // Never send CurseForge keys to Modrinth fetch_many
+        remaining_keys.retain(|k| !k.starts_with("cf:") && !k.starts_with("cf-team-") && !k.starts_with("cf-user-"));
+        expired_keys.retain(|k| !k.starts_with("cf:") && !k.starts_with("cf-team-") && !k.starts_with("cf-user-"));
 
         if !remaining_keys.is_empty() {
             let res = Self::fetch_many(
@@ -1937,6 +2091,26 @@ impl CachedEntry {
 
                 for key in keys {
                     let project_id = key.to_string();
+                    if project_id.starts_with("cf:") {
+                        let raw_id = project_id.strip_prefix("cf:").unwrap_or(&project_id);
+                        if let Ok(mod_id) = raw_id.parse::<u32>() {
+                            if let Ok(files) = crate::util::curseforge::get_curseforge_files(mod_id, 50).await {
+                                let versions = files
+                                    .iter()
+                                    .map(|f| crate::util::curseforge::map_curseforge_file_to_version(f))
+                                    .collect();
+                                values.push((
+                                    CacheValue::ProjectVersions(CachedProjectVersions {
+                                        project_id,
+                                        versions,
+                                    })
+                                    .get_entry(),
+                                    true,
+                                ));
+                            }
+                        }
+                        continue;
+                    }
                     let url = format!(
                         "{}project/{}/version?include_changelog=false",
                         env!("MODRINTH_API_URL"),
@@ -2113,6 +2287,13 @@ impl CachedEntry {
         Ok(value)
     }
 
+    pub(crate) async fn insert_cache_entry(
+        entry: &Self,
+        exec: impl sqlx::Executor<'_, Database = sqlx::Sqlite>,
+    ) -> crate::Result<()> {
+        Self::upsert_many(std::slice::from_ref(entry), exec).await
+    }
+
     pub(crate) async fn upsert_many(
         items: &[Self],
         exec: impl sqlx::Executor<'_, Database = sqlx::Sqlite>,
@@ -2126,10 +2307,16 @@ impl CachedEntry {
                     .map(|value| value.to_json_value())
                     .transpose()?;
 
+                let alias = if item.id.starts_with("cf:") || item.id.starts_with("cf-") {
+                    None
+                } else {
+                    item.alias.clone()
+                };
+
                 Ok(serde_json::json!({
                     "id": item.id,
                     "data_type": item.type_.as_str(),
-                    "alias": item.alias,
+                    "alias": alias,
                     "data": data,
                     "expires": item.expires,
                 }))

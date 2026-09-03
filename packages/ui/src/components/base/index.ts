@@ -89,6 +89,7 @@ export type { MaybeCtxFn, StageButtonConfig, StageConfigInput } from './MultiSta
 export { default as MultiStageModal, resolveCtxFn } from './MultiStageModal.vue'
 export { default as NavTabs } from './NavTabs.vue'
 export { default as OptionGroup } from './OptionGroup.vue'
+export { default as SourceBrandIcon } from './SourceBrandIcon.vue'
 export { default as Page } from './Page.vue'
 export { default as PageHeader } from './page-header/index.vue'
 export { default as PageHeaderMetadata } from './page-header/metadata/index.vue'
