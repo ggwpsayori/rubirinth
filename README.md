@@ -1,39 +1,79 @@
-# ![Modrinth Monorepo Cover](/.github/assets/monorepo_cover.png)
+# Rubirinth App
 
-![Issues](https://img.shields.io/github/issues-raw/Modrinth/code?color=c78aff&label=issues&style=for-the-badge)
-![Pull Requests](https://img.shields.io/github/issues-pr-raw/Modrinth/code?color=c78aff&label=PRs&style=for-the-badge)
-![Contributors](https://img.shields.io/github/contributors/Modrinth/code?color=c78aff&label=contributors&style=for-the-badge)
-![Lines of Code](https://img.shields.io/endpoint?url=https://loctopus.creeperkatze.dev/github/modrinth/code/badge?style=flat&logoColor=white&color=c78aff&style=for-the-badge)
-![Commit Activity](https://img.shields.io/github/commit-activity/m/Modrinth/code?color=c78aff&label=commits&style=for-the-badge)
-![Last Commit](https://img.shields.io/github/last-commit/Modrinth/code?color=c78aff&label=last%20commit&style=for-the-badge)
+<p align="center">
+  <strong>Современный, быстрый и удобный лаунчер Minecraft на базе Modrinth App с глубокой интеграцией CurseForge, поддержкой скинов Ely.by и полной русской локализацией.</strong>
+</p>
 
-## Modrinth Monorepo
+<p align="center">
+  <a href="https://github.com/ggwpsayori/rubirinth/releases/latest">
+    <img src="https://img.shields.io/github/v/release/ggwpsayori/rubirinth?color=2ea043&label=%D0%A0%D0%B5%D0%BB%D0%B8%D0%B7&style=for-the-badge" alt="Latest Release">
+  </a>
+  <img src="https://img.shields.io/badge/%D0%9F%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0-Windows%20x64-0078d7?style=for-the-badge&logo=windows" alt="Platform">
+  <a href="LICENSE">
+    <img src="https://img.shields.io/github/license/ggwpsayori/rubirinth?style=for-the-badge" alt="License">
+  </a>
+</p>
 
-Welcome to the Modrinth Monorepo, the primary codebase for the Modrinth web interface and app. It contains ![Lines of code](https://img.shields.io/endpoint?url=https://loctopus.creeperkatze.dev/github/modrinth/code/badge%3Fformat%3Dhuman&logoColor=white&color=black&label=) lines of code and has ![Contributors](https://img.shields.io/github/contributors/Modrinth/code?color=black&label=) contributors!
+---
 
-If you're not a developer and you've stumbled upon this repository, you can access the web interface on the [Modrinth website](https://modrinth.com) and download the latest release of the app [here](https://modrinth.com/app).
+## 🌟 Ключевые возможности
 
-## Development
+### 🌐 Двойной каталог: Modrinth + CurseForge
+* **Поиск и установка в один клик:** ищите и скачивайте моды, модпаки, наборы ресурсов и шейдеры сразу из двух крупнейших платформ через единый интерфейс.
+* **Переключатель каталогов:** удобный фильтр в поисковой выдаче с сохранением выбранного источника.
+* **Свободное комбинирование:** вы можете скачивать моды с CurseForge в сборки Modrinth и наоборот — метаданные не перезаписываются и не конфликтуют.
+* **Цветная индикация площадок:** легко определяйте источник проекта по значкам в каталоге, карточках и списке модов сборки (зелёный значок Modrinth / оранжевый огонь CurseForge).
 
-This repository contains two primary packages. For detailed development information, please refer to their respective guides:
+### 🇷🇺 Качественная русская локализация
+* Полный перевод интерфейса лаунчера.
+* Переведены все категории контента, теги, описания фильтров и системные сообщения.
 
-- [Website frontend](https://docs.modrinth.com/contributing/knossos/)
-- [Desktop app](https://docs.modrinth.com/contributing/theseus/)
+### 👕 Система скинов Ely.by
+* Удобный просмотр и смена скинов игрового профиля прямо в окне приложения.
 
-## Contributing
+### ⚡ Производительность и надёжность
+* Нативное ядро на **Rust** (Tauri 2) и ультрабыстрый фронтенд на **Vue 3 + Vite**.
+* Локальное SQLite-кэширование метаданных и пакетные сетевые запросы исключают лаги и подвисания интерфейса даже на массивных сборках с сотнями модов.
+* Автоматическая проверка совместимости версий игры и загрузчиков (Fabric, Forge, NeoForge, Quilt).
 
-We welcome contributions! Before submitting any contributions, please read our [contributing guidelines](https://docs.modrinth.com/contributing/getting-started/).
+---
 
-If you plan to fork this repository for your own purposes, please review our [copying guidelines](COPYING.md).
+## 📥 Установка
 
-## Security
+1. Перейдите на страницу **[Последнего релиза](https://github.com/ggwpsayori/rubirinth/releases/latest)**.
+2. Скачайте файл установщика **`Rubirinth_x.x.x_x64-setup.exe`**.
+3. Запустите установщик и следуйте подсказкам мастера установки.
 
-If you discover a security vulnerability within our codebase, please follow our [responsible disclosure guidelines](https://modrinth.com/legal/security).
+---
 
-## Support
+## 🛠️ Сборка из исходников
 
-If you need help with the Modrinth web interface or app, please visit our [support page](https://support.modrinth.com). For general inquiries, you can also join our [Discord server](https://discord.modrinth.com).
+Для сборки проекта на вашем компьютере требуются:
+* **Node.js** версии 20+
+* **pnpm** версии 10+
+* **Rust** (stable toolchain)
+* **Visual Studio Build Tools** с компонентами C++ (для Windows)
 
-## License
+### Инструкция:
 
-All packages in this repository are licensed under their respective licenses. Refer to the LICENSE file in each package for more information.
+```bash
+# 1. Клонируйте репозиторий
+git clone https://github.com/ggwpsayori/rubirinth.git
+cd rubirinth
+
+# 2. Установите зависимости
+pnpm install
+
+# 3. Запуск в режиме разработки
+pnpm app:dev
+
+# 4. Сборка готового релизного установщика
+pnpm app:build
+```
+
+---
+
+## 🤝 Благодарности и лицензия
+
+* Проект создан на основе кодовой базы **[Modrinth App (Theseus)](https://github.com/modrinth/theseus)** от команды Modrinth.
+* Распространяется под лицензией **GNU General Public License v3.0 (GPL-3.0)**. Подробнее см. в файле [LICENSE](LICENSE).
