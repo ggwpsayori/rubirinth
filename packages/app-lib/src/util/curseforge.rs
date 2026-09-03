@@ -622,7 +622,7 @@ pub fn map_curseforge_file_to_version(file: &CurseforgeFile) -> Version {
         .filter_map(|v| {
             let lower = v.to_lowercase();
             match lower.as_str() {
-                "forge" | "fabric" | "quilt" | "neoforge" => Some(lower),
+                "forge" | "fabric" | "quilt" | "neoforge" | "iris" | "optifine" | "canvas" | "vanilla" | "minecraft" | "datapack" => Some(lower),
                 _ => None,
             }
         })

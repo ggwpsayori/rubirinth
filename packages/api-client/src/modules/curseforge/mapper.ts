@@ -206,7 +206,18 @@ export function mapCurseforgeFileToVersion(
 	const gameVersions = (file.gameVersions || []).filter((v) => /^\d+\.\d+(\.\d+)?$/.test(v))
 	const loaders = (file.gameVersions || [])
 		.map((v) => v.toLowerCase())
-		.filter((v) => ['forge', 'fabric', 'quilt', 'neoforge'].includes(v))
+		.filter((v) => [
+			'forge',
+			'fabric',
+			'quilt',
+			'neoforge',
+			'iris',
+			'optifine',
+			'canvas',
+			'vanilla',
+			'minecraft',
+			'datapack',
+		].includes(v))
 
 	const primaryFile: Labrinth.Versions.v2.VersionFile = {
 		hashes: {

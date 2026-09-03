@@ -242,9 +242,25 @@ pub(crate) async fn switch_project_version_with_dependencies(
             "Unable to install version id {version_id}. Not found."
         ))
     })?;
-    let content_type = ProjectType::get_from_loaders(version.loaders.clone())
-        .map(ContentType::from)
-        .unwrap_or(ContentType::Mod);
+    let content_type = if let Some(pt) = ProjectType::get_from_loaders(version.loaders.clone()) {
+        ContentType::from(pt)
+    } else if let Ok(Some(proj)) = crate::state::cache::CachedEntry::get_project(
+        &version.project_id,
+        None,
+        &state.pool,
+        &state.api_semaphore,
+    )
+    .await
+    {
+        match proj.project_type.as_str() {
+            "datapack" => ContentType::from(ProjectType::DataPack),
+            "resourcepack" => ContentType::from(ProjectType::ResourcePack),
+            "shader" | "shaderpack" => ContentType::from(ProjectType::ShaderPack),
+            _ => ContentType::Mod,
+        }
+    } else {
+        ContentType::Mod
+    };
     let plan = resolve_install_plan(
         instance_id,
         InstanceInstallProjectRequest {
@@ -416,12 +432,34 @@ pub(crate) async fn download_project_version(
         &state.pool,
     )
     .await?;
-    let project_type = ProjectType::get_from_loaders(version.loaders.clone())
-        .ok_or_else(|| {
-        crate::ErrorKind::InputError(format!(
+    let project_type = if let Some(pt) = ProjectType::get_from_loaders(version.loaders.clone()) {
+        pt
+    } else if let Ok(Some(proj)) = crate::state::cache::CachedEntry::get_project(
+        &version.project_id,
+        None,
+        &state.pool,
+        &state.api_semaphore,
+    )
+    .await
+    {
+        match proj.project_type.as_str() {
+            "mod" => ProjectType::Mod,
+            "datapack" => ProjectType::DataPack,
+            "resourcepack" => ProjectType::ResourcePack,
+            "shader" | "shaderpack" => ProjectType::ShaderPack,
+            _ => {
+                return Err(crate::ErrorKind::InputError(format!(
+                    "Unable to infer project type for version {version_id}"
+                ))
+                .as_error());
+            }
+        }
+    } else {
+        return Err(crate::ErrorKind::InputError(format!(
             "Unable to infer project type for version {version_id}"
         ))
-    })?;
+        .as_error());
+    };
     let project_id = version.project_id.clone();
     let version_id = version.id.clone();
 
