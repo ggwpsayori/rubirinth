@@ -77,6 +77,18 @@ export default defineConfig({
 		host: '127.0.0.1',
 		port: 1420,
 		strictPort: true,
+		proxy: {
+			'/elyby-api': {
+				target: 'http://skinsystem.ely.by',
+				changeOrigin: true,
+				rewrite: (path) => path.replace(/^\/elyby-api/, ''),
+			},
+			'/elyby-storage': {
+			target: 'http://ely.by',
+				changeOrigin: true,
+				rewrite: (path) => path.replace(/^\/elyby-storage/, ''),
+			},
+		},
 		headers: {
 			'content-security-policy': Object.entries(tauriConf.app.security.csp)
 				.map(([directive, sources]) => {

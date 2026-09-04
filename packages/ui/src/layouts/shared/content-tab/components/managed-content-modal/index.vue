@@ -35,6 +35,10 @@ import ContentCardTable from '../ContentCardTable.vue'
 import ContentSelectionBar from '../ContentSelectionBar.vue'
 
 const { formatMessage } = useVIntl()
+
+function getItemId(item: ContentItem): string {
+	return item.file_path || item.file_name || item.id
+}
 const pageContext = injectPageContext(null)
 
 interface Props {
@@ -129,18 +133,18 @@ const selectedFilters = ref<string[]>([])
 const selectedIds = ref<string[]>([])
 
 const selectedItems = computed(() =>
-	items.value.filter((item) => selectedIds.value.includes(item.id)),
+	items.value.filter((item) => selectedIds.value.includes(getItemId(item))),
 )
 const toggleableSelectedItems = computed(() => selectedItems.value)
 
 const allSelected = computed(() => {
 	if (filteredItems.value.length === 0) return false
-	return filteredItems.value.every((item) => selectedIds.value.includes(item.id))
+	return filteredItems.value.every((item) => selectedIds.value.includes(getItemId(item)))
 })
 
 const someSelected = computed(() => {
 	return (
-		filteredItems.value.some((item) => selectedIds.value.includes(item.id)) && !allSelected.value
+		filteredItems.value.some((item) => selectedIds.value.includes(getItemId(item))) && !allSelected.value
 	)
 })
 
@@ -148,7 +152,7 @@ function toggleSelectAll() {
 	if (allSelected.value || someSelected.value) {
 		selectedIds.value = []
 	} else {
-		selectedIds.value = filteredItems.value.map((item) => item.id)
+		selectedIds.value = filteredItems.value.map((item) => getItemId(item))
 	}
 }
 
@@ -253,20 +257,22 @@ function contentVersionLabel(item: ContentItem): string {
 }
 
 const tableItems = computed<ContentCardTableItem[]>(() =>
-	filteredItems.value.map((item) => ({
-		id: item.id,
-		project: item.project ?? {
-			id: item.id,
-			slug: null,
-			title: item.embedded_metadata?.name ?? item.file_name,
-			icon_url: item.embedded_metadata?.icon_url ?? null,
-		},
-		projectLink: !item.external && item.project?.id ? `/project/${item.project.id}` : undefined,
-		version: item.version ?? {
-			id: item.id,
-			version_number: contentVersionLabel(item),
-			file_name: item.file_name,
-		},
+	filteredItems.value.map((item) => {
+		const id = getItemId(item)
+		return {
+			id,
+			project: item.project ?? {
+				id,
+				slug: null,
+				title: item.embedded_metadata?.name ?? item.file_name,
+				icon_url: item.embedded_metadata?.icon_url ?? null,
+			},
+			projectLink: !item.external && item.project?.id ? `/project/${item.project.id}` : undefined,
+			version: item.version ?? {
+				id,
+				version_number: contentVersionLabel(item),
+				file_name: item.file_name,
+			},
 		owner: item.owner
 			? {
 					...item.owner,
@@ -305,16 +311,16 @@ const tableItems = computed<ContentCardTableItem[]>(() =>
 				: []),
 			...(props.getOverflowOptions?.(item) ?? []),
 		],
-	})),
+	}}),
 )
 const externalItemIds = computed(
-	() => new Set(items.value.filter((item) => item.external && !item.source).map((item) => item.id)),
+	() => new Set(items.value.filter((item) => item.external && !item.source).map((item) => getItemId(item))),
 )
 const externalSlicerUrls = computed(() => {
 	const urls: Record<string, string> = {}
 	for (const item of items.value) {
 		if (item.external && item.external_url) {
-			urls[item.id] = `https://slicer.run/?url=${encodeURIComponent(item.external_url)}`
+			urls[getItemId(item)] = `https://slicer.run/?url=${encodeURIComponent(item.external_url)}`
 		}
 	}
 	return urls
@@ -323,7 +329,7 @@ const externalUrls = computed(() => {
 	const urls: Record<string, string> = {}
 	for (const item of items.value) {
 		if (item.external && item.external_url) {
-			urls[item.id] = item.external_url
+			urls[getItemId(item)] = item.external_url
 		}
 	}
 	return urls
@@ -367,7 +373,7 @@ function sourceProjectLink(project: ContentCardProject) {
 
 function handleEnabledChange(id: string, value: boolean) {
 	if (props.actionDisabled) return
-	const item = items.value.find((item) => item.id === id)
+	const item = items.value.find((item) => getItemId(item) === id || item.id === id)
 	if (!item) return
 	emit('update:enabled', item, value)
 }
@@ -460,7 +466,7 @@ function updateItem(fileName: string, updates: Partial<ContentItem> & { disabled
 }
 
 function setItems(contentItems: ContentItem[]) {
-	const contentIds = new Set(contentItems.map((item) => item.id))
+	const contentIds = new Set(contentItems.map((item) => getItemId(item)))
 	const contentFileNames = new Set(contentItems.map((item) => item.file_name))
 	items.value = contentItems.map((item) => ({ ...item }))
 	selectedIds.value = selectedIds.value.filter((id) => contentIds.has(id))

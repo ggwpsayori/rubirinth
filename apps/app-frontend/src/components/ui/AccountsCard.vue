@@ -160,6 +160,7 @@ import { useAppEvent } from '@/composables/use-app-event'
 import { getPlayerHeadUrl } from '@/helpers/rendering/batch-skin-renderer.ts'
 import type { Skin } from '@/helpers/skins'
 import { get_available_skins } from '@/helpers/skins'
+import { elybyHeadCache, loadElyByHead } from '@/helpers/elyby-skin'
 import { handleSevereError } from '@/composables/use-error.js'
 import {
 	GripVerticalIcon,
@@ -342,6 +343,12 @@ async function refreshValues() {
 	accounts.value = Array.isArray(userList) ? [...userList] : []
 	accounts.value.sort((a, b) => (a.profile?.name ?? '').localeCompare(b.profile?.name ?? ''))
 
+	for (const acc of accounts.value) {
+		if (acc.account_type === 'elyby' || acc.account_type === 'offline') {
+			void loadElyByHead(acc.profile.name)
+		}
+	}
+
 	try {
 		const skins = await get_available_skins()
 		equippedSkin.value = skins.find((skin) => skin.is_equipped) ?? null
@@ -392,6 +399,18 @@ const selectedAccount = computed(() =>
 )
 
 const avatarUrl = computed(() => {
+	if (selectedAccount.value) {
+		const account = selectedAccount.value
+		if (account.account_type === 'elyby' || account.account_type === 'offline') {
+			const elyHead = elybyHeadCache.value.get(account.profile.name.toLowerCase())
+			if (elyHead) {
+				return elyHead
+			}
+			void loadElyByHead(account.profile.name)
+			return 'https://launcher-files.modrinth.com/assets/steve_head.png'
+		}
+	}
+
 	if (equippedSkin.value?.texture_key) {
 		const cachedUrl = headUrlCache.value.get(equippedSkin.value.texture_key)
 		if (cachedUrl) {
@@ -409,17 +428,21 @@ const avatarUrl = computed(() => {
 })
 
 function getAccountAvatarUrl(account: MinecraftCredential) {
-	if (
-		account.profile.id === selectedAccount.value?.profile?.id &&
-		equippedSkin.value?.texture_key
-	) {
-		const cachedUrl = headUrlCache.value.get(equippedSkin.value.texture_key)
-		if (cachedUrl) {
-			return cachedUrl
+
+	if (account.account_type === 'elyby' || account.account_type === 'offline') {
+		const elyHead = elybyHeadCache.value.get(account.profile.name.toLowerCase())
+		if (elyHead) {
+			return elyHead
 		}
+		void loadElyByHead(account.profile.name)
+		return 'https://launcher-files.modrinth.com/assets/steve_head.png'
 	}
 
-	return 'https://mc-heads.net/avatar/' + account.profile.id + '/128'
+	if (account.profile?.id) {
+		return 'https://mc-heads.net/avatar/' + account.profile.id + '/128'
+	}
+
+	return 'https://launcher-files.modrinth.com/assets/steve_head.png'
 }
 
 async function setAccount(account: MinecraftCredential) {

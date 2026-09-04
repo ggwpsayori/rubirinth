@@ -777,6 +777,7 @@ pub fn map_curseforge_mod_to_project(
             .logo
             .as_ref()
             .and_then(|l| l.thumbnail_url.clone().or_else(|| l.url.clone())),
+        raw_icon_url: mod_.logo.as_ref().and_then(|l| l.url.clone().or_else(|| l.thumbnail_url.clone())),
         issues_url: mod_.links.as_ref().and_then(|l| l.issues_url.clone()),
         source_url: mod_.links.as_ref().and_then(|l| l.source_url.clone()),
         wiki_url: mod_.links.as_ref().and_then(|l| l.wiki_url.clone()),

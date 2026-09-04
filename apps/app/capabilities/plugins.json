@@ -65,6 +65,18 @@
 				},
 				{
 					"url": "https://*.githubusercontent.com/*"
+				},
+				{
+					"url": "http://skinsystem.ely.by/*"
+				},
+				{
+					"url": "https://skinsystem.ely.by/*"
+				},
+				{
+					"url": "http://*.ely.by/*"
+				},
+				{
+					"url": "https://*.ely.by/*"
 				}
 			]
 		},

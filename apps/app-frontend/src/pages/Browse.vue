@@ -186,10 +186,10 @@ const linkedInstanceProjectQuery = useQuery(
 )
 const installedProjectIds: Ref<string[] | null> = ref(null)
 const instanceHideInstalled = ref(route.query.ai === 'true')
-const contentSource = useLocalStorage<'Modrinth' | 'CurseForge'>(
-	'rubirinth_browse_content_source',
-	'Modrinth',
-)
+const contentSource = ref<'Modrinth' | 'CurseForge'>('Modrinth')
+try {
+	localStorage.removeItem('rubirinth_browse_content_source')
+} catch {}
 
 const newlyInstalled = ref<string[]>([])
 const hiddenInstanceProjectIds = ref<Set<string>>(new Set())
