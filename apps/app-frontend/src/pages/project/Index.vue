@@ -42,6 +42,7 @@
 				:link-target="`_blank`"
 				:hide-license="isServerProject"
 				:show-followers="isServerProject"
+				:hide-source="isServerProject"
 				class="project-sidebar-section"
 			/>
 		</Teleport>

@@ -4,7 +4,7 @@
 		:summary="project.description"
 		@contextmenu="emit('contextmenu', $event)"
 	>
-		<template #title-prefix>
+		<template v-if="!isServer" #title-prefix>
 			<SourceBrandIcon
 				:source="project.id.startsWith('cf:') ? 'curseforge' : 'modrinth'"
 				size="lg"
@@ -74,6 +74,7 @@
 import type { Labrinth } from '@modrinth/api-client'
 import { DownloadIcon, HeartIcon } from '@modrinth/assets'
 
+import { computed } from 'vue'
 import { defineMessages, useFormatNumber, useVIntl } from '../../composables'
 import Avatar from '../base/Avatar.vue'
 import FormattedTag from '../base/FormattedTag.vue'
@@ -99,7 +100,7 @@ type HeaderProjectV3 = Pick<
 	'status' | 'minecraft_server' | 'minecraft_java_server'
 >
 
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		project: HeaderProject
 		projectV3?: HeaderProjectV3 | null
@@ -109,6 +110,15 @@ withDefaults(
 		projectV3: null,
 		showStatusBadge: false,
 	},
+)
+
+const isServer = computed(
+	() =>
+		props.projectV3?.minecraft_server != null ||
+		(props.project as any)?.project_type === 'server' ||
+		(props.project as any)?.project_type === 'minecraft_java_server' ||
+		(props.project as any)?.project_types?.includes('server') ||
+		(props.project as any)?.project_types?.includes('minecraft_java_server'),
 )
 
 const emit = defineEmits<{

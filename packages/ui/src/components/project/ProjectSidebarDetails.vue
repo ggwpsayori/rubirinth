@@ -23,7 +23,7 @@
 		<div
 			class="flex flex-col gap-3 [&>div>svg]:shrink-0 [&>div>svg]:mt-[1px] [&>div]:flex [&>div]:gap-2 [&>div]:items-start [&>div>div]:min-w-0"
 		>
-			<div class="flex items-center gap-2">
+			<div v-if="!isServer" class="flex items-center gap-2">
 				<SourceBrandIcon
 					:source="project.id.startsWith('cf:') ? 'curseforge' : 'modrinth'"
 					size="sm"
@@ -284,7 +284,17 @@ const props = defineProps<{
 	linkTarget: string
 	hideLicense?: boolean
 	showFollowers?: boolean
+	hideSource?: boolean
 }>()
+
+const isServer = computed(
+	() =>
+		props.hideSource ||
+		(props.project as any)?.project_type === 'server' ||
+		(props.project as any)?.project_type === 'minecraft_java_server' ||
+		(props.project as any)?.project_types?.includes('server') ||
+		(props.project as any)?.project_types?.includes('minecraft_java_server'),
+)
 
 const modalLicense = useTemplateRef('modalLicense')
 const licenseFetchEnabled = ref(false)
