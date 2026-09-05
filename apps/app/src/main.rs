@@ -221,7 +221,42 @@ fn main() {
                 });
             };
 
-            #[cfg(not(target_os = "macos"))]
+            #[cfg(windows)]
+            {
+                use tauri_plugin_deep_link::DeepLinkExt;
+                let _ = app.deep_link().register_all();
+
+                if let Ok(exe_path) = std::env::current_exe() {
+                    let exe_str = exe_path.display().to_string();
+                    let hkcu = winreg::RegKey::predef(winreg::enums::HKEY_CURRENT_USER);
+                    for proto in &["curseforge", "modrinth"] {
+                        if let Ok((key, _)) = hkcu.create_subkey(format!("Software\\Classes\\{proto}")) {
+                            let _ = key.set_value("FriendlyTypeName", &"Rubirinth App");
+                            let _ = key.set_value("", &"URL:Rubirinth App Protocol");
+                        }
+                    }
+                    if let Ok((mui_key, _)) = hkcu.create_subkey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache") {
+                        let _ = mui_key.set_value(format!("{exe_str}.FriendlyAppName"), &"Rubirinth App");
+                        let _ = mui_key.set_value(format!("{exe_str}.ApplicationCompany"), &"Rubirinth App");
+                    }
+                }
+
+                app.listen("deep-link://new-url", |url| {
+                    let request = url.payload().to_owned();
+                    let actual_request =
+                        serde_json::from_str::<Vec<String>>(&request)
+                            .ok()
+                            .map(|mut x| x.remove(0))
+                            .or_else(|| serde_json::from_str::<String>(&request).ok())
+                            .unwrap_or(request);
+                    tracing::info!("Handling deep link: {actual_request}");
+                    tauri::async_runtime::spawn(api::utils::handle_command(
+                        actual_request,
+                    ));
+                });
+            }
+
+            #[cfg(all(not(target_os = "macos"), not(windows)))]
             {
                 use tauri_plugin_deep_link::DeepLinkExt;
                 let _ = app.deep_link().register_all();

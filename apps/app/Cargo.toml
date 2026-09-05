@@ -58,6 +58,7 @@ objc2-app-kit = { workspace = true, features = ["NSWindow"] }
 [target."cfg(windows)".dependencies]
 webview2-com.workspace = true
 windows-core.workspace = true
+winreg.workspace = true
 
 [target."cfg(windows)".dependencies.windows]
 workspace = true

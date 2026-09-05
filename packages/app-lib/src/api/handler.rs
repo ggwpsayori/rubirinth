@@ -15,20 +15,55 @@ use urlencoding::decode;
 /// subdomain1/subdomain2
 /// (Does not include modrinth://)
 pub async fn handle_url(sublink: &str) -> crate::Result<CommandPayload> {
+    let sublink = sublink.trim_start_matches('/');
+    let clean_id = |s: &str| -> String {
+        let (raw, _) = s.split_once('?').unwrap_or((s, ""));
+        decode(raw)
+            .map(|c| c.into_owned())
+            .unwrap_or_else(|_| raw.to_string())
+    };
+
     Ok(match sublink.split_once('/') {
-        // /mod/{id}   -    Installs a mod of mod id
-        Some(("mod", id)) => CommandPayload::InstallMod { id: id.to_string() },
+        // /mod/{id} or /project/{id} or /plugin/{id} etc.
+        Some((
+            "mod" | "project" | "plugin" | "datapack" | "resourcepack" | "shader",
+            id,
+        )) => CommandPayload::InstallMod { id: clean_id(id) },
         // /version/{id}   -    Installs a specific version of id
         Some(("version", id)) => {
-            CommandPayload::InstallVersion { id: id.to_string() }
+            CommandPayload::InstallVersion { id: clean_id(id) }
         }
         // /modpack/{id}   -    Installs a modpack of modpack id
         Some(("modpack", id)) => {
-            CommandPayload::InstallModpack { id: id.to_string() }
+            CommandPayload::InstallModpack { id: clean_id(id) }
         }
         // /server/{id}   -    Opens a server project page and triggers play flow
         Some(("server", id)) => {
-            CommandPayload::InstallServer { id: id.to_string() }
+            CommandPayload::InstallServer { id: clean_id(id) }
+        }
+        // /install?projectId={id} or /install/{id}
+        Some(("install", rest)) => {
+            let (_, query) = rest.split_once('?').unwrap_or(("", rest));
+            let mut project_id = None;
+            let mut version_id = None;
+            for (key, value) in form_urlencoded::parse(query.as_bytes()) {
+                match key.to_ascii_lowercase().as_str() {
+                    "project_id" | "projectid" | "id" | "mod_id" | "modid" | "slug" => {
+                        project_id = Some(value.into_owned());
+                    }
+                    "version_id" | "versionid" => {
+                        version_id = Some(value.into_owned());
+                    }
+                    _ => {}
+                }
+            }
+            if let Some(vid) = version_id {
+                CommandPayload::InstallVersion { id: vid }
+            } else if let Some(pid) = project_id {
+                CommandPayload::InstallMod { id: pid }
+            } else {
+                CommandPayload::InstallMod { id: clean_id(rest) }
+            }
         }
         // /share/{invite_id}
         Some(("share", raw)) => {
@@ -274,4 +309,60 @@ mod tests {
             _ => panic!("Expected InstallMod"),
         }
     }
+
+
+    #[tokio::test]
+    async fn test_parse_modrinth_mod() {
+        let cmd = parse_command("modrinth://mod/sodium").await.unwrap();
+        match cmd {
+            CommandPayload::InstallMod { id } => assert_eq!(id, "sodium"),
+            _ => panic!("Expected InstallMod"),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_parse_modrinth_mod_with_query() {
+        let cmd = parse_command("modrinth://mod/sodium?from=website").await.unwrap();
+        match cmd {
+            CommandPayload::InstallMod { id } => assert_eq!(id, "sodium"),
+            _ => panic!("Expected InstallMod"),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_parse_modrinth_three_slashes() {
+        let cmd = parse_command("modrinth:///mod/sodium").await.unwrap();
+        match cmd {
+            CommandPayload::InstallMod { id } => assert_eq!(id, "sodium"),
+            _ => panic!("Expected InstallMod"),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_parse_modrinth_plugin() {
+        let cmd = parse_command("modrinth://plugin/worldedit").await.unwrap();
+        match cmd {
+            CommandPayload::InstallMod { id } => assert_eq!(id, "worldedit"),
+            _ => panic!("Expected InstallMod"),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_parse_modrinth_version() {
+        let cmd = parse_command("modrinth://version/abc12345?query=1").await.unwrap();
+        match cmd {
+            CommandPayload::InstallVersion { id } => assert_eq!(id, "abc12345"),
+            _ => panic!("Expected InstallVersion"),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_parse_modrinth_modpack() {
+        let cmd = parse_command("modrinth://modpack/fabulously-optimized").await.unwrap();
+        match cmd {
+            CommandPayload::InstallModpack { id } => assert_eq!(id, "fabulously-optimized"),
+            _ => panic!("Expected InstallModpack"),
+        }
+    }
+
 }
