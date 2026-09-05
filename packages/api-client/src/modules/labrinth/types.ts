@@ -1937,6 +1937,7 @@ export namespace Labrinth {
 				all_project_types: string[]
 				slug: string | null
 				author: string
+				author_url?: string
 				author_id: string | null
 				organization: string | null
 				organization_id: string | null
@@ -1976,6 +1977,7 @@ export namespace Labrinth {
 				all_project_types: string[]
 				slug: string | null
 				author: string
+				author_url?: string
 				author_id: string | null
 				organization: string | null
 				organization_id: string | null

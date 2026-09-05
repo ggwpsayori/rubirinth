@@ -309,7 +309,8 @@ const isCurseForge = computed(
 )
 
 const curseforgeCategories = computed<Labrinth.Tags.v2.Category[]>(() => {
-	return getCurseforgeLabrinthCategories()
+	const classId = projectTypeToCurseforgeClassId(projectType.value)
+	return getCurseforgeLabrinthCategories(classId)
 })
 
 const curseforgeLoaders = computed<Labrinth.Tags.v2.Loader[]>(() => {
@@ -708,6 +709,11 @@ watch(
 
 		debugLog('projectType route param changed', { from: projectType.value, to: newType })
 		projectType.value = newType
+		if (isCurseForge.value) {
+			searchState.currentFilters.value = searchState.currentFilters.value.filter(
+				(f) => f.type === 'game_version' || f.type === 'mod_loader' || f.type === 'modpack_loader',
+			)
+		}
 	},
 )
 
