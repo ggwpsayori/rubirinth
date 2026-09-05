@@ -1746,45 +1746,57 @@ function showDelayedUpdatePopup() {
 	markAppUpdatePopupShown(update.version, stage)
 }
 
+function showRubirinthUpdatePopup() {
+	if (!isUpdateAvailable.value || !latestRelease.value) return
+	dismissRubirinthUpdateNotification()
+	const notif = addPopupNotification({
+		contentType: 'standard',
+		title: formatMessage(updatePopupMessages.updateAvailable),
+		text: `Доступна новая версия Rubirinth ${latestRelease.value.tag_name.replace(/^v/, '')}!`,
+		type: 'info',
+		autoCloseMs: null,
+		onClick: () => {
+			dismissRubirinthUpdateNotification()
+			appSettingsModal.value?.showUpdates()
+		},
+		buttons: [
+			{
+				label: 'Обновить',
+				color: 'brand',
+				action: () => {
+					dismissRubirinthUpdateNotification()
+					appSettingsModal.value?.showUpdates()
+				},
+			},
+			{
+				label: formatMessage(updatePopupMessages.changelog),
+				action: () => {
+					if (latestRelease.value?.html_url) {
+						window.open(latestRelease.value.html_url, '_blank')
+					}
+				},
+			},
+		],
+	})
+	rubirinthUpdateNotificationId = notif.id
+}
+
+watch(
+	[isUpdateAvailable, latestRelease],
+	([available, release]) => {
+		if (available && release) {
+			showRubirinthUpdatePopup()
+		}
+	},
+	{ immediate: true },
+)
+
 async function checkUpdates() {
 	async function performCheck() {
 		try {
 			console.log('[App] Checking for Rubirinth updates...')
 			await fetchLatestRelease()
 			console.log('[App] isUpdateAvailable:', isUpdateAvailable.value, 'tag:', latestRelease.value?.tag_name)
-			if (isUpdateAvailable.value && latestRelease.value) {
-				dismissRubirinthUpdateNotification()
-				const notif = addPopupNotification({
-					contentType: 'standard',
-					title: formatMessage(updatePopupMessages.updateAvailable),
-					text: `Доступна новая версия Rubirinth ${latestRelease.value.tag_name.replace(/^v/, '')}!`,
-					type: 'info',
-					autoCloseMs: null,
-					onClick: () => {
-						dismissRubirinthUpdateNotification()
-						appSettingsModal.value?.showUpdates()
-					},
-					buttons: [
-						{
-							label: 'Обновить',
-							color: 'brand',
-							action: () => {
-								dismissRubirinthUpdateNotification()
-								appSettingsModal.value?.showUpdates()
-							},
-						},
-						{
-							label: formatMessage(updatePopupMessages.changelog),
-							action: () => {
-								if (latestRelease.value?.html_url) {
-									window.open(latestRelease.value.html_url, '_blank')
-								}
-							},
-						},
-					],
-				})
-				rubirinthUpdateNotificationId = notif.id
-			}
 		} catch (e) {
 			console.error('[App] Failed to check for Rubirinth updates:', e)
 		}
