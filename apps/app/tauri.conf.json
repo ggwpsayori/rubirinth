@@ -70,7 +70,8 @@
 		"deep-link": {
 			"desktop": {
 				"schemes": [
-					"modrinth"
+					"modrinth",
+					"curseforge"
 				]
 			},
 			"mobile": []

@@ -222,13 +222,24 @@ fn main() {
             };
 
             #[cfg(not(target_os = "macos"))]
-            app.listen("deep-link://new-url", |url| {
-                let payload = url.payload().to_owned();
-                tracing::info!("Handling deep link");
-                tauri::async_runtime::spawn(api::utils::handle_command(
-                    payload,
-                ));
-            });
+            {
+                use tauri_plugin_deep_link::DeepLinkExt;
+                let _ = app.deep_link().register_all();
+
+                app.listen("deep-link://new-url", |url| {
+                    let request = url.payload().to_owned();
+                    let actual_request =
+                        serde_json::from_str::<Vec<String>>(&request)
+                            .ok()
+                            .map(|mut x| x.remove(0))
+                            .or_else(|| serde_json::from_str::<String>(&request).ok())
+                            .unwrap_or(request);
+                    tracing::info!("Handling deep link: {actual_request}");
+                    tauri::async_runtime::spawn(api::utils::handle_command(
+                        actual_request,
+                    ));
+                });
+            }
 
             #[cfg(not(target_os = "linux"))]
             if let Some(window) = app.get_webview_window("main") {
