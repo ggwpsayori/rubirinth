@@ -296,6 +296,18 @@
   "app.content-install.no-compatible-versions": {
     "message": "No available versions match {compatibilityLabel}. Select a version to install anyway. Dependencies will not be installed automatically."
   },
+  "app.error.close": {
+    "message": "Close"
+  },
+  "app.error.external-auth-library.description": {
+    "message": "An authentication library (authlib-injector) is required to launch Minecraft with a {providerName} account. Please install it in settings before starting the game."
+  },
+  "app.error.external-auth-library.go-to-install": {
+    "message": "Go to installation"
+  },
+  "app.error.external-auth-library.title": {
+    "message": "Authentication library missing"
+  },
   "app.error.state-init.open-backups-folder": {
     "message": "Open backups folder"
   },

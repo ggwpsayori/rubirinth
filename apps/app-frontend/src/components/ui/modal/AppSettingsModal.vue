@@ -274,7 +274,17 @@ function showSyncedOptions(): void {
 	modal.value?.show()
 }
 
-defineExpose({ show, showProfile, showFeatureFlags, showSyncedOptions })
+function showExternalAuthLibraries(): void {
+	const authLibrariesTabIndex = availableTabs.value.findIndex(
+		(tab) => tab.content === ExternalAuthLibrarySettings,
+	)
+	if (authLibrariesTabIndex >= 0) {
+		modal.value?.setTab(authLibrariesTabIndex)
+	}
+	modal.value?.show()
+}
+
+defineExpose({ show, showProfile, showFeatureFlags, showSyncedOptions, showExternalAuthLibraries })
 
 const { progress, version: downloadingVersion } = injectAppUpdateDownloadProgress()
 const launcherUpdateModal = ref<InstanceType<typeof LauncherUpdateModal> | null>(null)

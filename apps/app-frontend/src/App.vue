@@ -189,9 +189,10 @@ import { get_available_capes, get_available_skins } from './helpers/skins'
 import { AppNotificationManager } from './providers/app-notifications'
 import { AppPopupNotificationManager } from './providers/app-popup-notifications'
 import {
+	appSettingsModalOpenExternalAuthLibrariesKey,
 	appSettingsModalOpenProfileKey,
 	appSettingsModalOpenSyncedOptionsKey,
-} from './providers/app-settings-modal'
+} from './providers/app-settings-modal' 
 
 const appSettings = useAppSettings()
 const appTheme = useTheme()
@@ -1031,6 +1032,14 @@ const modrinthLoginModal = ref()
 const appSettingsModal = ref()
 provide(appSettingsModalOpenProfileKey, () => appSettingsModal.value?.showProfile())
 provide(appSettingsModalOpenSyncedOptionsKey, () => appSettingsModal.value?.showSyncedOptions())
+provide(appSettingsModalOpenExternalAuthLibrariesKey, () =>
+	appSettingsModal.value?.showExternalAuthLibraries(),
+)
+if (typeof window !== 'undefined') {
+	window.addEventListener('rubirinth-open-external-auth-libraries-settings', () => {
+		appSettingsModal.value?.showExternalAuthLibraries()
+	})
+}
 
 watch(incompatibilityWarningModal, (modal) => {
 	if (modal) {

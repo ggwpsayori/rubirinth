@@ -2,6 +2,7 @@
 import {
 	CheckIcon,
 	CopyIcon,
+	DownloadIcon,
 	DropdownIcon,
 	FolderOpenIcon,
 	HammerIcon,
@@ -19,7 +20,9 @@ import {
 	injectNotificationManager,
 	useVIntl,
 } from '@modrinth/ui'
-import { computed, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
+
+import { appSettingsModalOpenExternalAuthLibrariesKey } from '@/providers/app-settings-modal'
 
 import { ChatIcon } from '@/assets/icons'
 import ModalWrapper from '@/components/ui/modal/ModalWrapper.vue'
@@ -38,7 +41,37 @@ const messages = defineMessages({
 		id: 'app.error.state-init.open-backups-folder',
 		defaultMessage: 'Open backups folder',
 	},
+	externalAuthTitle: {
+		id: 'app.error.external-auth-library.title',
+		defaultMessage: 'Authentication library missing',
+	},
+	externalAuthDescription: {
+		id: 'app.error.external-auth-library.description',
+		defaultMessage:
+			'An authentication library (authlib-injector) is required to launch Minecraft with a {providerName} account. Please install it in settings before starting the game.',
+	},
+	goToInstall: {
+		id: 'app.error.external-auth-library.go-to-install',
+		defaultMessage: 'Go to installation',
+	},
+	close: {
+		id: 'app.error.close',
+		defaultMessage: 'Close',
+	},
 })
+
+const openExternalAuthLibraries = inject(appSettingsModalOpenExternalAuthLibrariesKey, null)
+
+function goToAuthLibraryInstallation() {
+	errorModal.value?.hide()
+	if (openExternalAuthLibraries) {
+		openExternalAuthLibraries()
+	} else if (typeof window !== 'undefined') {
+		window.dispatchEvent(
+			new CustomEvent('rubirinth-open-external-auth-libraries-settings'),
+		)
+	}
+}
 
 const errorModal = ref()
 const error = ref()
@@ -55,7 +88,23 @@ defineExpose({
 		console.log(errorVal, context, canClose, source)
 		closable.value = canClose
 
-		if (errorVal.message && errorVal.message.includes('Minecraft authentication error:')) {
+		if (
+			errorVal?.code === 'external_auth_library_not_installed' ||
+			(typeof errorVal?.message === 'string' &&
+				errorVal.message.includes('authentication library is not installed'))
+		) {
+			const providerName =
+				errorVal.provider_name ||
+				errorVal.message?.match(/The (.+?) authentication library/i)?.[1] ||
+				'Ely.by'
+			metadata.value = {
+				...metadata.value,
+				providerName,
+			}
+			title.value = formatMessage(messages.externalAuthTitle, { providerName })
+			errorType.value = 'external_auth_library_not_installed'
+			supportLink.value = 'https://support.modrinth.com'
+		} else if (errorVal?.message && errorVal.message.includes('Minecraft authentication error:')) {
 			title.value = 'Unable to sign in to Minecraft'
 			errorType.value = 'minecraft_auth'
 			supportLink.value =
@@ -282,6 +331,20 @@ async function copyToClipboard(text) {
 						</button>
 					</div>
 				</template>
+				<template v-else-if="errorType === 'external_auth_library_not_installed'">
+					<p>
+						{{
+							formatMessage(messages.externalAuthDescription, {
+								providerName: metadata.providerName || 'Ely.by',
+							})
+						}}
+					</p>
+					<div class="cta-button">
+						<button class="btn btn-primary" @click="goToAuthLibraryInstallation">
+							<DownloadIcon /> {{ formatMessage(messages.goToInstall) }}
+						</button>
+					</div>
+				</template>
 				<template v-else>
 					{{ debugInfo }}
 				</template>
@@ -296,10 +359,16 @@ async function copyToClipboard(text) {
 				</template>
 			</div>
 			<div class="flex items-center gap-2">
-				<ButtonLink :href="supportLink" @click="errorModal.hide()"
-					><ChatIcon /> Get support</ButtonLink
+				<ButtonLink
+					v-if="errorType !== 'external_auth_library_not_installed'"
+					:href="supportLink"
+					@click="errorModal.hide()"
 				>
-				<Button v-if="closable" @click="errorModal.hide()"><XIcon /> Close</Button>
+					<ChatIcon /> Get support
+				</ButtonLink>
+				<Button v-if="closable" @click="errorModal.hide()">
+					<XIcon /> {{ formatMessage(messages.close) }}
+				</Button>
 			</div>
 			<template v-if="hasDebugInfo">
 				<div class="flex flex-col gap-2">

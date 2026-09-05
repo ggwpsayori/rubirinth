@@ -87,6 +87,12 @@ macro_rules! impl_serialize {
                             theseus::ErrorKind::SharedInstanceUnavailable(reason) => Some(reason),
                             _ => None,
                         };
+                        let provider_name = match theseus_error.raw.as_ref() {
+                            theseus::ErrorKind::ExternalAuthLibraryNotInstalled { provider_name } => {
+                                Some(provider_name)
+                            }
+                            _ => None,
+                        };
                         let code = match theseus_error.raw.as_ref() {
                             theseus::ErrorKind::SharedInstanceUnavailable(_) => {
                                 Some("shared_instance_unavailable")
@@ -101,7 +107,9 @@ macro_rules! impl_serialize {
                         };
                         let mut state = serializer.serialize_struct(
                             "Theseus",
-                            2 + usize::from(code.is_some()) + usize::from(unavailable_reason.is_some()),
+                            2 + usize::from(code.is_some())
+                                + usize::from(unavailable_reason.is_some())
+                                + usize::from(provider_name.is_some()),
                         )?;
                         state.serialize_field("field_name", "Theseus")?;
                         state.serialize_field("message", &theseus_error.to_string())?;
@@ -110,6 +118,9 @@ macro_rules! impl_serialize {
                         }
                         if let Some(reason) = unavailable_reason {
                             state.serialize_field("reason", reason)?;
+                        }
+                        if let Some(provider_name) = provider_name {
+                            state.serialize_field("provider_name", provider_name)?;
                         }
                         state.end()
                     }

@@ -383,6 +383,22 @@
     "message": "Не найдено доступных версий, совместимых с {compatibilityLabel}. Выберите версию для установки вручную. Зависимости не будут установлены автоматически.",
     "defaultMessage": "Не найдено доступных версий, совместимых с {compatibilityLabel}. Выберите версию для установки вручную. Зависимости не будут установлены автоматически."
   },
+  "app.error.close": {
+    "defaultMessage": "Закрыть",
+    "message": "Закрыть"
+  },
+  "app.error.external-auth-library.description": {
+    "defaultMessage": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры.",
+    "message": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры."
+  },
+  "app.error.external-auth-library.go-to-install": {
+    "defaultMessage": "Перейти к установке",
+    "message": "Перейти к установке"
+  },
+  "app.error.external-auth-library.title": {
+    "defaultMessage": "Отсутствует библиотека авторизации",
+    "message": "Отсутствует библиотека авторизации"
+  },
   "app.export-modal.description-placeholder": {
     "message": "Введите описание сборки...",
     "defaultMessage": "Введите описание сборки..."
