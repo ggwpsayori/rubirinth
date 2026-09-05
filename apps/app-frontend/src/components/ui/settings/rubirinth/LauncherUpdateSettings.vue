@@ -136,12 +136,12 @@ async function handleInstallUpdate() {
 			<!-- Update available card -->
 			<div
 				v-if="isUpdateAvailable"
-				class="flex flex-col gap-4 rounded-2xl border border-solid border-brand bg-[rgba(70,127,197,0.08)] p-5 shadow-sm"
+				class="flex flex-col gap-4 rounded-2xl border border-solid border-[rgba(70,127,197,0.3)] bg-[linear-gradient(135deg,rgba(70,127,197,0.08),rgba(70,127,197,0.02)_58%,transparent)] p-5"
 			>
 				<div class="flex items-start justify-between gap-4">
 					<div class="flex items-center gap-3">
 						<div
-							class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand text-contrast shadow-sm"
+							class="flex size-11 shrink-0 items-center justify-center rounded-xl border border-solid border-[rgba(70,127,197,0.3)] bg-[rgba(70,127,197,0.12)] text-brand"
 						>
 							<DownloadIcon class="size-6" />
 						</div>
