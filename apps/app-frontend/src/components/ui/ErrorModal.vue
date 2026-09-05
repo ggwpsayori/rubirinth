@@ -356,11 +356,6 @@ async function copyToClipboard(text) {
 							})
 						}}
 					</p>
-					<div class="cta-button">
-						<button class="btn btn-primary" @click="goToAuthLibraryInstallation">
-							<DownloadIcon /> {{ formatMessage(messages.goToInstall) }}
-						</button>
-					</div>
 				</template>
 				<template v-else>
 					{{ debugInfo }}
@@ -375,7 +370,10 @@ async function copyToClipboard(text) {
 					</p>
 				</template>
 			</div>
-			<div class="flex items-center gap-2">
+			<div
+				class="flex items-center gap-2"
+				:class="{ 'justify-end': errorType === 'external_auth_library_not_installed' }"
+			>
 				<ButtonLink
 					v-if="errorType !== 'external_auth_library_not_installed'"
 					:href="supportLink"
@@ -385,6 +383,14 @@ async function copyToClipboard(text) {
 				</ButtonLink>
 				<Button v-if="closable" @click="errorModal.hide()">
 					<XIcon /> {{ formatMessage(messages.close) }}
+				</Button>
+				<Button
+					v-if="errorType === 'external_auth_library_not_installed'"
+					type="colored"
+					color="brand"
+					@click="goToAuthLibraryInstallation"
+				>
+					<DownloadIcon /> {{ formatMessage(messages.goToInstall) }}
 				</Button>
 			</div>
 			<template v-if="hasDebugInfo">
