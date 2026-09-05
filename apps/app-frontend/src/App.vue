@@ -303,6 +303,16 @@ useAppEvent(
 const popupNotificationManager = new AppPopupNotificationManager()
 providePopupNotificationManager(popupNotificationManager)
 const { addPopupNotification } = popupNotificationManager
+let rubirinthUpdateNotificationId = null
+function dismissRubirinthUpdateNotification() {
+	if (rubirinthUpdateNotificationId != null) {
+		popupNotificationManager.removeNotification(rubirinthUpdateNotificationId)
+		rubirinthUpdateNotificationId = null
+	}
+}
+if (typeof window !== 'undefined') {
+	window.addEventListener('rubirinth-dismiss-update-notification', dismissRubirinthUpdateNotification)
+}
 let adsConsentPopupId = null
 useAppEvent('ads_consent_required', handleAdsConsentRequired, appEvents)
 
@@ -1747,38 +1757,44 @@ function showDelayedUpdatePopup() {
 }
 
 function showRubirinthUpdatePopup() {
+	console.log('[App] showRubirinthUpdatePopup called. isUpdateAvailable:', isUpdateAvailable.value, 'release:', latestRelease.value?.tag_name)
 	if (!isUpdateAvailable.value || !latestRelease.value) return
 	dismissRubirinthUpdateNotification()
-	const notif = addPopupNotification({
-		contentType: 'standard',
-		title: formatMessage(updatePopupMessages.updateAvailable),
-		text: `Доступна новая версия Rubirinth ${latestRelease.value.tag_name.replace(/^v/, '')}!`,
-		type: 'info',
-		autoCloseMs: null,
-		onClick: () => {
-			dismissRubirinthUpdateNotification()
-			appSettingsModal.value?.showUpdates()
-		},
-		buttons: [
-			{
-				label: 'Обновить',
-				color: 'brand',
-				action: () => {
-					dismissRubirinthUpdateNotification()
-					appSettingsModal.value?.showUpdates()
-				},
+	try {
+		const notif = addPopupNotification({
+			contentType: 'standard',
+			title: formatMessage(updatePopupMessages.updateAvailable),
+			text: `Доступна новая версия Rubirinth ${latestRelease.value.tag_name.replace(/^v/, '')}!`,
+			type: 'info',
+			autoCloseMs: null,
+			onClick: () => {
+				dismissRubirinthUpdateNotification()
+				appSettingsModal.value?.showUpdates()
 			},
-			{
-				label: formatMessage(updatePopupMessages.changelog),
-				action: () => {
-					if (latestRelease.value?.html_url) {
-						window.open(latestRelease.value.html_url, '_blank')
-					}
+			buttons: [
+				{
+					label: 'Обновить',
+					color: 'brand',
+					action: () => {
+						dismissRubirinthUpdateNotification()
+						appSettingsModal.value?.showUpdates()
+					},
 				},
-			},
-		],
-	})
-	rubirinthUpdateNotificationId = notif.id
+				{
+					label: formatMessage(updatePopupMessages.changelog),
+					action: () => {
+						if (latestRelease.value?.html_url) {
+							window.open(latestRelease.value.html_url, '_blank')
+						}
+					},
+				},
+			],
+		})
+		rubirinthUpdateNotificationId = notif.id
+		console.log('[App] Added popup notification with id:', notif.id)
+	} catch (e) {
+		console.error('[App] Error in addPopupNotification:', e)
+	}
 }
 
 watch(
