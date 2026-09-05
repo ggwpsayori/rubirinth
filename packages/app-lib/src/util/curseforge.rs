@@ -165,6 +165,16 @@ pub struct CurseforgeFile {
     pub dependencies: Vec<CurseforgeFileDependency>,
     #[serde(default)]
     pub file_fingerprint: Option<u64>,
+    #[serde(default)]
+    pub modules: Vec<CurseforgeFileModule>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct CurseforgeFileModule {
+    pub name: String,
+    #[serde(default)]
+    pub fingerprint: Option<u64>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -616,7 +626,7 @@ pub fn map_curseforge_file_to_version(file: &CurseforgeFile) -> Version {
         .cloned()
         .collect();
 
-    let loaders: Vec<String> = file
+    let mut loaders: Vec<String> = file
         .game_versions
         .iter()
         .filter_map(|v| {
@@ -627,6 +637,10 @@ pub fn map_curseforge_file_to_version(file: &CurseforgeFile) -> Version {
             }
         })
         .collect();
+
+    if loaders.is_empty() && file.modules.iter().any(|m| m.name == "data") {
+        loaders.push("datapack".to_string());
+    }
 
     let dependencies: Vec<Dependency> = file
         .dependencies
@@ -686,7 +700,14 @@ pub fn map_curseforge_mod_to_project(
         Some(4471) => "modpack",
         Some(12) => "resourcepack",
         Some(6552) => "shader",
-        _ => "mod",
+        Some(6945) => "datapack",
+        _ => {
+            if mod_.categories.iter().any(|c| c.id == 5193 || c.slug == "data-packs") {
+                "datapack"
+            } else {
+                "mod"
+            }
+        }
     }
     .to_string();
 
@@ -714,6 +735,10 @@ pub fn map_curseforge_mod_to_project(
                 loaders.push(loader_name.to_string());
             }
         }
+    }
+
+    if project_type == "datapack" && loaders.is_empty() {
+        loaders.push("datapack".to_string());
     }
 
     let gallery = mod_

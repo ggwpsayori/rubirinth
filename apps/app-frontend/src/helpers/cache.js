@@ -127,8 +127,25 @@ export async function get_project_versions(id, cacheBehaviour, options) {
 		const query = { pageSize: 100 }
 		if (options?.gameVersion) query.gameVersion = options.gameVersion
 		if (options?.modLoaderType) query.modLoaderType = options.modLoaderType
-		const res = await curseforgeClient.getModFiles(modId, query)
-		return (res?.data || []).map((file) => mapCurseforgeFileToVersion(file, modId))
+		const [res, mod] = await Promise.all([
+			curseforgeClient.getModFiles(modId, query),
+			curseforgeClient.getMod(modId).catch(() => null),
+		])
+		const isDatapack =
+			mod?.classId === 6945 ||
+			mod?.categories?.some((c) => c.id === 5193 || c.slug === 'data-packs')
+		const isResourcepack = mod?.classId === 12
+		return (res?.data || []).map((file) => {
+			const v = mapCurseforgeFileToVersion(file, modId)
+			if (v.loaders.length === 0) {
+				if (isDatapack || file.modules?.some((m) => m.name === 'data')) {
+					v.loaders.push('datapack')
+				} else if (isResourcepack || file.modules?.some((m) => m.name === 'assets')) {
+					v.loaders.push('minecraft')
+				}
+			}
+			return v
+		})
 	}
 	return await invoke('plugin:cache|get_project_versions', { id, projectId: id, cacheBehaviour })
 }

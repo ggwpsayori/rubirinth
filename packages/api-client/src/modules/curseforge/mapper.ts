@@ -17,10 +17,11 @@ export function mapCurseforgeModToSearchV3Project(
 ): Labrinth.Search.v3.ResultSearchProject {
 	const cfId = `cf:${mod.id}`
 
-	let projectType: 'mod' | 'modpack' | 'resourcepack' | 'shader' = 'mod'
+	let projectType: 'mod' | 'modpack' | 'resourcepack' | 'shader' | 'datapack' = 'mod'
 	if (mod.classId === 4471) projectType = 'modpack'
 	else if (mod.classId === 12) projectType = 'resourcepack'
 	else if (mod.classId === 6552) projectType = 'shader'
+	else if (mod.classId === 6945 || mod.categories?.some((c) => c.id === 5193 || c.slug === 'data-packs')) projectType = 'datapack'
 
 	const categories = mod.categories.map((c) => c.slug)
 
@@ -52,6 +53,10 @@ export function mapCurseforgeModToSearchV3Project(
 				.filter(Boolean) as string[],
 		),
 	)
+
+	if (projectType === 'datapack' && loaders.length === 0) {
+		loaders.push('datapack')
+	}
 
 	const iconUrl = mod.logo?.thumbnailUrl || mod.logo?.url || null
 	const gallery = mod.screenshots?.map((s) => s.url) ?? []
@@ -95,10 +100,11 @@ export function mapCurseforgeModToProject(
 ): Labrinth.Projects.v2.Project {
 	const cfId = `cf:${mod.id}`
 
-	let projectType: 'mod' | 'modpack' | 'resourcepack' | 'shader' = 'mod'
+	let projectType: 'mod' | 'modpack' | 'resourcepack' | 'shader' | 'datapack' = 'mod'
 	if (mod.classId === 4471) projectType = 'modpack'
 	else if (mod.classId === 12) projectType = 'resourcepack'
 	else if (mod.classId === 6552) projectType = 'shader'
+	else if (mod.classId === 6945 || mod.categories?.some((c) => c.id === 5193 || c.slug === 'data-packs')) projectType = 'datapack'
 
 	const categories = mod.categories.map((c) => c.slug)
 
@@ -130,6 +136,10 @@ export function mapCurseforgeModToProject(
 				.filter(Boolean) as string[],
 		),
 	)
+
+	if (projectType === 'datapack' && loaders.length === 0) {
+		loaders.push('datapack')
+	}
 
 	const fileIds = new Set<string>()
 	for (const f of mod.latestFiles ?? []) {
@@ -219,6 +229,10 @@ export function mapCurseforgeFileToVersion(
 			'minecraft',
 			'datapack',
 		].includes(v))
+
+	if (loaders.length === 0 && file.modules?.some((m) => m.name === 'data')) {
+		loaders.push('datapack')
+	}
 
 	const primaryFile: Labrinth.Versions.v2.VersionFile = {
 		hashes: {

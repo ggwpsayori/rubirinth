@@ -1185,6 +1185,123 @@ export const CURSEFORGE_CATEGORIES: CurseforgeCategory[] = [
     "classId": 6,
     "parentCategoryId": 6,
     "displayIndex": 0
+  },
+  {
+    "id": 6946,
+    "gameId": 432,
+    "name": "Mod Support",
+    "slug": "mod-support",
+    "url": "https://www.curseforge.com/minecraft/data-packs/mod-support",
+    "iconUrl": "https://media.forgecdn.net/avatars/944/327/638428200626712952.png",
+    "dateModified": "2024-02-06T12:41:02.673Z",
+    "isClass": false,
+    "classId": 6945,
+    "parentCategoryId": 6945,
+    "displayIndex": 0
+  },
+  {
+    "id": 6951,
+    "gameId": 432,
+    "name": "Tech",
+    "slug": "tech",
+    "url": "https://www.curseforge.com/minecraft/data-packs/tech",
+    "iconUrl": "https://media.forgecdn.net/avatars/944/332/638428201353514419.png",
+    "dateModified": "2024-02-06T12:42:15.35Z",
+    "isClass": false,
+    "classId": 6945,
+    "parentCategoryId": 6945,
+    "displayIndex": 0
+  },
+  {
+    "id": 6952,
+    "gameId": 432,
+    "name": "Magic",
+    "slug": "magic",
+    "url": "https://www.curseforge.com/minecraft/data-packs/magic",
+    "iconUrl": "https://media.forgecdn.net/avatars/944/333/638428201403204473.png",
+    "dateModified": "2024-02-06T12:42:20.32Z",
+    "isClass": false,
+    "classId": 6945,
+    "parentCategoryId": 6945,
+    "displayIndex": 0
+  },
+  {
+    "id": 6948,
+    "gameId": 432,
+    "name": "Adventure",
+    "slug": "adventure",
+    "url": "https://www.curseforge.com/minecraft/data-packs/adventure",
+    "iconUrl": "https://media.forgecdn.net/avatars/944/329/638428201021533304.png",
+    "dateModified": "2024-02-06T12:41:42.153Z",
+    "isClass": false,
+    "classId": 6945,
+    "parentCategoryId": 6945,
+    "displayIndex": 0
+  },
+  {
+    "id": 6950,
+    "gameId": 432,
+    "name": "Library",
+    "slug": "library",
+    "url": "https://www.curseforge.com/minecraft/data-packs/library",
+    "iconUrl": "https://media.forgecdn.net/avatars/944/331/638428201198663675.png",
+    "dateModified": "2024-02-06T12:41:59.867Z",
+    "isClass": false,
+    "classId": 6945,
+    "parentCategoryId": 6945,
+    "displayIndex": 0
+  },
+  {
+    "id": 6953,
+    "gameId": 432,
+    "name": "Utility",
+    "slug": "utility",
+    "url": "https://www.curseforge.com/minecraft/data-packs/utility",
+    "iconUrl": "https://media.forgecdn.net/avatars/944/335/638428201486034664.png",
+    "dateModified": "2024-02-06T12:42:28.603Z",
+    "isClass": false,
+    "classId": 6945,
+    "parentCategoryId": 6945,
+    "displayIndex": 0
+  },
+  {
+    "id": 6947,
+    "gameId": 432,
+    "name": "Miscellaneous",
+    "slug": "miscellaneous",
+    "url": "https://www.curseforge.com/minecraft/data-packs/miscellaneous",
+    "iconUrl": "https://media.forgecdn.net/avatars/944/328/638428200699783193.png",
+    "dateModified": "2024-02-06T12:41:09.977Z",
+    "isClass": false,
+    "classId": 6945,
+    "parentCategoryId": 6945,
+    "displayIndex": 0
+  },
+  {
+    "id": 6949,
+    "gameId": 432,
+    "name": "Fantasy",
+    "slug": "fantasy",
+    "url": "https://www.curseforge.com/minecraft/data-packs/fantasy",
+    "iconUrl": "https://media.forgecdn.net/avatars/944/330/638428201112583545.png",
+    "dateModified": "2024-02-06T12:41:51.26Z",
+    "isClass": false,
+    "classId": 6945,
+    "parentCategoryId": 6945,
+    "displayIndex": 0
+  },
+  {
+    "id": 8938,
+    "gameId": 432,
+    "name": "ModJam 2025",
+    "slug": "modjam-2025",
+    "url": "https://www.curseforge.com/minecraft/data-packs/modjam-2025",
+    "iconUrl": "https://media.forgecdn.net/avatars/1427/887/638925048171367082.png",
+    "dateModified": "2025-11-17T11:47:54.24Z",
+    "isClass": false,
+    "classId": 6945,
+    "parentCategoryId": 6945,
+    "displayIndex": 0
   }
 ]
 
@@ -1196,6 +1313,8 @@ export function projectTypeToCurseforgeClassId(projectType: string): number {
 			return CURSEFORGE_CLASS_IDS.RESOURCE_PACKS
 		case 'shader':
 			return CURSEFORGE_CLASS_IDS.SHADERS
+		case 'datapack':
+			return CURSEFORGE_CLASS_IDS.DATA_PACKS
 		case 'mod':
 		default:
 			return CURSEFORGE_CLASS_IDS.MODS
@@ -1241,6 +1360,8 @@ export function toLabrinthCategory(cfCat: CurseforgeCategory): Labrinth.Tags.v2.
 		projectType = 'resourcepack'
 	} else if (cfCat.classId === CURSEFORGE_CLASS_IDS.SHADERS) {
 		projectType = 'shader'
+	} else if (cfCat.classId === CURSEFORGE_CLASS_IDS.DATA_PACKS || cfCat.id === 5193) {
+		projectType = 'datapack'
 	}
 
 	const header = projectType === 'resourcepack' && RP_RESOLUTION_SLUGS.has(cfCat.slug)

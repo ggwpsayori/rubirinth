@@ -50,7 +50,10 @@ export function versionMatchesCompatibilityTarget(
 	const normalizedVersionLoaders = version.loaders.map(normalizeLoaderAlias)
 
 	if (target.projectType === 'datapack') {
-		return normalizedVersionLoaders.includes('datapack')
+		return (
+			normalizedVersionLoaders.includes('datapack') ||
+			normalizedVersionLoaders.length === 0
+		)
 	}
 
 	if (target.projectType && NON_MOD_PROJECT_TYPES.has(target.projectType)) {

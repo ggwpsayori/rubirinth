@@ -19,6 +19,7 @@ export const CURSEFORGE_CLASS_IDS = {
 	RESOURCE_PACKS: 12,
 	SHADERS: 6552,
 	WORLDS: 17,
+	DATA_PACKS: 6945,
 } as const
 
 export const CURSEFORGE_LOADER_TYPES = {

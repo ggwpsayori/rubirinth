@@ -298,16 +298,14 @@ const isDatapackTab = computed(
 )
 
 const displayedContentSource = computed<'Modrinth' | 'CurseForge'>({
-	get: () => (isDatapackTab.value ? 'Modrinth' : contentSource.value),
+	get: () => contentSource.value,
 	set: (val) => {
-		if (!isDatapackTab.value) {
-			contentSource.value = val
-		}
+		contentSource.value = val
 	},
 })
 
 const isCurseForge = computed(
-	() => !isServerTab.value && !isDatapackTab.value && contentSource.value?.toLowerCase() === 'curseforge',
+	() => !isServerTab.value && contentSource.value?.toLowerCase() === 'curseforge',
 )
 
 const curseforgeCategories = computed<Labrinth.Tags.v2.Category[]>(() => {
@@ -1622,13 +1620,11 @@ provideBrowseManager({
 			<template #header-controls>
 				<div
 					v-if="!isServerContext && !isServerTab"
-					v-tooltip="isDatapackTab ? 'CurseForge не поддерживает наборы данных' : null"
 					class="flex items-center gap-2"
 				>
 					<OptionGroup
 						v-model="displayedContentSource"
 						:options="['Modrinth', 'CurseForge']"
-						:disabled="isDatapackTab"
 					>
 						<template #default="{ option, selected }">
 							<div

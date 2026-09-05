@@ -178,7 +178,7 @@ pub async fn handle_curseforge_url(sublink: &str) -> crate::Result<CommandPayloa
                 addon_id = Some(aid.to_string());
                 file_id = Some(fid.to_string());
             }
-            ["install", id] | ["mod", id] | ["modpack", id] | ["project", id] | ["addon", id] => {
+            ["install", id] | ["mod", id] | ["modpack", id] | ["project", id] | ["addon", id] | ["datapack", id] | ["data-pack", id] => {
                 addon_id = Some(id.to_string());
             }
             ["file", fid] | ["version", fid] => {
