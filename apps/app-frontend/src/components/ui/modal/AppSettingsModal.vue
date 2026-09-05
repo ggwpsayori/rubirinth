@@ -298,6 +298,7 @@ function showExternalAuthLibraries(): void {
 }
 
 function showUpdates(): void {
+	window.dispatchEvent(new CustomEvent('rubirinth-dismiss-update-notification'))
 	const updatesTabIndex = availableTabs.value.findIndex(
 		(tab) => tab.content === LauncherUpdateSettings,
 	)

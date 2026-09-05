@@ -1753,17 +1753,25 @@ async function checkUpdates() {
 			await fetchLatestRelease()
 			console.log('[App] isUpdateAvailable:', isUpdateAvailable.value, 'tag:', latestRelease.value?.tag_name)
 			if (isUpdateAvailable.value && latestRelease.value) {
-				addPopupNotification({
+				dismissRubirinthUpdateNotification()
+				const notif = addPopupNotification({
 					contentType: 'standard',
 					title: formatMessage(updatePopupMessages.updateAvailable),
 					text: `Доступна новая версия Rubirinth ${latestRelease.value.tag_name.replace(/^v/, '')}!`,
 					type: 'info',
 					autoCloseMs: null,
-					actions: [
+					onClick: () => {
+						dismissRubirinthUpdateNotification()
+						appSettingsModal.value?.showUpdates()
+					},
+					buttons: [
 						{
 							label: 'Обновить',
-							action: () => appSettingsModal.value?.showUpdates(),
-							primary: true,
+							color: 'brand',
+							action: () => {
+								dismissRubirinthUpdateNotification()
+								appSettingsModal.value?.showUpdates()
+							},
 						},
 						{
 							label: formatMessage(updatePopupMessages.changelog),
@@ -1775,6 +1783,7 @@ async function checkUpdates() {
 						},
 					],
 				})
+				rubirinthUpdateNotificationId = notif.id
 			}
 		} catch (e) {
 			console.error('[App] Failed to check for Rubirinth updates:', e)

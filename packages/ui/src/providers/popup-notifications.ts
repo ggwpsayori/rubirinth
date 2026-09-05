@@ -66,6 +66,7 @@ export interface PopupNotificationStandard extends PopupNotificationBase {
 	buttons?: PopupNotificationButton[]
 	dismissible?: boolean
 	onDismiss?: () => void | Promise<void>
+	onClick?: () => void | Promise<void>
 }
 
 export interface PopupNotificationToast extends PopupNotificationBase {

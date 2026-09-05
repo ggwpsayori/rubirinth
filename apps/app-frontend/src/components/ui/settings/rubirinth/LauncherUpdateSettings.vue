@@ -24,6 +24,7 @@ const checkingUpdates = ref(false)
 const { progress, version: downloadingVersion } = injectAppUpdateDownloadProgress()
 
 onMounted(async () => {
+	window.dispatchEvent(new CustomEvent('rubirinth-dismiss-update-notification'))
 	try {
 		currentVersion.value = await getVersion()
 	} catch (e) {

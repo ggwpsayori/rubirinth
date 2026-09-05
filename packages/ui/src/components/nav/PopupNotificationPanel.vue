@@ -74,6 +74,8 @@
 				<div
 					v-else
 					class="flex w-full flex-col gap-3 overflow-hidden rounded-2xl bg-bg-raised shadow-xl border-surface-5 border-solid border p-4"
+					:class="{ 'cursor-pointer hover:brightness-105 transition-all': !!item.onClick }"
+					@click="handleStandardNotificationClick(item, $event)"
 				>
 					<div class="flex flex-col gap-2 w-full">
 						<div class="flex items-center justify-between gap-2.5">
@@ -296,6 +298,16 @@ async function handleButtonClick(id: string | number, btn: PopupNotificationButt
 	await btn.action()
 	if (!btn.keepOpen) {
 		popupNotificationManager.removeNotification(id)
+	}
+}
+
+async function handleStandardNotificationClick(item: PopupNotificationStandard, event: MouseEvent) {
+	if ((event.target as HTMLElement).closest('button')) {
+		return
+	}
+	if (item.onClick) {
+		await item.onClick()
+		popupNotificationManager.removeNotification(item.id)
 	}
 }
 
