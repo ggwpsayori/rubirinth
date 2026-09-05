@@ -559,32 +559,11 @@ async fn configure_external_launch(
     _version_jar: &str,
 ) -> Result<()> {
     let library = provider.library();
-    let path = match get_authlib_injector_library(
+    let path = get_authlib_injector_library(
         provider.id,
         library,
     )
-    .await
-    {
-        Ok(path) => path,
-        Err(error) => {
-            if !matches!(
-                error.raw.as_ref(),
-                crate::ErrorKind::ExternalAuthLibraryNotInstalled { .. }
-            ) {
-                return Err(error);
-            }
-
-            if !local_authlib_injector_libraries(library)
-                .await?
-                .is_empty()
-            {
-                return Err(error);
-            }
-
-            install_latest_authlib_injector_library(provider.id, library)
-                .await?
-        }
-    };
+    .await?;
 
     if !provider
         .validate_access_token(&credentials.access_token)
