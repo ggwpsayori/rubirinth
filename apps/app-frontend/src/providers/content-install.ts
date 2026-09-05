@@ -487,7 +487,9 @@ export function createContentInstall(opts: {
 										name: owner.user.username,
 										iconUrl: owner.user.avatar_url,
 										circle: true,
-										link: `/user/${encodeURIComponent(owner.user.username)}`,
+										link: (project.id?.startsWith('cf:') || owner.user.id?.startsWith('cf-'))
+											? `https://www.curseforge.com/members/${encodeURIComponent(owner.user.username)}`
+											: `/user/${encodeURIComponent(owner.user.username)}`,
 									},
 								}
 							}

@@ -215,6 +215,7 @@ export async function get_team(id, cacheBehaviour) {
 						username: author.name,
 						name: author.name,
 						avatar_url: null,
+						url: author.url || `https://www.curseforge.com/members/${encodeURIComponent(author.name)}`,
 					},
 				}))
 			}

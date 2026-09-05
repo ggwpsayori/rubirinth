@@ -277,9 +277,15 @@ const tableItems = computed<ContentCardTableItem[]>(() =>
 			? {
 					...item.owner,
 					link:
-						item.owner.type === 'user'
-							? `/user/${encodeURIComponent(item.owner.id)}`
-							: `https://modrinth.com/organization/${item.owner.id}`,
+						item.project?.id?.startsWith('cf:') ||
+						item.id?.startsWith('cf:') ||
+						item.owner.id?.startsWith('cf-') ||
+						item.owner.id?.startsWith('cf:') ||
+						item.owner.id === 'curseforge'
+							? `https://www.curseforge.com/members/${encodeURIComponent(item.owner.name || item.owner.id.replace(/^cf-(user-)?/, ''))}`
+							: item.owner.type === 'user'
+								? `/user/${encodeURIComponent(item.owner.id)}`
+								: `https://modrinth.com/organization/${item.owner.id}`,
 				}
 			: undefined,
 		source: item.source
@@ -366,6 +372,11 @@ function itemDisplayName(item: ContentItem) {
 }
 
 function sourceProjectLink(project: ContentCardProject) {
+	if (project.id?.startsWith('cf:')) {
+		const slug = project.slug || project.id.replace(/^cf:/, '')
+		const url = `https://www.curseforge.com/minecraft/modpacks/${encodeURIComponent(slug)}`
+		return pageContext ? () => pageContext.openExternalUrl(url) : url
+	}
 	const projectId = project.slug ?? project.id
 	const url = `https://modrinth.com/modpack/${encodeURIComponent(projectId)}`
 	return pageContext ? () => pageContext.openExternalUrl(url) : url

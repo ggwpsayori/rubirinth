@@ -62,6 +62,7 @@ export function mapCurseforgeModToSearchV3Project(
 		all_project_types: [projectType],
 		slug: mod.slug,
 		author: mod.authors?.[0]?.name ?? 'CurseForge Creator',
+		author_url: mod.authors?.[0]?.url || (mod.authors?.[0]?.name ? `https://www.curseforge.com/members/${encodeURIComponent(mod.authors[0].name)}` : 'https://www.curseforge.com'),
 		author_id: null,
 		organization: null,
 		organization_id: null,

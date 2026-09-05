@@ -22,6 +22,7 @@ defineProps<{
 		by
 		<AutoLink
 			:to="author.link"
+			:target="author.link?.startsWith('http') ? '_blank' : undefined"
 			:class="
 				author.link
 					? 'custom-focus-indicator text-inherit outline-none group focus-visible:text-[--color-focus-ring] smart-clickable:allow-pointer-events'

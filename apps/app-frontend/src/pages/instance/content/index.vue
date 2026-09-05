@@ -218,7 +218,17 @@ const messages = defineMessages({
 
 let savedModalState: ManagedContentModalState | null = null
 
-function contentOwnerLink(owner: ContentOwner): NonNullable<ContentOwner['link']> {
+function contentOwnerLink(owner: ContentOwner, item?: ContentItem): NonNullable<ContentOwner['link']> {
+	const isCurseForge =
+		item?.project?.id?.startsWith('cf:') ||
+		item?.id?.startsWith('cf:') ||
+		owner.id?.startsWith('cf-') ||
+		owner.id?.startsWith('cf:') ||
+		owner.id === 'curseforge'
+	if (isCurseForge) {
+		const name = owner.name || owner.id.replace(/^cf-(user-)?/, '')
+		return `https://www.curseforge.com/members/${encodeURIComponent(name)}`
+	}
 	if (owner.type === 'user') return `/user/${encodeURIComponent(owner.id)}`
 	return () => {
 		void openUrl(`https://modrinth.com/organization/${owner.id}`)
@@ -1481,6 +1491,17 @@ async function handleShareItems(
 	await shareModal.value?.show(text)
 }
 
+function getContentProjectUrl(item: ContentItem): string {
+	const slug = item.project?.slug || item.project?.id?.replace(/^cf:/, '') || ''
+	if (item.project?.id?.startsWith('cf:')) {
+		if (item.project_type === 'modpack') return `https://www.curseforge.com/minecraft/modpacks/${slug}`
+		if (item.project_type === 'resourcepack') return `https://www.curseforge.com/minecraft/texture-packs/${slug}`
+		if (item.project_type === 'shader') return `https://www.curseforge.com/minecraft/shaders/${slug}`
+		return `https://www.curseforge.com/minecraft/mc-mods/${slug}`
+	}
+	return `https://modrinth.com/${item.project_type}/${slug}`
+}
+
 function getOverflowOptions(item: ContentItem): ButtonMenuOption[] {
 	const options: ButtonMenuOption[] = []
 
@@ -1491,15 +1512,13 @@ function getOverflowOptions(item: ContentItem): ButtonMenuOption[] {
 		action: () => highlightModInInstance(instance.value.id, item.file_path),
 	})
 
-	if (item.project?.slug) {
+	if (item.project?.slug || item.project?.id?.startsWith('cf:')) {
 		options.push({
 			id: 'copy-link',
 			label: formatMessage(commonMessages.copyLinkButton),
 			icon: ClipboardCopyIcon,
 			action: async () => {
-				await navigator.clipboard.writeText(
-					`https://modrinth.com/${item.project_type}/${item.project?.slug}`,
-				)
+				await navigator.clipboard.writeText(getContentProjectUrl(item))
 			},
 		})
 	}
@@ -1667,7 +1686,7 @@ provideContentManager({
 		owner: item.owner
 			? {
 					...item.owner,
-					link: contentOwnerLink(item.owner),
+					link: contentOwnerLink(item.owner, item),
 				}
 			: undefined,
 		external: item.external ?? !item.project,

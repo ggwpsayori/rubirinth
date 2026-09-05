@@ -37,8 +37,8 @@
 					v-for="member in sortedMembers"
 					:key="`member-${member.id}`"
 					class="flex gap-2 items-center w-fit text-primary leading-[1.2] group"
-					:to="userLink(member.user.username)"
-					:target="resolveLinkTarget(userLinkTarget)"
+					:to="userLink(member.user.username, member)"
+					:target="resolveLinkTarget(userLinkTarget, userLink(member.user.username, member))"
 				>
 					<Avatar :src="member.user.avatar_url" :alt="member.user.username" size="32px" circle />
 					<div class="flex flex-col">
@@ -91,13 +91,14 @@ const props = defineProps<{
 	} | null
 	members: TeamMember[]
 	orgLink: (slug: string) => string
-	userLink: (username: string) => string
+	userLink: (username: string, member?: TeamMember) => string
 	linkTarget?: string
 	userLinkTarget?: string | null
 	loading?: boolean
 }>()
 
-function resolveLinkTarget(target: string | null | undefined): string | null {
+function resolveLinkTarget(target: string | null | undefined, link?: string): string | null {
+	if (link?.startsWith('http')) return '_blank'
 	return target === undefined ? (props.linkTarget ?? null) : target
 }
 

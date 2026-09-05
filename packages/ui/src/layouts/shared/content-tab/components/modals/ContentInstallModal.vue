@@ -30,6 +30,7 @@
 				<div v-if="projectInfo.owner" class="flex items-center gap-2 text-sm text-secondary">
 					<AutoLink
 						:to="projectInfo.owner.link"
+						:target="typeof projectInfo.owner.link === 'string' && projectInfo.owner.link.startsWith('http') ? '_blank' : undefined"
 						class="flex items-center gap-1.5 text-inherit no-underline hover:underline"
 					>
 						<Avatar

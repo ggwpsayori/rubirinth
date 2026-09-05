@@ -420,11 +420,13 @@ function getProjectCardTags(result: Labrinth.Search.v3.ResultSearchProject, disp
 					:author="{
 						name: result.organization == null ? result.author : result.organization,
 						link:
-							result.organization_id == null
-								? `/user/${encodeURIComponent(result.author_id ?? result.author)}`
-								: ctx.variant === 'web'
-									? `/organization/${result.organization_id}`
-									: `https://modrinth.com/organization/${result.organization_id}`,
+							result.project_id?.startsWith('cf:')
+								? (result as any).author_url || `https://www.curseforge.com/members/${encodeURIComponent(result.author)}`
+								: result.organization_id == null
+									? `/user/${encodeURIComponent(result.author_id ?? result.author)}`
+									: ctx.variant === 'web'
+										? `/organization/${result.organization_id}`
+										: `https://modrinth.com/organization/${result.organization_id}`,
 					}"
 					:date-updated="result.date_modified"
 					:date-published="result.date_created"

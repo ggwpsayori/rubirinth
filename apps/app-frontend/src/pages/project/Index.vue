@@ -31,9 +31,9 @@
 				:organization="organization"
 				:members="members"
 				:org-link="(slug) => `https://modrinth.com/organization/${slug}`"
-				:user-link="(username) => `/user/${encodeURIComponent(username)}`"
+				:user-link="getCreatorLink"
 				link-target="_blank"
-				:user-link-target="null"
+				:user-link-target="data?.id?.startsWith('cf:') ? '_blank' : null"
 				class="project-sidebar-section"
 			/>
 			<ProjectSidebarDetails
@@ -694,6 +694,20 @@ function handleAddServerToInstance() {
 	const address = getServerAddress(projectV3.value?.minecraft_java_server)
 	if (!address || !data.value) return
 	showAddServerToInstanceModal(data.value.title, address)
+}
+
+function getCreatorLink(username, member) {
+	if (data.value?.id?.startsWith('cf:')) {
+		if (member?.user?.url) {
+			return member.user.url
+		}
+		const found = members.value?.find((m) => m.user?.username === username)
+		if (found?.user?.url) {
+			return found.user.url
+		}
+		return `https://www.curseforge.com/members/${encodeURIComponent(username)}`
+	}
+	return `/user/${encodeURIComponent(username)}`
 }
 
 function getCurseForgeProjectUrl(project, pV3) {

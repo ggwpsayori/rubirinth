@@ -1,3 +1,4 @@
+import { openUrl } from '@tauri-apps/plugin-opener'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import * as Pages from '@/pages'
@@ -39,6 +40,16 @@ export default new createRouter({
 			path: '/user/:user/:projectType?',
 			name: 'User',
 			component: Pages.User,
+			beforeEnter: (to, from, next) => {
+				const user = String(to.params.user || '')
+				if (user.startsWith('cf:') || user.startsWith('cf-') || user === 'curseforge') {
+					const cleanName = user.replace(/^cf-(user-)?/, '')
+					const url = `https://www.curseforge.com/members/${encodeURIComponent(cleanName)}`
+					void openUrl(url)
+					return next(from.fullPath ? false : '/')
+				}
+				next()
+			},
 		},
 		{
 			path: '/:projectType(mod|plugin|datapack|resourcepack|shader|modpack)/:id/:rest(.*)*',
