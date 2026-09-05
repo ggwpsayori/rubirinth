@@ -88,15 +88,32 @@ defineExpose({
 		console.log(errorVal, context, canClose, source)
 		closable.value = canClose
 
-		if (
+		const rawErrorMsg =
+			typeof errorVal?.message === 'string'
+				? errorVal.message
+				: typeof errorVal === 'string'
+					? errorVal
+					: ''
+		const isExternalAuthMissing =
 			errorVal?.code === 'external_auth_library_not_installed' ||
-			(typeof errorVal?.message === 'string' &&
-				errorVal.message.includes('authentication library is not installed'))
-		) {
-			const providerName =
-				errorVal.provider_name ||
-				errorVal.message?.match(/The (.+?) authentication library/i)?.[1] ||
-				'Ely.by'
+			rawErrorMsg.includes('authentication library is not installed') ||
+			rawErrorMsg.includes('External auth library selection not found') ||
+			rawErrorMsg.includes('External auth library file not found') ||
+			rawErrorMsg.toLowerCase().includes('external auth library')
+
+		if (isExternalAuthMissing) {
+			let providerName = errorVal?.provider_name
+			if (!providerName) {
+				const match = rawErrorMsg.match(/for provider\s+([a-zA-Z0-9._-]+)/i)
+				if (match && match[1].toLowerCase().includes('ely')) {
+					providerName = 'Ely.by'
+				} else if (match) {
+					providerName = match[1]
+				} else {
+					providerName =
+						rawErrorMsg.match(/The (.+?) authentication library/i)?.[1] || 'Ely.by'
+				}
+			}
 			metadata.value = {
 				...metadata.value,
 				providerName,

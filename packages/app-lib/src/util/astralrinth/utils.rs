@@ -50,22 +50,25 @@ pub async fn get_authlib_injector_library(
     provider_id: &str,
     library: ExternalAuthLibrary,
 ) -> Result<PathBuf> {
+    let provider_name = crate::models::astralrinth::authentication::external_auth_provider(provider_id)
+        .map(|p| p.display_name.to_string())
+        .unwrap_or_else(|| provider_id.to_string());
+
     let asset_name = load_authlib_injector_library_selection(provider_id)
         .await?
         .ok_or_else(|| {
-            crate::ErrorKind::OtherError(format!(
-                "External auth library selection not found for provider {provider_id}"
-            ))
+            crate::ErrorKind::ExternalAuthLibraryNotInstalled {
+                provider_name: provider_name.clone(),
+            }
             .as_error()
         })?;
     let state = State::get().await?;
     let libraries_dir = state.directories.libraries_dir();
     let path = authlib_injector_path(&libraries_dir, library, &asset_name);
     if !path.is_file() {
-        return Err(crate::ErrorKind::OtherError(format!(
-            "External auth library file not found: {}",
-            path.display()
-        ))
+        return Err(crate::ErrorKind::ExternalAuthLibraryNotInstalled {
+            provider_name,
+        }
         .as_error());
     }
 
