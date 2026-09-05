@@ -453,7 +453,7 @@ const messages = defineMessages({
 							v-if="isUpdateAvailable"
 							class="p-1 text-brand hover:brightness-125 bg-transparent border-none cursor-pointer flex items-center justify-center transition-all"
 							:class="{ 'animate-pulse': !isUpdateDownloading }"
-							v-tooltip.top="formatMessage(messages.updateAvailableTooltip, { version: latestRelease?.tag_name })"
+							v-tooltip.top="formatMessage(messages.updateAvailableTooltip, { version: latestRelease?.tag_name?.replace(/^v/, '') })"
 							@click="showUpdates"
 						>
 							<SpinnerIcon v-if="isUpdateDownloading" class="size-5 animate-spin" />

@@ -1756,7 +1756,7 @@ async function checkUpdates() {
 				addPopupNotification({
 					contentType: 'standard',
 					title: formatMessage(updatePopupMessages.updateAvailable),
-					text: `Доступна новая версия Rubirinth ${latestRelease.value.tag_name}!`,
+					text: `Доступна новая версия Rubirinth ${latestRelease.value.tag_name.replace(/^v/, '')}!`,
 					type: 'info',
 					autoCloseMs: null,
 					actions: [

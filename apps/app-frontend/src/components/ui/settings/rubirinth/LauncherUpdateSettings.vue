@@ -178,11 +178,11 @@ async function handleInstallUpdate() {
 				<div class="grid grid-cols-2 gap-3 rounded-xl border border-solid border-divider bg-surface-2 p-3 text-sm">
 					<div class="flex flex-col gap-0.5">
 						<span class="text-xs text-secondary">{{ formatMessage(messages.currentVersion) }}</span>
-						<span class="font-semibold text-contrast">v{{ currentVersion.replace(/^v/, '') }}</span>
+						<span class="font-semibold text-contrast">{{ currentVersion.replace(/^v/, '') }}</span>
 					</div>
 					<div class="flex flex-col gap-0.5">
 						<span class="text-xs text-secondary">{{ formatMessage(messages.latestVersion) }}</span>
-						<span class="font-bold text-brand">v{{ latestRelease?.tag_name?.replace(/^v/, '') }}</span>
+						<span class="font-bold text-brand">{{ latestRelease?.tag_name?.replace(/^v/, '') }}</span>
 					</div>
 				</div>
 
@@ -213,7 +213,7 @@ async function handleInstallUpdate() {
 					<p class="m-0 mt-0.5 text-sm text-secondary">
 						{{
 							formatMessage(messages.upToDateDesc, {
-								version: `v${currentVersion.replace(/^v/, '')}`,
+								version: currentVersion.replace(/^v/, ''),
 							})
 						}}
 					</p>
