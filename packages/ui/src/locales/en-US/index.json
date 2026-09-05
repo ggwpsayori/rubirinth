@@ -9340,5 +9340,9 @@
   "browse.sidebar.server-online-only": {
     "defaultMessage": "Online only",
     "message": "Online only"
+  },
+  "button.open-in-curseforge": {
+    "defaultMessage": "Open in CurseForge",
+    "description": ""
   }
 }

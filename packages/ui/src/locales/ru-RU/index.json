@@ -9638,5 +9638,9 @@
   "tag.category.miscellaneous": {
     "defaultMessage": "Miscellaneous",
     "message": "Разное"
+  },
+  "button.open-in-curseforge": {
+    "defaultMessage": "Открыть в CurseForge",
+    "description": ""
   }
 }

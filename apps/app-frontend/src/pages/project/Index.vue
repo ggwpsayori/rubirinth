@@ -591,7 +591,11 @@ const installButtonIconClass = computed(() =>
 const serverProjectHeaderMoreActions = computed(() => [
 	{
 		id: 'open-in-browser',
-		label: formatMessage(commonMessages.openInModrinthButton),
+		label: formatMessage(
+			data.value?.id?.startsWith('cf:')
+				? commonMessages.openInCurseForgeButton
+				: commonMessages.openInModrinthButton,
+		),
 		icon: ExternalIcon,
 		action: openProjectInBrowser,
 	},
@@ -625,7 +629,11 @@ const projectHeaderMoreActions = computed(() => [
 	},
 	{
 		id: 'open-in-browser',
-		label: formatMessage(commonMessages.openInModrinthButton),
+		label: formatMessage(
+			data.value?.id?.startsWith('cf:')
+				? commonMessages.openInCurseForgeButton
+				: commonMessages.openInModrinthButton,
+		),
 		icon: ExternalIcon,
 		action: openProjectInBrowser,
 	},
@@ -688,10 +696,30 @@ function handleAddServerToInstance() {
 	showAddServerToInstanceModal(data.value.title, address)
 }
 
+function getCurseForgeProjectUrl(project, pV3) {
+	if (project?.license?.url && typeof project.license.url === 'string' && project.license.url.includes('curseforge.com')) {
+		return project.license.url
+	}
+	if (pV3?.link_urls?.site?.url && typeof pV3.link_urls.site.url === 'string' && pV3.link_urls.site.url.includes('curseforge.com')) {
+		return pV3.link_urls.site.url
+	}
+	const slug = project?.slug || (project?.id ? String(project.id).replace(/^cf:/, '') : '')
+	const type = project?.project_type
+	if (type === 'modpack') {
+		return `https://www.curseforge.com/minecraft/modpacks/${slug}`
+	}
+	if (type === 'resourcepack') {
+		return `https://www.curseforge.com/minecraft/texture-packs/${slug}`
+	}
+	if (type === 'shader') {
+		return `https://www.curseforge.com/minecraft/shaders/${slug}`
+	}
+	return `https://www.curseforge.com/minecraft/mc-mods/${slug}`
+}
+
 function openProjectInBrowser() {
 	if (!data.value) return
-	const type = isServerProject.value ? 'project' : data.value.project_type
-	void openUrl(`https://modrinth.com/${type}/${data.value.slug}`)
+	void openUrl(getProjectLink(data.value))
 }
 
 function reportProject() {
@@ -935,7 +963,11 @@ const handleRightClick = (event) => {
 		{ type: 'divider' },
 		{
 			id: 'open_link',
-			label: formatMessage(commonMessages.openInModrinthButton),
+			label: formatMessage(
+				project?.id?.startsWith('cf:')
+					? commonMessages.openInCurseForgeButton
+					: commonMessages.openInModrinthButton,
+			),
 			icon: GlobeIcon,
 			action: () => openProjectLink(project),
 		},
@@ -947,7 +979,14 @@ const handleRightClick = (event) => {
 		},
 	])
 }
-const getProjectLink = (project) => `https://modrinth.com/${project.project_type}/${project.slug}`
+const getProjectLink = (project) => {
+	if (!project) return ''
+	if (project.id?.startsWith('cf:')) {
+		return getCurseForgeProjectUrl(project, projectV3.value)
+	}
+	const type = isServerProject.value ? 'project' : project.project_type
+	return `https://modrinth.com/${type}/${project.slug}`
+}
 const openProjectLink = (project) => openUrl(getProjectLink(project))
 const copyProjectLink = (project) => navigator.clipboard.writeText(getProjectLink(project))
 </script>

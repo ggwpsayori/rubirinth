@@ -291,11 +291,16 @@ export function useAppServerBrowse(options: UseAppServerBrowseOptions) {
 	}
 
 	function handleRightClick(event: MouseEvent, result: Labrinth.Search.v3.ResultSearchProject) {
+		const isCurseForge = result.project_id?.startsWith('cf:')
 		const url = getProjectUrl(result)
 		contextMenuRef.value?.open(event, [
 			{
 				id: 'open_link',
-				label: formatMessage(commonMessages.openInModrinthButton),
+				label: formatMessage(
+					isCurseForge
+						? commonMessages.openInCurseForgeButton
+						: commonMessages.openInModrinthButton,
+				),
 				icon: GlobeIcon,
 				action: () => void openUrl(url),
 			},
@@ -336,6 +341,14 @@ export function useAppServerBrowse(options: UseAppServerBrowseOptions) {
 }
 
 function getProjectUrl(item: Labrinth.Search.v3.ResultSearchProject) {
+	if (item.project_id?.startsWith('cf:')) {
+		const type = item.project_types?.[0]
+		const slug = item.slug || item.project_id.replace(/^cf:/, '')
+		if (type === 'modpack') return `https://www.curseforge.com/minecraft/modpacks/${slug}`
+		if (type === 'resourcepack') return `https://www.curseforge.com/minecraft/texture-packs/${slug}`
+		if (type === 'shader') return `https://www.curseforge.com/minecraft/shaders/${slug}`
+		return `https://www.curseforge.com/minecraft/mc-mods/${slug}`
+	}
 	const projectType = item.project_types?.[0]
 	return `https://modrinth.com/${projectType ?? 'project'}/${item.slug ?? item.project_id}`
 }

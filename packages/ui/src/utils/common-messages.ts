@@ -232,6 +232,10 @@ export const commonMessages = defineMessages({
 		id: 'button.open-in-modrinth',
 		defaultMessage: 'Open in Rubirinth',
 	},
+	openInCurseForgeButton: {
+		id: 'button.open-in-curseforge',
+		defaultMessage: 'Open in CurseForge',
+	},
 	orLabel: {
 		id: 'label.or',
 		defaultMessage: 'or',
