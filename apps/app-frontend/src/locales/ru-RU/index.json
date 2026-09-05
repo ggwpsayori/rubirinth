@@ -3876,6 +3876,74 @@
     "defaultMessage": "Rubirinth",
     "message": "Rubirinth"
   },
+  "app.settings.no-updates-tooltip": {
+    "defaultMessage": "У вас установлена последняя версия",
+    "message": "У вас установлена последняя версия"
+  },
+  "app.settings.tabs.updates": {
+    "defaultMessage": "Обновления",
+    "message": "Обновления"
+  },
+  "app.settings.update-available-tooltip": {
+    "defaultMessage": "Доступно обновление: {version}",
+    "message": "Доступно обновление: {version}"
+  },
+  "app.settings.updates.changelog": {
+    "defaultMessage": "Что нового в этой версии:",
+    "message": "Что нового в этой версии:"
+  },
+  "app.settings.updates.check-updates": {
+    "defaultMessage": "Проверить обновления",
+    "message": "Проверить обновления"
+  },
+  "app.settings.updates.checking": {
+    "defaultMessage": "Проверка...",
+    "message": "Проверка..."
+  },
+  "app.settings.updates.current-version": {
+    "defaultMessage": "Текущая версия",
+    "message": "Текущая версия"
+  },
+  "app.settings.updates.description": {
+    "defaultMessage": "Проверка наличия новых версий и журнал изменений Rubirinth App.",
+    "message": "Проверка наличия новых версий и журнал изменений Rubirinth App."
+  },
+  "app.settings.updates.downloading": {
+    "defaultMessage": "Скачивание...",
+    "message": "Скачивание..."
+  },
+  "app.settings.updates.install-now": {
+    "defaultMessage": "Обновить сейчас",
+    "message": "Обновить сейчас"
+  },
+  "app.settings.updates.latest-version": {
+    "defaultMessage": "Новая версия",
+    "message": "Новая версия"
+  },
+  "app.settings.updates.title": {
+    "defaultMessage": "Обновления",
+    "message": "Обновления"
+  },
+  "app.settings.updates.up-to-date": {
+    "defaultMessage": "У вас установлена последняя версия",
+    "message": "У вас установлена последняя версия"
+  },
+  "app.settings.updates.up-to-date-desc": {
+    "defaultMessage": "Rubirinth App {version} — все компоненты актуальны.",
+    "message": "Rubirinth App {version} — все компоненты актуальны."
+  },
+  "app.settings.updates.update-available-desc": {
+    "defaultMessage": "Версия {version} готова к установке. Рекомендуется обновиться для получения последних улучшений и исправлений.",
+    "message": "Версия {version} готова к установке. Рекомендуется обновиться для получения последних улучшений и исправлений."
+  },
+  "app.settings.updates.update-available-title": {
+    "defaultMessage": "Доступна новая версия Rubirinth!",
+    "message": "Доступна новая версия Rubirinth!"
+  },
+  "app.settings.updates.view-on-github": {
+    "defaultMessage": "Открыть релиз на GitHub",
+    "message": "Открыть релиз на GitHub"
+  },
   "app.settings.tabs.external-auth-libraries": {
     "defaultMessage": "Библиотеки авторизации",
     "message": "Библиотеки авторизации"

@@ -25,3 +25,6 @@ export const appSettingsModalOpenSyncedOptionsKey: InjectionKey<() => void> = Sy
 export const appSettingsModalOpenExternalAuthLibrariesKey: InjectionKey<() => void> = Symbol(
 	'appSettingsModalOpenExternalAuthLibraries',
 )
+export const appSettingsModalOpenUpdatesKey: InjectionKey<() => void> = Symbol(
+	'appSettingsModalOpenUpdates',
+)

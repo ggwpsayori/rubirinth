@@ -11,9 +11,11 @@ import {
 	RefreshCwIcon,
 	Settings2Icon,
 	ShieldIcon,
+	SpinnerIcon,
 	ToggleRightIcon,
 	UserIcon,
 } from '@modrinth/assets'
+import { UpdateHistoryIcon } from '@/assets/icons'
 import {
 	Button,
 	commonMessages,
@@ -41,6 +43,7 @@ import JavaSettings from '@/components/ui/settings/instances/JavaSettings.vue'
 import ResourceManagementSettings from '@/components/ui/settings/instances/ResourceManagementSettings.vue'
 import AdvancedSettings from '@/components/ui/settings/rubirinth/AdvancedSettings.vue'
 import ExternalAuthLibrarySettings from '@/components/ui/settings/rubirinth/ExternalAuthLibrarySettings.vue'
+import LauncherUpdateSettings from '@/components/ui/settings/rubirinth/LauncherUpdateSettings.vue'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { get, set } from '@/helpers/settings.ts'
 import {
@@ -49,7 +52,7 @@ import {
 } from '@/providers/app-settings-modal'
 import { injectAppUpdateDownloadProgress } from '@/providers/download-progress.ts'
 import LauncherUpdateModal from '@/components/ui/rubirinth/LauncherUpdateModal.vue'
-import { isUpdateAvailable, latestRelease } from '@/helpers/rubirinth/update'
+import { isUpdateAvailable, isUpdateDownloading, latestRelease } from '@/helpers/rubirinth/update'
 
 // TODO: Apply COMPONENT_STRUCTURE.md here and extract out common setting option components
 const appSettings = useAppSettings()
@@ -171,6 +174,15 @@ const tabs = [
 	},
 	{
 		name: defineMessage({
+			id: 'app.settings.tabs.updates',
+			defaultMessage: 'Updates',
+		}),
+		category: tabCategories.rubirinth,
+		icon: UpdateHistoryIcon,
+		content: LauncherUpdateSettings,
+	},
+	{
+		name: defineMessage({
 			id: 'app.settings.tabs.external-auth-libraries',
 			defaultMessage: 'Authentication libraries',
 		}),
@@ -284,7 +296,24 @@ function showExternalAuthLibraries(): void {
 	modal.value?.show()
 }
 
-defineExpose({ show, showProfile, showFeatureFlags, showSyncedOptions, showExternalAuthLibraries })
+function showUpdates(): void {
+	const updatesTabIndex = availableTabs.value.findIndex(
+		(tab) => tab.content === LauncherUpdateSettings,
+	)
+	if (updatesTabIndex >= 0) {
+		modal.value?.setTab(updatesTabIndex)
+	}
+	modal.value?.show()
+}
+
+defineExpose({
+	show,
+	showProfile,
+	showFeatureFlags,
+	showSyncedOptions,
+	showExternalAuthLibraries,
+	showUpdates,
+})
 
 const { progress, version: downloadingVersion } = injectAppUpdateDownloadProgress()
 const launcherUpdateModal = ref<InstanceType<typeof LauncherUpdateModal> | null>(null)
@@ -338,6 +367,14 @@ const messages = defineMessages({
 	updateAvailableBtn: {
 		id: 'app.settings.update-available-button',
 		defaultMessage: 'Update to {version}',
+	},
+	noUpdatesTooltip: {
+		id: 'app.settings.no-updates-tooltip',
+		defaultMessage: "You're using the latest version",
+	},
+	updateAvailableTooltip: {
+		id: 'app.settings.update-available-tooltip',
+		defaultMessage: 'Update available: {version}',
 	},
 })
 </script>
@@ -400,7 +437,7 @@ const messages = defineMessages({
 							<path d="M91.5658 265.778L187.852 337.481H31.3467L91.5658 265.778Z" />
 						</svg>
 					</button>
-					<div class="max-w-[200px]">
+					<div class="max-w-[180px]">
 						<p class="m-0">
 							{{ formatMessage(messages.appVersion, { version }) }}
 						</p>
@@ -410,17 +447,26 @@ const messages = defineMessages({
 							{{ osVersion }}
 						</p>
 					</div>
-				</div>
-				<div v-if="isUpdateAvailable" class="mt-3">
-					<Button
-						type="colored"
-						color="brand"
-						class="w-full justify-center"
-						@click="launcherUpdateModal?.show()"
-					>
-						<DownloadIcon class="w-4 h-4 mr-1.5" />
-						{{ formatMessage(messages.updateAvailableBtn, { version: latestRelease?.tag_name }) }}
-					</Button>
+					<div class="ml-auto flex items-center">
+						<button
+							v-if="isUpdateAvailable"
+							class="p-1 text-brand hover:brightness-125 bg-transparent border-none cursor-pointer flex items-center justify-center transition-all"
+							:class="{ 'animate-pulse': !isUpdateDownloading }"
+							v-tooltip.top="formatMessage(messages.updateAvailableTooltip, { version: latestRelease?.tag_name })"
+							@click="showUpdates"
+						>
+							<SpinnerIcon v-if="isUpdateDownloading" class="size-5 animate-spin" />
+							<DownloadIcon v-else class="size-5" />
+						</button>
+						<button
+							v-else
+							class="p-1 text-secondary hover:text-contrast bg-transparent border-none cursor-pointer flex items-center justify-center transition-colors"
+							v-tooltip.top="formatMessage(messages.noUpdatesTooltip)"
+							@click="showUpdates"
+						>
+							<UpdateHistoryIcon class="size-5" />
+						</button>
+					</div>
 				</div>
 			</div>
 		</template>

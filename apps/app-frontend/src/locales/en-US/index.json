@@ -3217,6 +3217,57 @@
     "defaultMessage": "Rubirinth",
     "message": "Rubirinth"
   },
+  "app.settings.no-updates-tooltip": {
+    "message": "You're using the latest version"
+  },
+  "app.settings.tabs.updates": {
+    "message": "Updates"
+  },
+  "app.settings.update-available-tooltip": {
+    "message": "Update available: {version}"
+  },
+  "app.settings.updates.changelog": {
+    "message": "What's new in this version:"
+  },
+  "app.settings.updates.check-updates": {
+    "message": "Check for updates"
+  },
+  "app.settings.updates.checking": {
+    "message": "Checking..."
+  },
+  "app.settings.updates.current-version": {
+    "message": "Current version"
+  },
+  "app.settings.updates.description": {
+    "message": "Check for new versions and view update history for Rubirinth App."
+  },
+  "app.settings.updates.downloading": {
+    "message": "Downloading..."
+  },
+  "app.settings.updates.install-now": {
+    "message": "Update now"
+  },
+  "app.settings.updates.latest-version": {
+    "message": "New version"
+  },
+  "app.settings.updates.title": {
+    "message": "Updates"
+  },
+  "app.settings.updates.up-to-date": {
+    "message": "You're using the latest version"
+  },
+  "app.settings.updates.up-to-date-desc": {
+    "message": "Rubirinth App {version} is up to date."
+  },
+  "app.settings.updates.update-available-desc": {
+    "message": "Version {version} is available. We recommend updating to get the latest features and improvements."
+  },
+  "app.settings.updates.update-available-title": {
+    "message": "A new version of Rubirinth is available!"
+  },
+  "app.settings.updates.view-on-github": {
+    "message": "View release on GitHub"
+  },
   "app.settings.tabs.external-auth-libraries": {
     "defaultMessage": "Authentication libraries",
     "message": "Authentication libraries"

@@ -192,6 +192,7 @@ import {
 	appSettingsModalOpenExternalAuthLibrariesKey,
 	appSettingsModalOpenProfileKey,
 	appSettingsModalOpenSyncedOptionsKey,
+	appSettingsModalOpenUpdatesKey,
 } from './providers/app-settings-modal' 
 
 const appSettings = useAppSettings()
@@ -1035,9 +1036,13 @@ provide(appSettingsModalOpenSyncedOptionsKey, () => appSettingsModal.value?.show
 provide(appSettingsModalOpenExternalAuthLibrariesKey, () =>
 	appSettingsModal.value?.showExternalAuthLibraries(),
 )
+provide(appSettingsModalOpenUpdatesKey, () => appSettingsModal.value?.showUpdates())
 if (typeof window !== 'undefined') {
 	window.addEventListener('rubirinth-open-external-auth-libraries-settings', () => {
 		appSettingsModal.value?.showExternalAuthLibraries()
+	})
+	window.addEventListener('rubirinth-open-updates-settings', () => {
+		appSettingsModal.value?.showUpdates()
 	})
 }
 
@@ -1757,7 +1762,7 @@ async function checkUpdates() {
 					actions: [
 						{
 							label: 'Обновить',
-							action: () => launcherUpdateModal.value?.show(),
+							action: () => appSettingsModal.value?.showUpdates(),
 							primary: true,
 						},
 						{
