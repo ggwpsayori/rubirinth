@@ -438,7 +438,7 @@ const messages = defineMessages({
 							<path d="M91.5658 265.778L187.852 337.481H31.3467L91.5658 265.778Z" />
 						</svg>
 					</button>
-					<div class="max-w-[180px]">
+					<div>
 						<p class="m-0">
 							{{ formatMessage(messages.appVersion, { version }) }}
 						</p>
@@ -448,7 +448,7 @@ const messages = defineMessages({
 							{{ osVersion }}
 						</p>
 					</div>
-					<div class="ml-auto flex items-center">
+					<div class="flex items-center shrink-0">
 						<button
 							v-if="isUpdateAvailable"
 							class="p-1 text-brand hover:brightness-125 bg-transparent border-none cursor-pointer flex items-center justify-center transition-all"

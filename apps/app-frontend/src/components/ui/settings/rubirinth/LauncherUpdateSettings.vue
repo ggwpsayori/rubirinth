@@ -205,11 +205,7 @@ async function handleInstallUpdate() {
 				v-else
 				class="flex items-center gap-4 rounded-2xl border border-solid border-divider bg-surface-2 p-5"
 			>
-				<div
-					class="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-solid border-[rgba(27,217,106,0.35)] bg-[rgba(27,217,106,0.12)] text-brand"
-				>
-					<BadgeCheckIcon class="size-6" />
-				</div>
+				<BadgeCheckIcon class="size-8 shrink-0 text-brand" />
 				<div>
 					<h2 class="m-0 text-base font-bold text-contrast">
 						{{ formatMessage(messages.upToDateTitle) }}
