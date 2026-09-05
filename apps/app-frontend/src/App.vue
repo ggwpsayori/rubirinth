@@ -1767,10 +1767,6 @@ function showRubirinthUpdatePopup() {
 			text: `Доступна новая версия Rubirinth ${latestRelease.value.tag_name.replace(/^v/, '')}!`,
 			type: 'info',
 			autoCloseMs: null,
-			onClick: () => {
-				dismissRubirinthUpdateNotification()
-				appSettingsModal.value?.showUpdates()
-			},
 			buttons: [
 				{
 					label: 'Обновить',
@@ -1778,14 +1774,6 @@ function showRubirinthUpdatePopup() {
 					action: () => {
 						dismissRubirinthUpdateNotification()
 						appSettingsModal.value?.showUpdates()
-					},
-				},
-				{
-					label: formatMessage(updatePopupMessages.changelog),
-					action: () => {
-						if (latestRelease.value?.html_url) {
-							window.open(latestRelease.value.html_url, '_blank')
-						}
 					},
 				},
 			],
