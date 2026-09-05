@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {
+	BadgeCheckIcon,
 	CoffeeIcon,
 	DownloadIcon,
 	GaugeIcon,
@@ -460,11 +461,11 @@ const messages = defineMessages({
 						</button>
 						<button
 							v-else
-							class="p-1 text-secondary hover:text-contrast bg-transparent border-none cursor-pointer flex items-center justify-center transition-colors"
+							class="p-1 text-brand hover:brightness-125 bg-transparent border-none cursor-pointer flex items-center justify-center transition-all"
 							v-tooltip.top="formatMessage(messages.noUpdatesTooltip)"
 							@click="showUpdates"
 						>
-							<UpdateHistoryIcon class="size-5" />
+							<BadgeCheckIcon class="size-6" />
 						</button>
 					</div>
 				</div>

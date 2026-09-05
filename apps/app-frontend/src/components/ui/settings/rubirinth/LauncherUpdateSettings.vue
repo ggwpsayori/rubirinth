@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { DownloadIcon, GithubIcon, RefreshCwIcon, SpinnerIcon } from '@modrinth/assets'
+import { BadgeCheckIcon, DownloadIcon, GithubIcon, RefreshCwIcon, SpinnerIcon } from '@modrinth/assets'
 import { Button, defineMessages, useVIntl } from '@modrinth/ui'
 import { renderString } from '@modrinth/utils'
 import { getVersion } from '@tauri-apps/api/app'
 import { computed, onMounted, ref } from 'vue'
 
-import { UpdateHistoryIcon } from '@/assets/icons'
 import RubirinthSettingsPage from '@/components/ui/settings/rubirinth/RubirinthSettingsPage.vue'
 import {
 	GITHUB_RELEASES_URL,
@@ -207,9 +206,9 @@ async function handleInstallUpdate() {
 				class="flex items-center gap-4 rounded-2xl border border-solid border-divider bg-surface-2 p-5"
 			>
 				<div
-					class="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-solid border-[rgba(70,127,197,0.35)] bg-[rgba(70,127,197,0.12)] text-brand"
+					class="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-solid border-[rgba(27,217,106,0.35)] bg-[rgba(27,217,106,0.12)] text-brand"
 				>
-					<UpdateHistoryIcon class="size-6" />
+					<BadgeCheckIcon class="size-6" />
 				</div>
 				<div>
 					<h2 class="m-0 text-base font-bold text-contrast">
