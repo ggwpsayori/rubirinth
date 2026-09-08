@@ -4870,5 +4870,29 @@
   "app.content.sync-packs-override": {
     "message": "Сначала отключите переопределение синхронизации пакетов в настройках этой сборки.",
     "defaultMessage": "Сначала отключите переопределение синхронизации пакетов в настройках этой сборки."
+  },
+  "project.versions.column.version": {
+    "defaultMessage": "Version",
+    "message": "Версия"
+  },
+  "project.versions.column.game-version": {
+    "defaultMessage": "Game version",
+    "message": "Версия игры"
+  },
+  "project.versions.column.platform": {
+    "defaultMessage": "Platform",
+    "message": "Платформа"
+  },
+  "project.versions.column.environment": {
+    "defaultMessage": "Environment",
+    "message": "Окружение"
+  },
+  "project.versions.column.published": {
+    "defaultMessage": "Published",
+    "message": "Опубликовано"
+  },
+  "project.versions.column.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Скачивания"
   }
 }

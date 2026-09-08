@@ -561,17 +561,17 @@ const versionColumns = computed<TableColumn<VersionTableColumn>[]>(() => {
 		},
 		{
 			key: 'name',
-			label: 'Version',
+			label: formatMessage(messages.columnVersion),
 			cellClass: '!overflow-visible py-3 pr-4 min-w-[7rem]',
 		},
 		{
 			key: 'gameVersions',
-			label: 'Game version',
+			label: formatMessage(messages.columnGameVersion),
 			cellClass: '!overflow-visible py-3 align-middle pr-2.5 min-w-0 max-w-[12rem]',
 		},
 		{
 			key: 'platforms',
-			label: 'Platform',
+			label: formatMessage(messages.columnPlatform),
 			cellClass: '!overflow-visible py-3 align-middle pr-2.5 min-w-0 max-w-[12rem]',
 		},
 	]
@@ -579,7 +579,7 @@ const versionColumns = computed<TableColumn<VersionTableColumn>[]>(() => {
 	if (props.showEnvironmentColumn) {
 		columns.push({
 			key: 'environment',
-			label: 'Environment',
+			label: formatMessage(messages.columnEnvironment),
 			cellClass: `${visibleCellClass} min-w-0 max-w-[12rem]`,
 		})
 	}
@@ -587,13 +587,13 @@ const versionColumns = computed<TableColumn<VersionTableColumn>[]>(() => {
 	columns.push(
 		{
 			key: 'published',
-			label: 'Published',
+			label: formatMessage(messages.columnPublished),
 			cellClass: '!overflow-visible align-middle pr-2.5 w-max',
 			width: '12%',
 		},
 		{
 			key: 'downloads',
-			label: 'Downloads',
+			label: formatMessage(messages.columnDownloads),
 			cellClass: '!overflow-visible align-middle',
 			width: '12%',
 		},
@@ -775,6 +775,30 @@ function updateQuery(newQueries: Record<string, string | string[] | undefined | 
 }
 
 const messages = defineMessages({
+	columnVersion: {
+		id: 'project.versions.column.version',
+		defaultMessage: 'Version',
+	},
+	columnGameVersion: {
+		id: 'project.versions.column.game-version',
+		defaultMessage: 'Game version',
+	},
+	columnPlatform: {
+		id: 'project.versions.column.platform',
+		defaultMessage: 'Platform',
+	},
+	columnEnvironment: {
+		id: 'project.versions.column.environment',
+		defaultMessage: 'Environment',
+	},
+	columnPublished: {
+		id: 'project.versions.column.published',
+		defaultMessage: 'Published',
+	},
+	columnDownloads: {
+		id: 'project.versions.column.downloads',
+		defaultMessage: 'Downloads',
+	},
 	withheld: {
 		id: 'project.versions.version.withheld',
 		defaultMessage: 'Withheld',

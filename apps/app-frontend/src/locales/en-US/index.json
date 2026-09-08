@@ -5209,5 +5209,29 @@
   },
   "instance.settings.tabs.synced-options.screenshots.exclude-description": {
     "message": "Exclude this instance’s screenshots from the Screenshots page."
+  },
+  "project.versions.column.version": {
+    "defaultMessage": "Version",
+    "message": "Version"
+  },
+  "project.versions.column.game-version": {
+    "defaultMessage": "Game version",
+    "message": "Game version"
+  },
+  "project.versions.column.platform": {
+    "defaultMessage": "Platform",
+    "message": "Platform"
+  },
+  "project.versions.column.environment": {
+    "defaultMessage": "Environment",
+    "message": "Environment"
+  },
+  "project.versions.column.published": {
+    "defaultMessage": "Published",
+    "message": "Published"
+  },
+  "project.versions.column.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Downloads"
   }
 }
