@@ -152,10 +152,17 @@ export async function get_project_versions(id, cacheBehaviour, options) {
 
 export async function get_version(id, cacheBehaviour) {
 	if (isCurseforgeId(id)) {
+		try {
+			const backendVer = await invoke('plugin:cache|get_version', { id, cacheBehaviour })
+			if (backendVer && backendVer.changelog) return backendVer
+		} catch {}
 		const fileId = extractCurseforgeId(id)
 		const batch = await curseforgeClient.getFilesBatch([fileId]).catch(() => [])
 		if (batch && batch.length > 0) {
-			return mapCurseforgeFileToVersion(batch[0])
+			const ver = mapCurseforgeFileToVersion(batch[0])
+			const changelog = await curseforgeClient.getFileChangelog(batch[0].modId, fileId).catch(() => '')
+			if (changelog) ver.changelog = changelog
+			return ver
 		}
 	}
 	return await invoke('plugin:cache|get_version', { id, cacheBehaviour })

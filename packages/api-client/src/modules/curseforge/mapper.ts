@@ -265,7 +265,7 @@ export function mapCurseforgeFileToVersion(
 		featured: false,
 		name: file.displayName || file.fileName,
 		version_number: file.displayName || file.fileName,
-		changelog: '',
+		changelog: null,
 		date_published: file.fileDate,
 		downloads: file.downloadCount ?? 0,
 		version_type: versionType,

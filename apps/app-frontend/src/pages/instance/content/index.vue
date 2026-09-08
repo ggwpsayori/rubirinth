@@ -1369,7 +1369,7 @@ async function fetchAndSpliceVersion(
 }
 
 async function handleVersionSelect(version: Labrinth.Versions.v2.Version) {
-	if (version.changelog != null) return
+	if (version.changelog) return
 	const requestId = activeUpdateRequestId.value
 	loadingChangelog.value = true
 	await fetchAndSpliceVersion(
@@ -1384,7 +1384,7 @@ async function handleVersionSelect(version: Labrinth.Versions.v2.Version) {
 }
 
 async function handleVersionHover(version: Labrinth.Versions.v2.Version) {
-	if (version.changelog != null) return
+	if (version.changelog) return
 	await fetchAndSpliceVersion(version.id, undefined, undefined, activeUpdateRequestId.value)
 }
 

@@ -151,6 +151,11 @@ export class CurseforgeClient {
 		return res.data
 	}
 
+	async getFileChangelog(modId: number | string, fileId: number | string): Promise<string> {
+		const res = await this.request<{ data: string }>(`/mods/${modId}/files/${fileId}/changelog`)
+		return res?.data || ''
+	}
+
 	async getFilesBatch(fileIds: number[]): Promise<CurseforgeFile[]> {
 		if (!fileIds || fileIds.length === 0) return []
 		const results: CurseforgeFile[] = []
