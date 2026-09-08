@@ -101,7 +101,7 @@ import { computed, ref, shallowRef, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { SwapIcon } from '@/assets/icons'
-import { get_project_many, get_version_many } from '@/helpers/cache.js'
+import { get_project_many, get_version, get_version_many } from '@/helpers/cache.js'
 import { useBreadcrumb } from '@/providers/breadcrumbs'
 
 const { formatMessage } = useVIntl()
@@ -225,12 +225,23 @@ async function refreshEnrichment() {
 	}
 }
 
+async function ensureVersionChangelog() {
+	if (!version.value?.changelog && route.params.version) {
+		const full = (await get_version(String(route.params.version), 'must_revalidate').catch(
+			() => null,
+		)) as Labrinth.Versions.v2.Version | null
+		if (full && (!version.value || version.value.id === full.id)) {
+			version.value = full as unknown as Labrinth.Versions.v3.Version
+		}
+	}
+}
+
 watch([() => props.versions, () => route.params.version], async () => {
 	if (route.params.version) {
 		version.value = props.versions.find((v) => v.id === route.params.version)
-		await refreshEnrichment()
+		await Promise.all([refreshEnrichment(), ensureVersionChangelog()])
 	}
 })
 
-await refreshEnrichment()
+await Promise.all([refreshEnrichment(), ensureVersionChangelog()])
 </script>
