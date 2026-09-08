@@ -1,4 +1,4 @@
-import { isCurseforgeId, type Labrinth } from '@modrinth/api-client'
+import { isCurseforgeId, loaderNameToCurseforgeLoaderType, type Labrinth } from '@modrinth/api-client'
 import {
 	type ContentInstallInstance,
 	type ContentInstallProjectInfo,
@@ -90,11 +90,16 @@ function isVersionCompatible(
 	project: Labrinth.Projects.v2.Project,
 	instance: GameInstance,
 ) {
+	const loader = instance.loader?.toLowerCase()
+	const loaderCompatible =
+		version.loaders.includes(instance.loader) ||
+		(loader === 'quilt' && version.loaders.includes('fabric')) ||
+		(loader === 'neoforge' && instance.game_version.startsWith('1.20.1') && version.loaders.includes('forge')) ||
+		version.loaders.includes('datapack')
+
 	return (
 		version.game_versions.includes(instance.game_version) &&
-		(project.project_type === 'mod'
-			? version.loaders.includes(instance.loader) || version.loaders.includes('datapack')
-			: true)
+		(project.project_type === 'mod' ? loaderCompatible : true)
 	)
 }
 
@@ -104,12 +109,16 @@ function findPreferredVersion(
 	instance: GameInstance,
 ) {
 	const projectType = project.project_type ?? 'mod'
+	const loader = instance.loader?.toLowerCase()
 
 	return (
 		versions.find(
 			(v) =>
 				v.game_versions.includes(instance.game_version) &&
-				(projectType === 'mod' ? v.loaders.includes(instance.loader) : true),
+				(projectType === 'mod'
+					? v.loaders.includes(instance.loader) ||
+						(loader === 'quilt' && v.loaders.includes('fabric'))
+					: true),
 		) ?? versions.find((v) => isVersionCompatible(v, project, instance))
 	)
 }
@@ -899,8 +908,12 @@ export function createContentInstall(opts: {
 
 			let versionsPromise: Promise<Labrinth.Versions.v2.Version[]>
 			if (isCurseforgeId(project.id) && instance.game_version) {
+				const modLoaderType = instance.loader
+					? loaderNameToCurseforgeLoaderType(instance.loader)
+					: undefined
 				versionsPromise = get_project_versions(project.id, undefined, {
 					gameVersion: instance.game_version,
+					modLoaderType: modLoaderType && modLoaderType !== 0 ? modLoaderType : undefined,
 				}).then((v) => (v && v.length > 0 ? v : get_version_many(project.versions, 'must_revalidate'))) as Promise<Labrinth.Versions.v2.Version[]>
 			} else {
 				versionsPromise = get_version_many(project.versions, 'must_revalidate') as Promise<

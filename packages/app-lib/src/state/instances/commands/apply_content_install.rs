@@ -46,6 +46,8 @@ pub(crate) struct InstanceInstallProjectRequest {
 struct CachedEntryContentProvider<'a> {
     state: &'a State,
     cache_behaviour: Option<CacheBehaviour>,
+    game_version: Option<String>,
+    loader: Option<String>,
 }
 
 #[async_trait]
@@ -71,6 +73,129 @@ impl ContentMetadataProvider for CachedEntryContentProvider<'_> {
         &mut self,
         project_id: &str,
     ) -> Result<Vec<modrinth_content_management::Version>, ResolveError> {
+        if project_id.starts_with("cf:") {
+            let raw_id = project_id.strip_prefix("cf:").unwrap_or(project_id);
+            if let Ok(mod_id) = raw_id.parse::<u32>() {
+                let mod_loader_type = self
+                    .loader
+                    .as_deref()
+                    .and_then(crate::util::curseforge::curseforge_loader_type_number);
+                let gv = self.game_version.as_deref();
+
+                // 1. Try querying with both game_version and mod_loader_type
+                let mut files = match crate::util::curseforge::get_curseforge_files_filtered(
+                    mod_id,
+                    gv,
+                    mod_loader_type,
+                    50,
+                )
+                .await
+                {
+                    Ok(f) if !f.is_empty() => f,
+                    _ => Vec::new(),
+                };
+
+                // 2. If empty and loader is Quilt, try Fabric fallback (modLoaderType = 4)
+                if files.is_empty()
+                    && self
+                        .loader
+                        .as_deref()
+                        .map(|l| l.eq_ignore_ascii_case("quilt"))
+                        .unwrap_or(false)
+                {
+                    if let Ok(f) = crate::util::curseforge::get_curseforge_files_filtered(
+                        mod_id,
+                        gv,
+                        Some(4),
+                        50,
+                    )
+                    .await
+                    {
+                        if !f.is_empty() {
+                            files = f;
+                        }
+                    }
+                }
+
+                // 3. If empty and loader is NeoForge on 1.20.1, try Forge fallback (modLoaderType = 1)
+                if files.is_empty()
+                    && self
+                        .loader
+                        .as_deref()
+                        .map(|l| l.eq_ignore_ascii_case("neoforge"))
+                        .unwrap_or(false)
+                    && self
+                        .game_version
+                        .as_deref()
+                        .map(|v| v.starts_with("1.20.1"))
+                        .unwrap_or(false)
+                {
+                    if let Ok(f) = crate::util::curseforge::get_curseforge_files_filtered(
+                        mod_id,
+                        gv,
+                        Some(1),
+                        50,
+                    )
+                    .await
+                    {
+                        if !f.is_empty() {
+                            files = f;
+                        }
+                    }
+                }
+
+                // 4. If still empty, try with game_version only (for mods/datapacks/resourcepacks without loader tag)
+                if files.is_empty() && gv.is_some() {
+                    if let Ok(f) = crate::util::curseforge::get_curseforge_files_filtered(
+                        mod_id,
+                        gv,
+                        None,
+                        50,
+                    )
+                    .await
+                    {
+                        if !f.is_empty() {
+                            files = f;
+                        }
+                    }
+                }
+
+                // 5. Fallback to general files if everything else yielded nothing
+                if files.is_empty() {
+                    files = crate::util::curseforge::get_curseforge_files(mod_id, 50)
+                        .await
+                        .unwrap_or_default();
+                }
+
+                // Cache all returned files as CacheValue::Version in SQLite cache
+                if !files.is_empty() {
+                    let cache_entries: Vec<_> = files
+                        .iter()
+                        .map(|f| {
+                            let ver = crate::util::curseforge::map_curseforge_file_to_version(f);
+                            crate::state::cache::CacheValue::Version(ver).get_entry()
+                        })
+                        .collect();
+                    let _ = crate::state::cache::CachedEntry::upsert_many(
+                        &cache_entries,
+                        &self.state.pool,
+                    )
+                    .await;
+                }
+
+                let versions = files
+                    .into_iter()
+                    .map(|f| {
+                        version_to_resolver(
+                            crate::util::curseforge::map_curseforge_file_to_version(&f),
+                        )
+                    })
+                    .collect();
+
+                return Ok(versions);
+            }
+        }
+
         let versions = CachedEntry::get_project_versions(
             project_id,
             self.cache_behaviour,
@@ -178,6 +303,8 @@ pub(crate) async fn resolve_install_plan(
     let provider = CachedEntryContentProvider {
         state,
         cache_behaviour: Some(CacheBehaviour::MustRevalidate),
+        game_version: Some(content_set.game_version.clone()),
+        loader: Some(content_set.loader.as_str().to_string()),
     };
     let content_type = request.content_type;
     let request = ResolveContentRequest {

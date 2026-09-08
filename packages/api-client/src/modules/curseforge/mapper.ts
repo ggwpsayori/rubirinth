@@ -252,7 +252,7 @@ export function mapCurseforgeFileToVersion(
 		else if (dep.relationType === 1 || dep.relationType === 6) depType = 'embedded'
 
 		return {
-			version_id: '',
+			version_id: undefined,
 			project_id: `cf:${dep.modId}`,
 			dependency_type: depType,
 		}

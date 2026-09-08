@@ -144,6 +144,15 @@ pub struct CurseforgeScreenshot {
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(rename_all = "camelCase")]
+pub struct CurseforgeSortableGameVersion {
+    pub game_version_name: Option<String>,
+    pub game_version_padded: Option<String>,
+    pub game_version: Option<String>,
+    pub game_version_type_id: Option<u32>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
 pub struct CurseforgeFile {
     pub id: u32,
     pub game_id: u32,
@@ -167,6 +176,8 @@ pub struct CurseforgeFile {
     pub file_fingerprint: Option<u64>,
     #[serde(default)]
     pub modules: Vec<CurseforgeFileModule>,
+    #[serde(default)]
+    pub sortable_game_versions: Option<Vec<CurseforgeSortableGameVersion>>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -348,6 +359,59 @@ pub async fn get_curseforge_files(
 
     Ok(val.data)
 }
+
+pub fn curseforge_loader_type_number(loader: &str) -> Option<u32> {
+    match loader.to_lowercase().as_str() {
+        "forge" => Some(1),
+        "cauldron" => Some(2),
+        "liteloader" => Some(3),
+        "fabric" => Some(4),
+        "quilt" => Some(5),
+        "neoforge" => Some(6),
+        _ => None,
+    }
+}
+
+pub async fn get_curseforge_files_filtered(
+    mod_id: u32,
+    game_version: Option<&str>,
+    mod_loader_type: Option<u32>,
+    page_size: u32,
+) -> crate::Result<Vec<CurseforgeFile>> {
+    let client = make_curseforge_client()?;
+    let mut url = format!("{CURSEFORGE_API_BASE}/mods/{mod_id}/files?pageSize={page_size}");
+    if let Some(gv) = game_version {
+        if !gv.is_empty() {
+            url.push_str(&format!("&gameVersion={}", urlencoding::encode(gv)));
+        }
+    }
+    if let Some(lt) = mod_loader_type {
+        if lt > 0 {
+            url.push_str(&format!("&modLoaderType={lt}"));
+        }
+    }
+    let res = client
+        .get(&url)
+        .send()
+        .await
+        .map_err(|e| crate::ErrorKind::OtherError(e.to_string()).as_error())?;
+
+    if !res.status().is_success() {
+        return Err(crate::ErrorKind::OtherError(format!(
+            "CurseForge API error (status {}): {url}",
+            res.status()
+        ))
+        .as_error());
+    }
+
+    let val: CurseforgeDataResponse<Vec<CurseforgeFile>> = res
+        .json()
+        .await
+        .map_err(|e| crate::ErrorKind::OtherError(e.to_string()).as_error())?;
+
+    Ok(val.data)
+}
+
 
 pub async fn get_curseforge_files_batch(
     file_ids: &[u32],
@@ -642,12 +706,27 @@ pub fn map_curseforge_file_to_version(file: &CurseforgeFile) -> Version {
         )
     });
 
-    let game_versions: Vec<String> = file
+    let mut game_versions: Vec<String> = file
         .game_versions
         .iter()
         .filter(|v| v.chars().next().map_or(false, |c| c.is_ascii_digit()))
         .cloned()
         .collect();
+
+    if let Some(sortable) = &file.sortable_game_versions {
+        for sgv in sortable {
+            if let Some(ref gv) = sgv.game_version {
+                if !gv.is_empty() && gv.chars().next().map_or(false, |c| c.is_ascii_digit()) && !game_versions.contains(gv) {
+                    game_versions.push(gv.clone());
+                }
+            }
+            if let Some(ref gvn) = sgv.game_version_name {
+                if !gvn.is_empty() && gvn.chars().next().map_or(false, |c| c.is_ascii_digit()) && !game_versions.contains(gvn) {
+                    game_versions.push(gvn.clone());
+                }
+            }
+        }
+    }
 
     let mut loaders: Vec<String> = file
         .game_versions
@@ -660,6 +739,19 @@ pub fn map_curseforge_file_to_version(file: &CurseforgeFile) -> Version {
             }
         })
         .collect();
+
+    if let Some(sortable) = &file.sortable_game_versions {
+        for sgv in sortable {
+            if let Some(ref name) = sgv.game_version_name {
+                let lower = name.to_lowercase();
+                if ["forge", "fabric", "quilt", "neoforge", "iris", "optifine", "canvas", "vanilla", "minecraft", "datapack"].contains(&lower.as_str()) {
+                    if !loaders.contains(&lower) {
+                        loaders.push(lower);
+                    }
+                }
+            }
+        }
+    }
 
     if loaders.is_empty() && file.modules.iter().any(|m| m.name == "data") {
         loaders.push("datapack".to_string());

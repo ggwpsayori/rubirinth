@@ -10,6 +10,7 @@ use crate::provider::ContentMetadataProvider;
 
 // Skip Fabric API if you're installing a fabric project onto a quilt instance.
 const QUILT_FABRIC_API_EXCEPTION_PROJECT_ID: &str = "P7dR8mSH";
+const CURSEFORGE_FABRIC_API_PROJECT_ID: &str = "cf:306612";
 
 pub async fn resolve_content<P: ContentMetadataProvider>(
     mut provider: P,
@@ -125,9 +126,12 @@ impl<'a, P: ContentMetadataProvider> InstallResolver<'a, P> {
                 }
 
                 if should_skip_quilt_fabric_api(dependency, self.target) {
+                    let skipped_project_id = dependency
+                        .project_id
+                        .clone()
+                        .unwrap_or_else(|| QUILT_FABRIC_API_EXCEPTION_PROJECT_ID.to_string());
                     self.skipped.push(SkippedContent {
-                        project_id: QUILT_FABRIC_API_EXCEPTION_PROJECT_ID
-                            .to_string(),
+                        project_id: skipped_project_id,
                         version_id: dependency.version_id.clone(),
                         dependent_on_version_id: Some(version.id.clone()),
                         reason: SkippedReason::QuiltFabricApi,
@@ -146,7 +150,13 @@ impl<'a, P: ContentMetadataProvider> InstallResolver<'a, P> {
                     .clone()
                     .unwrap_or_else(|| dependency_version.project_id.clone());
 
-                if self.existing_project_ids.contains(&project_id) {
+                let is_already_installed = self.existing_project_ids.contains(&project_id)
+                    || (project_id == CURSEFORGE_FABRIC_API_PROJECT_ID
+                        && self.existing_project_ids.contains(QUILT_FABRIC_API_EXCEPTION_PROJECT_ID))
+                    || (project_id == QUILT_FABRIC_API_EXCEPTION_PROJECT_ID
+                        && self.existing_project_ids.contains(CURSEFORGE_FABRIC_API_PROJECT_ID));
+
+                if is_already_installed {
                     self.skipped.push(SkippedContent {
                         project_id,
                         version_id: Some(dependency_version.id),
@@ -345,8 +355,11 @@ fn should_skip_quilt_fabric_api(
     dependency: &Dependency,
     target: &ResolutionPreferences,
 ) -> bool {
-    dependency.project_id.as_deref()
-        == Some(QUILT_FABRIC_API_EXCEPTION_PROJECT_ID)
+    let is_fabric_api = matches!(
+        dependency.project_id.as_deref(),
+        Some(QUILT_FABRIC_API_EXCEPTION_PROJECT_ID) | Some(CURSEFORGE_FABRIC_API_PROJECT_ID)
+    );
+    is_fabric_api
         && target
             .loaders
             .iter()

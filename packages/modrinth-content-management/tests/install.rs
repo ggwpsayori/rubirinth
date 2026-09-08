@@ -335,6 +335,58 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn quilt_instances_skip_curseforge_fabric_api_dependency() {
+        let provider = MemoryProvider::default().with_versions(vec![version(
+            "p1v1",
+            "p1",
+            "2024-01-01T00:00:00Z",
+            &["1.20.1"],
+            &["quilt"],
+            vec![required_project_dependency("cf:306612")],
+        )]);
+        let mut request = request("p1");
+        request.target.loaders = vec!["quilt".to_string()];
+
+        let plan = resolve_content(provider, request).await.unwrap();
+
+        assert!(plan.dependencies.is_empty());
+        assert_eq!(plan.skipped[0].reason, SkippedReason::QuiltFabricApi);
+        assert_eq!(plan.skipped[0].project_id, "cf:306612");
+    }
+
+    #[tokio::test]
+    async fn curseforge_and_modrinth_fabric_api_deduplication() {
+        let provider = MemoryProvider::default().with_versions(vec![
+            version(
+                "p1v1",
+                "p1",
+                "2024-01-01T00:00:00Z",
+                &["1.20.1"],
+                &["fabric"],
+                vec![required_project_dependency("cf:306612")],
+            ),
+            version(
+                "fapi_cf",
+                "cf:306612",
+                "2024-01-01T00:00:00Z",
+                &["1.20.1"],
+                &["fabric"],
+                vec![],
+            ),
+        ]);
+        let mut request = request("p1");
+        request.target.loaders = vec!["fabric".to_string()];
+        // Pretend Modrinth Fabric API is already installed on the instance
+        request.existing_project_ids = vec![QUILT_FABRIC_API_EXCEPTION_PROJECT_ID.to_string()];
+
+        let plan = resolve_content(provider, request).await.unwrap();
+
+        assert!(plan.dependencies.is_empty());
+        assert_eq!(plan.skipped[0].reason, SkippedReason::AlreadyInstalled);
+        assert_eq!(plan.skipped[0].project_id, "cf:306612");
+    }
+
+    #[tokio::test]
     async fn quilt_instances_skip_fabric_api_dependency() {
         let provider = MemoryProvider::default().with_versions(vec![version(
             "p1v1",
