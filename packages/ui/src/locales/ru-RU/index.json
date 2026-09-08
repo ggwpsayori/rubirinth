@@ -59,78 +59,6 @@
     "defaultMessage": "Не удалось загрузить настройки сервера",
     "message": "Не удалось загрузить настройки сервера"
   },
-  "app.settings.external-auth-libraries.description": {
-    "defaultMessage": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.).",
-    "message": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.)."
-  },
-  "app.settings.external-auth-libraries.install-selected": {
-    "defaultMessage": "Установить",
-    "message": "Установить"
-  },
-  "app.settings.external-auth-libraries.installed": {
-    "defaultMessage": "Библиотека {providerName} {version} установлена",
-    "message": "Библиотека {providerName} {version} установлена"
-  },
-  "app.settings.external-auth-libraries.installing": {
-    "defaultMessage": "Установка...",
-    "message": "Установка..."
-  },
-  "app.settings.external-auth-libraries.load-failed": {
-    "defaultMessage": "Не удалось загрузить библиотеки авторизации: {error}",
-    "message": "Не удалось загрузить библиотеки авторизации: {error}"
-  },
-  "app.settings.external-auth-libraries.loading": {
-    "defaultMessage": "Загрузка доступных версий библиотек...",
-    "message": "Загрузка доступных версий библиотек..."
-  },
-  "app.settings.external-auth-libraries.local-only": {
-    "defaultMessage": "Отображаются только локально установленные версии, так как удаленный сервер недоступен.",
-    "message": "Отображаются только локально установленные версии, так как удаленный сервер недоступен."
-  },
-  "app.settings.external-auth-libraries.no-versions": {
-    "defaultMessage": "Совместимых версий библиотеки не найдено.",
-    "message": "Совместимых версий библиотеки не найдено."
-  },
-  "app.settings.external-auth-libraries.not-selected": {
-    "defaultMessage": "Не выбрано",
-    "message": "Не выбрано"
-  },
-  "app.settings.external-auth-libraries.reinstall": {
-    "defaultMessage": "Переустановить",
-    "message": "Переустановить"
-  },
-  "app.settings.external-auth-libraries.request-server": {
-    "defaultMessage": "Проверить обновления",
-    "message": "Проверить обновления"
-  },
-  "app.settings.external-auth-libraries.requesting-server": {
-    "defaultMessage": "Проверка...",
-    "message": "Проверка..."
-  },
-  "app.settings.external-auth-libraries.retry": {
-    "defaultMessage": "Повторить",
-    "message": "Повторить"
-  },
-  "app.settings.external-auth-libraries.selected-version": {
-    "defaultMessage": "Выбранная версия",
-    "message": "Выбранная версия"
-  },
-  "app.settings.external-auth-libraries.title": {
-    "defaultMessage": "Библиотеки авторизации",
-    "message": "Библиотеки авторизации"
-  },
-  "app.settings.external-auth-libraries.version": {
-    "defaultMessage": "Версия",
-    "message": "Версия"
-  },
-  "app.settings.sidebar.label.rubirinth": {
-    "defaultMessage": "Rubirinth",
-    "message": "Rubirinth"
-  },
-  "app.settings.tabs.external-auth-libraries": {
-    "defaultMessage": "Библиотеки авторизации",
-    "message": "Библиотеки авторизации"
-  },
   "badge.alpha": {
     "defaultMessage": "Альфа",
     "message": "Альфа"
@@ -154,10 +82,6 @@
   "billing.resubscribe-modal.cancel": {
     "defaultMessage": "Отмена",
     "message": "Отмена"
-  },
-  "billing.resubscribe-modal.cpus": {
-    "defaultMessage": "{sharedCpus} Shared CPUs",
-    "message": "{sharedCpus} Shared CPUs"
   },
   "billing.resubscribe-modal.description": {
     "defaultMessage": "Вы собираетесь возобновить подписку на <server-name>{serverName}</server-name>. После оплаты сервер продолжит работу без остановок.",
@@ -215,10 +139,6 @@
     "defaultMessage": "Особые исключения остаются между сеансами. Чужая ссылка с фильтрами перезапишет их.",
     "message": "Особые исключения остаются между сеансами. Чужая ссылка с фильтрами перезапишет их."
   },
-  "browse.display-mode.prefix": {
-    "defaultMessage": "Mode:",
-    "message": "Режим:"
-  },
   "browse.filter-results": {
     "defaultMessage": "Фильтры...",
     "message": "Фильтры..."
@@ -262,62 +182,6 @@
   "browse.selected-projects-leave-modal.header": {
     "defaultMessage": "Проекты не установлены",
     "message": "Проекты не установлены"
-  },
-  "browse.sidebar.server-online-only": {
-    "defaultMessage": "Online only",
-    "message": "Только в сети"
-  },
-  "browse.sort.date-published": {
-    "defaultMessage": "Date published",
-    "message": "Дата публикации"
-  },
-  "browse.sort.date-updated": {
-    "defaultMessage": "Date updated",
-    "message": "Дата обновления"
-  },
-  "browse.sort.downloads": {
-    "defaultMessage": "Downloads",
-    "message": "Скачивания"
-  },
-  "browse.sort.follows": {
-    "defaultMessage": "Followers",
-    "message": "Подписчики"
-  },
-  "browse.sort.newest": {
-    "defaultMessage": "Date published",
-    "message": "Новизна"
-  },
-  "browse.sort.ping": {
-    "defaultMessage": "Ping",
-    "message": "Пинг"
-  },
-  "browse.sort.players": {
-    "defaultMessage": "Players",
-    "message": "Игроки"
-  },
-  "browse.sort.recent-players": {
-    "defaultMessage": "Recent players",
-    "message": "Недавние игроки"
-  },
-  "browse.sort.relevance": {
-    "defaultMessage": "Relevance",
-    "message": "Релевантность"
-  },
-  "browse.sort.updated": {
-    "defaultMessage": "Recently updated",
-    "message": "Дата обновления"
-  },
-  "browse.sort.verified-plays": {
-    "defaultMessage": "Verified Plays",
-    "message": "Проверенные игры"
-  },
-  "browse.view-mode.grid": {
-    "defaultMessage": "Cards",
-    "message": "Карточки"
-  },
-  "browse.view-mode.list": {
-    "defaultMessage": "List",
-    "message": "Список"
   },
   "browse.view-prefix": {
     "defaultMessage": "Вид:",
@@ -667,10 +531,6 @@
     "defaultMessage": "Предупреждение об удалении",
     "message": "Предупреждение об удалении"
   },
-  "content.confirm-deletion.delete-button": {
-    "defaultMessage": "Удалить {count, number} {itemType}",
-    "message": "Удалить {count, number} {itemType}"
-  },
   "content.confirm-deletion.header": {
     "defaultMessage": "Удалить {itemType}",
     "message": "Удалить {itemType}"
@@ -719,10 +579,6 @@
     "defaultMessage": "{count, plural, =1 {Зависимый проект} other {Зависимые проекты}}",
     "message": "{count, plural, =1 {Зависимый проект} other {Зависимые проекты}}"
   },
-  "content.dependency-warning.bulk-admonition-body": {
-    "defaultMessage": "Some selected projects are installed as dependencies. Deleting them may break your {context} or stop dependent content from loading correctly.",
-    "message": "Some selected projects are installed as dependencies. Deleting them may break your {context} or stop dependent content from loading correctly."
-  },
   "content.dependency-warning.context.instance": {
     "defaultMessage": "сборка",
     "message": "сборка"
@@ -751,25 +607,13 @@
     "defaultMessage": "Зависимый контент может не загрузиться или отключиться",
     "message": "Зависимый контент может не загрузиться или отключиться"
   },
-  "content.dependency-warning.effect-instance": {
-    "defaultMessage": "Your {context} may crash, refuse to start, or behave unexpectedly",
-    "message": "Your {context} may crash, refuse to start, or behave unexpectedly"
-  },
   "content.dependency-warning.header": {
     "defaultMessage": "Предупреждение о зависимостях",
     "message": "Предупреждение о зависимостях"
   },
-  "content.dependency-warning.single-admonition-body": {
-    "defaultMessage": "{project} is installed as a dependency. Deleting it may break your {context} or stop dependent content from loading correctly.",
-    "message": "{project} is installed as a dependency. Deleting it may break your {context} or stop dependent content from loading correctly."
-  },
   "content.dependency-warning.what-happens-label": {
     "defaultMessage": "Что произойдёт?",
     "message": "Что произойдёт?"
-  },
-  "content.diff-modal.added-count": {
-    "defaultMessage": "{count} added",
-    "message": "{count} added"
   },
   "content.diff-modal.config-files-updated": {
     "defaultMessage": "Изменены файлы настроек",
@@ -839,14 +683,6 @@
     "defaultMessage": "Нет изменений контента",
     "message": "Нет изменений контента"
   },
-  "content.diff-modal.removed-count": {
-    "defaultMessage": "{count} removed",
-    "message": "{count} removed"
-  },
-  "content.diff-modal.removed-disabled-count": {
-    "defaultMessage": "{count} removed (disabled)",
-    "message": "{count} removed (disabled)"
-  },
   "content.diff-modal.reviewed-files": {
     "defaultMessage": "Файлы не с Modrinth не проверяются.",
     "message": "Файлы не с Modrinth не проверяются."
@@ -866,10 +702,6 @@
   "content.diff-modal.unknown-project": {
     "defaultMessage": "Неизвестно",
     "message": "Неизвестно"
-  },
-  "content.diff-modal.updated-count": {
-    "defaultMessage": "{count} updated",
-    "message": "{count} updated"
   },
   "content.filter.disabled": {
     "defaultMessage": "Отключённые",
@@ -918,10 +750,6 @@
   "content.inline-backup.shift-click-hint": {
     "defaultMessage": "Удерживайте Shift при нажатии, чтобы пропустить подтверждение.",
     "message": "Удерживайте Shift при нажатии, чтобы пропустить подтверждение."
-  },
-  "content.inline-backup.warning-body": {
-    "defaultMessage": "Рекомендуется создать резервную копию перед продолжением, чтобы вы могли восстановить {type} в случае неполадок.",
-    "message": "Рекомендуется создать резервную копию перед продолжением, чтобы вы могли восстановить {type} в случае неполадок."
   },
   "content.inline-backup.world-label": {
     "defaultMessage": "мир",
@@ -1091,10 +919,6 @@
     "defaultMessage": "Подождите",
     "message": "Подождите"
   },
-  "content.page-layout.search-placeholder": {
-    "message": "Поиск: {count, number} {contentType}...",
-    "defaultMessage": "Поиск: {count, number} {contentType}..."
-  },
   "content.page-layout.share.file-names": {
     "defaultMessage": "Названия файлов",
     "message": "Названия файлов"
@@ -1151,57 +975,21 @@
     "defaultMessage": "Все выбранные проекты уже включены",
     "message": "Все выбранные проекты уже включены"
   },
-  "content.selection-bar.bulk.deleting": {
-    "defaultMessage": "Deleting {progress}/{total} {contentType}...",
-    "message": "Deleting {progress}/{total} {contentType}..."
-  },
-  "content.selection-bar.bulk.deleting-count": {
-    "defaultMessage": "Deleting {count, number} {contentType}",
-    "message": "Deleting {count, number} {contentType}"
-  },
   "content.selection-bar.bulk.deleting-waiting": {
     "defaultMessage": "Удаление проектов...",
     "message": "Удаление проектов..."
-  },
-  "content.selection-bar.bulk.disabling": {
-    "defaultMessage": "Disabling {progress}/{total} {contentType}...",
-    "message": "Disabling {progress}/{total} {contentType}..."
-  },
-  "content.selection-bar.bulk.disabling-count": {
-    "defaultMessage": "Disabling {count, number} {contentType}",
-    "message": "Disabling {count, number} {contentType}"
   },
   "content.selection-bar.bulk.disabling-waiting": {
     "defaultMessage": "Отключение проектов...",
     "message": "Отключение проектов..."
   },
-  "content.selection-bar.bulk.enabling": {
-    "defaultMessage": "Enabling {progress}/{total} {contentType}...",
-    "message": "Enabling {progress}/{total} {contentType}..."
-  },
-  "content.selection-bar.bulk.enabling-count": {
-    "defaultMessage": "Enabling {count, number} {contentType}",
-    "message": "Enabling {count, number} {contentType}"
-  },
   "content.selection-bar.bulk.enabling-waiting": {
     "defaultMessage": "Включение проектов...",
     "message": "Включение проектов..."
   },
-  "content.selection-bar.bulk.updating": {
-    "defaultMessage": "Updating {progress}/{total} {contentType}...",
-    "message": "Updating {progress}/{total} {contentType}..."
-  },
-  "content.selection-bar.bulk.updating-count": {
-    "message": "Обновление: {count, number} {contentType}",
-    "defaultMessage": "Обновление: {count, number} {contentType}"
-  },
   "content.selection-bar.bulk.updating-waiting": {
     "defaultMessage": "Обновление проектов...",
     "message": "Обновление проектов..."
-  },
-  "content.selection-bar.selected-count": {
-    "message": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}",
-    "defaultMessage": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}"
   },
   "content.selection-bar.selected-count-simple": {
     "message": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}",
@@ -1991,25 +1779,9 @@
     "defaultMessage": "При продолжении более 100 файлов будут перезаписаны; вот некоторые из них.",
     "message": "При продолжении более 100 файлов будут перезаписаны; вот некоторые из них."
   },
-  "files.conflict-modal.overwrite-warning": {
-    "defaultMessage": "The following {count} files already exist on your server, and will be overwritten if you proceed with extraction.",
-    "message": "The following {count} files already exist on your server, and will be overwritten if you proceed with extraction."
-  },
-  "files.conflict-modal.overwritten-count": {
-    "defaultMessage": "{count} overwritten",
-    "message": "{count} overwritten"
-  },
   "files.conflict-modal.warning-header": {
     "defaultMessage": "Файлы будут перезаписаны",
     "message": "Файлы будут перезаписаны"
-  },
-  "files.create-modal.create-button": {
-    "defaultMessage": "Create {type}",
-    "message": "Create {type}"
-  },
-  "files.create-modal.header": {
-    "defaultMessage": "Create a {type}",
-    "message": "Create a {type}"
   },
   "files.create-modal.placeholder-directory": {
     "defaultMessage": "Например: my-folder",
@@ -2018,6 +1790,27 @@
   "files.create-modal.placeholder-file": {
     "defaultMessage": "Например: config.yml",
     "message": "Например: config.yml"
+  },
+  "files.create-zip-modal.already-exists": {
+    "defaultMessage": "Файл с этим именем уже существует."
+  },
+  "files.create-zip-modal.check-failed": {
+    "defaultMessage": "Не удалось проверить существование файла."
+  },
+  "files.create-zip-modal.create-button": {
+    "defaultMessage": "Создать архив"
+  },
+  "files.create-zip-modal.header": {
+    "defaultMessage": "Создание архива"
+  },
+  "files.create-zip-modal.invalid": {
+    "defaultMessage": "Имя архива должно состоять только из имени одного файла."
+  },
+  "files.create-zip-modal.name-label": {
+    "defaultMessage": "Название архива"
+  },
+  "files.create-zip-modal.required": {
+    "defaultMessage": "Введите название архива."
   },
   "files.delete-modal.deleting-name": {
     "defaultMessage": "Удаление «{name}»",
@@ -2062,10 +1855,6 @@
   "files.editor.find-in-file": {
     "defaultMessage": "Найти",
     "message": "Найти"
-  },
-  "files.editor.find-match-count": {
-    "defaultMessage": "{current} of {total}",
-    "message": "{current} of {total}"
   },
   "files.editor.find-next-match": {
     "defaultMessage": "Следующее совпадение",
@@ -2167,6 +1956,9 @@
     "defaultMessage": "Действия с файлами недоступны во время выполнения операции.",
     "message": "Действия с файлами недоступны во время выполнения операции."
   },
+  "files.layout.create-zip": {
+    "defaultMessage": "Создать архив"
+  },
   "files.layout.dry-run-failed-text": {
     "defaultMessage": "Ошибка при запуске пробной версии",
     "message": "Ошибка при запуске пробной версии"
@@ -2194,10 +1986,6 @@
   "files.layout.extraction-started-title": {
     "defaultMessage": "Извлечение началось",
     "message": "Извлечение началось"
-  },
-  "files.layout.selected-count": {
-    "defaultMessage": "{count} selected",
-    "message": "{count} selected"
   },
   "files.layout.unsaved-changes": {
     "defaultMessage": "Есть несохранённые изменения.",
@@ -2275,6 +2063,18 @@
     "defaultMessage": "Загрузить из URL .zip файла",
     "message": "Загрузить из URL .zip файла"
   },
+  "files.operations.compressed": {
+    "defaultMessage": "Сжатие: {progress}%"
+  },
+  "files.operations.compressing": {
+    "defaultMessage": "Создание {source}"
+  },
+  "files.operations.compressing-completed": {
+    "defaultMessage": "Создание {source} завершено"
+  },
+  "files.operations.compressing-failed": {
+    "defaultMessage": "Не удалось создать {source}"
+  },
   "files.operations.current-file": {
     "defaultMessage": "Текущий файл: {file}",
     "message": "Текущий файл: {file}"
@@ -2306,6 +2106,9 @@
   "files.rename-modal.new-name-label": {
     "defaultMessage": "Новое имя",
     "message": "Новое имя"
+  },
+  "files.row.create-zip": {
+    "defaultMessage": "Создать архив"
   },
   "files.row.item-count": {
     "defaultMessage": "{count, plural, one {# элемент} few {# элемента} other {# элементов}}",
@@ -2635,14 +2438,6 @@
     "defaultMessage": "{count, number} ТиБ",
     "message": "{count, number} ТиБ"
   },
-  "friends.heading": {
-    "defaultMessage": "Друзья",
-    "message": "Друзья"
-  },
-  "friends.title": {
-    "defaultMessage": "Друзья",
-    "message": "Друзья"
-  },
   "header.category.category": {
     "defaultMessage": "Категория",
     "message": "Категория"
@@ -2815,10 +2610,6 @@
     "defaultMessage": "{storage} ГБ диска",
     "message": "{storage} ГБ диска"
   },
-  "hosting.specs.shared-cpus": {
-    "defaultMessage": "{cpus} Shared CPUs",
-    "message": "{cpus} Shared CPUs"
-  },
   "icon-select.edit": {
     "defaultMessage": "Изменить иконку",
     "message": "Изменить иконку"
@@ -2842,18 +2633,6 @@
   "image-viewer.edit": {
     "message": "Редактировать",
     "defaultMessage": "Редактировать"
-  },
-  "image-viewer.editor.censor.blur": {
-    "message": "Размытие",
-    "defaultMessage": "Размытие"
-  },
-  "image-viewer.editor.censor.mode": {
-    "message": "Тип скрытия",
-    "defaultMessage": "Тип скрытия"
-  },
-  "image-viewer.editor.censor.solid": {
-    "message": "Заливка",
-    "defaultMessage": "Заливка"
   },
   "image-viewer.editor.colour": {
     "message": "Цвет",
@@ -3979,10 +3758,6 @@
     "defaultMessage": "без ограничений",
     "message": "без ограничений"
   },
-  "markdown-editor.max-length.value": {
-    "defaultMessage": "{currentLength}/{maxLength}",
-    "message": "{currentLength}/{maxLength}"
-  },
   "markdown-editor.placeholder": {
     "defaultMessage": "Напишите что‑нибудь...",
     "message": "Напишите что‑нибудь..."
@@ -4922,10 +4697,6 @@
   "project.disclosure.derivative-work.show-fewer": {
     "defaultMessage": "Показать меньше",
     "message": "Показать меньше"
-  },
-  "project.disclosure.derivative-work.show-more": {
-    "defaultMessage": "Show {count} more",
-    "message": "Show {count} more"
   },
   "project.disclosure.derivative-work.title": {
     "defaultMessage": "Производная работа от:",
@@ -6983,6 +6754,12 @@
     "defaultMessage": "Сервер устанавливается",
     "message": "Сервер устанавливается"
   },
+  "servers.files.zip-created": {
+    "defaultMessage": "Архив создан"
+  },
+  "servers.files.zip-created-description": {
+    "defaultMessage": "Создано {destination}"
+  },
   "servers.grant-access-modal.add-as-friend": {
     "defaultMessage": "Также отправить запрос дружбы",
     "message": "Также отправить запрос дружбы"
@@ -7178,10 +6955,6 @@
   "servers.listing.copy-id-label": {
     "defaultMessage": "Копировать ID",
     "message": "Копировать ID"
-  },
-  "servers.listing.download-latest-backup-tooltip": {
-    "defaultMessage": "Скачать последнюю резервную копию",
-    "message": "Скачать последнюю резервную копию"
   },
   "servers.listing.manage-billing-label": {
     "defaultMessage": "Управление платежами",
@@ -7499,10 +7272,6 @@
     "defaultMessage": "{interval, select, monthly {за месяц} quarterly {за 3 месяца} yearly {за год} other {billed {interval}}}",
     "message": "{interval, select, monthly {за месяц} quarterly {за 3 месяца} yearly {за год} other {billed {interval}}}"
   },
-  "servers.purchase.step.plan.billing-subtitle": {
-    "defaultMessage": "Доступно в Северной Америке, Европе и Юго‑Восточной Азии.",
-    "message": "Доступно в Северной Америке, Европе и Юго‑Восточной Азии."
-  },
   "servers.purchase.step.plan.custom.desc": {
     "defaultMessage": "Соберите свой план с нужными характеристиками.",
     "message": "Соберите свой план с нужными характеристиками."
@@ -7514,6 +7283,9 @@
   "servers.purchase.step.plan.get-started": {
     "defaultMessage": "Настроить план",
     "message": "Настроить план"
+  },
+  "servers.purchase.step.plan.hardware-subtitle": {
+    "defaultMessage": "Оснащены процессорами уровня AMD Ryzen 7950X или 9950X и памятью DDR5."
   },
   "servers.purchase.step.plan.large": {
     "defaultMessage": "Большой",
@@ -7670,6 +7442,27 @@
   "servers.remove-access-modal.what-happens-label": {
     "defaultMessage": "Что произойдёт?",
     "message": "Что произойдёт?"
+  },
+  "servers.settings.advanced.sftp.roll-credentials": {
+    "defaultMessage": "Обновить учётные данные"
+  },
+  "servers.settings.advanced.sftp.roll-credentials-error-text": {
+    "defaultMessage": "Повторите попытку позже."
+  },
+  "servers.settings.advanced.sftp.roll-credentials-error-title": {
+    "defaultMessage": "Не удалось обновить учётные данные SFTP"
+  },
+  "servers.settings.advanced.sftp.roll-credentials-modal-description": {
+    "defaultMessage": "Прежние имя пользователя и пароль перестанут работать."
+  },
+  "servers.settings.advanced.sftp.roll-credentials-modal-title": {
+    "defaultMessage": "Обновить учетные данные"
+  },
+  "servers.settings.advanced.sftp.roll-credentials-success-text": {
+    "defaultMessage": "Имя пользователя и пароль для SFTP созданы заново."
+  },
+  "servers.settings.advanced.sftp.roll-credentials-success-title": {
+    "defaultMessage": "Учётные данные SFTP обновлены"
   },
   "servers.setup.onboarding.installation-failed.text": {
     "defaultMessage": "Произошла непредвиденная ошибка во время установки. Пожалуйста, попробуйте позже.",
@@ -8210,10 +8003,6 @@
   "sharing.invite-players-modal.expiry-label": {
     "defaultMessage": "Срок действия",
     "message": "Срок действия"
-  },
-  "sharing.invite-players-modal.friends-heading": {
-    "defaultMessage": "Your friends - {count}",
-    "message": "Your friends - {count}"
   },
   "sharing.invite-players-modal.heading": {
     "defaultMessage": "Пригласите игроков",
@@ -9326,6 +9115,286 @@
   "version.supplementary-resources.type": {
     "defaultMessage": "Тип",
     "message": "Тип"
+  },
+  "app.settings.external-auth-libraries.description": {
+    "defaultMessage": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.).",
+    "message": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.)."
+  },
+  "app.settings.external-auth-libraries.install-selected": {
+    "defaultMessage": "Установить",
+    "message": "Установить"
+  },
+  "app.settings.external-auth-libraries.installed": {
+    "defaultMessage": "Библиотека {providerName} {version} установлена",
+    "message": "Библиотека {providerName} {version} установлена"
+  },
+  "app.settings.external-auth-libraries.installing": {
+    "defaultMessage": "Установка...",
+    "message": "Установка..."
+  },
+  "app.settings.external-auth-libraries.load-failed": {
+    "defaultMessage": "Не удалось загрузить библиотеки авторизации: {error}",
+    "message": "Не удалось загрузить библиотеки авторизации: {error}"
+  },
+  "app.settings.external-auth-libraries.loading": {
+    "defaultMessage": "Загрузка доступных версий библиотек...",
+    "message": "Загрузка доступных версий библиотек..."
+  },
+  "app.settings.external-auth-libraries.local-only": {
+    "defaultMessage": "Отображаются только локально установленные версии, так как удаленный сервер недоступен.",
+    "message": "Отображаются только локально установленные версии, так как удаленный сервер недоступен."
+  },
+  "app.settings.external-auth-libraries.no-versions": {
+    "defaultMessage": "Совместимых версий библиотеки не найдено.",
+    "message": "Совместимых версий библиотеки не найдено."
+  },
+  "app.settings.external-auth-libraries.not-selected": {
+    "defaultMessage": "Не выбрано",
+    "message": "Не выбрано"
+  },
+  "app.settings.external-auth-libraries.reinstall": {
+    "defaultMessage": "Переустановить",
+    "message": "Переустановить"
+  },
+  "app.settings.external-auth-libraries.request-server": {
+    "defaultMessage": "Проверить обновления",
+    "message": "Проверить обновления"
+  },
+  "app.settings.external-auth-libraries.requesting-server": {
+    "defaultMessage": "Проверка...",
+    "message": "Проверка..."
+  },
+  "app.settings.external-auth-libraries.retry": {
+    "defaultMessage": "Повторить",
+    "message": "Повторить"
+  },
+  "app.settings.external-auth-libraries.selected-version": {
+    "defaultMessage": "Выбранная версия",
+    "message": "Выбранная версия"
+  },
+  "app.settings.external-auth-libraries.title": {
+    "defaultMessage": "Библиотеки авторизации",
+    "message": "Библиотеки авторизации"
+  },
+  "app.settings.external-auth-libraries.version": {
+    "defaultMessage": "Версия",
+    "message": "Версия"
+  },
+  "app.settings.sidebar.label.rubirinth": {
+    "defaultMessage": "Rubirinth",
+    "message": "Rubirinth"
+  },
+  "app.settings.tabs.external-auth-libraries": {
+    "defaultMessage": "Библиотеки авторизации",
+    "message": "Библиотеки авторизации"
+  },
+  "billing.resubscribe-modal.cpus": {
+    "defaultMessage": "{sharedCpus} Shared CPUs",
+    "message": "{sharedCpus} Shared CPUs"
+  },
+  "browse.display-mode.prefix": {
+    "defaultMessage": "Mode:",
+    "message": "Режим:"
+  },
+  "browse.sidebar.server-online-only": {
+    "defaultMessage": "Online only",
+    "message": "Только в сети"
+  },
+  "browse.sort.date-published": {
+    "defaultMessage": "Date published",
+    "message": "Дата публикации"
+  },
+  "browse.sort.date-updated": {
+    "defaultMessage": "Date updated",
+    "message": "Дата обновления"
+  },
+  "browse.sort.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Скачивания"
+  },
+  "browse.sort.follows": {
+    "defaultMessage": "Followers",
+    "message": "Подписчики"
+  },
+  "browse.sort.newest": {
+    "defaultMessage": "Date published",
+    "message": "Новизна"
+  },
+  "browse.sort.ping": {
+    "defaultMessage": "Ping",
+    "message": "Пинг"
+  },
+  "browse.sort.players": {
+    "defaultMessage": "Players",
+    "message": "Игроки"
+  },
+  "browse.sort.recent-players": {
+    "defaultMessage": "Recent players",
+    "message": "Недавние игроки"
+  },
+  "browse.sort.relevance": {
+    "defaultMessage": "Relevance",
+    "message": "Релевантность"
+  },
+  "browse.sort.updated": {
+    "defaultMessage": "Recently updated",
+    "message": "Дата обновления"
+  },
+  "browse.sort.verified-plays": {
+    "defaultMessage": "Verified Plays",
+    "message": "Проверенные игры"
+  },
+  "browse.view-mode.grid": {
+    "defaultMessage": "Cards",
+    "message": "Карточки"
+  },
+  "browse.view-mode.list": {
+    "defaultMessage": "List",
+    "message": "Список"
+  },
+  "content.confirm-deletion.delete-button": {
+    "defaultMessage": "Удалить {count, number} {itemType}",
+    "message": "Удалить {count, number} {itemType}"
+  },
+  "content.dependency-warning.bulk-admonition-body": {
+    "defaultMessage": "Some selected projects are installed as dependencies. Deleting them may break your {context} or stop dependent content from loading correctly.",
+    "message": "Some selected projects are installed as dependencies. Deleting them may break your {context} or stop dependent content from loading correctly."
+  },
+  "content.dependency-warning.effect-instance": {
+    "defaultMessage": "Your {context} may crash, refuse to start, or behave unexpectedly",
+    "message": "Your {context} may crash, refuse to start, or behave unexpectedly"
+  },
+  "content.dependency-warning.single-admonition-body": {
+    "defaultMessage": "{project} is installed as a dependency. Deleting it may break your {context} or stop dependent content from loading correctly.",
+    "message": "{project} is installed as a dependency. Deleting it may break your {context} or stop dependent content from loading correctly."
+  },
+  "content.diff-modal.added-count": {
+    "defaultMessage": "{count} added",
+    "message": "{count} added"
+  },
+  "content.diff-modal.removed-count": {
+    "defaultMessage": "{count} removed",
+    "message": "{count} removed"
+  },
+  "content.diff-modal.removed-disabled-count": {
+    "defaultMessage": "{count} removed (disabled)",
+    "message": "{count} removed (disabled)"
+  },
+  "content.diff-modal.updated-count": {
+    "defaultMessage": "{count} updated",
+    "message": "{count} updated"
+  },
+  "content.inline-backup.warning-body": {
+    "defaultMessage": "Рекомендуется создать резервную копию перед продолжением, чтобы вы могли восстановить {type} в случае неполадок.",
+    "message": "Рекомендуется создать резервную копию перед продолжением, чтобы вы могли восстановить {type} в случае неполадок."
+  },
+  "content.page-layout.search-placeholder": {
+    "message": "Поиск: {count, number} {contentType}...",
+    "defaultMessage": "Поиск: {count, number} {contentType}..."
+  },
+  "content.selection-bar.bulk.deleting": {
+    "defaultMessage": "Deleting {progress}/{total} {contentType}...",
+    "message": "Deleting {progress}/{total} {contentType}..."
+  },
+  "content.selection-bar.bulk.deleting-count": {
+    "defaultMessage": "Deleting {count, number} {contentType}",
+    "message": "Deleting {count, number} {contentType}"
+  },
+  "content.selection-bar.bulk.disabling": {
+    "defaultMessage": "Disabling {progress}/{total} {contentType}...",
+    "message": "Disabling {progress}/{total} {contentType}..."
+  },
+  "content.selection-bar.bulk.disabling-count": {
+    "defaultMessage": "Disabling {count, number} {contentType}",
+    "message": "Disabling {count, number} {contentType}"
+  },
+  "content.selection-bar.bulk.enabling": {
+    "defaultMessage": "Enabling {progress}/{total} {contentType}...",
+    "message": "Enabling {progress}/{total} {contentType}..."
+  },
+  "content.selection-bar.bulk.enabling-count": {
+    "defaultMessage": "Enabling {count, number} {contentType}",
+    "message": "Enabling {count, number} {contentType}"
+  },
+  "content.selection-bar.bulk.updating": {
+    "defaultMessage": "Updating {progress}/{total} {contentType}...",
+    "message": "Updating {progress}/{total} {contentType}..."
+  },
+  "content.selection-bar.bulk.updating-count": {
+    "message": "Обновление: {count, number} {contentType}",
+    "defaultMessage": "Обновление: {count, number} {contentType}"
+  },
+  "content.selection-bar.selected-count": {
+    "message": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}",
+    "defaultMessage": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}"
+  },
+  "files.conflict-modal.overwrite-warning": {
+    "defaultMessage": "The following {count} files already exist on your server, and will be overwritten if you proceed with extraction.",
+    "message": "The following {count} files already exist on your server, and will be overwritten if you proceed with extraction."
+  },
+  "files.conflict-modal.overwritten-count": {
+    "defaultMessage": "{count} overwritten",
+    "message": "{count} overwritten"
+  },
+  "files.create-modal.create-button": {
+    "defaultMessage": "Create {type}",
+    "message": "Create {type}"
+  },
+  "files.create-modal.header": {
+    "defaultMessage": "Create a {type}",
+    "message": "Create a {type}"
+  },
+  "files.editor.find-match-count": {
+    "defaultMessage": "{current} of {total}",
+    "message": "{current} of {total}"
+  },
+  "files.layout.selected-count": {
+    "defaultMessage": "{count} selected",
+    "message": "{count} selected"
+  },
+  "friends.heading": {
+    "defaultMessage": "Друзья",
+    "message": "Друзья"
+  },
+  "friends.title": {
+    "defaultMessage": "Друзья",
+    "message": "Друзья"
+  },
+  "hosting.specs.shared-cpus": {
+    "defaultMessage": "{cpus} Shared CPUs",
+    "message": "{cpus} Shared CPUs"
+  },
+  "image-viewer.editor.censor.blur": {
+    "message": "Размытие",
+    "defaultMessage": "Размытие"
+  },
+  "image-viewer.editor.censor.mode": {
+    "message": "Тип скрытия",
+    "defaultMessage": "Тип скрытия"
+  },
+  "image-viewer.editor.censor.solid": {
+    "message": "Заливка",
+    "defaultMessage": "Заливка"
+  },
+  "markdown-editor.max-length.value": {
+    "defaultMessage": "{currentLength}/{maxLength}",
+    "message": "{currentLength}/{maxLength}"
+  },
+  "project.disclosure.derivative-work.show-more": {
+    "defaultMessage": "Show {count} more",
+    "message": "Show {count} more"
+  },
+  "servers.listing.download-latest-backup-tooltip": {
+    "defaultMessage": "Скачать последнюю резервную копию",
+    "message": "Скачать последнюю резервную копию"
+  },
+  "servers.purchase.step.plan.billing-subtitle": {
+    "defaultMessage": "Доступно в Северной Америке, Европе и Юго‑Восточной Азии.",
+    "message": "Доступно в Северной Америке, Европе и Юго‑Восточной Азии."
+  },
+  "sharing.invite-players-modal.friends-heading": {
+    "defaultMessage": "Your friends - {count}",
+    "message": "Your friends - {count}"
   },
   "tag.category.extra-large": {
     "defaultMessage": "Extra Large",

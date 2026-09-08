@@ -223,14 +223,6 @@
     "message": "Без имени над скином",
     "defaultMessage": "Без имени над скином"
   },
-  "app.appearance-settings.jump-back-into-worlds.description": {
-    "message": "Показывать недавние миры или сборки в секции «Недавнее» на главной странице.",
-    "defaultMessage": "Показывать недавние миры или сборки в секции «Недавнее» на главной странице."
-  },
-  "app.appearance-settings.jump-back-into-worlds.title": {
-    "message": "Недавние миры или сборки",
-    "defaultMessage": "Недавние миры или сборки"
-  },
   "app.appearance-settings.minimize-launcher.description": {
     "message": "Сворачивать Rubirinth App при запуске Minecraft.",
     "defaultMessage": "Сворачивать Rubirinth App при запуске Minecraft."
@@ -347,6 +339,9 @@
     "message": "Скрывать установленные",
     "defaultMessage": "Скрывать установленные"
   },
+  "app.browse.project-actions.label": {
+    "message": "Действия с проектом"
+  },
   "app.browse.project-type.data-packs": {
     "message": "Наборы данных",
     "defaultMessage": "Наборы данных"
@@ -383,21 +378,8 @@
     "message": "Не найдено доступных версий, совместимых с {compatibilityLabel}. Выберите версию для установки вручную. Зависимости не будут установлены автоматически.",
     "defaultMessage": "Не найдено доступных версий, совместимых с {compatibilityLabel}. Выберите версию для установки вручную. Зависимости не будут установлены автоматически."
   },
-  "app.error.close": {
-    "defaultMessage": "Закрыть",
-    "message": "Закрыть"
-  },
-  "app.error.external-auth-library.description": {
-    "defaultMessage": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры.",
-    "message": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры."
-  },
-  "app.error.external-auth-library.go-to-install": {
-    "defaultMessage": "Перейти к установке",
-    "message": "Перейти к установке"
-  },
-  "app.error.external-auth-library.title": {
-    "defaultMessage": "Отсутствует библиотека авторизации",
-    "message": "Отсутствует библиотека авторизации"
+  "app.error.state-init.open-backups-folder": {
+    "message": "Открыть папку резервных копий"
   },
   "app.export-modal.description-placeholder": {
     "message": "Введите описание сборки...",
@@ -434,6 +416,9 @@
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0",
     "defaultMessage": "1.0.0"
+  },
+  "app.home.jump-back-in.actions.label": {
+    "message": "Действия со сборкой"
   },
   "app.home.jump-back-in.instance-locked": {
     "message": "Сборка заблокирована",
@@ -482,62 +467,6 @@
   "app.hosting.update-required.title": {
     "message": "Обновите Rubirinth App",
     "defaultMessage": "Обновите Rubirinth App"
-  },
-  "app.icon-editor.apply-icons-modal.apply-error": {
-    "message": "Не удалось применить случайные иконки к сборкам.",
-    "defaultMessage": "Не удалось применить случайные иконки к сборкам."
-  },
-  "app.icon-editor.apply-icons-modal.apply-success": {
-    "message": "Установлен случайный значок для {num, plural, one {# сборки} few {# сборок} many {# сборок} other {# сборок}}.",
-    "defaultMessage": "Установлен случайный значок для {num, plural, one {# сборки} few {# сборок} many {# сборок} other {# сборок}}."
-  },
-  "app.icon-editor.apply-icons-modal.badge": {
-    "message": "Новый контент",
-    "defaultMessage": "Новый контент"
-  },
-  "app.icon-editor.apply-icons-modal.close": {
-    "message": "Закрыть",
-    "defaultMessage": "Закрыть"
-  },
-  "app.icon-editor.apply-icons-modal.description": {
-    "message": "Создавайте собственные иконки прямо в Rubirinth App. Сочетайте фоны с символами из Minecraft и популярных модов!",
-    "defaultMessage": "Создавайте собственные иконки прямо в Rubirinth App. Сочетайте фоны с символами из Minecraft и популярных модов!"
-  },
-  "app.icon-editor.apply-icons-modal.instances-without-icons": {
-    "message": "У {count, plural, one {# сборки} other {# сборок}} нет {count, plural, one {иконки} other {иконок}}. Хотите создать {count, plural, one {случайную} other {случайные}}?",
-    "defaultMessage": "У {count, plural, one {# сборки} other {# сборок}} нет {count, plural, one {иконки} other {иконок}}. Хотите создать {count, plural, one {случайную} other {случайные}}?"
-  },
-  "app.icon-editor.apply-icons-modal.random-icons": {
-    "message": "Случайные иконки",
-    "defaultMessage": "Случайные иконки"
-  },
-  "app.icon-editor.apply-icons-modal.skip": {
-    "message": "Пропустить",
-    "defaultMessage": "Пропустить"
-  },
-  "app.icon-editor.apply-icons-modal.title": {
-    "message": "Редактор иконок",
-    "defaultMessage": "Редактор иконок"
-  },
-  "app.icon-editor.notification.close": {
-    "message": "Закрыть",
-    "defaultMessage": "Закрыть"
-  },
-  "app.icon-editor.notification.description": {
-    "message": "Персонализируйте свои сборки!",
-    "defaultMessage": "Персонализируйте свои сборки!"
-  },
-  "app.icon-editor.notification.dismiss": {
-    "message": "Закрыть",
-    "defaultMessage": "Закрыть"
-  },
-  "app.icon-editor.notification.title": {
-    "message": "Новый редактор иконок",
-    "defaultMessage": "Новый редактор иконок"
-  },
-  "app.icon-editor.notification.view-update": {
-    "message": "Подробнее",
-    "defaultMessage": "Подробнее"
   },
   "app.install.phase.downloading_content": {
     "message": "Скачивание контента",
@@ -634,6 +563,10 @@
   "app.instance.action.stop": {
     "message": "Остановить",
     "defaultMessage": "Остановить"
+  },
+  "app.instance.actions.label": {
+    "message": "Действия со сборкой",
+    "defaultMessage": "Действия со сборкой"
   },
   "app.instance.add-server.add": {
     "message": "Добавить",
@@ -991,6 +924,10 @@
     "message": "Журнал",
     "defaultMessage": "Журнал"
   },
+  "app.instance.tab.screenshots": {
+    "message": "Скриншоты",
+    "defaultMessage": "Скриншоты"
+  },
   "app.instance.tab.share": {
     "message": "Поделиться",
     "defaultMessage": "Поделиться"
@@ -1127,6 +1064,10 @@
     "message": "Проверить установку Java",
     "defaultMessage": "Проверить установку Java"
   },
+  "app.library.actions.label": {
+    "message": "Действия с библиотекой",
+    "defaultMessage": "Действия с библиотекой"
+  },
   "app.library.context-menu.create-instance": {
     "message": "Новая сборка",
     "defaultMessage": "Новая сборка"
@@ -1190,6 +1131,10 @@
   "app.library.group-by.none": {
     "message": "Не в группе",
     "defaultMessage": "Не в группе"
+  },
+  "app.library.group.actions.label": {
+    "message": "Действия с группой",
+    "defaultMessage": "Действия с группой"
   },
   "app.library.group.collapse": {
     "message": "Свернуть группу",
@@ -1354,6 +1299,10 @@
   "app.library.instance.action.view-instance": {
     "message": "Посмотреть сборку",
     "defaultMessage": "Посмотреть сборку"
+  },
+  "app.library.instance.actions.label": {
+    "message": "Действия со сборкой",
+    "defaultMessage": "Действия со сборкой"
   },
   "app.library.instance.deselect": {
     "message": "Отменить выбор сборки",
@@ -1611,6 +1560,10 @@
     "message": "Обновите {name} до последней версии, чтобы запустить игру.",
     "defaultMessage": "Обновите {name} до последней версии, чтобы запустить игру."
   },
+  "app.nav.add-account": {
+    "message": "Добавить аккаунт",
+    "defaultMessage": "Добавить аккаунт"
+  },
   "app.nav.create-new-instance": {
     "message": "Создать новую сборку",
     "defaultMessage": "Создать новую сборку"
@@ -1618,6 +1571,10 @@
   "app.nav.home": {
     "message": "Главная",
     "defaultMessage": "Главная"
+  },
+  "app.nav.loading-profile": {
+    "message": "Загрузка профиля...",
+    "defaultMessage": "Загрузка профиля..."
   },
   "app.nav.modrinth-account": {
     "message": "Аккаунт Modrinth",
@@ -1627,13 +1584,29 @@
     "message": "Modrinth Hosting",
     "defaultMessage": "Modrinth Hosting"
   },
+  "app.nav.remove-account": {
+    "message": "Удалить аккаунт",
+    "defaultMessage": "Удалить аккаунт"
+  },
+  "app.nav.screenshots": {
+    "message": "Скриншоты",
+    "defaultMessage": "Скриншоты"
+  },
   "app.nav.sign-in-to-modrinth-account": {
     "message": "Войти в аккаунт Modrinth",
     "defaultMessage": "Войти в аккаунт Modrinth"
   },
+  "app.nav.switch-account": {
+    "message": "Сменить аккаунт",
+    "defaultMessage": "Сменить аккаунт"
+  },
   "app.nav.upgrade-to-modrinth-plus": {
     "message": "Перейти на Modrinth+",
     "defaultMessage": "Перейти на Modrinth+"
+  },
+  "app.nav.view-profile": {
+    "message": "Открыть профиль",
+    "defaultMessage": "Открыть профиль"
   },
   "app.navigation.go-back": {
     "message": "Назад",
@@ -1662,6 +1635,10 @@
   "app.notification.warning": {
     "message": "Внимание",
     "defaultMessage": "Внимание"
+  },
+  "app.project.actions.label": {
+    "message": "Действия с проектом",
+    "defaultMessage": "Действия с проектом"
   },
   "app.project.coming-soon": {
     "message": "Скоро",
@@ -1719,6 +1696,10 @@
     "message": "Уже установлено",
     "defaultMessage": "Уже установлено"
   },
+  "app.quick-instance-switcher.actions.label": {
+    "message": "Действия со сборкой",
+    "defaultMessage": "Действия со сборкой"
+  },
   "app.quick-instance-switcher.drag-show-tooltip": {
     "message": "Потяните для показа недавних сборок",
     "defaultMessage": "Потяните для показа недавних сборок"
@@ -1727,9 +1708,217 @@
     "message": "Потяните для изменения размера",
     "defaultMessage": "Потяните для изменения размера"
   },
+  "app.quick-instance-switcher.instance-locked": {
+    "message": "Эта сборка заблокирована",
+    "defaultMessage": "Эта сборка заблокирована"
+  },
+  "app.quick-instance-switcher.view-instance": {
+    "message": "Открыть сборку",
+    "defaultMessage": "Открыть сборку"
+  },
   "app.restarting": {
     "message": "Перезапуск...",
     "defaultMessage": "Перезапуск..."
+  },
+  "app.screenshots.copied": {
+    "message": "Скриншот скопирован в буфер обмена",
+    "defaultMessage": "Скриншот скопирован в буфер обмена"
+  },
+  "app.screenshots.copy": {
+    "message": "Копировать",
+    "defaultMessage": "Копировать"
+  },
+  "app.screenshots.delete-description": {
+    "message": "Удалить скриншот? Это действие нельзя отменить.",
+    "defaultMessage": "Удалить скриншот? Это действие нельзя отменить."
+  },
+  "app.screenshots.delete-success": {
+    "message": "Скриншот удален",
+    "defaultMessage": "Скриншот удален"
+  },
+  "app.screenshots.delete-title": {
+    "message": "Удалить скриншот",
+    "defaultMessage": "Удалить скриншот"
+  },
+  "app.screenshots.deselect": {
+    "message": "Снять выбор",
+    "defaultMessage": "Снять выбор"
+  },
+  "app.screenshots.edit": {
+    "message": "Редактировать",
+    "defaultMessage": "Редактировать"
+  },
+  "app.screenshots.empty-description": {
+    "message": "Здесь будут отображаться скриншоты, сделанные в игре.",
+    "defaultMessage": "Здесь будут отображаться скриншоты, сделанные в игре."
+  },
+  "app.screenshots.empty-heading": {
+    "message": "Пока нет скриншотов",
+    "defaultMessage": "Пока нет скриншотов"
+  },
+  "app.screenshots.error-heading": {
+    "message": "Не удалось загрузить скриншоты",
+    "defaultMessage": "Не удалось загрузить скриншоты"
+  },
+  "app.screenshots.go-to-instance": {
+    "message": "Перейти к сборке",
+    "defaultMessage": "Перейти к сборке"
+  },
+  "app.screenshots.group-by": {
+    "message": "Группировка",
+    "defaultMessage": "Группировка"
+  },
+  "app.screenshots.group.all-screenshots": {
+    "message": "Все скриншоты",
+    "defaultMessage": "Все скриншоты"
+  },
+  "app.screenshots.group.collapse": {
+    "message": "Свернуть группу",
+    "defaultMessage": "Свернуть группу"
+  },
+  "app.screenshots.group.custom": {
+    "message": "Пользовательская",
+    "defaultMessage": "Пользовательская"
+  },
+  "app.screenshots.group.date": {
+    "message": "По дате",
+    "defaultMessage": "По дате"
+  },
+  "app.screenshots.group.delete": {
+    "message": "Удалить группу",
+    "defaultMessage": "Удалить группу"
+  },
+  "app.screenshots.group.delete-description": {
+    "message": "Скриншоты из этой группы останутся без группы.",
+    "defaultMessage": "Скриншоты из этой группы останутся без группы."
+  },
+  "app.screenshots.group.edit": {
+    "message": "Переименовать группу",
+    "defaultMessage": "Переименовать группу"
+  },
+  "app.screenshots.group.empty": {
+    "message": "Перетащите скриншоты сюда для добавления.",
+    "defaultMessage": "Перетащите скриншоты сюда для добавления."
+  },
+  "app.screenshots.group.expand": {
+    "message": "Развернуть группу",
+    "defaultMessage": "Развернуть группу"
+  },
+  "app.screenshots.group.instance": {
+    "message": "По сборкам",
+    "defaultMessage": "По сборкам"
+  },
+  "app.screenshots.group.new": {
+    "message": "Новая группа",
+    "defaultMessage": "Новая группа"
+  },
+  "app.screenshots.group.none": {
+    "message": "Без группировки",
+    "defaultMessage": "Без группировки"
+  },
+  "app.screenshots.group.this-month": {
+    "message": "В этом месяце",
+    "defaultMessage": "В этом месяце"
+  },
+  "app.screenshots.group.this-week": {
+    "message": "На этой неделе",
+    "defaultMessage": "На этой неделе"
+  },
+  "app.screenshots.group.today": {
+    "message": "Сегодня",
+    "defaultMessage": "Сегодня"
+  },
+  "app.screenshots.group.ungrouped": {
+    "message": "Без группы",
+    "defaultMessage": "Без группы"
+  },
+  "app.screenshots.group.yesterday": {
+    "message": "Вчера",
+    "defaultMessage": "Вчера"
+  },
+  "app.screenshots.heading": {
+    "message": "Скриншоты",
+    "defaultMessage": "Скриншоты"
+  },
+  "app.screenshots.more-actions": {
+    "message": "Дополнительные действия",
+    "defaultMessage": "Дополнительные действия"
+  },
+  "app.screenshots.no-results-description": {
+    "message": "Попробуйте изменить параметры поиска или фильтры.",
+    "defaultMessage": "Попробуйте изменить параметры поиска или фильтры."
+  },
+  "app.screenshots.no-results-heading": {
+    "message": "Скриншоты не найдены",
+    "defaultMessage": "Скриншоты не найдены"
+  },
+  "app.screenshots.preview.instance-and-date": {
+    "message": "{instance} • {date}",
+    "defaultMessage": "{instance} • {date}"
+  },
+  "app.screenshots.search": {
+    "message": "Поиск скриншотов...",
+    "defaultMessage": "Поиск скриншотов..."
+  },
+  "app.screenshots.select": {
+    "message": "Выбрать",
+    "defaultMessage": "Выбрать"
+  },
+  "app.screenshots.selection.aria-label": {
+    "message": "Выбранные скриншоты",
+    "defaultMessage": "Выбранные скриншоты"
+  },
+  "app.screenshots.selection.delete-description": {
+    "message": "Удалить {count, plural, one {# выбранный скриншот} few {# выбранных скриншота} many {# выбранных скриншотов} other {# выбранных скриншотов}}? Это действие нельзя отменить.",
+    "defaultMessage": "Удалить {count, plural, one {# выбранный скриншот} few {# выбранных скриншота} many {# выбранных скриншотов} other {# выбранных скриншотов}}? Это действие нельзя отменить."
+  },
+  "app.screenshots.selection.delete-success": {
+    "message": "{count, plural, one {Удален # скриншот} few {Удалено # скриншота} many {Удалено # скриншотов} other {Удалено # скриншотов}}",
+    "defaultMessage": "{count, plural, one {Удален # скриншот} few {Удалено # скриншота} many {Удалено # скриншотов} other {Удалено # скриншотов}}"
+  },
+  "app.screenshots.selection.delete-title": {
+    "message": "Удалить выбранные скриншоты",
+    "defaultMessage": "Удалить выбранные скриншоты"
+  },
+  "app.screenshots.selection.export-zip": {
+    "message": "Экспортировать в ZIP",
+    "defaultMessage": "Экспортировать в ZIP"
+  },
+  "app.screenshots.selection.global-export-filename": {
+    "message": "Rubirinth скриншоты.zip",
+    "defaultMessage": "Rubirinth скриншоты.zip"
+  },
+  "app.screenshots.selection.instance-export-filename": {
+    "message": "{instance} скриншоты.zip",
+    "defaultMessage": "{instance} скриншоты.zip"
+  },
+  "app.screenshots.selection.remove-from-group": {
+    "message": "Удалить из группы",
+    "defaultMessage": "Удалить из группы"
+  },
+  "app.screenshots.selection.zip-archive": {
+    "message": "ZIP-архив",
+    "defaultMessage": "ZIP-архив"
+  },
+  "app.screenshots.show-in-folder": {
+    "message": "Показать в папке",
+    "defaultMessage": "Показать в папке"
+  },
+  "app.screenshots.sort-by": {
+    "message": "Сортировка",
+    "defaultMessage": "Сортировка"
+  },
+  "app.screenshots.sort.name": {
+    "message": "По названию",
+    "defaultMessage": "По названию"
+  },
+  "app.screenshots.sort.newest": {
+    "message": "Сначала новые",
+    "defaultMessage": "Сначала новые"
+  },
+  "app.screenshots.sort.oldest": {
+    "message": "Сначала старые",
+    "defaultMessage": "Сначала старые"
   },
   "app.settings.app-version": {
     "message": "Rubirinth App {version}",
@@ -1767,6 +1956,10 @@
     "message": "Высота",
     "defaultMessage": "Высота"
   },
+  "app.settings.default-instance-options.java-and-memory.title": {
+    "message": "Java и память",
+    "defaultMessage": "Java и память"
+  },
   "app.settings.default-instance-options.java-arguments.description": {
     "message": "Аргументы, передаваемые Java при запуске игры.",
     "defaultMessage": "Аргументы, передаваемые Java при запуске игры."
@@ -1778,6 +1971,10 @@
   "app.settings.default-instance-options.java-arguments.title": {
     "message": "Аргументы Java",
     "defaultMessage": "Аргументы Java"
+  },
+  "app.settings.default-instance-options.launch-hooks.title": {
+    "message": "Хуки запуска",
+    "defaultMessage": "Хуки запуска"
   },
   "app.settings.default-instance-options.memory-allocation.description": {
     "message": "Максимальный объём памяти, выделяемый игре.",
@@ -1822,6 +2019,10 @@
   "app.settings.default-instance-options.width.title": {
     "message": "Ширина",
     "defaultMessage": "Ширина"
+  },
+  "app.settings.default-instance-options.window.title": {
+    "message": "Окно",
+    "defaultMessage": "Окно"
   },
   "app.settings.default-instance-options.wrapper-hook.description": {
     "message": "Команда, оборачивающая процесс запуска Minecraft.",
@@ -1951,6 +2152,60 @@
     "message": "Сборки",
     "defaultMessage": "Сборки"
   },
+  "app.settings.synced-options.choose-sync-source.command-history-description": {
+    "message": "Выберите сборку, история команд которой станет общей копией."
+  },
+  "app.settings.synced-options.choose-sync-source.creative-hotbars-description": {
+    "message": "Выберите сборку, сохраненные панели быстрого доступа которой станут общей копией."
+  },
+  "app.settings.synced-options.choose-sync-source.multiplayer-servers-description": {
+    "message": "Выберите сборку, список серверов которой станет общей копией."
+  },
+  "app.settings.synced-options.choose-sync-source.no-instances-found": {
+    "message": "Сборки не найдены"
+  },
+  "app.settings.synced-options.choose-sync-source.search-placeholder": {
+    "message": "Поиск сборки"
+  },
+  "app.settings.synced-options.choose-sync-source.sync": {
+    "message": "Синхронизировать"
+  },
+  "app.settings.synced-options.command-history": {
+    "message": "Синхронизация истории команд"
+  },
+  "app.settings.synced-options.command-history.description": {
+    "message": "Использовать единую историю команд во всех ваших сборках."
+  },
+  "app.settings.synced-options.command-history.editor-title": {
+    "message": "Редактировать историю команд"
+  },
+  "app.settings.synced-options.creative-hotbars": {
+    "message": "Синхронизация панелей творчества"
+  },
+  "app.settings.synced-options.creative-hotbars.description": {
+    "message": "Использовать сохраненные панели быстрого доступа во всех ваших сборках."
+  },
+  "app.settings.synced-options.multiplayer-servers": {
+    "message": "Синхронизация серверов"
+  },
+  "app.settings.synced-options.multiplayer-servers.address": {
+    "message": "Адрес сервера"
+  },
+  "app.settings.synced-options.multiplayer-servers.description": {
+    "message": "Использовать единый список сетевых серверов во всех ваших сборках."
+  },
+  "app.settings.synced-options.multiplayer-servers.editor-title": {
+    "message": "Редактировать синхронизированные серверы"
+  },
+  "app.settings.synced-options.multiplayer-servers.empty": {
+    "message": "Синхронизированных серверов нет."
+  },
+  "app.settings.synced-options.multiplayer-servers.name": {
+    "message": "Название сервера"
+  },
+  "app.settings.synced-options.multiplayer-servers.none-synced-yet": {
+    "message": "Серверы еще не синхронизированы"
+  },
   "app.settings.tabs.appearance": {
     "message": "Внешний вид",
     "defaultMessage": "Внешний вид"
@@ -1974,6 +2229,10 @@
   "app.settings.tabs.resource-management": {
     "message": "Управление ресурсами",
     "defaultMessage": "Управление ресурсами"
+  },
+  "app.settings.tabs.synced-options": {
+    "message": "Синхронизация настроек",
+    "defaultMessage": "Синхронизация настроек"
   },
   "app.sidebar.playing-as": {
     "message": "Сейчас играет",
@@ -2386,6 +2645,10 @@
   "friends.add-friends-to-share": {
     "message": "<link>Добавьте друзей</link> и следите за ними!",
     "defaultMessage": "<link>Добавьте друзей</link> и следите за ними!"
+  },
+  "friends.friend.actions.label": {
+    "message": "Действия с другом",
+    "defaultMessage": "Действия с другом"
   },
   "friends.friend.cancel-request": {
     "message": "Отменить запрос",
@@ -2951,6 +3214,26 @@
     "message": "Отзыв приглашения",
     "defaultMessage": "Отзыв приглашения"
   },
+  "instance.settings.tabs.behavior.description": {
+    "message": "Выберите, какие вкладки будут отображаться у этой сборки.",
+    "defaultMessage": "Choose which tabs appear on this instance."
+  },
+  "instance.settings.tabs.behavior.files": {
+    "message": "Показывать вкладку «Файлы»",
+    "defaultMessage": "Show Files tab"
+  },
+  "instance.settings.tabs.behavior.screenshots": {
+    "message": "Показывать вкладку «Скриншоты»",
+    "defaultMessage": "Show Screenshots tab"
+  },
+  "instance.settings.tabs.behavior.screenshots.required": {
+    "message": "Вкладка «Скриншоты» не может быть скрыта, пока глобальная страница скриншотов отключена.",
+    "defaultMessage": "The Screenshots tab cannot be hidden while the global Screenshots page is turned off."
+  },
+  "instance.settings.tabs.behavior.worlds": {
+    "message": "Показывать вкладку «Миры»",
+    "defaultMessage": "Show Worlds tab"
+  },
   "instance.settings.tabs.general": {
     "message": "Основные",
     "defaultMessage": "Основные"
@@ -3178,9 +3461,61 @@
     "message": "/путь/к/java",
     "defaultMessage": "/путь/к/java"
   },
+  "instance.settings.tabs.settings-overrides": {
+    "message": "Синхронизация",
+    "defaultMessage": "Синхронизация"
+  },
   "instance.settings.tabs.sharing": {
     "message": "Доступ",
     "defaultMessage": "Доступ"
+  },
+  "instance.settings.tabs.synced-options.command-history": {
+    "message": "Отключить синхронизацию истории команд"
+  },
+  "instance.settings.tabs.synced-options.command-history.disabled-in-app": {
+    "message": "Синхронизация истории команд отключена в настройках приложения."
+  },
+  "instance.settings.tabs.synced-options.command-history.override-description": {
+    "message": "Хранить историю команд этой сборки отдельно от синхронизированной."
+  },
+  "instance.settings.tabs.synced-options.creative-hotbars": {
+    "message": "Отключить синхронизацию панелей творчества"
+  },
+  "instance.settings.tabs.synced-options.creative-hotbars.disabled-in-app": {
+    "message": "Синхронизация панелей творчества отключена в настройках приложения."
+  },
+  "instance.settings.tabs.synced-options.creative-hotbars.override-description": {
+    "message": "Хранить панели творчества этой сборки отдельно от синхронизированных."
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.backup-description": {
+    "message": "Заменяемая версия будет сохранена в резервной копии перед внесением изменений."
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.description": {
+    "message": "В сборке «{instance}» и в синхронизированной версии разные панели творчества. Выберите, какую версию использовать."
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.title": {
+    "message": "Выберите панели творчества"
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.use-instance": {
+    "message": "Перезаписать остальные"
+  },
+  "instance.settings.tabs.synced-options.hotbars-conflict.use-synced": {
+    "message": "Использовать синхронизированные"
+  },
+  "instance.settings.tabs.synced-options.multiplayer-servers": {
+    "message": "Отключить синхронизацию серверов"
+  },
+  "instance.settings.tabs.synced-options.multiplayer-servers.disabled-in-app": {
+    "message": "Синхронизация серверов отключена в настройках приложения."
+  },
+  "instance.settings.tabs.synced-options.multiplayer-servers.override-description": {
+    "message": "Хранить сетевые серверы этой сборки отдельно от синхронизированных."
+  },
+  "instance.settings.tabs.synced-options.open-app-settings": {
+    "message": "Управление синхронизацией"
+  },
+  "instance.settings.tabs.synced-options.shared-settings.description": {
+    "message": "Включите переопределение, чтобы хранить настройку отдельно для этой сборки."
   },
   "instance.settings.tabs.window": {
     "message": "Пользовательские настройки окна"
@@ -3300,6 +3635,10 @@
     "message": "Сервер Minecraft",
     "defaultMessage": "Сервер Minecraft"
   },
+  "instance.worlds.actions.label": {
+    "message": "Действия с миром",
+    "defaultMessage": "Действия с миром"
+  },
   "instance.worlds.cant_connect": {
     "message": "Невозможно подключиться к серверу",
     "defaultMessage": "Невозможно подключиться к серверу"
@@ -3311,6 +3650,26 @@
   "instance.worlds.create_shortcut": {
     "message": "Создать ярлык",
     "defaultMessage": "Создать ярлык"
+  },
+  "instance.worlds.desync-server.description": {
+    "message": "Оставить этот сервер в других синхронизированных сборках или удалить из них?",
+    "defaultMessage": "Оставить этот сервер в других синхронизированных сборках или удалить из них?"
+  },
+  "instance.worlds.desync-server.keep": {
+    "message": "Оставить",
+    "defaultMessage": "Оставить"
+  },
+  "instance.worlds.desync-server.remove": {
+    "message": "Удалить",
+    "defaultMessage": "Удалить"
+  },
+  "instance.worlds.desync-server.title": {
+    "message": "Рассинхронизация сервера",
+    "defaultMessage": "Рассинхронизация сервера"
+  },
+  "instance.worlds.desync_server": {
+    "message": "Отвязать",
+    "defaultMessage": "Отвязать"
   },
   "instance.worlds.dont_show_on_home": {
     "message": "Не показывать на главной",
@@ -3355,6 +3714,10 @@
   "instance.worlds.play_instance": {
     "message": "Запустить сборку",
     "defaultMessage": "Запустить сборку"
+  },
+  "instance.worlds.play_world": {
+    "message": "Играть в мире",
+    "defaultMessage": "Играть в мире"
   },
   "instance.worlds.shortcut-created": {
     "message": "Ярлык создан",
@@ -3511,6 +3874,86 @@
   "settings.sidebar.label.display": {
     "message": "Отображение",
     "defaultMessage": "Отображение"
+  },
+  "app.appearance-settings.jump-back-into-worlds.description": {
+    "message": "Показывать недавние миры или сборки в секции «Недавнее» на главной странице.",
+    "defaultMessage": "Показывать недавние миры или сборки в секции «Недавнее» на главной странице."
+  },
+  "app.appearance-settings.jump-back-into-worlds.title": {
+    "message": "Недавние миры или сборки",
+    "defaultMessage": "Недавние миры или сборки"
+  },
+  "app.error.close": {
+    "defaultMessage": "Закрыть",
+    "message": "Закрыть"
+  },
+  "app.error.external-auth-library.description": {
+    "defaultMessage": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры.",
+    "message": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры."
+  },
+  "app.error.external-auth-library.go-to-install": {
+    "defaultMessage": "Перейти к установке",
+    "message": "Перейти к установке"
+  },
+  "app.error.external-auth-library.title": {
+    "defaultMessage": "Отсутствует библиотека авторизации",
+    "message": "Отсутствует библиотека авторизации"
+  },
+  "app.icon-editor.apply-icons-modal.apply-error": {
+    "message": "Не удалось применить случайные иконки к сборкам.",
+    "defaultMessage": "Не удалось применить случайные иконки к сборкам."
+  },
+  "app.icon-editor.apply-icons-modal.apply-success": {
+    "message": "Установлен случайный значок для {num, plural, one {# сборки} few {# сборок} many {# сборок} other {# сборок}}.",
+    "defaultMessage": "Установлен случайный значок для {num, plural, one {# сборки} few {# сборок} many {# сборок} other {# сборок}}."
+  },
+  "app.icon-editor.apply-icons-modal.badge": {
+    "message": "Новый контент",
+    "defaultMessage": "Новый контент"
+  },
+  "app.icon-editor.apply-icons-modal.close": {
+    "message": "Закрыть",
+    "defaultMessage": "Закрыть"
+  },
+  "app.icon-editor.apply-icons-modal.description": {
+    "message": "Создавайте собственные иконки прямо в Rubirinth App. Сочетайте фоны с символами из Minecraft и популярных модов!",
+    "defaultMessage": "Создавайте собственные иконки прямо в Rubirinth App. Сочетайте фоны с символами из Minecraft и популярных модов!"
+  },
+  "app.icon-editor.apply-icons-modal.instances-without-icons": {
+    "message": "У {count, plural, one {# сборки} other {# сборок}} нет {count, plural, one {иконки} other {иконок}}. Хотите создать {count, plural, one {случайную} other {случайные}}?",
+    "defaultMessage": "У {count, plural, one {# сборки} other {# сборок}} нет {count, plural, one {иконки} other {иконок}}. Хотите создать {count, plural, one {случайную} other {случайные}}?"
+  },
+  "app.icon-editor.apply-icons-modal.random-icons": {
+    "message": "Случайные иконки",
+    "defaultMessage": "Случайные иконки"
+  },
+  "app.icon-editor.apply-icons-modal.skip": {
+    "message": "Пропустить",
+    "defaultMessage": "Пропустить"
+  },
+  "app.icon-editor.apply-icons-modal.title": {
+    "message": "Редактор иконок",
+    "defaultMessage": "Редактор иконок"
+  },
+  "app.icon-editor.notification.close": {
+    "message": "Закрыть",
+    "defaultMessage": "Закрыть"
+  },
+  "app.icon-editor.notification.description": {
+    "message": "Персонализируйте свои сборки!",
+    "defaultMessage": "Персонализируйте свои сборки!"
+  },
+  "app.icon-editor.notification.dismiss": {
+    "message": "Закрыть",
+    "defaultMessage": "Закрыть"
+  },
+  "app.icon-editor.notification.title": {
+    "message": "Новый редактор иконок",
+    "defaultMessage": "Новый редактор иконок"
+  },
+  "app.icon-editor.notification.view-update": {
+    "message": "Подробнее",
+    "defaultMessage": "Подробнее"
   },
   "app.settings.tabs.default-instance-options": {
     "message": "Предустановки игры",
@@ -4284,253 +4727,9 @@
     "defaultMessage": "Check server availability and ping in catalog and world list.",
     "message": "Проверять доступность и пинг серверов в каталоге и списке миров."
   },
-  "app.instance.tab.screenshots": {
-    "message": "Скриншоты",
-    "defaultMessage": "Скриншоты"
-  },
-  "app.nav.screenshots": {
-    "message": "Скриншоты",
-    "defaultMessage": "Скриншоты"
-  },
-  "app.screenshots.copied": {
-    "message": "Скриншот скопирован в буфер обмена",
-    "defaultMessage": "Скриншот скопирован в буфер обмена"
-  },
-  "app.screenshots.copy": {
-    "message": "Копировать",
-    "defaultMessage": "Копировать"
-  },
-  "app.screenshots.delete-description": {
-    "message": "Удалить скриншот? Это действие нельзя отменить.",
-    "defaultMessage": "Удалить скриншот? Это действие нельзя отменить."
-  },
-  "app.screenshots.delete-success": {
-    "message": "Скриншот удален",
-    "defaultMessage": "Скриншот удален"
-  },
-  "app.screenshots.delete-title": {
-    "message": "Удалить скриншот",
-    "defaultMessage": "Удалить скриншот"
-  },
-  "app.screenshots.deselect": {
-    "message": "Снять выбор",
-    "defaultMessage": "Снять выбор"
-  },
-  "app.screenshots.edit": {
-    "message": "Редактировать",
-    "defaultMessage": "Редактировать"
-  },
-  "app.screenshots.empty-description": {
-    "message": "Здесь будут отображаться скриншоты, сделанные в игре.",
-    "defaultMessage": "Здесь будут отображаться скриншоты, сделанные в игре."
-  },
-  "app.screenshots.empty-heading": {
-    "message": "Пока нет скриншотов",
-    "defaultMessage": "Пока нет скриншотов"
-  },
-  "app.screenshots.error-heading": {
-    "message": "Не удалось загрузить скриншоты",
-    "defaultMessage": "Не удалось загрузить скриншоты"
-  },
-  "app.screenshots.go-to-instance": {
-    "message": "Перейти к сборке",
-    "defaultMessage": "Перейти к сборке"
-  },
-  "app.screenshots.group-by": {
-    "message": "Группировка",
-    "defaultMessage": "Группировка"
-  },
-  "app.screenshots.group.all-screenshots": {
-    "message": "Все скриншоты",
-    "defaultMessage": "Все скриншоты"
-  },
-  "app.screenshots.group.collapse": {
-    "message": "Свернуть группу",
-    "defaultMessage": "Свернуть группу"
-  },
-  "app.screenshots.group.custom": {
-    "message": "Пользовательская",
-    "defaultMessage": "Пользовательская"
-  },
-  "app.screenshots.group.date": {
-    "message": "По дате",
-    "defaultMessage": "По дате"
-  },
-  "app.screenshots.group.delete": {
-    "message": "Удалить группу",
-    "defaultMessage": "Удалить группу"
-  },
-  "app.screenshots.group.delete-description": {
-    "message": "Скриншоты из этой группы останутся без группы.",
-    "defaultMessage": "Скриншоты из этой группы останутся без группы."
-  },
-  "app.screenshots.group.edit": {
-    "message": "Переименовать группу",
-    "defaultMessage": "Переименовать группу"
-  },
-  "app.screenshots.group.empty": {
-    "message": "Перетащите скриншоты сюда для добавления.",
-    "defaultMessage": "Перетащите скриншоты сюда для добавления."
-  },
-  "app.screenshots.group.expand": {
-    "message": "Развернуть группу",
-    "defaultMessage": "Развернуть группу"
-  },
-  "app.screenshots.group.instance": {
-    "message": "По сборкам",
-    "defaultMessage": "По сборкам"
-  },
-  "app.screenshots.group.new": {
-    "message": "Новая группа",
-    "defaultMessage": "Новая группа"
-  },
-  "app.screenshots.group.none": {
-    "message": "Без группировки",
-    "defaultMessage": "Без группировки"
-  },
-  "app.screenshots.group.this-month": {
-    "message": "В этом месяце",
-    "defaultMessage": "В этом месяце"
-  },
-  "app.screenshots.group.this-week": {
-    "message": "На этой неделе",
-    "defaultMessage": "На этой неделе"
-  },
-  "app.screenshots.group.today": {
-    "message": "Сегодня",
-    "defaultMessage": "Сегодня"
-  },
-  "app.screenshots.group.ungrouped": {
-    "message": "Без группы",
-    "defaultMessage": "Без группы"
-  },
-  "app.screenshots.group.yesterday": {
-    "message": "Вчера",
-    "defaultMessage": "Вчера"
-  },
-  "app.screenshots.heading": {
-    "message": "Скриншоты",
-    "defaultMessage": "Скриншоты"
-  },
-  "app.screenshots.more-actions": {
-    "message": "Дополнительные действия",
-    "defaultMessage": "Дополнительные действия"
-  },
-  "app.screenshots.no-results-description": {
-    "message": "Попробуйте изменить параметры поиска или фильтры.",
-    "defaultMessage": "Попробуйте изменить параметры поиска или фильтры."
-  },
-  "app.screenshots.no-results-heading": {
-    "message": "Скриншоты не найдены",
-    "defaultMessage": "Скриншоты не найдены"
-  },
-  "app.screenshots.preview.instance-and-date": {
-    "message": "{instance} • {date}",
-    "defaultMessage": "{instance} • {date}"
-  },
-  "app.screenshots.search": {
-    "message": "Поиск скриншотов...",
-    "defaultMessage": "Поиск скриншотов..."
-  },
-  "app.screenshots.select": {
-    "message": "Выбрать",
-    "defaultMessage": "Выбрать"
-  },
-  "app.screenshots.selection.aria-label": {
-    "message": "Выбранные скриншоты",
-    "defaultMessage": "Выбранные скриншоты"
-  },
-  "app.screenshots.selection.delete-description": {
-    "message": "Удалить {count, plural, one {# выбранный скриншот} few {# выбранных скриншота} many {# выбранных скриншотов} other {# выбранных скриншотов}}? Это действие нельзя отменить.",
-    "defaultMessage": "Удалить {count, plural, one {# выбранный скриншот} few {# выбранных скриншота} many {# выбранных скриншотов} other {# выбранных скриншотов}}? Это действие нельзя отменить."
-  },
-  "app.screenshots.selection.delete-success": {
-    "message": "{count, plural, one {Удален # скриншот} few {Удалено # скриншота} many {Удалено # скриншотов} other {Удалено # скриншотов}}",
-    "defaultMessage": "{count, plural, one {Удален # скриншот} few {Удалено # скриншота} many {Удалено # скриншотов} other {Удалено # скриншотов}}"
-  },
-  "app.screenshots.selection.delete-title": {
-    "message": "Удалить выбранные скриншоты",
-    "defaultMessage": "Удалить выбранные скриншоты"
-  },
-  "app.screenshots.selection.export-zip": {
-    "message": "Экспортировать в ZIP",
-    "defaultMessage": "Экспортировать в ZIP"
-  },
-  "app.screenshots.selection.global-export-filename": {
-    "message": "Rubirinth скриншоты.zip",
-    "defaultMessage": "Rubirinth скриншоты.zip"
-  },
-  "app.screenshots.selection.instance-export-filename": {
-    "message": "{instance} скриншоты.zip",
-    "defaultMessage": "{instance} скриншоты.zip"
-  },
-  "app.screenshots.selection.remove-from-group": {
-    "message": "Удалить из группы",
-    "defaultMessage": "Удалить из группы"
-  },
   "app.screenshots.selection.selected-count": {
     "message": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}",
     "defaultMessage": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}"
-  },
-  "app.screenshots.selection.zip-archive": {
-    "message": "ZIP-архив",
-    "defaultMessage": "ZIP-архив"
-  },
-  "app.screenshots.show-in-folder": {
-    "message": "Показать в папке",
-    "defaultMessage": "Показать в папке"
-  },
-  "app.screenshots.sort-by": {
-    "message": "Сортировка",
-    "defaultMessage": "Сортировка"
-  },
-  "app.screenshots.sort.name": {
-    "message": "По названию",
-    "defaultMessage": "По названию"
-  },
-  "app.screenshots.sort.newest": {
-    "message": "Сначала новые",
-    "defaultMessage": "Сначала новые"
-  },
-  "app.screenshots.sort.oldest": {
-    "message": "Сначала старые",
-    "defaultMessage": "Сначала старые"
-  },
-  "app.settings.synced-options.command-history": {
-    "message": "Синхронизация истории команд"
-  },
-  "app.settings.synced-options.command-history.description": {
-    "message": "Использовать единую историю команд во всех ваших сборках."
-  },
-  "app.settings.synced-options.command-history.editor-title": {
-    "message": "Редактировать историю команд"
-  },
-  "app.settings.synced-options.creative-hotbars": {
-    "message": "Синхронизация панелей творчества"
-  },
-  "app.settings.synced-options.creative-hotbars.description": {
-    "message": "Использовать сохраненные панели быстрого доступа во всех ваших сборках."
-  },
-  "app.settings.synced-options.multiplayer-servers": {
-    "message": "Синхронизация серверов"
-  },
-  "app.settings.synced-options.multiplayer-servers.address": {
-    "message": "Адрес сервера"
-  },
-  "app.settings.synced-options.multiplayer-servers.description": {
-    "message": "Использовать единый список сетевых серверов во всех ваших сборках."
-  },
-  "app.settings.synced-options.multiplayer-servers.editor-title": {
-    "message": "Редактировать синхронизированные серверы"
-  },
-  "app.settings.synced-options.multiplayer-servers.empty": {
-    "message": "Синхронизированных серверов нет."
-  },
-  "app.settings.synced-options.multiplayer-servers.name": {
-    "message": "Название сервера"
-  },
-  "app.settings.synced-options.multiplayer-servers.none-synced-yet": {
-    "message": "Серверы еще не синхронизированы"
   },
   "app.settings.synced-options.screenshots": {
     "message": "Скриншоты",
@@ -4540,57 +4739,17 @@
     "message": "Просмотр скриншотов из всех сборок в одном месте.",
     "defaultMessage": "Просмотр скриншотов из всех сборок в одном месте."
   },
-  "app.settings.tabs.synced-options": {
-    "message": "Синхронизация настроек",
-    "defaultMessage": "Синхронизация настроек"
-  },
-  "instance.settings.tabs.synced-options.command-history": {
-    "message": "Отключить синхронизацию истории команд"
-  },
-  "instance.settings.tabs.synced-options.command-history.disabled-in-app": {
-    "message": "Синхронизация истории команд отключена в настройках приложения."
-  },
   "instance.settings.tabs.synced-options.command-history.exclude-description": {
     "message": "Исключить эту сборку из синхронизации истории команд.",
     "defaultMessage": "Исключить эту сборку из синхронизации истории команд."
-  },
-  "instance.settings.tabs.synced-options.creative-hotbars": {
-    "message": "Отключить синхронизацию панелей творчества"
-  },
-  "instance.settings.tabs.synced-options.creative-hotbars.disabled-in-app": {
-    "message": "Синхронизация панелей творчества отключена в настройках приложения."
   },
   "instance.settings.tabs.synced-options.creative-hotbars.exclude-description": {
     "message": "Исключить эту сборку из синхронизации панелей хотбаров.",
     "defaultMessage": "Исключить эту сборку из синхронизации панелей хотбаров."
   },
-  "instance.settings.tabs.synced-options.hotbars-conflict.backup-description": {
-    "message": "Заменяемая версия будет сохранена в резервной копии перед внесением изменений."
-  },
-  "instance.settings.tabs.synced-options.hotbars-conflict.description": {
-    "message": "В сборке «{instance}» и в синхронизированной версии разные панели творчества. Выберите, какую версию использовать."
-  },
-  "instance.settings.tabs.synced-options.hotbars-conflict.title": {
-    "message": "Выберите панели творчества"
-  },
-  "instance.settings.tabs.synced-options.hotbars-conflict.use-instance": {
-    "message": "Перезаписать остальные"
-  },
-  "instance.settings.tabs.synced-options.hotbars-conflict.use-synced": {
-    "message": "Использовать синхронизированные"
-  },
-  "instance.settings.tabs.synced-options.multiplayer-servers": {
-    "message": "Отключить синхронизацию серверов"
-  },
-  "instance.settings.tabs.synced-options.multiplayer-servers.disabled-in-app": {
-    "message": "Синхронизация серверов отключена в настройках приложения."
-  },
   "instance.settings.tabs.synced-options.multiplayer-servers.exclude-description": {
     "message": "Исключить эту сборку из синхронизации сетевых серверов.",
     "defaultMessage": "Исключить эту сборку из синхронизации сетевых серверов."
-  },
-  "instance.settings.tabs.synced-options.open-app-settings": {
-    "message": "Управление синхронизацией"
   },
   "instance.settings.tabs.synced-options.screenshots": {
     "message": "Скриншоты",
@@ -4604,112 +4763,9 @@
     "message": "Исключить скриншоты этой сборки из общего раздела скриншотов.",
     "defaultMessage": "Исключить скриншоты этой сборки из общего раздела скриншотов."
   },
-  "instance.settings.tabs.synced-options.shared-settings.description": {
-    "message": "Включите переопределение, чтобы хранить настройку отдельно для этой сборки."
-  },
-  "instance.worlds.desync-server.description": {
-    "message": "Оставить этот сервер в других синхронизированных сборках или удалить из них?",
-    "defaultMessage": "Оставить этот сервер в других синхронизированных сборках или удалить из них?"
-  },
-  "instance.worlds.desync-server.keep": {
-    "message": "Оставить",
-    "defaultMessage": "Оставить"
-  },
-  "instance.worlds.desync-server.remove": {
-    "message": "Удалить",
-    "defaultMessage": "Удалить"
-  },
-  "instance.worlds.desync-server.title": {
-    "message": "Рассинхронизация сервера",
-    "defaultMessage": "Рассинхронизация сервера"
-  },
-  "instance.worlds.desync_server": {
-    "message": "Отвязать",
-    "defaultMessage": "Отвязать"
-  },
-  "app.nav.add-account": {
-    "message": "Добавить аккаунт",
-    "defaultMessage": "Добавить аккаунт"
-  },
-  "app.nav.loading-profile": {
-    "message": "Загрузка профиля...",
-    "defaultMessage": "Загрузка профиля..."
-  },
-  "app.nav.remove-account": {
-    "message": "Удалить аккаунт",
-    "defaultMessage": "Удалить аккаунт"
-  },
-  "app.nav.switch-account": {
-    "message": "Сменить аккаунт",
-    "defaultMessage": "Сменить аккаунт"
-  },
-  "app.nav.view-profile": {
-    "message": "Открыть профиль",
-    "defaultMessage": "Открыть профиль"
-  },
-  "app.quick-instance-switcher.actions.label": {
-    "message": "Действия со сборкой",
-    "defaultMessage": "Действия со сборкой"
-  },
-  "app.quick-instance-switcher.instance-locked": {
-    "message": "Эта сборка заблокирована",
-    "defaultMessage": "Эта сборка заблокирована"
-  },
-  "app.quick-instance-switcher.view-instance": {
-    "message": "Открыть сборку",
-    "defaultMessage": "Открыть сборку"
-  },
-  "friends.friend.actions.label": {
-    "message": "Действия с другом",
-    "defaultMessage": "Действия с другом"
-  },
-  "instance.worlds.actions.label": {
-    "message": "Действия с миром",
-    "defaultMessage": "Действия с миром"
-  },
-  "instance.worlds.play_world": {
-    "message": "Играть в мире",
-    "defaultMessage": "Играть в мире"
-  },
   "app.instance.worlds.remove-server-modal.synced-removal-notice": {
     "message": "Этот сервер также будет удален из {count, plural, one {# другой сборки} few {# других сборок} many {# других сборок} other {# других сборок}}, так как он синхронизирован.",
     "defaultMessage": "Этот сервер также будет удален из {count, plural, one {# другой сборки} few {# других сборок} many {# других сборок} other {# других сборок}}, так как он синхронизирован."
-  },
-  "app.settings.default-instance-options.java-and-memory.title": {
-    "message": "Java и память",
-    "defaultMessage": "Java и память"
-  },
-  "app.settings.default-instance-options.launch-hooks.title": {
-    "message": "Хуки запуска",
-    "defaultMessage": "Хуки запуска"
-  },
-  "app.settings.default-instance-options.window.title": {
-    "message": "Окно",
-    "defaultMessage": "Окно"
-  },
-  "instance.settings.tabs.settings-overrides": {
-    "message": "Синхронизация",
-    "defaultMessage": "Синхронизация"
-  },
-  "app.instance.actions.label": {
-    "message": "Действия со сборкой",
-    "defaultMessage": "Действия со сборкой"
-  },
-  "app.library.actions.label": {
-    "message": "Действия с библиотекой",
-    "defaultMessage": "Действия с библиотекой"
-  },
-  "app.library.group.actions.label": {
-    "message": "Действия с группой",
-    "defaultMessage": "Действия с группой"
-  },
-  "app.library.instance.actions.label": {
-    "message": "Действия со сборкой",
-    "defaultMessage": "Действия со сборкой"
-  },
-  "app.project.actions.label": {
-    "message": "Действия с проектом",
-    "defaultMessage": "Действия с проектом"
   },
   "app.behavior-settings.show-all-screenshots.title": {
     "message": "Показывать все скриншоты вместе"
@@ -4717,57 +4773,10 @@
   "app.behavior-settings.show-all-screenshots.description": {
     "message": "Отображать скриншоты со всех ваших сборок на странице «Скриншоты»."
   },
-  "app.settings.synced-options.choose-sync-source.command-history-description": {
-    "message": "Выберите сборку, история команд которой станет общей копией."
-  },
-  "app.settings.synced-options.choose-sync-source.creative-hotbars-description": {
-    "message": "Выберите сборку, сохраненные панели быстрого доступа которой станут общей копией."
-  },
-  "app.settings.synced-options.choose-sync-source.multiplayer-servers-description": {
-    "message": "Выберите сборку, список серверов которой станет общей копией."
-  },
-  "app.settings.synced-options.choose-sync-source.no-instances-found": {
-    "message": "Сборки не найдены"
-  },
-  "app.settings.synced-options.choose-sync-source.search-placeholder": {
-    "message": "Поиск сборки"
-  },
-  "app.settings.synced-options.choose-sync-source.sync": {
-    "message": "Синхронизировать"
-  },
   "app.settings.synced-options.choose-sync-source.title": {
     "message": "Выберите источник синхронизации"
   },
   "instance.settings.tabs.tab-visibility": {
     "message": "Вкладки"
-  },
-  "instance.settings.tabs.synced-options.command-history.override-description": {
-    "message": "Хранить историю команд этой сборки отдельно от синхронизированной."
-  },
-  "instance.settings.tabs.synced-options.creative-hotbars.override-description": {
-    "message": "Хранить панели творчества этой сборки отдельно от синхронизированных."
-  },
-  "instance.settings.tabs.synced-options.multiplayer-servers.override-description": {
-    "message": "Хранить сетевые серверы этой сборки отдельно от синхронизированных."
-  },
-  "instance.settings.tabs.behavior.description": {
-    "message": "Выберите, какие вкладки будут отображаться у этой сборки.",
-    "defaultMessage": "Choose which tabs appear on this instance."
-  },
-  "instance.settings.tabs.behavior.files": {
-    "message": "Показывать вкладку «Файлы»",
-    "defaultMessage": "Show Files tab"
-  },
-  "instance.settings.tabs.behavior.worlds": {
-    "message": "Показывать вкладку «Миры»",
-    "defaultMessage": "Show Worlds tab"
-  },
-  "instance.settings.tabs.behavior.screenshots": {
-    "message": "Показывать вкладку «Скриншоты»",
-    "defaultMessage": "Show Screenshots tab"
-  },
-  "instance.settings.tabs.behavior.screenshots.required": {
-    "message": "Вкладка «Скриншоты» не может быть скрыта, пока глобальная страница скриншотов отключена.",
-    "defaultMessage": "The Screenshots tab cannot be hidden while the global Screenshots page is turned off."
   }
 }

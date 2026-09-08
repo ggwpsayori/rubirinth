@@ -274,6 +274,9 @@
     "defaultMessage": "Download",
     "message": "Download"
   },
+  "button.download-files": {
+    "defaultMessage": "Download files"
+  },
   "button.downloading": {
     "defaultMessage": "Downloading",
     "message": "Downloading"
@@ -486,6 +489,15 @@
     "defaultMessage": "Private",
     "message": "Private"
   },
+  "console.actions.collapse": {
+    "defaultMessage": "Collapse"
+  },
+  "console.actions.expand": {
+    "defaultMessage": "Expand"
+  },
+  "console.actions.share": {
+    "defaultMessage": "Share"
+  },
   "content-type.content.lowercase": {
     "defaultMessage": "content",
     "message": "content"
@@ -501,6 +513,12 @@
   "content.card.select-project": {
     "defaultMessage": "Select {project}",
     "message": "Select {project}"
+  },
+  "content.card.sync-update-pending": {
+    "defaultMessage": "Some synced copies are waiting for changes. An instance may be running, have a frozen or incompatible version, or already contain its own copy."
+  },
+  "content.card.synced": {
+    "defaultMessage": "Synced across instances"
   },
   "content.card.uploaded": {
     "defaultMessage": "Uploaded",
@@ -3139,6 +3157,9 @@
     "defaultMessage": "Show unavailable",
     "message": "Show unavailable"
   },
+  "instances.managed-content-modal.disabled": {
+    "defaultMessage": "Disabled"
+  },
   "instances.managed-content-modal.download-file": {
     "defaultMessage": "Download File",
     "message": "Download File"
@@ -3150,6 +3171,9 @@
   "instances.managed-content-modal.empty-title": {
     "defaultMessage": "No content found",
     "message": "No content found"
+  },
+  "instances.managed-content-modal.enabled": {
+    "defaultMessage": "Enabled"
   },
   "instances.managed-content-modal.external-content": {
     "defaultMessage": "External",
@@ -3178,6 +3202,9 @@
   "instances.managed-content-modal.search-placeholder": {
     "defaultMessage": "Search {count, number} {count, plural, one {project} other {projects}}",
     "message": "Search {count, number} {count, plural, one {project} other {projects}}"
+  },
+  "instances.managed-content-modal.warnings": {
+    "defaultMessage": "Warnings"
   },
   "instances.updater-modal.badge.current": {
     "defaultMessage": "Current",
@@ -6832,6 +6859,18 @@
     "defaultMessage": "Server is installing",
     "message": "Server is installing"
   },
+  "servers.download.failed.description": {
+    "defaultMessage": "An error occurred while trying to download the world's files."
+  },
+  "servers.download.failed.title": {
+    "defaultMessage": "Download failed"
+  },
+  "servers.download.unavailable.description": {
+    "defaultMessage": "This world's files cannot currently be downloaded."
+  },
+  "servers.download.unavailable.title": {
+    "defaultMessage": "Download unavailable"
+  },
   "servers.files.zip-created": {
     "defaultMessage": "ZIP created"
   },
@@ -7033,10 +7072,6 @@
   "servers.listing.copy-id-label": {
     "defaultMessage": "Copy ID",
     "message": "Copy ID"
-  },
-  "servers.listing.download-latest-backup-tooltip": {
-    "defaultMessage": "Download latest backup",
-    "message": "Download latest backup"
   },
   "servers.listing.manage-billing-label": {
     "defaultMessage": "Manage billing",
@@ -7354,10 +7389,6 @@
     "defaultMessage": "billed {interval, select, monthly {monthly} quarterly {quarterly} yearly {yearly} other {{interval}}}",
     "message": "billed {interval, select, monthly {monthly} quarterly {quarterly} yearly {yearly} other {{interval}}}"
   },
-  "servers.purchase.step.plan.billing-subtitle": {
-    "defaultMessage": "Available in North America, Europe, and Southeast Asia.",
-    "message": "Available in North America, Europe, and Southeast Asia."
-  },
   "servers.purchase.step.plan.custom.desc": {
     "defaultMessage": "Pick a customized plan with just the specs you need.",
     "message": "Pick a customized plan with just the specs you need."
@@ -7369,6 +7400,9 @@
   "servers.purchase.step.plan.get-started": {
     "defaultMessage": "Get started",
     "message": "Get started"
+  },
+  "servers.purchase.step.plan.hardware-subtitle": {
+    "defaultMessage": "Powered by AMD Ryzen 7950X, 9950X, or equivalent, with DDR5 memory."
   },
   "servers.purchase.step.plan.large": {
     "defaultMessage": "Large",
@@ -9200,6 +9234,14 @@
   "version.supplementary-resources.type": {
     "defaultMessage": "Type",
     "message": "Type"
+  },
+  "servers.listing.download-latest-backup-tooltip": {
+    "defaultMessage": "Download latest backup",
+    "message": "Download latest backup"
+  },
+  "servers.purchase.step.plan.billing-subtitle": {
+    "defaultMessage": "Available in North America, Europe, and Southeast Asia.",
+    "message": "Available in North America, Europe, and Southeast Asia."
   },
   "app.settings.sidebar.label.rubirinth": {
     "defaultMessage": "Rubirinth",

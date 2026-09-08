@@ -20,15 +20,16 @@ import {
 	UserIcon,
 	XIcon,
 } from '@modrinth/assets'
-import type { ButtonMenuOption, MessageDescriptor } from '@modrinth/ui'
 import {
 	Avatar,
 	BulletDivider,
 	Button,
+	type ButtonMenuOption,
 	commonMessages,
 	ContextMenu,
 	defineMessages,
 	injectNotificationManager,
+	type MessageDescriptor,
 	SmartClickable,
 	TagItem,
 	TeleportOverflowMenu,
@@ -37,7 +38,8 @@ import {
 	useRelativeTime,
 	useVIntl,
 } from '@modrinth/ui'
-import { getPingLevel } from '@modrinth/utils'
+import { getPingLevel } from '@modrinth/utils/utils'
+import { autoToHTML } from '@sfirew/minecraft-motd-parser'
 import dayjs from 'dayjs'
 import { Tooltip } from 'floating-vue'
 import type { Component } from 'vue'
@@ -279,6 +281,15 @@ const messages = defineMessages({
 	},
 })
 
+const incompatibleVersionTooltip = computed(() => ({
+	content: `<span class="font-minecraft font-normal leading-5">${autoToHTML(
+		formatMessage(messages.incompatibleVersion, {
+			version: props.serverStatus?.version?.name ?? '',
+		}),
+	)}</span>`,
+	html: true,
+}))
+
 const cardOptions = useTemplateRef('cardOptions')
 const showStop = computed(
 	() =>
@@ -510,16 +521,12 @@ function openContextMenu(event: MouseEvent) {
 								{{ formatMessage(commonMessages.loadingLabel) }}
 							</template>
 							<template v-else-if="serverStatus && pingServersEnabled">
-								<template v-if="serverIncompatible">
-									<IssuesIcon class="shrink-0 text-orange" aria-hidden="true" />
-									<span class="text-orange">
-										{{
-											formatMessage(messages.incompatibleVersion, {
-												version: serverStatus.version?.name,
-											})
-										}}
-									</span>
-								</template>
+								<IssuesIcon
+									v-if="serverIncompatible"
+									v-tooltip="incompatibleVersionTooltip"
+									class="shrink-0 text-orange cursor-help smart-clickable:allow-pointer-events"
+									aria-hidden="true"
+								/>
 								<template v-else>
 									<SignalIcon
 										v-tooltip="serverStatus?.ping != null ? `${serverStatus.ping}ms` : undefined"

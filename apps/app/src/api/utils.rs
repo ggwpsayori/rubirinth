@@ -24,7 +24,8 @@ pub fn init<R: Runtime>() -> tauri::plugin::TauriPlugin<R> {
             show_app_db_backups_folder,
             progress_bars_list,
             get_opening_command,
-            download_and_install_update
+            download_and_install_update,
+            super::thumbnails::get_image_thumbnail,
         ])
         .build()
 }

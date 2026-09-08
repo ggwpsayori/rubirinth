@@ -34,7 +34,7 @@ import {
 	set_default_user,
 	users,
 } from '@/helpers/auth'
-import { getPlayerHeadUrl } from '@/helpers/rendering/batch-skin-renderer.ts'
+import { getPlayerHeadUrl } from '@/helpers/rendering/player-head'
 import type { Skin } from '@/helpers/skins'
 import { get_available_skins } from '@/helpers/skins'
 import { elybyHeadCache, loadElyByHead } from '@/helpers/elyby-skin'
