@@ -1097,6 +1097,14 @@ impl CachedEntry {
                     }
                 }
 
+                if type_ == CacheValueType::Version && row.id.starts_with("cf:") {
+                    if let Some(CacheValue::Version(ref v)) = parsed_data {
+                        if v.changelog.is_none() {
+                            continue;
+                        }
+                    }
+                }
+
                 let row_id = row.id.clone();
                 let row_alias = row.alias.clone();
                 let remove_matching_key = |x: &&str| {
@@ -1181,9 +1189,26 @@ impl CachedEntry {
                     }
                     if !file_ids.is_empty() {
                         if let Ok(files) = crate::util::curseforge::get_curseforge_files_batch(&file_ids).await {
-                            for f in files {
-                                let ver = crate::util::curseforge::map_curseforge_file_to_version(&f);
-                                cf_return_vals.push(CacheValue::Version(ver).get_entry());
+                            let should_fetch_changelog = file_ids.len() <= 10;
+                            if should_fetch_changelog {
+                                let changelog_futures = files.iter().map(|f| {
+                                    crate::util::curseforge::get_curseforge_file_changelog(f.mod_id, f.id)
+                                });
+                                let changelogs = futures::future::join_all(changelog_futures).await;
+                                for (f, cl_res) in files.into_iter().zip(changelogs) {
+                                    let mut ver = crate::util::curseforge::map_curseforge_file_to_version(&f);
+                                    if let Ok(cl) = cl_res {
+                                        if !cl.trim().is_empty() {
+                                            ver.changelog = Some(cl);
+                                        }
+                                    }
+                                    cf_return_vals.push(CacheValue::Version(ver).get_entry());
+                                }
+                            } else {
+                                for f in files {
+                                    let ver = crate::util::curseforge::map_curseforge_file_to_version(&f);
+                                    cf_return_vals.push(CacheValue::Version(ver).get_entry());
+                                }
                             }
                         }
                     }

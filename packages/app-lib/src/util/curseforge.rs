@@ -298,6 +298,29 @@ pub async fn get_curseforge_file(
 }
 
 
+pub async fn get_curseforge_file_changelog(
+    mod_id: u32,
+    file_id: u32,
+) -> crate::Result<String> {
+    let client = make_curseforge_client()?;
+    let url = format!("{CURSEFORGE_API_BASE}/mods/{mod_id}/files/{file_id}/changelog");
+    let res = client
+        .get(&url)
+        .send()
+        .await
+        .map_err(|e| crate::ErrorKind::OtherError(e.to_string()).as_error())?;
+
+    if !res.status().is_success() {
+        return Ok(String::new());
+    }
+
+    let data: CurseforgeDataResponse<String> = res
+        .json()
+        .await
+        .map_err(|e| crate::ErrorKind::OtherError(e.to_string()).as_error())?;
+    Ok(data.data)
+}
+
 pub async fn get_curseforge_files(
     mod_id: u32,
     page_size: u32,
