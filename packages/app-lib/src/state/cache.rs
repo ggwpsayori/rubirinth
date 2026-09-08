@@ -1219,20 +1219,30 @@ impl CachedEntry {
                         let raw_id = k.strip_prefix("cf:").unwrap_or(k);
                         if let Ok(mod_id) = raw_id.parse::<u32>() {
                             if let Ok(files) = crate::util::curseforge::get_curseforge_files(mod_id, 50).await {
-                                let proj = crate::util::curseforge::get_curseforge_mod(mod_id).await.ok();
-                                let is_datapack = proj.as_ref().map_or(false, |m| m.class_id == Some(6945) || m.categories.iter().any(|c| c.id == 5193 || c.slug == "data-packs"));
-                                let is_resourcepack = proj.as_ref().map_or(false, |m| m.class_id == Some(12));
-                                let versions = files.iter().map(|f| {
-                                    let mut v = crate::util::curseforge::map_curseforge_file_to_version(f);
+                                let mut needs_proj_lookup = false;
+                                let mut versions: Vec<Version> = files.iter().map(|f| {
+                                    let v = crate::util::curseforge::map_curseforge_file_to_version(f);
                                     if v.loaders.is_empty() {
-                                        if is_datapack || f.modules.iter().any(|m| m.name == "data") {
-                                            v.loaders.push("datapack".to_string());
-                                        } else if is_resourcepack || f.modules.iter().any(|m| m.name == "assets") {
-                                            v.loaders.push("minecraft".to_string());
-                                        }
+                                        needs_proj_lookup = true;
                                     }
                                     v
                                 }).collect();
+
+                                if needs_proj_lookup {
+                                    if let Ok(proj) = crate::util::curseforge::get_curseforge_mod(mod_id).await {
+                                        let is_datapack = proj.class_id == Some(6945) || proj.categories.iter().any(|c| c.id == 5193 || c.slug == "data-packs");
+                                        let is_resourcepack = proj.class_id == Some(12);
+                                        for (v, f) in versions.iter_mut().zip(files.iter()) {
+                                            if v.loaders.is_empty() {
+                                                if is_datapack || f.modules.iter().any(|m| m.name == "data") {
+                                                    v.loaders.push("datapack".to_string());
+                                                } else if is_resourcepack || f.modules.iter().any(|m| m.name == "assets") {
+                                                    v.loaders.push("minecraft".to_string());
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                                 cf_return_vals.push(CacheValue::ProjectVersions(CachedProjectVersions {
                                     project_id: k.clone(),
                                     versions,

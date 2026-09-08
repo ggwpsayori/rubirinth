@@ -1,3 +1,4 @@
+use futures::StreamExt;
 use super::sync_content_files::{
     project_type_for_file, sync_instance_content_files,
 };
@@ -864,14 +865,42 @@ async fn content_projects_for_scope_inner(
     let (mr_files, cf_files): (Vec<_>, Vec<_>) = files
         .iter()
         .filter(|_| !packs_only)
-        .filter(|file| file_info_by_hash.contains_key(&file.sha1))
+        .filter(|file| {
+            file_info_by_hash.contains_key(&file.sha1)
+                || entries_by_file_id
+                    .get(file.id.as_str())
+                    .and_then(|e| e.project_id.as_ref())
+                    .is_some()
+        })
         .partition(|file| {
-            if let Some(info) = file_info_by_hash.get(&file.sha1) {
-                !info.project_id.starts_with("cf:")
-                    && !info.version_id.starts_with("cf:")
-            } else {
-                true
+            let pid = file_info_by_hash
+                .get(&file.sha1)
+                .map(|info| info.project_id.as_str())
+                .or_else(|| {
+                    entries_by_file_id
+                        .get(file.id.as_str())
+                        .and_then(|e| e.project_id.as_deref())
+                });
+            let vid = file_info_by_hash
+                .get(&file.sha1)
+                .map(|info| info.version_id.as_str())
+                .or_else(|| {
+                    entries_by_file_id
+                        .get(file.id.as_str())
+                        .and_then(|e| e.version_id.as_deref())
+                });
+
+            if let Some(pid) = pid {
+                if pid.starts_with("cf:") {
+                    return false;
+                }
             }
+            if let Some(vid) = vid {
+                if vid.starts_with("cf:") {
+                    return false;
+                }
+            }
+            true
         });
 
     let mut updates_by_hash: HashMap<String, Vec<String>> = HashMap::new();
@@ -913,55 +942,108 @@ async fn content_projects_for_scope_inner(
         }
     }
 
+    let existing_update_checks = sqlite::content_rows::get_content_update_checks_for_content_set(
+        &resolved.content_set.id,
+        &state.pool,
+    )
+    .await
+    .unwrap_or_default();
+
     // 2. CurseForge files: check updates ONLY via CurseForge project versions
     if !cf_files.is_empty() {
         let mut cf_project_ids = std::collections::HashSet::new();
         for file in &cf_files {
-            if let Some(info) = file_info_by_hash.get(&file.sha1) {
-                if info.project_id.starts_with("cf:") {
-                    cf_project_ids.insert(info.project_id.clone());
+            let entry = entries_by_file_id.get(file.id.as_str()).copied();
+            if let Some(entry) = entry {
+                if let Some(check) = existing_update_checks.get(&entry.id) {
+                    if check.update_channel == resolved.instance.update_channel {
+                        if let Some(ref update_vid) = check.update_version_id {
+                            updates_by_hash
+                                .insert(file.sha1.clone(), vec![update_vid.clone()]);
+                            continue;
+                        }
+                    }
+                }
+            }
+
+            let pid = file_info_by_hash
+                .get(&file.sha1)
+                .map(|info| info.project_id.clone())
+                .or_else(|| {
+                    entries_by_file_id
+                        .get(file.id.as_str())
+                        .and_then(|e| e.project_id.clone())
+                });
+            if let Some(pid) = pid {
+                if pid.starts_with("cf:") {
+                    cf_project_ids.insert(pid);
                 }
             }
         }
 
         let project_id_list: Vec<String> = cf_project_ids.into_iter().collect();
-        // In list_content, if there are many CF files (> 15), skip synchronous network update checks to avoid freezing page load with 100+ HTTP requests
-        let version_futures: Vec<_> = if project_id_list.len() > 15 {
-            Vec::new()
-        } else {
-            project_id_list.iter().map(|pid| {
-                CachedEntry::get_project_versions(
-                    pid,
-                    cache_behaviour,
-                    &state.pool,
-                    &state.api_semaphore,
-                )
-            }).collect()
-        };
-        let versions_results = futures::future::join_all(version_futures).await;
+        if !project_id_list.is_empty() {
+            let pool = &state.pool;
+            let api_semaphore = &state.api_semaphore;
+            let versions_results: Vec<(String, crate::Result<Option<Vec<Version>>>)> =
+                futures::stream::iter(project_id_list)
+                    .map(|pid| async move {
+                        let res = CachedEntry::get_project_versions(
+                            &pid,
+                            cache_behaviour,
+                            pool,
+                            api_semaphore,
+                        )
+                        .await;
+                        (pid, res)
+                    })
+                    .buffer_unordered(5)
+                    .collect()
+                    .await;
 
-        let mut cf_versions_by_project: HashMap<String, Vec<Version>> = HashMap::new();
-        for (pid, res) in project_id_list.into_iter().zip(versions_results) {
-            if let Ok(Some(versions)) = res {
-                cf_versions_by_project.insert(pid, versions);
+            let mut cf_versions_by_project: HashMap<String, Vec<Version>> = HashMap::new();
+            for (pid, res) in versions_results {
+                if let Ok(Some(versions)) = res {
+                    cf_versions_by_project.insert(pid, versions);
+                }
             }
-        }
 
-        for file in &cf_files {
-            if let Some(info) = file_info_by_hash.get(&file.sha1) {
-                if info.project_id.starts_with("cf:") {
-                    if let Some(versions) = cf_versions_by_project.get(&info.project_id) {
-                        if let Some(update_version_id) =
-                            super::check_content_updates::check_file_version_update(
-                                &info.version_id,
-                                versions,
-                                &resolved.content_set.game_version,
-                                resolved.content_set.loader.as_str(),
-                                resolved.instance.update_channel,
-                            )
-                        {
-                            updates_by_hash
-                                .insert(file.sha1.clone(), vec![update_version_id]);
+            for file in &cf_files {
+                if updates_by_hash.contains_key(&file.sha1) {
+                    continue;
+                }
+                let pid = file_info_by_hash
+                    .get(&file.sha1)
+                    .map(|info| info.project_id.clone())
+                    .or_else(|| {
+                        entries_by_file_id
+                            .get(file.id.as_str())
+                            .and_then(|e| e.project_id.clone())
+                    });
+                let vid = file_info_by_hash
+                    .get(&file.sha1)
+                    .map(|info| info.version_id.clone())
+                    .or_else(|| {
+                        entries_by_file_id
+                            .get(file.id.as_str())
+                            .and_then(|e| e.version_id.clone())
+                    });
+
+                if let (Some(pid), Some(vid)) = (pid, vid) {
+                    if pid.starts_with("cf:") {
+                        if let Some(versions) = cf_versions_by_project.get(&pid) {
+                            if let Some(update_version_id) =
+                                super::check_content_updates::check_file_version_update(
+                                    &vid,
+                                    versions,
+                                    &resolved.content_set.game_version,
+                                    resolved.content_set.loader.as_str(),
+                                    resolved.instance.update_channel,
+                                )
+                            {
+                                updates_by_hash
+                                    .insert(file.sha1.clone(), vec![update_version_id]);
+                            }
                         }
                     }
                 }
@@ -1024,15 +1106,23 @@ async fn content_projects_for_scope_inner(
             }
         }
 
-        let update_version_id = metadata.as_ref().and_then(|metadata| {
+        let update_version_id = {
+            let cur_vid = metadata
+                .as_ref()
+                .map(|m| m.version_id.as_str())
+                .or_else(|| entry.and_then(|e| e.version_id.as_deref()));
             let update_ids =
                 updates_by_hash.remove(&file.sha1).unwrap_or_default();
-            if !update_ids.contains(&metadata.version_id) {
-                update_ids.into_iter().next()
+            if let Some(cur) = cur_vid {
+                if !update_ids.contains(&cur.to_string()) {
+                    update_ids.into_iter().next()
+                } else {
+                    None
+                }
             } else {
-                None
+                update_ids.into_iter().next()
             }
-        });
+        };
 
         output.insert(
             file.relative_path.clone(),

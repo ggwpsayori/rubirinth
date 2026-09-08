@@ -9,7 +9,7 @@ use crate::state::instances::{
 use crate::state::{ModLoader, ProjectType, ReleaseChannel};
 use chrono::{DateTime, TimeZone, Utc};
 use sqlx::{Executor, Sqlite, SqlitePool, Transaction};
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use uuid::Uuid;
 
 #[derive(Debug, sqlx::FromRow)]
@@ -854,6 +854,31 @@ where
     .await?;
 
     Ok(row.map(Into::into))
+}
+
+pub(crate) async fn get_content_update_checks_for_content_set<'e, E>(
+    content_set_id: &str,
+    exec: E,
+) -> crate::Result<HashMap<String, ContentUpdateCheck>>
+where
+    E: Executor<'e, Database = Sqlite>,
+{
+    let rows = sqlx::query_as::<_, ContentUpdateCheckRow>(
+        "
+        SELECT uc.content_entry_id, uc.update_channel, uc.update_version_id, uc.checked_at
+        FROM instance_content_update_checks uc
+        INNER JOIN instance_content_entries e ON e.id = uc.content_entry_id
+        WHERE e.content_set_id = ?
+        ",
+    )
+    .bind(content_set_id)
+    .fetch_all(exec)
+    .await?;
+
+    Ok(rows
+        .into_iter()
+        .map(|row| (row.content_entry_id.clone(), row.into()))
+        .collect())
 }
 
 pub(crate) struct UpsertInstanceFile<'a> {

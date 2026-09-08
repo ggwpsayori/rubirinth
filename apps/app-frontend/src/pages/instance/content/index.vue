@@ -144,6 +144,7 @@ import {
 	set_project_locked,
 	switch_project_version_with_dependencies,
 	toggle_disable_project,
+	refresh_content_updates,
 	update_all,
 	update_managed_modrinth_version,
 } from '@/helpers/instance'
@@ -1665,7 +1666,13 @@ provideContentManager({
 	confirmAction: packActions.confirmAction,
 	confirmDeleteItems: packActions.confirmDeleteItems,
 	getDeleteDependencyWarning,
-	refresh: () => initProjects('must_revalidate'),
+	refresh: async () => {
+		await Promise.all([
+			initProjects('must_revalidate'),
+			refresh_content_updates(instance.value.id).catch(console.error),
+		])
+		await initProjects()
+	},
 	browse: handleBrowseContent,
 	uploadFiles: handleUploadFiles,
 	hasUpdateSupport: true,

@@ -5,6 +5,7 @@ use crate::state::instances::{
 use crate::state::{
     CacheBehaviour, CachedEntry, ProjectType, ReleaseChannel, State, Version,
 };
+use futures::StreamExt;
 use std::collections::{HashMap, HashSet};
 
 use super::sync_content_files::{
@@ -104,16 +105,25 @@ async fn check_content_updates_with_cache_behaviours(
         .into_iter()
         .filter_map(|file| {
             let project_type = project_type_for_file(&file)?;
-            let metadata = file_info_by_hash.get(&file.sha1)?;
+            let entry = entries_by_file_id.get(file.id.as_str()).copied();
+            let (project_id, current_version_id) = if let Some(metadata) = file_info_by_hash.get(&file.sha1) {
+                (metadata.project_id.clone(), metadata.version_id.clone())
+            } else if let Some(entry) = entry {
+                if let (Some(pid), Some(vid)) = (&entry.project_id, &entry.version_id) {
+                    (pid.clone(), vid.clone())
+                } else {
+                    return None;
+                }
+            } else {
+                return None;
+            };
+
             Some(UpdateCandidate {
-                entry: entries_by_file_id
-                    .get(file.id.as_str())
-                    .copied()
-                    .cloned(),
+                entry: entry.cloned(),
                 file,
                 project_type,
-                project_id: metadata.project_id.clone(),
-                current_version_id: metadata.version_id.clone(),
+                project_id,
+                current_version_id,
             })
         })
         .collect::<Vec<_>>();
@@ -180,22 +190,26 @@ async fn check_content_updates_with_cache_behaviours(
         }
 
         let project_id_list: Vec<String> = cf_project_ids.into_iter().collect();
-        let versions_results = if project_id_list.len() <= 15 {
-            let version_futures = project_id_list.iter().map(|pid| {
-                CachedEntry::get_project_versions(
-                    pid,
-                    update_cache_behaviour,
-                    &state.pool,
-                    &state.api_semaphore,
-                )
-            });
-            futures::future::join_all(version_futures).await
-        } else {
-            Vec::new()
-        };
+        let pool = &state.pool;
+        let api_semaphore = &state.api_semaphore;
+        let versions_results: Vec<(String, crate::Result<Option<Vec<Version>>>)> =
+            futures::stream::iter(project_id_list)
+                .map(|pid| async move {
+                    let res = CachedEntry::get_project_versions(
+                        &pid,
+                        update_cache_behaviour,
+                        pool,
+                        api_semaphore,
+                    )
+                    .await;
+                    (pid, res)
+                })
+                .buffer_unordered(5)
+                .collect()
+                .await;
 
         let mut cf_versions_by_project: HashMap<String, Vec<Version>> = HashMap::new();
-        for (pid, res) in project_id_list.into_iter().zip(versions_results) {
+        for (pid, res) in versions_results {
             if let Ok(Some(versions)) = res {
                 cf_versions_by_project.insert(pid, versions);
             }
@@ -211,7 +225,16 @@ async fn check_content_updates_with_cache_behaviours(
                     instance.update_channel,
                 ) {
                     updates_by_hash
-                        .insert(candidate.file.sha1.clone(), vec![update_version_id]);
+                        .insert(candidate.file.sha1.clone(), vec![update_version_id.clone()]);
+
+                    let file_update = crate::state::cache::CachedFileUpdate {
+                        hash: candidate.file.sha1.clone(),
+                        game_version: content_set.game_version.clone(),
+                        loaders: vec![content_set.loader.as_str().to_string()],
+                        channel_policy: instance.update_channel.key().to_string(),
+                        update_version_id,
+                    };
+                    let _ = CachedEntry::insert_cache_entry(&crate::state::cache::CacheValue::FileUpdate(file_update).get_entry(), &state.pool).await;
                 }
             }
         }
