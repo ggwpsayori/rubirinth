@@ -9711,5 +9711,41 @@
   "button.open-in-curseforge": {
     "defaultMessage": "Открыть в CurseForge",
     "description": ""
+  },
+  "content.card.synced": {
+    "message": "Синхронизировано",
+    "defaultMessage": "Синхронизировано"
+  },
+  "content.card.sync-update-pending": {
+    "message": "Ожидает обновления",
+    "defaultMessage": "Ожидает обновления"
+  },
+  "instances.managed-content-modal.disabled": {
+    "message": "Отключено",
+    "defaultMessage": "Отключено"
+  },
+  "instances.managed-content-modal.enabled": {
+    "message": "Включено",
+    "defaultMessage": "Включено"
+  },
+  "instances.managed-content-modal.warnings": {
+    "message": "Предупреждения",
+    "defaultMessage": "Предупреждения"
+  },
+  "button.download-files": {
+    "message": "Скачать файлы",
+    "defaultMessage": "Скачать файлы"
+  },
+  "console.actions.collapse": {
+    "message": "Свернуть",
+    "defaultMessage": "Свернуть"
+  },
+  "console.actions.expand": {
+    "message": "Развернуть",
+    "defaultMessage": "Развернуть"
+  },
+  "console.actions.share": {
+    "message": "Поделиться",
+    "defaultMessage": "Поделиться"
   }
 }

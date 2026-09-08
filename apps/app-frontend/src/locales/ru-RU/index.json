@@ -4778,5 +4778,97 @@
   },
   "instance.settings.tabs.tab-visibility": {
     "message": "Вкладки"
+  },
+  "app.settings.tabs.features": {
+    "message": "Функции",
+    "defaultMessage": "Функции"
+  },
+  "app.features-settings.sync-across-devices.title": {
+    "message": "Синхронизация функций между устройствами",
+    "defaultMessage": "Синхронизация функций между устройствами"
+  },
+  "app.features-settings.sync-across-devices.description": {
+    "message": "Использовать эти настройки везде, где выполнен вход. Отключите, чтобы сохранить отдельные параметры на этом устройстве.",
+    "defaultMessage": "Использовать эти настройки везде, где выполнен вход. Отключите, чтобы сохранить отдельные параметры на этом устройстве."
+  },
+  "app.features-settings.sync-across-devices.signed-out-tooltip": {
+    "message": "Войдите в аккаунт Modrinth для синхронизации настроек.",
+    "defaultMessage": "Войдите в аккаунт Modrinth для синхронизации настроек."
+  },
+  "app.features-settings.instance-pages.title": {
+    "message": "Страницы сборок",
+    "defaultMessage": "Страницы сборок"
+  },
+  "app.features-settings.show-worlds-tab.title": {
+    "message": "Показывать вкладку «Миры» в сборках",
+    "defaultMessage": "Показывать вкладку «Миры» в сборках"
+  },
+  "app.features-settings.show-files-tab.title": {
+    "message": "Показывать вкладку «Файлы» в сборках",
+    "defaultMessage": "Показывать вкладку «Файлы» в сборках"
+  },
+  "app.features-settings.show-screenshots-tab.title": {
+    "message": "Показывать вкладку «Скриншоты» в сборках",
+    "defaultMessage": "Показывать вкладку «Скриншоты» в сборках"
+  },
+  "app.features-settings.sidebar.title": {
+    "message": "Боковая панель",
+    "defaultMessage": "Боковая панель"
+  },
+  "app.features-settings.show-all-screenshots.title": {
+    "message": "Показывать кнопку всех скриншотов в боковой панели",
+    "defaultMessage": "Показывать кнопку всех скриншотов в боковой панели"
+  },
+  "app.features-settings.show-all-screenshots.description": {
+    "message": "Отображать кнопку в левой боковой панели для быстрого перехода ко всем скриншотам сборок.",
+    "defaultMessage": "Отображать кнопку в левой боковой панели для быстрого перехода ко всем скриншотам сборок."
+  },
+  "app.features-settings.show-skin-selector.title": {
+    "message": "Показывать выбор скинов в боковой панели",
+    "defaultMessage": "Показывать выбор скинов в боковой панели"
+  },
+  "app.features-settings.show-skin-selector.description": {
+    "message": "Отображать кнопку в левой боковой панели для перехода в селектор скинов.",
+    "defaultMessage": "Отображать кнопку в левой боковой панели для перехода в селектор скинов."
+  },
+  "app.features-settings.quick-instances.title": {
+    "message": "Быстрый запуск сборок в боковой панели",
+    "defaultMessage": "Быстрый запуск сборок в боковой панели"
+  },
+  "app.features-settings.quick-instances.description": {
+    "message": "Выберите максимальное количество недавних сборок, отображаемых в боковой панели. Вы также можете изменить это перетаскиванием разделителя.",
+    "defaultMessage": "Выберите максимальное количество недавних сборок, отображаемых в боковой панели. Вы также можете изменить это перетаскиванием разделителя."
+  },
+  "app.features-settings.play-page.title": {
+    "message": "Главная страница",
+    "defaultMessage": "Главная страница"
+  },
+  "app.features-settings.show-jump-in.title": {
+    "message": "Показывать раздел быстрого запуска",
+    "defaultMessage": "Показывать раздел быстрого запуска"
+  },
+  "app.features-settings.show-jump-in.description": {
+    "message": "Отображать недавно запущенные миры и сборки в верхней части главной страницы.",
+    "defaultMessage": "Отображать недавно запущенные миры и сборки в верхней части главной страницы."
+  },
+  "app.content.desync-pack": {
+    "message": "Отвязать",
+    "defaultMessage": "Отвязать"
+  },
+  "app.content.sync-pack": {
+    "message": "Синхронизировать",
+    "defaultMessage": "Синхронизировать"
+  },
+  "app.content.sync-data-packs-disabled": {
+    "message": "Сначала включите синхронизацию датапаков в настройках лаунчера.",
+    "defaultMessage": "Сначала включите синхронизацию датапаков в настройках лаунчера."
+  },
+  "app.content.sync-resource-packs-disabled": {
+    "message": "Сначала включите синхронизацию ресурспаков в настройках лаунчера.",
+    "defaultMessage": "Сначала включите синхронизацию ресурспаков в настройках лаунчера."
+  },
+  "app.content.sync-packs-override": {
+    "message": "Сначала отключите переопределение синхронизации пакетов в настройках этой сборки.",
+    "defaultMessage": "Сначала отключите переопределение синхронизации пакетов в настройках этой сборки."
   }
 }
