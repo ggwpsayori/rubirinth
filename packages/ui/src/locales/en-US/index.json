@@ -59,6 +59,78 @@
     "defaultMessage": "Failed to load server settings",
     "message": "Failed to load server settings"
   },
+  "app.settings.external-auth-libraries.description": {
+    "defaultMessage": "Choose and install the authentication library used when Minecraft starts with an external player profile (Ely.by, etc.).",
+    "message": "Choose and install the authentication library used when Minecraft starts with an external player profile (Ely.by, etc.)."
+  },
+  "app.settings.external-auth-libraries.install-selected": {
+    "defaultMessage": "Install",
+    "message": "Install"
+  },
+  "app.settings.external-auth-libraries.installed": {
+    "defaultMessage": "{providerName} library {version} installed",
+    "message": "{providerName} library {version} installed"
+  },
+  "app.settings.external-auth-libraries.installing": {
+    "defaultMessage": "Installing...",
+    "message": "Installing..."
+  },
+  "app.settings.external-auth-libraries.load-failed": {
+    "defaultMessage": "Could not load authentication libraries: {error}",
+    "message": "Could not load authentication libraries: {error}"
+  },
+  "app.settings.external-auth-libraries.loading": {
+    "defaultMessage": "Loading available library versions...",
+    "message": "Loading available library versions..."
+  },
+  "app.settings.external-auth-libraries.local-only": {
+    "defaultMessage": "Only locally installed versions are shown because the remote server is unavailable.",
+    "message": "Only locally installed versions are shown because the remote server is unavailable."
+  },
+  "app.settings.external-auth-libraries.no-versions": {
+    "defaultMessage": "No compatible library versions were found.",
+    "message": "No compatible library versions were found."
+  },
+  "app.settings.external-auth-libraries.not-selected": {
+    "defaultMessage": "Not selected",
+    "message": "Not selected"
+  },
+  "app.settings.external-auth-libraries.reinstall": {
+    "defaultMessage": "Reinstall",
+    "message": "Reinstall"
+  },
+  "app.settings.external-auth-libraries.request-server": {
+    "defaultMessage": "Check updates",
+    "message": "Check updates"
+  },
+  "app.settings.external-auth-libraries.requesting-server": {
+    "defaultMessage": "Checking...",
+    "message": "Checking..."
+  },
+  "app.settings.external-auth-libraries.retry": {
+    "defaultMessage": "Retry",
+    "message": "Retry"
+  },
+  "app.settings.external-auth-libraries.selected-version": {
+    "defaultMessage": "Selected version",
+    "message": "Selected version"
+  },
+  "app.settings.external-auth-libraries.title": {
+    "defaultMessage": "Authentication libraries",
+    "message": "Authentication libraries"
+  },
+  "app.settings.external-auth-libraries.version": {
+    "defaultMessage": "Version",
+    "message": "Version"
+  },
+  "app.settings.sidebar.label.rubirinth": {
+    "defaultMessage": "Rubirinth",
+    "message": "Rubirinth"
+  },
+  "app.settings.tabs.external-auth-libraries": {
+    "defaultMessage": "Authentication libraries",
+    "message": "Authentication libraries"
+  },
   "badge.alpha": {
     "defaultMessage": "Alpha",
     "message": "Alpha"
@@ -143,6 +215,10 @@
     "defaultMessage": "Advanced exclusions are saved across sessions. Opening a shared link with filters will override them.",
     "message": "Advanced exclusions are saved across sessions. Opening a shared link with filters will override them."
   },
+  "browse.display-mode.prefix": {
+    "defaultMessage": "Mode:",
+    "message": "Mode:"
+  },
   "browse.filter-results": {
     "defaultMessage": "Filter results...",
     "message": "Filter results..."
@@ -186,6 +262,62 @@
   "browse.selected-projects-leave-modal.header": {
     "defaultMessage": "Selected projects not installed yet",
     "message": "Selected projects not installed yet"
+  },
+  "browse.sidebar.server-online-only": {
+    "defaultMessage": "Online only",
+    "message": "Online only"
+  },
+  "browse.sort.date-published": {
+    "defaultMessage": "Date published",
+    "message": "Date published"
+  },
+  "browse.sort.date-updated": {
+    "defaultMessage": "Date updated",
+    "message": "Date updated"
+  },
+  "browse.sort.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Downloads"
+  },
+  "browse.sort.follows": {
+    "defaultMessage": "Followers",
+    "message": "Followers"
+  },
+  "browse.sort.newest": {
+    "defaultMessage": "Date published",
+    "message": "Date published"
+  },
+  "browse.sort.ping": {
+    "defaultMessage": "Ping",
+    "message": "Ping"
+  },
+  "browse.sort.players": {
+    "defaultMessage": "Players",
+    "message": "Players"
+  },
+  "browse.sort.recent-players": {
+    "defaultMessage": "Recent players",
+    "message": "Recent players"
+  },
+  "browse.sort.relevance": {
+    "defaultMessage": "Relevance",
+    "message": "Relevance"
+  },
+  "browse.sort.updated": {
+    "defaultMessage": "Recently updated",
+    "message": "Recently updated"
+  },
+  "browse.sort.verified-plays": {
+    "defaultMessage": "Verified Plays",
+    "message": "Verified Plays"
+  },
+  "browse.view-mode.grid": {
+    "defaultMessage": "Cards",
+    "message": "Cards"
+  },
+  "browse.view-mode.list": {
+    "defaultMessage": "List",
+    "message": "List"
   },
   "browse.view-prefix": {
     "defaultMessage": "View:",
@@ -332,6 +464,10 @@
   "button.open-in-browser": {
     "defaultMessage": "Open in browser",
     "message": "Open in browser"
+  },
+  "button.open-in-curseforge": {
+    "defaultMessage": "Open in CurseForge",
+    "description": ""
   },
   "button.open-in-folder": {
     "defaultMessage": "Open in folder",
@@ -2559,6 +2695,14 @@
     "defaultMessage": "{count, number} TiB",
     "message": "{count, number} TiB"
   },
+  "friends.heading": {
+    "defaultMessage": "Friends",
+    "message": "Friends"
+  },
+  "friends.title": {
+    "defaultMessage": "Friends",
+    "message": "Friends"
+  },
   "header.category.category": {
     "defaultMessage": "Category",
     "message": "Category"
@@ -4773,6 +4917,9 @@
     "defaultMessage": "Contains advertising",
     "message": "Contains advertising"
   },
+  "project.disclosure.ai-functionality.title": {
+    "defaultMessage": "Generative AI functionality"
+  },
   "project.disclosure.ai-generated-content.title": {
     "defaultMessage": "Contains AI-generated {types}",
     "message": "Contains AI-generated {types}"
@@ -4788,10 +4935,6 @@
   "project.disclosure.ai-generated-content.use.content": {
     "defaultMessage": "content",
     "message": "content"
-  },
-  "project.disclosure.ai-generated-content.use.functionality": {
-    "defaultMessage": "functionality",
-    "message": "functionality"
   },
   "project.disclosure.ai-generated-content.use.text": {
     "defaultMessage": "text",
@@ -5317,10 +5460,6 @@
     "defaultMessage": "Code",
     "message": "Code"
   },
-  "project.settings.disclosures.ai.types-functionality": {
-    "defaultMessage": "Functionality",
-    "message": "Functionality"
-  },
   "project.settings.disclosures.ai.types-text": {
     "defaultMessage": "Text",
     "message": "Text"
@@ -5532,6 +5671,30 @@
   "project.versions.channel.release.symbol": {
     "defaultMessage": "R",
     "message": "R"
+  },
+  "project.versions.column.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Downloads"
+  },
+  "project.versions.column.environment": {
+    "defaultMessage": "Environment",
+    "message": "Environment"
+  },
+  "project.versions.column.game-version": {
+    "defaultMessage": "Game version",
+    "message": "Game version"
+  },
+  "project.versions.column.platform": {
+    "defaultMessage": "Platform",
+    "message": "Platform"
+  },
+  "project.versions.column.published": {
+    "defaultMessage": "Published",
+    "message": "Published"
+  },
+  "project.versions.column.version": {
+    "defaultMessage": "Version",
+    "message": "Version"
   },
   "project.versions.filter.channel": {
     "defaultMessage": "Channel"
@@ -5782,6 +5945,9 @@
   "search.filter_type.advanced.disclosure.ai_content.usage": {
     "defaultMessage": "AI {usage}",
     "message": "AI {usage}"
+  },
+  "search.filter_type.advanced.disclosure.ai_functionality": {
+    "defaultMessage": "Generative AI functionality"
   },
   "search.filter_type.advanced.disclosure.archived": {
     "defaultMessage": "Archived",
@@ -7073,6 +7239,10 @@
     "defaultMessage": "Copy ID",
     "message": "Copy ID"
   },
+  "servers.listing.download-latest-backup-tooltip": {
+    "defaultMessage": "Download latest backup",
+    "message": "Download latest backup"
+  },
   "servers.listing.manage-billing-label": {
     "defaultMessage": "Manage billing",
     "message": "Manage billing"
@@ -7388,6 +7558,10 @@
   "servers.purchase.step.plan.billed": {
     "defaultMessage": "billed {interval, select, monthly {monthly} quarterly {quarterly} yearly {yearly} other {{interval}}}",
     "message": "billed {interval, select, monthly {monthly} quarterly {quarterly} yearly {yearly} other {{interval}}}"
+  },
+  "servers.purchase.step.plan.billing-subtitle": {
+    "defaultMessage": "Available in North America, Europe, and Southeast Asia.",
+    "message": "Available in North America, Europe, and Southeast Asia."
   },
   "servers.purchase.step.plan.custom.desc": {
     "defaultMessage": "Pick a customized plan with just the specs you need.",
@@ -9234,181 +9408,5 @@
   "version.supplementary-resources.type": {
     "defaultMessage": "Type",
     "message": "Type"
-  },
-  "servers.listing.download-latest-backup-tooltip": {
-    "defaultMessage": "Download latest backup",
-    "message": "Download latest backup"
-  },
-  "servers.purchase.step.plan.billing-subtitle": {
-    "defaultMessage": "Available in North America, Europe, and Southeast Asia.",
-    "message": "Available in North America, Europe, and Southeast Asia."
-  },
-  "app.settings.sidebar.label.rubirinth": {
-    "defaultMessage": "Rubirinth",
-    "message": "Rubirinth"
-  },
-  "app.settings.tabs.external-auth-libraries": {
-    "defaultMessage": "Authentication libraries",
-    "message": "Authentication libraries"
-  },
-  "app.settings.external-auth-libraries.title": {
-    "defaultMessage": "Authentication libraries",
-    "message": "Authentication libraries"
-  },
-  "app.settings.external-auth-libraries.description": {
-    "defaultMessage": "Choose and install the authentication library used when Minecraft starts with an external player profile (Ely.by, etc.).",
-    "message": "Choose and install the authentication library used when Minecraft starts with an external player profile (Ely.by, etc.)."
-  },
-  "app.settings.external-auth-libraries.loading": {
-    "defaultMessage": "Loading available library versions...",
-    "message": "Loading available library versions..."
-  },
-  "app.settings.external-auth-libraries.load-failed": {
-    "defaultMessage": "Could not load authentication libraries: {error}",
-    "message": "Could not load authentication libraries: {error}"
-  },
-  "app.settings.external-auth-libraries.retry": {
-    "defaultMessage": "Retry",
-    "message": "Retry"
-  },
-  "app.settings.external-auth-libraries.request-server": {
-    "defaultMessage": "Check updates",
-    "message": "Check updates"
-  },
-  "app.settings.external-auth-libraries.requesting-server": {
-    "defaultMessage": "Checking...",
-    "message": "Checking..."
-  },
-  "app.settings.external-auth-libraries.selected-version": {
-    "defaultMessage": "Selected version",
-    "message": "Selected version"
-  },
-  "app.settings.external-auth-libraries.not-selected": {
-    "defaultMessage": "Not selected",
-    "message": "Not selected"
-  },
-  "app.settings.external-auth-libraries.version": {
-    "defaultMessage": "Version",
-    "message": "Version"
-  },
-  "app.settings.external-auth-libraries.install-selected": {
-    "defaultMessage": "Install",
-    "message": "Install"
-  },
-  "app.settings.external-auth-libraries.reinstall": {
-    "defaultMessage": "Reinstall",
-    "message": "Reinstall"
-  },
-  "app.settings.external-auth-libraries.installing": {
-    "defaultMessage": "Installing...",
-    "message": "Installing..."
-  },
-  "app.settings.external-auth-libraries.installed": {
-    "defaultMessage": "{providerName} library {version} installed",
-    "message": "{providerName} library {version} installed"
-  },
-  "app.settings.external-auth-libraries.no-versions": {
-    "defaultMessage": "No compatible library versions were found.",
-    "message": "No compatible library versions were found."
-  },
-  "app.settings.external-auth-libraries.local-only": {
-    "defaultMessage": "Only locally installed versions are shown because the remote server is unavailable.",
-    "message": "Only locally installed versions are shown because the remote server is unavailable."
-  },
-  "friends.heading": {
-    "defaultMessage": "Friends",
-    "message": "Friends"
-  },
-  "friends.title": {
-    "defaultMessage": "Friends",
-    "message": "Friends"
-  },
-  "browse.view-mode.list": {
-    "defaultMessage": "List",
-    "message": "List"
-  },
-  "browse.view-mode.grid": {
-    "defaultMessage": "Cards",
-    "message": "Cards"
-  },
-  "browse.sort.relevance": {
-    "defaultMessage": "Relevance",
-    "message": "Relevance"
-  },
-  "browse.sort.downloads": {
-    "defaultMessage": "Downloads",
-    "message": "Downloads"
-  },
-  "browse.sort.follows": {
-    "defaultMessage": "Followers",
-    "message": "Followers"
-  },
-  "browse.sort.newest": {
-    "defaultMessage": "Date published",
-    "message": "Date published"
-  },
-  "browse.sort.updated": {
-    "defaultMessage": "Recently updated",
-    "message": "Recently updated"
-  },
-  "browse.sort.players": {
-    "defaultMessage": "Players",
-    "message": "Players"
-  },
-  "browse.sort.recent-players": {
-    "defaultMessage": "Recent players",
-    "message": "Recent players"
-  },
-  "browse.sort.ping": {
-    "defaultMessage": "Ping",
-    "message": "Ping"
-  },
-  "browse.sort.date-published": {
-    "defaultMessage": "Date published",
-    "message": "Date published"
-  },
-  "browse.sort.date-updated": {
-    "defaultMessage": "Date updated",
-    "message": "Date updated"
-  },
-  "browse.sort.verified-plays": {
-    "defaultMessage": "Verified Plays",
-    "message": "Verified Plays"
-  },
-  "browse.display-mode.prefix": {
-    "defaultMessage": "Mode:",
-    "message": "Mode:"
-  },
-  "browse.sidebar.server-online-only": {
-    "defaultMessage": "Online only",
-    "message": "Online only"
-  },
-  "button.open-in-curseforge": {
-    "defaultMessage": "Open in CurseForge",
-    "description": ""
-  },
-  "project.versions.column.version": {
-    "defaultMessage": "Version",
-    "message": "Version"
-  },
-  "project.versions.column.game-version": {
-    "defaultMessage": "Game version",
-    "message": "Game version"
-  },
-  "project.versions.column.platform": {
-    "defaultMessage": "Platform",
-    "message": "Platform"
-  },
-  "project.versions.column.environment": {
-    "defaultMessage": "Environment",
-    "message": "Environment"
-  },
-  "project.versions.column.published": {
-    "defaultMessage": "Published",
-    "message": "Published"
-  },
-  "project.versions.column.downloads": {
-    "defaultMessage": "Downloads",
-    "message": "Downloads"
   }
 }

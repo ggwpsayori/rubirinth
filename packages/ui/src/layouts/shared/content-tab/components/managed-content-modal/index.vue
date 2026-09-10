@@ -151,6 +151,7 @@ const loading = ref(false)
 const searchQuery = ref('')
 const selectedFilters = ref<string[]>([])
 const selectedIds = ref<string[]>([])
+const highlightedItemId = ref<string>()
 
 function updateFilters(filters: string[]) {
 	selectedFilters.value = props.filterMode === 'status' ? filters.slice(-1) : filters
@@ -427,8 +428,9 @@ function bulkDisable() {
 	selectedIds.value = []
 }
 
-function show(contentItems: ContentItem[]) {
+function show(contentItems: ContentItem[], highlightId?: string) {
 	items.value = contentItems.map((item) => ({ ...item }))
+	highlightedItemId.value = highlightId
 	searchQuery.value = ''
 	selectedFilters.value = []
 	selectedIds.value = []
@@ -439,6 +441,7 @@ function show(contentItems: ContentItem[]) {
 
 function showLoading() {
 	items.value = []
+	highlightedItemId.value = undefined
 	searchQuery.value = ''
 	selectedFilters.value = []
 	selectedIds.value = []
@@ -474,6 +477,7 @@ function getState(): ManagedContentModalState | null {
 
 async function restore(state: ManagedContentModalState) {
 	items.value = state.items.map((item) => ({ ...item }))
+	highlightedItemId.value = undefined
 	searchQuery.value = state.searchQuery
 	selectedFilters.value = state.selectedFilters
 	loading.value = false
@@ -633,6 +637,7 @@ defineExpose({ show, showLoading, hide, getState, restore, updateItem, setItems 
 						<ContentCardTable
 							v-model:selected-ids="selectedIds"
 							:items="tableItems"
+							:highlighted-item-id="highlightedItemId"
 							:show-selection="props.enableToggle"
 							:show-item-actions="showTableActions"
 							:show-version="showVersion"
