@@ -78,16 +78,30 @@ const ACCOUNTS_ORDER_STORAGE_KEY = 'rubirinth_accounts_order'
 function sortAccountsBySavedOrder(loadedAccounts: MinecraftCredential[]): MinecraftCredential[] {
 	try {
 		const rawOrder = localStorage.getItem(ACCOUNTS_ORDER_STORAGE_KEY)
-		if (!rawOrder) return loadedAccounts
-		const order: string[] = JSON.parse(rawOrder)
-		if (!Array.isArray(order)) return loadedAccounts
+		let savedOrder: string[] = []
+		if (rawOrder) {
+			try {
+				const parsed = JSON.parse(rawOrder)
+				if (Array.isArray(parsed)) {
+					savedOrder = parsed
+				}
+			} catch {}
+		}
+
+		const existingIds = new Set(loadedAccounts.map((a) => a.profile.id))
+		const validOrder = savedOrder.filter((id) => existingIds.has(id))
+
+		for (const acc of loadedAccounts) {
+			if (!validOrder.includes(acc.profile.id)) {
+				validOrder.push(acc.profile.id)
+			}
+		}
+
+		localStorage.setItem(ACCOUNTS_ORDER_STORAGE_KEY, JSON.stringify(validOrder))
 
 		return [...loadedAccounts].sort((a, b) => {
-			const indexA = order.indexOf(a.profile.id)
-			const indexB = order.indexOf(b.profile.id)
-			if (indexA === -1 && indexB === -1) return 0
-			if (indexA === -1) return 1
-			if (indexB === -1) return -1
+			const indexA = validOrder.indexOf(a.profile.id)
+			const indexB = validOrder.indexOf(b.profile.id)
 			return indexA - indexB
 		})
 	} catch {
@@ -99,6 +113,7 @@ function onAccountsReordered() {
 	try {
 		const order = accounts.value.map((a) => a.profile.id)
 		localStorage.setItem(ACCOUNTS_ORDER_STORAGE_KEY, JSON.stringify(order))
+		window.dispatchEvent(new CustomEvent('rubirinth-accounts-updated'))
 		emit('change')
 	} catch (e) {
 		console.error('Failed to save accounts order', e)
