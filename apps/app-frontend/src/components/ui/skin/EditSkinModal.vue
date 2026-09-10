@@ -47,7 +47,7 @@
 					</RadioButtons>
 				</section>
 
-				<section>
+				<section v-if="!props.hideCapes">
 					<h2 class="text-base font-semibold mb-2">{{ formatMessage(messages.capeSection) }}</h2>
 					<div class="relative w-fit max-w-full">
 						<Transition
@@ -131,6 +131,7 @@
 </template>
 
 <script setup lang="ts">
+import { uploadAndWearElyBySkin } from '@/helpers/elyby-skin'
 import { CheckIcon, SaveIcon, SpinnerIcon, UploadIcon, XIcon } from '@modrinth/assets'
 import {
 	Button,
@@ -248,7 +249,7 @@ const previewSkin = ref<string>('')
 
 const variant = ref<SkinModel>('CLASSIC')
 const selectedCape = ref<Cape | undefined>(undefined)
-const props = defineProps<{ capes?: Cape[]; demo?: boolean }>()
+const props = defineProps<{ capes?: Cape[]; demo?: boolean; hideCapes?: boolean; accountType?: string; username?: string }>()
 
 const selectedCapeTexture = computed(() => selectedCape.value?.texture)
 const canEditTextureAndModel = computed(() => currentSkin.value?.source !== 'default')
@@ -476,7 +477,12 @@ async function save() {
 			)
 
 			if (currentSkin.value?.is_equipped) {
-				await equip_skin(updatedSkin)
+				if (props.accountType === 'elyby') {
+					const blob = new Blob([bytes], { type: 'image/png' })
+					await uploadAndWearElyBySkin(blob, props.username || '')
+				} else {
+					await equip_skin(updatedSkin)
+				}
 			}
 
 			emit('saved', {

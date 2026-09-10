@@ -56,6 +56,7 @@ import {
 	set_custom_skin_order,
 } from '@/helpers/skins.ts'
 import { hasPride26Badge } from '@/helpers/user-campaigns.ts'
+import { getElyBySkinFull, uploadAndWearElyBySkin, invalidateElyByHead } from '@/helpers/elyby-skin'
 import { useRootBreadcrumb } from '@/providers/breadcrumbs'
 import { appMessages } from '@/utils/app-messages'
 
@@ -227,6 +228,7 @@ const currentUserId = ref<string | undefined>(undefined)
 
 const username = computed(() => currentUser.value?.profile?.name ?? undefined)
 const isMicrosoftAccount = computed(() => !currentUser.value || currentUser.value?.account_type === 'microsoft')
+const isElyByAccount = computed(() => currentUser.value?.account_type === 'elyby')
 const selectedSkin = ref<Skin | null>(null)
 const isApplyingSkin = ref(false)
 const earsFeaturesEnabled = ref(true)
@@ -395,12 +397,56 @@ async function loadCapes() {
 }
 
 async function loadSkins() {
-	if (currentUser.value && !isMicrosoftAccount.value) {
+	if (currentUser.value && !isMicrosoftAccount.value && !isElyByAccount.value) {
 		skins.value = []
 		return
 	}
 	try {
-		const loadedSkins = (await get_available_skins()) ?? []
+		let loadedSkins = (await get_available_skins()) ?? []
+
+		if (isElyByAccount.value && currentUser.value) {
+			const savedKey = localStorage.getItem('rubirinth_elyby_equipped_' + currentUser.value.uuid)
+			const customSkins = loadedSkins.filter((s) => s.source === 'custom')
+
+			if (customSkins.length > 0) {
+				const targetKey =
+					savedKey && loadedSkins.some((s) => s.texture_key === savedKey)
+						? savedKey
+						: customSkins[0].texture_key
+
+				localStorage.setItem('rubirinth_elyby_equipped_' + currentUser.value.uuid, targetKey)
+
+				loadedSkins = loadedSkins.map((s) => ({
+					...s,
+					is_equipped: s.texture_key === targetKey,
+				}))
+			} else {
+				try {
+					const elySkin = await getElyBySkinFull(username.value || '')
+					if (elySkin?.url) {
+						const rawData = await normalize_skin_texture(elySkin.url)
+						const base64 = arrayBufferToBase64(new Uint8Array(rawData))
+						const dataUrl = 'data:image/png;base64,' + base64
+						const externalSkin: Skin = {
+							texture_key: 'elyby-' + (username.value || 'skin'),
+							name: username.value || 'Ely.by',
+							section: undefined,
+							variant: elySkin.variant === 'slim' ? 'SLIM' : 'CLASSIC',
+							cape_id: undefined,
+							texture: dataUrl,
+							source: 'custom',
+							is_equipped: true,
+						}
+						loadedSkins = [
+							externalSkin,
+							...loadedSkins.map((s) => ({ ...s, is_equipped: false })),
+						]
+					}
+				} catch (e) {
+					console.warn('[Ely.by] Failed to fetch initial skin:', e)
+				}
+			}
+		}
 		const loadedEquippedSkin = loadedSkins.find((s) => s.is_equipped)
 		const locallyKnownEquippedSkin =
 			originalSelectedSkin.value &&
@@ -563,6 +609,12 @@ function removeLocalSkin(deletedSkin: Skin) {
 }
 
 function setLocallyEquippedSkin(skinToApply: Skin) {
+	if (isElyByAccount.value && currentUser.value?.uuid) {
+		localStorage.setItem(
+			'rubirinth_elyby_equipped_' + currentUser.value.uuid,
+			skinToApply.texture_key,
+		)
+	}
 	skins.value = skins.value.map((skin) => ({
 		...skin,
 		is_equipped: skinsMatch(skin, skinToApply),
@@ -774,7 +826,41 @@ async function applySelectedSkin() {
 
 	isApplyingSkin.value = true
 	try {
-		await equip_skin(skinToApply)
+		if (isElyByAccount.value) {
+			let blob: Blob
+			if (skinToApply.texture.startsWith('data:image/')) {
+				const res = await fetch(skinToApply.texture)
+				blob = await res.blob()
+			} else {
+				const rawData = await normalize_skin_texture(skinToApply.texture)
+				blob = new Blob([rawData], { type: 'image/png' })
+			}
+			try {
+				await uploadAndWearElyBySkin(blob, username.value || '')
+				if (currentUser.value?.uuid) {
+					localStorage.setItem(
+						'rubirinth_elyby_equipped_' + currentUser.value.uuid,
+						skinToApply.texture_key,
+					)
+				}
+				notifications.addNotification({
+					type: 'success',
+					title: 'Скин применен',
+					text: 'Скин успешно установлен на Ely.by.',
+				})
+			} catch (e: any) {
+				notifications.addNotification({
+					type: 'error',
+					title: 'Ошибка смены скина Ely.by',
+					text: e?.message || 'Не удалось установить скин на Ely.by.',
+				})
+				return
+			}
+			await invalidateElyByHead(username.value || '')
+			window.dispatchEvent(new CustomEvent('rubirinth-accounts-updated'))
+		} else {
+			await equip_skin(skinToApply)
+		}
 		setLocallyEquippedSkin(skinToApply)
 		schedulePendingSkinRefresh()
 	} catch (error) {
@@ -803,6 +889,10 @@ async function onSkinSaved(options: { applied: boolean; skin?: Skin; previousSki
 	}
 
 	if (options.applied) {
+		if (isElyByAccount.value && username.value) {
+			await invalidateElyByHead(username.value)
+			window.dispatchEvent(new CustomEvent('rubirinth-accounts-updated'))
+		}
 		schedulePendingSkinRefresh()
 	}
 }
@@ -1078,6 +1168,9 @@ await loadSkins()
 		ref="editSkinModal"
 		:capes="capes"
 		:demo="!currentUser"
+		:hide-capes="isElyByAccount"
+		:account-type="currentUser?.account_type"
+		:username="username"
 		@saved="onSkinSaved"
 		@deleted="() => loadSkins()"
 	/>
@@ -1097,7 +1190,7 @@ await loadSkins()
 	/>
 
 	<UnsupportedSkinAccount
-		v-if="currentUser && !isMicrosoftAccount"
+		v-if="currentUser && !isMicrosoftAccount && !isElyByAccount"
 		:account-type="currentUser.account_type"
 	/>
 

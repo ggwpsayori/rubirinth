@@ -83,6 +83,12 @@ export default defineConfig({
 				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/elyby-api/, ''),
 			},
+			'/elyby-web': {
+				target: 'https://ely.by',
+				changeOrigin: true,
+				secure: true,
+				rewrite: (path) => path.replace(/^\/elyby-web/, ''),
+			},
 			'/elyby-storage': {
 			target: 'http://ely.by',
 				changeOrigin: true,

@@ -19,6 +19,7 @@ fn main() {
                         "install_external_auth_library",
                         "select_external_auth_library",
                         "authenticate_external_provider",
+                        "elyby_upload_and_wear_skin",
                         "check_reachable",
                         "login",
                         "remove_user",

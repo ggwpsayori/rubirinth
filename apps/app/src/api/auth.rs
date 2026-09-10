@@ -26,6 +26,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             install_external_auth_library,
             select_external_auth_library,
             authenticate_external_provider,
+            elyby_upload_and_wear_skin,
             check_reachable,
             login,
             remove_user,
@@ -237,3 +238,185 @@ pub async fn set_default_user(user: uuid::Uuid) -> Result<()> {
 pub async fn get_users() -> Result<Vec<Credentials>> {
     Ok(minecraft_auth::users().await?)
 }
+/// Uploads a skin to Ely.by and wears it, seamlessly authenticating if needed.
+#[tauri::command]
+pub async fn elyby_upload_and_wear_skin<R: Runtime>(
+    app: tauri::AppHandle<R>,
+    skin_base64: String,
+) -> Result<u64> {
+    let label = format!("elyby-skin-bridge-{}", uuid::Uuid::new_v4());
+
+    let auth_url: Url = "https://ely.by/authorization/login"
+        .parse()
+        .map_err(|error| {
+            theseus::ErrorKind::OtherError(format!("Invalid URL: {error}"))
+                .as_error()
+        })?;
+
+    let window = tauri::WebviewWindowBuilder::new(
+        &app,
+        &label,
+        tauri::WebviewUrl::External(auth_url),
+    )
+    .title("Вход на Ely.by для установки скина")
+    .inner_size(520.0, 660.0)
+    .center()
+    .always_on_top(true)
+    .build()?;
+
+    let _ = window.request_user_attention(Some(UserAttentionType::Critical));
+
+    let start = Utc::now();
+    let mut last_eval = Utc::now() - Duration::seconds(10);
+
+    let script_template = r#"(function() {
+    if (window.__elyby_uploading || window.__elyby_done) return;
+    if (!document.body) return;
+    window.__elyby_uploading = true;
+
+    function isError(res) {
+        if (!res) return false;
+        if (typeof res.error === 'string') {
+            return !res.error.includes('success');
+        }
+        return Boolean(res.error);
+    }
+
+    (async () => {
+        try {
+            const b64 = "__SKIN_BASE64__";
+            const bin = atob(b64);
+            const bytes = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) {
+                bytes[i] = bin.charCodeAt(i);
+            }
+            const blob = new Blob([bytes], { type: 'image/png' });
+
+            const upForm = new FormData();
+            upForm.append('file', blob, 'skin.png');
+
+            const upRes = await fetch('/skins/upload', {
+                method: 'POST',
+                body: upForm,
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+
+            const upData = await upRes.json();
+            if (isError(upData)) {
+                const msg = upData.text || upData.error;
+                window.__elyby_done = true;
+                window.location.href = 'https://ely.by/skin-applied-error?msg=' + encodeURIComponent(msg);
+                return;
+            }
+
+            let skinId = upData?.id || upData?.skin?.id || upData?.skinId || upData?.data?.id || 0;
+            if (!skinId && upData?.url) {
+                const digits = String(upData.url).replace(/[^0-9]/g, '');
+                if (digits) skinId = parseInt(digits, 10);
+            }
+
+            if (!skinId) {
+                window.__elyby_done = true;
+                window.location.href = 'https://ely.by/skin-applied-error?msg=' + encodeURIComponent('ID скина не найден в ответе Ely.by: ' + JSON.stringify(upData));
+                return;
+            }
+
+            let wearData;
+            if (window.$ && window.$.ajax) {
+                wearData = await new Promise((resolve, reject) => {
+                    window.$.ajax({
+                        url: '/skins/wear',
+                        type: 'POST',
+                        data: { skinId: skinId },
+                        success: resolve,
+                        error: (xhr) => resolve({ error: xhr.statusText || 'network_error' })
+                    });
+                });
+            } else {
+                const wearForm = new URLSearchParams({ skinId: String(skinId) });
+                const res = await fetch('/skins/wear', {
+                    method: 'POST',
+                    body: wearForm,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    }
+                });
+                wearData = await res.json().catch(() => ({}));
+            }
+
+            if (isError(wearData)) {
+                const msg = wearData?.text || wearData?.error || ('Не удалось надеть скин: ' + JSON.stringify(wearData));
+                window.__elyby_done = true;
+                window.location.href = 'https://ely.by/skin-applied-error?msg=' + encodeURIComponent(msg);
+                return;
+            }
+
+            window.__elyby_done = true;
+            window.location.href = 'https://ely.by/skin-applied-result?skin_id=' + skinId;
+        } catch (e) {
+            window.__elyby_done = true;
+            const msg = e.message || String(e);
+            window.location.href = 'https://ely.by/skin-applied-error?msg=' + encodeURIComponent(msg);
+        } finally {
+            window.__elyby_uploading = false;
+        }
+    })();
+})()"#;
+
+    let script = script_template.replace("__SKIN_BASE64__", &skin_base64);
+
+    while (Utc::now() - start) < Duration::seconds(120) {
+        tokio::time::sleep(std::time::Duration::from_millis(200)).await;
+
+        if (Utc::now() - start) > Duration::seconds(2) && window.title().is_err() {
+            return Err(theseus::ErrorKind::OtherError(
+                "Окно авторизации было закрыто".to_string(),
+            )
+            .as_error()
+            .into());
+        }
+
+        let url = match window.url() {
+            Ok(u) => u,
+            Err(_) => continue,
+        };
+
+        let url_str = url.as_str();
+
+        if url_str.contains("/skin-applied-result") {
+            let skin_id = url
+                .query_pairs()
+                .find(|(k, _)| k == "skin_id")
+                .and_then(|(_, v)| v.parse::<u64>().ok())
+                .unwrap_or(0);
+            let _ = window.close();
+            return Ok(skin_id);
+        }
+
+        if url_str.contains("/skin-applied-error") {
+            let err_msg = url
+                .query_pairs()
+                .find(|(k, _)| k == "msg")
+                .map(|(_, v)| v.to_string())
+                .unwrap_or_else(|| "Ошибка при смене скина на Ely.by".into());
+            let _ = window.close();
+            return Err(theseus::ErrorKind::OtherError(err_msg).as_error().into());
+        }
+
+        if url_str.starts_with("https://ely.by") && !url_str.contains("/authorization") {
+            if (Utc::now() - last_eval) > Duration::milliseconds(500) {
+                last_eval = Utc::now();
+                let _ = window.eval(&script);
+            }
+        }
+    }
+
+    let _ = window.close();
+    Err(theseus::ErrorKind::OtherError(
+        "Время ожидания авторизации на Ely.by истекло".to_string(),
+    )
+    .as_error()
+    .into())
+}
+

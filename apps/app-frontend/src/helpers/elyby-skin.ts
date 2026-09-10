@@ -1,4 +1,5 @@
 import { arrayBufferToBase64 } from '@modrinth/utils'
+import { invoke } from '@tauri-apps/api/core'
 import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { ref } from 'vue'
 
@@ -20,10 +21,15 @@ async function safeFetch(url: string, init?: RequestInit): Promise<Response> {
 	}
 }
 
+export interface ElyBySkinInfo {
+	url: string
+	variant: 'classic' | 'slim'
+}
+
 /**
- * Queries http://skinsystem.ely.by/textures/<username> to get the player's skin URL
+ * Queries http://skinsystem.ely.by/textures/<username> to get full skin info (URL and model)
  */
-export async function getElyBySkinTextureUrl(username: string): Promise<string | null> {
+export async function getElyBySkinFull(username: string): Promise<ElyBySkinInfo | null> {
 	const trimmed = username.trim()
 	if (!trimmed) return null
 
@@ -37,16 +43,88 @@ export async function getElyBySkinTextureUrl(username: string): Promise<string |
 		try {
 			const res = await safeFetch(endpoint)
 			if (res.status === 200) {
-				const data = (await res.json()) as { SKIN?: { url?: string } }
-				if (data?.SKIN?.url) {
-					return data.SKIN.url
+				const data = (await res.json()) as {
+					SKIN?: { url?: string; metadata?: { model?: string } }
 				}
+				if (data?.SKIN?.url) {
+					const variant = data.SKIN.metadata?.model === 'slim' ? 'slim' : 'classic'
+					return { url: data.SKIN.url, variant }
+				}
+			} else if (res.status === 204) {
+				return null
 			}
 		} catch (e) {
 			console.warn('[Ely.by] Error querying ' + endpoint + ':', e)
 		}
 	}
 	return null
+}
+
+/**
+ * Queries http://skinsystem.ely.by/textures/<username> to get the player's skin URL
+ */
+export async function getElyBySkinTextureUrl(username: string): Promise<string | null> {
+	const info = await getElyBySkinFull(username)
+	return info?.url ?? null
+}
+
+/**
+ * High-level helper to upload a skin, equip it on Ely.by, and invalidate the avatar cache.
+ * Uses native seamless Ely.by authentication bridge.
+ */
+export async function uploadAndWearElyBySkin(
+	skinBlob: Blob,
+	username: string,
+): Promise<{ id: number }> {
+	const arrayBuffer = await skinBlob.arrayBuffer()
+	const skinBase64 = arrayBufferToBase64(new Uint8Array(arrayBuffer))
+	const skinId = await invoke<number>('plugin:auth|elyby_upload_and_wear_skin', {
+		skinBase64,
+	})
+	await invalidateElyByHead(username)
+	window.dispatchEvent(new CustomEvent('rubirinth-accounts-updated'))
+	return { id: skinId }
+}
+
+/**
+ * Uploads a skin file directly (legacy fallback)
+ */
+export async function uploadElyBySkin(skinBlob: Blob): Promise<{ id: number }> {
+	const arrayBuffer = await skinBlob.arrayBuffer()
+	const skinBase64 = arrayBufferToBase64(new Uint8Array(arrayBuffer))
+	const skinId = await invoke<number>('plugin:auth|elyby_upload_and_wear_skin', {
+		skinBase64,
+	})
+	return { id: skinId }
+}
+
+/**
+ * Equips a skin on Ely.by (legacy fallback)
+ */
+export async function wearElyBySkin(_skinId: number): Promise<void> {
+	// Handled natively by uploadAndWearElyBySkin
+}
+
+/**
+ * Invalidates the cached head for a given Ely.by username and reloads it.
+ */
+export async function invalidateElyByHead(username: string): Promise<string | null> {
+	const key = username.trim().toLowerCase()
+	if (!key) return null
+
+	const existing = elybyHeadCache.value.get(key)
+	if (existing && existing.startsWith('blob:')) {
+		try {
+			URL.revokeObjectURL(existing)
+		} catch {}
+	}
+
+	const newMap = new Map(elybyHeadCache.value)
+	newMap.delete(key)
+	elybyHeadCache.value = newMap
+	inFlight.delete(key)
+
+	return await loadElyByHead(username)
 }
 
 /**
