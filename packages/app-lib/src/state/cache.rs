@@ -1572,12 +1572,18 @@ impl CachedEntry {
                 for key in keys {
                     let key = key.to_string();
 
-                    if let Some(position) = teams.iter().position(|x| {
-                        x.first().is_some_and(|x| x.team_id == key)
-                    }) {
-                        let team = teams.remove(position);
+                    let mut team_members = vec![];
+                    let mut i = 0;
+                    while i < teams.len() {
+                        if teams[i].iter().any(|member| member.team_id == key) {
+                            team_members.append(&mut teams.remove(i));
+                        } else {
+                            i += 1;
+                        }
+                    }
 
-                        for member in &team {
+                    if !team_members.is_empty() {
+                        for member in &team_members {
                             values.push((
                                 CacheValue::User(member.user.clone())
                                     .get_entry(),
@@ -1585,12 +1591,12 @@ impl CachedEntry {
                             ));
                         }
 
-                        values.push((CacheValue::Team(team).get_entry(), true))
+                        values.push((CacheValue::Team(team_members).get_entry(), true));
                     } else {
                         values.push((
                             CacheValueType::Team.get_empty_entry(key),
                             true,
-                        ))
+                        ));
                     }
                 }
 

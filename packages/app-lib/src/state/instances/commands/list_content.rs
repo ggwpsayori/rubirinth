@@ -469,6 +469,11 @@ pub(crate) async fn get_linked_modpack_info(
             owner_type: OwnerType::Organization,
         })
     } else {
+        None
+    };
+    let owner = if owner.is_some() {
+        owner
+    } else {
         let team = CachedEntry::get_team(
             &project.team,
             cache_behaviour,
@@ -477,14 +482,17 @@ pub(crate) async fn get_linked_modpack_info(
         )
         .await?;
         team.and_then(|team| {
-            team.into_iter()
+            let member = team
+                .iter()
                 .find(|member| member.is_owner)
-                .map(|member| ContentItemOwner {
-                    id: member.user.id,
-                    name: member.user.username,
-                    avatar_url: member.user.avatar_url,
-                    owner_type: OwnerType::User,
-                })
+                .or_else(|| team.iter().find(|member| member.role.eq_ignore_ascii_case("owner")))
+                .or_else(|| team.first())?;
+            Some(ContentItemOwner {
+                id: member.user.id.clone(),
+                name: member.user.username.clone(),
+                avatar_url: member.user.avatar_url.clone(),
+                owner_type: OwnerType::User,
+            })
         })
     };
     let (has_update, update_version_id, update_version) = version
@@ -1454,30 +1462,36 @@ fn resolve_owner(
     organizations: &[Organization],
 ) -> Option<ContentItemOwner> {
     if let Some(org_id) = &project.organization {
-        organizations
+        if let Some(organization) = organizations
             .iter()
             .find(|organization| &organization.id == org_id)
-            .map(|organization| ContentItemOwner {
+        {
+            return Some(ContentItemOwner {
                 id: organization.id.clone(),
                 name: organization.name.clone(),
                 avatar_url: organization.icon_url.clone(),
                 owner_type: OwnerType::Organization,
-            })
-    } else {
-        teams
-            .iter()
-            .find(|team| {
-                team.first()
-                    .is_some_and(|member| member.team_id == project.team)
-            })
-            .and_then(|team| team.iter().find(|member| member.is_owner))
-            .map(|member| ContentItemOwner {
-                id: member.user.id.clone(),
-                name: member.user.username.clone(),
-                avatar_url: member.user.avatar_url.clone(),
-                owner_type: OwnerType::User,
-            })
+            });
+        }
     }
+
+    teams
+        .iter()
+        .find(|team| {
+            team.iter().any(|member| member.team_id == project.team)
+        })
+        .and_then(|team| {
+            team.iter()
+                .find(|member| member.is_owner)
+                .or_else(|| team.iter().find(|member| member.role.eq_ignore_ascii_case("owner")))
+                .or_else(|| team.first())
+        })
+        .map(|member| ContentItemOwner {
+            id: member.user.id.clone(),
+            name: member.user.username.clone(),
+            avatar_url: member.user.avatar_url.clone(),
+            owner_type: OwnerType::User,
+        })
 }
 
 fn content_item_project(project: &Project) -> ContentItemProject {
