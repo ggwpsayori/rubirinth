@@ -223,6 +223,14 @@
     "message": "Без имени над скином",
     "defaultMessage": "Без имени над скином"
   },
+  "app.appearance-settings.jump-back-into-worlds.description": {
+    "message": "Показывать недавние миры или сборки в секции «Недавнее» на главной странице.",
+    "defaultMessage": "Показывать недавние миры или сборки в секции «Недавнее» на главной странице."
+  },
+  "app.appearance-settings.jump-back-into-worlds.title": {
+    "message": "Недавние миры или сборки",
+    "defaultMessage": "Недавние миры или сборки"
+  },
   "app.appearance-settings.minimize-launcher.description": {
     "message": "Сворачивать Rubirinth App при запуске Minecraft.",
     "defaultMessage": "Сворачивать Rubirinth App при запуске Minecraft."
@@ -278,6 +286,24 @@
   "app.behavior-settings.content.title": {
     "message": "Главная и контент",
     "defaultMessage": "Главная и контент"
+  },
+  "app.behavior-settings.ping-servers.description": {
+    "defaultMessage": "Check server availability and ping in catalog and world list.",
+    "message": "Проверять доступность и пинг серверов в каталоге и списке миров."
+  },
+  "app.behavior-settings.ping-servers.title": {
+    "defaultMessage": "Ping servers",
+    "message": "Пинговать серверы"
+  },
+  "app.behavior-settings.servers.title": {
+    "defaultMessage": "Servers",
+    "message": "Серверы"
+  },
+  "app.behavior-settings.show-all-screenshots.description": {
+    "message": "Отображать скриншоты со всех ваших сборок на странице «Скриншоты»."
+  },
+  "app.behavior-settings.show-all-screenshots.title": {
+    "message": "Показывать все скриншоты вместе"
   },
   "app.behavior-settings.startup-and-navigation.title": {
     "message": "Запуск и навигация",
@@ -378,6 +404,42 @@
     "message": "Не найдено доступных версий, совместимых с {compatibilityLabel}. Выберите версию для установки вручную. Зависимости не будут установлены автоматически.",
     "defaultMessage": "Не найдено доступных версий, совместимых с {compatibilityLabel}. Выберите версию для установки вручную. Зависимости не будут установлены автоматически."
   },
+  "app.content.desync-pack": {
+    "message": "Отвязать",
+    "defaultMessage": "Отвязать"
+  },
+  "app.content.sync-data-packs-disabled": {
+    "message": "Сначала включите синхронизацию датапаков в настройках лаунчера.",
+    "defaultMessage": "Сначала включите синхронизацию датапаков в настройках лаунчера."
+  },
+  "app.content.sync-pack": {
+    "message": "Синхронизировать",
+    "defaultMessage": "Синхронизировать"
+  },
+  "app.content.sync-packs-override": {
+    "message": "Сначала отключите переопределение синхронизации пакетов в настройках этой сборки.",
+    "defaultMessage": "Сначала отключите переопределение синхронизации пакетов в настройках этой сборки."
+  },
+  "app.content.sync-resource-packs-disabled": {
+    "message": "Сначала включите синхронизацию ресурспаков в настройках лаунчера.",
+    "defaultMessage": "Сначала включите синхронизацию ресурспаков в настройках лаунчера."
+  },
+  "app.error.close": {
+    "defaultMessage": "Закрыть",
+    "message": "Закрыть"
+  },
+  "app.error.external-auth-library.description": {
+    "defaultMessage": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры.",
+    "message": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры."
+  },
+  "app.error.external-auth-library.go-to-install": {
+    "defaultMessage": "Перейти к установке",
+    "message": "Перейти к установке"
+  },
+  "app.error.external-auth-library.title": {
+    "defaultMessage": "Отсутствует библиотека авторизации",
+    "message": "Отсутствует библиотека авторизации"
+  },
   "app.error.state-init.open-backups-folder": {
     "message": "Открыть папку резервных копий"
   },
@@ -416,6 +478,74 @@
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0",
     "defaultMessage": "1.0.0"
+  },
+  "app.features-settings.instance-pages.title": {
+    "message": "Страницы сборок",
+    "defaultMessage": "Страницы сборок"
+  },
+  "app.features-settings.play-page.title": {
+    "message": "Главная страница",
+    "defaultMessage": "Главная страница"
+  },
+  "app.features-settings.quick-instances.description": {
+    "message": "Выберите максимальное количество недавних сборок, отображаемых в боковой панели. Вы также можете изменить это перетаскиванием разделителя.",
+    "defaultMessage": "Выберите максимальное количество недавних сборок, отображаемых в боковой панели. Вы также можете изменить это перетаскиванием разделителя."
+  },
+  "app.features-settings.quick-instances.title": {
+    "message": "Быстрый запуск сборок в боковой панели",
+    "defaultMessage": "Быстрый запуск сборок в боковой панели"
+  },
+  "app.features-settings.show-all-screenshots.description": {
+    "message": "Отображать кнопку в левой боковой панели для быстрого перехода ко всем скриншотам сборок.",
+    "defaultMessage": "Отображать кнопку в левой боковой панели для быстрого перехода ко всем скриншотам сборок."
+  },
+  "app.features-settings.show-all-screenshots.title": {
+    "message": "Показывать кнопку всех скриншотов в боковой панели",
+    "defaultMessage": "Показывать кнопку всех скриншотов в боковой панели"
+  },
+  "app.features-settings.show-files-tab.title": {
+    "message": "Показывать вкладку «Файлы» в сборках",
+    "defaultMessage": "Показывать вкладку «Файлы» в сборках"
+  },
+  "app.features-settings.show-jump-in.description": {
+    "message": "Отображать недавно запущенные миры и сборки в верхней части главной страницы.",
+    "defaultMessage": "Отображать недавно запущенные миры и сборки в верхней части главной страницы."
+  },
+  "app.features-settings.show-jump-in.title": {
+    "message": "Показывать раздел быстрого запуска",
+    "defaultMessage": "Показывать раздел быстрого запуска"
+  },
+  "app.features-settings.show-screenshots-tab.title": {
+    "message": "Показывать вкладку «Скриншоты» в сборках",
+    "defaultMessage": "Показывать вкладку «Скриншоты» в сборках"
+  },
+  "app.features-settings.show-skin-selector.description": {
+    "message": "Отображать кнопку в левой боковой панели для перехода в селектор скинов.",
+    "defaultMessage": "Отображать кнопку в левой боковой панели для перехода в селектор скинов."
+  },
+  "app.features-settings.show-skin-selector.title": {
+    "message": "Показывать выбор скинов в боковой панели",
+    "defaultMessage": "Показывать выбор скинов в боковой панели"
+  },
+  "app.features-settings.show-worlds-tab.title": {
+    "message": "Показывать вкладку «Миры» в сборках",
+    "defaultMessage": "Показывать вкладку «Миры» в сборках"
+  },
+  "app.features-settings.sidebar.title": {
+    "message": "Боковая панель",
+    "defaultMessage": "Боковая панель"
+  },
+  "app.features-settings.sync-across-devices.description": {
+    "message": "Использовать эти настройки везде, где выполнен вход. Отключите, чтобы сохранить отдельные параметры на этом устройстве.",
+    "defaultMessage": "Использовать эти настройки везде, где выполнен вход. Отключите, чтобы сохранить отдельные параметры на этом устройстве."
+  },
+  "app.features-settings.sync-across-devices.signed-out-tooltip": {
+    "message": "Войдите в аккаунт Modrinth для синхронизации настроек.",
+    "defaultMessage": "Войдите в аккаунт Modrinth для синхронизации настроек."
+  },
+  "app.features-settings.sync-across-devices.title": {
+    "message": "Синхронизация функций между устройствами",
+    "defaultMessage": "Синхронизация функций между устройствами"
   },
   "app.home.jump-back-in.actions.label": {
     "message": "Действия со сборкой"
@@ -467,6 +597,62 @@
   "app.hosting.update-required.title": {
     "message": "Обновите Rubirinth App",
     "defaultMessage": "Обновите Rubirinth App"
+  },
+  "app.icon-editor.apply-icons-modal.apply-error": {
+    "message": "Не удалось применить случайные иконки к сборкам.",
+    "defaultMessage": "Не удалось применить случайные иконки к сборкам."
+  },
+  "app.icon-editor.apply-icons-modal.apply-success": {
+    "message": "Установлен случайный значок для {num, plural, one {# сборки} few {# сборок} many {# сборок} other {# сборок}}.",
+    "defaultMessage": "Установлен случайный значок для {num, plural, one {# сборки} few {# сборок} many {# сборок} other {# сборок}}."
+  },
+  "app.icon-editor.apply-icons-modal.badge": {
+    "message": "Новый контент",
+    "defaultMessage": "Новый контент"
+  },
+  "app.icon-editor.apply-icons-modal.close": {
+    "message": "Закрыть",
+    "defaultMessage": "Закрыть"
+  },
+  "app.icon-editor.apply-icons-modal.description": {
+    "message": "Создавайте собственные иконки прямо в Rubirinth App. Сочетайте фоны с символами из Minecraft и популярных модов!",
+    "defaultMessage": "Создавайте собственные иконки прямо в Rubirinth App. Сочетайте фоны с символами из Minecraft и популярных модов!"
+  },
+  "app.icon-editor.apply-icons-modal.instances-without-icons": {
+    "message": "У {count, plural, one {# сборки} other {# сборок}} нет {count, plural, one {иконки} other {иконок}}. Хотите создать {count, plural, one {случайную} other {случайные}}?",
+    "defaultMessage": "У {count, plural, one {# сборки} other {# сборок}} нет {count, plural, one {иконки} other {иконок}}. Хотите создать {count, plural, one {случайную} other {случайные}}?"
+  },
+  "app.icon-editor.apply-icons-modal.random-icons": {
+    "message": "Случайные иконки",
+    "defaultMessage": "Случайные иконки"
+  },
+  "app.icon-editor.apply-icons-modal.skip": {
+    "message": "Пропустить",
+    "defaultMessage": "Пропустить"
+  },
+  "app.icon-editor.apply-icons-modal.title": {
+    "message": "Редактор иконок",
+    "defaultMessage": "Редактор иконок"
+  },
+  "app.icon-editor.notification.close": {
+    "message": "Закрыть",
+    "defaultMessage": "Закрыть"
+  },
+  "app.icon-editor.notification.description": {
+    "message": "Персонализируйте свои сборки!",
+    "defaultMessage": "Персонализируйте свои сборки!"
+  },
+  "app.icon-editor.notification.dismiss": {
+    "message": "Закрыть",
+    "defaultMessage": "Закрыть"
+  },
+  "app.icon-editor.notification.title": {
+    "message": "Новый редактор иконок",
+    "defaultMessage": "Новый редактор иконок"
+  },
+  "app.icon-editor.notification.view-update": {
+    "message": "Подробнее",
+    "defaultMessage": "Подробнее"
   },
   "app.install.phase.downloading_content": {
     "message": "Скачивание контента",
@@ -676,6 +862,18 @@
     "message": "Это действие необратимо",
     "defaultMessage": "Это действие необратимо"
   },
+  "app.instance.confirm-delete.bulk-admonition-body": {
+    "message": "Все данные для {count, plural, one {# этой сборки} few {# этих сборок} many {# этих сборок} other {# этих сборок}} будут безвозвратно удалены, включая миры, конфигурации и весь установленный контент.",
+    "defaultMessage": "Все данные для {count, plural, one {# этой сборки} few {# этих сборок} many {# этих сборок} other {# этих сборок}} будут безвозвратно удалены, включая миры, конфигурации и весь установленный контент."
+  },
+  "app.instance.confirm-delete.bulk-delete-button": {
+    "message": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}",
+    "defaultMessage": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}"
+  },
+  "app.instance.confirm-delete.bulk-header": {
+    "message": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}",
+    "defaultMessage": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}"
+  },
   "app.instance.confirm-delete.delete-button": {
     "message": "Удалить сборку",
     "defaultMessage": "Удалить сборку"
@@ -740,6 +938,10 @@
     "message": "«{name}» добавлен",
     "defaultMessage": "«{name}» добавлен"
   },
+  "app.instance.mods.projects-were-added": {
+    "message": "{count, plural, one {Добавлен # проект} few {Добавлено # проекта} many {Добавлено # проектов} other {Добавлено # проектов}}",
+    "defaultMessage": "{count, plural, one {Добавлен # проект} few {Добавлено # проекта} many {Добавлено # проектов} other {Добавлено # проектов}}"
+  },
   "app.instance.mods.share-text": {
     "message": "Что в моей сборке:",
     "defaultMessage": "Что в моей сборке:"
@@ -775,6 +977,10 @@
   "app.instance.share.invite-modal.heading": {
     "message": "Доступ к {name}",
     "defaultMessage": "Доступ к {name}"
+  },
+  "app.instance.share.invite-modal.user-limit-reached": {
+    "defaultMessage": "Для этого инстанса достигнут лимит в {limit, number} пользователей.",
+    "message": "Для этого инстанса достигнут лимит в {limit, number} пользователей."
   },
   "app.instance.share.locked.empty-description-prefix": {
     "message": "Необходимо войти как",
@@ -992,6 +1198,26 @@
     "message": "Удалить сервер",
     "defaultMessage": "Удалить сервер"
   },
+  "app.instance.worlds.remove-server-modal.remove-everywhere": {
+    "message": "Удалить везде",
+    "defaultMessage": "Удалить везде"
+  },
+  "app.instance.worlds.remove-server-modal.remove-here": {
+    "message": "Удалить здесь",
+    "defaultMessage": "Удалить здесь"
+  },
+  "app.instance.worlds.remove-server-modal.synced-description": {
+    "message": "Вы можете удалить его только из этой сборки или из всех синхронизированных сборок. Удаление только из этой сборки включит переопределение, и эта сборка больше не будет получать изменения синхронизированных серверов.",
+    "defaultMessage": "Вы можете удалить его только из этой сборки или из всех синхронизированных сборок. Удаление только из этой сборки включит переопределение, и эта сборка больше не будет получать изменения синхронизированных серверов."
+  },
+  "app.instance.worlds.remove-server-modal.synced-header": {
+    "message": "Этот сервер синхронизирован",
+    "defaultMessage": "Этот сервер синхронизирован"
+  },
+  "app.instance.worlds.remove-server-modal.synced-removal-notice": {
+    "message": "Этот сервер также будет удален из {count, plural, one {# другой сборки} few {# других сборок} many {# других сборок} other {# других сборок}}, так как он синхронизирован.",
+    "defaultMessage": "Этот сервер также будет удален из {count, plural, one {# другой сборки} few {# других сборок} many {# других сборок} other {# других сборок}}, так как он синхронизирован."
+  },
   "app.instance.worlds.remove-server-modal.title": {
     "message": "Удаление сервера",
     "defaultMessage": "Удаление сервера"
@@ -1003,6 +1229,26 @@
   "app.instance.worlds.remove-server-modal.warning-header": {
     "message": "Удаление {name}",
     "defaultMessage": "Удаление {name}"
+  },
+  "app.instance.worlds.search-worlds-placeholder": {
+    "message": "{count, plural, one {Поиск по # миру...} few {Поиск по # мирам...} many {Поиск по # мирам...} other {Поиск по # мирам...}}",
+    "defaultMessage": "{count, plural, one {Поиск по # миру...} few {Поиск по # мирам...} many {Поиск по # мирам...} other {Поиск по # мирам...}}"
+  },
+  "app.instance.worlds.sync-badge": {
+    "message": "Синхронизировано",
+    "defaultMessage": "Синхронизировано"
+  },
+  "app.instance.worlds.unsync": {
+    "message": "Отключить синхронизацию",
+    "defaultMessage": "Отключить синхронизацию"
+  },
+  "app.instance.worlds.unsync-description": {
+    "message": "Сделать этот сервер независимым для данной сборки",
+    "defaultMessage": "Сделать этот сервер независимым для данной сборки"
+  },
+  "app.instance.worlds.unsync-title": {
+    "message": "Отключить синхронизацию сервера?",
+    "defaultMessage": "Отключить синхронизацию сервера?"
   },
   "app.java-detection.cancel": {
     "message": "Отмена",
@@ -1372,6 +1618,10 @@
     "message": "Удалить из группы",
     "defaultMessage": "Удалить из группы"
   },
+  "app.library.selection.selected-count": {
+    "message": "{count, plural, one {Выбрана # сборка} few {Выбрано # сборки} many {Выбрано # сборок} other {Выбрано # сборок}}",
+    "defaultMessage": "{count, plural, one {Выбрана # сборка} few {Выбрано # сборки} many {Выбрано # сборок} other {Выбрано # сборок}}"
+  },
   "app.library.sort.date-created": {
     "message": "Дата создания",
     "defaultMessage": "Дата создания"
@@ -1596,6 +1846,10 @@
     "message": "Войти в аккаунт Modrinth",
     "defaultMessage": "Войти в аккаунт Modrinth"
   },
+  "app.nav.signed-in-as": {
+    "message": "Текущий аккаунт: <user>{username}</user>",
+    "defaultMessage": "Текущий аккаунт: <user>{username}</user>"
+  },
   "app.nav.switch-account": {
     "message": "Сменить аккаунт",
     "defaultMessage": "Сменить аккаунт"
@@ -1619,6 +1873,10 @@
   "app.navigation.home": {
     "message": "Главная",
     "defaultMessage": "Главная"
+  },
+  "app.navigation.more-options": {
+    "message": "Дополнительно",
+    "defaultMessage": "Дополнительно"
   },
   "app.navigation.next-image": {
     "message": "Следующее изображение",
@@ -1896,6 +2154,10 @@
     "message": "Удалить из группы",
     "defaultMessage": "Удалить из группы"
   },
+  "app.screenshots.selection.selected-count": {
+    "message": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}",
+    "defaultMessage": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}"
+  },
   "app.screenshots.selection.zip-archive": {
     "message": "ZIP-архив",
     "defaultMessage": "ZIP-архив"
@@ -1919,6 +2181,58 @@
   "app.screenshots.sort.oldest": {
     "message": "Сначала старые",
     "defaultMessage": "Сначала старые"
+  },
+  "app.settings.advanced.add-custom-folder": {
+    "message": "Выбрать папку...",
+    "defaultMessage": "Выбрать папку..."
+  },
+  "app.settings.advanced.clear-selection": {
+    "message": "Снять выбор",
+    "defaultMessage": "Снять выбор"
+  },
+  "app.settings.advanced.import-section.description": {
+    "message": "Перенесите сборки, миры и моды из других лаунчеров (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки.",
+    "defaultMessage": "Перенесите сборки, миры и моды из других лаунчеров (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
+  },
+  "app.settings.advanced.import-section.title": {
+    "message": "Импорт данных из других лаунчеров",
+    "defaultMessage": "Импорт данных из других лаунчеров"
+  },
+  "app.settings.advanced.import-selected": {
+    "message": "Импортировать выбранные ({count})",
+    "defaultMessage": "Импортировать выбранные ({count})"
+  },
+  "app.settings.advanced.import-success.text": {
+    "message": "Успешно импортировано сборок: {count}.",
+    "defaultMessage": "Успешно импортировано сборок: {count}."
+  },
+  "app.settings.advanced.import-success.title": {
+    "message": "Импорт завершён",
+    "defaultMessage": "Импорт завершён"
+  },
+  "app.settings.advanced.importing": {
+    "message": "Импорт...",
+    "defaultMessage": "Импорт..."
+  },
+  "app.settings.advanced.instances-count": {
+    "message": "{count} сборок",
+    "defaultMessage": "{count} сборок"
+  },
+  "app.settings.advanced.no-launchers-detected": {
+    "message": "Сборки в стандартных папках других лаунчеров не обнаружены. Вы можете вручную указать папку выше.",
+    "defaultMessage": "Сборки в стандартных папках других лаунчеров не обнаружены. Вы можете вручную указать папку выше."
+  },
+  "app.settings.advanced.scan-launchers": {
+    "message": "Поиск лаунчеров",
+    "defaultMessage": "Поиск лаунчеров"
+  },
+  "app.settings.advanced.search-instances": {
+    "message": "Поиск по названию сборки...",
+    "defaultMessage": "Поиск по названию сборки..."
+  },
+  "app.settings.advanced.title": {
+    "message": "Продвинутые настройки",
+    "defaultMessage": "Продвинутые настройки"
   },
   "app.settings.app-version": {
     "message": "Rubirinth App {version}",
@@ -2048,9 +2362,1793 @@
     "message": "Скачивание версии {version}",
     "defaultMessage": "Скачивание версии {version}"
   },
+  "app.settings.external-auth-libraries.description": {
+    "defaultMessage": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.).",
+    "message": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.)."
+  },
+  "app.settings.external-auth-libraries.install-selected": {
+    "defaultMessage": "Установить",
+    "message": "Установить"
+  },
+  "app.settings.external-auth-libraries.installed": {
+    "defaultMessage": "Библиотека {providerName} {version} установлена",
+    "message": "Библиотека {providerName} {version} установлена"
+  },
+  "app.settings.external-auth-libraries.installing": {
+    "defaultMessage": "Установка...",
+    "message": "Установка..."
+  },
+  "app.settings.external-auth-libraries.load-failed": {
+    "defaultMessage": "Не удалось загрузить библиотеки авторизации: {error}",
+    "message": "Не удалось загрузить библиотеки авторизации: {error}"
+  },
+  "app.settings.external-auth-libraries.loading": {
+    "defaultMessage": "Загрузка доступных версий библиотек...",
+    "message": "Загрузка доступных версий библиотек..."
+  },
+  "app.settings.external-auth-libraries.local-only": {
+    "defaultMessage": "Отображаются только локально установленные версии, так как удаленный сервер недоступен.",
+    "message": "Отображаются только локально установленные версии, так как удаленный сервер недоступен."
+  },
+  "app.settings.external-auth-libraries.no-versions": {
+    "defaultMessage": "Совместимых версий библиотеки не найдено.",
+    "message": "Совместимых версий библиотеки не найдено."
+  },
+  "app.settings.external-auth-libraries.not-selected": {
+    "defaultMessage": "Не выбрано",
+    "message": "Не выбрано"
+  },
+  "app.settings.external-auth-libraries.reinstall": {
+    "defaultMessage": "Переустановить",
+    "message": "Переустановить"
+  },
+  "app.settings.external-auth-libraries.request-server": {
+    "defaultMessage": "Проверить обновления",
+    "message": "Проверить обновления"
+  },
+  "app.settings.external-auth-libraries.requesting-server": {
+    "defaultMessage": "Проверка...",
+    "message": "Проверка..."
+  },
+  "app.settings.external-auth-libraries.retry": {
+    "defaultMessage": "Повторить",
+    "message": "Повторить"
+  },
+  "app.settings.external-auth-libraries.selected-version": {
+    "defaultMessage": "Выбранная версия",
+    "message": "Выбранная версия"
+  },
+  "app.settings.external-auth-libraries.title": {
+    "defaultMessage": "Библиотеки авторизации",
+    "message": "Библиотеки авторизации"
+  },
+  "app.settings.external-auth-libraries.version": {
+    "defaultMessage": "Версия",
+    "message": "Версия"
+  },
+  "app.settings.game-options.category.accessibility.description": {
+    "message": "Настройки специальных возможностей",
+    "defaultMessage": "Настройки специальных возможностей"
+  },
+  "app.settings.game-options.category.accessibility.label": {
+    "message": "Доступность",
+    "defaultMessage": "Доступность"
+  },
+  "app.settings.game-options.category.chat.description": {
+    "message": "Видимость и внешний вид чата",
+    "defaultMessage": "Видимость и внешний вид чата"
+  },
+  "app.settings.game-options.category.chat.label": {
+    "message": "Чат",
+    "defaultMessage": "Чат"
+  },
+  "app.settings.game-options.category.controls.description": {
+    "message": "Мышь, перемещение и назначение клавиш",
+    "defaultMessage": "Мышь, перемещение и назначение клавиш"
+  },
+  "app.settings.game-options.category.controls.label": {
+    "message": "Управление",
+    "defaultMessage": "Управление"
+  },
+  "app.settings.game-options.category.custom.description": {
+    "message": "Параметры, добавленные модами",
+    "defaultMessage": "Параметры, добавленные модами"
+  },
+  "app.settings.game-options.category.custom.label": {
+    "message": "Пользовательские настройки",
+    "defaultMessage": "Пользовательские настройки"
+  },
+  "app.settings.game-options.category.language.description": {
+    "message": "Язык игры",
+    "defaultMessage": "Язык игры"
+  },
+  "app.settings.game-options.category.language.label": {
+    "message": "Язык",
+    "defaultMessage": "Язык"
+  },
+  "app.settings.game-options.category.music-and-sound.description": {
+    "message": "Громкость и параметры звука",
+    "defaultMessage": "Громкость и параметры звука"
+  },
+  "app.settings.game-options.category.music-and-sound.label": {
+    "message": "Музыка и звуки",
+    "defaultMessage": "Музыка и звуки"
+  },
+  "app.settings.game-options.category.online.description": {
+    "message": "Настройки сетевой игры и Realms",
+    "defaultMessage": "Настройки сетевой игры и Realms"
+  },
+  "app.settings.game-options.category.online.label": {
+    "message": "Сетевая игра",
+    "defaultMessage": "Сетевая игра"
+  },
+  "app.settings.game-options.category.skin-customization.description": {
+    "message": "Слои скина и ведущая рука",
+    "defaultMessage": "Слои скина и ведущая рука"
+  },
+  "app.settings.game-options.category.skin-customization.label": {
+    "message": "Настройка скина",
+    "defaultMessage": "Настройка скина"
+  },
+  "app.settings.game-options.category.video.description": {
+    "message": "Камера и параметры экрана",
+    "defaultMessage": "Камера и параметры экрана"
+  },
+  "app.settings.game-options.category.video.label": {
+    "message": "Настройки графики",
+    "defaultMessage": "Настройки графики"
+  },
+  "app.settings.game-options.choice.all": {
+    "message": "Все",
+    "defaultMessage": "Все"
+  },
+  "app.settings.game-options.choice.balanced": {
+    "message": "Сбалансировано",
+    "defaultMessage": "Сбалансировано"
+  },
+  "app.settings.game-options.choice.by-player": {
+    "message": "Игроком",
+    "defaultMessage": "Игроком"
+  },
+  "app.settings.game-options.choice.chat": {
+    "message": "Чат",
+    "defaultMessage": "Чат"
+  },
+  "app.settings.game-options.choice.commands-only": {
+    "message": "Только команды",
+    "defaultMessage": "Только команды"
+  },
+  "app.settings.game-options.choice.constant": {
+    "message": "Постоянно",
+    "defaultMessage": "Постоянно"
+  },
+  "app.settings.game-options.choice.crosshair": {
+    "message": "Прицел",
+    "defaultMessage": "Прицел"
+  },
+  "app.settings.game-options.choice.custom": {
+    "message": "Пользовательский",
+    "defaultMessage": "Пользовательский"
+  },
+  "app.settings.game-options.choice.decreased": {
+    "message": "Уменьшено",
+    "defaultMessage": "Уменьшено"
+  },
+  "app.settings.game-options.choice.default": {
+    "message": "По умолчанию",
+    "defaultMessage": "По умолчанию"
+  },
+  "app.settings.game-options.choice.fabulous": {
+    "message": "Потрясающе",
+    "defaultMessage": "Потрясающе"
+  },
+  "app.settings.game-options.choice.fancy": {
+    "message": "Детально",
+    "defaultMessage": "Детально"
+  },
+  "app.settings.game-options.choice.far": {
+    "message": "Далеко",
+    "defaultMessage": "Далеко"
+  },
+  "app.settings.game-options.choice.fast": {
+    "message": "Быстро",
+    "defaultMessage": "Быстро"
+  },
+  "app.settings.game-options.choice.frequent": {
+    "message": "Часто",
+    "defaultMessage": "Часто"
+  },
+  "app.settings.game-options.choice.hidden": {
+    "message": "Скрыто",
+    "defaultMessage": "Скрыто"
+  },
+  "app.settings.game-options.choice.hotbar": {
+    "message": "Панель быстрого доступа",
+    "defaultMessage": "Панель быстрого доступа"
+  },
+  "app.settings.game-options.choice.left": {
+    "message": "Левая",
+    "defaultMessage": "Левая"
+  },
+  "app.settings.game-options.choice.limited": {
+    "message": "Ограничено",
+    "defaultMessage": "Ограничено"
+  },
+  "app.settings.game-options.choice.max-fps": {
+    "message": "Макс. FPS",
+    "defaultMessage": "Макс. FPS"
+  },
+  "app.settings.game-options.choice.maximum": {
+    "message": "Максимум",
+    "defaultMessage": "Максимум"
+  },
+  "app.settings.game-options.choice.minimal": {
+    "message": "Минимум",
+    "defaultMessage": "Минимум"
+  },
+  "app.settings.game-options.choice.minimum": {
+    "message": "Минимум",
+    "defaultMessage": "Минимум"
+  },
+  "app.settings.game-options.choice.nearby": {
+    "message": "Рядом",
+    "defaultMessage": "Рядом"
+  },
+  "app.settings.game-options.choice.never": {
+    "message": "Никогда",
+    "defaultMessage": "Никогда"
+  },
+  "app.settings.game-options.choice.none": {
+    "message": "Нет",
+    "defaultMessage": "Нет"
+  },
+  "app.settings.game-options.choice.normal": {
+    "message": "Обычно",
+    "defaultMessage": "Обычно"
+  },
+  "app.settings.game-options.choice.off": {
+    "message": "Выкл",
+    "defaultMessage": "Выкл"
+  },
+  "app.settings.game-options.choice.on": {
+    "message": "Вкл",
+    "defaultMessage": "Вкл"
+  },
+  "app.settings.game-options.choice.opengl": {
+    "message": "OpenGL",
+    "defaultMessage": "OpenGL"
+  },
+  "app.settings.game-options.choice.pause": {
+    "message": "Меню паузы",
+    "defaultMessage": "Меню паузы"
+  },
+  "app.settings.game-options.choice.pause-and-toast": {
+    "message": "Меню паузы и уведомление",
+    "defaultMessage": "Меню паузы и уведомление"
+  },
+  "app.settings.game-options.choice.power-saver": {
+    "message": "Энергосбережение",
+    "defaultMessage": "Энергосбережение"
+  },
+  "app.settings.game-options.choice.right": {
+    "message": "Правая",
+    "defaultMessage": "Правая"
+  },
+  "app.settings.game-options.choice.short": {
+    "message": "Близко",
+    "defaultMessage": "Близко"
+  },
+  "app.settings.game-options.choice.shown": {
+    "message": "Показано",
+    "defaultMessage": "Показано"
+  },
+  "app.settings.game-options.choice.system": {
+    "message": "Системный",
+    "defaultMessage": "Системный"
+  },
+  "app.settings.game-options.choice.tiny": {
+    "message": "Очень близко",
+    "defaultMessage": "Очень близко"
+  },
+  "app.settings.game-options.choice.vulkan": {
+    "message": "Vulkan",
+    "defaultMessage": "Vulkan"
+  },
+  "app.settings.game-options.choice.when-minimized": {
+    "message": "При сворачивании",
+    "defaultMessage": "При сворачивании"
+  },
+  "app.settings.game-options.choice.while-afk": {
+    "message": "При бездействии",
+    "defaultMessage": "При бездействии"
+  },
+  "app.settings.game-options.compatibility.none": {
+    "message": "Некоторые из ваших сборок не поддерживают этот параметр",
+    "defaultMessage": "Некоторые из ваших сборок не поддерживают этот параметр"
+  },
+  "app.settings.game-options.compatibility.reason.launcher-controlled": {
+    "message": "Этот параметр управляется настройками запуска лаунчера.",
+    "defaultMessage": "Этот параметр управляется настройками запуска лаунчера."
+  },
+  "app.settings.game-options.custom-value.placeholder": {
+    "message": "Введите значение",
+    "defaultMessage": "Введите значение"
+  },
+  "app.settings.game-options.keybind.assigned-status": {
+    "message": "{setting} теперь назначено на {binding}.",
+    "defaultMessage": "{setting} теперь назначено на {binding}."
+  },
+  "app.settings.game-options.keybind.cancelled-status": {
+    "message": "Изменение клавиши отменено.",
+    "defaultMessage": "Изменение клавиши отменено."
+  },
+  "app.settings.game-options.keybind.change": {
+    "message": "{setting}: {binding}. Нажмите для изменения.",
+    "defaultMessage": "{setting}: {binding}. Нажмите для изменения."
+  },
+  "app.settings.game-options.keybind.choose": {
+    "message": "Выберите клавишу",
+    "defaultMessage": "Выберите клавишу"
+  },
+  "app.settings.game-options.keybind.conflict-description": {
+    "message": "Уже используется для {settings}.",
+    "defaultMessage": "Уже используется для {settings}."
+  },
+  "app.settings.game-options.keybind.key.arrow-down": {
+    "message": "Стрелка вниз",
+    "defaultMessage": "Стрелка вниз"
+  },
+  "app.settings.game-options.keybind.key.arrow-left": {
+    "message": "Стрелка влево",
+    "defaultMessage": "Стрелка влево"
+  },
+  "app.settings.game-options.keybind.key.arrow-right": {
+    "message": "Стрелка вправо",
+    "defaultMessage": "Стрелка вправо"
+  },
+  "app.settings.game-options.keybind.key.arrow-up": {
+    "message": "Стрелка вверх",
+    "defaultMessage": "Стрелка вверх"
+  },
+  "app.settings.game-options.keybind.key.backspace": {
+    "message": "Backspace",
+    "defaultMessage": "Backspace"
+  },
+  "app.settings.game-options.keybind.key.caps-lock": {
+    "message": "Caps Lock",
+    "defaultMessage": "Caps Lock"
+  },
+  "app.settings.game-options.keybind.key.delete": {
+    "message": "Delete",
+    "defaultMessage": "Delete"
+  },
+  "app.settings.game-options.keybind.key.end": {
+    "message": "End",
+    "defaultMessage": "End"
+  },
+  "app.settings.game-options.keybind.key.enter": {
+    "message": "Enter",
+    "defaultMessage": "Enter"
+  },
+  "app.settings.game-options.keybind.key.escape": {
+    "message": "Escape",
+    "defaultMessage": "Escape"
+  },
+  "app.settings.game-options.keybind.key.home": {
+    "message": "Home",
+    "defaultMessage": "Home"
+  },
+  "app.settings.game-options.keybind.key.insert": {
+    "message": "Insert",
+    "defaultMessage": "Insert"
+  },
+  "app.settings.game-options.keybind.key.keypad-key": {
+    "message": "Num {key}",
+    "defaultMessage": "Num {key}"
+  },
+  "app.settings.game-options.keybind.key.left-alt": {
+    "message": "Левый Alt",
+    "defaultMessage": "Левый Alt"
+  },
+  "app.settings.game-options.keybind.key.left-command": {
+    "message": "Левый Command",
+    "defaultMessage": "Левый Command"
+  },
+  "app.settings.game-options.keybind.key.left-control": {
+    "message": "Левый Ctrl",
+    "defaultMessage": "Левый Ctrl"
+  },
+  "app.settings.game-options.keybind.key.left-shift": {
+    "message": "Левый Shift",
+    "defaultMessage": "Левый Shift"
+  },
+  "app.settings.game-options.keybind.key.left-super": {
+    "message": "Левый Super",
+    "defaultMessage": "Левый Super"
+  },
+  "app.settings.game-options.keybind.key.menu": {
+    "message": "Меню",
+    "defaultMessage": "Меню"
+  },
+  "app.settings.game-options.keybind.key.num-lock": {
+    "message": "Num Lock",
+    "defaultMessage": "Num Lock"
+  },
+  "app.settings.game-options.keybind.key.page-down": {
+    "message": "Page Down",
+    "defaultMessage": "Page Down"
+  },
+  "app.settings.game-options.keybind.key.page-up": {
+    "message": "Page Up",
+    "defaultMessage": "Page Up"
+  },
+  "app.settings.game-options.keybind.key.pause": {
+    "message": "Pause",
+    "defaultMessage": "Pause"
+  },
+  "app.settings.game-options.keybind.key.print-screen": {
+    "message": "Print Screen",
+    "defaultMessage": "Print Screen"
+  },
+  "app.settings.game-options.keybind.key.right-alt": {
+    "message": "Правый Alt",
+    "defaultMessage": "Правый Alt"
+  },
+  "app.settings.game-options.keybind.key.right-command": {
+    "message": "Правый Command",
+    "defaultMessage": "Правый Command"
+  },
+  "app.settings.game-options.keybind.key.right-control": {
+    "message": "Правый Ctrl",
+    "defaultMessage": "Правый Ctrl"
+  },
+  "app.settings.game-options.keybind.key.right-shift": {
+    "message": "Правый Shift",
+    "defaultMessage": "Правый Shift"
+  },
+  "app.settings.game-options.keybind.key.right-super": {
+    "message": "Правый Super",
+    "defaultMessage": "Правый Super"
+  },
+  "app.settings.game-options.keybind.key.scroll-lock": {
+    "message": "Scroll Lock",
+    "defaultMessage": "Scroll Lock"
+  },
+  "app.settings.game-options.keybind.key.space": {
+    "message": "Пробел",
+    "defaultMessage": "Пробел"
+  },
+  "app.settings.game-options.keybind.key.tab": {
+    "message": "Tab",
+    "defaultMessage": "Tab"
+  },
+  "app.settings.game-options.keybind.key.unbound": {
+    "message": "Не назначено",
+    "defaultMessage": "Не назначено"
+  },
+  "app.settings.game-options.keybind.key.unknown": {
+    "message": "Неизвестная клавиша",
+    "defaultMessage": "Неизвестная клавиша"
+  },
+  "app.settings.game-options.keybind.listen": {
+    "message": "Нажмите клавишу...",
+    "defaultMessage": "Нажмите клавишу..."
+  },
+  "app.settings.game-options.keybind.listening-status": {
+    "message": "Ожидание нажатия клавиши или кнопки мыши. Нажмите Escape для сброса.",
+    "defaultMessage": "Ожидание нажатия клавиши или кнопки мыши. Нажмите Escape для сброса."
+  },
+  "app.settings.game-options.keybind.mixed": {
+    "message": "Различается в сборках",
+    "defaultMessage": "Различается в сборках"
+  },
+  "app.settings.game-options.keybind.modifier.alt": {
+    "message": "Alt",
+    "defaultMessage": "Alt"
+  },
+  "app.settings.game-options.keybind.modifier.command": {
+    "message": "Command",
+    "defaultMessage": "Command"
+  },
+  "app.settings.game-options.keybind.modifier.control": {
+    "message": "Ctrl",
+    "defaultMessage": "Ctrl"
+  },
+  "app.settings.game-options.keybind.modifier.shift": {
+    "message": "Shift",
+    "defaultMessage": "Shift"
+  },
+  "app.settings.game-options.keybind.modifier.super": {
+    "message": "Super",
+    "defaultMessage": "Super"
+  },
+  "app.settings.game-options.keybind.mouse.button": {
+    "message": "Кнопка мыши {button}",
+    "defaultMessage": "Кнопка мыши {button}"
+  },
+  "app.settings.game-options.keybind.mouse.left": {
+    "message": "ЛКМ",
+    "defaultMessage": "ЛКМ"
+  },
+  "app.settings.game-options.keybind.mouse.middle": {
+    "message": "СКМ",
+    "defaultMessage": "СКМ"
+  },
+  "app.settings.game-options.keybind.mouse.right": {
+    "message": "ПКМ",
+    "defaultMessage": "ПКМ"
+  },
+  "app.settings.game-options.keybind.recording-label": {
+    "message": "{setting}: ожидание клавиши или кнопки мыши. Нажмите Escape для очистки.",
+    "defaultMessage": "{setting}: ожидание клавиши или кнопки мыши. Нажмите Escape для очистки."
+  },
+  "app.settings.game-options.keybind.scancode": {
+    "message": "Сканкод {code}",
+    "defaultMessage": "Сканкод {code}"
+  },
+  "app.settings.game-options.keybind.unsupported-status": {
+    "message": "Этот ввод не поддерживается Minecraft. Нажмите другую клавишу.",
+    "defaultMessage": "Этот ввод не поддерживается Minecraft. Нажмите другую клавишу."
+  },
+  "app.settings.game-options.setting.advanced-opengl.label": {
+    "message": "Расширенный OpenGL",
+    "defaultMessage": "Расширенный OpenGL"
+  },
+  "app.settings.game-options.setting.allow-cursor-changes.label": {
+    "message": "Разрешить изменение курсора",
+    "defaultMessage": "Разрешить изменение курсора"
+  },
+  "app.settings.game-options.setting.allow-server-listing.description": {
+    "message": "Отображать имя игрока в списке сетевой игры.",
+    "defaultMessage": "Отображать имя игрока в списке сетевой игры."
+  },
+  "app.settings.game-options.setting.allow-server-listing.label": {
+    "message": "Отображение в списке серверов",
+    "defaultMessage": "Отображение в списке серверов"
+  },
+  "app.settings.game-options.setting.alternate-blocks.label": {
+    "message": "Альтернативные блоки",
+    "defaultMessage": "Альтернативные блоки"
+  },
+  "app.settings.game-options.setting.ambient-occlusion.label": {
+    "message": "Мягкое освещение",
+    "defaultMessage": "Мягкое освещение"
+  },
+  "app.settings.game-options.setting.ambient-volume.label": {
+    "message": "Окружающая среда",
+    "defaultMessage": "Окружающая среда"
+  },
+  "app.settings.game-options.setting.anaglyph-3d.label": {
+    "message": "Анаглиф 3D",
+    "defaultMessage": "Анаглиф 3D"
+  },
+  "app.settings.game-options.setting.anisotropic-filtering.label": {
+    "message": "Анизотропная фильтрация",
+    "defaultMessage": "Анизотропная фильтрация"
+  },
+  "app.settings.game-options.setting.anisotropy.label": {
+    "message": "Анизотропия",
+    "defaultMessage": "Анизотропия"
+  },
+  "app.settings.game-options.setting.attack-indicator.label": {
+    "message": "Индикатор атаки",
+    "defaultMessage": "Индикатор атаки"
+  },
+  "app.settings.game-options.setting.auto-jump.description": {
+    "message": "Автоматически запрыгивать на препятствия высотой в один блок.",
+    "defaultMessage": "Автоматически запрыгивать на препятствия высотой в один блок."
+  },
+  "app.settings.game-options.setting.auto-jump.label": {
+    "message": "Автопрыжок",
+    "defaultMessage": "Автопрыжок"
+  },
+  "app.settings.game-options.setting.auto-suggestions.label": {
+    "message": "Подсказки команд",
+    "defaultMessage": "Подсказки команд"
+  },
+  "app.settings.game-options.setting.autosave-indicator.label": {
+    "message": "Индикатор автосохранения",
+    "defaultMessage": "Индикатор автосохранения"
+  },
+  "app.settings.game-options.setting.biome-blend-radius.description": {
+    "message": "Дальность плавного перехода цветов между биомами.",
+    "defaultMessage": "Дальность плавного перехода цветов между биомами."
+  },
+  "app.settings.game-options.setting.biome-blend-radius.label": {
+    "message": "Смешивание биомов",
+    "defaultMessage": "Смешивание биомов"
+  },
+  "app.settings.game-options.setting.blocks-volume.label": {
+    "message": "Блоки",
+    "defaultMessage": "Блоки"
+  },
+  "app.settings.game-options.setting.brightness.label": {
+    "message": "Яркость",
+    "defaultMessage": "Яркость"
+  },
+  "app.settings.game-options.setting.cape.description": {
+    "message": "Отображать плащ игрока, включая текстуру элитр.",
+    "defaultMessage": "Отображать плащ игрока, включая текстуру элитр."
+  },
+  "app.settings.game-options.setting.cape.label": {
+    "message": "Плащ",
+    "defaultMessage": "Плащ"
+  },
+  "app.settings.game-options.setting.chat-background-only.label": {
+    "message": "Только фон чата",
+    "defaultMessage": "Только фон чата"
+  },
+  "app.settings.game-options.setting.chat-colors.label": {
+    "message": "Цвета чата",
+    "defaultMessage": "Цвета чата"
+  },
+  "app.settings.game-options.setting.chat-delay.label": {
+    "message": "Задержка чата",
+    "defaultMessage": "Задержка чата"
+  },
+  "app.settings.game-options.setting.chat-line-spacing.label": {
+    "message": "Межстрочный интервал чата",
+    "defaultMessage": "Межстрочный интервал чата"
+  },
+  "app.settings.game-options.setting.chat-links-prompt.description": {
+    "message": "Спрашивать подтверждение перед открытием ссылок из чата.",
+    "defaultMessage": "Спрашивать подтверждение перед открытием ссылок из чата."
+  },
+  "app.settings.game-options.setting.chat-links-prompt.label": {
+    "message": "Предупреждать о ссылках",
+    "defaultMessage": "Предупреждать о ссылках"
+  },
+  "app.settings.game-options.setting.chat-links.description": {
+    "message": "Разрешить открытие веб-ссылок из чата.",
+    "defaultMessage": "Разрешить открытие веб-ссылок из чата."
+  },
+  "app.settings.game-options.setting.chat-links.label": {
+    "message": "Ссылки в чате",
+    "defaultMessage": "Ссылки в чате"
+  },
+  "app.settings.game-options.setting.chat-opacity.description": {
+    "message": "Непрозрачность текста в чате.",
+    "defaultMessage": "Непрозрачность текста в чате."
+  },
+  "app.settings.game-options.setting.chat-opacity.label": {
+    "message": "Непрозрачность чата",
+    "defaultMessage": "Непрозрачность чата"
+  },
+  "app.settings.game-options.setting.chat-preview.label": {
+    "message": "Предпросмотр чата",
+    "defaultMessage": "Предпросмотр чата"
+  },
+  "app.settings.game-options.setting.chat-scale.description": {
+    "message": "Масштаб сообщений чата относительно размера интерфейса.",
+    "defaultMessage": "Масштаб сообщений чата относительно размера интерфейса."
+  },
+  "app.settings.game-options.setting.chat-scale.label": {
+    "message": "Масштаб чата",
+    "defaultMessage": "Масштаб чата"
+  },
+  "app.settings.game-options.setting.chat-visibility.description": {
+    "message": "Определяет, какие сообщения чата будут отображаться.",
+    "defaultMessage": "Определяет, какие сообщения чата будут отображаться."
+  },
+  "app.settings.game-options.setting.chat-visibility.label": {
+    "message": "Видимость чата",
+    "defaultMessage": "Видимость чата"
+  },
+  "app.settings.game-options.setting.chat-width.description": {
+    "message": "Ширина окна чата.",
+    "defaultMessage": "Ширина окна чата."
+  },
+  "app.settings.game-options.setting.chat-width.label": {
+    "message": "Ширина чата",
+    "defaultMessage": "Ширина чата"
+  },
+  "app.settings.game-options.setting.chunk-builder-mode.label": {
+    "message": "Построение чанков",
+    "defaultMessage": "Построение чанков"
+  },
+  "app.settings.game-options.setting.chunk-fade-time.label": {
+    "message": "Время затухания чанков",
+    "defaultMessage": "Время затухания чанков"
+  },
+  "app.settings.game-options.setting.chunks-volume.label": {
+    "message": "Звуки чанков",
+    "defaultMessage": "Звуки чанков"
+  },
+  "app.settings.game-options.setting.cloud-range.label": {
+    "message": "Дальность облаков",
+    "defaultMessage": "Дальность облаков"
+  },
+  "app.settings.game-options.setting.clouds.label": {
+    "message": "Облака",
+    "defaultMessage": "Облака"
+  },
+  "app.settings.game-options.setting.column.actions": {
+    "message": "Действия",
+    "defaultMessage": "Действия"
+  },
+  "app.settings.game-options.setting.column.default-value": {
+    "message": "По умолчанию",
+    "defaultMessage": "По умолчанию"
+  },
+  "app.settings.game-options.setting.column.setting": {
+    "message": "Параметр",
+    "defaultMessage": "Параметр"
+  },
+  "app.settings.game-options.setting.column.synced": {
+    "message": "Синхронизировано",
+    "defaultMessage": "Синхронизировано"
+  },
+  "app.settings.game-options.setting.column.value": {
+    "message": "Значение",
+    "defaultMessage": "Значение"
+  },
+  "app.settings.game-options.setting.ctrl-click-right-click.label": {
+    "message": "Ctrl + клик как правый клик",
+    "defaultMessage": "Ctrl + клик как правый клик"
+  },
+  "app.settings.game-options.setting.cursor-scale.description": {
+    "message": "Размер указателя мыши.",
+    "defaultMessage": "Размер указателя мыши."
+  },
+  "app.settings.game-options.setting.cursor-scale.label": {
+    "message": "Размер курсора",
+    "defaultMessage": "Размер курсора"
+  },
+  "app.settings.game-options.setting.cutout-leaves.label": {
+    "message": "Прозрачная листва",
+    "defaultMessage": "Прозрачная листва"
+  },
+  "app.settings.game-options.setting.damage-tilt.description": {
+    "message": "Наклон камеры при получении урона.",
+    "defaultMessage": "Наклон камеры при получении урона."
+  },
+  "app.settings.game-options.setting.damage-tilt.label": {
+    "message": "Тряска при уроне",
+    "defaultMessage": "Тряска при уроне"
+  },
+  "app.settings.game-options.setting.dark-splash.description": {
+    "message": "Сменить красный цвет экрана загрузки Mojang Studios на чёрный.",
+    "defaultMessage": "Сменить красный цвет экрана загрузки Mojang Studios на чёрный."
+  },
+  "app.settings.game-options.setting.dark-splash.label": {
+    "message": "Монохромный логотип",
+    "defaultMessage": "Монохромный логотип"
+  },
+  "app.settings.game-options.setting.darkness-pulsing.description": {
+    "message": "Эффект пульсации затемнения.",
+    "defaultMessage": "Эффект пульсации затемнения."
+  },
+  "app.settings.game-options.setting.darkness-pulsing.label": {
+    "message": "Пульсация тьмы",
+    "defaultMessage": "Пульсация тьмы"
+  },
+  "app.settings.game-options.setting.debug-gui-scale.label": {
+    "message": "Масштаб интерфейса отладки",
+    "defaultMessage": "Масштаб интерфейса отладки"
+  },
+  "app.settings.game-options.setting.directional-audio.label": {
+    "message": "Направленный звук",
+    "defaultMessage": "Направленный звук"
+  },
+  "app.settings.game-options.setting.discrete-mouse-scroll.description": {
+    "message": "Считать каждое движение колеса мыши как один шаг прокрутки.",
+    "defaultMessage": "Считать каждое движение колеса мыши как один шаг прокрутки."
+  },
+  "app.settings.game-options.setting.discrete-mouse-scroll.label": {
+    "message": "Дискретная прокрутка мыши",
+    "defaultMessage": "Дискретная прокрутка мыши"
+  },
+  "app.settings.game-options.setting.distortion-effects.description": {
+    "message": "Интенсивность искажения зрения при эффектах тошноты и портала.",
+    "defaultMessage": "Интенсивность искажения зрения при эффектах тошноты и портала."
+  },
+  "app.settings.game-options.setting.distortion-effects.label": {
+    "message": "Искажение от эффектов",
+    "defaultMessage": "Искажение от эффектов"
+  },
+  "app.settings.game-options.setting.enable-vsync.description": {
+    "message": "Синхронизировать кадры с частотой обновления монитора для устранения разрывов.",
+    "defaultMessage": "Синхронизировать кадры с частотой обновления монитора для устранения разрывов."
+  },
+  "app.settings.game-options.setting.enable-vsync.label": {
+    "message": "Вертикальная синхронизация",
+    "defaultMessage": "Вертикальная синхронизация"
+  },
+  "app.settings.game-options.setting.entity-distance-scaling.description": {
+    "message": "Расстояние, на котором отображаются сущности.",
+    "defaultMessage": "Расстояние, на котором отображаются сущности."
+  },
+  "app.settings.game-options.setting.entity-distance-scaling.label": {
+    "message": "Дальность сущностей",
+    "defaultMessage": "Дальность сущностей"
+  },
+  "app.settings.game-options.setting.entity-distance.label": {
+    "message": "Дальность сущностей",
+    "defaultMessage": "Дальность сущностей"
+  },
+  "app.settings.game-options.setting.entity-shadows.description": {
+    "message": "Отображать тени под мобами и объектами.",
+    "defaultMessage": "Отображать тени под мобами и объектами."
+  },
+  "app.settings.game-options.setting.entity-shadows.label": {
+    "message": "Тени сущностей",
+    "defaultMessage": "Тени сущностей"
+  },
+  "app.settings.game-options.setting.exclusive-fullscreen.label": {
+    "message": "Эксклюзивный полный экран",
+    "defaultMessage": "Эксклюзивный полный экран"
+  },
+  "app.settings.game-options.setting.extended-item-tooltips.description": {
+    "message": "Показывать расширенные подсказки для предметов (ID, прочность).",
+    "defaultMessage": "Показывать расширенные подсказки для предметов (ID, прочность)."
+  },
+  "app.settings.game-options.setting.extended-item-tooltips.label": {
+    "message": "Расширенные подсказки предметов",
+    "defaultMessage": "Расширенные подсказки предметов"
+  },
+  "app.settings.game-options.setting.extra-telemetry.label": {
+    "message": "Необязательная телеметрия",
+    "defaultMessage": "Необязательная телеметрия"
+  },
+  "app.settings.game-options.setting.field-of-view.description": {
+    "message": "Угол обзора камеры.",
+    "defaultMessage": "Угол обзора камеры."
+  },
+  "app.settings.game-options.setting.field-of-view.label": {
+    "message": "Поле зрения (FOV)",
+    "defaultMessage": "Поле зрения (FOV)"
+  },
+  "app.settings.game-options.setting.focused-chat-height.description": {
+    "message": "Высота чата при открытом поле ввода.",
+    "defaultMessage": "Высота чата при открытом поле ввода."
+  },
+  "app.settings.game-options.setting.focused-chat-height.label": {
+    "message": "Высота активного чата",
+    "defaultMessage": "Высота активного чата"
+  },
+  "app.settings.game-options.setting.force-unicode-font.label": {
+    "message": "Принудительный шрифт Юникод",
+    "defaultMessage": "Принудительный шрифт Юникод"
+  },
+  "app.settings.game-options.setting.fov-effects.description": {
+    "message": "Изменение угла обзора при беге, полёте или эффектах скорости.",
+    "defaultMessage": "Изменение угла обзора при беге, полёте или эффектах скорости."
+  },
+  "app.settings.game-options.setting.fov-effects.label": {
+    "message": "Эффекты поля зрения",
+    "defaultMessage": "Эффекты поля зрения"
+  },
+  "app.settings.game-options.setting.fov.label": {
+    "message": "Поле зрения",
+    "defaultMessage": "Поле зрения"
+  },
+  "app.settings.game-options.setting.fps-limit.label": {
+    "message": "Лимит кадров",
+    "defaultMessage": "Лимит кадров"
+  },
+  "app.settings.game-options.setting.fullscreen-resolution.label": {
+    "message": "Разрешение в полноэкранном режиме",
+    "defaultMessage": "Разрешение в полноэкранном режиме"
+  },
+  "app.settings.game-options.setting.fullscreen.description": {
+    "message": "Развернуть игру на весь экран без рамок окна.",
+    "defaultMessage": "Развернуть игру на весь экран без рамок окна."
+  },
+  "app.settings.game-options.setting.fullscreen.label": {
+    "message": "Полноэкранный режим",
+    "defaultMessage": "Полноэкранный режим"
+  },
+  "app.settings.game-options.setting.gamma.label": {
+    "message": "Гамма",
+    "defaultMessage": "Гамма"
+  },
+  "app.settings.game-options.setting.glint-speed.description": {
+    "message": "Скорость анимации блеска на зачарованных предметах.",
+    "defaultMessage": "Скорость анимации блеска на зачарованных предметах."
+  },
+  "app.settings.game-options.setting.glint-speed.label": {
+    "message": "Скорость блеска чар",
+    "defaultMessage": "Скорость блеска чар"
+  },
+  "app.settings.game-options.setting.glint-strength.description": {
+    "message": "Яркость эффекта блеска на зачарованных предметах.",
+    "defaultMessage": "Яркость эффекта блеска на зачарованных предметах."
+  },
+  "app.settings.game-options.setting.glint-strength.label": {
+    "message": "Сила блеска чар",
+    "defaultMessage": "Сила блеска чар"
+  },
+  "app.settings.game-options.setting.graphics-backend.label": {
+    "message": "Графический бэкенд",
+    "defaultMessage": "Графический бэкенд"
+  },
+  "app.settings.game-options.setting.graphics.description": {
+    "message": "Управляет качеством графики и производительностью.",
+    "defaultMessage": "Управляет качеством графики и производительностью."
+  },
+  "app.settings.game-options.setting.graphics.label": {
+    "message": "Графика",
+    "defaultMessage": "Графика"
+  },
+  "app.settings.game-options.setting.gui-scale.description": {
+    "message": "Размер элементов интерфейса игры.",
+    "defaultMessage": "Размер элементов интерфейса игры."
+  },
+  "app.settings.game-options.setting.gui-scale.label": {
+    "message": "Интерфейс",
+    "defaultMessage": "Интерфейс"
+  },
+  "app.settings.game-options.setting.hat.description": {
+    "message": "Отображать слой шляпы на скине.",
+    "defaultMessage": "Отображать слой шляпы на скине."
+  },
+  "app.settings.game-options.setting.hat.label": {
+    "message": "Шляпа",
+    "defaultMessage": "Шляпа"
+  },
+  "app.settings.game-options.setting.held-item-tooltips.label": {
+    "message": "Подсказки предмета в руке",
+    "defaultMessage": "Подсказки предмета в руке"
+  },
+  "app.settings.game-options.setting.hide-bundle-tooltips.description": {
+    "message": "Скрывать подсказки содержимого мешков.",
+    "defaultMessage": "Скрывать подсказки содержимого мешков."
+  },
+  "app.settings.game-options.setting.hide-bundle-tooltips.label": {
+    "message": "Скрыть подсказки мешков",
+    "defaultMessage": "Скрыть подсказки мешков"
+  },
+  "app.settings.game-options.setting.hide-lightning-flashes.description": {
+    "message": "Отключить яркие вспышки при ударах молний.",
+    "defaultMessage": "Отключить яркие вспышки при ударах молний."
+  },
+  "app.settings.game-options.setting.hide-lightning-flashes.label": {
+    "message": "Скрыть вспышки молний",
+    "defaultMessage": "Скрыть вспышки молний"
+  },
+  "app.settings.game-options.setting.hide-matched-names.description": {
+    "message": "Скрывать совпадающие имена игроков.",
+    "defaultMessage": "Скрывать совпадающие имена игроков."
+  },
+  "app.settings.game-options.setting.hide-matched-names.label": {
+    "message": "Скрывать совпадающие имена",
+    "defaultMessage": "Скрывать совпадающие имена"
+  },
+  "app.settings.game-options.setting.hide-server-address.description": {
+    "message": "Скрывать IP-адрес сервера на экране сетевой игры.",
+    "defaultMessage": "Скрывать IP-адрес сервера на экране сетевой игры."
+  },
+  "app.settings.game-options.setting.hide-server-address.label": {
+    "message": "Скрывать адрес сервера",
+    "defaultMessage": "Скрывать адрес сервера"
+  },
+  "app.settings.game-options.setting.hide-splash-texts.description": {
+    "message": "Скрывать случайные надписи на главном экране.",
+    "defaultMessage": "Скрывать случайные надписи на главном экране."
+  },
+  "app.settings.game-options.setting.hide-splash-texts.label": {
+    "message": "Скрыть надписи сплешей",
+    "defaultMessage": "Скрыть надписи сплешей"
+  },
+  "app.settings.game-options.setting.high-contrast-outline.label": {
+    "message": "Контрастный контур блоков",
+    "defaultMessage": "Контрастный контур блоков"
+  },
+  "app.settings.game-options.setting.high-contrast.description": {
+    "message": "Включить высококонтрастную тему интерфейса.",
+    "defaultMessage": "Включить высококонтрастную тему интерфейса."
+  },
+  "app.settings.game-options.setting.high-contrast.label": {
+    "message": "Высокая контрастность",
+    "defaultMessage": "Высокая контрастность"
+  },
+  "app.settings.game-options.setting.hostile-creatures-volume.label": {
+    "message": "Враждебные существа",
+    "defaultMessage": "Враждебные существа"
+  },
+  "app.settings.game-options.setting.hostile-volume.label": {
+    "message": "Враждебные существа",
+    "defaultMessage": "Враждебные существа"
+  },
+  "app.settings.game-options.setting.hotbar-opacity.description": {
+    "message": "Непрозрачность панели быстрого доступа на экране.",
+    "defaultMessage": "Непрозрачность панели быстрого доступа на экране."
+  },
+  "app.settings.game-options.setting.hotbar-opacity.label": {
+    "message": "Непрозрачность панели",
+    "defaultMessage": "Непрозрачность панели"
+  },
+  "app.settings.game-options.setting.hud-opacity.description": {
+    "message": "Непрозрачность элементов HUD.",
+    "defaultMessage": "Непрозрачность элементов HUD."
+  },
+  "app.settings.game-options.setting.hud-opacity.label": {
+    "message": "Непрозрачность HUD",
+    "defaultMessage": "Непрозрачность HUD"
+  },
+  "app.settings.game-options.setting.improved-transparency.label": {
+    "message": "Улучшенная прозрачность",
+    "defaultMessage": "Улучшенная прозрачность"
+  },
+  "app.settings.game-options.setting.in-game-notifications.label": {
+    "message": "Внутриигровые уведомления",
+    "defaultMessage": "Внутриигровые уведомления"
+  },
+  "app.settings.game-options.setting.inactivity-framerate-limit.label": {
+    "message": "Снижение частоты кадров при бездействии",
+    "defaultMessage": "Снижение частоты кадров при бездействии"
+  },
+  "app.settings.game-options.setting.invert-horizontal-mouse.label": {
+    "message": "Инверсия мыши по горизонтали",
+    "defaultMessage": "Инверсия мыши по горизонтали"
+  },
+  "app.settings.game-options.setting.invert-mouse.description": {
+    "message": "Инвертировать вертикальное движение мыши.",
+    "defaultMessage": "Инвертировать вертикальное движение мыши."
+  },
+  "app.settings.game-options.setting.invert-mouse.label": {
+    "message": "Инверсия мыши",
+    "defaultMessage": "Инверсия мыши"
+  },
+  "app.settings.game-options.setting.jacket.description": {
+    "message": "Отображать верхний слой куртки на туловище скина.",
+    "defaultMessage": "Отображать верхний слой куртки на туловище скина."
+  },
+  "app.settings.game-options.setting.jacket.label": {
+    "message": "Куртка",
+    "defaultMessage": "Куртка"
+  },
+  "app.settings.game-options.setting.japanese-glyph-variants.label": {
+    "message": "Японские варианты глифов",
+    "defaultMessage": "Японские варианты глифов"
+  },
+  "app.settings.game-options.setting.jukebox-and-noteblocks-volume.label": {
+    "message": "Проигрыватель и нотные блоки",
+    "defaultMessage": "Проигрыватель и нотные блоки"
+  },
+  "app.settings.game-options.setting.key-advancements.label": {
+    "message": "Достижения",
+    "defaultMessage": "Достижения"
+  },
+  "app.settings.game-options.setting.key-attack.label": {
+    "message": "Атака / Разрушение",
+    "defaultMessage": "Атака / Разрушение"
+  },
+  "app.settings.game-options.setting.key-back.label": {
+    "message": "Назад",
+    "defaultMessage": "Назад"
+  },
+  "app.settings.game-options.setting.key-chat.label": {
+    "message": "Открыть чат",
+    "defaultMessage": "Открыть чат"
+  },
+  "app.settings.game-options.setting.key-command.label": {
+    "message": "Ввести команду",
+    "defaultMessage": "Ввести команду"
+  },
+  "app.settings.game-options.setting.key-debug-advanced-tooltips.label": {
+    "message": "Показать расширенные подсказки",
+    "defaultMessage": "Показать расширенные подсказки"
+  },
+  "app.settings.game-options.setting.key-debug-chunk-borders.label": {
+    "message": "Показать границы чанков",
+    "defaultMessage": "Показать границы чанков"
+  },
+  "app.settings.game-options.setting.key-debug-clear-chat.label": {
+    "message": "Очистить чат",
+    "defaultMessage": "Очистить чат"
+  },
+  "app.settings.game-options.setting.key-debug-copy-location.label": {
+    "message": "Скопировать координаты",
+    "defaultMessage": "Скопировать координаты"
+  },
+  "app.settings.game-options.setting.key-debug-copy-recreate-command.label": {
+    "message": "Скопировать команду воссоздания",
+    "defaultMessage": "Скопировать команду воссоздания"
+  },
+  "app.settings.game-options.setting.key-debug-crash.label": {
+    "message": "Вызвать сбой отладки",
+    "defaultMessage": "Вызвать сбой отладки"
+  },
+  "app.settings.game-options.setting.key-debug-dump-dynamic-textures.label": {
+    "message": "Дамп динамических текстур",
+    "defaultMessage": "Дамп динамических текстур"
+  },
+  "app.settings.game-options.setting.key-debug-dump-version.label": {
+    "message": "Дамп версии",
+    "defaultMessage": "Дамп версии"
+  },
+  "app.settings.game-options.setting.key-debug-focus-pause.label": {
+    "message": "Пауза при потере фокуса",
+    "defaultMessage": "Пауза при потере фокуса"
+  },
+  "app.settings.game-options.setting.key-debug-fps-charts.label": {
+    "message": "Графики FPS",
+    "defaultMessage": "Графики FPS"
+  },
+  "app.settings.game-options.setting.key-debug-hitboxes.label": {
+    "message": "Показать хитбоксы",
+    "defaultMessage": "Показать хитбоксы"
+  },
+  "app.settings.game-options.setting.key-debug-improved-transparency.label": {
+    "message": "Вид отладки прозрачности",
+    "defaultMessage": "Вид отладки прозрачности"
+  },
+  "app.settings.game-options.setting.key-debug-lightmap-texture.label": {
+    "message": "Текстура карты освещения",
+    "defaultMessage": "Текстура карты освещения"
+  },
+  "app.settings.game-options.setting.key-debug-modifier.label": {
+    "message": "Модификатор отладки (F3)",
+    "defaultMessage": "Модификатор отладки (F3)"
+  },
+  "app.settings.game-options.setting.key-debug-network-charts.label": {
+    "message": "Сетевые графики",
+    "defaultMessage": "Сетевые графики"
+  },
+  "app.settings.game-options.setting.key-debug-options.label": {
+    "message": "Параметры отладки",
+    "defaultMessage": "Параметры отладки"
+  },
+  "app.settings.game-options.setting.key-debug-overlay.label": {
+    "message": "Экран отладки",
+    "defaultMessage": "Экран отладки"
+  },
+  "app.settings.game-options.setting.key-debug-profiling-chart.label": {
+    "message": "График профилирования",
+    "defaultMessage": "График профилирования"
+  },
+  "app.settings.game-options.setting.key-debug-profiling.label": {
+    "message": "Запустить профилирование",
+    "defaultMessage": "Запустить профилирование"
+  },
+  "app.settings.game-options.setting.key-debug-reload-chunks.label": {
+    "message": "Перезагрузить чанки",
+    "defaultMessage": "Перезагрузить чанки"
+  },
+  "app.settings.game-options.setting.key-debug-reload-resource-packs.label": {
+    "message": "Перезагрузить ресурспаки",
+    "defaultMessage": "Перезагрузить ресурспаки"
+  },
+  "app.settings.game-options.setting.key-debug-spectate.label": {
+    "message": "Наблюдать за сущностью",
+    "defaultMessage": "Наблюдать за сущностью"
+  },
+  "app.settings.game-options.setting.key-debug-switch-game-mode.label": {
+    "message": "Сменить игровой режим",
+    "defaultMessage": "Сменить игровой режим"
+  },
+  "app.settings.game-options.setting.key-drop.label": {
+    "message": "Выбросить предмет",
+    "defaultMessage": "Выбросить предмет"
+  },
+  "app.settings.game-options.setting.key-forward.label": {
+    "message": "Вперёд",
+    "defaultMessage": "Вперёд"
+  },
+  "app.settings.game-options.setting.key-friends.label": {
+    "message": "Друзья",
+    "defaultMessage": "Друзья"
+  },
+  "app.settings.game-options.setting.key-fullscreen.label": {
+    "message": "Полный экран",
+    "defaultMessage": "Полный экран"
+  },
+  "app.settings.game-options.setting.key-highlight-players.label": {
+    "message": "Подсветка игроков",
+    "defaultMessage": "Подсветка игроков"
+  },
+  "app.settings.game-options.setting.key-hotbar-1.label": {
+    "message": "Ячейка хотбара 1",
+    "defaultMessage": "Ячейка хотбара 1"
+  },
+  "app.settings.game-options.setting.key-hotbar-2.label": {
+    "message": "Ячейка хотбара 2",
+    "defaultMessage": "Ячейка хотбара 2"
+  },
+  "app.settings.game-options.setting.key-hotbar-3.label": {
+    "message": "Ячейка хотбара 3",
+    "defaultMessage": "Ячейка хотбара 3"
+  },
+  "app.settings.game-options.setting.key-hotbar-4.label": {
+    "message": "Ячейка хотбара 4",
+    "defaultMessage": "Ячейка хотбара 4"
+  },
+  "app.settings.game-options.setting.key-hotbar-5.label": {
+    "message": "Ячейка хотбара 5",
+    "defaultMessage": "Ячейка хотбара 5"
+  },
+  "app.settings.game-options.setting.key-hotbar-6.label": {
+    "message": "Ячейка хотбара 6",
+    "defaultMessage": "Ячейка хотбара 6"
+  },
+  "app.settings.game-options.setting.key-hotbar-7.label": {
+    "message": "Ячейка хотбара 7",
+    "defaultMessage": "Ячейка хотбара 7"
+  },
+  "app.settings.game-options.setting.key-hotbar-8.label": {
+    "message": "Ячейка хотбара 8",
+    "defaultMessage": "Ячейка хотбара 8"
+  },
+  "app.settings.game-options.setting.key-hotbar-9.label": {
+    "message": "Ячейка хотбара 9",
+    "defaultMessage": "Ячейка хотбара 9"
+  },
+  "app.settings.game-options.setting.key-inventory.label": {
+    "message": "Инвентарь",
+    "defaultMessage": "Инвентарь"
+  },
+  "app.settings.game-options.setting.key-jump.label": {
+    "message": "Прыжок",
+    "defaultMessage": "Прыжок"
+  },
+  "app.settings.game-options.setting.key-left.label": {
+    "message": "Влево",
+    "defaultMessage": "Влево"
+  },
+  "app.settings.game-options.setting.key-load-toolbar-activator.label": {
+    "message": "Загрузить хотбар",
+    "defaultMessage": "Загрузить хотбар"
+  },
+  "app.settings.game-options.setting.key-load-toolbar.label": {
+    "message": "Загрузить панель быстрого доступа",
+    "defaultMessage": "Загрузить панель быстрого доступа"
+  },
+  "app.settings.game-options.setting.key-of-zoom.label": {
+    "message": "Приближение (OptiFine Zoom)",
+    "defaultMessage": "Приближение (OptiFine Zoom)"
+  },
+  "app.settings.game-options.setting.key-perspective.label": {
+    "message": "Сменить перспективу",
+    "defaultMessage": "Сменить перспективу"
+  },
+  "app.settings.game-options.setting.key-pick-item.label": {
+    "message": "Выбор блока",
+    "defaultMessage": "Выбор блока"
+  },
+  "app.settings.game-options.setting.key-player-list.label": {
+    "message": "Список игроков",
+    "defaultMessage": "Список игроков"
+  },
+  "app.settings.game-options.setting.key-quick-actions.label": {
+    "message": "Быстрые действия",
+    "defaultMessage": "Быстрые действия"
+  },
+  "app.settings.game-options.setting.key-right.label": {
+    "message": "Вправо",
+    "defaultMessage": "Вправо"
+  },
+  "app.settings.game-options.setting.key-save-toolbar-activator.label": {
+    "message": "Сохранить хотбар",
+    "defaultMessage": "Сохранить хотбар"
+  },
+  "app.settings.game-options.setting.key-save-toolbar.label": {
+    "message": "Сохранить панель быстрого доступа",
+    "defaultMessage": "Сохранить панель быстрого доступа"
+  },
+  "app.settings.game-options.setting.key-screenshot.label": {
+    "message": "Снимок экрана",
+    "defaultMessage": "Снимок экрана"
+  },
+  "app.settings.game-options.setting.key-smooth-camera.label": {
+    "message": "Кинематографическая камера",
+    "defaultMessage": "Кинематографическая камера"
+  },
+  "app.settings.game-options.setting.key-sneak.label": {
+    "message": "Присесть",
+    "defaultMessage": "Присесть"
+  },
+  "app.settings.game-options.setting.key-social-interactions.label": {
+    "message": "Меню взаимодействий",
+    "defaultMessage": "Меню взаимодействий"
+  },
+  "app.settings.game-options.setting.key-spectator-hotbar.label": {
+    "message": "Хотбар наблюдателя",
+    "defaultMessage": "Хотбар наблюдателя"
+  },
+  "app.settings.game-options.setting.key-spectator-outlines.label": {
+    "message": "Контуры зрителя",
+    "defaultMessage": "Контуры зрителя"
+  },
+  "app.settings.game-options.setting.key-sprint.label": {
+    "message": "Спринт",
+    "defaultMessage": "Спринт"
+  },
+  "app.settings.game-options.setting.key-swap-offhand.label": {
+    "message": "Сменить руку",
+    "defaultMessage": "Сменить руку"
+  },
+  "app.settings.game-options.setting.key-toggle-gui.label": {
+    "message": "Скрыть/показать интерфейс (F1)",
+    "defaultMessage": "Скрыть/показать интерфейс (F1)"
+  },
+  "app.settings.game-options.setting.key-toggle-perspective.label": {
+    "message": "Смена перспективы (F5)",
+    "defaultMessage": "Смена перспективы (F5)"
+  },
+  "app.settings.game-options.setting.key-toggle-spectator-shader.label": {
+    "message": "Переключить шейдер зрителя",
+    "defaultMessage": "Переключить шейдер зрителя"
+  },
+  "app.settings.game-options.setting.key-use.label": {
+    "message": "Использовать / Поставить блок",
+    "defaultMessage": "Использовать / Поставить блок"
+  },
+  "app.settings.game-options.setting.language.label": {
+    "message": "Язык",
+    "defaultMessage": "Язык"
+  },
+  "app.settings.game-options.setting.left-pants-leg.description": {
+    "message": "Отображать верхний слой левой штанины.",
+    "defaultMessage": "Отображать верхний слой левой штанины."
+  },
+  "app.settings.game-options.setting.left-pants-leg.label": {
+    "message": "Левая штанина",
+    "defaultMessage": "Левая штанина"
+  },
+  "app.settings.game-options.setting.left-sleeve.description": {
+    "message": "Отображать верхний слой левого рукава.",
+    "defaultMessage": "Отображать верхний слой левого рукава."
+  },
+  "app.settings.game-options.setting.left-sleeve.label": {
+    "message": "Левый рукав",
+    "defaultMessage": "Левый рукав"
+  },
+  "app.settings.game-options.setting.legacy-framerate-limit.label": {
+    "message": "Ограничение частоты кадров",
+    "defaultMessage": "Ограничение частоты кадров"
+  },
+  "app.settings.game-options.setting.legacy-view-distance.label": {
+    "message": "Дальность прорисовки",
+    "defaultMessage": "Дальность прорисовки"
+  },
+  "app.settings.game-options.setting.line-spacing.label": {
+    "message": "Межстрочный интервал",
+    "defaultMessage": "Межстрочный интервал"
+  },
+  "app.settings.game-options.setting.mac-fullscreen-menu.label": {
+    "message": "Показывать меню macOS в полном экране",
+    "defaultMessage": "Показывать меню macOS в полном экране"
+  },
+  "app.settings.game-options.setting.main-hand.description": {
+    "message": "Ведущая рука персонажа.",
+    "defaultMessage": "Ведущая рука персонажа."
+  },
+  "app.settings.game-options.setting.main-hand.label": {
+    "message": "Ведущая рука",
+    "defaultMessage": "Ведущая рука"
+  },
+  "app.settings.game-options.setting.master-volume.label": {
+    "message": "Общая громкость",
+    "defaultMessage": "Общая громкость"
+  },
+  "app.settings.game-options.setting.max-fps.description": {
+    "message": "Ограничение частоты кадров.",
+    "defaultMessage": "Ограничение частоты кадров."
+  },
+  "app.settings.game-options.setting.max-fps.label": {
+    "message": "Частота кадров",
+    "defaultMessage": "Частота кадров"
+  },
+  "app.settings.game-options.setting.max-framerate.label": {
+    "message": "Максимальная частота кадров",
+    "defaultMessage": "Максимальная частота кадров"
+  },
+  "app.settings.game-options.setting.menu-background-blur.description": {
+    "message": "Степень размытия фона в меню игры.",
+    "defaultMessage": "Степень размытия фона в меню игры."
+  },
+  "app.settings.game-options.setting.menu-background-blur.label": {
+    "message": "Размытие фона меню",
+    "defaultMessage": "Размытие фона меню"
+  },
+  "app.settings.game-options.setting.mimap-levels.label": {
+    "message": "Уровни детализации (Mipmap)",
+    "defaultMessage": "Уровни детализации (Mipmap)"
+  },
+  "app.settings.game-options.setting.mipmap-levels.description": {
+    "message": "Уровень сглаживания текстур на расстоянии.",
+    "defaultMessage": "Уровень сглаживания текстур на расстоянии."
+  },
+  "app.settings.game-options.setting.mipmap-levels.label": {
+    "message": "Уровни детализации",
+    "defaultMessage": "Уровни детализации"
+  },
+  "app.settings.game-options.setting.monochrome-logo.label": {
+    "message": "Монохромный логотип Mojang",
+    "defaultMessage": "Монохромный логотип Mojang"
+  },
+  "app.settings.game-options.setting.mouse-sensitivity.description": {
+    "message": "Скорость поворота камеры при движении мыши.",
+    "defaultMessage": "Скорость поворота камеры при движении мыши."
+  },
+  "app.settings.game-options.setting.mouse-sensitivity.label": {
+    "message": "Чувствительность мыши",
+    "defaultMessage": "Чувствительность мыши"
+  },
+  "app.settings.game-options.setting.mouse-wheel-sensitivity.label": {
+    "message": "Чувствительность колеса мыши",
+    "defaultMessage": "Чувствительность колеса мыши"
+  },
+  "app.settings.game-options.setting.music-frequency.label": {
+    "message": "Частота музыки",
+    "defaultMessage": "Частота музыки"
+  },
+  "app.settings.game-options.setting.music-toast.description": {
+    "message": "Определяет, будут ли названия треков отображаться в меню паузы и во всплывающих уведомлениях.",
+    "defaultMessage": "Определяет, будут ли названия треков отображаться в меню паузы и во всплывающих уведомлениях."
+  },
+  "app.settings.game-options.setting.music-toast.label": {
+    "message": "Уведомления о музыке",
+    "defaultMessage": "Уведомления о музыке"
+  },
+  "app.settings.game-options.setting.music-volume.label": {
+    "message": "Музыка",
+    "defaultMessage": "Музыка"
+  },
+  "app.settings.game-options.setting.narrator-hotkey.description": {
+    "message": "Разрешить сочетание клавиш для переключения диктора (Ctrl + B).",
+    "defaultMessage": "Разрешить сочетание клавиш для переключения диктора (Ctrl + B)."
+  },
+  "app.settings.game-options.setting.narrator-hotkey.label": {
+    "message": "Горячая клавиша диктора",
+    "defaultMessage": "Горячая клавиша диктора"
+  },
+  "app.settings.game-options.setting.narrator.description": {
+    "message": "Озвучивание текста интерфейса и сообщений чата.",
+    "defaultMessage": "Озвучивание текста интерфейса и сообщений чата."
+  },
+  "app.settings.game-options.setting.narrator.label": {
+    "message": "Диктор",
+    "defaultMessage": "Диктор"
+  },
+  "app.settings.game-options.setting.neutral-volume.label": {
+    "message": "Дружелюбные существа",
+    "defaultMessage": "Дружелюбные существа"
+  },
+  "app.settings.game-options.setting.notification-display-time.label": {
+    "message": "Время показа уведомлений",
+    "defaultMessage": "Время показа уведомлений"
+  },
+  "app.settings.game-options.setting.notification-time.description": {
+    "message": "Длительность отображения всплывающих уведомлений.",
+    "defaultMessage": "Длительность отображения всплывающих уведомлений."
+  },
+  "app.settings.game-options.setting.notification-time.label": {
+    "message": "Время показа уведомлений",
+    "defaultMessage": "Время показа уведомлений"
+  },
+  "app.settings.game-options.setting.only-show-secure-chat.description": {
+    "message": "Отображать только криптографически подписанные сообщения чата.",
+    "defaultMessage": "Отображать только криптографически подписанные сообщения чата."
+  },
+  "app.settings.game-options.setting.only-show-secure-chat.label": {
+    "message": "Только безопасный чат",
+    "defaultMessage": "Только безопасный чат"
+  },
+  "app.settings.game-options.setting.operator-items-tab.description": {
+    "message": "Отображать вкладку предметов оператора в творческом режиме.",
+    "defaultMessage": "Отображать вкладку предметов оператора в творческом режиме."
+  },
+  "app.settings.game-options.setting.operator-items-tab.label": {
+    "message": "Предметы оператора",
+    "defaultMessage": "Предметы оператора"
+  },
+  "app.settings.game-options.setting.override-gui-scale.label": {
+    "message": "Переопределить масштаб интерфейса",
+    "defaultMessage": "Переопределить масштаб интерфейса"
+  },
+  "app.settings.game-options.setting.override-height.label": {
+    "message": "Высота окна",
+    "defaultMessage": "Высота окна"
+  },
+  "app.settings.game-options.setting.override-width.label": {
+    "message": "Ширина окна",
+    "defaultMessage": "Ширина окна"
+  },
+  "app.settings.game-options.setting.panorama-scroll-speed.description": {
+    "message": "Скорость вращения панорамы в главном меню.",
+    "defaultMessage": "Скорость вращения панорамы в главном меню."
+  },
+  "app.settings.game-options.setting.panorama-scroll-speed.label": {
+    "message": "Скорость панорамы",
+    "defaultMessage": "Скорость панорамы"
+  },
+  "app.settings.game-options.setting.panorama-speed.label": {
+    "message": "Скорость панорамы",
+    "defaultMessage": "Скорость панорамы"
+  },
+  "app.settings.game-options.setting.particles.label": {
+    "message": "Частицы",
+    "defaultMessage": "Частицы"
+  },
+  "app.settings.game-options.setting.pause-on-lost-focus.description": {
+    "message": "Автоматически ставить игру на паузу при переключении на другое окно.",
+    "defaultMessage": "Автоматически ставить игру на паузу при переключении на другое окно."
+  },
+  "app.settings.game-options.setting.pause-on-lost-focus.label": {
+    "message": "Пауза при потере фокуса",
+    "defaultMessage": "Пауза при потере фокуса"
+  },
+  "app.settings.game-options.setting.players-volume.label": {
+    "message": "Игроки",
+    "defaultMessage": "Игроки"
+  },
+  "app.settings.game-options.setting.prioritize-chunk-updates.label": {
+    "message": "Приоритет обновления чанков",
+    "defaultMessage": "Приоритет обновления чанков"
+  },
+  "app.settings.game-options.setting.quit-shortcuts.label": {
+    "message": "Сочетания клавиш для выхода",
+    "defaultMessage": "Сочетания клавиш для выхода"
+  },
+  "app.settings.game-options.setting.raw-mouse-input.description": {
+    "message": "Считывать движения мыши напрямую без системного сглаживания.",
+    "defaultMessage": "Считывать движения мыши напрямую без системного сглаживания."
+  },
+  "app.settings.game-options.setting.raw-mouse-input.label": {
+    "message": "Прямое подключение мыши",
+    "defaultMessage": "Прямое подключение мыши"
+  },
+  "app.settings.game-options.setting.realms-notifications.description": {
+    "message": "Показывать уведомления о приглашениях и новостях Realms.",
+    "defaultMessage": "Показывать уведомления о приглашениях и новостях Realms."
+  },
+  "app.settings.game-options.setting.realms-notifications.label": {
+    "message": "Уведомления Realms",
+    "defaultMessage": "Уведомления Realms"
+  },
+  "app.settings.game-options.setting.record-volume.label": {
+    "message": "Проигрыватель / Нотные блоки",
+    "defaultMessage": "Проигрыватель / Нотные блоки"
+  },
+  "app.settings.game-options.setting.reduce-motion.label": {
+    "message": "Уменьшение движения",
+    "defaultMessage": "Уменьшение движения"
+  },
+  "app.settings.game-options.setting.reduced-debug-info.label": {
+    "message": "Уменьшенная отладочная информация",
+    "defaultMessage": "Уменьшенная отладочная информация"
+  },
+  "app.settings.game-options.setting.render-clouds.description": {
+    "message": "Отображение облаков в небе.",
+    "defaultMessage": "Отображение облаков в небе."
+  },
+  "app.settings.game-options.setting.render-clouds.label": {
+    "message": "Облака",
+    "defaultMessage": "Облака"
+  },
+  "app.settings.game-options.setting.render-distance.description": {
+    "message": "Дальность видимости мира в чанках.",
+    "defaultMessage": "Дальность видимости мира в чанках."
+  },
+  "app.settings.game-options.setting.render-distance.label": {
+    "message": "Дальность прорисовки",
+    "defaultMessage": "Дальность прорисовки"
+  },
+  "app.settings.game-options.setting.right-pants-leg.description": {
+    "message": "Отображать верхний слой правой штанины.",
+    "defaultMessage": "Отображать верхний слой правой штанины."
+  },
+  "app.settings.game-options.setting.right-pants-leg.label": {
+    "message": "Правая штанина",
+    "defaultMessage": "Правая штанина"
+  },
+  "app.settings.game-options.setting.right-sleeve.description": {
+    "message": "Отображать верхний слой правого рукава.",
+    "defaultMessage": "Отображать верхний слой правого рукава."
+  },
+  "app.settings.game-options.setting.right-sleeve.label": {
+    "message": "Правый рукав",
+    "defaultMessage": "Правый рукав"
+  },
+  "app.settings.game-options.setting.rotate-with-minecart.label": {
+    "message": "Вращение камеры с вагонеткой",
+    "defaultMessage": "Вращение камеры с вагонеткой"
+  },
+  "app.settings.game-options.setting.save-chat-drafts.label": {
+    "message": "Сохранять черновики чата",
+    "defaultMessage": "Сохранять черновики чата"
+  },
+  "app.settings.game-options.setting.screen-effects.label": {
+    "message": "Эффекты экрана",
+    "defaultMessage": "Эффекты экрана"
+  },
+  "app.settings.game-options.setting.secure-chat-only.label": {
+    "message": "Только безопасный чат",
+    "defaultMessage": "Только безопасный чат"
+  },
+  "app.settings.game-options.setting.sensitivity.label": {
+    "message": "Чувствительность мыши",
+    "defaultMessage": "Чувствительность мыши"
+  },
+  "app.settings.game-options.setting.server-textures.description": {
+    "message": "Разрешить серверам предлагать собственные текстурпаки.",
+    "defaultMessage": "Разрешить серверам предлагать собственные текстурпаки."
+  },
+  "app.settings.game-options.setting.server-textures.label": {
+    "message": "Текстуры сервера",
+    "defaultMessage": "Текстуры сервера"
+  },
+  "app.settings.game-options.setting.share-presence.label": {
+    "message": "Делиться статусом присутствия",
+    "defaultMessage": "Делиться статусом присутствия"
+  },
+  "app.settings.game-options.setting.show-autosave-indicator.description": {
+    "message": "Отображать значок при автоматическом сохранении мира.",
+    "defaultMessage": "Отображать значок при автоматическом сохранении мира."
+  },
+  "app.settings.game-options.setting.show-autosave-indicator.label": {
+    "message": "Индикатор автосохранения",
+    "defaultMessage": "Индикатор автосохранения"
+  },
+  "app.settings.game-options.setting.show-subtitles.description": {
+    "message": "Отображать текстовые субтитры для окружающих звуков.",
+    "defaultMessage": "Отображать текстовые субтитры для окружающих звуков."
+  },
+  "app.settings.game-options.setting.show-subtitles.label": {
+    "message": "Субтитры",
+    "defaultMessage": "Субтитры"
+  },
+  "app.settings.game-options.setting.simulation-distance.description": {
+    "message": "Расстояние от игрока, на котором обрабатываются мобы, редстоун и рост растений.",
+    "defaultMessage": "Расстояние от игрока, на котором обрабатываются мобы, редстоун и рост растений."
+  },
+  "app.settings.game-options.setting.simulation-distance.label": {
+    "message": "Дальность симуляции",
+    "defaultMessage": "Дальность симуляции"
+  },
+  "app.settings.game-options.setting.smooth-lighting.description": {
+    "message": "Плавные тени и переходы освещения между блоками.",
+    "defaultMessage": "Плавные тени и переходы освещения между блоками."
+  },
+  "app.settings.game-options.setting.smooth-lighting.label": {
+    "message": "Мягкое освещение",
+    "defaultMessage": "Мягкое освещение"
+  },
+  "app.settings.game-options.setting.snooper.label": {
+    "message": "Сбор данных (Snooper)",
+    "defaultMessage": "Сбор данных (Snooper)"
+  },
+  "app.settings.game-options.setting.sound-device.label": {
+    "message": "Устройство вывода звука",
+    "defaultMessage": "Устройство вывода звука"
+  },
+  "app.settings.game-options.setting.sprint-window.label": {
+    "message": "Окно двойного нажатия для спринта",
+    "defaultMessage": "Окно двойного нажатия для спринта"
+  },
+  "app.settings.game-options.setting.subtitles.description": {
+    "message": "Отображать субтитры для звуков в игре.",
+    "defaultMessage": "Отображать субтитры для звуков в игре."
+  },
+  "app.settings.game-options.setting.subtitles.label": {
+    "message": "Субтитры",
+    "defaultMessage": "Субтитры"
+  },
+  "app.settings.game-options.setting.text-background-opacity.label": {
+    "message": "Непрозрачность фона текста",
+    "defaultMessage": "Непрозрачность фона текста"
+  },
+  "app.settings.game-options.setting.texture-filtering.label": {
+    "message": "Фильтрация текстур",
+    "defaultMessage": "Фильтрация текстур"
+  },
+  "app.settings.game-options.setting.toggle-attack.label": {
+    "message": "Режим атаки (переключение)",
+    "defaultMessage": "Режим атаки (переключение)"
+  },
+  "app.settings.game-options.setting.toggle-crouch.description": {
+    "message": "Переключать приседание нажатием вместо удерживания клавиши.",
+    "defaultMessage": "Переключать приседание нажатием вместо удерживания клавиши."
+  },
+  "app.settings.game-options.setting.toggle-crouch.label": {
+    "message": "Режим приседания (переключение)",
+    "defaultMessage": "Режим приседания (переключение)"
+  },
+  "app.settings.game-options.setting.toggle-sprint.description": {
+    "message": "Переключать спринт нажатием вместо удерживания клавиши.",
+    "defaultMessage": "Переключать спринт нажатием вместо удерживания клавиши."
+  },
+  "app.settings.game-options.setting.toggle-sprint.label": {
+    "message": "Режим спринта (переключение)",
+    "defaultMessage": "Режим спринта (переключение)"
+  },
+  "app.settings.game-options.setting.toggle-use.label": {
+    "message": "Режим использования (переключение)",
+    "defaultMessage": "Режим использования (переключение)"
+  },
+  "app.settings.game-options.setting.touchscreen.label": {
+    "message": "Сенсорный режим",
+    "defaultMessage": "Сенсорный режим"
+  },
+  "app.settings.game-options.setting.ui-volume.label": {
+    "message": "Интерфейс",
+    "defaultMessage": "Интерфейс"
+  },
+  "app.settings.game-options.setting.unfocused-chat-height.description": {
+    "message": "Высота чата в неактивном состоянии.",
+    "defaultMessage": "Высота чата в неактивном состоянии."
+  },
+  "app.settings.game-options.setting.unfocused-chat-height.label": {
+    "message": "Высота скрытого чата",
+    "defaultMessage": "Высота скрытого чата"
+  },
+  "app.settings.game-options.setting.use-native-transport.label": {
+    "message": "Использовать нативный сетевой стек",
+    "defaultMessage": "Использовать нативный сетевой стек"
+  },
+  "app.settings.game-options.setting.use-vbo.label": {
+    "message": "Использовать VBO",
+    "defaultMessage": "Использовать VBO"
+  },
+  "app.settings.game-options.setting.view-bobbing.description": {
+    "message": "Покачивание камеры при ходьбе персонажа.",
+    "defaultMessage": "Покачивание камеры при ходьбе персонажа."
+  },
+  "app.settings.game-options.setting.view-bobbing.label": {
+    "message": "Покачивание ведущей руки",
+    "defaultMessage": "Покачивание ведущей руки"
+  },
+  "app.settings.game-options.setting.vignette.label": {
+    "message": "Виньетирование",
+    "defaultMessage": "Виньетирование"
+  },
+  "app.settings.game-options.setting.voice-and-speech-volume.label": {
+    "message": "Голос и речь",
+    "defaultMessage": "Голос и речь"
+  },
+  "app.settings.game-options.setting.voice-volume.label": {
+    "message": "Голос и речь",
+    "defaultMessage": "Голос и речь"
+  },
+  "app.settings.game-options.setting.vsync.description": {
+    "message": "Ограничивает частоту кадров частотой монитора для устранения разрывов.",
+    "defaultMessage": "Ограничивает частоту кадров частотой монитора для устранения разрывов."
+  },
+  "app.settings.game-options.setting.vsync.label": {
+    "message": "Вертикальная синхронизация",
+    "defaultMessage": "Вертикальная синхронизация"
+  },
+  "app.settings.game-options.setting.weather-radius.label": {
+    "message": "Радиус осадков",
+    "defaultMessage": "Радиус осадков"
+  },
+  "app.settings.game-options.setting.weather-volume.label": {
+    "message": "Погода",
+    "defaultMessage": "Погода"
+  },
+  "app.settings.game-options.validation.changed-since-opened": {
+    "message": "Этот параметр был изменён в другом месте. Проверьте его и повторите.",
+    "defaultMessage": "Этот параметр был изменён в другом месте. Проверьте его и повторите."
+  },
+  "app.settings.game-options.validation.invalid-value": {
+    "message": "Выберите допустимое значение.",
+    "defaultMessage": "Выберите допустимое значение."
+  },
+  "app.settings.game-options.validation.missing-value": {
+    "message": "Сначала выберите значение.",
+    "defaultMessage": "Сначала выберите значение."
+  },
+  "app.settings.game-options.validation.no-compatible-instances": {
+    "message": "Некоторые из ваших сборок не поддерживают этот параметр",
+    "defaultMessage": "Некоторые из ваших сборок не поддерживают этот параметр"
+  },
+  "app.settings.import.description": {
+    "message": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки.",
+    "defaultMessage": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
+  },
+  "app.settings.import.title": {
+    "message": "Импорт сборок",
+    "defaultMessage": "Импорт сборок"
+  },
   "app.settings.java-installations.location.title": {
     "message": "Расположение Java {version}",
     "defaultMessage": "Расположение Java {version}"
+  },
+  "app.settings.no-updates-tooltip": {
+    "defaultMessage": "У вас установлена последняя версия",
+    "message": "У вас установлена последняя версия"
   },
   "app.settings.operating-system.macos": {
     "message": "macOS",
@@ -2148,27 +4246,78 @@
     "message": "Лимит одновременных записей",
     "defaultMessage": "Лимит одновременных записей"
   },
+  "app.settings.sidebar.label.advanced": {
+    "message": "Продвинутые",
+    "defaultMessage": "Продвинутые"
+  },
   "app.settings.sidebar.label.instances": {
     "message": "Сборки",
     "defaultMessage": "Сборки"
   },
+  "app.settings.sidebar.label.rubirinth": {
+    "defaultMessage": "Rubirinth",
+    "message": "Rubirinth"
+  },
   "app.settings.synced-options.choose-sync-source.command-history-description": {
     "message": "Выберите сборку, история команд которой станет общей копией."
+  },
+  "app.settings.synced-options.choose-sync-source.command-history-title": {
+    "message": "Выберите источник истории команд",
+    "defaultMessage": "Выберите источник истории команд"
   },
   "app.settings.synced-options.choose-sync-source.creative-hotbars-description": {
     "message": "Выберите сборку, сохраненные панели быстрого доступа которой станут общей копией."
   },
+  "app.settings.synced-options.choose-sync-source.creative-hotbars-title": {
+    "message": "Выберите источник панелей творчества",
+    "defaultMessage": "Выберите источник панелей творчества"
+  },
+  "app.settings.synced-options.choose-sync-source.data-packs-title": {
+    "message": "Выберите источник датапаков",
+    "defaultMessage": "Выберите источник датапаков"
+  },
+  "app.settings.synced-options.choose-sync-source.game-settings-description": {
+    "message": "Выберите сборку, из которой будут скопированы настройки игры. Эти параметры используются для начальной синхронизации, после чего их можно изменять из любой сборки.",
+    "defaultMessage": "Выберите сборку, из которой будут скопированы настройки игры. Эти параметры используются для начальной синхронизации, после чего их можно изменять из любой сборки."
+  },
+  "app.settings.synced-options.choose-sync-source.game-settings-title": {
+    "message": "Выберите источник настроек игры",
+    "defaultMessage": "Выберите источник настроек игры"
+  },
+  "app.settings.synced-options.choose-sync-source.ineligible": {
+    "message": "Эту сборку нельзя выбрать в качестве источника синхронизации",
+    "defaultMessage": "Эту сборку нельзя выбрать в качестве источника синхронизации"
+  },
+  "app.settings.synced-options.choose-sync-source.load-error": {
+    "message": "Не удалось загрузить источники синхронизации. Попробуйте снова.",
+    "defaultMessage": "Не удалось загрузить источники синхронизации. Попробуйте снова."
+  },
   "app.settings.synced-options.choose-sync-source.multiplayer-servers-description": {
     "message": "Выберите сборку, список серверов которой станет общей копией."
   },
+  "app.settings.synced-options.choose-sync-source.multiplayer-servers-title": {
+    "message": "Выберите источник сетевых серверов",
+    "defaultMessage": "Выберите источник сетевых серверов"
+  },
   "app.settings.synced-options.choose-sync-source.no-instances-found": {
     "message": "Сборки не найдены"
+  },
+  "app.settings.synced-options.choose-sync-source.resource-packs-title": {
+    "message": "Выберите источник ресурспаков",
+    "defaultMessage": "Выберите источник ресурспаков"
+  },
+  "app.settings.synced-options.choose-sync-source.retry": {
+    "message": "Повторить",
+    "defaultMessage": "Повторить"
   },
   "app.settings.synced-options.choose-sync-source.search-placeholder": {
     "message": "Поиск сборки"
   },
   "app.settings.synced-options.choose-sync-source.sync": {
     "message": "Синхронизировать"
+  },
+  "app.settings.synced-options.choose-sync-source.title": {
+    "message": "Выберите источник синхронизации"
   },
   "app.settings.synced-options.command-history": {
     "message": "Синхронизация истории команд"
@@ -2185,11 +4334,151 @@
   "app.settings.synced-options.creative-hotbars.description": {
     "message": "Использовать сохраненные панели быстрого доступа во всех ваших сборках."
   },
+  "app.settings.synced-options.data-packs": {
+    "message": "Синхронизация датапаков",
+    "defaultMessage": "Синхронизация датапаков"
+  },
+  "app.settings.synced-options.data-packs.description": {
+    "message": "Использовать единые датапаки во всех ваших сборках.",
+    "defaultMessage": "Использовать единые датапаки во всех ваших сборках."
+  },
+  "app.settings.synced-options.data-packs.none-synced-yet": {
+    "message": "Вы ещё не синхронизировали датапаки",
+    "defaultMessage": "Вы ещё не синхронизировали датапаки"
+  },
+  "app.settings.synced-options.edit.no-instances": {
+    "message": "Добавьте сборку перед редактированием синхронизированных данных.",
+    "defaultMessage": "Добавьте сборку перед редактированием синхронизированных данных."
+  },
+  "app.settings.synced-options.edit.no-synced-data": {
+    "message": "Выберите источник синхронизации перед редактированием этого параметра.",
+    "defaultMessage": "Выберите источник синхронизации перед редактированием этого параметра."
+  },
+  "app.settings.synced-options.game-settings": {
+    "message": "Синхронизация настроек игры",
+    "defaultMessage": "Синхронизация настроек игры"
+  },
+  "app.settings.synced-options.game-settings.button": {
+    "message": "Редактировать настройки игры",
+    "defaultMessage": "Редактировать настройки игры"
+  },
+  "app.settings.synced-options.game-settings.conflict-text": {
+    "message": "Загружены актуальные настройки. Проверьте изменения и сохраните снова.",
+    "defaultMessage": "Загружены актуальные настройки. Проверьте изменения и сохраните снова."
+  },
+  "app.settings.synced-options.game-settings.conflict-title": {
+    "message": "Эти настройки были изменены в другом месте",
+    "defaultMessage": "Эти настройки были изменены в другом месте"
+  },
+  "app.settings.synced-options.game-settings.custom-empty": {
+    "message": "Параметры, добавленные модами, появятся здесь после того, как Rubirinth обнаружит их в одной из ваших сборок.",
+    "defaultMessage": "Параметры, добавленные модами, появятся здесь после того, как Rubirinth обнаружит их в одной из ваших сборок."
+  },
+  "app.settings.synced-options.game-settings.description": {
+    "message": "Использовать единые настройки игры во всех ваших сборках.",
+    "defaultMessage": "Использовать единые настройки игры во всех ваших сборках."
+  },
+  "app.settings.synced-options.game-settings.disable-all": {
+    "message": "Отключить синхронизацию всех",
+    "defaultMessage": "Отключить синхронизацию всех"
+  },
+  "app.settings.synced-options.game-settings.disabled-tooltip": {
+    "message": "Включите синхронизацию настроек игры перед выбором отдельных параметров.",
+    "defaultMessage": "Включите синхронизацию настроек игры перед выбором отдельных параметров."
+  },
+  "app.settings.synced-options.game-settings.empty": {
+    "message": "Нет настроек, соответствующих поиску или фильтру.",
+    "defaultMessage": "Нет настроек, соответствующих поиску или фильтру."
+  },
+  "app.settings.synced-options.game-settings.enable-all": {
+    "message": "Синхронизировать все",
+    "defaultMessage": "Синхронизировать все"
+  },
+  "app.settings.synced-options.game-settings.load-failed": {
+    "message": "Не удалось загрузить настройки игры.",
+    "defaultMessage": "Не удалось загрузить настройки игры."
+  },
+  "app.settings.synced-options.game-settings.loading": {
+    "message": "Загрузка настроек...",
+    "defaultMessage": "Загрузка настроек..."
+  },
+  "app.settings.synced-options.game-settings.no-options-to-edit": {
+    "message": "Пока нет параметров для редактирования",
+    "defaultMessage": "Пока нет параметров для редактирования"
+  },
+  "app.settings.synced-options.game-settings.not-being-synced": {
+    "message": "Не синхронизируется",
+    "defaultMessage": "Не синхронизируется"
+  },
+  "app.settings.synced-options.game-settings.retry": {
+    "message": "Повторить",
+    "defaultMessage": "Повторить"
+  },
+  "app.settings.synced-options.game-settings.save": {
+    "message": "Сохранить настройки",
+    "defaultMessage": "Сохранить настройки"
+  },
+  "app.settings.synced-options.game-settings.search": {
+    "message": "Поиск настроек...",
+    "defaultMessage": "Поиск настроек..."
+  },
+  "app.settings.synced-options.game-settings.sync-description": {
+    "message": "Синхронизированные параметры применяются ко всем сборкам и переопределяют значения из модпаков.",
+    "defaultMessage": "Синхронизированные параметры применяются ко всем сборкам и переопределяют значения из модпаков."
+  },
+  "app.settings.synced-options.game-settings.sync-setting": {
+    "message": "Синхронизировать {setting} между сборками",
+    "defaultMessage": "Синхронизировать {setting} между сборками"
+  },
+  "app.settings.synced-options.game-settings.sync-title": {
+    "message": "Синхронизация настроек игры",
+    "defaultMessage": "Синхронизация настроек игры"
+  },
+  "app.settings.synced-options.game-settings.synced-across-instances": {
+    "message": "Синхронизировано между сборками",
+    "defaultMessage": "Синхронизировано между сборками"
+  },
+  "app.settings.synced-options.game-settings.title": {
+    "message": "Настройки игры",
+    "defaultMessage": "Настройки игры"
+  },
+  "app.settings.synced-options.game-settings.unsaved-changes": {
+    "message": "У вас есть несохранённые изменения.",
+    "defaultMessage": "У вас есть несохранённые изменения."
+  },
+  "app.settings.synced-options.game-settings.unsync-setting": {
+    "message": "Остановить синхронизацию {setting} между сборками",
+    "defaultMessage": "Остановить синхронизацию {setting} между сборками"
+  },
+  "app.settings.synced-options.game-settings.value-mixed": {
+    "message": "Различается в сборках",
+    "defaultMessage": "Различается в сборках"
+  },
+  "app.settings.synced-options.game-settings.value-off": {
+    "message": "Выкл",
+    "defaultMessage": "Выкл"
+  },
+  "app.settings.synced-options.game-settings.value-on": {
+    "message": "Вкл",
+    "defaultMessage": "Вкл"
+  },
+  "app.settings.synced-options.game-settings.value-unset": {
+    "message": "Выберите значение",
+    "defaultMessage": "Выберите значение"
+  },
   "app.settings.synced-options.multiplayer-servers": {
     "message": "Синхронизация серверов"
   },
   "app.settings.synced-options.multiplayer-servers.address": {
     "message": "Адрес сервера"
+  },
+  "app.settings.synced-options.multiplayer-servers.copy-address": {
+    "message": "Скопировать адрес",
+    "defaultMessage": "Скопировать адрес"
+  },
+  "app.settings.synced-options.multiplayer-servers.count": {
+    "message": "{count, plural, one {# сервер} few {# сервера} other {# серверов}}",
+    "defaultMessage": "{count, plural, one {# сервер} few {# сервера} other {# серверов}}"
   },
   "app.settings.synced-options.multiplayer-servers.description": {
     "message": "Использовать единый список сетевых серверов во всех ваших сборках."
@@ -2200,11 +4489,67 @@
   "app.settings.synced-options.multiplayer-servers.empty": {
     "message": "Синхронизированных серверов нет."
   },
+  "app.settings.synced-options.multiplayer-servers.filter-offline": {
+    "message": "Не в сети",
+    "defaultMessage": "Не в сети"
+  },
+  "app.settings.synced-options.multiplayer-servers.filter-online": {
+    "message": "В сети",
+    "defaultMessage": "В сети"
+  },
+  "app.settings.synced-options.multiplayer-servers.more-options": {
+    "message": "Дополнительные параметры сервера",
+    "defaultMessage": "Дополнительные параметры сервера"
+  },
   "app.settings.synced-options.multiplayer-servers.name": {
     "message": "Название сервера"
   },
+  "app.settings.synced-options.multiplayer-servers.no-results": {
+    "message": "Нет серверов, соответствующих вашему поиску или фильтрам.",
+    "defaultMessage": "Нет серверов, соответствующих вашему поиску или фильтрам."
+  },
   "app.settings.synced-options.multiplayer-servers.none-synced-yet": {
     "message": "Серверы еще не синхронизированы"
+  },
+  "app.settings.synced-options.multiplayer-servers.players-online": {
+    "message": "{count, number} онлайн",
+    "defaultMessage": "{count, number} онлайн"
+  },
+  "app.settings.synced-options.multiplayer-servers.search": {
+    "message": "Поиск среди {count, number} {count, plural, one {сервера} few {серверов} other {серверов}}...",
+    "defaultMessage": "Поиск среди {count, number} {count, plural, one {сервера} few {серверов} other {серверов}}..."
+  },
+  "app.settings.synced-options.multiplayer-servers.status": {
+    "message": "Статус",
+    "defaultMessage": "Статус"
+  },
+  "app.settings.synced-options.packs.disabled": {
+    "message": "Включите синхронизацию перед редактированием общих паков.",
+    "defaultMessage": "Включите синхронизацию перед редактированием общих паков."
+  },
+  "app.settings.synced-options.resource-packs": {
+    "message": "Синхронизация ресурспаков",
+    "defaultMessage": "Синхронизация ресурспаков"
+  },
+  "app.settings.synced-options.resource-packs.description": {
+    "message": "Использовать единые ресурспаки во всех ваших сборках.",
+    "defaultMessage": "Использовать единые ресурспаки во всех ваших сборках."
+  },
+  "app.settings.synced-options.resource-packs.none-synced-yet": {
+    "message": "Вы ещё не синхронизировали ресурспаки",
+    "defaultMessage": "Вы ещё не синхронизировали ресурспаки"
+  },
+  "app.settings.synced-options.screenshots": {
+    "message": "Скриншоты",
+    "defaultMessage": "Скриншоты"
+  },
+  "app.settings.synced-options.screenshots.description": {
+    "message": "Просмотр скриншотов из всех сборок в одном месте.",
+    "defaultMessage": "Просмотр скриншотов из всех сборок в одном месте."
+  },
+  "app.settings.tabs.advanced": {
+    "message": "Продвинутые",
+    "defaultMessage": "Продвинутые"
   },
   "app.settings.tabs.appearance": {
     "message": "Внешний вид",
@@ -2213,6 +4558,22 @@
   "app.settings.tabs.behavior": {
     "message": "Поведение",
     "defaultMessage": "Поведение"
+  },
+  "app.settings.tabs.default-instance-options": {
+    "message": "Предустановки игры",
+    "defaultMessage": "Предустановки игры"
+  },
+  "app.settings.tabs.external-auth-libraries": {
+    "defaultMessage": "Библиотеки авторизации",
+    "message": "Библиотеки авторизации"
+  },
+  "app.settings.tabs.features": {
+    "message": "Функции",
+    "defaultMessage": "Функции"
+  },
+  "app.settings.tabs.import": {
+    "message": "Импорт",
+    "defaultMessage": "Импорт"
   },
   "app.settings.tabs.java-installations": {
     "message": "Расположение Java",
@@ -2233,6 +4594,74 @@
   "app.settings.tabs.synced-options": {
     "message": "Синхронизация настроек",
     "defaultMessage": "Синхронизация настроек"
+  },
+  "app.settings.tabs.updates": {
+    "defaultMessage": "Обновления",
+    "message": "Обновления"
+  },
+  "app.settings.update-available-button": {
+    "message": "Обновить до {version}",
+    "defaultMessage": "Обновить до {version}"
+  },
+  "app.settings.update-available-tooltip": {
+    "defaultMessage": "Доступно обновление: {version}",
+    "message": "Доступно обновление: {version}"
+  },
+  "app.settings.updates.changelog": {
+    "defaultMessage": "Что нового в этой версии:",
+    "message": "Что нового в этой версии:"
+  },
+  "app.settings.updates.check-updates": {
+    "defaultMessage": "Проверить обновления",
+    "message": "Проверить обновления"
+  },
+  "app.settings.updates.checking": {
+    "defaultMessage": "Проверка...",
+    "message": "Проверка..."
+  },
+  "app.settings.updates.current-version": {
+    "defaultMessage": "Текущая версия",
+    "message": "Текущая версия"
+  },
+  "app.settings.updates.description": {
+    "defaultMessage": "Проверка наличия новых версий и журнал изменений Rubirinth App.",
+    "message": "Проверка наличия новых версий и журнал изменений Rubirinth App."
+  },
+  "app.settings.updates.downloading": {
+    "defaultMessage": "Скачивание...",
+    "message": "Скачивание..."
+  },
+  "app.settings.updates.install-now": {
+    "defaultMessage": "Обновить сейчас",
+    "message": "Обновить сейчас"
+  },
+  "app.settings.updates.latest-version": {
+    "defaultMessage": "Новая версия",
+    "message": "Новая версия"
+  },
+  "app.settings.updates.title": {
+    "defaultMessage": "Обновления",
+    "message": "Обновления"
+  },
+  "app.settings.updates.up-to-date": {
+    "defaultMessage": "У вас установлена последняя версия",
+    "message": "У вас установлена последняя версия"
+  },
+  "app.settings.updates.up-to-date-desc": {
+    "defaultMessage": "Rubirinth App {version} — все компоненты актуальны.",
+    "message": "Rubirinth App {version} — все компоненты актуальны."
+  },
+  "app.settings.updates.update-available-desc": {
+    "defaultMessage": "Версия {version} готова к установке. Рекомендуется обновиться для получения последних улучшений и исправлений.",
+    "message": "Версия {version} готова к установке. Рекомендуется обновиться для получения последних улучшений и исправлений."
+  },
+  "app.settings.updates.update-available-title": {
+    "defaultMessage": "Доступна новая версия Rubirinth!",
+    "message": "Доступна новая версия Rubirinth!"
+  },
+  "app.settings.updates.view-on-github": {
+    "defaultMessage": "Открыть релиз на GitHub",
+    "message": "Открыть релиз на GitHub"
   },
   "app.sidebar.playing-as": {
     "message": "Сейчас играет",
@@ -2474,6 +4903,178 @@
     "message": "Привет, пользователь Rubirinth!",
     "defaultMessage": "Привет, пользователь Rubirinth!"
   },
+  "app.sync-instances-update.badge": {
+    "message": "Новинка этого обновления",
+    "defaultMessage": "Новинка этого обновления"
+  },
+  "app.sync-instances-update.choose-source.all": {
+    "message": "Выберите сборку, из которой будут скопированы настройки игры, ресурспаки, история команд, панели творчества и сетевые серверы. Эти параметры используются для начальной синхронизации, после чего их можно изменять из любой сборки.",
+    "defaultMessage": "Выберите сборку, из которой будут скопированы настройки игры, ресурспаки, история команд, панели творчества и сетевые серверы. Эти параметры используются для начальной синхронизации, после чего их можно изменять из любой сборки."
+  },
+  "app.sync-instances-update.choose-source.all-title": {
+    "message": "Выберите источник синхронизации",
+    "defaultMessage": "Выберите источник синхронизации"
+  },
+  "app.sync-instances-update.choose-source.data-packs": {
+    "message": "Выберите сборку, из которой будут скопированы датапаки. Эти паки используются для начальной синхронизации, после чего их можно изменять из любой сборки.",
+    "defaultMessage": "Выберите сборку, из которой будут скопированы датапаки. Эти паки используются для начальной синхронизации, после чего их можно изменять из любой сборки."
+  },
+  "app.sync-instances-update.choose-source.resource-packs": {
+    "message": "Выберите сборку, из которой будут скопированы ресурспаки. Эти паки используются для начальной синхронизации, после чего их можно изменять из любой сборки.",
+    "defaultMessage": "Выберите сборку, из которой будут скопированы ресурспаки. Эти паки используются для начальной синхронизации, после чего их можно изменять из любой сборки."
+  },
+  "app.sync-instances-update.creative-hotbars": {
+    "message": "Синхронизация панелей творчества",
+    "defaultMessage": "Синхронизация панелей творчества"
+  },
+  "app.sync-instances-update.description": {
+    "message": "Теперь вы можете синхронизировать параметры игры, серверы, ресурспаки и другое между вашими сборками!",
+    "defaultMessage": "Теперь вы можете синхронизировать параметры игры, серверы, ресурспаки и другое между вашими сборками!"
+  },
+  "app.sync-instances-update.load-error": {
+    "message": "Не удалось загрузить настройки синхронизации. Попробуйте снова.",
+    "defaultMessage": "Не удалось загрузить настройки синхронизации. Попробуйте снова."
+  },
+  "app.sync-instances-update.manage-later": {
+    "message": "Вы можете включить синхронизацию сейчас и управлять ей позже в настройках приложения.",
+    "defaultMessage": "Вы можете включить синхронизацию сейчас и управлять ей позже в настройках приложения."
+  },
+  "app.sync-instances-update.notification.description": {
+    "message": "Держите настройки игры, серверы, ресурспаки и другое синхронизированными во всех сборках.",
+    "defaultMessage": "Держите настройки игры, серверы, ресурспаки и другое синхронизированными во всех сборках."
+  },
+  "app.sync-instances-update.notification.dismiss": {
+    "message": "Закрыть",
+    "defaultMessage": "Закрыть"
+  },
+  "app.sync-instances-update.notification.title": {
+    "message": "Синхронизируйте ваши сборки",
+    "defaultMessage": "Синхронизируйте ваши сборки"
+  },
+  "app.sync-instances-update.notification.view-update": {
+    "message": "Посмотреть",
+    "defaultMessage": "Посмотреть"
+  },
+  "app.sync-instances-update.retry": {
+    "message": "Попробовать снова",
+    "defaultMessage": "Попробовать снова"
+  },
+  "app.sync-instances-update.skip": {
+    "message": "Пропустить",
+    "defaultMessage": "Пропустить"
+  },
+  "app.sync-instances-update.sync-all": {
+    "message": "Синхронизировать всё",
+    "defaultMessage": "Синхронизировать всё"
+  },
+  "app.sync-instances-update.title": {
+    "message": "Синхронизация ваших сборок",
+    "defaultMessage": "Синхронизация ваших сборок"
+  },
+  "app.synced-content.change.disable-description": {
+    "message": "Отключите его во всех синхронизированных сборках или только в этой. Отключение только здесь создаст переопределение для этой сборки.",
+    "defaultMessage": "Отключите его во всех синхронизированных сборках или только в этой. Отключение только здесь создаст переопределение для этой сборки."
+  },
+  "app.synced-content.change.disable-everywhere": {
+    "message": "Отключить везде",
+    "defaultMessage": "Отключить везде"
+  },
+  "app.synced-content.change.disable-everywhere-description": {
+    "message": "Отключить этот контент во всех синхронизированных сборках.",
+    "defaultMessage": "Отключить этот контент во всех синхронизированных сборках."
+  },
+  "app.synced-content.change.disable-here": {
+    "message": "Отключить здесь",
+    "defaultMessage": "Отключить здесь"
+  },
+  "app.synced-content.change.disable-title": {
+    "message": "Отключить контент?",
+    "defaultMessage": "Отключить контент?"
+  },
+  "app.synced-content.change.enable-description": {
+    "message": "Включите его во всех синхронизированных сборках или только в этой. Включение только здесь создаст переопределение для этой сборки.",
+    "defaultMessage": "Включите его во всех синхронизированных сборках или только в этой. Включение только здесь создаст переопределение для этой сборки."
+  },
+  "app.synced-content.change.enable-everywhere": {
+    "message": "Включить везде",
+    "defaultMessage": "Включить везде"
+  },
+  "app.synced-content.change.enable-everywhere-description": {
+    "message": "Включить этот контент во всех синхронизированных сборках.",
+    "defaultMessage": "Включить этот контент во всех синхронизированных сборках."
+  },
+  "app.synced-content.change.enable-here": {
+    "message": "Включить здесь",
+    "defaultMessage": "Включить здесь"
+  },
+  "app.synced-content.change.enable-title": {
+    "message": "Включить контент?",
+    "defaultMessage": "Включить контент?"
+  },
+  "app.synced-content.delete.delete-everywhere": {
+    "message": "Удалить везде",
+    "defaultMessage": "Удалить везде"
+  },
+  "app.synced-content.delete.delete-here": {
+    "message": "Удалить здесь",
+    "defaultMessage": "Удалить здесь"
+  },
+  "app.synced-content.delete.description": {
+    "message": "Удаление этого контента удалит его из всех ваших сборок",
+    "defaultMessage": "Удаление этого контента удалит его из всех ваших сборок"
+  },
+  "app.synced-content.delete.mixed": {
+    "message": "Выбранный несинхронизированный контент будет удалён только из этой сборки.",
+    "defaultMessage": "Выбранный несинхронизированный контент будет удалён только из этой сборки."
+  },
+  "app.synced-content.delete.override-description": {
+    "message": "Вы можете удалить его только из этой сборки или из всех синхронизированных сборок. Удаление только из этой сборки включит переопределение.",
+    "defaultMessage": "Вы можете удалить его только из этой сборки или из всех синхронизированных сборок. Удаление только из этой сборки включит переопределение."
+  },
+  "app.synced-content.delete.resource-pack-description": {
+    "message": "Вы можете удалить {count, plural, one {его} few {их} other {их}} только из этой сборки или из всех синхронизированных сборок.",
+    "defaultMessage": "Вы можете удалить {count, plural, one {его} few {их} other {их}} только из этой сборки или из всех синхронизированных сборок."
+  },
+  "app.synced-content.delete.resource-pack-header": {
+    "message": "{count, plural, one {Этот ресурспак синхронизирован} few {Эти ресурспаки синхронизированы} other {Эти ресурспаки синхронизированы}}",
+    "defaultMessage": "{count, plural, one {Этот ресурспак синхронизирован} few {Эти ресурспаки синхронизированы} other {Эти ресурспаки синхронизированы}}"
+  },
+  "app.synced-content.desync.description": {
+    "message": "Эта сборка сохранит собственную копию. Хотите оставить этот контент синхронизированным в остальных сборках или удалить его оттуда?",
+    "defaultMessage": "Эта сборка сохранит собственную копию. Хотите оставить этот контент синхронизированным в остальных сборках или удалить его оттуда?"
+  },
+  "app.synced-content.desync.keep": {
+    "message": "Оставить",
+    "defaultMessage": "Оставить"
+  },
+  "app.synced-content.desync.remove": {
+    "message": "Удалить",
+    "defaultMessage": "Удалить"
+  },
+  "app.synced-content.desync.title": {
+    "message": "Отключить синхронизацию",
+    "defaultMessage": "Отключить синхронизацию"
+  },
+  "app.synced-content.warning.title": {
+    "message": "Этот контент синхронизирован",
+    "defaultMessage": "Этот контент синхронизирован"
+  },
+  "app.synced-packs.data-packs.title": {
+    "message": "Синхронизированные датапаки",
+    "defaultMessage": "Синхронизированные датапаки"
+  },
+  "app.synced-packs.empty": {
+    "message": "Добавьте паки на странице контента сборки, чтобы начать синхронизацию.",
+    "defaultMessage": "Добавьте паки на странице контента сборки, чтобы начать синхронизацию."
+  },
+  "app.synced-packs.load-failed": {
+    "message": "Не удалось загрузить паки. Попробуйте обновить.",
+    "defaultMessage": "Не удалось загрузить паки. Попробуйте обновить."
+  },
+  "app.synced-packs.resource-packs.title": {
+    "message": "Синхронизированные ресурспаки",
+    "defaultMessage": "Синхронизированные ресурспаки"
+  },
   "app.update-popup.body.download-complete": {
     "message": "Скачивание версии Rubirinth App {version} завершено. Перезапустите приложение, чтобы обновить его, или оно обновится автоматически после закрытия.",
     "defaultMessage": "Скачивание версии Rubirinth App {version} завершено. Перезапустите приложение, чтобы обновить его, или оно обновится автоматически после закрытия."
@@ -2569,6 +5170,346 @@
   "app.world.world-item.players-online": {
     "message": "{count} в игре",
     "defaultMessage": "{count} в игре"
+  },
+  "astralrinth.app.launcher-update-modal.error.close-action": {
+    "message": "Закрыть",
+    "defaultMessage": "Закрыть"
+  },
+  "astralrinth.app.launcher-update-modal.error.description": {
+    "message": "AstralRinth не удалось скачать файл обновления с сервера.",
+    "defaultMessage": "AstralRinth не удалось скачать файл обновления с сервера."
+  },
+  "astralrinth.app.launcher-update-modal.error.header": {
+    "message": "Не удалось скачать обновление",
+    "defaultMessage": "Не удалось скачать обновление"
+  },
+  "astralrinth.app.launcher-update-modal.error.help-link": {
+    "message": "релизы репозитория AstralRinth",
+    "defaultMessage": "релизы репозитория AstralRinth"
+  },
+  "astralrinth.app.launcher-update-modal.error.help-suffix": {
+    "message": "если там доступен более новый релиз.",
+    "defaultMessage": "если там доступен более новый релиз."
+  },
+  "astralrinth.app.launcher-update-modal.error.help-text": {
+    "message": "Вы можете скачать его вручную из",
+    "defaultMessage": "Вы можете скачать его вручную из"
+  },
+  "astralrinth.app.launcher-update-modal.error.local-version": {
+    "message": "Локальная версия AstralRinth:",
+    "defaultMessage": "Локальная версия AstralRinth:"
+  },
+  "astralrinth.app.launcher-update-modal.error.title": {
+    "message": "Не удалось скачать файл",
+    "defaultMessage": "Не удалось скачать файл"
+  },
+  "astralrinth.app.launcher-update-modal.update.cancel-action": {
+    "message": "Отмена",
+    "defaultMessage": "Отмена"
+  },
+  "astralrinth.app.launcher-update-modal.update.description": {
+    "message": "Вы используете более старую версию. Рекомендуем обновиться сейчас, чтобы получить последние исправления и улучшения.",
+    "defaultMessage": "Вы используете более старую версию. Рекомендуем обновиться сейчас, чтобы получить последние исправления и улучшения."
+  },
+  "astralrinth.app.launcher-update-modal.update.download-action": {
+    "message": "Скачать обновление",
+    "defaultMessage": "Скачать обновление"
+  },
+  "astralrinth.app.launcher-update-modal.update.header": {
+    "message": "Обновление лаунчера AstralRinth",
+    "defaultMessage": "Обновление лаунчера AstralRinth"
+  },
+  "astralrinth.app.launcher-update-modal.update.installed-version": {
+    "message": "💾 Установленная и запущенная версия:",
+    "defaultMessage": "💾 Установленная и запущенная версия:"
+  },
+  "astralrinth.app.launcher-update-modal.update.installer-description": {
+    "message": "Выберите пакет установщика, с которым хотите продолжить.",
+    "defaultMessage": "Выберите пакет установщика, с которым хотите продолжить."
+  },
+  "astralrinth.app.launcher-update-modal.update.installer-title": {
+    "message": "Тип установщика",
+    "defaultMessage": "Тип установщика"
+  },
+  "astralrinth.app.launcher-update-modal.update.latest-release-tag": {
+    "message": "☁️ Тег последнего релиза:",
+    "defaultMessage": "☁️ Тег последнего релиза:"
+  },
+  "astralrinth.app.launcher-update-modal.update.latest-release-title": {
+    "message": "☁️ Название последнего релиза:",
+    "defaultMessage": "☁️ Название последнего релиза:"
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-lead": {
+    "message": "Перед установкой обновления сохраните работу, закройте все запущенные экземпляры лаунчера и сделайте резервную копию его данных.",
+    "defaultMessage": "Перед установкой обновления сохраните работу, закройте все запущенные экземпляры лаунчера и сделайте резервную копию его данных."
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-macos": {
+    "message": "На macOS важные данные могут находиться в",
+    "defaultMessage": "На macOS важные данные могут находиться в"
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-outro": {
+    "message": "Чтобы избежать потери данных, сохраните резервную копию в безопасном месте перед продолжением.",
+    "defaultMessage": "Чтобы избежать потери данных, сохраните резервную копию в безопасном месте перед продолжением."
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-title": {
+    "message": "⚠️ Перед продолжением",
+    "defaultMessage": "⚠️ Перед продолжением"
+  },
+  "astralrinth.app.launcher-update-modal.update.notice-windows": {
+    "message": "На Windows важные данные могут находиться в",
+    "defaultMessage": "На Windows важные данные могут находиться в"
+  },
+  "astralrinth.app.launcher-update-modal.update.repository-link": {
+    "message": "Открыть репозиторий проекта",
+    "defaultMessage": "Открыть репозиторий проекта"
+  },
+  "astralrinth.app.launcher-update-modal.update.select-installer": {
+    "message": "Выберите установщик",
+    "defaultMessage": "Выберите установщик"
+  },
+  "astralrinth.app.launcher-update-modal.update.title": {
+    "message": "Доступна новая версия лаунчера AstralRinth.",
+    "defaultMessage": "Доступна новая версия лаунчера AstralRinth."
+  },
+  "astralrinth.app.launcher-update.available.action": {
+    "message": "Посмотреть обновление",
+    "defaultMessage": "Посмотреть обновление"
+  },
+  "astralrinth.app.launcher-update.available.text": {
+    "message": "Новая версия AstralRinth уже доступна для загрузки.",
+    "defaultMessage": "Новая версия AstralRinth уже доступна для загрузки."
+  },
+  "astralrinth.app.launcher-update.available.title": {
+    "message": "Доступно обновление лаунчера",
+    "defaultMessage": "Доступно обновление лаунчера"
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.description": {
+    "message": "Произошла ошибка при добавлении офлайн-аккаунта. Пожалуйста, выполните рекомендации ниже.",
+    "defaultMessage": "Произошла ошибка при добавлении офлайн-аккаунта. Пожалуйста, выполните рекомендации ниже."
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.format-hint": {
+    "message": "Убедитесь, что имя соответствует требуемому формату `{nameExp}`",
+    "defaultMessage": "Убедитесь, что имя соответствует требуемому формату `{nameExp}`"
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.header": {
+    "message": "Ошибка во время ввода данных для офлайн-аккаунта",
+    "defaultMessage": "Ошибка во время ввода данных для офлайн-аккаунта"
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.length-hint": {
+    "message": "Имя игрока должно содержать не менее {min} и не более {max} символов.",
+    "defaultMessage": "Имя игрока должно содержать не менее {min} и не более {max} символов."
+  },
+  "astralrinth.app.minecraft-account.error.input-offline.name-hint": {
+    "message": "Проверьте, что имя игрока введено корректно.",
+    "defaultMessage": "Проверьте, что имя игрока введено корректно."
+  },
+  "astralrinth.app.minecraft-account.error.retry-action": {
+    "message": "Повторить",
+    "defaultMessage": "Повторить"
+  },
+  "astralrinth.app.minecraft-account.error.unexpected.description": {
+    "message": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.",
+    "defaultMessage": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже."
+  },
+  "astralrinth.app.minecraft-account.error.unexpected.header": {
+    "message": "Произошла непредвиденная ошибка",
+    "defaultMessage": "Произошла непредвиденная ошибка"
+  },
+  "astralrinth.app.minecraft-account.input.auth.description": {
+    "message": "Выберите способ входа или игры.",
+    "defaultMessage": "Выберите способ входа или игры."
+  },
+  "astralrinth.app.minecraft-account.input.auth.external-description": {
+    "message": "Аккаунт для серверов с поддержкой {providerName}.",
+    "defaultMessage": "Аккаунт для серверов с поддержкой {providerName}."
+  },
+  "astralrinth.app.minecraft-account.input.auth.header": {
+    "message": "Добавить аккаунт Minecraft",
+    "defaultMessage": "Добавить аккаунт Minecraft"
+  },
+  "astralrinth.app.minecraft-account.input.auth.microsoft-description": {
+    "message": "Официальный аккаунт с Minecraft: Java Edition.",
+    "defaultMessage": "Официальный аккаунт с Minecraft: Java Edition."
+  },
+  "astralrinth.app.minecraft-account.input.auth.offline-description": {
+    "message": "Локальный профиль без токенов авторизации.",
+    "defaultMessage": "Локальный профиль без токенов авторизации."
+  },
+  "astralrinth.app.minecraft-account.input.auth.offline-label": {
+    "message": "Офлайн",
+    "defaultMessage": "Офлайн"
+  },
+  "astralrinth.app.minecraft-account.input.login-action": {
+    "message": "Войти",
+    "defaultMessage": "Войти"
+  },
+  "astralrinth.app.minecraft-account.input.offline.header": {
+    "message": "Добавить новый офлайн-аккаунт",
+    "defaultMessage": "Добавить новый офлайн-аккаунт"
+  },
+  "astralrinth.app.minecraft-account.input.offline.name.label": {
+    "message": "Введите имя игрока",
+    "defaultMessage": "Введите имя игрока"
+  },
+  "astralrinth.app.minecraft-account.input.offline.name.placeholder": {
+    "message": "Введите имя игрока...",
+    "defaultMessage": "Введите имя игрока..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.description": {
+    "message": "Выберите и установите библиотеку аутентификации, которая используется при запуске Minecraft с внешним профилем игрока.",
+    "defaultMessage": "Выберите и установите библиотеку аутентификации, которая используется при запуске Minecraft с внешним профилем игрока."
+  },
+  "astralrinth.app.settings.external-auth-libraries.install-selected": {
+    "message": "Установить",
+    "defaultMessage": "Установить"
+  },
+  "astralrinth.app.settings.external-auth-libraries.installed": {
+    "message": "{providerName}: библиотека {version} установлена",
+    "defaultMessage": "{providerName}: библиотека {version} установлена"
+  },
+  "astralrinth.app.settings.external-auth-libraries.installing": {
+    "message": "Установка...",
+    "defaultMessage": "Установка..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.load-failed": {
+    "message": "Не удалось загрузить библиотеки аутентификации: {error}",
+    "defaultMessage": "Не удалось загрузить библиотеки аутентификации: {error}"
+  },
+  "astralrinth.app.settings.external-auth-libraries.loading": {
+    "message": "Загрузка доступных версий библиотек...",
+    "defaultMessage": "Загрузка доступных версий библиотек..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.local-only": {
+    "message": "Сервер недоступен, поэтому отображаются только локально установленные версии.",
+    "defaultMessage": "Сервер недоступен, поэтому отображаются только локально установленные версии."
+  },
+  "astralrinth.app.settings.external-auth-libraries.no-versions": {
+    "message": "Совместимые версии библиотеки не найдены.",
+    "defaultMessage": "Совместимые версии библиотеки не найдены."
+  },
+  "astralrinth.app.settings.external-auth-libraries.not-selected": {
+    "message": "Не выбрана",
+    "defaultMessage": "Не выбрана"
+  },
+  "astralrinth.app.settings.external-auth-libraries.reinstall": {
+    "message": "Переустановить",
+    "defaultMessage": "Переустановить"
+  },
+  "astralrinth.app.settings.external-auth-libraries.request-server": {
+    "message": "Запросить с сервера",
+    "defaultMessage": "Запросить с сервера"
+  },
+  "astralrinth.app.settings.external-auth-libraries.requesting-server": {
+    "message": "Запрос данных...",
+    "defaultMessage": "Запрос данных..."
+  },
+  "astralrinth.app.settings.external-auth-libraries.retry": {
+    "message": "Повторить",
+    "defaultMessage": "Повторить"
+  },
+  "astralrinth.app.settings.external-auth-libraries.selected-version": {
+    "message": "Выбранная версия",
+    "defaultMessage": "Выбранная версия"
+  },
+  "astralrinth.app.settings.external-auth-libraries.title": {
+    "message": "Библиотеки аутентификации",
+    "defaultMessage": "Библиотеки аутентификации"
+  },
+  "astralrinth.app.settings.external-auth-libraries.version": {
+    "message": "Версия",
+    "defaultMessage": "Версия"
+  },
+  "astralrinth.app.settings.sidebar.label.astralrinth": {
+    "defaultMessage": "Astralrinth",
+    "message": "Astralrinth"
+  },
+  "astralrinth.app.settings.tabs.external-auth-libraries": {
+    "message": "Библиотеки аутентификации",
+    "defaultMessage": "Библиотеки аутентификации"
+  },
+  "astralrinth.app.settings.tabs.updates": {
+    "message": "Обновления",
+    "defaultMessage": "Обновления"
+  },
+  "astralrinth.app.settings.update-installing": {
+    "message": "Установка обновления...",
+    "defaultMessage": "Установка обновления..."
+  },
+  "astralrinth.app.settings.updates-installed": {
+    "message": "Обновления уже установлены",
+    "defaultMessage": "Обновления уже установлены"
+  },
+  "astralrinth.app.settings.updates.analytics.description": {
+    "message": "Статистика релиза и распространения от поставщика обновлений.",
+    "defaultMessage": "Статистика релиза и распространения от поставщика обновлений."
+  },
+  "astralrinth.app.settings.updates.analytics.title": {
+    "message": "Аналитика",
+    "defaultMessage": "Аналитика"
+  },
+  "astralrinth.app.settings.updates.api-url": {
+    "message": "URL API поставщика обновлений",
+    "defaultMessage": "URL API поставщика обновлений"
+  },
+  "astralrinth.app.settings.updates.description": {
+    "message": "Просматривайте канал релизов AstralRinth, состояние распространения и диагностику провайдера обновлений.",
+    "defaultMessage": "Просматривайте канал релизов AstralRinth, состояние распространения и диагностику провайдера обновлений."
+  },
+  "astralrinth.app.settings.updates.downloadable-files": {
+    "message": "Файлы для загрузки",
+    "defaultMessage": "Файлы для загрузки"
+  },
+  "astralrinth.app.settings.updates.http-status": {
+    "message": "Статус HTTP",
+    "defaultMessage": "Статус HTTP"
+  },
+  "astralrinth.app.settings.updates.latest-release-tag": {
+    "message": "Последний тэг релиза",
+    "defaultMessage": "Последний тэг релиза"
+  },
+  "astralrinth.app.settings.updates.latest-update-title": {
+    "message": "Последний заголовок обновления",
+    "defaultMessage": "Последний заголовок обновления"
+  },
+  "astralrinth.app.settings.updates.no-update-information": {
+    "message": "Информация об обновлении недоступна.",
+    "defaultMessage": "Информация об обновлении недоступна."
+  },
+  "astralrinth.app.settings.updates.title": {
+    "message": "Обновления",
+    "defaultMessage": "Обновления"
+  },
+  "astralrinth.app.settings.updates.total-downloads": {
+    "message": "Всего скачиваний продукта",
+    "defaultMessage": "Всего скачиваний продукта"
+  },
+  "astralrinth.app.settings.view-update-info": {
+    "message": "Посмотреть информацию об обновлении",
+    "defaultMessage": "Посмотреть информацию об обновлении"
+  },
+  "astralrinth.app.skins.unsupported-account.description": {
+    "message": "Управление скинами доступно только для учётных записей Microsoft. Вернитесь на главную страницу и выберите или добавьте учётную запись Microsoft, чтобы продолжить.",
+    "defaultMessage": "Управление скинами доступно только для учётных записей Microsoft. Вернитесь на главную страницу и выберите или добавьте учётную запись Microsoft, чтобы продолжить."
+  },
+  "astralrinth.app.skins.unsupported-account.external.action": {
+    "message": "Управлять скином на {providerName}",
+    "defaultMessage": "Управлять скином на {providerName}"
+  },
+  "astralrinth.app.skins.unsupported-account.external.description": {
+    "message": "Вы вошли через учётную запись {providerName}. Загрузить, выбрать или изменить скин можно прямо на сайте провайдера.",
+    "defaultMessage": "Вы вошли через учётную запись {providerName}. Загрузить, выбрать или изменить скин можно прямо на сайте провайдера."
+  },
+  "astralrinth.app.skins.unsupported-account.external.title": {
+    "message": "Управление скином {providerName}",
+    "defaultMessage": "Управление скином {providerName}"
+  },
+  "astralrinth.app.skins.unsupported-account.return-home": {
+    "message": "Вернуться на главную",
+    "defaultMessage": "Вернуться на главную"
+  },
+  "astralrinth.app.skins.unsupported-account.title": {
+    "message": "Требуется учётная запись Microsoft",
+    "defaultMessage": "Требуется учётная запись Microsoft"
   },
   "content.shared-instance.change-version-body": {
     "message": "Изменение версии затрагивает только локальную копию. В будущих обновлениях общего экземпляра она может быть восстановлена ​​или изменена снова.",
@@ -2702,6 +5643,74 @@
     "message": "<link>Войдите в аккаунт Modrinth</link>, чтобы добавлять друзей и следить за ними!",
     "defaultMessage": "<link>Войдите в аккаунт Modrinth</link>, чтобы добавлять друзей и следить за ними!"
   },
+  "friends.title": {
+    "defaultMessage": "Друзья",
+    "message": "Друзья"
+  },
+  "installation-settings.link-modpack.button": {
+    "message": "Привязать к сборке",
+    "defaultMessage": "Привязать к сборке"
+  },
+  "installation-settings.link-modpack.change-modpack": {
+    "message": "Выбрать другую",
+    "defaultMessage": "Выбрать другую"
+  },
+  "installation-settings.link-modpack.compatible-badge": {
+    "message": "Совместимо",
+    "defaultMessage": "Совместимо"
+  },
+  "installation-settings.link-modpack.confirm-button": {
+    "message": "Привязать сборку",
+    "defaultMessage": "Привязать сборку"
+  },
+  "installation-settings.link-modpack.linking-button": {
+    "message": "Привязка...",
+    "defaultMessage": "Привязка..."
+  },
+  "installation-settings.link-modpack.loading-versions": {
+    "message": "Загрузка версий сборки...",
+    "defaultMessage": "Загрузка версий сборки..."
+  },
+  "installation-settings.link-modpack.modal-header": {
+    "message": "Привязать к сборке",
+    "defaultMessage": "Привязать к сборке"
+  },
+  "installation-settings.link-modpack.no-results": {
+    "message": "По вашему запросу сборки не найдены.",
+    "defaultMessage": "По вашему запросу сборки не найдены."
+  },
+  "installation-settings.link-modpack.no-versions": {
+    "message": "Версии для этой сборки не найдены.",
+    "defaultMessage": "Версии для этой сборки не найдены."
+  },
+  "installation-settings.link-modpack.search-label": {
+    "message": "Поиск сборок",
+    "defaultMessage": "Поиск сборок"
+  },
+  "installation-settings.link-modpack.search-placeholder": {
+    "message": "Поиск сборок или ссылка / slug на Modrinth...",
+    "defaultMessage": "Поиск сборок или ссылка / slug на Modrinth..."
+  },
+  "installation-settings.link-modpack.search-results": {
+    "message": "Выберите сборку",
+    "defaultMessage": "Выберите сборку"
+  },
+  "installation-settings.link-modpack.select-version": {
+    "message": "Целевая версия сборки",
+    "defaultMessage": "Целевая версия сборки"
+  },
+  "installation-settings.link-modpack.selected-modpack": {
+    "message": "Выбранная сборка",
+    "defaultMessage": "Выбранная сборка"
+  },
+  "installation-settings.link-modpack.success-message": {
+    "message": "Сборка успешно привязана к {name}.",
+    "defaultMessage": "Сборка успешно привязана к {name}."
+  },
+  "installation-settings.link-modpack.success-title": {
+    "message": "Сборка привязана",
+    "defaultMessage": "Сборка привязана"
+  },
   "installation-settings.shared-instance.linked-title": {
     "message": "Отвязка совместной сборки",
     "defaultMessage": "Отвязка совместной сборки"
@@ -2818,6 +5827,22 @@
     "message": "Добавление сервера",
     "defaultMessage": "Добавление сервера"
   },
+  "instance.badge.locked": {
+    "message": "Заблокировано",
+    "defaultMessage": "Заблокировано"
+  },
+  "instance.badge.locked.aria-label": {
+    "message": "Информация о заблокированной сборке",
+    "defaultMessage": "Информация о заблокированной сборке"
+  },
+  "instance.badge.shared": {
+    "message": "Совместная",
+    "defaultMessage": "Совместная"
+  },
+  "instance.badge.shared.aria-label": {
+    "message": "Информация о совместной сборке",
+    "defaultMessage": "Информация о совместной сборке"
+  },
   "instance.edit-server.title": {
     "message": "Настройка сервера",
     "defaultMessage": "Настройка сервера"
@@ -2841,6 +5866,10 @@
   "instance.edit-world.title": {
     "message": "Настройка мира",
     "defaultMessage": "Настройка мира"
+  },
+  "instance.files.adding-files": {
+    "message": "Добавление файлов ({completed}/{total})",
+    "defaultMessage": "Добавление файлов ({completed}/{total})"
   },
   "instance.files.save-as": {
     "message": "Сохранить как...",
@@ -3142,9 +6171,29 @@
     "message": "Сборка заблокирована",
     "defaultMessage": "Сборка заблокирована"
   },
+  "instance.metadata.loader-version.tooltip": {
+    "message": "Загрузчик модов и версия Minecraft",
+    "defaultMessage": "Загрузчик модов и версия Minecraft"
+  },
+  "instance.metadata.playtime.tooltip": {
+    "message": "Общее игровое время",
+    "defaultMessage": "Общее игровое время"
+  },
+  "instance.playtime.hours": {
+    "message": "{count, plural, one {# час} few {# часа} many {# часов} other {# часов}}",
+    "defaultMessage": "{count, plural, one {# час} few {# часа} many {# часов} other {# часов}}"
+  },
+  "instance.playtime.minutes": {
+    "message": "{count, plural, one {# минута} few {# минуты} many {# минут} other {# минут}}",
+    "defaultMessage": "{count, plural, one {# минута} few {# минуты} many {# минут} other {# минут}}"
+  },
   "instance.playtime.never-played": {
     "message": "Не запускалась",
     "defaultMessage": "Не запускалась"
+  },
+  "instance.playtime.seconds": {
+    "message": "{count, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунд}}",
+    "defaultMessage": "{count, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунд}}"
   },
   "instance.server-modal.address": {
     "message": "Адрес",
@@ -3213,6 +6262,42 @@
   "instance.settings.sharing.revoke-invite.header": {
     "message": "Отзыв приглашения",
     "defaultMessage": "Отзыв приглашения"
+  },
+  "instance.settings.synced-options.data-override": {
+    "message": "Отключите переопределение для редактирования синхронизированных данных.",
+    "defaultMessage": "Отключите переопределение для редактирования синхронизированных данных."
+  },
+  "instance.settings.synced-options.data-packs": {
+    "message": "Отключить синхронизацию датапаков",
+    "defaultMessage": "Отключить синхронизацию датапаков"
+  },
+  "instance.settings.synced-options.data-packs.description": {
+    "message": "Хранить датапаки этой сборки отдельно от синхронизированных паков.",
+    "defaultMessage": "Хранить датапаки этой сборки отдельно от синхронизированных паков."
+  },
+  "instance.settings.synced-options.data-packs.disabled": {
+    "message": "Синхронизация датапаков отключена в настройках приложения.",
+    "defaultMessage": "Синхронизация датапаков отключена в настройках приложения."
+  },
+  "instance.settings.synced-options.edit-packs": {
+    "message": "Редактировать синхронизированные паки",
+    "defaultMessage": "Редактировать синхронизированные паки"
+  },
+  "instance.settings.synced-options.packs-override": {
+    "message": "Отключите переопределение для редактирования синхронизированных паков. Независимыми паками можно управлять во вкладке контента.",
+    "defaultMessage": "Отключите переопределение для редактирования синхронизированных паков. Независимыми паками можно управлять во вкладке контента."
+  },
+  "instance.settings.synced-options.resource-packs": {
+    "message": "Отключить синхронизацию ресурспаков",
+    "defaultMessage": "Отключить синхронизацию ресурспаков"
+  },
+  "instance.settings.synced-options.resource-packs.description": {
+    "message": "Хранить ресурспаки этой сборки отдельно от синхронизированных паков.",
+    "defaultMessage": "Хранить ресурспаки этой сборки отдельно от синхронизированных паков."
+  },
+  "instance.settings.synced-options.resource-packs.disabled": {
+    "message": "Ресурспаки не синхронизируются, так как функция отключена в настройках приложения.",
+    "defaultMessage": "Ресурспаки не синхронизируются, так как функция отключена в настройках приложения."
   },
   "instance.settings.tabs.behavior.description": {
     "message": "Выберите, какие вкладки будут отображаться у этой сборки.",
@@ -3334,6 +6419,14 @@
     "message": "Выберите канал обновления",
     "defaultMessage": "Выберите канал обновления"
   },
+  "instance.settings.tabs.hooks": {
+    "message": "Команды запуска",
+    "defaultMessage": "Команды запуска"
+  },
+  "instance.settings.tabs.hooks.custom-hooks": {
+    "message": "Переопределение команд запуска",
+    "defaultMessage": "Переопределение команд запуска"
+  },
   "instance.settings.tabs.hooks.description": {
     "message": "Запуск системных команд перед запуском и после завершения игры."
   },
@@ -3417,6 +6510,10 @@
     "message": "Параметры установки недоступны, пока сборка заблокирована.",
     "defaultMessage": "Параметры установки недоступны, пока сборка заблокирована."
   },
+  "instance.settings.tabs.java": {
+    "message": "Java и память",
+    "defaultMessage": "Java и память"
+  },
   "instance.settings.tabs.java.custom-environment-variables": {
     "message": "Задать переменные среды отдельно для этой сборки."
   },
@@ -3475,6 +6572,10 @@
   "instance.settings.tabs.synced-options.command-history.disabled-in-app": {
     "message": "Синхронизация истории команд отключена в настройках приложения."
   },
+  "instance.settings.tabs.synced-options.command-history.exclude-description": {
+    "message": "Исключить эту сборку из синхронизации истории команд.",
+    "defaultMessage": "Исключить эту сборку из синхронизации истории команд."
+  },
   "instance.settings.tabs.synced-options.command-history.override-description": {
     "message": "Хранить историю команд этой сборки отдельно от синхронизированной."
   },
@@ -3484,8 +6585,24 @@
   "instance.settings.tabs.synced-options.creative-hotbars.disabled-in-app": {
     "message": "Синхронизация панелей творчества отключена в настройках приложения."
   },
+  "instance.settings.tabs.synced-options.creative-hotbars.exclude-description": {
+    "message": "Исключить эту сборку из синхронизации панелей хотбаров.",
+    "defaultMessage": "Исключить эту сборку из синхронизации панелей хотбаров."
+  },
   "instance.settings.tabs.synced-options.creative-hotbars.override-description": {
     "message": "Хранить панели творчества этой сборки отдельно от синхронизированных."
+  },
+  "instance.settings.tabs.synced-options.game-settings": {
+    "message": "Отключить синхронизацию настроек игры",
+    "defaultMessage": "Отключить синхронизацию настроек игры"
+  },
+  "instance.settings.tabs.synced-options.game-settings.description": {
+    "message": "Хранить options.txt этой сборки отдельно от синхронизированной копии.",
+    "defaultMessage": "Хранить options.txt этой сборки отдельно от синхронизированной копии."
+  },
+  "instance.settings.tabs.synced-options.game-settings.disabled-in-app": {
+    "message": "Синхронизация настроек игры отключена в настройках приложения.",
+    "defaultMessage": "Синхронизация настроек игры отключена в настройках приложения."
   },
   "instance.settings.tabs.synced-options.hotbars-conflict.backup-description": {
     "message": "Заменяемая версия будет сохранена в резервной копии перед внесением изменений."
@@ -3508,14 +6625,33 @@
   "instance.settings.tabs.synced-options.multiplayer-servers.disabled-in-app": {
     "message": "Синхронизация серверов отключена в настройках приложения."
   },
+  "instance.settings.tabs.synced-options.multiplayer-servers.exclude-description": {
+    "message": "Исключить эту сборку из синхронизации сетевых серверов.",
+    "defaultMessage": "Исключить эту сборку из синхронизации сетевых серверов."
+  },
   "instance.settings.tabs.synced-options.multiplayer-servers.override-description": {
     "message": "Хранить сетевые серверы этой сборки отдельно от синхронизированных."
   },
   "instance.settings.tabs.synced-options.open-app-settings": {
     "message": "Управление синхронизацией"
   },
+  "instance.settings.tabs.synced-options.screenshots": {
+    "message": "Скриншоты",
+    "defaultMessage": "Скриншоты"
+  },
+  "instance.settings.tabs.synced-options.screenshots.disabled-in-app": {
+    "message": "Скриншоты выключены в настройках приложения.",
+    "defaultMessage": "Скриншоты выключены в настройках приложения."
+  },
+  "instance.settings.tabs.synced-options.screenshots.exclude-description": {
+    "message": "Исключить скриншоты этой сборки из общего раздела скриншотов.",
+    "defaultMessage": "Исключить скриншоты этой сборки из общего раздела скриншотов."
+  },
   "instance.settings.tabs.synced-options.shared-settings.description": {
     "message": "Включите переопределение, чтобы хранить настройку отдельно для этой сборки."
+  },
+  "instance.settings.tabs.tab-visibility": {
+    "message": "Вкладки"
   },
   "instance.settings.tabs.window": {
     "message": "Пользовательские настройки окна"
@@ -3727,6 +6863,10 @@
     "message": "Не удалось создать ярлык",
     "defaultMessage": "Не удалось создать ярлык"
   },
+  "instance.worlds.synced_server": {
+    "message": "Синхронизировано между сборками",
+    "defaultMessage": "Синхронизировано между сборками"
+  },
   "instance.worlds.view_instance": {
     "message": "Посмотреть сборку",
     "defaultMessage": "Посмотреть сборку"
@@ -3782,6 +6922,10 @@
   "minecraft-required.header": {
     "message": "Требуется аккаунт Minecraft",
     "defaultMessage": "Требуется аккаунт Minecraft"
+  },
+  "minecraft-required.other-sign-in-methods": {
+    "message": "Способы входа",
+    "defaultMessage": "Способы входа"
   },
   "minecraft-required.sign-in": {
     "message": "Войти в Microsoft",
@@ -3847,6 +6991,70 @@
     "message": "Начало работы",
     "defaultMessage": "Начало работы"
   },
+  "project.versions.column.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Скачивания"
+  },
+  "project.versions.column.environment": {
+    "defaultMessage": "Environment",
+    "message": "Окружение"
+  },
+  "project.versions.column.game-version": {
+    "defaultMessage": "Game version",
+    "message": "Версия игры"
+  },
+  "project.versions.column.platform": {
+    "defaultMessage": "Platform",
+    "message": "Платформа"
+  },
+  "project.versions.column.published": {
+    "defaultMessage": "Published",
+    "message": "Опубликовано"
+  },
+  "project.versions.column.version": {
+    "defaultMessage": "Version",
+    "message": "Версия"
+  },
+  "rubirinth.app.launcher-update-modal.changelog": {
+    "message": "Список изменений на GitHub",
+    "defaultMessage": "Список изменений на GitHub"
+  },
+  "rubirinth.app.launcher-update-modal.changelog-title": {
+    "message": "Список изменений:",
+    "defaultMessage": "What's new:"
+  },
+  "rubirinth.app.launcher-update-modal.close": {
+    "message": "Позже",
+    "defaultMessage": "Позже"
+  },
+  "rubirinth.app.launcher-update-modal.current-version": {
+    "message": "Текущая версия:",
+    "defaultMessage": "Текущая версия:"
+  },
+  "rubirinth.app.launcher-update-modal.description": {
+    "message": "Обновите лаунчер, чтобы получить новые функции, улучшения и исправления ошибок.",
+    "defaultMessage": "Обновите лаунчер, чтобы получить новые функции, улучшения и исправления ошибок."
+  },
+  "rubirinth.app.launcher-update-modal.download-and-install": {
+    "message": "Обновить сейчас",
+    "defaultMessage": "Обновить сейчас"
+  },
+  "rubirinth.app.launcher-update-modal.downloading": {
+    "message": "Загрузка...",
+    "defaultMessage": "Загрузка..."
+  },
+  "rubirinth.app.launcher-update-modal.header": {
+    "message": "Доступно обновление",
+    "defaultMessage": "Доступно обновление"
+  },
+  "rubirinth.app.launcher-update-modal.latest-version": {
+    "message": "Новая версия:",
+    "defaultMessage": "Новая версия:"
+  },
+  "rubirinth.app.launcher-update-modal.title": {
+    "message": "Доступна новая версия Rubirinth!",
+    "defaultMessage": "Доступна новая версия Rubirinth!"
+  },
   "search.filter.locked.instance": {
     "message": "Управляется сборкой",
     "defaultMessage": "Управляется сборкой"
@@ -3874,1025 +7082,5 @@
   "settings.sidebar.label.display": {
     "message": "Отображение",
     "defaultMessage": "Отображение"
-  },
-  "app.appearance-settings.jump-back-into-worlds.description": {
-    "message": "Показывать недавние миры или сборки в секции «Недавнее» на главной странице.",
-    "defaultMessage": "Показывать недавние миры или сборки в секции «Недавнее» на главной странице."
-  },
-  "app.appearance-settings.jump-back-into-worlds.title": {
-    "message": "Недавние миры или сборки",
-    "defaultMessage": "Недавние миры или сборки"
-  },
-  "app.error.close": {
-    "defaultMessage": "Закрыть",
-    "message": "Закрыть"
-  },
-  "app.error.external-auth-library.description": {
-    "defaultMessage": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры.",
-    "message": "Для запуска Minecraft с аккаунтом {providerName} требуется библиотека авторизации (authlib-injector). Установите её в настройках перед запуском игры."
-  },
-  "app.error.external-auth-library.go-to-install": {
-    "defaultMessage": "Перейти к установке",
-    "message": "Перейти к установке"
-  },
-  "app.error.external-auth-library.title": {
-    "defaultMessage": "Отсутствует библиотека авторизации",
-    "message": "Отсутствует библиотека авторизации"
-  },
-  "app.icon-editor.apply-icons-modal.apply-error": {
-    "message": "Не удалось применить случайные иконки к сборкам.",
-    "defaultMessage": "Не удалось применить случайные иконки к сборкам."
-  },
-  "app.icon-editor.apply-icons-modal.apply-success": {
-    "message": "Установлен случайный значок для {num, plural, one {# сборки} few {# сборок} many {# сборок} other {# сборок}}.",
-    "defaultMessage": "Установлен случайный значок для {num, plural, one {# сборки} few {# сборок} many {# сборок} other {# сборок}}."
-  },
-  "app.icon-editor.apply-icons-modal.badge": {
-    "message": "Новый контент",
-    "defaultMessage": "Новый контент"
-  },
-  "app.icon-editor.apply-icons-modal.close": {
-    "message": "Закрыть",
-    "defaultMessage": "Закрыть"
-  },
-  "app.icon-editor.apply-icons-modal.description": {
-    "message": "Создавайте собственные иконки прямо в Rubirinth App. Сочетайте фоны с символами из Minecraft и популярных модов!",
-    "defaultMessage": "Создавайте собственные иконки прямо в Rubirinth App. Сочетайте фоны с символами из Minecraft и популярных модов!"
-  },
-  "app.icon-editor.apply-icons-modal.instances-without-icons": {
-    "message": "У {count, plural, one {# сборки} other {# сборок}} нет {count, plural, one {иконки} other {иконок}}. Хотите создать {count, plural, one {случайную} other {случайные}}?",
-    "defaultMessage": "У {count, plural, one {# сборки} other {# сборок}} нет {count, plural, one {иконки} other {иконок}}. Хотите создать {count, plural, one {случайную} other {случайные}}?"
-  },
-  "app.icon-editor.apply-icons-modal.random-icons": {
-    "message": "Случайные иконки",
-    "defaultMessage": "Случайные иконки"
-  },
-  "app.icon-editor.apply-icons-modal.skip": {
-    "message": "Пропустить",
-    "defaultMessage": "Пропустить"
-  },
-  "app.icon-editor.apply-icons-modal.title": {
-    "message": "Редактор иконок",
-    "defaultMessage": "Редактор иконок"
-  },
-  "app.icon-editor.notification.close": {
-    "message": "Закрыть",
-    "defaultMessage": "Закрыть"
-  },
-  "app.icon-editor.notification.description": {
-    "message": "Персонализируйте свои сборки!",
-    "defaultMessage": "Персонализируйте свои сборки!"
-  },
-  "app.icon-editor.notification.dismiss": {
-    "message": "Закрыть",
-    "defaultMessage": "Закрыть"
-  },
-  "app.icon-editor.notification.title": {
-    "message": "Новый редактор иконок",
-    "defaultMessage": "Новый редактор иконок"
-  },
-  "app.icon-editor.notification.view-update": {
-    "message": "Подробнее",
-    "defaultMessage": "Подробнее"
-  },
-  "app.settings.tabs.default-instance-options": {
-    "message": "Предустановки игры",
-    "defaultMessage": "Предустановки игры"
-  },
-  "instance.settings.tabs.hooks": {
-    "message": "Команды запуска",
-    "defaultMessage": "Команды запуска"
-  },
-  "instance.settings.tabs.hooks.custom-hooks": {
-    "message": "Переопределение команд запуска",
-    "defaultMessage": "Переопределение команд запуска"
-  },
-  "instance.settings.tabs.java": {
-    "message": "Java и память",
-    "defaultMessage": "Java и память"
-  },
-  "app.nav.signed-in-as": {
-    "message": "Текущий аккаунт: <user>{username}</user>",
-    "defaultMessage": "Текущий аккаунт: <user>{username}</user>"
-  },
-  "app.navigation.more-options": {
-    "message": "Дополнительно",
-    "defaultMessage": "Дополнительно"
-  },
-  "astralrinth.app.launcher-update.available.action": {
-    "message": "Посмотреть обновление",
-    "defaultMessage": "Посмотреть обновление"
-  },
-  "astralrinth.app.launcher-update.available.text": {
-    "message": "Новая версия AstralRinth уже доступна для загрузки.",
-    "defaultMessage": "Новая версия AstralRinth уже доступна для загрузки."
-  },
-  "astralrinth.app.launcher-update.available.title": {
-    "message": "Доступно обновление лаунчера",
-    "defaultMessage": "Доступно обновление лаунчера"
-  },
-  "astralrinth.app.settings.external-auth-libraries.description": {
-    "message": "Выберите и установите библиотеку аутентификации, которая используется при запуске Minecraft с внешним профилем игрока.",
-    "defaultMessage": "Выберите и установите библиотеку аутентификации, которая используется при запуске Minecraft с внешним профилем игрока."
-  },
-  "astralrinth.app.settings.external-auth-libraries.install-selected": {
-    "message": "Установить",
-    "defaultMessage": "Установить"
-  },
-  "astralrinth.app.settings.external-auth-libraries.installed": {
-    "message": "{providerName}: библиотека {version} установлена",
-    "defaultMessage": "{providerName}: библиотека {version} установлена"
-  },
-  "astralrinth.app.settings.external-auth-libraries.installing": {
-    "message": "Установка...",
-    "defaultMessage": "Установка..."
-  },
-  "astralrinth.app.settings.external-auth-libraries.load-failed": {
-    "message": "Не удалось загрузить библиотеки аутентификации: {error}",
-    "defaultMessage": "Не удалось загрузить библиотеки аутентификации: {error}"
-  },
-  "astralrinth.app.settings.external-auth-libraries.loading": {
-    "message": "Загрузка доступных версий библиотек...",
-    "defaultMessage": "Загрузка доступных версий библиотек..."
-  },
-  "astralrinth.app.settings.external-auth-libraries.local-only": {
-    "message": "Сервер недоступен, поэтому отображаются только локально установленные версии.",
-    "defaultMessage": "Сервер недоступен, поэтому отображаются только локально установленные версии."
-  },
-  "astralrinth.app.settings.external-auth-libraries.no-versions": {
-    "message": "Совместимые версии библиотеки не найдены.",
-    "defaultMessage": "Совместимые версии библиотеки не найдены."
-  },
-  "astralrinth.app.settings.external-auth-libraries.not-selected": {
-    "message": "Не выбрана",
-    "defaultMessage": "Не выбрана"
-  },
-  "astralrinth.app.settings.external-auth-libraries.reinstall": {
-    "message": "Переустановить",
-    "defaultMessage": "Переустановить"
-  },
-  "astralrinth.app.settings.external-auth-libraries.request-server": {
-    "message": "Запросить с сервера",
-    "defaultMessage": "Запросить с сервера"
-  },
-  "astralrinth.app.settings.external-auth-libraries.requesting-server": {
-    "message": "Запрос данных...",
-    "defaultMessage": "Запрос данных..."
-  },
-  "astralrinth.app.settings.external-auth-libraries.retry": {
-    "message": "Повторить",
-    "defaultMessage": "Повторить"
-  },
-  "astralrinth.app.settings.external-auth-libraries.selected-version": {
-    "message": "Выбранная версия",
-    "defaultMessage": "Выбранная версия"
-  },
-  "astralrinth.app.settings.external-auth-libraries.title": {
-    "message": "Библиотеки аутентификации",
-    "defaultMessage": "Библиотеки аутентификации"
-  },
-  "astralrinth.app.settings.external-auth-libraries.version": {
-    "message": "Версия",
-    "defaultMessage": "Версия"
-  },
-  "astralrinth.app.settings.tabs.external-auth-libraries": {
-    "message": "Библиотеки аутентификации",
-    "defaultMessage": "Библиотеки аутентификации"
-  },
-  "astralrinth.app.settings.update-installing": {
-    "message": "Установка обновления...",
-    "defaultMessage": "Установка обновления..."
-  },
-  "astralrinth.app.settings.tabs.updates": {
-    "message": "Обновления",
-    "defaultMessage": "Обновления"
-  },
-  "astralrinth.app.settings.updates.analytics.description": {
-    "message": "Статистика релиза и распространения от поставщика обновлений.",
-    "defaultMessage": "Статистика релиза и распространения от поставщика обновлений."
-  },
-  "astralrinth.app.settings.updates.analytics.title": {
-    "message": "Аналитика",
-    "defaultMessage": "Аналитика"
-  },
-  "astralrinth.app.settings.updates.description": {
-    "message": "Просматривайте канал релизов AstralRinth, состояние распространения и диагностику провайдера обновлений.",
-    "defaultMessage": "Просматривайте канал релизов AstralRinth, состояние распространения и диагностику провайдера обновлений."
-  },
-  "astralrinth.app.settings.updates.api-url": {
-    "message": "URL API поставщика обновлений",
-    "defaultMessage": "URL API поставщика обновлений"
-  },
-  "astralrinth.app.settings.updates.downloadable-files": {
-    "message": "Файлы для загрузки",
-    "defaultMessage": "Файлы для загрузки"
-  },
-  "astralrinth.app.settings.updates.http-status": {
-    "message": "Статус HTTP",
-    "defaultMessage": "Статус HTTP"
-  },
-  "astralrinth.app.settings.updates.latest-release-tag": {
-    "message": "Последний тэг релиза",
-    "defaultMessage": "Последний тэг релиза"
-  },
-  "astralrinth.app.settings.updates.latest-update-title": {
-    "message": "Последний заголовок обновления",
-    "defaultMessage": "Последний заголовок обновления"
-  },
-  "astralrinth.app.settings.updates.no-update-information": {
-    "message": "Информация об обновлении недоступна.",
-    "defaultMessage": "Информация об обновлении недоступна."
-  },
-  "astralrinth.app.settings.updates.total-downloads": {
-    "message": "Всего скачиваний продукта",
-    "defaultMessage": "Всего скачиваний продукта"
-  },
-  "astralrinth.app.settings.updates.title": {
-    "message": "Обновления",
-    "defaultMessage": "Обновления"
-  },
-  "astralrinth.app.settings.updates-installed": {
-    "message": "Обновления уже установлены",
-    "defaultMessage": "Обновления уже установлены"
-  },
-  "astralrinth.app.settings.view-update-info": {
-    "message": "Посмотреть информацию об обновлении",
-    "defaultMessage": "Посмотреть информацию об обновлении"
-  },
-  "astralrinth.app.skins.unsupported-account.description": {
-    "message": "Управление скинами доступно только для учётных записей Microsoft. Вернитесь на главную страницу и выберите или добавьте учётную запись Microsoft, чтобы продолжить.",
-    "defaultMessage": "Управление скинами доступно только для учётных записей Microsoft. Вернитесь на главную страницу и выберите или добавьте учётную запись Microsoft, чтобы продолжить."
-  },
-  "astralrinth.app.skins.unsupported-account.external.action": {
-    "message": "Управлять скином на {providerName}",
-    "defaultMessage": "Управлять скином на {providerName}"
-  },
-  "astralrinth.app.skins.unsupported-account.external.description": {
-    "message": "Вы вошли через учётную запись {providerName}. Загрузить, выбрать или изменить скин можно прямо на сайте провайдера.",
-    "defaultMessage": "Вы вошли через учётную запись {providerName}. Загрузить, выбрать или изменить скин можно прямо на сайте провайдера."
-  },
-  "astralrinth.app.skins.unsupported-account.external.title": {
-    "message": "Управление скином {providerName}",
-    "defaultMessage": "Управление скином {providerName}"
-  },
-  "astralrinth.app.skins.unsupported-account.return-home": {
-    "message": "Вернуться на главную",
-    "defaultMessage": "Вернуться на главную"
-  },
-  "astralrinth.app.skins.unsupported-account.title": {
-    "message": "Требуется учётная запись Microsoft",
-    "defaultMessage": "Требуется учётная запись Microsoft"
-  },
-  "astralrinth.app.launcher-update-modal.error.close-action": {
-    "message": "Закрыть",
-    "defaultMessage": "Закрыть"
-  },
-  "astralrinth.app.launcher-update-modal.error.description": {
-    "message": "AstralRinth не удалось скачать файл обновления с сервера.",
-    "defaultMessage": "AstralRinth не удалось скачать файл обновления с сервера."
-  },
-  "astralrinth.app.launcher-update-modal.error.header": {
-    "message": "Не удалось скачать обновление",
-    "defaultMessage": "Не удалось скачать обновление"
-  },
-  "astralrinth.app.launcher-update-modal.error.help-link": {
-    "message": "релизы репозитория AstralRinth",
-    "defaultMessage": "релизы репозитория AstralRinth"
-  },
-  "astralrinth.app.launcher-update-modal.error.help-suffix": {
-    "message": "если там доступен более новый релиз.",
-    "defaultMessage": "если там доступен более новый релиз."
-  },
-  "astralrinth.app.launcher-update-modal.error.help-text": {
-    "message": "Вы можете скачать его вручную из",
-    "defaultMessage": "Вы можете скачать его вручную из"
-  },
-  "astralrinth.app.launcher-update-modal.error.local-version": {
-    "message": "Локальная версия AstralRinth:",
-    "defaultMessage": "Локальная версия AstralRinth:"
-  },
-  "astralrinth.app.launcher-update-modal.error.title": {
-    "message": "Не удалось скачать файл",
-    "defaultMessage": "Не удалось скачать файл"
-  },
-  "astralrinth.app.launcher-update-modal.update.cancel-action": {
-    "message": "Отмена",
-    "defaultMessage": "Отмена"
-  },
-  "astralrinth.app.launcher-update-modal.update.description": {
-    "message": "Вы используете более старую версию. Рекомендуем обновиться сейчас, чтобы получить последние исправления и улучшения.",
-    "defaultMessage": "Вы используете более старую версию. Рекомендуем обновиться сейчас, чтобы получить последние исправления и улучшения."
-  },
-  "astralrinth.app.launcher-update-modal.update.download-action": {
-    "message": "Скачать обновление",
-    "defaultMessage": "Скачать обновление"
-  },
-  "astralrinth.app.launcher-update-modal.update.header": {
-    "message": "Обновление лаунчера AstralRinth",
-    "defaultMessage": "Обновление лаунчера AstralRinth"
-  },
-  "astralrinth.app.launcher-update-modal.update.installer-description": {
-    "message": "Выберите пакет установщика, с которым хотите продолжить.",
-    "defaultMessage": "Выберите пакет установщика, с которым хотите продолжить."
-  },
-  "astralrinth.app.launcher-update-modal.update.installer-title": {
-    "message": "Тип установщика",
-    "defaultMessage": "Тип установщика"
-  },
-  "astralrinth.app.launcher-update-modal.update.installed-version": {
-    "message": "💾 Установленная и запущенная версия:",
-    "defaultMessage": "💾 Установленная и запущенная версия:"
-  },
-  "astralrinth.app.launcher-update-modal.update.latest-release-tag": {
-    "message": "☁️ Тег последнего релиза:",
-    "defaultMessage": "☁️ Тег последнего релиза:"
-  },
-  "astralrinth.app.launcher-update-modal.update.latest-release-title": {
-    "message": "☁️ Название последнего релиза:",
-    "defaultMessage": "☁️ Название последнего релиза:"
-  },
-  "astralrinth.app.launcher-update-modal.update.notice-lead": {
-    "message": "Перед установкой обновления сохраните работу, закройте все запущенные экземпляры лаунчера и сделайте резервную копию его данных.",
-    "defaultMessage": "Перед установкой обновления сохраните работу, закройте все запущенные экземпляры лаунчера и сделайте резервную копию его данных."
-  },
-  "astralrinth.app.launcher-update-modal.update.notice-macos": {
-    "message": "На macOS важные данные могут находиться в",
-    "defaultMessage": "На macOS важные данные могут находиться в"
-  },
-  "astralrinth.app.launcher-update-modal.update.notice-outro": {
-    "message": "Чтобы избежать потери данных, сохраните резервную копию в безопасном месте перед продолжением.",
-    "defaultMessage": "Чтобы избежать потери данных, сохраните резервную копию в безопасном месте перед продолжением."
-  },
-  "astralrinth.app.launcher-update-modal.update.notice-windows": {
-    "message": "На Windows важные данные могут находиться в",
-    "defaultMessage": "На Windows важные данные могут находиться в"
-  },
-  "astralrinth.app.launcher-update-modal.update.notice-title": {
-    "message": "⚠️ Перед продолжением",
-    "defaultMessage": "⚠️ Перед продолжением"
-  },
-  "astralrinth.app.launcher-update-modal.update.repository-link": {
-    "message": "Открыть репозиторий проекта",
-    "defaultMessage": "Открыть репозиторий проекта"
-  },
-  "astralrinth.app.launcher-update-modal.update.select-installer": {
-    "message": "Выберите установщик",
-    "defaultMessage": "Выберите установщик"
-  },
-  "astralrinth.app.launcher-update-modal.update.title": {
-    "message": "Доступна новая версия лаунчера AstralRinth.",
-    "defaultMessage": "Доступна новая версия лаунчера AstralRinth."
-  },
-  "astralrinth.app.minecraft-account.error.input-offline.description": {
-    "message": "Произошла ошибка при добавлении офлайн-аккаунта. Пожалуйста, выполните рекомендации ниже.",
-    "defaultMessage": "Произошла ошибка при добавлении офлайн-аккаунта. Пожалуйста, выполните рекомендации ниже."
-  },
-  "astralrinth.app.minecraft-account.error.input-offline.format-hint": {
-    "message": "Убедитесь, что имя соответствует требуемому формату `{nameExp}`",
-    "defaultMessage": "Убедитесь, что имя соответствует требуемому формату `{nameExp}`"
-  },
-  "astralrinth.app.minecraft-account.error.input-offline.header": {
-    "message": "Ошибка во время ввода данных для офлайн-аккаунта",
-    "defaultMessage": "Ошибка во время ввода данных для офлайн-аккаунта"
-  },
-  "astralrinth.app.minecraft-account.error.input-offline.length-hint": {
-    "message": "Имя игрока должно содержать не менее {min} и не более {max} символов.",
-    "defaultMessage": "Имя игрока должно содержать не менее {min} и не более {max} символов."
-  },
-  "astralrinth.app.minecraft-account.error.input-offline.name-hint": {
-    "message": "Проверьте, что имя игрока введено корректно.",
-    "defaultMessage": "Проверьте, что имя игрока введено корректно."
-  },
-  "astralrinth.app.minecraft-account.error.retry-action": {
-    "message": "Повторить",
-    "defaultMessage": "Повторить"
-  },
-  "astralrinth.app.minecraft-account.error.unexpected.description": {
-    "message": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.",
-    "defaultMessage": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже."
-  },
-  "astralrinth.app.minecraft-account.error.unexpected.header": {
-    "message": "Произошла непредвиденная ошибка",
-    "defaultMessage": "Произошла непредвиденная ошибка"
-  },
-  "astralrinth.app.minecraft-account.input.auth.description": {
-    "message": "Выберите способ входа или игры.",
-    "defaultMessage": "Выберите способ входа или игры."
-  },
-  "astralrinth.app.minecraft-account.input.auth.external-description": {
-    "message": "Аккаунт для серверов с поддержкой {providerName}.",
-    "defaultMessage": "Аккаунт для серверов с поддержкой {providerName}."
-  },
-  "astralrinth.app.minecraft-account.input.auth.header": {
-    "message": "Добавить аккаунт Minecraft",
-    "defaultMessage": "Добавить аккаунт Minecraft"
-  },
-  "astralrinth.app.minecraft-account.input.auth.microsoft-description": {
-    "message": "Официальный аккаунт с Minecraft: Java Edition.",
-    "defaultMessage": "Официальный аккаунт с Minecraft: Java Edition."
-  },
-  "astralrinth.app.minecraft-account.input.auth.offline-description": {
-    "message": "Локальный профиль без токенов авторизации.",
-    "defaultMessage": "Локальный профиль без токенов авторизации."
-  },
-  "astralrinth.app.minecraft-account.input.auth.offline-label": {
-    "message": "Офлайн",
-    "defaultMessage": "Офлайн"
-  },
-  "astralrinth.app.minecraft-account.input.login-action": {
-    "message": "Войти",
-    "defaultMessage": "Войти"
-  },
-  "astralrinth.app.minecraft-account.input.offline.header": {
-    "message": "Добавить новый офлайн-аккаунт",
-    "defaultMessage": "Добавить новый офлайн-аккаунт"
-  },
-  "astralrinth.app.minecraft-account.input.offline.name.label": {
-    "message": "Введите имя игрока",
-    "defaultMessage": "Введите имя игрока"
-  },
-  "astralrinth.app.minecraft-account.input.offline.name.placeholder": {
-    "message": "Введите имя игрока...",
-    "defaultMessage": "Введите имя игрока..."
-  },
-  "app.settings.sidebar.label.rubirinth": {
-    "defaultMessage": "Rubirinth",
-    "message": "Rubirinth"
-  },
-  "app.settings.no-updates-tooltip": {
-    "defaultMessage": "У вас установлена последняя версия",
-    "message": "У вас установлена последняя версия"
-  },
-  "app.settings.tabs.updates": {
-    "defaultMessage": "Обновления",
-    "message": "Обновления"
-  },
-  "app.settings.update-available-tooltip": {
-    "defaultMessage": "Доступно обновление: {version}",
-    "message": "Доступно обновление: {version}"
-  },
-  "app.settings.updates.changelog": {
-    "defaultMessage": "Что нового в этой версии:",
-    "message": "Что нового в этой версии:"
-  },
-  "app.settings.updates.check-updates": {
-    "defaultMessage": "Проверить обновления",
-    "message": "Проверить обновления"
-  },
-  "app.settings.updates.checking": {
-    "defaultMessage": "Проверка...",
-    "message": "Проверка..."
-  },
-  "app.settings.updates.current-version": {
-    "defaultMessage": "Текущая версия",
-    "message": "Текущая версия"
-  },
-  "app.settings.updates.description": {
-    "defaultMessage": "Проверка наличия новых версий и журнал изменений Rubirinth App.",
-    "message": "Проверка наличия новых версий и журнал изменений Rubirinth App."
-  },
-  "app.settings.updates.downloading": {
-    "defaultMessage": "Скачивание...",
-    "message": "Скачивание..."
-  },
-  "app.settings.updates.install-now": {
-    "defaultMessage": "Обновить сейчас",
-    "message": "Обновить сейчас"
-  },
-  "app.settings.updates.latest-version": {
-    "defaultMessage": "Новая версия",
-    "message": "Новая версия"
-  },
-  "app.settings.updates.title": {
-    "defaultMessage": "Обновления",
-    "message": "Обновления"
-  },
-  "app.settings.updates.up-to-date": {
-    "defaultMessage": "У вас установлена последняя версия",
-    "message": "У вас установлена последняя версия"
-  },
-  "app.settings.updates.up-to-date-desc": {
-    "defaultMessage": "Rubirinth App {version} — все компоненты актуальны.",
-    "message": "Rubirinth App {version} — все компоненты актуальны."
-  },
-  "app.settings.updates.update-available-desc": {
-    "defaultMessage": "Версия {version} готова к установке. Рекомендуется обновиться для получения последних улучшений и исправлений.",
-    "message": "Версия {version} готова к установке. Рекомендуется обновиться для получения последних улучшений и исправлений."
-  },
-  "app.settings.updates.update-available-title": {
-    "defaultMessage": "Доступна новая версия Rubirinth!",
-    "message": "Доступна новая версия Rubirinth!"
-  },
-  "app.settings.updates.view-on-github": {
-    "defaultMessage": "Открыть релиз на GitHub",
-    "message": "Открыть релиз на GitHub"
-  },
-  "app.settings.tabs.external-auth-libraries": {
-    "defaultMessage": "Библиотеки авторизации",
-    "message": "Библиотеки авторизации"
-  },
-  "app.settings.external-auth-libraries.title": {
-    "defaultMessage": "Библиотеки авторизации",
-    "message": "Библиотеки авторизации"
-  },
-  "app.settings.external-auth-libraries.description": {
-    "defaultMessage": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.).",
-    "message": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.)."
-  },
-  "app.settings.external-auth-libraries.loading": {
-    "defaultMessage": "Загрузка доступных версий библиотек...",
-    "message": "Загрузка доступных версий библиотек..."
-  },
-  "app.settings.external-auth-libraries.load-failed": {
-    "defaultMessage": "Не удалось загрузить библиотеки авторизации: {error}",
-    "message": "Не удалось загрузить библиотеки авторизации: {error}"
-  },
-  "app.settings.external-auth-libraries.retry": {
-    "defaultMessage": "Повторить",
-    "message": "Повторить"
-  },
-  "app.settings.external-auth-libraries.request-server": {
-    "defaultMessage": "Проверить обновления",
-    "message": "Проверить обновления"
-  },
-  "app.settings.external-auth-libraries.requesting-server": {
-    "defaultMessage": "Проверка...",
-    "message": "Проверка..."
-  },
-  "app.settings.external-auth-libraries.selected-version": {
-    "defaultMessage": "Выбранная версия",
-    "message": "Выбранная версия"
-  },
-  "app.settings.external-auth-libraries.not-selected": {
-    "defaultMessage": "Не выбрано",
-    "message": "Не выбрано"
-  },
-  "app.settings.external-auth-libraries.version": {
-    "defaultMessage": "Версия",
-    "message": "Версия"
-  },
-  "app.settings.external-auth-libraries.install-selected": {
-    "defaultMessage": "Установить",
-    "message": "Установить"
-  },
-  "app.settings.external-auth-libraries.reinstall": {
-    "defaultMessage": "Переустановить",
-    "message": "Переустановить"
-  },
-  "app.settings.external-auth-libraries.installing": {
-    "defaultMessage": "Установка...",
-    "message": "Установка..."
-  },
-  "app.settings.external-auth-libraries.installed": {
-    "defaultMessage": "Библиотека {providerName} {version} установлена",
-    "message": "Библиотека {providerName} {version} установлена"
-  },
-  "app.settings.external-auth-libraries.no-versions": {
-    "defaultMessage": "Совместимых версий библиотеки не найдено.",
-    "message": "Совместимых версий библиотеки не найдено."
-  },
-  "app.settings.external-auth-libraries.local-only": {
-    "defaultMessage": "Отображаются только локально установленные версии, так как удаленный сервер недоступен.",
-    "message": "Отображаются только локально установленные версии, так как удаленный сервер недоступен."
-  },
-  "friends.title": {
-    "defaultMessage": "Друзья",
-    "message": "Друзья"
-  },
-  "app.instance.confirm-delete.bulk-admonition-body": {
-    "message": "Все данные для {count, plural, one {# этой сборки} few {# этих сборок} many {# этих сборок} other {# этих сборок}} будут безвозвратно удалены, включая миры, конфигурации и весь установленный контент.",
-    "defaultMessage": "Все данные для {count, plural, one {# этой сборки} few {# этих сборок} many {# этих сборок} other {# этих сборок}} будут безвозвратно удалены, включая миры, конфигурации и весь установленный контент."
-  },
-  "app.instance.confirm-delete.bulk-delete-button": {
-    "message": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}",
-    "defaultMessage": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}"
-  },
-  "app.instance.confirm-delete.bulk-header": {
-    "message": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}",
-    "defaultMessage": "Удалить {count, plural, one {# сборку} few {# сборки} many {# сборок} other {# сборок}}"
-  },
-  "app.instance.mods.projects-were-added": {
-    "message": "{count, plural, one {Добавлен # проект} few {Добавлено # проекта} many {Добавлено # проектов} other {Добавлено # проектов}}",
-    "defaultMessage": "{count, plural, one {Добавлен # проект} few {Добавлено # проекта} many {Добавлено # проектов} other {Добавлено # проектов}}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "defaultMessage": "Для этого инстанса достигнут лимит в {limit, number} пользователей.",
-    "message": "Для этого инстанса достигнут лимит в {limit, number} пользователей."
-  },
-  "app.instance.worlds.search-worlds-placeholder": {
-    "message": "{count, plural, one {Поиск по # миру...} few {Поиск по # мирам...} many {Поиск по # мирам...} other {Поиск по # мирам...}}",
-    "defaultMessage": "{count, plural, one {Поиск по # миру...} few {Поиск по # мирам...} many {Поиск по # мирам...} other {Поиск по # мирам...}}"
-  },
-  "app.library.selection.selected-count": {
-    "message": "{count, plural, one {Выбрана # сборка} few {Выбрано # сборки} many {Выбрано # сборок} other {Выбрано # сборок}}",
-    "defaultMessage": "{count, plural, one {Выбрана # сборка} few {Выбрано # сборки} many {Выбрано # сборок} other {Выбрано # сборок}}"
-  },
-  "instance.files.adding-files": {
-    "message": "Добавление файлов ({completed}/{total})",
-    "defaultMessage": "Добавление файлов ({completed}/{total})"
-  },
-  "astralrinth.app.settings.sidebar.label.astralrinth": {
-    "defaultMessage": "Astralrinth",
-    "message": "Astralrinth"
-  },
-  "installation-settings.link-modpack.button": {
-    "message": "Привязать к сборке",
-    "defaultMessage": "Привязать к сборке"
-  },
-  "installation-settings.link-modpack.modal-header": {
-    "message": "Привязать к сборке",
-    "defaultMessage": "Привязать к сборке"
-  },
-  "installation-settings.link-modpack.search-placeholder": {
-    "message": "Поиск сборок или ссылка / slug на Modrinth...",
-    "defaultMessage": "Поиск сборок или ссылка / slug на Modrinth..."
-  },
-  "installation-settings.link-modpack.search-label": {
-    "message": "Поиск сборок",
-    "defaultMessage": "Поиск сборок"
-  },
-  "installation-settings.link-modpack.search-results": {
-    "message": "Выберите сборку",
-    "defaultMessage": "Выберите сборку"
-  },
-  "installation-settings.link-modpack.no-results": {
-    "message": "По вашему запросу сборки не найдены.",
-    "defaultMessage": "По вашему запросу сборки не найдены."
-  },
-  "installation-settings.link-modpack.selected-modpack": {
-    "message": "Выбранная сборка",
-    "defaultMessage": "Выбранная сборка"
-  },
-  "installation-settings.link-modpack.change-modpack": {
-    "message": "Выбрать другую",
-    "defaultMessage": "Выбрать другую"
-  },
-  "installation-settings.link-modpack.select-version": {
-    "message": "Целевая версия сборки",
-    "defaultMessage": "Целевая версия сборки"
-  },
-  "installation-settings.link-modpack.compatible-badge": {
-    "message": "Совместимо",
-    "defaultMessage": "Совместимо"
-  },
-  "installation-settings.link-modpack.confirm-button": {
-    "message": "Привязать сборку",
-    "defaultMessage": "Привязать сборку"
-  },
-  "installation-settings.link-modpack.linking-button": {
-    "message": "Привязка...",
-    "defaultMessage": "Привязка..."
-  },
-  "installation-settings.link-modpack.success-title": {
-    "message": "Сборка привязана",
-    "defaultMessage": "Сборка привязана"
-  },
-  "installation-settings.link-modpack.success-message": {
-    "message": "Сборка успешно привязана к {name}.",
-    "defaultMessage": "Сборка успешно привязана к {name}."
-  },
-  "installation-settings.link-modpack.loading-versions": {
-    "message": "Загрузка версий сборки...",
-    "defaultMessage": "Загрузка версий сборки..."
-  },
-  "installation-settings.link-modpack.no-versions": {
-    "message": "Версии для этой сборки не найдены.",
-    "defaultMessage": "Версии для этой сборки не найдены."
-  },
-  "app.settings.tabs.advanced": {
-    "message": "Продвинутые",
-    "defaultMessage": "Продвинутые"
-  },
-  "app.settings.advanced.title": {
-    "message": "Продвинутые настройки",
-    "defaultMessage": "Продвинутые настройки"
-  },
-  "app.settings.advanced.import-section.title": {
-    "message": "Импорт данных из других лаунчеров",
-    "defaultMessage": "Импорт данных из других лаунчеров"
-  },
-  "app.settings.advanced.import-section.description": {
-    "message": "Перенесите сборки, миры и моды из других лаунчеров (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки.",
-    "defaultMessage": "Перенесите сборки, миры и моды из других лаунчеров (MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
-  },
-  "app.settings.advanced.scan-launchers": {
-    "message": "Поиск лаунчеров",
-    "defaultMessage": "Поиск лаунчеров"
-  },
-  "app.settings.advanced.add-custom-folder": {
-    "message": "Выбрать папку...",
-    "defaultMessage": "Выбрать папку..."
-  },
-  "app.settings.advanced.search-instances": {
-    "message": "Поиск по названию сборки...",
-    "defaultMessage": "Поиск по названию сборки..."
-  },
-  "app.settings.advanced.no-launchers-detected": {
-    "message": "Сборки в стандартных папках других лаунчеров не обнаружены. Вы можете вручную указать папку выше.",
-    "defaultMessage": "Сборки в стандартных папках других лаунчеров не обнаружены. Вы можете вручную указать папку выше."
-  },
-  "app.settings.advanced.import-selected": {
-    "message": "Импортировать выбранные ({count})",
-    "defaultMessage": "Импортировать выбранные ({count})"
-  },
-  "app.settings.advanced.importing": {
-    "message": "Импорт...",
-    "defaultMessage": "Импорт..."
-  },
-  "app.settings.advanced.import-success.title": {
-    "message": "Импорт завершён",
-    "defaultMessage": "Импорт завершён"
-  },
-  "app.settings.advanced.import-success.text": {
-    "message": "Успешно импортировано сборок: {count}.",
-    "defaultMessage": "Успешно импортировано сборок: {count}."
-  },
-  "app.settings.advanced.clear-selection": {
-    "message": "Снять выбор",
-    "defaultMessage": "Снять выбор"
-  },
-  "app.settings.advanced.instances-count": {
-    "message": "{count} сборок",
-    "defaultMessage": "{count} сборок"
-  },
-  "app.settings.sidebar.label.advanced": {
-    "message": "Продвинутые",
-    "defaultMessage": "Продвинутые"
-  },
-  "app.settings.tabs.import": {
-    "message": "Импорт",
-    "defaultMessage": "Импорт"
-  },
-  "app.settings.import.title": {
-    "message": "Импорт сборок",
-    "defaultMessage": "Импорт сборок"
-  },
-  "app.settings.import.description": {
-    "message": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки.",
-    "defaultMessage": "Перенесите сборки, миры и моды из других лаунчеров (Modrinth App, AstralRinth App, MultiMC, Prism Launcher, GDLauncher, ATLauncher, CurseForge) или произвольной папки."
-  },
-  "instance.badge.locked": {
-    "message": "Заблокировано",
-    "defaultMessage": "Заблокировано"
-  },
-  "instance.badge.locked.aria-label": {
-    "message": "Информация о заблокированной сборке",
-    "defaultMessage": "Информация о заблокированной сборке"
-  },
-  "instance.badge.shared": {
-    "message": "Совместная",
-    "defaultMessage": "Совместная"
-  },
-  "instance.badge.shared.aria-label": {
-    "message": "Информация о совместной сборке",
-    "defaultMessage": "Информация о совместной сборке"
-  },
-  "instance.metadata.loader-version.tooltip": {
-    "message": "Загрузчик модов и версия Minecraft",
-    "defaultMessage": "Загрузчик модов и версия Minecraft"
-  },
-  "instance.metadata.playtime.tooltip": {
-    "message": "Общее игровое время",
-    "defaultMessage": "Общее игровое время"
-  },
-  "instance.playtime.hours": {
-    "message": "{count, plural, one {# час} few {# часа} many {# часов} other {# часов}}",
-    "defaultMessage": "{count, plural, one {# час} few {# часа} many {# часов} other {# часов}}"
-  },
-  "instance.playtime.minutes": {
-    "message": "{count, plural, one {# минута} few {# минуты} many {# минут} other {# минут}}",
-    "defaultMessage": "{count, plural, one {# минута} few {# минуты} many {# минут} other {# минут}}"
-  },
-  "instance.playtime.seconds": {
-    "message": "{count, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунд}}",
-    "defaultMessage": "{count, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунд}}"
-  },
-  "minecraft-required.other-sign-in-methods": {
-    "message": "Способы входа",
-    "defaultMessage": "Способы входа"
-  },
-  "rubirinth.app.launcher-update-modal.header": {
-    "message": "Доступно обновление",
-    "defaultMessage": "Доступно обновление"
-  },
-  "rubirinth.app.launcher-update-modal.title": {
-    "message": "Доступна новая версия Rubirinth!",
-    "defaultMessage": "Доступна новая версия Rubirinth!"
-  },
-  "rubirinth.app.launcher-update-modal.description": {
-    "message": "Обновите лаунчер, чтобы получить новые функции, улучшения и исправления ошибок.",
-    "defaultMessage": "Обновите лаунчер, чтобы получить новые функции, улучшения и исправления ошибок."
-  },
-  "rubirinth.app.launcher-update-modal.current-version": {
-    "message": "Текущая версия:",
-    "defaultMessage": "Текущая версия:"
-  },
-  "rubirinth.app.launcher-update-modal.latest-version": {
-    "message": "Новая версия:",
-    "defaultMessage": "Новая версия:"
-  },
-  "rubirinth.app.launcher-update-modal.changelog": {
-    "message": "Список изменений на GitHub",
-    "defaultMessage": "Список изменений на GitHub"
-  },
-  "rubirinth.app.launcher-update-modal.download-and-install": {
-    "message": "Обновить сейчас",
-    "defaultMessage": "Обновить сейчас"
-  },
-  "rubirinth.app.launcher-update-modal.downloading": {
-    "message": "Загрузка...",
-    "defaultMessage": "Загрузка..."
-  },
-  "rubirinth.app.launcher-update-modal.close": {
-    "message": "Позже",
-    "defaultMessage": "Позже"
-  },
-  "app.settings.update-available-button": {
-    "message": "Обновить до {version}",
-    "defaultMessage": "Обновить до {version}"
-  },
-  "rubirinth.app.launcher-update-modal.changelog-title": {
-    "message": "Список изменений:",
-    "defaultMessage": "What's new:"
-  },
-  "app.behavior-settings.servers.title": {
-    "defaultMessage": "Servers",
-    "message": "Серверы"
-  },
-  "app.behavior-settings.ping-servers.title": {
-    "defaultMessage": "Ping servers",
-    "message": "Пинговать серверы"
-  },
-  "app.behavior-settings.ping-servers.description": {
-    "defaultMessage": "Check server availability and ping in catalog and world list.",
-    "message": "Проверять доступность и пинг серверов в каталоге и списке миров."
-  },
-  "app.screenshots.selection.selected-count": {
-    "message": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}",
-    "defaultMessage": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}"
-  },
-  "app.settings.synced-options.screenshots": {
-    "message": "Скриншоты",
-    "defaultMessage": "Скриншоты"
-  },
-  "app.settings.synced-options.screenshots.description": {
-    "message": "Просмотр скриншотов из всех сборок в одном месте.",
-    "defaultMessage": "Просмотр скриншотов из всех сборок в одном месте."
-  },
-  "instance.settings.tabs.synced-options.command-history.exclude-description": {
-    "message": "Исключить эту сборку из синхронизации истории команд.",
-    "defaultMessage": "Исключить эту сборку из синхронизации истории команд."
-  },
-  "instance.settings.tabs.synced-options.creative-hotbars.exclude-description": {
-    "message": "Исключить эту сборку из синхронизации панелей хотбаров.",
-    "defaultMessage": "Исключить эту сборку из синхронизации панелей хотбаров."
-  },
-  "instance.settings.tabs.synced-options.multiplayer-servers.exclude-description": {
-    "message": "Исключить эту сборку из синхронизации сетевых серверов.",
-    "defaultMessage": "Исключить эту сборку из синхронизации сетевых серверов."
-  },
-  "instance.settings.tabs.synced-options.screenshots": {
-    "message": "Скриншоты",
-    "defaultMessage": "Скриншоты"
-  },
-  "instance.settings.tabs.synced-options.screenshots.disabled-in-app": {
-    "message": "Скриншоты выключены в настройках приложения.",
-    "defaultMessage": "Скриншоты выключены в настройках приложения."
-  },
-  "instance.settings.tabs.synced-options.screenshots.exclude-description": {
-    "message": "Исключить скриншоты этой сборки из общего раздела скриншотов.",
-    "defaultMessage": "Исключить скриншоты этой сборки из общего раздела скриншотов."
-  },
-  "app.instance.worlds.remove-server-modal.synced-removal-notice": {
-    "message": "Этот сервер также будет удален из {count, plural, one {# другой сборки} few {# других сборок} many {# других сборок} other {# других сборок}}, так как он синхронизирован.",
-    "defaultMessage": "Этот сервер также будет удален из {count, plural, one {# другой сборки} few {# других сборок} many {# других сборок} other {# других сборок}}, так как он синхронизирован."
-  },
-  "app.behavior-settings.show-all-screenshots.title": {
-    "message": "Показывать все скриншоты вместе"
-  },
-  "app.behavior-settings.show-all-screenshots.description": {
-    "message": "Отображать скриншоты со всех ваших сборок на странице «Скриншоты»."
-  },
-  "app.settings.synced-options.choose-sync-source.title": {
-    "message": "Выберите источник синхронизации"
-  },
-  "instance.settings.tabs.tab-visibility": {
-    "message": "Вкладки"
-  },
-  "app.settings.tabs.features": {
-    "message": "Функции",
-    "defaultMessage": "Функции"
-  },
-  "app.features-settings.sync-across-devices.title": {
-    "message": "Синхронизация функций между устройствами",
-    "defaultMessage": "Синхронизация функций между устройствами"
-  },
-  "app.features-settings.sync-across-devices.description": {
-    "message": "Использовать эти настройки везде, где выполнен вход. Отключите, чтобы сохранить отдельные параметры на этом устройстве.",
-    "defaultMessage": "Использовать эти настройки везде, где выполнен вход. Отключите, чтобы сохранить отдельные параметры на этом устройстве."
-  },
-  "app.features-settings.sync-across-devices.signed-out-tooltip": {
-    "message": "Войдите в аккаунт Modrinth для синхронизации настроек.",
-    "defaultMessage": "Войдите в аккаунт Modrinth для синхронизации настроек."
-  },
-  "app.features-settings.instance-pages.title": {
-    "message": "Страницы сборок",
-    "defaultMessage": "Страницы сборок"
-  },
-  "app.features-settings.show-worlds-tab.title": {
-    "message": "Показывать вкладку «Миры» в сборках",
-    "defaultMessage": "Показывать вкладку «Миры» в сборках"
-  },
-  "app.features-settings.show-files-tab.title": {
-    "message": "Показывать вкладку «Файлы» в сборках",
-    "defaultMessage": "Показывать вкладку «Файлы» в сборках"
-  },
-  "app.features-settings.show-screenshots-tab.title": {
-    "message": "Показывать вкладку «Скриншоты» в сборках",
-    "defaultMessage": "Показывать вкладку «Скриншоты» в сборках"
-  },
-  "app.features-settings.sidebar.title": {
-    "message": "Боковая панель",
-    "defaultMessage": "Боковая панель"
-  },
-  "app.features-settings.show-all-screenshots.title": {
-    "message": "Показывать кнопку всех скриншотов в боковой панели",
-    "defaultMessage": "Показывать кнопку всех скриншотов в боковой панели"
-  },
-  "app.features-settings.show-all-screenshots.description": {
-    "message": "Отображать кнопку в левой боковой панели для быстрого перехода ко всем скриншотам сборок.",
-    "defaultMessage": "Отображать кнопку в левой боковой панели для быстрого перехода ко всем скриншотам сборок."
-  },
-  "app.features-settings.show-skin-selector.title": {
-    "message": "Показывать выбор скинов в боковой панели",
-    "defaultMessage": "Показывать выбор скинов в боковой панели"
-  },
-  "app.features-settings.show-skin-selector.description": {
-    "message": "Отображать кнопку в левой боковой панели для перехода в селектор скинов.",
-    "defaultMessage": "Отображать кнопку в левой боковой панели для перехода в селектор скинов."
-  },
-  "app.features-settings.quick-instances.title": {
-    "message": "Быстрый запуск сборок в боковой панели",
-    "defaultMessage": "Быстрый запуск сборок в боковой панели"
-  },
-  "app.features-settings.quick-instances.description": {
-    "message": "Выберите максимальное количество недавних сборок, отображаемых в боковой панели. Вы также можете изменить это перетаскиванием разделителя.",
-    "defaultMessage": "Выберите максимальное количество недавних сборок, отображаемых в боковой панели. Вы также можете изменить это перетаскиванием разделителя."
-  },
-  "app.features-settings.play-page.title": {
-    "message": "Главная страница",
-    "defaultMessage": "Главная страница"
-  },
-  "app.features-settings.show-jump-in.title": {
-    "message": "Показывать раздел быстрого запуска",
-    "defaultMessage": "Показывать раздел быстрого запуска"
-  },
-  "app.features-settings.show-jump-in.description": {
-    "message": "Отображать недавно запущенные миры и сборки в верхней части главной страницы.",
-    "defaultMessage": "Отображать недавно запущенные миры и сборки в верхней части главной страницы."
-  },
-  "app.content.desync-pack": {
-    "message": "Отвязать",
-    "defaultMessage": "Отвязать"
-  },
-  "app.content.sync-pack": {
-    "message": "Синхронизировать",
-    "defaultMessage": "Синхронизировать"
-  },
-  "app.content.sync-data-packs-disabled": {
-    "message": "Сначала включите синхронизацию датапаков в настройках лаунчера.",
-    "defaultMessage": "Сначала включите синхронизацию датапаков в настройках лаунчера."
-  },
-  "app.content.sync-resource-packs-disabled": {
-    "message": "Сначала включите синхронизацию ресурспаков в настройках лаунчера.",
-    "defaultMessage": "Сначала включите синхронизацию ресурспаков в настройках лаунчера."
-  },
-  "app.content.sync-packs-override": {
-    "message": "Сначала отключите переопределение синхронизации пакетов в настройках этой сборки.",
-    "defaultMessage": "Сначала отключите переопределение синхронизации пакетов в настройках этой сборки."
-  },
-  "project.versions.column.version": {
-    "defaultMessage": "Version",
-    "message": "Версия"
-  },
-  "project.versions.column.game-version": {
-    "defaultMessage": "Game version",
-    "message": "Версия игры"
-  },
-  "project.versions.column.platform": {
-    "defaultMessage": "Platform",
-    "message": "Платформа"
-  },
-  "project.versions.column.environment": {
-    "defaultMessage": "Environment",
-    "message": "Окружение"
-  },
-  "project.versions.column.published": {
-    "defaultMessage": "Published",
-    "message": "Опубликовано"
-  },
-  "project.versions.column.downloads": {
-    "defaultMessage": "Downloads",
-    "message": "Скачивания"
   }
 }

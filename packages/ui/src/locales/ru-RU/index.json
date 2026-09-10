@@ -7086,6 +7086,22 @@
     "defaultMessage": "Сервер устанавливается",
     "message": "Сервер устанавливается"
   },
+  "servers.download.failed.description": {
+    "message": "Произошла ошибка при попытке скачать файлы мира.",
+    "defaultMessage": "Произошла ошибка при попытке скачать файлы мира."
+  },
+  "servers.download.failed.title": {
+    "message": "Сбой скачивания",
+    "defaultMessage": "Сбой скачивания"
+  },
+  "servers.download.unavailable.description": {
+    "message": "Файлы этого мира в данный момент не могут быть скачаны.",
+    "defaultMessage": "Файлы этого мира в данный момент не могут быть скачаны."
+  },
+  "servers.download.unavailable.title": {
+    "message": "Скачивание недоступно",
+    "defaultMessage": "Скачивание недоступно"
+  },
   "servers.files.zip-created": {
     "defaultMessage": "Архив создан"
   },
