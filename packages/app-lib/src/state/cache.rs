@@ -2192,13 +2192,7 @@ impl CachedEntry {
                                 true,
                             ));
                         }
-                        Err(e) => {
-                            tracing::warn!(
-                                "Failed to fetch versions for project {}: {:?}",
-                                project_id,
-                                e
-                            );
-                        }
+                        Err(error) => return Err(error),
                     }
                 }
 
