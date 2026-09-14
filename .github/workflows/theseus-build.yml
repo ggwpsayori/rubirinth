@@ -225,15 +225,9 @@ jobs:
           ls -la release-artifacts/
 
           FILES=()
-          for f in release-artifacts/*; do
-            if [ -f "$f" ]; then
-              case "$f" in
-                *.exe|*.AppImage|*.deb|*.rpm|*.dmg|*.zip)
-                  FILES+=("$f")
-                  ;;
-              esac
-            fi
-          done
+          while IFS= read -r -d '' f; do
+            FILES+=("$f")
+          done < <(find release-artifacts -type f \( -name "*.exe" -o -name "*.AppImage" -o -name "*.deb" -o -name "*.rpm" -o -name "*.dmg" \) -print0)
 
           echo "Files to publish: ${FILES[*]}"
 
