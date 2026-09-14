@@ -9787,5 +9787,13 @@
   "tag.category.world-structures": {
     "defaultMessage": "Structures",
     "message": "Структуры"
+  },
+  "file-button.file-too-large.title": {
+    "message": "Файл слишком большой",
+    "defaultMessage": "Файл слишком большой"
+  },
+  "file-button.file-too-large.description": {
+    "message": "Файл {filename} слишком большой. Максимальный размер файла — {maxSize}.",
+    "defaultMessage": "Файл {filename} слишком большой. Максимальный размер файла — {maxSize}."
   }
 }

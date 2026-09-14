@@ -7085,5 +7085,213 @@
   "rubirinth.app.launcher-update-modal.title": {
     "message": "Доступна новая версия Rubirinth!",
     "defaultMessage": "Доступна новая версия Rubirinth!"
+  },
+  "app.download-manager.title": {
+    "message": "Менеджер загрузок",
+    "defaultMessage": "Менеджер загрузок"
+  },
+  "app.download-manager.show": {
+    "message": "Показать задачи установки",
+    "defaultMessage": "Показать задачи установки"
+  },
+  "app.download-manager.hide": {
+    "message": "Скрыть задачи установки",
+    "defaultMessage": "Скрыть задачи установки"
+  },
+  "app.download-manager.attention": {
+    "message": "Требуется внимание",
+    "defaultMessage": "Требуется внимание"
+  },
+  "app.download-manager.pause": {
+    "message": "Приостановить установку",
+    "defaultMessage": "Приостановить установку"
+  },
+  "app.download-manager.paused": {
+    "message": "Приостановлено",
+    "defaultMessage": "Приостановлено"
+  },
+  "app.download-manager.resume": {
+    "message": "Возобновить установку",
+    "defaultMessage": "Возобновить установку"
+  },
+  "app.download-manager.cancel": {
+    "message": "Отменить установку",
+    "defaultMessage": "Отменить установку"
+  },
+  "app.download-manager.canceling": {
+    "message": "Отмена установки…",
+    "defaultMessage": "Отмена установки…"
+  },
+  "app.download-manager.remove": {
+    "message": "Удалить из истории",
+    "defaultMessage": "Удалить из истории"
+  },
+  "app.download-manager.eta": {
+    "message": "Оставшееся время загрузки",
+    "defaultMessage": "Оставшееся время загрузки"
+  },
+  "app.download-manager.tasks": {
+    "message": "Задачи",
+    "defaultMessage": "Задачи"
+  },
+  "app.download-manager.active": {
+    "message": "Активные",
+    "defaultMessage": "Активные"
+  },
+  "app.download-manager.clear-all": {
+    "message": "Очистить все",
+    "defaultMessage": "Очистить все"
+  },
+  "app.download-manager.clear-completed": {
+    "message": "Очистить все завершённые задачи",
+    "defaultMessage": "Очистить все завершённые задачи"
+  },
+  "app.download-manager.complete": {
+    "message": "Завершено",
+    "defaultMessage": "Завершено"
+  },
+  "app.download-manager.empty": {
+    "message": "Нет активных задач установки",
+    "defaultMessage": "Нет активных задач установки"
+  },
+  "app.download-manager.estimated-rate": {
+    "message": "Примерная скорость скачивания",
+    "defaultMessage": "Примерная скорость скачивания"
+  },
+  "app.download-manager.verifying": {
+    "message": "Проверка",
+    "defaultMessage": "Проверка"
+  },
+  "app.download-manager.new-instance": {
+    "message": "Новая сборка",
+    "defaultMessage": "Новая сборка"
+  },
+  "app.download-manager.modpack": {
+    "message": "Модпак",
+    "defaultMessage": "Модпак"
+  },
+  "app.download-manager.shared-instance": {
+    "message": "Общая сборка",
+    "defaultMessage": "Общая сборка"
+  },
+  "app.download-manager.imported-instance": {
+    "message": "Импортированная сборка",
+    "defaultMessage": "Импортированная сборка"
+  },
+  "app.download-manager.duplicated-instance": {
+    "message": "Дублированная сборка",
+    "defaultMessage": "Дублированная сборка"
+  },
+  "app.download-manager.instance-installation": {
+    "message": "Установка сборки",
+    "defaultMessage": "Установка сборки"
+  },
+  "app.download-manager.modpack-installation": {
+    "message": "Установка модпака",
+    "defaultMessage": "Установка модпака"
+  },
+  "app.download-manager.shared-instance-update": {
+    "message": "Обновление общей сборки",
+    "defaultMessage": "Обновление общей сборки"
+  },
+  "app.settings.resource-management.store.title": {
+    "message": "Хранилище контента",
+    "defaultMessage": "Хранилище контента"
+  },
+  "app.settings.resource-management.store.description": {
+    "message": "Экономьте место на диске за счёт переиспользования установок игры, модов и паков между сборками.",
+    "defaultMessage": "Экономьте место на диске за счёт переиспользования установок игры, модов и паков между сборками."
+  },
+  "app.settings.resource-management.store.calculating": {
+    "message": "Вычисление…",
+    "defaultMessage": "Вычисление…"
+  },
+  "app.settings.resource-management.store.total": {
+    "message": "Сохранено: {size}",
+    "defaultMessage": "Сохранено: {size}"
+  },
+  "app.settings.resource-management.store.unique.label": {
+    "message": "Уникальное",
+    "defaultMessage": "Уникальное"
+  },
+  "app.settings.resource-management.store.shared.label": {
+    "message": "Общее",
+    "defaultMessage": "Общее"
+  },
+  "app.settings.resource-management.store.unused.label": {
+    "message": "Неиспользуемое",
+    "defaultMessage": "Неиспользуемое"
+  },
+  "app.settings.resource-management.store.empty": {
+    "message": "Установите моды или паки, чтобы увидеть здесь статистику хранилища.",
+    "defaultMessage": "Установите моды или паки, чтобы увидеть здесь статистику хранилища."
+  },
+  "app.settings.resource-management.store.clear": {
+    "message": "Очистить неиспользуемое",
+    "defaultMessage": "Очистить неиспользуемое"
+  },
+  "app.settings.resource-management.store.clearing": {
+    "message": "Очистка…",
+    "defaultMessage": "Очистка…"
+  },
+  "app.settings.resource-management.store.cleared": {
+    "message": "Освобождено {size} дискового пространства.",
+    "defaultMessage": "Освобождено {size} дискового пространства."
+  },
+  "app.settings.resource-management.store.nothing-to-clear": {
+    "message": "Нет неиспользуемого содержимого для очистки.",
+    "defaultMessage": "Нет неиспользуемого содержимого для очистки."
+  },
+  "app.settings.resource-management.store.clear.description": {
+    "message": "Удалить неиспользуемое загруженное содержимое",
+    "defaultMessage": "Удалить неиспользуемое загруженное содержимое"
+  },
+  "app.settings.resource-management.store.repair": {
+    "message": "Проверить и восстановить",
+    "defaultMessage": "Проверить и восстановить"
+  },
+  "app.settings.resource-management.store.repairing": {
+    "message": "Проверка и восстановление…",
+    "defaultMessage": "Проверка и восстановление…"
+  },
+  "app.settings.resource-management.store.repair.verify-description": {
+    "message": "Поиск повреждённых или недостающих файлов и их восстановление.",
+    "defaultMessage": "Поиск повреждённых или недостающих файлов и их восстановление."
+  },
+  "app.settings.resource-management.store.repair.running-description": {
+    "message": "Это действие закроет все запущенные сборки.",
+    "defaultMessage": "Это действие закроет все запущенные сборки."
+  },
+  "app.settings.resource-management.store.cache-limit.label": {
+    "message": "Хранить неиспользуемые загрузки",
+    "defaultMessage": "Хранить неиспользуемые загрузки"
+  },
+  "app.settings.resource-management.store.cache-limit.description": {
+    "message": "Хранить до указанного объёма неиспользуемого содержимого для будущих установок. Увеличение лимита экономит время скачивания.",
+    "defaultMessage": "Хранить до указанного объёма неиспользуемого содержимого для будущих установок. Увеличение лимита экономит время скачивания."
+  },
+  "app.settings.resource-management.store.cache-limit.unit": {
+    "message": "ГиБ",
+    "defaultMessage": "ГиБ"
+  },
+  "app.settings.resource-management.store.verified": {
+    "message": "Проверка завершена",
+    "defaultMessage": "Проверка завершена"
+  },
+  "app.settings.resource-management.store.attention": {
+    "message": "Некоторым файлам требуется внимание",
+    "defaultMessage": "Некоторым файлам требуется внимание"
+  },
+  "app.settings.resource-management.store.verification-result": {
+    "message": "Проверено {checked, plural, one {# файл} few {# файла} other {# файлов}}, выполнено исправлений: {repaired, plural, one {#} few {#} other {#}}.",
+    "defaultMessage": "Проверено {checked, plural, one {# файл} few {# файла} other {# файлов}}, выполнено исправлений: {repaired, plural, one {#} few {#} other {#}}."
+  },
+  "app.settings.resource-management.store.issues": {
+    "message": "Посмотреть {count, plural, one {# проблему} few {# проблемы} other {# проблем}}",
+    "defaultMessage": "Посмотреть {count, plural, one {# проблему} few {# проблемы} other {# проблем}}"
+  },
+  "instance.files.managed-content-read-only": {
+    "message": "Управляемое содержимое здесь доступно только для чтения. Добавить, отключить, обновить или удалить его можно на вкладке «Содержимое».",
+    "defaultMessage": "Управляемое содержимое здесь доступно только для чтения. Добавить, отключить, обновить или удалить его можно на вкладке «Содержимое»."
   }
 }
