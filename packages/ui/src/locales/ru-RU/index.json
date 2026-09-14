@@ -59,78 +59,6 @@
     "defaultMessage": "Не удалось загрузить настройки сервера",
     "message": "Не удалось загрузить настройки сервера"
   },
-  "app.settings.external-auth-libraries.description": {
-    "defaultMessage": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.).",
-    "message": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.)."
-  },
-  "app.settings.external-auth-libraries.install-selected": {
-    "defaultMessage": "Установить",
-    "message": "Установить"
-  },
-  "app.settings.external-auth-libraries.installed": {
-    "defaultMessage": "Библиотека {providerName} {version} установлена",
-    "message": "Библиотека {providerName} {version} установлена"
-  },
-  "app.settings.external-auth-libraries.installing": {
-    "defaultMessage": "Установка...",
-    "message": "Установка..."
-  },
-  "app.settings.external-auth-libraries.load-failed": {
-    "defaultMessage": "Не удалось загрузить библиотеки авторизации: {error}",
-    "message": "Не удалось загрузить библиотеки авторизации: {error}"
-  },
-  "app.settings.external-auth-libraries.loading": {
-    "defaultMessage": "Загрузка доступных версий библиотек...",
-    "message": "Загрузка доступных версий библиотек..."
-  },
-  "app.settings.external-auth-libraries.local-only": {
-    "defaultMessage": "Отображаются только локально установленные версии, так как удаленный сервер недоступен.",
-    "message": "Отображаются только локально установленные версии, так как удаленный сервер недоступен."
-  },
-  "app.settings.external-auth-libraries.no-versions": {
-    "defaultMessage": "Совместимых версий библиотеки не найдено.",
-    "message": "Совместимых версий библиотеки не найдено."
-  },
-  "app.settings.external-auth-libraries.not-selected": {
-    "defaultMessage": "Не выбрано",
-    "message": "Не выбрано"
-  },
-  "app.settings.external-auth-libraries.reinstall": {
-    "defaultMessage": "Переустановить",
-    "message": "Переустановить"
-  },
-  "app.settings.external-auth-libraries.request-server": {
-    "defaultMessage": "Проверить обновления",
-    "message": "Проверить обновления"
-  },
-  "app.settings.external-auth-libraries.requesting-server": {
-    "defaultMessage": "Проверка...",
-    "message": "Проверка..."
-  },
-  "app.settings.external-auth-libraries.retry": {
-    "defaultMessage": "Повторить",
-    "message": "Повторить"
-  },
-  "app.settings.external-auth-libraries.selected-version": {
-    "defaultMessage": "Выбранная версия",
-    "message": "Выбранная версия"
-  },
-  "app.settings.external-auth-libraries.title": {
-    "defaultMessage": "Библиотеки авторизации",
-    "message": "Библиотеки авторизации"
-  },
-  "app.settings.external-auth-libraries.version": {
-    "defaultMessage": "Версия",
-    "message": "Версия"
-  },
-  "app.settings.sidebar.label.rubirinth": {
-    "defaultMessage": "Rubirinth",
-    "message": "Rubirinth"
-  },
-  "app.settings.tabs.external-auth-libraries": {
-    "defaultMessage": "Библиотеки авторизации",
-    "message": "Библиотеки авторизации"
-  },
   "badge.alpha": {
     "defaultMessage": "Альфа",
     "message": "Альфа"
@@ -154,10 +82,6 @@
   "billing.resubscribe-modal.cancel": {
     "defaultMessage": "Отмена",
     "message": "Отмена"
-  },
-  "billing.resubscribe-modal.cpus": {
-    "defaultMessage": "{sharedCpus} Shared CPUs",
-    "message": "{sharedCpus} Shared CPUs"
   },
   "billing.resubscribe-modal.description": {
     "defaultMessage": "Вы собираетесь возобновить подписку на <server-name>{serverName}</server-name>. После оплаты сервер продолжит работу без остановок.",
@@ -215,10 +139,6 @@
     "defaultMessage": "Особые исключения остаются между сеансами. Чужая ссылка с фильтрами перезапишет их.",
     "message": "Особые исключения остаются между сеансами. Чужая ссылка с фильтрами перезапишет их."
   },
-  "browse.display-mode.prefix": {
-    "defaultMessage": "Mode:",
-    "message": "Режим:"
-  },
   "browse.filter-results": {
     "defaultMessage": "Фильтры...",
     "message": "Фильтры..."
@@ -262,62 +182,6 @@
   "browse.selected-projects-leave-modal.header": {
     "defaultMessage": "Проекты не установлены",
     "message": "Проекты не установлены"
-  },
-  "browse.sidebar.server-online-only": {
-    "defaultMessage": "Online only",
-    "message": "Только в сети"
-  },
-  "browse.sort.date-published": {
-    "defaultMessage": "Date published",
-    "message": "Дата публикации"
-  },
-  "browse.sort.date-updated": {
-    "defaultMessage": "Date updated",
-    "message": "Дата обновления"
-  },
-  "browse.sort.downloads": {
-    "defaultMessage": "Downloads",
-    "message": "Скачивания"
-  },
-  "browse.sort.follows": {
-    "defaultMessage": "Followers",
-    "message": "Подписчики"
-  },
-  "browse.sort.newest": {
-    "defaultMessage": "Date published",
-    "message": "Новизна"
-  },
-  "browse.sort.ping": {
-    "defaultMessage": "Ping",
-    "message": "Пинг"
-  },
-  "browse.sort.players": {
-    "defaultMessage": "Players",
-    "message": "Игроки"
-  },
-  "browse.sort.recent-players": {
-    "defaultMessage": "Recent players",
-    "message": "Недавние игроки"
-  },
-  "browse.sort.relevance": {
-    "defaultMessage": "Relevance",
-    "message": "Релевантность"
-  },
-  "browse.sort.updated": {
-    "defaultMessage": "Recently updated",
-    "message": "Дата обновления"
-  },
-  "browse.sort.verified-plays": {
-    "defaultMessage": "Verified Plays",
-    "message": "Проверенные игры"
-  },
-  "browse.view-mode.grid": {
-    "defaultMessage": "Cards",
-    "message": "Карточки"
-  },
-  "browse.view-mode.list": {
-    "defaultMessage": "List",
-    "message": "Список"
   },
   "browse.view-prefix": {
     "defaultMessage": "Вид:",
@@ -466,10 +330,6 @@
   "button.open-in-browser": {
     "defaultMessage": "Открыть в браузере",
     "message": "Открыть в браузере"
-  },
-  "button.open-in-curseforge": {
-    "defaultMessage": "Открыть в CurseForge",
-    "description": ""
   },
   "button.open-in-folder": {
     "defaultMessage": "Открыть в папке",
@@ -695,10 +555,6 @@
     "defaultMessage": "Предупреждение об удалении",
     "message": "Предупреждение об удалении"
   },
-  "content.confirm-deletion.delete-button": {
-    "defaultMessage": "Удалить {count, number} {itemType}",
-    "message": "Удалить {count, number} {itemType}"
-  },
   "content.confirm-deletion.header": {
     "defaultMessage": "Удалить {itemType}",
     "message": "Удалить {itemType}"
@@ -747,10 +603,6 @@
     "defaultMessage": "{count, plural, =1 {Зависимый проект} other {Зависимые проекты}}",
     "message": "{count, plural, =1 {Зависимый проект} other {Зависимые проекты}}"
   },
-  "content.dependency-warning.bulk-admonition-body": {
-    "defaultMessage": "Some selected projects are installed as dependencies. Deleting them may break your {context} or stop dependent content from loading correctly.",
-    "message": "Some selected projects are installed as dependencies. Deleting them may break your {context} or stop dependent content from loading correctly."
-  },
   "content.dependency-warning.context.instance": {
     "defaultMessage": "сборка",
     "message": "сборка"
@@ -779,25 +631,13 @@
     "defaultMessage": "Зависимый контент может не загрузиться или отключиться",
     "message": "Зависимый контент может не загрузиться или отключиться"
   },
-  "content.dependency-warning.effect-instance": {
-    "defaultMessage": "Your {context} may crash, refuse to start, or behave unexpectedly",
-    "message": "Your {context} may crash, refuse to start, or behave unexpectedly"
-  },
   "content.dependency-warning.header": {
     "defaultMessage": "Предупреждение о зависимостях",
     "message": "Предупреждение о зависимостях"
   },
-  "content.dependency-warning.single-admonition-body": {
-    "defaultMessage": "{project} is installed as a dependency. Deleting it may break your {context} or stop dependent content from loading correctly.",
-    "message": "{project} is installed as a dependency. Deleting it may break your {context} or stop dependent content from loading correctly."
-  },
   "content.dependency-warning.what-happens-label": {
     "defaultMessage": "Что произойдёт?",
     "message": "Что произойдёт?"
-  },
-  "content.diff-modal.added-count": {
-    "defaultMessage": "{count} added",
-    "message": "{count} added"
   },
   "content.diff-modal.config-files-updated": {
     "defaultMessage": "Изменены файлы настроек",
@@ -867,14 +707,6 @@
     "defaultMessage": "Нет изменений контента",
     "message": "Нет изменений контента"
   },
-  "content.diff-modal.removed-count": {
-    "defaultMessage": "{count} removed",
-    "message": "{count} removed"
-  },
-  "content.diff-modal.removed-disabled-count": {
-    "defaultMessage": "{count} removed (disabled)",
-    "message": "{count} removed (disabled)"
-  },
   "content.diff-modal.reviewed-files": {
     "defaultMessage": "Файлы не с Modrinth не проверяются.",
     "message": "Файлы не с Modrinth не проверяются."
@@ -894,10 +726,6 @@
   "content.diff-modal.unknown-project": {
     "defaultMessage": "Неизвестно",
     "message": "Неизвестно"
-  },
-  "content.diff-modal.updated-count": {
-    "defaultMessage": "{count} updated",
-    "message": "{count} updated"
   },
   "content.filter.disabled": {
     "defaultMessage": "Отключённые",
@@ -946,10 +774,6 @@
   "content.inline-backup.shift-click-hint": {
     "defaultMessage": "Удерживайте Shift при нажатии, чтобы пропустить подтверждение.",
     "message": "Удерживайте Shift при нажатии, чтобы пропустить подтверждение."
-  },
-  "content.inline-backup.warning-body": {
-    "defaultMessage": "Рекомендуется создать резервную копию перед продолжением, чтобы вы могли восстановить {type} в случае неполадок.",
-    "message": "Рекомендуется создать резервную копию перед продолжением, чтобы вы могли восстановить {type} в случае неполадок."
   },
   "content.inline-backup.world-label": {
     "defaultMessage": "мир",
@@ -1119,10 +943,6 @@
     "defaultMessage": "Подождите",
     "message": "Подождите"
   },
-  "content.page-layout.search-placeholder": {
-    "message": "Поиск: {count, number} {contentType}...",
-    "defaultMessage": "Поиск: {count, number} {contentType}..."
-  },
   "content.page-layout.share.file-names": {
     "defaultMessage": "Названия файлов",
     "message": "Названия файлов"
@@ -1179,57 +999,21 @@
     "defaultMessage": "Все выбранные проекты уже включены",
     "message": "Все выбранные проекты уже включены"
   },
-  "content.selection-bar.bulk.deleting": {
-    "defaultMessage": "Deleting {progress}/{total} {contentType}...",
-    "message": "Deleting {progress}/{total} {contentType}..."
-  },
-  "content.selection-bar.bulk.deleting-count": {
-    "defaultMessage": "Deleting {count, number} {contentType}",
-    "message": "Deleting {count, number} {contentType}"
-  },
   "content.selection-bar.bulk.deleting-waiting": {
     "defaultMessage": "Удаление проектов...",
     "message": "Удаление проектов..."
-  },
-  "content.selection-bar.bulk.disabling": {
-    "defaultMessage": "Disabling {progress}/{total} {contentType}...",
-    "message": "Disabling {progress}/{total} {contentType}..."
-  },
-  "content.selection-bar.bulk.disabling-count": {
-    "defaultMessage": "Disabling {count, number} {contentType}",
-    "message": "Disabling {count, number} {contentType}"
   },
   "content.selection-bar.bulk.disabling-waiting": {
     "defaultMessage": "Отключение проектов...",
     "message": "Отключение проектов..."
   },
-  "content.selection-bar.bulk.enabling": {
-    "defaultMessage": "Enabling {progress}/{total} {contentType}...",
-    "message": "Enabling {progress}/{total} {contentType}..."
-  },
-  "content.selection-bar.bulk.enabling-count": {
-    "defaultMessage": "Enabling {count, number} {contentType}",
-    "message": "Enabling {count, number} {contentType}"
-  },
   "content.selection-bar.bulk.enabling-waiting": {
     "defaultMessage": "Включение проектов...",
     "message": "Включение проектов..."
   },
-  "content.selection-bar.bulk.updating": {
-    "defaultMessage": "Updating {progress}/{total} {contentType}...",
-    "message": "Updating {progress}/{total} {contentType}..."
-  },
-  "content.selection-bar.bulk.updating-count": {
-    "message": "Обновление: {count, number} {contentType}",
-    "defaultMessage": "Обновление: {count, number} {contentType}"
-  },
   "content.selection-bar.bulk.updating-waiting": {
     "defaultMessage": "Обновление проектов...",
     "message": "Обновление проектов..."
-  },
-  "content.selection-bar.selected-count": {
-    "message": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}",
-    "defaultMessage": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}"
   },
   "content.selection-bar.selected-count-simple": {
     "message": "{count, plural, one {Выбран #} few {Выбрано #} many {Выбрано #} other {Выбрано #}}",
@@ -2019,25 +1803,9 @@
     "defaultMessage": "При продолжении более 100 файлов будут перезаписаны; вот некоторые из них.",
     "message": "При продолжении более 100 файлов будут перезаписаны; вот некоторые из них."
   },
-  "files.conflict-modal.overwrite-warning": {
-    "defaultMessage": "The following {count} files already exist on your server, and will be overwritten if you proceed with extraction.",
-    "message": "The following {count} files already exist on your server, and will be overwritten if you proceed with extraction."
-  },
-  "files.conflict-modal.overwritten-count": {
-    "defaultMessage": "{count} overwritten",
-    "message": "{count} overwritten"
-  },
   "files.conflict-modal.warning-header": {
     "defaultMessage": "Файлы будут перезаписаны",
     "message": "Файлы будут перезаписаны"
-  },
-  "files.create-modal.create-button": {
-    "defaultMessage": "Create {type}",
-    "message": "Create {type}"
-  },
-  "files.create-modal.header": {
-    "defaultMessage": "Create a {type}",
-    "message": "Create a {type}"
   },
   "files.create-modal.placeholder-directory": {
     "defaultMessage": "Например: my-folder",
@@ -2111,10 +1879,6 @@
   "files.editor.find-in-file": {
     "defaultMessage": "Найти",
     "message": "Найти"
-  },
-  "files.editor.find-match-count": {
-    "defaultMessage": "{current} of {total}",
-    "message": "{current} of {total}"
   },
   "files.editor.find-next-match": {
     "defaultMessage": "Следующее совпадение",
@@ -2246,10 +2010,6 @@
   "files.layout.extraction-started-title": {
     "defaultMessage": "Извлечение началось",
     "message": "Извлечение началось"
-  },
-  "files.layout.selected-count": {
-    "defaultMessage": "{count} selected",
-    "message": "{count} selected"
   },
   "files.layout.unsaved-changes": {
     "defaultMessage": "Есть несохранённые изменения.",
@@ -2702,14 +2462,6 @@
     "defaultMessage": "{count, number} ТиБ",
     "message": "{count, number} ТиБ"
   },
-  "friends.heading": {
-    "defaultMessage": "Друзья",
-    "message": "Друзья"
-  },
-  "friends.title": {
-    "defaultMessage": "Друзья",
-    "message": "Друзья"
-  },
   "header.category.category": {
     "defaultMessage": "Категория",
     "message": "Категория"
@@ -2882,10 +2634,6 @@
     "defaultMessage": "{storage} ГБ диска",
     "message": "{storage} ГБ диска"
   },
-  "hosting.specs.shared-cpus": {
-    "defaultMessage": "{cpus} Shared CPUs",
-    "message": "{cpus} Shared CPUs"
-  },
   "icon-select.edit": {
     "defaultMessage": "Изменить иконку",
     "message": "Изменить иконку"
@@ -2909,18 +2657,6 @@
   "image-viewer.edit": {
     "message": "Редактировать",
     "defaultMessage": "Редактировать"
-  },
-  "image-viewer.editor.censor.blur": {
-    "message": "Размытие",
-    "defaultMessage": "Размытие"
-  },
-  "image-viewer.editor.censor.mode": {
-    "message": "Тип скрытия",
-    "defaultMessage": "Тип скрытия"
-  },
-  "image-viewer.editor.censor.solid": {
-    "message": "Заливка",
-    "defaultMessage": "Заливка"
   },
   "image-viewer.editor.colour": {
     "message": "Цвет",
@@ -4058,10 +3794,6 @@
     "defaultMessage": "без ограничений",
     "message": "без ограничений"
   },
-  "markdown-editor.max-length.value": {
-    "defaultMessage": "{currentLength}/{maxLength}",
-    "message": "{currentLength}/{maxLength}"
-  },
   "markdown-editor.placeholder": {
     "defaultMessage": "Напишите что‑нибудь...",
     "message": "Напишите что‑нибудь..."
@@ -5002,10 +4734,6 @@
     "defaultMessage": "Показать меньше",
     "message": "Показать меньше"
   },
-  "project.disclosure.derivative-work.show-more": {
-    "defaultMessage": "Show {count} more",
-    "message": "Show {count} more"
-  },
   "project.disclosure.derivative-work.title": {
     "defaultMessage": "Производная работа от:",
     "message": "Производная работа от:"
@@ -5729,30 +5457,6 @@
   "project.versions.channel.release.symbol": {
     "defaultMessage": "Р",
     "message": "Р"
-  },
-  "project.versions.column.downloads": {
-    "defaultMessage": "Downloads",
-    "message": "Скачивания"
-  },
-  "project.versions.column.environment": {
-    "defaultMessage": "Environment",
-    "message": "Окружение"
-  },
-  "project.versions.column.game-version": {
-    "defaultMessage": "Game version",
-    "message": "Версия игры"
-  },
-  "project.versions.column.platform": {
-    "defaultMessage": "Platform",
-    "message": "Платформа"
-  },
-  "project.versions.column.published": {
-    "defaultMessage": "Published",
-    "message": "Опубликовано"
-  },
-  "project.versions.column.version": {
-    "defaultMessage": "Version",
-    "message": "Версия"
   },
   "project.versions.filter.channel": {
     "message": "Канал версий",
@@ -7304,10 +7008,6 @@
     "defaultMessage": "Копировать ID",
     "message": "Копировать ID"
   },
-  "servers.listing.download-latest-backup-tooltip": {
-    "defaultMessage": "Скачать последнюю резервную копию",
-    "message": "Скачать последнюю резервную копию"
-  },
   "servers.listing.manage-billing-label": {
     "defaultMessage": "Управление платежами",
     "message": "Управление платежами"
@@ -7623,10 +7323,6 @@
   "servers.purchase.step.plan.billed": {
     "defaultMessage": "{interval, select, monthly {за месяц} quarterly {за 3 месяца} yearly {за год} other {billed {interval}}}",
     "message": "{interval, select, monthly {за месяц} quarterly {за 3 месяца} yearly {за год} other {billed {interval}}}"
-  },
-  "servers.purchase.step.plan.billing-subtitle": {
-    "defaultMessage": "Доступно в Северной Америке, Европе и Юго‑Восточной Азии.",
-    "message": "Доступно в Северной Америке, Европе и Юго‑Восточной Азии."
   },
   "servers.purchase.step.plan.custom.desc": {
     "defaultMessage": "Соберите свой план с нужными характеристиками.",
@@ -8360,10 +8056,6 @@
     "defaultMessage": "Срок действия",
     "message": "Срок действия"
   },
-  "sharing.invite-players-modal.friends-heading": {
-    "defaultMessage": "Your friends - {count}",
-    "message": "Your friends - {count}"
-  },
   "sharing.invite-players-modal.heading": {
     "defaultMessage": "Пригласите игроков",
     "message": "Пригласите игроков"
@@ -8484,61 +8176,17 @@
     "defaultMessage": "8x и ниже",
     "message": "8x и ниже"
   },
-  "tag.category.addons-buildcraft": {
-    "defaultMessage": "Buildcraft",
-    "message": "BuildCraft"
-  },
-  "tag.category.addons-forestry": {
-    "defaultMessage": "Forestry",
-    "message": "Forestry"
-  },
-  "tag.category.addons-industrialcraft": {
-    "defaultMessage": "Industrial Craft",
-    "message": "Industrial Craft"
-  },
-  "tag.category.addons-thaumcraft": {
-    "defaultMessage": "Thaumcraft",
-    "message": "Thaumcraft"
-  },
-  "tag.category.addons-thermalexpansion": {
-    "defaultMessage": "Thermal Expansion",
-    "message": "Thermal Expansion"
-  },
-  "tag.category.addons-tinkers-construct": {
-    "defaultMessage": "Tinker's Construct",
-    "message": "Tinkers' Construct"
-  },
   "tag.category.adventure": {
     "defaultMessage": "Приключения",
     "message": "Приключения"
-  },
-  "tag.category.adventure-and-rpg": {
-    "defaultMessage": "Adventure and RPG",
-    "message": "Приключения и RPG"
   },
   "tag.category.adventure-mode": {
     "defaultMessage": "Режим приключений",
     "message": "Режим приключений"
   },
-  "tag.category.adventure-rpg": {
-    "defaultMessage": "Adventure & RPG",
-    "message": "Приключения и RPG"
-  },
   "tag.category.anarchy": {
     "defaultMessage": "Анархия",
     "message": "Анархия"
-  },
-  "tag.category.animated": {
-    "defaultMessage": "Animated",
-    "message": "Анимированные"
-  },
-  "tag.category.applied-energistics-2": {
-    "defaultMessage": "Applied Energistics 2",
-    "message": "Applied Energistics 2"
-  },
-  "tag.category.armor-weapons-tools": {
-    "defaultMessage": "Armor, Tools, and Weapons",
-    "message": "Броня, оружие и инструменты"
   },
   "tag.category.atmosphere": {
     "defaultMessage": "Атмосфера",
@@ -8560,10 +8208,6 @@
     "defaultMessage": "Блоки",
     "message": "Блоки"
   },
-  "tag.category.blood-magic": {
-    "defaultMessage": "Blood Magic",
-    "message": "Blood Magic"
-  },
   "tag.category.bloom": {
     "defaultMessage": "Свечение",
     "message": "Свечение"
@@ -8571,10 +8215,6 @@
   "tag.category.bosses": {
     "defaultMessage": "Боссы",
     "message": "Боссы"
-  },
-  "tag.category.bug-fixes": {
-    "defaultMessage": "Bug Fixes",
-    "message": "Исправление ошибок"
   },
   "tag.category.cartoon": {
     "defaultMessage": "Мультяшные",
@@ -8596,10 +8236,6 @@
     "defaultMessage": "Бой",
     "message": "Бой"
   },
-  "tag.category.combat-pvp": {
-    "defaultMessage": "Combat / PvP",
-    "message": "Бой / PvP"
-  },
   "tag.category.competitive": {
     "defaultMessage": "Соревновательные",
     "message": "Соревновательные"
@@ -8608,24 +8244,8 @@
     "defaultMessage": "Шейдеры",
     "message": "Шейдеры"
   },
-  "tag.category.cosmetic": {
-    "defaultMessage": "Cosmetic",
-    "message": "Косметика"
-  },
-  "tag.category.crafttweaker": {
-    "defaultMessage": "CraftTweaker",
-    "message": "CraftTweaker"
-  },
-  "tag.category.create": {
-    "defaultMessage": "Create",
-    "message": "Create"
-  },
   "tag.category.creative-mode": {
     "defaultMessage": "Творческий режим",
-    "message": "Творческий режим"
-  },
-  "tag.category.creativemode": {
-    "defaultMessage": "CreativeMode",
     "message": "Творческий режим"
   },
   "tag.category.creator-community": {
@@ -8644,10 +8264,6 @@
     "defaultMessage": "Новый контент",
     "message": "Новый контент"
   },
-  "tag.category.data-packs": {
-    "defaultMessage": "Data Packs",
-    "message": "Датапаки"
-  },
   "tag.category.decoration": {
     "defaultMessage": "Оформление",
     "message": "Оформление"
@@ -8659,10 +8275,6 @@
   "tag.category.economy": {
     "defaultMessage": "Экономика",
     "message": "Экономика"
-  },
-  "tag.category.education": {
-    "defaultMessage": "Education",
-    "message": "Образование"
   },
   "tag.category.entities": {
     "defaultMessage": "Сущности",
@@ -8676,18 +8288,6 @@
     "defaultMessage": "Снаряжение",
     "message": "Снаряжение"
   },
-  "tag.category.expert": {
-    "defaultMessage": "Expert",
-    "message": "Экспертные"
-  },
-  "tag.category.exploration": {
-    "defaultMessage": "Exploration",
-    "message": "Исследования"
-  },
-  "tag.category.extra-large": {
-    "defaultMessage": "Extra Large",
-    "message": "Сверхбольшие"
-  },
   "tag.category.factions": {
     "defaultMessage": "Фракции",
     "message": "Фракции"
@@ -8696,21 +8296,9 @@
     "defaultMessage": "Фэнтези",
     "message": "Фэнтези"
   },
-  "tag.category.farmers-delight": {
-    "defaultMessage": "Farmer's Delight",
-    "message": "Farmer's Delight"
-  },
-  "tag.category.five-twelve-x-and-beyond": {
-    "defaultMessage": "512x and Higher",
-    "message": "512x и выше"
-  },
   "tag.category.foliage": {
     "defaultMessage": "Растительность",
     "message": "Растительность"
-  },
-  "tag.category.font-packs": {
-    "defaultMessage": "Font Packs",
-    "message": "Шрифты"
   },
   "tag.category.fonts": {
     "defaultMessage": "Шрифты",
@@ -8719,14 +8307,6 @@
   "tag.category.food": {
     "defaultMessage": "Еда",
     "message": "Еда"
-  },
-  "tag.category.ftb-official-pack": {
-    "defaultMessage": "FTB Official Pack",
-    "message": "Официальные FTB"
-  },
-  "tag.category.galacticraft": {
-    "defaultMessage": "Galacticraft",
-    "message": "Galacticraft"
   },
   "tag.category.game-mechanics": {
     "defaultMessage": "Игровые механики",
@@ -8740,10 +8320,6 @@
     "defaultMessage": "Интерфейс",
     "message": "Интерфейс"
   },
-  "tag.category.hardcore": {
-    "defaultMessage": "Hardcore",
-    "message": "Хардкор"
-  },
   "tag.category.hardcore-mode": {
     "defaultMessage": "Хардкор",
     "message": "Хардкор"
@@ -8751,14 +8327,6 @@
   "tag.category.high": {
     "defaultMessage": "Высокие",
     "message": "Высокие"
-  },
-  "tag.category.horror": {
-    "defaultMessage": "Horror",
-    "message": "Хоррор"
-  },
-  "tag.category.integrated-dynamics": {
-    "defaultMessage": "Integrated Dynamics",
-    "message": "Integrated Dynamics"
   },
   "tag.category.items": {
     "defaultMessage": "Предметы",
@@ -8776,17 +8344,9 @@
     "defaultMessage": "Kit PvP",
     "message": "Kit PvP"
   },
-  "tag.category.kubejs": {
-    "defaultMessage": "KubeJS",
-    "message": "KubeJS"
-  },
   "tag.category.library": {
     "defaultMessage": "Библиотеки",
     "message": "Библиотеки"
-  },
-  "tag.category.library-api": {
-    "defaultMessage": "API and Library",
-    "message": "Библиотеки и API"
   },
   "tag.category.lifesteal": {
     "defaultMessage": "Lifesteal",
@@ -8812,37 +8372,9 @@
     "defaultMessage": "Управление",
     "message": "Управление"
   },
-  "tag.category.map-based": {
-    "defaultMessage": "Map Based",
-    "message": "На основе карт"
-  },
-  "tag.category.map-information": {
-    "defaultMessage": "Map and Information",
-    "message": "Карты и информация"
-  },
-  "tag.category.mc-addons": {
-    "defaultMessage": "Addons",
-    "message": "Аддоны"
-  },
-  "tag.category.mc-creator": {
-    "defaultMessage": "MCreator",
-    "message": "MCreator"
-  },
-  "tag.category.mc-food": {
-    "defaultMessage": "Food",
-    "message": "Еда"
-  },
-  "tag.category.mc-miscellaneous": {
-    "defaultMessage": "Miscellaneous",
-    "message": "Разное"
-  },
   "tag.category.media": {
     "defaultMessage": "Медиа",
     "message": "Медиа"
-  },
-  "tag.category.medieval": {
-    "defaultMessage": "Medieval",
-    "message": "Средневековье"
   },
   "tag.category.medium": {
     "defaultMessage": "Средние",
@@ -8852,10 +8384,6 @@
     "defaultMessage": "Микроигры",
     "message": "Микроигры"
   },
-  "tag.category.mini-game": {
-    "defaultMessage": "Mini Game",
-    "message": "Мини-игры"
-  },
   "tag.category.minigame": {
     "defaultMessage": "Мини-игры",
     "message": "Мини-игры"
@@ -8863,10 +8391,6 @@
   "tag.category.minigames": {
     "defaultMessage": "Мини-игры",
     "message": "Мини-игры"
-  },
-  "tag.category.miscellaneous": {
-    "defaultMessage": "Miscellaneous",
-    "message": "Разное"
   },
   "tag.category.mmo": {
     "defaultMessage": "ММО",
@@ -8876,10 +8400,6 @@
     "defaultMessage": "Мобы",
     "message": "Мобы"
   },
-  "tag.category.mod-support": {
-    "defaultMessage": "Mod Support",
-    "message": "Поддержка модов"
-  },
   "tag.category.modded": {
     "defaultMessage": "Модовые",
     "message": "Модовые"
@@ -8887,14 +8407,6 @@
   "tag.category.models": {
     "defaultMessage": "Модели",
     "message": "Модели"
-  },
-  "tag.category.modern": {
-    "defaultMessage": "Modern",
-    "message": "Современные"
-  },
-  "tag.category.modjam-2025": {
-    "defaultMessage": "ModJam 2025",
-    "message": "ModJam 2025"
   },
   "tag.category.multiplayer": {
     "defaultMessage": "Сетевая игра",
@@ -8907,10 +8419,6 @@
   "tag.category.offline-mode": {
     "defaultMessage": "Офлайн-режим",
     "message": "Офлайн-режим"
-  },
-  "tag.category.one-twenty-eight-x": {
-    "defaultMessage": "128x",
-    "message": "128x"
   },
   "tag.category.oneblock": {
     "defaultMessage": "Выживание на блоке",
@@ -8936,17 +8444,9 @@
     "defaultMessage": "Поддержка PBR",
     "message": "Поддержка PBR"
   },
-  "tag.category.performance": {
-    "defaultMessage": "Performance",
-    "message": "Оптимизация"
-  },
   "tag.category.personal-worlds": {
     "defaultMessage": "Личные миры",
     "message": "Личные миры"
-  },
-  "tag.category.photo-realistic": {
-    "defaultMessage": "Photo Realistic",
-    "message": "Фотореализм"
   },
   "tag.category.plots": {
     "defaultMessage": "Участки",
@@ -8992,21 +8492,9 @@
     "defaultMessage": "Выживание на запись",
     "message": "Выживание на запись"
   },
-  "tag.category.redstone": {
-    "defaultMessage": "Redstone",
-    "message": "Редстоун"
-  },
-  "tag.category.refined-storage": {
-    "defaultMessage": "Refined Storage",
-    "message": "Refined Storage"
-  },
   "tag.category.reflections": {
     "defaultMessage": "Отражения",
     "message": "Отражения"
-  },
-  "tag.category.rlcraft": {
-    "defaultMessage": "RLCraft",
-    "message": "RLCraft"
   },
   "tag.category.roleplay": {
     "defaultMessage": "Ролевые",
@@ -9016,10 +8504,6 @@
     "defaultMessage": "RPG",
     "message": "RPG"
   },
-  "tag.category.sci-fi": {
-    "defaultMessage": "Sci-Fi",
-    "message": "Научная фантастика"
-  },
   "tag.category.screenshot": {
     "defaultMessage": "Суперкомпьютер",
     "message": "Суперкомпьютер"
@@ -9027,10 +8511,6 @@
   "tag.category.semi-realistic": {
     "defaultMessage": "Полуреализм",
     "message": "Полуреализм"
-  },
-  "tag.category.server-utility": {
-    "defaultMessage": "Server Utility",
-    "message": "Утилиты сервера"
   },
   "tag.category.shadows": {
     "defaultMessage": "Тени",
@@ -9040,21 +8520,9 @@
     "defaultMessage": "Простые",
     "message": "Простые"
   },
-  "tag.category.sixteen-x": {
-    "defaultMessage": "16x",
-    "message": "16x"
-  },
-  "tag.category.sixty-four-x": {
-    "defaultMessage": "64x",
-    "message": "64x"
-  },
   "tag.category.skyblock": {
     "defaultMessage": "Skyblock",
     "message": "Skyblock"
-  },
-  "tag.category.small-light": {
-    "defaultMessage": "Small / Light",
-    "message": "Легковесные"
   },
   "tag.category.smp": {
     "defaultMessage": "Выживание",
@@ -9063,10 +8531,6 @@
   "tag.category.social": {
     "defaultMessage": "Социальные",
     "message": "Социальные"
-  },
-  "tag.category.steampunk": {
-    "defaultMessage": "Steampunk",
-    "message": "Стимпанк"
   },
   "tag.category.storage": {
     "defaultMessage": "Хранение",
@@ -9080,10 +8544,6 @@
     "defaultMessage": "Команды",
     "message": "Команды"
   },
-  "tag.category.tech": {
-    "defaultMessage": "Tech",
-    "message": "Технологии"
-  },
   "tag.category.technical": {
     "defaultMessage": "Технические",
     "message": "Технические"
@@ -9092,49 +8552,13 @@
     "defaultMessage": "Технологии",
     "message": "Технологии"
   },
-  "tag.category.technology-automation": {
-    "defaultMessage": "Automation",
-    "message": "Автоматизация"
-  },
-  "tag.category.technology-energy": {
-    "defaultMessage": "Energy",
-    "message": "Энергия"
-  },
-  "tag.category.technology-farming": {
-    "defaultMessage": "Farming",
-    "message": "Фермерство"
-  },
-  "tag.category.technology-genetics": {
-    "defaultMessage": "Genetics",
-    "message": "Генетика"
-  },
-  "tag.category.technology-item-fluid-energy-transport": {
-    "defaultMessage": "Energy, Fluid, and Item Transport",
-    "message": "Транспортировка ресурсов"
-  },
-  "tag.category.technology-player-transport": {
-    "defaultMessage": "Player Transport",
-    "message": "Перемещение игрока"
-  },
-  "tag.category.technology-processing": {
-    "defaultMessage": "Processing",
-    "message": "Переработка"
-  },
   "tag.category.themed": {
     "defaultMessage": "Тематические",
     "message": "Тематические"
   },
-  "tag.category.thirty-two-x": {
-    "defaultMessage": "32x",
-    "message": "32x"
-  },
   "tag.category.towns": {
     "defaultMessage": "Города",
     "message": "Города"
-  },
-  "tag.category.traditional": {
-    "defaultMessage": "Traditional",
-    "message": "Традиционные"
   },
   "tag.category.transportation": {
     "defaultMessage": "Передвижение",
@@ -9144,29 +8568,9 @@
     "defaultMessage": "Улучшения",
     "message": "Улучшения"
   },
-  "tag.category.twilight-forest": {
-    "defaultMessage": "Twilight Forest",
-    "message": "Twilight Forest"
-  },
-  "tag.category.twitch-integration": {
-    "defaultMessage": "Twitch Integration",
-    "message": "Интеграция с Twitch"
-  },
-  "tag.category.two-fifty-six-x": {
-    "defaultMessage": "256x",
-    "message": "256x"
-  },
   "tag.category.utility": {
     "defaultMessage": "Утилиты",
     "message": "Утилиты"
-  },
-  "tag.category.utility-qol": {
-    "defaultMessage": "Utility & QoL",
-    "message": "Утилиты и удобства"
-  },
-  "tag.category.vanilla": {
-    "defaultMessage": "Vanilla+",
-    "message": "Ванилла / Ванилла+"
   },
   "tag.category.vanilla-like": {
     "defaultMessage": "Ванильный вид",
@@ -9176,33 +8580,9 @@
     "defaultMessage": "Приватные",
     "message": "Приватные"
   },
-  "tag.category.world-biomes": {
-    "defaultMessage": "Biomes",
-    "message": "Биомы"
-  },
-  "tag.category.world-dimensions": {
-    "defaultMessage": "Dimensions",
-    "message": "Измерения"
-  },
-  "tag.category.world-gen": {
-    "defaultMessage": "World Gen",
-    "message": "Генерация мира"
-  },
-  "tag.category.world-mobs": {
-    "defaultMessage": "Mobs",
-    "message": "Мобы"
-  },
-  "tag.category.world-ores-resources": {
-    "defaultMessage": "Ores and Resources",
-    "message": "Руды и ресурсы"
-  },
   "tag.category.world-resets": {
     "defaultMessage": "Вайпы",
     "message": "Вайпы"
-  },
-  "tag.category.world-structures": {
-    "defaultMessage": "Structures",
-    "message": "Структуры"
   },
   "tag.category.worldgen": {
     "defaultMessage": "Генерация мира",
@@ -9787,5 +9167,625 @@
   "version.supplementary-resources.type": {
     "defaultMessage": "Тип",
     "message": "Тип"
+  },
+  "app.settings.external-auth-libraries.description": {
+    "defaultMessage": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.).",
+    "message": "Выберите и установите библиотеку авторизации, используемую при запуске Minecraft со сторонним профилем игрока (Ely.by и др.)."
+  },
+  "app.settings.external-auth-libraries.install-selected": {
+    "defaultMessage": "Установить",
+    "message": "Установить"
+  },
+  "app.settings.external-auth-libraries.installed": {
+    "defaultMessage": "Библиотека {providerName} {version} установлена",
+    "message": "Библиотека {providerName} {version} установлена"
+  },
+  "app.settings.external-auth-libraries.installing": {
+    "defaultMessage": "Установка...",
+    "message": "Установка..."
+  },
+  "app.settings.external-auth-libraries.load-failed": {
+    "defaultMessage": "Не удалось загрузить библиотеки авторизации: {error}",
+    "message": "Не удалось загрузить библиотеки авторизации: {error}"
+  },
+  "app.settings.external-auth-libraries.loading": {
+    "defaultMessage": "Загрузка доступных версий библиотек...",
+    "message": "Загрузка доступных версий библиотек..."
+  },
+  "app.settings.external-auth-libraries.local-only": {
+    "defaultMessage": "Отображаются только локально установленные версии, так как удаленный сервер недоступен.",
+    "message": "Отображаются только локально установленные версии, так как удаленный сервер недоступен."
+  },
+  "app.settings.external-auth-libraries.no-versions": {
+    "defaultMessage": "Совместимых версий библиотеки не найдено.",
+    "message": "Совместимых версий библиотеки не найдено."
+  },
+  "app.settings.external-auth-libraries.not-selected": {
+    "defaultMessage": "Не выбрано",
+    "message": "Не выбрано"
+  },
+  "app.settings.external-auth-libraries.reinstall": {
+    "defaultMessage": "Переустановить",
+    "message": "Переустановить"
+  },
+  "app.settings.external-auth-libraries.request-server": {
+    "defaultMessage": "Проверить обновления",
+    "message": "Проверить обновления"
+  },
+  "app.settings.external-auth-libraries.requesting-server": {
+    "defaultMessage": "Проверка...",
+    "message": "Проверка..."
+  },
+  "app.settings.external-auth-libraries.retry": {
+    "defaultMessage": "Повторить",
+    "message": "Повторить"
+  },
+  "app.settings.external-auth-libraries.selected-version": {
+    "defaultMessage": "Выбранная версия",
+    "message": "Выбранная версия"
+  },
+  "app.settings.external-auth-libraries.title": {
+    "defaultMessage": "Библиотеки авторизации",
+    "message": "Библиотеки авторизации"
+  },
+  "app.settings.external-auth-libraries.version": {
+    "defaultMessage": "Версия",
+    "message": "Версия"
+  },
+  "app.settings.sidebar.label.rubirinth": {
+    "defaultMessage": "Rubirinth",
+    "message": "Rubirinth"
+  },
+  "app.settings.tabs.external-auth-libraries": {
+    "defaultMessage": "Библиотеки авторизации",
+    "message": "Библиотеки авторизации"
+  },
+  "billing.resubscribe-modal.cpus": {
+    "defaultMessage": "{sharedCpus} Shared CPUs",
+    "message": "{sharedCpus} Shared CPUs"
+  },
+  "browse.display-mode.prefix": {
+    "defaultMessage": "Mode:",
+    "message": "Режим:"
+  },
+  "browse.sidebar.server-online-only": {
+    "defaultMessage": "Online only",
+    "message": "Только в сети"
+  },
+  "browse.sort.date-published": {
+    "defaultMessage": "Date published",
+    "message": "Дата публикации"
+  },
+  "browse.sort.date-updated": {
+    "defaultMessage": "Date updated",
+    "message": "Дата обновления"
+  },
+  "browse.sort.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Скачивания"
+  },
+  "browse.sort.follows": {
+    "defaultMessage": "Followers",
+    "message": "Подписчики"
+  },
+  "browse.sort.newest": {
+    "defaultMessage": "Date published",
+    "message": "Новизна"
+  },
+  "browse.sort.ping": {
+    "defaultMessage": "Ping",
+    "message": "Пинг"
+  },
+  "browse.sort.players": {
+    "defaultMessage": "Players",
+    "message": "Игроки"
+  },
+  "browse.sort.recent-players": {
+    "defaultMessage": "Recent players",
+    "message": "Недавние игроки"
+  },
+  "browse.sort.relevance": {
+    "defaultMessage": "Relevance",
+    "message": "Релевантность"
+  },
+  "browse.sort.updated": {
+    "defaultMessage": "Recently updated",
+    "message": "Дата обновления"
+  },
+  "browse.sort.verified-plays": {
+    "defaultMessage": "Verified Plays",
+    "message": "Проверенные игры"
+  },
+  "browse.view-mode.grid": {
+    "defaultMessage": "Cards",
+    "message": "Карточки"
+  },
+  "browse.view-mode.list": {
+    "defaultMessage": "List",
+    "message": "Список"
+  },
+  "button.open-in-curseforge": {
+    "defaultMessage": "Открыть в CurseForge",
+    "description": ""
+  },
+  "content.confirm-deletion.delete-button": {
+    "defaultMessage": "Удалить {count, number} {itemType}",
+    "message": "Удалить {count, number} {itemType}"
+  },
+  "content.dependency-warning.bulk-admonition-body": {
+    "defaultMessage": "Some selected projects are installed as dependencies. Deleting them may break your {context} or stop dependent content from loading correctly.",
+    "message": "Some selected projects are installed as dependencies. Deleting them may break your {context} or stop dependent content from loading correctly."
+  },
+  "content.dependency-warning.effect-instance": {
+    "defaultMessage": "Your {context} may crash, refuse to start, or behave unexpectedly",
+    "message": "Your {context} may crash, refuse to start, or behave unexpectedly"
+  },
+  "content.dependency-warning.single-admonition-body": {
+    "defaultMessage": "{project} is installed as a dependency. Deleting it may break your {context} or stop dependent content from loading correctly.",
+    "message": "{project} is installed as a dependency. Deleting it may break your {context} or stop dependent content from loading correctly."
+  },
+  "content.diff-modal.added-count": {
+    "defaultMessage": "{count} added",
+    "message": "{count} added"
+  },
+  "content.diff-modal.removed-count": {
+    "defaultMessage": "{count} removed",
+    "message": "{count} removed"
+  },
+  "content.diff-modal.removed-disabled-count": {
+    "defaultMessage": "{count} removed (disabled)",
+    "message": "{count} removed (disabled)"
+  },
+  "content.diff-modal.updated-count": {
+    "defaultMessage": "{count} updated",
+    "message": "{count} updated"
+  },
+  "content.inline-backup.warning-body": {
+    "defaultMessage": "Рекомендуется создать резервную копию перед продолжением, чтобы вы могли восстановить {type} в случае неполадок.",
+    "message": "Рекомендуется создать резервную копию перед продолжением, чтобы вы могли восстановить {type} в случае неполадок."
+  },
+  "content.page-layout.search-placeholder": {
+    "message": "Поиск: {count, number} {contentType}...",
+    "defaultMessage": "Поиск: {count, number} {contentType}..."
+  },
+  "content.selection-bar.bulk.deleting": {
+    "defaultMessage": "Deleting {progress}/{total} {contentType}...",
+    "message": "Deleting {progress}/{total} {contentType}..."
+  },
+  "content.selection-bar.bulk.deleting-count": {
+    "defaultMessage": "Deleting {count, number} {contentType}",
+    "message": "Deleting {count, number} {contentType}"
+  },
+  "content.selection-bar.bulk.disabling": {
+    "defaultMessage": "Disabling {progress}/{total} {contentType}...",
+    "message": "Disabling {progress}/{total} {contentType}..."
+  },
+  "content.selection-bar.bulk.disabling-count": {
+    "defaultMessage": "Disabling {count, number} {contentType}",
+    "message": "Disabling {count, number} {contentType}"
+  },
+  "content.selection-bar.bulk.enabling": {
+    "defaultMessage": "Enabling {progress}/{total} {contentType}...",
+    "message": "Enabling {progress}/{total} {contentType}..."
+  },
+  "content.selection-bar.bulk.enabling-count": {
+    "defaultMessage": "Enabling {count, number} {contentType}",
+    "message": "Enabling {count, number} {contentType}"
+  },
+  "content.selection-bar.bulk.updating": {
+    "defaultMessage": "Updating {progress}/{total} {contentType}...",
+    "message": "Updating {progress}/{total} {contentType}..."
+  },
+  "content.selection-bar.bulk.updating-count": {
+    "message": "Обновление: {count, number} {contentType}",
+    "defaultMessage": "Обновление: {count, number} {contentType}"
+  },
+  "content.selection-bar.selected-count": {
+    "message": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}",
+    "defaultMessage": "{count, plural, one {Выбран # {contentType}} few {Выбрано # {contentType}} many {Выбрано # {contentType}} other {Выбрано # {contentType}}}"
+  },
+  "files.conflict-modal.overwrite-warning": {
+    "defaultMessage": "The following {count} files already exist on your server, and will be overwritten if you proceed with extraction.",
+    "message": "The following {count} files already exist on your server, and will be overwritten if you proceed with extraction."
+  },
+  "files.conflict-modal.overwritten-count": {
+    "defaultMessage": "{count} overwritten",
+    "message": "{count} overwritten"
+  },
+  "files.create-modal.create-button": {
+    "defaultMessage": "Create {type}",
+    "message": "Create {type}"
+  },
+  "files.create-modal.header": {
+    "defaultMessage": "Create a {type}",
+    "message": "Create a {type}"
+  },
+  "files.editor.find-match-count": {
+    "defaultMessage": "{current} of {total}",
+    "message": "{current} of {total}"
+  },
+  "files.layout.selected-count": {
+    "defaultMessage": "{count} selected",
+    "message": "{count} selected"
+  },
+  "friends.heading": {
+    "defaultMessage": "Друзья",
+    "message": "Друзья"
+  },
+  "friends.title": {
+    "defaultMessage": "Друзья",
+    "message": "Друзья"
+  },
+  "hosting.specs.shared-cpus": {
+    "defaultMessage": "{cpus} Shared CPUs",
+    "message": "{cpus} Shared CPUs"
+  },
+  "image-viewer.editor.censor.blur": {
+    "message": "Размытие",
+    "defaultMessage": "Размытие"
+  },
+  "image-viewer.editor.censor.mode": {
+    "message": "Тип скрытия",
+    "defaultMessage": "Тип скрытия"
+  },
+  "image-viewer.editor.censor.solid": {
+    "message": "Заливка",
+    "defaultMessage": "Заливка"
+  },
+  "markdown-editor.max-length.value": {
+    "defaultMessage": "{currentLength}/{maxLength}",
+    "message": "{currentLength}/{maxLength}"
+  },
+  "project.disclosure.derivative-work.show-more": {
+    "defaultMessage": "Show {count} more",
+    "message": "Show {count} more"
+  },
+  "project.versions.column.downloads": {
+    "defaultMessage": "Downloads",
+    "message": "Скачивания"
+  },
+  "project.versions.column.environment": {
+    "defaultMessage": "Environment",
+    "message": "Окружение"
+  },
+  "project.versions.column.game-version": {
+    "defaultMessage": "Game version",
+    "message": "Версия игры"
+  },
+  "project.versions.column.platform": {
+    "defaultMessage": "Platform",
+    "message": "Платформа"
+  },
+  "project.versions.column.published": {
+    "defaultMessage": "Published",
+    "message": "Опубликовано"
+  },
+  "project.versions.column.version": {
+    "defaultMessage": "Version",
+    "message": "Версия"
+  },
+  "servers.listing.download-latest-backup-tooltip": {
+    "defaultMessage": "Скачать последнюю резервную копию",
+    "message": "Скачать последнюю резервную копию"
+  },
+  "servers.purchase.step.plan.billing-subtitle": {
+    "defaultMessage": "Доступно в Северной Америке, Европе и Юго‑Восточной Азии.",
+    "message": "Доступно в Северной Америке, Европе и Юго‑Восточной Азии."
+  },
+  "sharing.invite-players-modal.friends-heading": {
+    "defaultMessage": "Your friends - {count}",
+    "message": "Your friends - {count}"
+  },
+  "tag.category.addons-buildcraft": {
+    "defaultMessage": "Buildcraft",
+    "message": "BuildCraft"
+  },
+  "tag.category.addons-forestry": {
+    "defaultMessage": "Forestry",
+    "message": "Forestry"
+  },
+  "tag.category.addons-industrialcraft": {
+    "defaultMessage": "Industrial Craft",
+    "message": "Industrial Craft"
+  },
+  "tag.category.addons-thaumcraft": {
+    "defaultMessage": "Thaumcraft",
+    "message": "Thaumcraft"
+  },
+  "tag.category.addons-thermalexpansion": {
+    "defaultMessage": "Thermal Expansion",
+    "message": "Thermal Expansion"
+  },
+  "tag.category.addons-tinkers-construct": {
+    "defaultMessage": "Tinker's Construct",
+    "message": "Tinkers' Construct"
+  },
+  "tag.category.adventure-and-rpg": {
+    "defaultMessage": "Adventure and RPG",
+    "message": "Приключения и RPG"
+  },
+  "tag.category.adventure-rpg": {
+    "defaultMessage": "Adventure & RPG",
+    "message": "Приключения и RPG"
+  },
+  "tag.category.animated": {
+    "defaultMessage": "Animated",
+    "message": "Анимированные"
+  },
+  "tag.category.applied-energistics-2": {
+    "defaultMessage": "Applied Energistics 2",
+    "message": "Applied Energistics 2"
+  },
+  "tag.category.armor-weapons-tools": {
+    "defaultMessage": "Armor, Tools, and Weapons",
+    "message": "Броня, оружие и инструменты"
+  },
+  "tag.category.blood-magic": {
+    "defaultMessage": "Blood Magic",
+    "message": "Blood Magic"
+  },
+  "tag.category.bug-fixes": {
+    "defaultMessage": "Bug Fixes",
+    "message": "Исправление ошибок"
+  },
+  "tag.category.combat-pvp": {
+    "defaultMessage": "Combat / PvP",
+    "message": "Бой / PvP"
+  },
+  "tag.category.cosmetic": {
+    "defaultMessage": "Cosmetic",
+    "message": "Косметика"
+  },
+  "tag.category.crafttweaker": {
+    "defaultMessage": "CraftTweaker",
+    "message": "CraftTweaker"
+  },
+  "tag.category.create": {
+    "defaultMessage": "Create",
+    "message": "Create"
+  },
+  "tag.category.creativemode": {
+    "defaultMessage": "CreativeMode",
+    "message": "Творческий режим"
+  },
+  "tag.category.data-packs": {
+    "defaultMessage": "Data Packs",
+    "message": "Датапаки"
+  },
+  "tag.category.education": {
+    "defaultMessage": "Education",
+    "message": "Образование"
+  },
+  "tag.category.expert": {
+    "defaultMessage": "Expert",
+    "message": "Экспертные"
+  },
+  "tag.category.exploration": {
+    "defaultMessage": "Exploration",
+    "message": "Исследования"
+  },
+  "tag.category.extra-large": {
+    "defaultMessage": "Extra Large",
+    "message": "Сверхбольшие"
+  },
+  "tag.category.farmers-delight": {
+    "defaultMessage": "Farmer's Delight",
+    "message": "Farmer's Delight"
+  },
+  "tag.category.five-twelve-x-and-beyond": {
+    "defaultMessage": "512x and Higher",
+    "message": "512x и выше"
+  },
+  "tag.category.font-packs": {
+    "defaultMessage": "Font Packs",
+    "message": "Шрифты"
+  },
+  "tag.category.ftb-official-pack": {
+    "defaultMessage": "FTB Official Pack",
+    "message": "Официальные FTB"
+  },
+  "tag.category.galacticraft": {
+    "defaultMessage": "Galacticraft",
+    "message": "Galacticraft"
+  },
+  "tag.category.hardcore": {
+    "defaultMessage": "Hardcore",
+    "message": "Хардкор"
+  },
+  "tag.category.horror": {
+    "defaultMessage": "Horror",
+    "message": "Хоррор"
+  },
+  "tag.category.integrated-dynamics": {
+    "defaultMessage": "Integrated Dynamics",
+    "message": "Integrated Dynamics"
+  },
+  "tag.category.kubejs": {
+    "defaultMessage": "KubeJS",
+    "message": "KubeJS"
+  },
+  "tag.category.library-api": {
+    "defaultMessage": "API and Library",
+    "message": "Библиотеки и API"
+  },
+  "tag.category.map-based": {
+    "defaultMessage": "Map Based",
+    "message": "На основе карт"
+  },
+  "tag.category.map-information": {
+    "defaultMessage": "Map and Information",
+    "message": "Карты и информация"
+  },
+  "tag.category.mc-addons": {
+    "defaultMessage": "Addons",
+    "message": "Аддоны"
+  },
+  "tag.category.mc-creator": {
+    "defaultMessage": "MCreator",
+    "message": "MCreator"
+  },
+  "tag.category.mc-food": {
+    "defaultMessage": "Food",
+    "message": "Еда"
+  },
+  "tag.category.mc-miscellaneous": {
+    "defaultMessage": "Miscellaneous",
+    "message": "Разное"
+  },
+  "tag.category.medieval": {
+    "defaultMessage": "Medieval",
+    "message": "Средневековье"
+  },
+  "tag.category.mini-game": {
+    "defaultMessage": "Mini Game",
+    "message": "Мини-игры"
+  },
+  "tag.category.miscellaneous": {
+    "defaultMessage": "Miscellaneous",
+    "message": "Разное"
+  },
+  "tag.category.mod-support": {
+    "defaultMessage": "Mod Support",
+    "message": "Поддержка модов"
+  },
+  "tag.category.modern": {
+    "defaultMessage": "Modern",
+    "message": "Современные"
+  },
+  "tag.category.modjam-2025": {
+    "defaultMessage": "ModJam 2025",
+    "message": "ModJam 2025"
+  },
+  "tag.category.one-twenty-eight-x": {
+    "defaultMessage": "128x",
+    "message": "128x"
+  },
+  "tag.category.performance": {
+    "defaultMessage": "Performance",
+    "message": "Оптимизация"
+  },
+  "tag.category.photo-realistic": {
+    "defaultMessage": "Photo Realistic",
+    "message": "Фотореализм"
+  },
+  "tag.category.redstone": {
+    "defaultMessage": "Redstone",
+    "message": "Редстоун"
+  },
+  "tag.category.refined-storage": {
+    "defaultMessage": "Refined Storage",
+    "message": "Refined Storage"
+  },
+  "tag.category.rlcraft": {
+    "defaultMessage": "RLCraft",
+    "message": "RLCraft"
+  },
+  "tag.category.sci-fi": {
+    "defaultMessage": "Sci-Fi",
+    "message": "Научная фантастика"
+  },
+  "tag.category.server-utility": {
+    "defaultMessage": "Server Utility",
+    "message": "Утилиты сервера"
+  },
+  "tag.category.sixteen-x": {
+    "defaultMessage": "16x",
+    "message": "16x"
+  },
+  "tag.category.sixty-four-x": {
+    "defaultMessage": "64x",
+    "message": "64x"
+  },
+  "tag.category.small-light": {
+    "defaultMessage": "Small / Light",
+    "message": "Легковесные"
+  },
+  "tag.category.steampunk": {
+    "defaultMessage": "Steampunk",
+    "message": "Стимпанк"
+  },
+  "tag.category.tech": {
+    "defaultMessage": "Tech",
+    "message": "Технологии"
+  },
+  "tag.category.technology-automation": {
+    "defaultMessage": "Automation",
+    "message": "Автоматизация"
+  },
+  "tag.category.technology-energy": {
+    "defaultMessage": "Energy",
+    "message": "Энергия"
+  },
+  "tag.category.technology-farming": {
+    "defaultMessage": "Farming",
+    "message": "Фермерство"
+  },
+  "tag.category.technology-genetics": {
+    "defaultMessage": "Genetics",
+    "message": "Генетика"
+  },
+  "tag.category.technology-item-fluid-energy-transport": {
+    "defaultMessage": "Energy, Fluid, and Item Transport",
+    "message": "Транспортировка ресурсов"
+  },
+  "tag.category.technology-player-transport": {
+    "defaultMessage": "Player Transport",
+    "message": "Перемещение игрока"
+  },
+  "tag.category.technology-processing": {
+    "defaultMessage": "Processing",
+    "message": "Переработка"
+  },
+  "tag.category.thirty-two-x": {
+    "defaultMessage": "32x",
+    "message": "32x"
+  },
+  "tag.category.traditional": {
+    "defaultMessage": "Traditional",
+    "message": "Традиционные"
+  },
+  "tag.category.twilight-forest": {
+    "defaultMessage": "Twilight Forest",
+    "message": "Twilight Forest"
+  },
+  "tag.category.twitch-integration": {
+    "defaultMessage": "Twitch Integration",
+    "message": "Интеграция с Twitch"
+  },
+  "tag.category.two-fifty-six-x": {
+    "defaultMessage": "256x",
+    "message": "256x"
+  },
+  "tag.category.utility-qol": {
+    "defaultMessage": "Utility & QoL",
+    "message": "Утилиты и удобства"
+  },
+  "tag.category.vanilla": {
+    "defaultMessage": "Vanilla+",
+    "message": "Ванилла / Ванилла+"
+  },
+  "tag.category.world-biomes": {
+    "defaultMessage": "Biomes",
+    "message": "Биомы"
+  },
+  "tag.category.world-dimensions": {
+    "defaultMessage": "Dimensions",
+    "message": "Измерения"
+  },
+  "tag.category.world-gen": {
+    "defaultMessage": "World Gen",
+    "message": "Генерация мира"
+  },
+  "tag.category.world-mobs": {
+    "defaultMessage": "Mobs",
+    "message": "Мобы"
+  },
+  "tag.category.world-ores-resources": {
+    "defaultMessage": "Ores and Resources",
+    "message": "Руды и ресурсы"
+  },
+  "tag.category.world-structures": {
+    "defaultMessage": "Structures",
+    "message": "Структуры"
   }
 }

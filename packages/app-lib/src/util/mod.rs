@@ -1,4 +1,5 @@
-﻿//! Theseus utility functions
+//! Theseus utility functions
+pub(crate) mod content_hash;
 pub mod fetch;
 pub mod io;
 pub mod jre;
@@ -9,6 +10,4 @@ pub mod rpc;
 pub mod server_ping;
 
 pub mod astralrinth;
-
 pub mod curseforge;
-
