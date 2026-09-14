@@ -1,4 +1,4 @@
-﻿name: Rubirinth App build
+name: Rubirinth App build
 on:
   push:
     tags:
@@ -26,13 +26,21 @@ concurrency:
 
 jobs:
   build:
-    name: Build Windows
-    permissions:
-      contents: write
+    name: Build (${{ matrix.artifact-target-name }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            artifact-target-name: x86_64-pc-windows-msvc
+          - os: ubuntu-22.04
+            artifact-target-name: x86_64-unknown-linux-gnu
+          - os: macos-latest
+            artifact-target-name: universal-apple-darwin
+
+    runs-on: ${{ matrix.os }}
     env:
       RUSTC_WRAPPER: 'sccache'
-
-    runs-on: windows-latest
 
     steps:
       - name: Check out code
@@ -45,6 +53,10 @@ jobs:
         with:
           rustflags: ''
 
+      - name: Add macOS compilation targets
+        if: matrix.os == 'macos-latest'
+        run: rustup target add x86_64-apple-darwin aarch64-apple-darwin
+
       - name: Setup sccache
         uses: mozilla-actions/sccache-action@v0.0.10
 
@@ -55,6 +67,12 @@ jobs:
 
       - name: Enable Corepack
         run: corepack enable
+
+      - name: Install Linux build dependencies
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev rpm libfuse2
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -68,7 +86,7 @@ jobs:
           repo: TomWright/dasel
           tag: v2.8.1
           extension-matching: disable
-          rename-to: dasel.exe
+          rename-to: ${{ matrix.os == 'windows-latest' && 'dasel.exe' || 'dasel' }}
           chmod: 0755
 
       - name: Generate tauri-dev.conf.json
@@ -106,20 +124,72 @@ jobs:
         run: pnpm install
 
       - name: Build Windows app
+        if: matrix.os == 'windows-latest'
         run: |
           $env:JAVA_HOME = "$env:JAVA_HOME_17_X64"
           ${{ (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') || inputs.app-version-override != '') && 'pnpm --filter=@modrinth/app run tauri build --config tauri-release.conf.json --verbose --bundles "nsis"' || 'pnpm --filter=@modrinth/app run tauri build --config tauri-dev.conf.json --verbose --bundles "nsis"' }}
 
-      - name: Upload app bundles
+      - name: Build Linux app
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          ${{ (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') || inputs.app-version-override != '') && 'pnpm --filter=@modrinth/app run tauri build --config tauri-release.conf.json --verbose --bundles "appimage,deb,rpm"' || 'pnpm --filter=@modrinth/app run tauri build --config tauri-dev.conf.json --verbose --bundles "appimage,deb,rpm"' }}
+
+      - name: Build macOS app
+        if: matrix.os == 'macos-latest'
+        run: |
+          ${{ (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') || inputs.app-version-override != '') && 'pnpm --filter=@modrinth/app run tauri build --target universal-apple-darwin --config tauri-release.conf.json --verbose --bundles "dmg"' || 'pnpm --filter=@modrinth/app run tauri build --target universal-apple-darwin --config tauri-dev.conf.json --verbose --bundles "dmg"' }}
+        env:
+          TAURI_BUNDLER_DMG_IGNORE_CI: 'true'
+
+      - name: Upload Windows bundle
+        if: matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v4
         with:
-          name: App bundle (x86_64-pc-windows-msvc)
+          name: App bundle (windows)
           path: |
             target/release/bundle/nsis/*-setup.exe
             target/release/bundle/nsis/*-setup.nsis.zip*
 
+      - name: Upload Linux bundle
+        if: matrix.os == 'ubuntu-22.04'
+        uses: actions/upload-artifact@v4
+        with:
+          name: App bundle (linux)
+          path: |
+            target/release/bundle/appimage/*
+            target/release/bundle/deb/*
+            target/release/bundle/rpm/*
+
+      - name: Upload macOS bundle
+        if: matrix.os == 'macos-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: App bundle (macos)
+          path: |
+            target/universal-apple-darwin/release/bundle/dmg/*.dmg
+
+  release:
+    name: Publish Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download all app bundles
+        uses: actions/download-artifact@v4
+        with:
+          pattern: 'App bundle (*)'
+          path: release-artifacts
+          merge-multiple: true
+
       - name: Create GitHub release
-        if: startsWith(github.ref, 'refs/tags/')
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -151,16 +221,32 @@ jobs:
             fi
           fi
 
+          echo "Downloaded release artifacts:"
+          ls -la release-artifacts/
+
+          FILES=()
+          for f in release-artifacts/*; do
+            if [ -f "$f" ]; then
+              case "$f" in
+                *.exe|*.AppImage|*.deb|*.rpm|*.dmg|*.zip)
+                  FILES+=("$f")
+                  ;;
+              esac
+            fi
+          done
+
+          echo "Files to publish: ${FILES[*]}"
+
           if [ -n "$NOTES_FILE" ] && [ -f "$NOTES_FILE" ]; then
             echo "Creating GitHub Release for ${VERSION_TAG} with notes file '${NOTES_FILE}'..."
             gh release create "${VERSION_TAG}" \
               --title "${RELEASE_TITLE}" \
               --notes-file "${NOTES_FILE}" \
-              target/release/bundle/nsis/*-setup.exe
+              "${FILES[@]}"
           else
             echo "Creating GitHub Release for ${VERSION_TAG} with generated notes..."
             gh release create "${VERSION_TAG}" \
               --title "${RELEASE_TITLE}" \
               --generate-notes \
-              target/release/bundle/nsis/*-setup.exe
+              "${FILES[@]}"
           fi
