@@ -622,7 +622,7 @@ pub async fn curseforge_manifest_to_pack_format(
                 if h.algo == 1 {
                     hashes.insert(PackFileHash::Sha1, h.value.clone());
                 } else if h.algo == 2 {
-                    hashes.insert(PackFileHash::Sha512, h.value.clone());
+                    hashes.insert(PackFileHash::Unknown("md5".to_string()), h.value.clone());
                 }
             }
 

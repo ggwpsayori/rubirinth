@@ -21,32 +21,42 @@ impl ContentStore {
         semaphore: &FetchSemaphore,
         progress: Option<&mut FetchProgressFn<'_>>,
     ) -> crate::Result<GetFileResult> {
-        let sha512 = sha512.ok_or_else(|| {
-            input("Content download is missing a SHA-512 hash")
-        })?;
-        validate_digest(sha512, 128)?;
-        let _acquisition = self.download_lock(sha512).lock().await;
-        if let Some(stored_file) = self.lookup(Some(sha512), size).await? {
-            return Ok(GetFileResult {
-                stored_file,
-                reused: true,
-            });
-        }
-        let download = downloads::download(
-            &self.staging,
-            &self.pool,
-            mirrors,
-            download_meta,
-            semaphore,
-            progress,
-        )
-        .await?;
-        if sha512 != download.sha512 {
-            return Err(input(format!(
-                "Downloaded content SHA-512 mismatch: expected {sha512}, got {}",
-                download.sha512,
-            )));
-        }
+        let download = if let Some(sha512) = sha512 {
+            validate_digest(sha512, 128)?;
+            let _acquisition = self.download_lock(sha512).lock().await;
+            if let Some(stored_file) = self.lookup(Some(sha512), size).await? {
+                return Ok(GetFileResult {
+                    stored_file,
+                    reused: true,
+                });
+            }
+            let download = downloads::download(
+                &self.staging,
+                &self.pool,
+                mirrors,
+                download_meta,
+                semaphore,
+                progress,
+            )
+            .await?;
+            if sha512 != download.sha512 {
+                return Err(input(format!(
+                    "Downloaded content SHA-512 mismatch: expected {sha512}, got {}",
+                    download.sha512,
+                )));
+            }
+            download
+        } else {
+            downloads::download(
+                &self.staging,
+                &self.pool,
+                mirrors,
+                download_meta,
+                semaphore,
+                progress,
+            )
+            .await?
+        };
         if let Some(expected_size) = size
             && expected_size != download.size
         {
