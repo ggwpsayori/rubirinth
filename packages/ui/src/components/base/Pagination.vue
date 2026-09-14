@@ -3,7 +3,6 @@
 		<ButtonLink
 			v-if="linkFunction"
 			v-tooltip="page > 1 ? formatMessage(messages.previousPage) : undefined"
-			:aria-label="formatMessage(messages.previousPage)"
 			:href="page > 1 ? linkFunction(page - 1) : undefined"
 			:disabled="page <= 1"
 			type="quiet"
@@ -23,7 +22,6 @@
 		>
 			<ChevronLeftIcon aria-hidden="true" />
 		</IconButton>
-
 		<div
 			v-for="(item, index) in pages"
 			:key="'page-' + item + '-' + index"
@@ -54,7 +52,6 @@
 					<button
 						v-tooltip="formatMessage(messages.goToPage)"
 						type="button"
-						:aria-label="formatMessage(messages.goToPage)"
 						class="grid place-content-center size-8 rounded-full border-0 bg-transparent text-secondary hover:text-primary cursor-pointer transition-colors"
 						@click="openPageInput(index)"
 					>
@@ -92,7 +89,6 @@
 		<ButtonLink
 			v-if="linkFunction"
 			v-tooltip="page < count ? formatMessage(messages.nextPage) : undefined"
-			:aria-label="formatMessage(messages.nextPage)"
 			:href="page < count ? linkFunction(page + 1) : undefined"
 			:disabled="page >= count"
 			type="quiet"

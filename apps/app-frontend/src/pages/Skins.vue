@@ -1342,13 +1342,6 @@ await loadSkins()
 									"
 									small
 									class="ears-feature-toggle-switch"
-									:aria-label="
-										formatMessage(
-											earsFeaturesEnabled
-												? messages.toggleEarsFeaturesOff
-												: messages.toggleEarsFeaturesOn,
-										)
-									"
 								/>
 							</div>
 						</div>
