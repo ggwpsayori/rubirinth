@@ -11483,7 +11483,7 @@ dependencies = [
 
 [[package]]
 name = "theseus"
-version = "0.8.0"
+version = "0.8.1"
 dependencies = [
  "ariadne",
  "async-minecraft-ping",
@@ -11575,7 +11575,7 @@ dependencies = [
 
 [[package]]
 name = "theseus_gui"
-version = "0.8.0"
+version = "0.8.1"
 dependencies = [
  "async_zip",
  "chrono",
