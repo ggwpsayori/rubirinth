@@ -11,7 +11,11 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { inject, onBeforeUnmount, onMounted } from 'vue'
 
-import { useAppSettings } from '@/composables/use-app-settings.ts'
+import {
+	DEFAULT_FEATURE_FLAGS,
+	type FeatureFlag,
+	useAppSettings,
+} from '@/composables/use-app-settings.ts'
 import {
 	type AppSettings,
 	appSettingsKeys,
