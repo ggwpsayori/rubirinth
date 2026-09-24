@@ -3,17 +3,17 @@ use crate::state::instances::{
     adapters::sqlite::{content_rows, instance_rows},
 };
 use crate::state::{
-    CacheBehaviour, CachedEntry, ProjectType, ReleaseChannel, State, Version,
+    CacheBehaviour, CachedEntry, CachedFileUpdate, ProjectType, ReleaseChannel,
+    State, Version,
 };
 use futures::StreamExt;
 use std::collections::{HashMap, HashSet};
 
-use super::sync_content_files::{
-    project_type_for_file, sync_instance_content_files,
-};
+use super::sync_content_files::{project_type_for_file, sync_content_files};
 
 #[derive(Clone, Debug)]
 pub(crate) struct ContentUpdate {
+    pub project_id: String,
     pub relative_path: String,
     pub current_version_id: String,
     pub update_version_id: String,
@@ -33,6 +33,7 @@ pub(crate) async fn check_content_updates(
     cache_behaviour: Option<CacheBehaviour>,
     state: &State,
 ) -> crate::Result<Vec<ContentUpdate>> {
+    sync_content_files(instance_id, state).await?;
     check_content_updates_with_cache_behaviours(
         instance_id,
         cache_behaviour,
@@ -85,7 +86,8 @@ async fn check_content_updates_with_cache_behaviours(
             entry.file_id.as_deref().map(|file_id| (file_id, entry))
         })
         .collect::<HashMap<_, _>>();
-    let files = sync_instance_content_files(&instance, state).await?;
+    let files =
+        content_rows::get_instance_files(&instance.id, &state.pool).await?;
     let hashes = files
         .iter()
         .map(|file| file.sha1.as_str())
@@ -140,7 +142,7 @@ async fn check_content_updates_with_cache_behaviours(
                 && !candidate.project_id.starts_with("cf:")
         });
 
-    let mut updates_by_hash: HashMap<String, Vec<String>> = HashMap::new();
+    let mut updates_by_hash: HashMap<String, Vec<Version>> = HashMap::new();
 
     // 1. Modrinth candidates: checked ONLY via Modrinth file update API
     if !mr_candidates.is_empty() {
@@ -172,12 +174,8 @@ async fn check_content_updates_with_cache_behaviours(
             &state.api_semaphore,
         )
         .await?;
-        for update in updates {
-            updates_by_hash
-                .entry(update.hash)
-                .or_default()
-                .push(update.update_version_id);
-        }
+        updates_by_hash =
+            resolve_update_versions(updates, update_cache_behaviour, state).await?;
     }
 
     // 2. CurseForge candidates: checked ONLY via CurseForge project versions
@@ -217,15 +215,16 @@ async fn check_content_updates_with_cache_behaviours(
 
         for candidate in &cf_candidates {
             if let Some(versions) = cf_versions_by_project.get(&candidate.project_id) {
-                if let Some(update_version_id) = check_file_version_update(
+                if let Some(update_version) = find_file_version_update(
                     &candidate.current_version_id,
                     versions,
                     &content_set.game_version,
                     content_set.loader.as_str(),
                     instance.update_channel,
                 ) {
+                    let update_version_id = update_version.id.clone();
                     updates_by_hash
-                        .insert(candidate.file.sha1.clone(), vec![update_version_id.clone()]);
+                        .insert(candidate.file.sha1.clone(), vec![update_version.clone()]);
 
                     let file_update = crate::state::cache::CachedFileUpdate {
                         hash: candidate.file.sha1.clone(),
@@ -249,9 +248,18 @@ async fn check_content_updates_with_cache_behaviours(
             .remove(&candidate.file.sha1)
             .unwrap_or_default()
             .into_iter()
-            .find(|update_version_id| {
-                update_version_id != &candidate.current_version_id
-            });
+            .find(|version| {
+                let metadata = &file_info_by_hash[&candidate.file.sha1];
+                let project_id = candidate
+                    .entry
+                    .as_ref()
+                    .and_then(|entry| entry.project_id.as_deref())
+                    .unwrap_or(&metadata.project_id);
+                version.id != candidate.current_version_id
+                    && metadata.project_id == project_id
+                    && version.project_id == project_id
+            })
+            .map(|version| version.id);
 
         if let Some(entry) = &candidate.entry {
             content_rows::upsert_content_update_check(
@@ -265,6 +273,9 @@ async fn check_content_updates_with_cache_behaviours(
 
         if let Some(update_version_id) = update_version_id {
             output.push(ContentUpdate {
+                project_id: file_info_by_hash[&candidate.file.sha1]
+                    .project_id
+                    .clone(),
                 relative_path: candidate.file.relative_path,
                 current_version_id: candidate.current_version_id,
                 update_version_id,
@@ -275,13 +286,13 @@ async fn check_content_updates_with_cache_behaviours(
     Ok(output)
 }
 
-pub(crate) fn check_file_version_update(
+pub(crate) fn find_file_version_update<'a>(
     current_version_id: &str,
-    all_versions: &[Version],
+    all_versions: &'a [Version],
     game_version: &str,
     loader: &str,
     preferred_update_channel: ReleaseChannel,
-) -> Option<String> {
+) -> Option<&'a Version> {
     let current_version = all_versions.iter().find(|v| v.id == current_version_id);
     let installed_channel = current_version
         .map(|v| ReleaseChannel::from_version_type(&v.version_type))
@@ -317,11 +328,29 @@ pub(crate) fn check_file_version_update(
         newer_versions.sort_by_key(|version| std::cmp::Reverse(version.date_published));
 
         if let Some(newest) = newer_versions.first() {
-            return Some(newest.id.clone());
+            return Some(*newest);
         }
     }
 
     None
+}
+
+#[allow(dead_code)]
+pub(crate) fn check_file_version_update(
+    current_version_id: &str,
+    all_versions: &[Version],
+    game_version: &str,
+    loader: &str,
+    preferred_update_channel: ReleaseChannel,
+) -> Option<String> {
+    find_file_version_update(
+        current_version_id,
+        all_versions,
+        game_version,
+        loader,
+        preferred_update_channel,
+    )
+    .map(|v| v.id.clone())
 }
 
 async fn installed_update_channels(
@@ -386,4 +415,37 @@ fn update_cache_key(
         channel.key(),
         game_version
     )
+}
+
+pub(super) async fn resolve_update_versions(
+    updates: Vec<CachedFileUpdate>,
+    cache_behaviour: Option<CacheBehaviour>,
+    state: &State,
+) -> crate::Result<HashMap<String, Vec<crate::state::Version>>> {
+    if updates.is_empty() {
+        return Ok(HashMap::new());
+    }
+    let version_ids = updates
+        .iter()
+        .map(|update| update.update_version_id.as_str())
+        .collect::<Vec<_>>();
+    let versions = CachedEntry::get_version_many(
+        &version_ids,
+        cache_behaviour,
+        &state.pool,
+        &state.api_semaphore,
+    )
+    .await?;
+    let versions_by_id = versions
+        .into_iter()
+        .map(|version| (version.id.clone(), version))
+        .collect::<HashMap<_, _>>();
+    let mut output: HashMap<String, Vec<crate::state::Version>> =
+        HashMap::new();
+    for update in updates {
+        if let Some(version) = versions_by_id.get(&update.update_version_id) {
+            output.entry(update.hash).or_default().push(version.clone());
+        }
+    }
+    Ok(output)
 }

@@ -59,7 +59,6 @@ async fn open_app_db_pool(db_path: &Path) -> crate::Result<Pool<Sqlite>> {
         .max_connections(10)
         .min_connections(1)
         .idle_timeout(Duration::from_secs(120))
-        .max_lifetime(None)
         .connect_with(conn_options)
         .await?)
 }
@@ -111,7 +110,7 @@ async fn record_current_app_version(pool: &Pool<Sqlite>) -> crate::Result<()> {
 /// kept around for a little while to allow users to recover from accidental
 /// deletions.
 async fn stale_data_cleanup(pool: &Pool<Sqlite>) -> crate::Result<()> {
-    let mut tx = pool.begin().await?;
+    let mut tx = pool.begin_with("BEGIN IMMEDIATE").await?;
 
     // Clear any CurseForge aliases in the cache table to prevent UNIQUE (data_type, alias) collisions
     sqlx::query("UPDATE cache SET alias = NULL WHERE (id LIKE 'cf:%' OR id LIKE 'cf-%') AND alias IS NOT NULL")

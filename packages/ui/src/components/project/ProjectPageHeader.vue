@@ -93,6 +93,7 @@ type HeaderProject = Pick<
 	'id' | 'title' | 'description' | 'status' | 'downloads' | 'followers' | 'categories'
 > & {
 	icon_url?: string | null
+	raw_icon_url?: string | null
 }
 
 type HeaderProjectV3 = Pick<

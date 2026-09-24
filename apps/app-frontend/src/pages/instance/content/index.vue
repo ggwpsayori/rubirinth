@@ -130,7 +130,7 @@ import ShareModalWrapper from '@/components/ui/modal/ShareModalWrapper.vue'
 import { useManagedContentPolicy } from '@/composables/instances/use-managed-content-policy'
 import { useSyncedPackActions } from '@/composables/instances/use-synced-pack-actions'
 import { useAppEvent } from '@/composables/use-app-event'
-import { type FeatureFlag, useAppSettings } from '@/composables/use-app-settings.ts'
+import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { trackEvent } from '@/helpers/analytics'
 import { get_project_versions, get_version, get_version_many } from '@/helpers/cache.js'
 import {
@@ -250,10 +250,7 @@ const route = useRoute()
 const queryClient = useQueryClient()
 const debug = useDebugLogger('Mods:ContentUpdate')
 const appSettings = useAppSettings()
-const skipUnknownFileWarningFeatureFlag = 'skip_unknown_pack_warning' as FeatureFlag
-const skipNonEssentialWarnings = computed(() =>
-	appSettings.getFeatureFlag('skip_non_essential_warnings'),
-)
+const skipNonEssentialWarnings = computed(() => appSettings.skipNonEssentialWarnings)
 
 const instancePage = injectInstancePage()
 const sharedInstanceState = injectSharedInstance()
@@ -388,6 +385,7 @@ let resolveUnknownFileConfirmation: ((confirmed: boolean) => void) | null = null
 const modpackContentQueryKey = computed(() => instanceKeys.linkedContent(instance.value.id))
 const modpackContentQuery = useQuery({
 	queryKey: modpackContentQueryKey,
+	networkMode: 'always',
 	queryFn: () => get_linked_modpack_content(instance.value.id),
 	enabled: computed(
 		() =>
@@ -815,7 +813,7 @@ async function handleUploadFiles() {
 }
 
 function confirmUnknownFileInstallation(fileName: string) {
-	if (appSettings.getFeatureFlag(skipUnknownFileWarningFeatureFlag)) {
+	if (!appSettings.warnOnUnknownModpacks) {
 		return Promise.resolve(true)
 	}
 
@@ -835,10 +833,10 @@ function resolveUnknownFileWarning(confirmed: boolean) {
 
 async function handleUnknownFileContinue(dontShowAgain: boolean) {
 	if (dontShowAgain) {
-		appSettings.featureFlags[skipUnknownFileWarningFeatureFlag] = true
+		appSettings.warnOnUnknownModpacks = false
 		try {
 			const settings = await getSettings()
-			settings.feature_flags[skipUnknownFileWarningFeatureFlag] = true
+			settings.warn_on_unknown_modpacks = false
 			await setSettings(settings)
 		} catch (error) {
 			handleError(error as Error)

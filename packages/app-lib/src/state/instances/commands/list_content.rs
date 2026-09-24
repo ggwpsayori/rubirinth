@@ -28,6 +28,12 @@ struct ResolvedContentScope {
     content_set: ContentSet,
 }
 
+#[derive(Clone, Copy)]
+enum ContentReadMode {
+    Indexed,
+    Reconcile,
+}
+
 #[derive(Clone, Copy, Debug)]
 enum ContentFilter<'a> {
     All,
@@ -200,6 +206,23 @@ pub(crate) async fn list_content(
         content_set_id,
         cache_behaviour,
         false,
+        ContentReadMode::Reconcile,
+        state,
+    )
+    .await
+}
+
+pub(crate) async fn list_indexed_content(
+    instance_id: &str,
+    cache_behaviour: Option<CacheBehaviour>,
+    state: &State,
+) -> crate::Result<Vec<ContentItem>> {
+    list_content_inner(
+        instance_id,
+        None,
+        cache_behaviour,
+        false,
+        ContentReadMode::Indexed,
         state,
     )
     .await
@@ -209,7 +232,15 @@ pub(crate) async fn list_pack_content(
     instance_id: &str,
     state: &State,
 ) -> crate::Result<Vec<ContentItem>> {
-    list_content_inner(instance_id, None, None, true, state).await
+    list_content_inner(
+        instance_id,
+        None,
+        None,
+        true,
+        ContentReadMode::Reconcile,
+        state,
+    )
+    .await
 }
 
 async fn list_content_inner(
@@ -217,6 +248,7 @@ async fn list_content_inner(
     content_set_id: Option<&str>,
     cache_behaviour: Option<CacheBehaviour>,
     packs_only: bool,
+    read_mode: ContentReadMode,
     state: &State,
 ) -> crate::Result<Vec<ContentItem>> {
     let resolved = resolve_content_scope_with_instance(
@@ -269,6 +301,7 @@ async fn list_content_inner(
         state,
         filter,
         packs_only,
+        read_mode,
     )
     .await?;
     let files = files.into_iter().collect::<Vec<_>>();
@@ -301,7 +334,7 @@ pub(crate) async fn list_linked_modpack_content(
     )
     .await?;
     if is_imported_modpack_scope(&link) {
-        let files = content_projects_for_scope(
+        let files = content_projects_for_scope_inner(
             &resolved,
             cache_behaviour,
             state,
@@ -310,6 +343,8 @@ pub(crate) async fn list_linked_modpack_content(
                 include_untracked: resolved.instance.install_stage
                     != crate::state::InstanceInstallStage::Installed,
             },
+            false,
+            ContentReadMode::Indexed,
         )
         .await?;
         let files = files.into_iter().collect::<Vec<_>>();
@@ -371,9 +406,15 @@ pub(crate) async fn list_linked_modpack_content(
     } else {
         return Ok(Vec::new());
     };
-    let files =
-        content_projects_for_scope(&resolved, cache_behaviour, state, filter)
-            .await?;
+    let files = content_projects_for_scope_inner(
+        &resolved,
+        cache_behaviour,
+        state,
+        filter,
+        false,
+        ContentReadMode::Indexed,
+    )
+    .await?;
     let files = files.into_iter().collect::<Vec<_>>();
 
     content_files_to_content_items(
@@ -670,6 +711,7 @@ async fn content_projects_for_scope(
         state,
         filter,
         false,
+        ContentReadMode::Reconcile,
     )
     .await
 }
@@ -680,9 +722,20 @@ async fn content_projects_for_scope_inner(
     state: &State,
     filter: ContentFilter<'_>,
     packs_only: bool,
+    read_mode: ContentReadMode,
 ) -> crate::Result<DashMap<String, ContentFile>> {
-    let mut files =
-        sync_instance_content_files(&resolved.instance, state).await?;
+    let mut files = match read_mode {
+        ContentReadMode::Indexed => {
+            sqlite::content_rows::get_instance_files(
+                &resolved.instance.id,
+                &state.pool,
+            )
+            .await?
+        }
+        ContentReadMode::Reconcile => {
+            sync_instance_content_files(&resolved.instance, state).await?
+        }
+    };
     if packs_only {
         files.retain(|file| {
             matches!(
@@ -910,7 +963,7 @@ async fn content_projects_for_scope_inner(
             true
         });
 
-    let mut updates_by_hash: HashMap<String, Vec<String>> = HashMap::new();
+    let mut updates_by_hash: HashMap<String, Vec<Version>> = HashMap::new();
 
     // 1. Modrinth files: check updates ONLY via Modrinth file update API
     if !mr_files.is_empty() {
@@ -941,12 +994,13 @@ async fn content_projects_for_scope_inner(
             &state.api_semaphore,
         )
         .await?;
-        for update in file_updates {
-            updates_by_hash
-                .entry(update.hash)
-                .or_default()
-                .push(update.update_version_id);
-        }
+        updates_by_hash =
+            super::check_content_updates::resolve_update_versions(
+                file_updates,
+                cache_behaviour,
+                state,
+            )
+            .await?;
     }
 
     let existing_update_checks = sqlite::content_rows::get_content_update_checks_for_content_set(
@@ -960,19 +1014,6 @@ async fn content_projects_for_scope_inner(
     if !cf_files.is_empty() {
         let mut cf_project_ids = std::collections::HashSet::new();
         for file in &cf_files {
-            let entry = entries_by_file_id.get(file.id.as_str()).copied();
-            if let Some(entry) = entry {
-                if let Some(check) = existing_update_checks.get(&entry.id) {
-                    if check.update_channel == resolved.instance.update_channel {
-                        if let Some(ref update_vid) = check.update_version_id {
-                            updates_by_hash
-                                .insert(file.sha1.clone(), vec![update_vid.clone()]);
-                            continue;
-                        }
-                    }
-                }
-            }
-
             let pid = file_info_by_hash
                 .get(&file.sha1)
                 .map(|info| info.project_id.clone())
@@ -1039,8 +1080,21 @@ async fn content_projects_for_scope_inner(
                 if let (Some(pid), Some(vid)) = (pid, vid) {
                     if pid.starts_with("cf:") {
                         if let Some(versions) = cf_versions_by_project.get(&pid) {
-                            if let Some(update_version_id) =
-                                super::check_content_updates::check_file_version_update(
+                            let entry = entries_by_file_id.get(file.id.as_str()).copied();
+                            if let Some(entry) = entry {
+                                if let Some(check) = existing_update_checks.get(&entry.id) {
+                                    if check.update_channel == resolved.instance.update_channel {
+                                        if let Some(ref update_vid) = check.update_version_id {
+                                            if let Some(ver) = versions.iter().find(|v| &v.id == update_vid) {
+                                                updates_by_hash.insert(file.sha1.clone(), vec![ver.clone()]);
+                                                continue;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if let Some(update_version) =
+                                super::check_content_updates::find_file_version_update(
                                     &vid,
                                     versions,
                                     &resolved.content_set.game_version,
@@ -1049,7 +1103,7 @@ async fn content_projects_for_scope_inner(
                                 )
                             {
                                 updates_by_hash
-                                    .insert(file.sha1.clone(), vec![update_version_id]);
+                                    .insert(file.sha1.clone(), vec![update_version.clone()]);
                             }
                         }
                     }
@@ -1118,16 +1172,29 @@ async fn content_projects_for_scope_inner(
                 .as_ref()
                 .map(|m| m.version_id.as_str())
                 .or_else(|| entry.and_then(|e| e.version_id.as_deref()));
-            let update_ids =
+            let project_id = entry
+                .and_then(|entry| entry.project_id.as_deref())
+                .or_else(|| metadata.as_ref().map(|m| m.project_id.as_str()));
+            let versions =
                 updates_by_hash.remove(&file.sha1).unwrap_or_default();
-            if let Some(cur) = cur_vid {
-                if !update_ids.contains(&cur.to_string()) {
-                    update_ids.into_iter().next()
+            if let Some(project_id) = project_id {
+                if let Some(cur_vid) = cur_vid {
+                    if versions.iter().any(|v| v.id == cur_vid) {
+                        None
+                    } else {
+                        versions
+                            .into_iter()
+                            .find(|v| v.project_id == project_id)
+                            .map(|v| v.id)
+                    }
                 } else {
-                    None
+                    versions
+                        .into_iter()
+                        .find(|v| v.project_id == project_id)
+                        .map(|v| v.id)
                 }
             } else {
-                update_ids.into_iter().next()
+                None
             }
         };
 
