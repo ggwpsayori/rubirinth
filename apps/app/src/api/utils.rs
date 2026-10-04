@@ -18,6 +18,7 @@ pub fn init<R: Runtime>() -> tauri::plugin::TauriPlugin<R> {
             get_os,
             is_network_metered,
             should_disable_mouseover,
+            should_disable_modal_blur,
             highlight_in_folder,
             open_path,
             show_launcher_logs_folder,
@@ -83,6 +84,18 @@ pub async fn should_disable_mouseover() -> bool {
         // Not macos, we allow mouseover
         false
     }
+}
+
+// WebKitGTK with the DMABUF renderer disabled composites backdrop-filter as black
+// rectangles, so modal blur has to stay off on such setups (eg. NVIDIA + Wayland)
+#[tauri::command]
+pub async fn should_disable_modal_blur() -> bool {
+    #[cfg(target_os = "linux")]
+    let forced =
+        std::env::var_os("WEBKIT_DISABLE_DMABUF_RENDERER").is_some_and(|v| v == "1");
+    #[cfg(not(target_os = "linux"))]
+    let forced = false;
+    forced
 }
 
 #[tauri::command]

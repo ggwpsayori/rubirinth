@@ -176,6 +176,7 @@ import {
 	isDev,
 	isNetworkMetered,
 	setRestartAfterPendingUpdate,
+	shouldDisableModalBlur,
 } from '@/helpers/utils.js'
 import { start_join_server, start_join_singleplayer_world } from '@/helpers/worlds.ts'
 import i18n, { setLocale } from '@/i18n.config'
@@ -398,8 +399,17 @@ providePageContext({
 	},
 	openExternalUrl: (url) => void openUrl(url),
 })
+// WebKitGTK without the DMABUF renderer renders modal backdrop blur as black
+// rectangles, so blur is force-disabled on such setups regardless of the setting
+const modalBlurWorkaround = ref(false)
+void shouldDisableModalBlur()
+	.then((disabled) => {
+		modalBlurWorkaround.value = disabled
+	})
+	.catch(() => {})
+
 provideModalBehavior({
-	noblur: computed(() => !appTheme.advancedRendering),
+	noblur: computed(() => !appTheme.advancedRendering || modalBlurWorkaround.value),
 	onShow: () => take_ads_window_hold(),
 	onHide: () => release_ads_window_hold(),
 })
