@@ -158,7 +158,7 @@ defineExpose({ show, hide, selectedTab, setTab })
 
 					<div
 						ref="sidebarScrollContainer"
-						class="flex h-full flex-col gap-1 overflow-y-auto"
+						class="absolute inset-0 flex flex-col gap-1 overflow-y-auto"
 						@scroll="checkSidebarScrollState"
 					>
 						<template v-for="(tab, index) in visibleTabs" :key="index">
