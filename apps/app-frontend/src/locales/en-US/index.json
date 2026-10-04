@@ -78,7 +78,7 @@
     "message": "Minecraft setup failed"
   },
   "app.action-bar.install.summary.modrinth-unreachable": {
-    "message": "Couldn't reach Modrinth"
+    "message": "Couldn't reach Rubirinth"
   },
   "app.action-bar.install.summary.no-write-permission": {
     "message": "No permission to write"
@@ -135,7 +135,7 @@
     "message": "Accept all"
   },
   "app.ads-consent.body": {
-    "message": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance."
+    "message": "Ads make Rubirinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance."
   },
   "app.ads-consent.manage": {
     "message": "Manage preferences"
@@ -144,7 +144,7 @@
     "message": "Reject all"
   },
   "app.ads-consent.title": {
-    "message": "Your privacy and how ads support Modrinth"
+    "message": "Your privacy and how ads support Rubirinth"
   },
   "app.appearance-settings.compact-mode.description": {
     "message": "Display library instances in a compact row layout."
@@ -165,7 +165,7 @@
     "message": "Hide nametag"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "Minimize Modrinth App when Minecraft starts."
+    "message": "Minimize Rubirinth App when Minecraft starts."
   },
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimize app"
@@ -189,7 +189,7 @@
     "message": "Hide right sidebar"
   },
   "app.appearance-settings.unknown-pack-warning.description": {
-    "message": "Show a safety warning before installing a Modrinth Pack (.mrpack) that isn't hosted on Modrinth."
+    "message": "Show a safety warning before installing a Modrinth Pack (.mrpack) that isn't hosted on Rubirinth."
   },
   "app.appearance-settings.unknown-pack-warning.title": {
     "message": "Warn me before installing unknown modpacks"
@@ -207,7 +207,7 @@
     "message": "Home and content"
   },
   "app.behavior-settings.refocus-on-game-close.description": {
-    "message": "Bring Modrinth App to the foreground when Minecraft exits."
+    "message": "Bring Rubirinth App to the foreground when Minecraft exits."
   },
   "app.behavior-settings.refocus-on-game-close.title": {
     "message": "Refocus app when Minecraft closes"
@@ -219,7 +219,7 @@
     "message": "Use these behavior settings everywhere you're signed in. Turn this off to keep separate settings on this device."
   },
   "app.behavior-settings.sync-across-devices.signed-out-tooltip": {
-    "message": "Sign into a Modrinth account to sync settings."
+    "message": "Sign into a Rubirinth account to sync settings."
   },
   "app.behavior-settings.sync-across-devices.title": {
     "message": "Sync behavior across devices"
@@ -462,7 +462,7 @@
     "message": "Use these feature settings everywhere you're signed in. Turn this off to keep separate settings on this device."
   },
   "app.features-settings.sync-across-devices.signed-out-tooltip": {
-    "message": "Sign into a Modrinth account to sync settings."
+    "message": "Sign into a Rubirinth account to sync settings."
   },
   "app.features-settings.sync-across-devices.title": {
     "message": "Sync features across devices"
@@ -495,16 +495,16 @@
     "message": "View instance"
   },
   "app.hosting.update-required.description": {
-    "message": "You need to update to use Modrinth Hosting through the Modrinth App"
+    "message": "You need to update to use Modrinth Hosting through the Rubirinth App"
   },
   "app.hosting.update-required.download": {
     "message": "Download to update"
   },
   "app.hosting.update-required.rinthbot-alt": {
-    "message": "Excited Modrinth Bot"
+    "message": "Excited Rubirinth Bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Modrinth App update required"
+    "message": "Rubirinth App update required"
   },
   "app.install.phase.downloading_content": {
     "message": "Downloading content"
@@ -831,13 +831,13 @@
     "message": "Sign in as"
   },
   "app.instance.shared-instance-wrong-account.signed-out-header": {
-    "message": "You need to sign in to Modrinth"
+    "message": "You need to sign in to Rubirinth"
   },
   "app.instance.shared-instance-wrong-account.user-admonition-body-v2": {
     "message": "to receive updates for this shared instance."
   },
   "app.instance.shared-instance-wrong-account.warning-header": {
-    "message": "You are using the wrong Modrinth account"
+    "message": "You are using the wrong Rubirinth account"
   },
   "app.instance.shortcut.created": {
     "message": "Shortcut created"
@@ -1263,10 +1263,10 @@
     "message": "Install"
   },
   "app.modal.install-to-play.invite-warning": {
-    "message": "This invite was created by another Modrinth user, not Modrinth. Only accept invites from people you trust."
+    "message": "This invite was created by another Rubirinth user, not Rubirinth. Only accept invites from people you trust."
   },
   "app.modal.install-to-play.invite-warning-with-creator": {
-    "message": "This invite was created by <creator>{username}</creator>, not Modrinth. Only accept invites from people you trust."
+    "message": "This invite was created by <creator>{username}</creator>, not Rubirinth. Only accept invites from people you trust."
   },
   "app.modal.install-to-play.managed-content.modpack-header": {
     "message": "Modpack content"
@@ -1299,7 +1299,7 @@
     "message": "For support requests, contact our <support-link>support team</support-link>. For bug reports, open a <github-link>GitHub issue</github-link>."
   },
   "app.modal.install-to-play.reviewed-files": {
-    "message": "Files that aren't published to Modrinth aren't reviewed."
+    "message": "Files that aren't published to Rubirinth aren't reviewed."
   },
   "app.modal.install-to-play.shared-instance": {
     "message": "Shared instance"
@@ -1308,10 +1308,10 @@
     "message": "Shared instance content"
   },
   "app.modal.install-to-play.shared-instance-unknown-files-description": {
-    "message": "This shared instance contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "message": "This shared instance contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust."
   },
   "app.modal.install-to-play.unknown-files-description": {
-    "message": "This server modpack contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "message": "This server modpack contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust."
   },
   "app.modal.install-to-play.unknown-files-warning": {
     "message": "Unknown files warning"
@@ -1332,7 +1332,7 @@
     "message": "Removed"
   },
   "app.modal.update-to-play.server-modpack-unknown-files-description": {
-    "message": "This server modpack update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "message": "This server modpack update contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust."
   },
   "app.modal.update-to-play.shared-instance-added-label": {
     "message": "Added"
@@ -1341,7 +1341,7 @@
     "message": "Removed"
   },
   "app.modal.update-to-play.shared-instance-unknown-files-description": {
-    "message": "This shared instance update contains files that aren’t published on Modrinth. We strongly recommend only installing files from sources you trust."
+    "message": "This shared instance update contains files that aren’t published on Rubirinth. We strongly recommend only installing files from sources you trust."
   },
   "app.modal.update-to-play.update-required": {
     "message": "Update required"
@@ -1362,7 +1362,7 @@
     "message": "Loading profile..."
   },
   "app.nav.modrinth-account": {
-    "message": "Modrinth account"
+    "message": "Rubirinth account"
   },
   "app.nav.modrinth-hosting": {
     "message": "Modrinth Hosting"
@@ -1374,13 +1374,13 @@
     "message": "Screenshots"
   },
   "app.nav.sign-in-to-modrinth-account": {
-    "message": "Sign into Modrinth"
+    "message": "Sign into Rubirinth"
   },
   "app.nav.switch-account": {
     "message": "Switch account"
   },
   "app.nav.upgrade-to-modrinth-plus": {
-    "message": "Upgrade to Modrinth+"
+    "message": "Upgrade to Rubirinth+"
   },
   "app.nav.view-profile": {
     "message": "View profile"
@@ -1596,7 +1596,7 @@
     "message": "Export ZIP"
   },
   "app.screenshots.selection.global-export-filename": {
-    "message": "Modrinth screenshots.zip"
+    "message": "Rubirinth screenshots.zip"
   },
   "app.screenshots.selection.instance-export-filename": {
     "message": "{instance} screenshots.zip"
@@ -1626,7 +1626,7 @@
     "message": "Oldest"
   },
   "app.settings.app-version": {
-    "message": "Modrinth App {version}"
+    "message": "Rubirinth App {version}"
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Environment variables set when launching an instance."
@@ -1902,7 +1902,7 @@
     "message": "Some of your instances cannot use this setting"
   },
   "app.settings.game-options.compatibility.reason.launcher-controlled": {
-    "message": "This setting is managed by Modrinth’s launch settings."
+    "message": "This setting is managed by Rubirinth’s launch settings."
   },
   "app.settings.game-options.custom-value.placeholder": {
     "message": "Enter a value"
@@ -2736,16 +2736,16 @@
     "message": "macOS"
   },
   "app.settings.privacy.ads-consent.intro": {
-    "message": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below."
+    "message": "Ads make Rubirinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below."
   },
   "app.settings.privacy.discord-rich-presence.description": {
-    "message": "Show Modrinth App as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart."
+    "message": "Show Rubirinth App as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart."
   },
   "app.settings.privacy.discord-rich-presence.title": {
     "message": "Discord Rich Presence"
   },
   "app.settings.privacy.telemetry.description": {
-    "message": "Modrinth collects anonymized analytics and usage data to improve our user experience and customize your experience. By disabling this option, you opt out and your data will no longer be collected."
+    "message": "Rubirinth collects anonymized analytics and usage data to improve our user experience and customize your experience. By disabling this option, you opt out and your data will no longer be collected."
   },
   "app.settings.privacy.telemetry.title": {
     "message": "Telemetry"
@@ -2763,7 +2763,7 @@
     "message": "Purge the app cache?"
   },
   "app.settings.resource-management.app-cache.description": {
-    "message": "Clear cached data and download it again from Modrinth. The app may load more slowly until the cache is rebuilt."
+    "message": "Clear cached data and download it again from Rubirinth. The app may load more slowly until the cache is rebuilt."
   },
   "app.settings.resource-management.app-cache.purge": {
     "message": "Purge cache"
@@ -2784,7 +2784,7 @@
     "message": "Browse for an app directory"
   },
   "app.settings.resource-management.app-directory.description": {
-    "message": "Where Modrinth App stores instances and other files. Changes take effect after restarting the app."
+    "message": "Where Rubirinth App stores instances and other files. Changes take effect after restarting the app."
   },
   "app.settings.resource-management.app-directory.select": {
     "message": "Select a new app directory"
@@ -2970,7 +2970,7 @@
     "message": "These settings changed elsewhere"
   },
   "app.settings.synced-options.game-settings.custom-empty": {
-    "message": "Settings added by mods will appear here after Modrinth finds them in one of your instances."
+    "message": "Settings added by mods will appear here after Rubirinth finds them in one of your instances."
   },
   "app.settings.synced-options.game-settings.description": {
     "message": "Use the same game options across your instances."
@@ -3252,13 +3252,13 @@
     "message": "MINECON Earth 2017"
   },
   "app.skins.section.modrinth": {
-    "message": "Modrinth"
+    "message": "Rubirinth"
   },
   "app.skins.section.modrinth-pride": {
-    "message": "Modrinth Pride"
+    "message": "Rubirinth Pride"
   },
   "app.skins.section.modrinth-pride.tooltip": {
-    "message": "You received these skins for donating to a Modrinth Pride fundraiser during Pride Month."
+    "message": "You received these skins for donating to a Rubirinth Pride fundraiser during Pride Month."
   },
   "app.skins.section.mounts-of-mayhem": {
     "message": "Mounts of Mayhem"
@@ -3291,10 +3291,10 @@
     "message": "Toggle on"
   },
   "app.survey.body": {
-    "message": "Would you mind answering a few questions about your experience with Modrinth App?"
+    "message": "Would you mind answering a few questions about your experience with Rubirinth App?"
   },
   "app.survey.footer": {
-    "message": "This feedback will go directly to the Modrinth team and help guide future updates!"
+    "message": "This feedback will go directly to the Rubirinth team and help guide future updates!"
   },
   "app.survey.no-thanks": {
     "message": "No thanks"
@@ -3303,7 +3303,7 @@
     "message": "Take survey"
   },
   "app.survey.title": {
-    "message": "Hey there Modrinth user!"
+    "message": "Hey there Rubirinth user!"
   },
   "app.sync-instances-update.badge": {
     "message": "New this update"
@@ -3435,13 +3435,13 @@
     "message": "Synced resource packs"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Modrinth App v{version} has finished downloading. Reload to update now, or automatically when you close Modrinth App."
+    "message": "Rubirinth App v{version} has finished downloading. Reload to update now, or automatically when you close Rubirinth App."
   },
   "app.update-popup.body.linux": {
-    "message": "Modrinth App v{version} is available. Use your package manager to update for the latest features and fixes!"
+    "message": "Rubirinth App v{version} is available. Use your package manager to update for the latest features and fixes!"
   },
   "app.update-popup.body.metered": {
-    "message": "Modrinth App v{version} is available now! Since you're on a metered network, we didn't automatically download it."
+    "message": "Rubirinth App v{version} is available now! Since you're on a metered network, we didn't automatically download it."
   },
   "app.update-popup.changelog": {
     "message": "Changelog"
@@ -3486,7 +3486,7 @@
     "message": "Press <shortcut>N</shortcut> to quick create an instance"
   },
   "app.welcome-screen.title": {
-    "message": "Welcome to Modrinth"
+    "message": "Welcome to Rubirinth"
   },
   "app.world.server-modal.placeholder-address": {
     "message": "example.modrinth.gg"
@@ -3555,10 +3555,10 @@
     "message": "It may be different from their Minecraft username!"
   },
   "friends.add-friend.username.placeholder": {
-    "message": "Enter Modrinth username..."
+    "message": "Enter Rubirinth username..."
   },
   "friends.add-friend.username.title": {
-    "message": "What's your friend's Modrinth username?"
+    "message": "What's your friend's Rubirinth username?"
   },
   "friends.add-friends-to-share": {
     "message": "<link>Add friends</link> to see what they're playing!"
@@ -3603,7 +3603,7 @@
     "message": "{title} - {count}"
   },
   "friends.sign-in-to-add-friends": {
-    "message": "<link>Sign in to a Modrinth account</link> to add friends and see what they're playing!"
+    "message": "<link>Sign in to a Rubirinth account</link> to add friends and see what they're playing!"
   },
   "installation-settings.shared-instance.linked-title": {
     "message": "Linked shared instance"
@@ -3624,7 +3624,7 @@
     "message": "Unpublish shared instance"
   },
   "installation-settings.shared-instance.unpublish-description": {
-    "message": "Remove this shared instance from Modrinth and stop sending updates to anyone using it. Your local instance will not be affected."
+    "message": "Remove this shared instance from Rubirinth and stop sending updates to anyone using it. Your local instance will not be affected."
   },
   "installation-settings.shared-instance.unpublishing-button": {
     "message": "Unpublishing..."
@@ -3639,7 +3639,7 @@
     "message": "Unlink shared instance"
   },
   "installation-settings.unpublish-shared-instance.modal.admonition-body": {
-    "message": "This deletes the shared instance from Modrinth's servers. People using it in the Modrinth App will stop receiving updates, but your local instance and its content will stay on this device."
+    "message": "This deletes the shared instance from Rubirinth's servers. People using it in the Rubirinth App will stop receiving updates, but your local instance and its content will stay on this device."
   },
   "installation-settings.unpublish-shared-instance.modal.admonition-header": {
     "message": "Unpublishing shared instance"
@@ -3924,7 +3924,7 @@
     "message": "TNT"
   },
   "instance.icon-editor.symbol.wrenth-rinth": {
-    "message": "Modrinth Wrench"
+    "message": "Rubirinth Wrench"
   },
   "instance.icon-editor.symbol.zombie": {
     "message": "Zombie"
@@ -4491,7 +4491,7 @@
     "message": "Create an account"
   },
   "modal.modrinth-account-required.description": {
-    "message": "You'll need to sign into your Modrinth account before you can use this feature."
+    "message": "You'll need to sign into your Rubirinth account before you can use this feature."
   },
   "modal.modrinth-account-required.header": {
     "message": "Account required"
@@ -4500,10 +4500,10 @@
     "message": "Open browser again"
   },
   "modal.modrinth-account-required.sign-in-button": {
-    "message": "Sign in to Modrinth"
+    "message": "Sign in to Rubirinth"
   },
   "modal.modrinth-account-required.sign-in-heading": {
-    "message": "Sign in to a Modrinth account"
+    "message": "Sign in to a Rubirinth account"
   },
   "modal.modrinth-account-required.signing-in-header": {
     "message": "Signing in"
@@ -4521,7 +4521,7 @@
     "message": "Sign in to Minecraft"
   },
   "onboarding-checklist.login-modrinth": {
-    "message": "Sign in to Modrinth"
+    "message": "Sign in to Rubirinth"
   },
   "onboarding-checklist.title": {
     "message": "Getting started"
@@ -4584,7 +4584,7 @@
     "message": "Close"
   },
   "app.icon-editor.apply-icons-modal.description": {
-    "message": "Create custom icons for your instances right in the Modrinth App. Mix and match backgrounds with symbols from Minecraft and popular mods!"
+    "message": "Create custom icons for your instances right in the Rubirinth App. Mix and match backgrounds with symbols from Minecraft and popular mods!"
   },
   "app.icon-editor.apply-icons-modal.instances-without-icons": {
     "message": "{count, plural, one {# instance doesn’t} other {# instances don’t}} have icons yet. Want us to give {count, plural, one {it} other {them}} random ones to get started?"
